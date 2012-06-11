@@ -1,0 +1,13 @@
+alias please=sudo
+alias simon-sez=sudo
+alias aps4="cd /Users/mneorr/Library/Application\ Support/iPhone\ Simulator/4.3.2/Applications"
+alias aps5="cd /Users/mneorr/Library/Application\ Support/iPhone\ Simulator/5.0/Applications"
+alias workspace="cd ~/Workspace"
+alias la="ls -la"
+alias debeli="mosh mneorr@193.198.187.26"
+alias findproccess="ps ax |grep -i"
+alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
+alias sshmneorr="ssh mneorrco@mneorr.com -p 3497"
+alias apacheSites="cd /Applications/XAMPP/xamppfiles/htdocs/"
+alias locastic="mosh mneorr@locastic.no-ip.org -p 60001"
+alias slocastic="ssh mneorr@locastic.no-ip.org"
