@@ -1,5 +1,6 @@
 [alias]
     s = status
+    a = add .
     co = checkout
     cm = commit -m
     ca = commit -a
