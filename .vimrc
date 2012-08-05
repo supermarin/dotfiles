@@ -9,7 +9,7 @@ filetype indent on
 "set number
 set foldmethod=syntax
 set foldlevelstart=99
-
+set incsearch
 			
 set tabstop=2
 set shiftwidth=4
