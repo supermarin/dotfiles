@@ -1,0 +1,6 @@
+# SSH / MOSH
+alias debeli="ssh mneorr@193.198.187.26"
+alias sshmneorr="ssh mneorrco@mneorr.com -p 3497"
+alias locastic="mosh mneorr@locastic.no-ip.org -p 60001"
+alias slocastic="ssh mneorr@locastic.no-ip.org"
+alias sshvps="cd ~/.ssh && ssh -i jack.pem ubuntu@ec2-67-202-10-131.compute-1.amazonaws.com"
