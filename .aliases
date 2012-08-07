@@ -1,7 +1,7 @@
 alias please=sudo
 alias simon-sez=sudo
 alias aps4="cd /Users/mneorr/Library/Application\ Support/iPhone\ Simulator/4.3.2/Applications"
-alias aps5="cd /Users/mneorr/Library/Application\ Support/iPhone\ Simulator/5.0/Applications"
+alias aps5="cd /Users/mneorr/Library/Application\ Support/iPhone\ Simulator/5.1/Applications"
 alias workspace="cd ~/Workspace"
 alias la="ls -lah"
 alias findproccess="ps ax |grep -i"
