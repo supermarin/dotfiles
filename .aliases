@@ -4,8 +4,17 @@ alias aps4="cd /Users/mneorr/Library/Application\ Support/iPhone\ Simulator/4.3.
 alias aps5="cd /Users/mneorr/Library/Application\ Support/iPhone\ Simulator/5.1/Applications"
 alias workspace="cd ~/Workspace"
 alias la="ls -lah"
+alias ..l="cd .. && ls -lah"
 alias findproccess="ps ax |grep -i"
 alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
 alias apacheSites="cd /Applications/XAMPP/xamppfiles/htdocs/"
 alias mp="md5 -qs"
 alias duh="du -hc"
+
+alias gc="git acm"
+alias gl="git l"
+alias gp="git push"
+alias gl="git pull"
+alias gs="git status -sb"
+
+alias pod-dev='COCOA_PODS_ENV=development ~/Workspace/Playground/CocoaPods/bin/pod'

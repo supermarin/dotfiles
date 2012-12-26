@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/mneorr/Dropbox/Workspace/Eurucampone'
+let g:netrw_dirhist_2='/Users/mneorr/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/cupertino-0.5.1'
+let g:netrw_dirhist_3='/Users/mneorr/Dropbox/Workspace/NearestBurrito'
+let g:netrw_dirhist_4='/Users/mneorr/Dropbox/Workspace/padrinotest'
+let g:netrw_dirhist_5='/Users/mneorr/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/bubble-wrap-1.1.3'
+let g:netrw_dirhist_6='/Users/mneorr/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/cocoapods-0.14.0'
+let g:netrw_dirhist_7='/Users/mneorr/Dropbox/Workspace/NearestBurrito/.git'

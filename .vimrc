@@ -6,7 +6,7 @@ set nocompatible
 syntax enable
 filetype indent on
 
-"set number
+set number
 set foldmethod=syntax
 set foldlevelstart=99
 set incsearch
@@ -30,5 +30,5 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-set relativenumber
+"set relativenumber
 "set undofile
