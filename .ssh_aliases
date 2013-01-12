@@ -1,4 +1,4 @@
 # SSH / MOSH
-alias sshmneorr="ssh mneorrco@mneorr.com -p 3497"
+alias sshmneorr="ssh mneorrco@176.9.76.210 -p 3497"
 alias sshvps="cd ~/.ssh && ssh -i jack.pem ubuntu@ec2-67-202-10-131.compute-1.amazonaws.com"
-alias moshvps='mosh ubuntu@ec2-67-202-10-131.compute-1.amazonaws.com --ssh="ssh -i jack.pem"'
+alias moshvps='cd ~/.ssh && mosh ubuntu@ec2-67-202-10-131.compute-1.amazonaws.com --ssh="ssh -i jack.pem"'
