@@ -1,24 +1,25 @@
 [alias]
-    s = status
-    a = add .
-    co = checkout
-    cm = commit -m
-    ca = commit -a
-    ci = commit -am
-    am = commit --amend
-    p = push
-    pu = push -u
-    l = log --graph --pretty='%C(yellow)%h%Cblue %an%C(magenta)%d%Creset %s'
+  s = status
+  a = add .
+  co = checkout
+  cm = commit -m
+  ca = commit -a
+  ci = commit -am
+  cam = commit --amend
+  acm = !git add . && git commit -am
+  p = push
+  pu = push -u
+  l = log --graph --pretty='%C(yellow)%h (%cr) %Cblue %an%C(magenta)%d%Creset %s'
 [user]
 	name = Marin Usalj
 	email = mneorr@gmail.com
 [core]
-    excludesfile = /Users/mneorr/.gitignore_global
+  excludesfile = /Users/mneorr/.gitignore_global
 	quotepath = false
 [color]
-    branch = auto
-    diff = auto
-    status = auto
+  branch = auto
+  diff = auto
+  status = auto
 
 
 
