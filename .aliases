@@ -9,7 +9,7 @@ alias mp="md5 -qs"
 alias duh="du -hc"
 
 # Git
-alias gc="git acm"
+alias gc="git commit -am"
 alias gl="git l"
 alias gp="git push"
 alias gl="git pull"
