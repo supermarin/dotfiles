@@ -10,6 +10,7 @@
   p = push
   pu = push -u
   l = log --graph --pretty='%C(yellow)%h (%cr) %Cblue %an%C(magenta)%d%Creset %s'
+  us = submodule update --recursive
 [user]
 	name = Marin Usalj
 	email = mneorr@gmail.com
