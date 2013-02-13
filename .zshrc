@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
-
 ZSH_THEME="../custom/themes/mneorr"
 COMPLETION_WAITING_DOTS="true"
 
@@ -17,3 +16,6 @@ fi
 if [ -f ~/.ssh_aliases ]; then
   . ~/.ssh_aliases
 fi
+
+# Powerline
+#. ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
