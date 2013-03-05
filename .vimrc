@@ -1,15 +1,31 @@
+" Vundle stuff
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tomasr/molokai'
+Bundle 'scrooloose/nerdcommenter'
+"Bundle 'altercation/vim-colors-solarized'
+"Bundle 'scrooloose/syntastic'
+"Bundle 'vim-ruby/vim-ruby'
+"Bundle 'plasticboy/vim-markdown'
+
+
 set encoding=utf-8
 set nocompatible               " be iMproved
 set smartindent
 set autoindent
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 filetype off                   " required!
 
 colorscheme molokai
-:syntax on
+syntax enable
 
-" Speed up pressing O after Esc
+" Speed up pressing O after Esc. Changes the timeout of terminal escaping
 set timeout timeoutlen=5000 ttimeoutlen=100
 " Line numbers
 set number
@@ -45,15 +61,10 @@ if has('gui_running')
   set guioptions=egmrt  " hide the gui menubar
 endif
 
+" CocoaPods and Podfiles
+au BufRead,BufNewFile *.podspec,Podfile set ft=ruby
+" JSON
+au BufNewFile,BufRead *.json set ai filetype=javascript
 
-" Vundle stuff
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'wincent/Command-T'
-Bundle 'scrooloose/nerdcommenter'
-"Bundle 'plasticboy/vim-markdown'
+" Mappings
+map <leader>r :w<CR>:!ruby %<CR>

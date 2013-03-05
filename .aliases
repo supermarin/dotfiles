@@ -1,3 +1,4 @@
+alias steve=jobs
 alias please=sudo
 alias simon-sez=sudo
 alias la="ls -lah"
@@ -17,3 +18,10 @@ alias gs="git status -sb"
 
 # Gem development
 alias pod-dev='COCOA_PODS_ENV=development ~/Workspace/Playground/CocoaPods/bin/pod'
+
+# resume Vim on ctrl+z
+foreground-vi() {                                                                                                                      
+  fg %vi
+}
+zle -N foreground-vi
+bindkey '^Z' foreground-vi
