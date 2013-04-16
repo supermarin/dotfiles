@@ -8,20 +8,27 @@ alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
 alias apacheSites="cd /Applications/XAMPP/xamppfiles/htdocs/"
 alias mp="md5 -qs"
 alias duh="du -hc"
+alias ccat='pygmentize -g'
 
 # Git
 alias gc="git add . && git commit -am"
 alias gl="git l"
 alias gp="git push"
-alias gl="git pull"
+alias gl="git pull --rebase"
 alias gs="git status -sb"
 
 # Gem development
-alias pod-dev='COCOA_PODS_ENV=development ~/Workspace/Playground/CocoaPods/bin/pod'
+alias pod-dev='COCOA_PODS_ENV=development COCOA_PODS_DEPENDENCIES=local ~/code/OSS/CocoaPods/CocoaPods/bin/pod'
+
+# Search through my code directories and quickly open project folder
+workon() {
+  code_dir=~/code
+  cd $(find $code_dir -type d -maxdepth 3 | grep -i --max-count=1 $*)
+}
 
 # resume Vim on ctrl+z
-foreground-vi() {                                                                                                                      
+foreground_vi() {                                                                                                                      
   fg %vi
 }
-zle -N foreground-vi
-bindkey '^Z' foreground-vi
+zle -N foreground_vi
+bindkey '^Z' foreground_vi

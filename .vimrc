@@ -1,3 +1,4 @@
+set t_Co=256
 " Vundle stuff
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -9,24 +10,32 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tomasr/molokai'
 Bundle 'scrooloose/nerdcommenter'
-"Bundle 'altercation/vim-colors-solarized'
+Bundle 'Raimondi/delimitMate'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/base16-vim'
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 "Bundle 'scrooloose/syntastic'
 "Bundle 'vim-ruby/vim-ruby'
 "Bundle 'plasticboy/vim-markdown'
-
 
 set encoding=utf-8
 set nocompatible               " be iMproved
 set smartindent
 set autoindent
+set autoindent
+set smartindent
+"When using p, adjust indent to the current line
+nmap p ]p
 filetype plugin indent on
 filetype off                   " required!
 
+"colorscheme Tomorrow-Night
 colorscheme molokai
+"colorscheme solarized
 syntax enable
 
 " Speed up pressing O after Esc. Changes the timeout of terminal escaping
-set timeout timeoutlen=5000 ttimeoutlen=100
+set timeout timeoutlen=5000 ttimeoutlen=20
 " Line numbers
 set number
 " Indentations
@@ -40,10 +49,16 @@ set list
 let mapleader = ','
 " Mouse scrolling
 set mouse=a
+"set mouse=r
 " Powerline
 set rtp+=/Users/mneorr/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
+" Real time search and highlight
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
 
 " Cursor / carret switching
 if exists('$TMUX')
@@ -54,10 +69,15 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
+" Hooking with system clipboard
+if has("clipboard") " If the feature is available
+  set clipboard=unnamed " copy to the system clipboard
+endif
+
 " GUI STUFF
 if has('gui_running')
-  set guifont=Monaco\ for\ Powerline:h12    " set fonts for gui vim
-  set transparency=5        " set transparent window
+  set guifont=Monaco\ for\ Powerline:h13    " set fonts for gui vim
+  "set transparency=5        " set transparent window
   set guioptions=egmrt  " hide the gui menubar
 endif
 
