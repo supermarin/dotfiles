@@ -11,17 +11,24 @@ alias duh="du -hc"
 alias ccat='pygmentize -g'
 
 # Git
-alias gc="git add . && git commit -am"
 alias gl="git l"
 alias gp="git push"
 alias gl="git pull --rebase"
 alias gs="git status -sb"
 
+gc() {
+  git add .
+  git commit -am "$*"
+}
+
 # Gem development
 alias pod-dev='COCOA_PODS_ENV=development COCOA_PODS_DEPENDENCIES=local ~/code/OSS/CocoaPods/CocoaPods/bin/pod'
+alias use-development-pods="export COCOA_PODS_DEPENDENCIES=local"
+alias use-real-pods="export COCOA_PODS_DEPENDENCIES=real"
 
 # Search through my code directories and quickly open project folder
-workon() {
+# wo = workon
+wo() {
   code_dir=~/code
   cd $(find $code_dir -type d -maxdepth 3 | grep -i --max-count=1 $*)
 }

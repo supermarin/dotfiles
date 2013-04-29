@@ -1,3 +1,0 @@
-# SSH / MOSH
-alias sshvps="cd ~/.ssh && ssh -i jack.pem ubuntu@mneorr.com"
-alias moshvps='cd ~/.ssh && mosh ubuntu@mneorr.com --ssh="ssh -i jack.pem"'

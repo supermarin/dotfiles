@@ -13,8 +13,8 @@ if [ -f ~/.aliases ]; then
   . ~/.aliases
 fi
 
-if [ -f ~/.ssh_aliases ]; then
-  . ~/.ssh_aliases
+if [ -f ~/.privaterc ]; then
+  . ~/.privaterc
 fi
 
 # Powerline
