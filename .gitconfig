@@ -13,8 +13,10 @@
   mf = merge --no-ff
   p = push
   pu = push -u
-  riu = rebase -i @{u}
+  ri = rebase -i
   s = status
+  ss = stash save
+  sp = stash pop
   us = submodule update --recursive
   yolo = push -f origin master
 [user]
