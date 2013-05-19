@@ -19,6 +19,7 @@
   sp = stash pop
   us = submodule update --recursive
   yolo = push -f origin master
+  yoloed = !git fetch origin && git reset --hard origin/master
 [user]
   name = Marin Usalj
   email = mneorr@gmail.com
@@ -33,3 +34,5 @@
   status = auto
 [push]
   default = simple
+[mergetool]
+	keepBackup = false
