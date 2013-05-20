@@ -35,4 +35,4 @@
 [push]
   default = simple
 [mergetool]
-	keepBackup = false
+  keepBackup = false
