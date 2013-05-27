@@ -36,3 +36,6 @@
   default = simple
 [mergetool]
   keepBackup = false
+[git-pair]
+  authors = Marin Usalj <mneorr@gmail.com>
+  authors = Delisa Mason <iskanamagus@gmail.com>

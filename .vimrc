@@ -29,9 +29,13 @@ nmap p ]p
 filetype plugin indent on
 filetype off                   " required!
 
-"colorscheme Tomorrow-Night
-colorscheme molokai
-"colorscheme solarized
+" Set the background light from 7am to 7pm
+let hour = strftime("%H")
+if 7 <= hour && hour < 19
+  colorscheme Tomorrow
+else
+  colorscheme molokai
+endif
 syntax enable
 
 " Speed up pressing O after Esc. Changes the timeout of terminal escaping
