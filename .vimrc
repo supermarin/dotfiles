@@ -14,6 +14,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle 'editorconfig/editorconfig-vim'
 "Bundle 'scrooloose/syntastic'
 "Bundle 'vim-ruby/vim-ruby'
 "Bundle 'plasticboy/vim-markdown'
