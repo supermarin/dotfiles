@@ -15,7 +15,6 @@ rbenv rehash >/dev/null ^&1
 
 
 ### bundler
-
 function be
   bundle exec $argv
 end
@@ -29,20 +28,45 @@ function bu
 end
 
 ### aliases
-alias la="ls -lah"
-alias findproccess="ps ax |grep -i"
-alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
-alias apacheSites="cd /Applications/XAMPP/xamppfiles/htdocs/"
-alias duh="du -hc"
-alias ccat='pygmentize -g'
+function la
+  ls -lah
+end
 
-alias sshvps="ssh -i ~/.ssh/jack.pem ubuntu@mneorr.com"
+function findproccess
+  ps ax |grep -i
+end
+
+function stupidXcode
+  rm -rf ~/Library/Developer/Xcode/DerivedData
+end
+
+function ccat
+  pygmentize -g
+end
+
+function sshvps
+  ssh -i ~/.ssh/jack.pem ubuntu@mneorr.com
+end
 
 ### Git
-alias gl="git l"
-alias gp="git push"
-alias gl="git pull --rebase"
-alias gs="git status -sb"
+function gl
+  git l
+end
+
+function gp
+  git push
+end
+
+function gl
+  git pull --rebase
+end
+
+function gs
+  git status -sb
+end
 
 ### Gem development
-alias pod-dev='COCOA_PODS_ENV=development ~/code/OSS/CocoaPods/CocoaPods/bin/pod'
+function pod-dev
+  set COCOA_PODS_ENV development
+  ~/code/OSS/CocoaPods/CocoaPods/bin/pod $argv
+end
