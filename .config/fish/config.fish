@@ -36,6 +36,8 @@ alias apacheSites="cd /Applications/XAMPP/xamppfiles/htdocs/"
 alias duh="du -hc"
 alias ccat='pygmentize -g'
 
+alias sshvps="ssh -i ~/.ssh/jack.pem ubuntu@mneorr.com"
+
 ### Git
 alias gl="git l"
 alias gp="git push"
