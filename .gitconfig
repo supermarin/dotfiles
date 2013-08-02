@@ -14,7 +14,7 @@
   p = push
   pu = push -u
   ri = rebase -i
-  s = status
+  s = status -sb
   ss = stash save
   sp = stash pop
   us = submodule update --recursive

@@ -1,18 +1,22 @@
 set fish_greeting ""
 
-set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin
+set -x PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin
 
 ### pip
-set PATH $HOME/Library/Python/2.7/bin $PATH
+set -x PATH /Library/Python/2.7/bin $PATH
 
 ### Homebrew
-set PATH $HOME/usr/local/bin $PATH
+set -x PATH /usr/local/bin $PATH
 
 ### rbenv
-set PATH $HOME/.rbenv/bin $PATH
-set PATH $HOME/.rbenv/shims $PATH
+set -x PATH $HOME/.rbenv/bin $PATH
+set -x PATH $HOME/.rbenv/shims $PATH
 rbenv rehash >/dev/null ^&1
 
+### Go
+set -x GOPATH ~/code/go
+set -x PATH $GOPATH/bin $PATH
+#set -x GOBIN ~/bin
 
 ### bundler
 function be
@@ -29,11 +33,11 @@ end
 
 ### aliases
 function la
-  ls -lah
+  ls -lah $argv
 end
 
 function findproccess
-  ps ax |grep -i
+  ps ax |grep -i $argv
 end
 
 function stupidXcode
@@ -41,28 +45,32 @@ function stupidXcode
 end
 
 function ccat
-  pygmentize -g
+  pygmentize -g $argv
 end
 
 function sshvps
   ssh -i ~/.ssh/jack.pem ubuntu@mneorr.com
 end
 
+function moshvps
+  mosh ubuntu@mneorr.com --ssh="ssh -i ~/.ssh/jack.pem"
+end
+
 ### Git
 function gl
-  git l
+  git l $argv
 end
 
 function gp
-  git push
+  git push $argv
 end
 
 function gl
-  git pull --rebase
+  git pull --rebase $argv
 end
 
 function gs
-  git status -sb
+  git status -sb $argv
 end
 
 ### Gem development
