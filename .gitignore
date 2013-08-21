@@ -5,4 +5,5 @@
 .swp
 .vim/bundle/
 fish_history
+fishd.*
 

@@ -17,28 +17,34 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'kien/ctrlp.vim'
-Bundle 'tomasr/molokai'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Raimondi/delimitMate'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle 'chriskempson/base16-vim'
+Bundle 'w0ng/vim-hybrid'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'b4winckler/vim-objc'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
-Bundle 'Yggdroot/indentLine'
-" SNIPMATE
+" SNIPMATE only
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
+Bundle 'honza/vim-snippets'
 "
-"Bundle 'chriskempson/base16-vim'
+"Bundle 'tomasr/molokai'
+"Bundle 'Yggdroot/indentLine'
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 "Bundle 'vim-ruby/vim-ruby'
 "Bundle 'plasticboy/vim-markdown'
 
 " indentations
 set smartindent
 set autoindent
+set ts=2 sts=2 sw=2
+set expandtab
+set smarttab
+" lang specific indentations
+autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 
 " syntax
 syntax on
@@ -47,23 +53,19 @@ filetype plugin on
 filetype indent on
 
 " Set the background light from 7am to 7pm
-let hour = strftime("%H")
-if 7 <= hour && hour < 19
-  colorscheme Tomorrow
-else
-  "colorscheme molokai
-  colorscheme Tomorrow-Night
-endif
+"let hour = strftime("%H")
+"if 7 <= hour && hour < 19
+  "colorscheme Tomorrow
+"else
+  "colorscheme Tomorrow-Night
+  "colorscheme base16-tomorrow
+  colorscheme hybrid
+"endif
 
 " Speed up pressing O after Esc. Changes the timeout of terminal escaping
 set timeout timeoutlen=5000 ttimeoutlen=20
 " Line numbers
 set number
-" Indentations
-setlocal tabstop=2
-setlocal shiftwidth=2
-set expandtab
-set smarttab
 " Whitespace
 set listchars=trail:·,tab:▸\ ,eol:¬
 set list
@@ -115,18 +117,18 @@ endif
 " CocoaPods and Podfiles
 au BufRead,BufNewFile *.podspec,Podfile set ft=ruby
 " JSON
-au BufNewFile,BufRead *.json set ai filetype=javascript
-
+au BufRead,BufNewFile *.json set ai filetype=javascript
+" Markdown
+au BufRead,BufNewFile *.md set ft=markdown
 " Mappings
-map <leader>r :w<CR>:!ruby %<CR>
-map <leader>s :w<CR>:
-
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-"
-" Remap leader key
 let mapleader = ','
 
+map <leader>r :w<CR>:!ruby %<CR>
+map <leader>w :q<CR>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+command WW :execute ':silent w !sudo tee % > /dev/null' | :edit!
+"
 " When using p, adjust indent to the current line
 nmap p ]p
 " Ctrl + S for save
@@ -140,4 +142,19 @@ command -nargs=0 -bar Update if &modified
                            \|    endif
                            \|endif
 inoremap <c-s> <c-o>:Update<CR>
+" Rubymotion
+map <leader>m :w<CR>:!rake<CR>
+inoremap <leader>m <c-o>:Update<CR> <c-o>:!rake<CR>
+map <leader>t :w<CR>:!rake spec<CR>
+inoremap <leader>t <c-o>:w<CR> <c-o>:!rake spec<CR>
 
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
+" CtrlP - Open files in a new tab
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': [],
+  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
+  \ }

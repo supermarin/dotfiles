@@ -2,6 +2,9 @@ set fish_greeting ""
 
 set -x PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin
 
+### Private stuff
+. ~/.private.fish
+
 ### pip
 set -x PATH /Library/Python/2.7/bin $PATH
 
