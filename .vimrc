@@ -1,3 +1,4 @@
+" General Vim Behavior
 set shell=/bin/bash
 set t_Co=256
 set encoding=utf-8
@@ -7,44 +8,27 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Vundle stuff
+" Plugins
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-" let Vundle manage Vundle
-" required! 
 Bundle 'gmarik/vundle'
-" Vundles
-Bundle 'scrooloose/syntastic'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'Raimondi/delimitMate'
+" Color schemes
 Bundle 'chriskempson/base16-vim'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'b4winckler/vim-objc'
-Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-airline'
-" SNIPMATE only
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle 'honza/vim-snippets'
-"
-"Bundle 'tomasr/molokai'
-"Bundle 'Yggdroot/indentLine'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-"Bundle 'vim-ruby/vim-ruby'
-"Bundle 'plasticboy/vim-markdown'
-
-" indentations
-set smartindent
-set autoindent
-set ts=2 sts=2 sw=2
-set expandtab
-set smarttab
-" lang specific indentations
-autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+Bundle 'w0ng/vim-hybrid'
+" Editor features
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/syntastic'
+Bundle "rking/ag.vim"
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fugitive'
+"Bundle 'Valloric/YouCompleteMe'
+" Text editing enhancements
+Bundle 'SirVer/ultisnips'
+Bundle 'scrooloose/nerdcommenter'
+Bundle "tpope/vim-surround"
+Bundle 'Raimondi/delimitMate'
+Bundle 'editorconfig/editorconfig-vim'
 
 " syntax
 syntax on
@@ -52,39 +36,49 @@ filetype on
 filetype plugin on
 filetype indent on
 
+" indentations
+set smartindent
+set autoindent
+set ts=4 sts=4 sw=4
+set expandtab
+set smarttab
+
+" lang specific indentations
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+
 " Set the background light from 7am to 7pm
-"let hour = strftime("%H")
-"if 7 <= hour && hour < 19
-  "colorscheme Tomorrow
-"else
-  "colorscheme Tomorrow-Night
-  "colorscheme base16-tomorrow
-  colorscheme hybrid
-"endif
+let hour = strftime("%H")
+if 7 <= hour && hour < 19
+    colorscheme Tomorrow
+else
+    colorscheme hybrid
+endif
 
 " Speed up pressing O after Esc. Changes the timeout of terminal escaping
-set timeout timeoutlen=5000 ttimeoutlen=20
+set timeout timeoutlen=5000 ttimeoutlen=10
+
 " Line numbers
 set number
+
 " Whitespace
 set listchars=trail:·,tab:▸\ ,eol:¬
 set list
+
+
+" Auto centering"
+nmap N Nzz
+nmap n nzz
+nmap G Gzz
+nmap } }zz
+nmap { {zz
+
 " Mouse scrolling
 set mouse=a
-"set mouse=r
+
 " Airline
 set laststatus=2
 let g:airline_theme='powerlineish'
 let g:airline_enable_fugitive=1
-  " powerline symbols
-  "let g:airline_left_sep = ''
-  "let g:airline_left_alt_sep = ''
-  "let g:airline_right_sep = ''
-  "let g:airline_right_alt_sep = ''
-  "let g:airline_fugitive_prefix = ' '
-  "let g:airline_readonly_symbol = ''
-  "let g:airline_linecolumn_prefix = ' '
-"
 
 " Real time search and highlight
 set incsearch
@@ -108,8 +102,8 @@ endif
 
 " GUI STUFF
 if has('gui_running')
-  "set guifont=Monaco\ for\ Powerline:h15    " set fonts for gui vim
-  set guifont=Menlo:h15    " set fonts for gui vim
+  set guifont=Monaco:h15    " set fonts for gui vim
+  "set guifont=Menlo:h15    " set fonts for gui vim
   "set transparency=5        " set transparent window
   set guioptions=egmrt  " hide the gui menubar
 endif
@@ -141,7 +135,7 @@ command -nargs=0 -bar Update if &modified
                            \|        confirm write
                            \|    endif
                            \|endif
-inoremap <c-s> <c-o>:Update<CR>
+inoremap <leader>s <c-o>:Update<CR>
 " Rubymotion
 map <leader>m :w<CR>:!rake<CR>
 inoremap <leader>m <c-o>:Update<CR> <c-o>:!rake<CR>
@@ -158,3 +152,7 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
   \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
   \ }
+
+" YouCompleteMe enter completion
+let g:ycm_key_list_select_completion = ['<ENTER>']
+
