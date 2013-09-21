@@ -22,13 +22,17 @@ Bundle 'scrooloose/syntastic'
 Bundle "rking/ag.vim"
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Tagbar'
+Bundle 'Valloric/YouCompleteMe'
 " Text editing enhancements
 Bundle 'SirVer/ultisnips'
 Bundle 'scrooloose/nerdcommenter'
 Bundle "tpope/vim-surround"
 Bundle 'Raimondi/delimitMate'
 Bundle 'editorconfig/editorconfig-vim'
+" Dash
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 " syntax
 syntax on
@@ -114,21 +118,24 @@ au BufRead,BufNewFile *.podspec,Podfile set ft=ruby
 au BufRead,BufNewFile *.json set ai filetype=javascript
 " Markdown
 au BufRead,BufNewFile *.md set ft=markdown
+
+
+
 " Mappings
 let mapleader = ','
 
 map <leader>r :w<CR>:!ruby %<CR>
 map <leader>w :q<CR>
-
+map <leader>2 :TagbarToggle<CR>
 " Allow saving of files as sudo when I forgot to start vim using sudo.
-command WW :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command! WW :execute ':silent w !sudo tee % > /dev/null' | :edit!
 "
 " When using p, adjust indent to the current line
 nmap p ]p
 " Ctrl + S for save
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
-command -nargs=0 -bar Update if &modified 
+command! -nargs=0 -bar Update if &modified 
                            \|    if empty(bufname('%'))
                            \|        browse confirm write
                            \|    else
@@ -136,11 +143,14 @@ command -nargs=0 -bar Update if &modified
                            \|    endif
                            \|endif
 inoremap <leader>s <c-o>:Update<CR>
-" Rubymotion
+nmap <leader>s <c-o>:Update<CR>
+" Rake / Rake spec
 map <leader>m :w<CR>:!rake<CR>
-inoremap <leader>m <c-o>:Update<CR> <c-o>:!rake<CR>
 map <leader>t :w<CR>:!rake spec<CR>
+inoremap <leader>m <c-o>:Update<CR> <c-o>:!rake<CR>
 inoremap <leader>t <c-o>:w<CR> <c-o>:!rake spec<CR>
+
+:nmap <silent> <leader>d <Plug>DashSearch
 
 " Source the vimrc file after saving it
 if has("autocmd")
@@ -150,9 +160,11 @@ endif
 " CtrlP - Open files in a new tab
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
-  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
+  \ 'AcceptSelection("t")': ['<c-t>', '<cr>', '<c-m>'],
   \ }
 
 " YouCompleteMe enter completion
+let g:ycm_key_list_previous_completion=['<Up>']
+let g:ycm_key_list_next_completion=['<Down>']
 let g:ycm_key_list_select_completion = ['<ENTER>']
 

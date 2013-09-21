@@ -2,6 +2,6 @@
 # wo = workon
 function wo
     set -l code_dir ~/code
-    cd (find $code_dir -type d -maxdepth 4 | grep -i $argv | grep -Ev \^Pods --max-count=1)
+    cd (find $code_dir -type d -maxdepth 3 | grep -i $argv | grep -v /Pods --max-count=1)
 end
 

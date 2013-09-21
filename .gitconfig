@@ -36,6 +36,19 @@
   default = simple
 [mergetool]
   keepBackup = false
+	prompt = false
 [git-pair]
   authors = Marin Usalj <mneorr@gmail.com>
   authors = Delisa Mason <iskanamagus@gmail.com>
+	authors = Fabio Pelosin <fabiopelosin@gmail.com>
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = Kaleidoscope
+[difftool]
+	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[merge]
+	tool = Kaleidoscope

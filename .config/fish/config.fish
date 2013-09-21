@@ -56,7 +56,7 @@ function sshvps
 end
 
 function moshvps
-  mosh ubuntu@mneorr.com --ssh="ssh -i ~/.ssh/jack.pem"
+  mosh mneorr@mneorr.com --ssh="ssh -i ~/.ssh/id_rsa.pub"
 end
 
 ### Git
@@ -74,6 +74,10 @@ end
 
 function gs
   git status -sb $argv
+end
+
+function gd
+  git diff $argv
 end
 
 ### Gem development
