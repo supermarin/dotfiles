@@ -1,95 +1,68 @@
-" General Vim Behavior
+" Environment
 set shell=/bin/bash
 set t_Co=256
 set encoding=utf-8
-set nocompatible
+" Speed up pressing O after Esc. Changes the timeout of terminal escaping
+set timeout timeoutlen=1000 ttimeoutlen=100
 
-set nobackup
-set nowritebackup
-set noswapfile
-
-" Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGINS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 " Color schemes
-Bundle 'chriskempson/base16-vim'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'w0ng/vim-hybrid'
-" Editor features
+" Essentials
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
-Bundle "rking/ag.vim"
+Bundle 'rking/ag.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
+" almost never use this one.. potential to go away
 Bundle 'Tagbar'
+" autocompletion
 Bundle 'Valloric/YouCompleteMe'
 " Text editing enhancements
 Bundle 'SirVer/ultisnips'
 Bundle 'scrooloose/nerdcommenter'
-Bundle "tpope/vim-surround"
+Bundle 'tpope/vim-surround'
 Bundle 'Raimondi/delimitMate'
 Bundle 'editorconfig/editorconfig-vim'
-" Dash
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
 
-" syntax
-syntax on
-filetype on
-filetype plugin on
-filetype indent on
-
-" indentations
-set smartindent
-set autoindent
-set ts=4 sts=4 sw=4
-set expandtab
-set smarttab
-
-" lang specific indentations
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-
-" Set the background light from 7am to 7pm
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM APPEARANCE / BEHAVIOR CONFIGURATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Light / Dark color scheme from 7am to 7pm
 let hour = strftime("%H")
 if 7 <= hour && hour < 19
     colorscheme Tomorrow
 else
     colorscheme hybrid
 endif
-
-" Speed up pressing O after Esc. Changes the timeout of terminal escaping
-set timeout timeoutlen=5000 ttimeoutlen=10
-
+"
+set nocompatible
+set nobackup
+set nowritebackup
+set noswapfile
+" Highlight current line
+set cursorline
+" syntax
+syntax on
+filetype plugin indent on
+" use emacs-style tab completion when selecting files, etc
+set wildmode=longest,list
+" make tab completion for files/buffers act like bash
+set wildmenu
 " Line numbers
 set number
-
-" Whitespace
-set listchars=trail:·,tab:▸\ ,eol:¬
-set list
-
-
-" Auto centering"
-nmap N Nzz
-nmap n nzz
-nmap G Gzz
-nmap } }zz
-nmap { {zz
-
 " Mouse scrolling
 set mouse=a
-
 " Airline
 set laststatus=2
 let g:airline_theme='powerlineish'
 let g:airline_enable_fugitive=1
-
-" Real time search and highlight
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
-
 " Cursor / carret switching
 if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -98,31 +71,88 @@ else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+" GUI Vim
+if has('gui_running')
+  set guifont=Monaco:h15
+  "set guifont=Menlo:h15
+  "set guifont=Inconsolata:h1
+  set transparency=5
+  set guioptions=egmrt " hide the gui menubar
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" BASIC TEXT EDITING CONFIGURATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" indentations
+set smartindent
+set autoindent
+set ts=4 sts=4 sw=4
+set expandtab
+set smarttab
+" lang specific indentations
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 " Ruby
+au BufRead,BufNewFile *.podspec,Podfile set ft=ruby " CocoaPods and Podfiles
+au BufRead,BufNewFile *.json set ai filetype=javascript " JSON
+au BufRead,BufNewFile *.md set ft=markdown " Markdown
+
+" Whitespace
+set listchars=trail:·,tab:▸\ ,eol:¬
+set list
+" Mouse scrolling
+set mouse=a
+" Airline
+set laststatus=2
+let g:airline_theme='powerlineish'
+let g:airline_enable_fugitive=1
+" Real time search and highlight
+set incsearch
+set hlsearch
+set ignorecase smartcase
+" Highlight current line
+set cursorline
+" use emacs-style tab completion when selecting files, etc
+set wildmode=longest,list
+" make tab completion for files/buffers act like bash
+set wildmenu
+
+" Speed up pressing O after Esc. Changes the timeout of terminal escaping
+set timeout timeoutlen=1000 ttimeoutlen=100
+
+" Line numbers
+set number
 
 " Hooking with system clipboard
 if has("clipboard") " If the feature is available
   set clipboard=unnamed " copy to the system clipboard
 endif
 
-" GUI STUFF
-if has('gui_running')
-  set guifont=Monaco:h15    " set fonts for gui vim
-  "set guifont=Menlo:h15    " set fonts for gui vim
-  "set transparency=5        " set transparent window
-  set guioptions=egmrt  " hide the gui menubar
-endif
-
-" CocoaPods and Podfiles
-au BufRead,BufNewFile *.podspec,Podfile set ft=ruby
-" JSON
-au BufRead,BufNewFile *.json set ai filetype=javascript
-" Markdown
-au BufRead,BufNewFile *.md set ft=markdown
-
-
-
-" Mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MISC KEY MAPS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ','
+map <leader>y "*y
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+" Insert a hash rocket with <c-l>
+imap <c-l> <space>=><space>
+" Can't be bothered to understand ESC vs <c-c> in insert mode
+imap <c-c> <esc>
+
+" Auto centering (Gary would say SKETCHY)
+nmap N Nzz
+nmap n nzz
+nmap G Gzz
+nmap } }zz
+nmap { {zz
+
+" Clear the search buffer when hitting return
+function! MapCR()
+  nnoremap <cr> :nohlsearch<cr>
+endfunction
+call MapCR()
 
 map <leader>r :w<CR>:!ruby %<CR>
 map <leader>w :q<CR>
@@ -162,9 +192,4 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
   \ 'AcceptSelection("t")': ['<c-t>', '<cr>', '<c-m>'],
   \ }
-
-" YouCompleteMe enter completion
-let g:ycm_key_list_previous_completion=['<Up>']
-let g:ycm_key_list_next_completion=['<Down>']
-let g:ycm_key_list_select_completion = ['<ENTER>']
 
