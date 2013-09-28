@@ -19,18 +19,19 @@ Bundle 'gmarik/vundle'
 " Color schemes
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'w0ng/vim-hybrid'
-" Essentials
+" Code Navigation
 Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/syntastic'
 Bundle 'rking/ag.vim'
+" autocompletion / snippets
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
+Bundle 'ultisnips-rspec'
+" Vim enhancements
+Bundle 'Tagbar'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
-" almost never use this one.. potential to go away
-Bundle 'Tagbar'
-" autocompletion
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/syntastic'
 " Text editing enhancements
-Bundle 'SirVer/ultisnips'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
 Bundle 'Raimondi/delimitMate'
@@ -105,7 +106,7 @@ au BufRead,BufNewFile *.podspec,Podfile set ft=ruby " CocoaPods and Podfiles
 au BufRead,BufNewFile *.json set ai filetype=javascript " JSON
 au BufRead,BufNewFile *.md set ft=markdown " Markdown
 " Whitespace
-set listchars=trail:·,tab:▸\ ,eol:¬
+set listchars=trail:·
 set list
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
@@ -128,10 +129,10 @@ nmap G Gzz
 nmap } }zz
 nmap { {zz
 " Clear the search buffer when hitting return
-function! MapCR()
-  nnoremap <cr> :nohlsearch<cr>
+function! RemoveHighlights()
+  nnoremap <leader>h :nohlsearch<cr>
 endfunction
-call MapCR()
+call RemoveHighlights()
 " Tagbar toggle (open methods and props list in a sidebar)
 map <leader>2 :TagbarToggle<CR>
 "
@@ -164,4 +165,41 @@ let g:ctrlp_prompt_mappings = {
 if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EXPERIMENTAL
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Ultisnips hack
+function! g:UltiSnips_Complete()
+call UltiSnips_ExpandSnippet()
+if g:ulti_expand_res == 0
+    if pumvisible()
+        return "\<C-n>"
+    else
+        call UltiSnips_JumpForwards()
+        if g:ulti_jump_forwards_res == 0
+           return "\<TAB>"
+        endif
+    endif
+endif
+return ""
+endfunction
+
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PROMOTE VARIABLE TO RSPEC LET
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! PromoteToLet()
+  :normal! dd
+  " :exec '?^\s*it\>'
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  :normal ==
+endfunction
+:command! PromoteToLet :call PromoteToLet()
+:map <leader>p :PromoteToLet<cr>
 
