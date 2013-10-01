@@ -25,7 +25,6 @@ Bundle 'rking/ag.vim'
 " autocompletion / snippets
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
-Bundle 'ultisnips-rspec'
 " Vim enhancements
 Bundle 'Tagbar'
 Bundle 'bling/vim-airline'
@@ -36,17 +35,19 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
 Bundle 'Raimondi/delimitMate'
 Bundle 'editorconfig/editorconfig-vim'
+" Lang specific bundles
+Bundle 'vim-ruby/vim-ruby'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Light / Dark color scheme from 7am to 7pm
-let hour = strftime("%H")
-if 7 <= hour && hour < 19
-    colorscheme Tomorrow
-else
+"let hour = strftime("%H")
+"if 7 <= hour && hour < 19
+    "colorscheme Tomorrow
+"else
     colorscheme hybrid
-endif
+"endif
 " GVim
 if has('gui_running')
   set guifont=Monaco:h15
@@ -73,6 +74,8 @@ set wildmenu
 set number
 " Mouse scrolling
 set mouse=a
+" keep more context when scrolling off the end of a buffer
+set scrolloff=10
 " Airline
 set laststatus=2
 let g:airline_theme='powerlineish'
@@ -101,10 +104,11 @@ set ts=4 sts=4 sw=4
 set expandtab
 set smarttab
 " lang specific indentations
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 " Ruby
 au BufRead,BufNewFile *.podspec,Podfile set ft=ruby " CocoaPods and Podfiles
 au BufRead,BufNewFile *.json set ai filetype=javascript " JSON
 au BufRead,BufNewFile *.md set ft=markdown " Markdown
+autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+autocmd FileType python set sw=4 sts=4 et
 " Whitespace
 set listchars=trail:·
 set list
@@ -122,12 +126,6 @@ nnoremap <c-l> <c-w>l
 imap <c-l> <space>=><space>
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
-" Auto centering (Gary would say SKETCHY)
-nmap N Nzz
-nmap n nzz
-nmap G Gzz
-nmap } }zz
-nmap { {zz
 " Clear the search buffer when hitting return
 function! RemoveHighlights()
   nnoremap <leader>h :nohlsearch<cr>
