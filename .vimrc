@@ -107,10 +107,11 @@ set smarttab
 au BufRead,BufNewFile *.podspec,Podfile set ft=ruby " CocoaPods and Podfiles
 au BufRead,BufNewFile *.json set ai filetype=javascript " JSON
 au BufRead,BufNewFile *.md set ft=markdown " Markdown
+autocmd FileType make setlocal noexpandtab
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 autocmd FileType python set sw=4 sts=4 et
 " Whitespace
-set listchars=trail:·
+set listchars=trail:·,tab:\ \ 
 set list
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
