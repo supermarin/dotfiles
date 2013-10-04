@@ -113,33 +113,47 @@ autocmd FileType python set sw=4 sts=4 et
 " Whitespace
 set listchars=trail:·,tab:\ \ 
 set list
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ','
 map <leader>y "*y
+
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
+
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
+
 " Clear the search buffer when hitting return
 function! RemoveHighlights()
   nnoremap <leader>h :nohlsearch<cr>
 endfunction
 call RemoveHighlights()
+
+" Select all
+function! SelectAll()
+  nnoremap <leader>a gg\|VG
+endfunction
+call SelectAll()
+
 " Tagbar toggle (open methods and props list in a sidebar)
 map <leader>2 :TagbarToggle<CR>
-"
+
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 command! WW \|:execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " When using p, adjust indent to the current line
 nmap p ]p
+
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
 command! -nargs=0 -bar Update if &modified 
@@ -157,8 +171,6 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
   \ 'AcceptSelection("t")': ['<c-t>', '<cr>', '<c-m>'],
   \ }
-
-
 
 " Source the vimrc file after saving it
 if has("autocmd")
