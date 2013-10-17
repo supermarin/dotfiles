@@ -1,8 +1,10 @@
 {
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
+	"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Monaco",
-	"font_size": 12.0,
+	"font_size": 14.0,
+	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
@@ -13,9 +15,8 @@
 		80
 	],
 	"scroll_speed": 0,
-	"show_panel_on_build": true,
+	"spell_check": false,
 	"tab_size": 2,
 	"theme": "Nil.sublime-theme",
-	"translate_tabs_to_spaces": true,
-	"spell_check": false
+	"translate_tabs_to_spaces": true
 }
