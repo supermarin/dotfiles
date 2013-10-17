@@ -3,6 +3,7 @@
     acm = !git add . && git commit -am
     b = branch
     bd = branch -d
+    ba = branch -a
     co = checkout
     conflicts = !git ls-files -u | cut -f 2 | sort -u
     cm = commit -m
