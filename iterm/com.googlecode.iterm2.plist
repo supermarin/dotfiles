@@ -2983,7 +2983,7 @@
 	<key>NSFontPanelPreviewHeight</key>
 	<real>0.0</real>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/code/dotfiles/iterm</string>
+	<string>~/Documents</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -3023,13 +3023,13 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>923 108 445 270 0 0 1440 878 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>917 684 605 485 0 0 1920 1178 </string>
+	<string>312 404 924 485 0 0 1920 1178 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
-	<string>526 561 384 129 0 0 1440 878 </string>
+	<string>766 786 384 129 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>231 306 1270 866 0 0 1920 1178 </string>
+	<string>0 0 1270 866 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 1 914 876 0 0 1440 878 </string>
+	<string>0 1 1270 866 0 0 1440 878 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -5425,7 +5425,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Disable Printing</key>
@@ -5850,6 +5850,8 @@
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>0</integer>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PassOnControlClick</key>
 	<false/>
 	<key>PasteFromClipboard</key>
@@ -5904,7 +5906,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-09-11T12:52:57Z</date>
+	<date>2013-10-02T14:48:33Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
