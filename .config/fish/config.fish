@@ -84,6 +84,10 @@ function gd
   git diff $argv
 end
 
+function ga
+  git add $argv
+end
+
 ### Gem development
 function pod-dev
   set COCOA_PODS_ENV development
