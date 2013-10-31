@@ -13,7 +13,7 @@ set -x PATH /Library/Python/2.7/bin $PATH
 set -x PATH /usr/local/bin $PATH
 
 ### Npm
-set -x PATH /usr/local/share/npm/bin/ $PATH
+set -x PATH /usr/local/share/npm/bin $PATH
 
 ### rbenv
 set -x PATH $HOME/.rbenv/bin $PATH
