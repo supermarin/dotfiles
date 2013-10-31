@@ -2,12 +2,16 @@ function fish_prompt
 
   if not set -q -g __fish_robbyrussell_functions_defined
     set -g __fish_robbyrussell_functions_defined
-    
-    function _git_branch_name
+
+    function git_branch_name
       echo (git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
     end
-    
-    function _is_git_dirty
+
+    function git_current_commit
+      echo (git log --pretty=format:'%h' -n 1 ^/dev/null)
+    end
+
+    function is_git_dirty
       echo (git status -s --ignore-submodules=dirty ^/dev/null)
     end
   end
@@ -15,16 +19,21 @@ function fish_prompt
   set -l red (set_color -o red)
   set -l normal (set_color normal)
   set -l cyan (set_color cyan)
+  set -l purple (set_color purple)
 
-  if [ (_git_branch_name) ]
+  if [ (git_branch_name) ]
     set -l git_status_color $cyan
-    
-    if [ (_is_git_dirty) ]
+
+    if [ (is_git_dirty) ]
       set git_status_color $red
     end
 
-    set git_info $git_status_color(_git_branch_name)
+    set git_info $git_status_color(git_branch_name)
+
+  else if [ (git_current_commit) ]
+    set git_info $purple(git_current_commit)
   end
 
   echo $git_info "$normal\$ "
 end
+
