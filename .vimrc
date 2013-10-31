@@ -20,7 +20,7 @@ Bundle 'gmarik/vundle'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'w0ng/vim-hybrid'
 " Code Navigation
-Bundle 'kien/ctrlp.vim'
+"Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
 " autocompletion / snippets
 Bundle 'Valloric/YouCompleteMe'
@@ -37,6 +37,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'editorconfig/editorconfig-vim'
 " Lang specific bundles
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'dag/vim-fish'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
@@ -167,10 +168,10 @@ nmap <leader>s <c-o>:Update<CR>
 " Search a given pattern in Dash.app
 :nmap <silent> <leader>d <Plug>DashSearch
 " CtrlP - Open files in a new tab
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': [],
-  \ 'AcceptSelection("t")': ['<c-t>', '<cr>', '<c-m>'],
-  \ }
+"let g:ctrlp_prompt_mappings = {
+  "\ 'AcceptSelection("e")': [],
+  "\ 'AcceptSelection("t")': ['<c-t>', '<cr>', '<c-m>'],
+  "\ }
 
 " Source the vimrc file after saving it
 if has("autocmd")
@@ -213,4 +214,57 @@ function! PromoteToLet()
 endfunction
 :command! PromoteToLet :call PromoteToLet()
 :map <leader>p :PromoteToLet<cr>
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SELECTA
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, selecta_args, vim_command)
+  try
+    silent let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+    redraw!
+    return
+  endtry
+  redraw!
+  exec a:vim_command . " " . selection
+endfunction
+
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SWITCH BETWEEN TEST AND PRODUCTION CODE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"function! OpenTestAlternate()
+  "let new_file = AlternateForCurrentFile()
+  "exec ':e ' . new_file
+"endfunction
+"function! AlternateForCurrentFile()
+  "let current_file = expand("%")
+  "let new_file = current_file
+  "let in_spec = match(current_file, '^spec/') != -1
+  "let going_to_spec = !in_spec
+  "let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1
+  "if going_to_spec
+    "if in_app
+      "let new_file = substitute(new_file, '^app/', '', '')
+    "end
+    "let new_file = substitute(new_file, '\.e\?rb$', '_spec.rb', '')
+    "let new_file = 'spec/' . new_file
+  "else
+    "let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
+    "let new_file = substitute(new_file, '^spec/', '', '')
+    "if in_app
+      "let new_file = 'app/' . new_file
+    "end
+  "endif
+  "return new_file
+"endfunction
+"nnoremap <leader>. :call OpenTestAlternate()<cr>
 

@@ -2,7 +2,7 @@
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
 	"ensure_newline_at_eof_on_save": true,
-	"font_face": "Monaco",
+	"font_face": "Menlo",
 	"font_size": 14.0,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
