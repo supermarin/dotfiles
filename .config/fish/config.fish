@@ -27,6 +27,10 @@ set -x PATH $GOPATH/bin $PATH
 ### JAVA
 set -x JAVA_HOME (/usr/libexec/java_home)
 
+### Node
+set -x PATH /usr/local/node/bin $PATH
+set -x NODE_PATH /usr/local/node/lib/node_modules
+
 ### bundler
 function be
   bundle exec $argv
