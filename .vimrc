@@ -38,6 +38,7 @@ Bundle 'editorconfig/editorconfig-vim'
 " Lang specific bundles
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'dag/vim-fish'
+Bundle 'tpope/vim-cucumber'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION

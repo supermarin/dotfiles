@@ -56,7 +56,7 @@ function ccat
 end
 
 function sshvps
-  ssh -i ~/.ssh/jack.pem ubuntu@mneorr.com
+  ssh -i ~/.ssh/id_rsa.pub mneorr@mneorr.com
 end
 
 function moshvps

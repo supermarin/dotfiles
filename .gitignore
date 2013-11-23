@@ -1,6 +1,4 @@
 .DS_Store
-.weechat/logs
-.weechat/weechat.log
 .ssh_aliases
 .swp
 .vim/bundle/
