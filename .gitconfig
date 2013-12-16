@@ -1,19 +1,14 @@
 [alias]
-    a = add .
-    acm = !git add . && git commit -am
+    a = add --all
     b = branch
     bd = branch -d
     ba = branch -a
+    c = commit
     co = checkout
     conflicts = !git ls-files -u | cut -f 2 | sort -u
-    cm = commit -m
-    ca = commit -a
-    ci = commit -am
     cam = commit --amend
     l = log --graph --pretty='%C(yellow)%h (%cr) %Cblue %an%C(magenta)%d%Creset %s'
     mf = merge --no-ff
-    p = push
-    pu = push -u
     rh = reset --hard
     ri = rebase -i
     s = status -sb
