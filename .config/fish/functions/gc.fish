@@ -1,4 +1,4 @@
 function gc
-  git add .
+  git add --all .
   git commit -am "$argv"
 end
