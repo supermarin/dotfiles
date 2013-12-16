@@ -17,23 +17,35 @@
     us = submodule update --recursive
     yolo = push -f origin master
     yoloed = !git fetch origin && git reset --hard origin/master
+
 [user]
 	name = Marin Usalj
 	email = mneorr@gmail.com
+
 [github]
     user = mneorr
+
 [core]
     excludesfile = /Users/mneorr/.gitignore_global
     quotepath = false
+
 [color]
     branch = auto
     diff = auto
     status = auto
+
+[pager]
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
+
 [push]
     default = simple
+
 [mergetool]
     keepBackup = false
     prompt = false
+
 [git-pair]
     authors = Marin Usalj <mneorr@gmail.com>
     authors = Delisa Mason <iskanamagus@gmail.com>

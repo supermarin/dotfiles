@@ -1,7 +1,7 @@
 set fish_greeting ""
 
 ### PATH (default)
-set -x PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin
+set -x PATH ~/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin
 
 ### Private stuff
 . ~/.private.fish
