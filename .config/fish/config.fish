@@ -25,6 +25,9 @@ set -x GOPATH ~/code/go
 set -x PATH $GOPATH/bin $PATH
 #set -x GOBIN ~/bin
 
+### JAVA
+set -x JAVA_HOME (/usr/libexec/java_home)
+
 ### bundler
 function be
   bundle exec $argv
@@ -69,7 +72,7 @@ function gl
 end
 
 function gp
-  git push $argv
+  git push --recurse-submodules=on-demand $argv
 end
 
 function gl
