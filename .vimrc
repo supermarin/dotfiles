@@ -2,6 +2,8 @@
 set shell=/bin/bash
 set t_Co=256
 set encoding=utf-8
+filetype off " required to be set before loading bundles
+set nocompatible
 " Speed up pressing O after Esc. Changes the timeout of terminal escaping
 set timeout timeoutlen=1000 ttimeoutlen=100
 " Hooking with system clipboard
@@ -16,25 +18,33 @@ endif
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
+
 " Color schemes
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'w0ng/vim-hybrid'
+
 " Code Navigation
-"Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
+Bundle 'tpope/vim-vinegar'
+
 " autocompletion / snippets
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
+
 " Vim enhancements
 Bundle 'Tagbar'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-dispatch'
 Bundle 'scrooloose/syntastic'
+
 " Text editing enhancements
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
 Bundle 'Raimondi/delimitMate'
+Bundle 'vim-scripts/camelcasemotion'
 Bundle 'editorconfig/editorconfig-vim'
+
 " Lang specific bundles
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'dag/vim-fish'
@@ -59,7 +69,6 @@ if has('gui_running')
   set guioptions=egmrt " hide the gui menubar
 endif
 "
-set nocompatible
 set nobackup
 set nowritebackup
 set noswapfile
@@ -80,8 +89,15 @@ set mouse=a
 set scrolloff=10
 " Airline
 set laststatus=2
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 let g:airline_theme='powerlineish'
 let g:airline_enable_fugitive=1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols.branch = '⎇'
+
 " Cursor / carret switching
 if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -115,6 +131,8 @@ autocmd FileType python set sw=4 sts=4 et
 " Whitespace
 set listchars=trail:·,tab:\ \ 
 set list
+" Ruler
+set cc=80
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -122,6 +140,9 @@ set list
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ','
 map <leader>y "*y
+
+" Toggle comments
+nnoremap <leader>/ :call NERDComment(0,"toggle")<C-m>
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
@@ -151,10 +172,11 @@ call SelectAll()
 map <leader>2 :TagbarToggle<CR>
 
 " List todos in a project
-map <leader>,t :Ag TODO<CR>
+map ,,t :Ag TODO<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
-command! WW \|:execute ':silent w !sudo tee % > /dev/null' | :edit!
+"command! WW \|:execute ':silent w !sudo tee % > /dev/null' | :edit!
+ca w!! w !sudo tee > /dev/null "%"
 
 " When using p, adjust indent to the current line
 nmap p ]p
@@ -171,16 +193,21 @@ command! -nargs=0 -bar Update if &modified
 nmap <leader>s <c-o>:Update<CR>
 " Search a given pattern in Dash.app
 :nmap <silent> <leader>d <Plug>DashSearch
-" CtrlP - Open files in a new tab
-"let g:ctrlp_prompt_mappings = {
-  "\ 'AcceptSelection("e")': [],
-  "\ 'AcceptSelection("t")': ['<c-t>', '<cr>', '<c-m>'],
-  "\ }
 
 " Source the vimrc file after saving it
 if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FILE EXPLORER
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map ,1 :Explore<CR>
+
+let g:netrw_liststyle=3 " Use tree-mode as default view
+"let g:netrw_browse_split=4 " Open file in previous buffer
+"let g:netrw_preview=1 " preview window shown in a vertical split
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXPERIMENTAL
@@ -241,6 +268,13 @@ endfunction
 " Fuzzy select one of those. Open the selected file with :e.
 nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RUNNING TESTS (EXPERIMENTAL - need to steal some fancyness)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map ,t :w\|:!rspec spec<cr>
+map ,c :w\|:!cucumber<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
