@@ -49,6 +49,7 @@ Bundle 'editorconfig/editorconfig-vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'dag/vim-fish'
 Bundle 'tpope/vim-cucumber'
+Bundle 'instant-markdown.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
@@ -65,7 +66,6 @@ if has('gui_running')
   set guifont=Monaco:h15
   "set guifont=Menlo:h15
   "set guifont=Inconsolata:h1
-  set transparency=5
   set guioptions=egmrt " hide the gui menubar
 endif
 "
@@ -142,7 +142,7 @@ let mapleader = ','
 map <leader>y "*y
 
 " Toggle comments
-nnoremap <leader>/ :call NERDComment(0,"toggle")<C-m>
+map <silent> <leader>/ :call NERDComment(0,"toggle")<C-m>
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
@@ -199,15 +199,44 @@ if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" INSTANT MARKDOWN
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:instant_markdown_autostart = 0
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE EXPLORER
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle Vexplore with Ctrl-E
+function! ToggleVExplorer()
+  if exists("t:expl_buf_num")
+      let expl_win_num = bufwinnr(t:expl_buf_num)
+      if expl_win_num != -1
+          let cur_win_nr = winnr()
+          exec expl_win_num . 'wincmd w'
+          close
+          exec cur_win_nr . 'wincmd w'
+          unlet t:expl_buf_num
+      else
+          unlet t:expl_buf_num
+      endif
+  else
+      exec '1wincmd w'
+      Vexplore
+      let t:expl_buf_num = bufnr("%")
+  endif
+endfunction
+map <silent> <leader>1 :call ToggleVExplorer()<CR>
 
-map ,1 :Explore<CR>
-
-let g:netrw_liststyle=3 " Use tree-mode as default view
-"let g:netrw_browse_split=4 " Open file in previous buffer
-"let g:netrw_preview=1 " preview window shown in a vertical split
+" Use tree-mode as default view
+let g:netrw_liststyle=3
+" Hit enter in the file browser to open the selected
+" file with :vsplit to the right of the browser.
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+" Change directory to the current buffer when opening files.
+set autochdir
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXPERIMENTAL
@@ -274,7 +303,7 @@ nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 map ,t :w\|:!rspec spec<cr>
-map ,c :w\|:!cucumber<cr>
+map ,g :w\|:!cucumber<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
