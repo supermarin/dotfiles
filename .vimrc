@@ -44,6 +44,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'Raimondi/delimitMate'
 Bundle 'vim-scripts/camelcasemotion'
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'terryma/vim-multiple-cursors'
 
 " Lang specific bundles
 Bundle 'vim-ruby/vim-ruby'
@@ -51,24 +52,18 @@ Bundle 'dag/vim-fish'
 Bundle 'tpope/vim-cucumber'
 Bundle 'instant-markdown.vim'
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Light / Dark color scheme from 7am to 7pm
-"let hour = strftime("%H")
-"if 7 <= hour && hour < 19
-    "colorscheme Tomorrow
-"else
-    colorscheme hybrid
-"endif
+colorscheme hybrid
+
 " GVim
 if has('gui_running')
-  set guifont=Monaco:h15
-  "set guifont=Menlo:h15
-  "set guifont=Inconsolata:h1
+  set guifont=Menlo:h15
   set guioptions=egmrt " hide the gui menubar
 endif
-"
+
 set nobackup
 set nowritebackup
 set noswapfile
@@ -98,20 +93,12 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols.branch = '⎇'
 
-" Cursor / carret switching
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
 " Real time search and highlight
 set incsearch
 set hlsearch
 set ignorecase smartcase
-"
-"
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC TEXT EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -204,6 +191,12 @@ endif
 " INSTANT MARKDOWN
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:instant_markdown_autostart = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SYNTASTIC
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Figure out why this still doesn't work
+let g:syntastic_objc_compiler = 'clang'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE EXPLORER
