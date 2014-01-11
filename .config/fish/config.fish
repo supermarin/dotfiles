@@ -3,9 +3,6 @@ set fish_greeting ""
 ### PATH (default)
 set -x PATH ~/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin
 
-### Private stuff
-. ~/.private.fish
-
 ### pip
 set -x PATH /Library/Python/2.7/bin $PATH
 
@@ -63,7 +60,7 @@ function sshvps
 end
 
 function moshvps
-  mosh mneorr@mneorr.com --ssh="ssh -i ~/.ssh/id_rsa.pub"
+  mosh mneorr@mneorr.com
 end
 
 ### Git
