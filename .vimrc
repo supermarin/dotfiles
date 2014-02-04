@@ -4,8 +4,10 @@ set t_Co=256
 set encoding=utf-8
 filetype off " required to be set before loading bundles
 set nocompatible
+
 " Speed up pressing O after Esc. Changes the timeout of terminal escaping
 set timeout timeoutlen=1000 ttimeoutlen=100
+
 " Hooking with system clipboard
 if has("clipboard") " If the feature is available
   set clipboard=unnamed " copy to the system clipboard
@@ -35,8 +37,8 @@ Bundle 'SirVer/ultisnips'
 Bundle 'Tagbar'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-dispatch'
 Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-dispatch'
 
 " Text editing enhancements
 Bundle 'scrooloose/nerdcommenter'
@@ -45,6 +47,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'vim-scripts/camelcasemotion'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'godlygeek/tabular'
 
 " Lang specific bundles
 Bundle 'vim-ruby/vim-ruby'
@@ -62,6 +65,11 @@ colorscheme hybrid
 if has('gui_running')
   set guifont=Menlo:h15
   set guioptions=egmrt " hide the gui menubar
+endif
+
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
 set nobackup
@@ -126,7 +134,6 @@ set cc=80
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ','
-map <leader>y "*y
 
 " Toggle comments
 map <silent> <leader>/ :call NERDComment(0,"toggle")<C-m>
@@ -179,12 +186,44 @@ command! -nargs=0 -bar Update if &modified
                            \|endif
 nmap <leader>s <c-o>:Update<CR>
 " Search a given pattern in Dash.app
-:nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <leader>d <Plug>DashSearch
 
-" Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM-SURROUND
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ,# Surround a word with #{ruby interpolation}
+map ,# ysiw#
+vmap ,# c#{<C-R>"}<ESC>
+
+" ," Surround a word with "quotes"
+map ," ysiw"
+vmap ," c"<C-R>""<ESC>
+
+" ,' Surround a word with 'single quotes'
+map ,' ysiw'
+vmap ,' c'<C-R>"'<ESC>
+
+" ,) or ,( Surround a word with (parens)
+" The difference is in whether a space is put in
+map ,( ysiw(
+map ,) ysiw)
+vmap ,( c( <C-R>" )<ESC>
+vmap ,) c(<C-R>")<ESC>
+
+" ,[ Surround a word with [brackets]
+map ,] ysiw]
+map ,[ ysiw[
+vmap ,[ c[ <C-R>" ]<ESC>
+vmap ,] c[<C-R>"]<ESC>
+
+" ,{ Surround a word with {braces}
+map ,} ysiw}
+map ,{ ysiw{
+vmap ,} c{ <C-R>" }<ESC>
+vmap ,{ c{<C-R>"}<ESC>
+
+map ,` ysiw`
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -295,12 +334,14 @@ nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
 " RUNNING TESTS (EXPERIMENTAL - need to steal some fancyness)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+map ,r :w\|:!ruby %<cr>
 map ,t :w\|:!rspec spec<cr>
 map ,g :w\|:!cucumber<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This doesn't work well. It's too hard-coded, must be a better solution.
 function! OpenTestAlternate()
   let new_file = AlternateForCurrentFile()
   exec ':e ' . new_file
