@@ -51,6 +51,4 @@
     authors = Marin Usalj <mneorr@gmail.com>
     authors = Delisa Mason <iskanamagus@gmail.com>
     authors = Fabio Pelosin <fabiopelosin@gmail.com>
-;[ghi]
-    ;token = !security find-generic-password -wgs github.oauth_token | tr -d '\n'
 
