@@ -25,7 +25,9 @@ set -x PATH $GOPATH/bin $PATH
 #set -x GOBIN ~/bin
 
 ### JAVA
-set -x JAVA_HOME (/usr/libexec/java_home)
+if test -f /usr/libexec/java_home
+  set -x JAVA_HOME (/usr/libexec/java_home)
+end
 
 ### Node
 set -x PATH /usr/local/node/bin $PATH
