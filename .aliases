@@ -31,6 +31,6 @@ gc() {
 # will take me to ~/code/OSS/ObjectiveSugar
 wo() {
   code_dir=~/code
-  cd $(find $code_dir -type d -maxdepth 3 | grep -i $* | grep -v /Pods --max-count=1)
+  cd "$(find $code_dir -type d -maxdepth 3 | grep -i $* | grep -v /Pods --max-count=1)"
 }
 
