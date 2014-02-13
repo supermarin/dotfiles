@@ -55,7 +55,6 @@ Bundle 'dag/vim-fish'
 Bundle 'tpope/vim-cucumber'
 Bundle 'instant-markdown.vim'
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -335,7 +334,7 @@ nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 map ,r :w\|:!ruby %<cr>
-map ,t :w\|:!rspec spec<cr>
+map ,t :w\|:Dispatch rspec spec<cr>
 map ,g :w\|:!cucumber<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
