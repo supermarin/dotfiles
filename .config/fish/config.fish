@@ -3,7 +3,7 @@ set fish_greeting ""
 . ~/.private.fish
 
 ### PATH (default)
-set -x PATH ~/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin
+set -x PATH ~/bin /usr/bin /bin /usr/sbin /sbin
 
 ### pip
 set -x PATH /Library/Python/2.7/bin $PATH
@@ -72,10 +72,7 @@ function moshvps
 end
 
 ### Git
-function gl
-  git l $argv
-end
-
+#
 function gp
   git push --recurse-submodules=on-demand $argv
 end
