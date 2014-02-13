@@ -1,27 +1,34 @@
-alias la="ls -lah"
-alias findproccess="ps ax |grep -i"
-alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
-alias apacheSites="cd /Applications/XAMPP/xamppfiles/htdocs/"
+# Common
+alias ccat="pygmentize -g"
 alias duh="du -hc"
-alias ccat='pygmentize -g'
+alias findproccess="ps ax | grep -i"
+alias la="ls -lah"
+alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
+alias pod-dev="COCOA_PODS_ENV=development COCOA_PODS_DEPENDENCIES=local ~/code/OSS/CocoaPods/CocoaPods/bin/pod"
 
 # Git
-alias gp="git push"
+alias gp="git push --recurse-submodules=on-demand"
 alias gl="git pull --rebase"
 alias gs="git status -sb"
+alias gd="git diff"
+alias ga="git add"
 
+# Bundler
+alias be="bundle exec"
+alias bi="bundle install"
+
+# The most awesome Git commit you'll find ever.
+# Usage:
+# $ gc handle cli argumnents. Fixes #213
 gc() {
   git add .
   git commit -am "$*"
 }
 
-# Gem development
-alias pod-dev='COCOA_PODS_ENV=development COCOA_PODS_DEPENDENCIES=local ~/code/OSS/CocoaPods/CocoaPods/bin/pod'
-alias use-development-pods="export COCOA_PODS_DEPENDENCIES=local"
-alias use-real-pods="export COCOA_PODS_DEPENDENCIES=real"
-
 # Search through my code directories and quickly open project folder
-# wo = workon
+# For example:
+# $ wo sugar
+# will take me to ~/code/OSS/ObjectiveSugar
 wo() {
   code_dir=~/code
   cd $(find $code_dir -type d -maxdepth 3 | grep -i $* | grep -v /Pods --max-count=1)
