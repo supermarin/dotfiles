@@ -20,17 +20,29 @@ alias bi="bundle install"
 # The most awesome Git commit you'll find ever.
 # Usage:
 # $ gc handle cli argumnents. Fixes #213
-gc() {
+function gc() {
   git add .
   git commit -am "$*"
 }
 
-# Search through my code directories and quickly open project folder
+# Search through your code directories and quickly open project folder
 # For example:
 # $ wo sugar
-# will take me to ~/code/OSS/ObjectiveSugar
-wo() {
+# will take you to ~/code/OSS/ObjectiveSugar
+#
+# You can also execute `wo` standalone if you have `selecta` installed.
+# You'll get a fuzzy finder popup so you can search interactively.
+function wo() {
   code_dir=~/code
-  cd "$(find $code_dir -type d -maxdepth 3 | grep -i $* | grep -v /Pods --max-count=1)"
+  if [ $1 ]; then
+      cd "$(find $code_dir -type d -maxdepth 3 | grep -i $* | grep -v /Pods --max-count=1)"
+  else
+      if [ `which selecta` ]; then
+          cd "$(find $code_dir -type d -maxdepth 3 | grep -v /Pods | selecta)"
+      else
+          echo "You need to install 'selecta' to get the fuzzy finder"
+      fi
+  fi
 }
+
 
