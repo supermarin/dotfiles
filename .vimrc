@@ -22,7 +22,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Color schemes
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'w0ng/vim-hybrid'
 
 " Code Navigation
@@ -39,6 +38,7 @@ Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-dispatch'
+Bundle 'gcmt/tube.vim'
 
 " Text editing enhancements
 Bundle 'scrooloose/nerdcommenter'
@@ -48,6 +48,7 @@ Bundle 'vim-scripts/camelcasemotion'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'godlygeek/tabular'
+Bundle 'gcmt/wildfire.vim'
 
 " Lang specific bundles
 Bundle 'vim-ruby/vim-ruby'
@@ -99,6 +100,9 @@ let g:airline_enable_fugitive=1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols.branch = '⎇'
+
+" Tube
+let g:tube_terminal = "iterm"
 
 " Real time search and highlight
 set incsearch
@@ -334,7 +338,7 @@ nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 map ,r :w\|:!ruby %<cr>
-map ,t :w\|:Dispatch rspec spec<cr>
+map ,t :w\|:Tube rspec spec<cr>
 map ,g :w\|:!cucumber<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -352,17 +356,17 @@ function! AlternateForCurrentFile()
   let going_to_spec = !in_spec
   let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1
   if going_to_spec
-    if in_app
-      let new_file = substitute(new_file, '^app/', '', '')
-    end
+    "if in_app
+      "let new_file = substitute(new_file, '^app/', '', '')
+    "end
     let new_file = substitute(new_file, '\.e\?rb$', '_spec.rb', '')
     let new_file = 'spec/' . new_file
   else
     let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
     let new_file = substitute(new_file, '^spec/', '', '')
-    if in_app
-      let new_file = 'app/' . new_file
-    end
+    "if in_app
+      "let new_file = 'app/' . new_file
+    "end
   endif
   return new_file
 endfunction
