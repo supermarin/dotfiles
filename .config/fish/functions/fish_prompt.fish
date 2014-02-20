@@ -1,8 +1,8 @@
-set red (set_color red)
+set red (set_color -o red)
 set normal (set_color normal)
-set cyan (set_color cyan)
-set green (set_color green)
-set purple (set_color purple)
+set cyan (set_color -o cyan)
+set green (set_color -o green)
+set purple (set_color -o purple)
 
 function is_in_git_repo
     echo (git rev-parse --is-inside-work-tree ^/dev/null)
