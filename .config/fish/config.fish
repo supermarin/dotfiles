@@ -64,7 +64,7 @@ function ccat
 end
 
 function sshvps
-  ssh -i ~/.ssh/id_rsa.pub mneorr@mneorr.com
+  ssh mneorr@mneorr.com
 end
 
 function moshvps
