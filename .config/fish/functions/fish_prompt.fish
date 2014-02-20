@@ -1,36 +1,77 @@
-function fish_prompt
+set red (set_color red)
+set normal (set_color normal)
+set cyan (set_color cyan)
+set green (set_color green)
+set purple (set_color purple)
 
+function is_in_git_repo
+    echo (git rev-parse --is-inside-work-tree ^/dev/null)
+end
 
-    function git_branch_name
-      echo (git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+function git_branch_name
+    echo (git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+end
+
+function git_current_commit
+    git log --pretty=format:'%h' -n 1
+end
+
+function is_git_dirty
+    echo (git status -s --ignore-submodules=dirty ^/dev/null)
+end
+
+function stashed
+    set testStash (git rev-parse --verify refs/stash ^/dev/null)
+
+    if [ $status = 0 ]
+        echo " S"(git stash list | wc -l | tr -d ' ')
+    end
+end
+
+function ahead
+    set -l ahead_count (git rev-list --left-only --count HEAD...@'{u}' 2>/dev/null)
+    if [ $ahead_count ]
+        if [ $ahead_count -gt 0 ]
+            echo " ↑$ahead_count"
+        end
+    end
+end
+
+function behind
+    set -l behind_count (git rev-list --right-only --count HEAD...@'{u}' 2>/dev/null)
+    if [ $behind_count ]
+        if [ $behind_count -gt 0 ]
+            echo " ↓$behind_count"
+        end
+    end
+end
+
+function git_prompt
+    if [ ! (is_in_git_repo) ]
+        return
     end
 
-    function git_current_commit
-      echo (git log --pretty=format:'%h' -n 1 ^/dev/null)
+    set -l branch (git_branch_name)
+    if [ $branch ]
+        set git_status_color $cyan
+        set revision $branch
+    else
+        set -l current_commit (git_current_commit)
+        if [ $current_commit ]
+            set git_status_color $purple
+            set revision $current_commit
+        end
     end
-
-    function is_git_dirty
-      echo (git status -s --ignore-submodules=dirty ^/dev/null)
-    end
-
-  set -l red (set_color -o red)
-  set -l normal (set_color normal)
-  set -l cyan (set_color cyan)
-  set -l purple (set_color purple)
-
-  if [ (git_branch_name) ]
-    set -l git_status_color $cyan
 
     if [ (is_git_dirty) ]
-      set git_status_color $red
+        set git_status_color (set_color -o red)
     end
 
-    set git_info $git_status_color(git_branch_name)
+    echo $git_status_color$revision $purple(stashed) $green(ahead) $red(behind)
+end
 
-  else if [ (git_current_commit) ]
-    set git_info $purple(git_current_commit)
-  end
 
-  echo $git_info "$normal\$ "
+function fish_prompt
+    echo (git_prompt) "$normal\$ "
 end
 
