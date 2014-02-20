@@ -29,7 +29,7 @@ function stashed
 end
 
 function ahead
-    set -l ahead_count (git rev-list --left-only --count HEAD...@'{u}' 2>/dev/null)
+    set -l ahead_count (git rev-list --left-only --count HEAD...@'{u}' ^/dev/null)
     if [ $ahead_count ]
         if [ $ahead_count -gt 0 ]
             echo "↑$ahead_count"
@@ -38,7 +38,7 @@ function ahead
 end
 
 function behind
-    set -l behind_count (git rev-list --right-only --count HEAD...@'{u}' 2>/dev/null)
+    set -l behind_count (git rev-list --right-only --count HEAD...@'{u}' ^/dev/null)
     if [ $behind_count ]
         if [ $behind_count -gt 0 ]
             echo "↓$behind_count"
