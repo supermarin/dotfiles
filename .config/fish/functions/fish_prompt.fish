@@ -48,6 +48,7 @@ end
 
 function git_prompt
     if [ ! (is_in_git_repo) ]
+        echo ""
         return
     end
 
@@ -67,11 +68,11 @@ function git_prompt
         set git_status_color (set_color -o red)
     end
 
-    echo $git_status_color$revision $purple(stashed) $green(ahead) $red(behind)
+    echo $git_status_color$revision $purple(stashed) $green(ahead) $red(behind) ""
 end
 
 
 function fish_prompt
-    echo (git_prompt) "$normal\$ "
+    echo (git_prompt)"$normal\$ "
 end
 

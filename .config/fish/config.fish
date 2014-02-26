@@ -8,6 +8,9 @@ set -x PATH ~/bin /usr/bin /bin /usr/sbin /sbin
 ### pip
 set -x PATH /Library/Python/2.7/bin $PATH
 
+### Python 3, required for Lime
+set -x PKG_CONFIG_PATH /usr/local/Cellar/python3/3.3.4/Frameworks/Python.framework/Versions/3.3/lib/pkgconfig/
+
 ### Homebrew
 set -x PATH /usr/local/bin $PATH
 
