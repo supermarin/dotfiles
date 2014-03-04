@@ -18,6 +18,7 @@
     us = submodule update --recursive
     yolo = push -f origin master
     yoloed = !git fetch origin && git reset --hard origin/master
+    whathaveidone = !git l --author=Marin --since
 
 [user]
 	name = Marin Usalj
