@@ -38,7 +38,6 @@ Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-dispatch'
-Bundle 'gcmt/tube.vim'
 
 " Text editing enhancements
 Bundle 'scrooloose/nerdcommenter'
@@ -338,7 +337,7 @@ nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 map ,r :w\|:!ruby %<cr>
-map ,t :w\|:Tube rspec spec<cr>
+map ,t :w\|:!rspec spec<cr>
 map ,g :w\|:!cucumber<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
