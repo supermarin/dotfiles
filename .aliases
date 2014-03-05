@@ -25,6 +25,17 @@ function gc() {
   git commit -am "$*"
 }
 
+# Open the current .xcworkspace or .xcodeproj
+function xopen() {
+    open $(find . -name '*.xcworkspace' -maxdepth 1) 2> /dev/null
+    if [ $? -ne 0 ]; then
+        open $(find . -name '*.xcodeproj' -maxdepth 1) 2> /dev/null
+    fi
+    if [ $? -ne 0 ]; then
+        echo "No .xcworkspace or .xcodeproj found in the working directory."
+    fi
+}
+
 # Search through your code directories and quickly open project folder
 # For example:
 # $ wo sugar
