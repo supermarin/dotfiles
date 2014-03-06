@@ -54,6 +54,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'dag/vim-fish'
 Bundle 'tpope/vim-cucumber'
 Bundle 'instant-markdown.vim'
+Bundle 'tpope/vim-liquid'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
