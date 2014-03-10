@@ -28,7 +28,7 @@ function gc() {
 # Open the current .xcworkspace or .xcodeproj
 function xopen() {
     if [ $1 ]; then
-        workon $1
+        wo $1
     fi
     open $(find . -name '*.xcworkspace' -maxdepth 1) 2> /dev/null
     if [ $? -ne 0 ]; then
