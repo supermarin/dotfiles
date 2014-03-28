@@ -13,7 +13,7 @@ function git_branch_name
 end
 
 function git_current_commit
-    git log --pretty=format:'%h' -n 1
+    echo (git log --pretty=format:'%h' -n 1)
 end
 
 function is_git_dirty
@@ -21,7 +21,7 @@ function is_git_dirty
 end
 
 function stashed
-    set testStash (git rev-parse --verify refs/stash ^/dev/null)
+    set -l testStash (git rev-parse --verify refs/stash ^/dev/null)
 
     if [ $status = 0 ]
         echo "S"(git stash list | wc -l | tr -d ' ')
@@ -47,11 +47,6 @@ function behind
 end
 
 function git_prompt
-    if [ ! (is_in_git_repo) ]
-        echo ""
-        return
-    end
-
     set -l branch (git_branch_name)
     if [ $branch ]
         set git_status_color $cyan
@@ -68,11 +63,14 @@ function git_prompt
         set git_status_color (set_color -o red)
     end
 
-    echo $git_status_color$revision $purple(stashed) $green(ahead) $red(behind) ""
+    echo $git_status_color$revision $purple(stashed) $green(ahead) $red(behind)
 end
 
 
 function fish_prompt
-    echo (git_prompt)"$normal\$ "
+    if [ (is_in_git_repo) ]
+        set supemarin_git_info (git_prompt)
+    end
+    echo $supemarin_git_info $normal'$ '
 end
 
