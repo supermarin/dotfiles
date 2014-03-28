@@ -2,6 +2,9 @@
 	"installed_packages":
 	[
 		"ColorSchemeSelector",
+		"Git",
+		"Pretty JSON",
+		"Solarized Toggle",
 		"Theme - Nil",
 		"Theme - Spacegray",
 		"Themr",
