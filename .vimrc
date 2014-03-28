@@ -47,7 +47,7 @@ Bundle 'vim-scripts/camelcasemotion'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'godlygeek/tabular'
-Bundle 'gcmt/wildfire.vim'
+"Bundle 'gcmt/wildfire.vim'
 
 " Lang specific bundles
 Bundle 'vim-ruby/vim-ruby'
