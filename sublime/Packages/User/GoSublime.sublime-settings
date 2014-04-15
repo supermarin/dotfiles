@@ -1,0 +1,4 @@
+{
+    "shell": ["-c", "which zsh"],
+    "env": { "PATH": "$HOME/code/go/bin:$PATH" }
+}

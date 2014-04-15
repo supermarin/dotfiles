@@ -37,7 +37,6 @@ Bundle 'Tagbar'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-dispatch'
 
 " Text editing enhancements
 Bundle 'scrooloose/nerdcommenter'
@@ -47,7 +46,6 @@ Bundle 'vim-scripts/camelcasemotion'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'godlygeek/tabular'
-"Bundle 'gcmt/wildfire.vim'
 
 " Lang specific bundles
 Bundle 'vim-ruby/vim-ruby'
@@ -279,12 +277,12 @@ let g:netrw_altv = 1
 
 " Ultisnips hack
 function! g:UltiSnips_Complete()
-call UltiSnips_ExpandSnippet()
+call UltiSnips#ExpandSnippet()
 if g:ulti_expand_res == 0
     if pumvisible()
         return "\<C-n>"
     else
-        call UltiSnips_JumpForwards()
+        call UltiSnips#JumpForwards()
         if g:ulti_jump_forwards_res == 0
            return "\<TAB>"
         endif
@@ -334,12 +332,25 @@ nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RUNNING TESTS (EXPERIMENTAL - need to steal some fancyness)
+" GO - compile and run
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map ,g :w\|:!go run %<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ruby - RUNNING TESTS (EXPERIMENTAL - need to steal some fancyness)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! UseRspec()
+  map ,t :w\|:!rspec spec<cr>
+endfunction
+
+function! UseBacon()
+  map ,t :w\|:!bundle exec bacon %<cr>
+endfunction
 
 map ,r :w\|:!ruby %<cr>
 map ,t :w\|:!rspec spec<cr>
-map ,g :w\|:!cucumber<cr>
+map ,c :w\|:!cucumber<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
