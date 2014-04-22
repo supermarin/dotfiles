@@ -29,7 +29,7 @@ Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-vinegar'
 
 " autocompletion / snippets
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'ervandew/supertab'
 Bundle 'SirVer/ultisnips'
 
 " Vim enhancements
@@ -37,6 +37,8 @@ Bundle 'Tagbar'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
+" sudo write
+Bundle 'tpope/vim-eunuch'
 
 " Text editing enhancements
 Bundle 'scrooloose/nerdcommenter'
@@ -53,6 +55,8 @@ Bundle 'dag/vim-fish'
 Bundle 'tpope/vim-cucumber'
 Bundle 'instant-markdown.vim'
 Bundle 'tpope/vim-liquid'
+Bundle 'jnwhiteh/vim-golang'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
@@ -168,10 +172,6 @@ map <leader>2 :TagbarToggle<CR>
 
 " List todos in a project
 map ,,t :Ag TODO<CR>
-
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-"command! WW \|:execute ':silent w !sudo tee % > /dev/null' | :edit!
-ca w!! w !sudo tee > /dev/null "%"
 
 " When using p, adjust indent to the current line
 nmap p ]p
