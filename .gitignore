@@ -7,3 +7,6 @@ fishd.*
 gh-update
 .oh-my-zsh
 !.oh-my-zsh/custom
+
+# GoSublime
+log.txt

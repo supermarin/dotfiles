@@ -6,6 +6,8 @@
 		"Git",
 		"GoSublime",
 		"Inc-Dec-Value",
+		"Jekyll",
+		"Liquid",
 		"Markdown Extended",
 		"Pretty JSON",
 		"RSpec",
@@ -16,6 +18,7 @@
 		"Theme - Nil",
 		"Theme - Spacegray",
 		"Themr",
+		"Tmux",
 		"Tomorrow Color Schemes"
 	]
 }
