@@ -1,9 +1,9 @@
 {
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/Tomorrow-Night-Eighties (SL).tmTheme",
+	"color_scheme": "Packages/User/Tomorrow-Night (SL).tmTheme",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Menlo",
-	"font_size": 15.0,
+	"font_size": 17.0,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
@@ -22,3 +22,4 @@
 	"trim_trailing_white_space_on_save": true,
 	"use_simple_full_screen": true
 }
+
