@@ -5,6 +5,7 @@ alias findproccess="ps ax | grep -i"
 alias la="ls -lah"
 alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
 alias pod-dev="COCOA_PODS_ENV=development COCOA_PODS_DEPENDENCIES=local ~/code/OSS/cocoapods/Rainforest/CocoaPods/bin/pod"
+alias c=clear
 
 # Git
 alias gp="git push --recurse-submodules=on-demand"
