@@ -27,6 +27,7 @@ Bundle 'w0ng/vim-hybrid'
 " Code Navigation
 Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-vinegar'
+Bundle 'kien/ctrlp.vim'
 
 " autocompletion / snippets
 Bundle 'ervandew/supertab'
@@ -51,12 +52,12 @@ Bundle 'godlygeek/tabular'
 
 " Lang specific bundles
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'Blackrush/vim-gocode'
 Bundle 'dag/vim-fish'
 Bundle 'tpope/vim-cucumber'
 Bundle 'instant-markdown.vim'
 Bundle 'tpope/vim-liquid'
 Bundle 'jnwhiteh/vim-golang'
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
@@ -189,6 +190,20 @@ nmap <leader>s <c-o>:Update<CR>
 " Search a given pattern in Dash.app
 nmap <silent> <leader>d <Plug>DashSearch
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlP / Grep
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('ag')
+        " Use ag over grep
+        set grepprg=ag\ --nogroup\ --nocolor
+
+        " Use ag in CtrlP for listing files. Lightning fast and
+        " respects .gitignore
+        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+        " ag is fast enough that CtrlP doesn't need to cache
+        let g:ctrlp_use_caching = 0
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-SURROUND
@@ -271,29 +286,6 @@ let g:netrw_altv = 1
 " Change directory to the current buffer when opening files.
 "set autochdir
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EXPERIMENTAL
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Ultisnips hack
-function! g:UltiSnips_Complete()
-call UltiSnips#ExpandSnippet()
-if g:ulti_expand_res == 0
-    if pumvisible()
-        return "\<C-n>"
-    else
-        call UltiSnips#JumpForwards()
-        if g:ulti_jump_forwards_res == 0
-           return "\<TAB>"
-        endif
-    endif
-endif
-return ""
-endfunction
-
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-e>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PROMOTE VARIABLE TO RSPEC LET
@@ -307,7 +299,8 @@ function! PromoteToLet()
 endfunction
 :command! PromoteToLet :call PromoteToLet()
 :map <leader>p :PromoteToLet<cr>
-"
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SELECTA
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
