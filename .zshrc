@@ -1,8 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
-#ZSH_THEME='robbyrussell'
-#ZSH_THEME='pure'
-ZSH_THEME='mneorr2'
+ZSH_THEME='supermarin'
 
 plugins=(zsh-syntax-highlighting)
 
@@ -21,4 +19,8 @@ safely_load ~/.env
 ZSH_HIGHLIGHT_STYLES[command]='fg=grey'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=grey'
 ZSH_HIGHLIGHT_STYLES[function]='fg=grey'
+
+if [[ ! $TERM =~ screen ]]; then
+    tmux attach -t supermarin &>/dev/null || tmux new -s supermarin
+fi
 
