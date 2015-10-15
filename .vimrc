@@ -84,6 +84,7 @@ Plug 'tpope/vim-liquid'
 Plug 'tpope/vim-jdaddy'
 Plug 'Keithbsmiley/swift.vim'
 Plug 'davidhalter/jedi-vim'
+Plug 'saltstack/salt-vim'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
