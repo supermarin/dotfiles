@@ -1,26 +1,28 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME='supermarin'
+# GTFO Vi mode in shell
+bindkey -e
 
-plugins=(zsh-syntax-highlighting)
+# Source custom environment and aliases
+source ~/.env
+source ~/.aliases
 
-source $ZSH/oh-my-zsh.sh
+# Plugins
+source "$HOME/.antigen/antigen.zsh"
+
+antigen use oh-my-zsh
+
+antigen bundle git
+#antigen bundle jimmijj/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle tarruda/zsh-autosuggestions
+antigen bundle zsh-users/zsh-history-substring-search
 
 
-function safely_load() {
-  if [ -f $1 ]; then source $1; fi
-}
+# Load the theme.
+antigen theme robbyrussell
 
-safely_load ~/.aliases
-safely_load ~/.privaterc
-safely_load ~/.env
+# Not sure if this is still needed
+antigen apply
 
-# To differentiate aliases from other command types
-ZSH_HIGHLIGHT_STYLES[command]='fg=grey'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=grey'
-ZSH_HIGHLIGHT_STYLES[function]='fg=grey'
-
-if [[ ! $TERM =~ screen ]]; then
-    tmux attach -t supermarin &>/dev/null || tmux new -s supermarin
-fi
+## FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
