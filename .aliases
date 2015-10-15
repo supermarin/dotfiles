@@ -1,63 +1,239 @@
+#!/bin/bash
+
+# System overrides
+alias rm=trash
+
+# Fuzzy selector of choice; fzf, selecta, pick, ...
+local fuzzy_selector=fzf
+
 # Common
-alias ccat="pygmentize -g"
-alias duh="du -hc"
-alias findproccess="ps ax | grep -i"
-alias la="ls -lah"
-alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
-alias pod-dev="COCOA_PODS_ENV=development COCOA_PODS_DEPENDENCIES=local ~/code/OSS/cocoapods/Rainforest/CocoaPods/bin/pod"
 alias c=clear
+alias la="ls -lah"
+alias ccat="pygmentize -g"
+alias json="python -m json.tool | pygmentize -l json"
 
 # Git
+alias b=awesome_switch_branch
+alias bd=awesome_branch_delete
+alias bm=awesome_branch_merge
 alias gp="git push --recurse-submodules=on-demand"
+alias gpu=push_and_set_upstream
 alias gl="git pull --rebase"
 alias gs="git status -sb"
 alias gd="git diff"
+alias gdi="git diff --ignore-all-space"
+alias gds="git difftool --extcmd 'icdiff --highlight --line-numbers' | less"
+alias gdsi="git difftool --ignore-all-space --extcmd 'icdiff --highlight --line-numbers' | less"
 alias ga="git add"
+alias gc=git_awesome_commit
 
 # Bundler
 alias be="bundle exec"
 alias bi="bundle install"
+alias bu="bundle update"
 
-# The most awesome Git commit you'll find ever.
-# Usage:
-# $ gc handle cli argumnents. Fixes #213
-function gc() {
-  git add .
-  git commit -am "$*"
-}
+# CocoaPods
+alias pi="pod install"
+alias pu="pod update"
+
+# Xcode
+alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
+alias decodeprovisioning="security cms -D -i"
 
 # Open the current .xcworkspace or .xcodeproj
 function xopen() {
-    if [ $1 ]; then
-        wo $1
+    if [[ -n $1 ]]; then
+        wo "$1"
     fi
-    open $(find . -name '*.xcworkspace' -maxdepth 1) 2> /dev/null
+    open "$(find . -name '*.xcworkspace' -maxdepth 1)" 2> /dev/null
     if [ $? -ne 0 ]; then
-        open $(find . -name '*.xcodeproj' -maxdepth 1) 2> /dev/null
+        open "$(find . -name '*.xcodeproj' -maxdepth 1)" 2> /dev/null
     fi
     if [ $? -ne 0 ]; then
         echo "No .xcworkspace or .xcodeproj found in the working directory."
     fi
 }
 
-# Search through your code directories and quickly open project folder
-# For example:
-# $ wo sugar
-# will take you to ~/code/OSS/ObjectiveSugar
-#
-# You can also execute `wo` standalone if you have `selecta` installed.
-# You'll get a fuzzy finder popup so you can search interactively.
-function wo() {
-  code_dir=~/code
-  if [ $1 ]; then
-      cd "$(find $code_dir -type d -maxdepth 3 | grep -i $* | grep -v /Pods --max-count=1)"
+# Bookmarks
+# shellcheck disable=SC2139
+craigslist() {
+    apts="http://sfbay.craigslist.org/search/sfc/apa\?sort\=date"
+    hoods="\&nh\=149\&nh\=3\&nh\=4\&nh\=6\&nh\=8\&nh\=11\&nh\=12\&nh\=10\&nh\=20\&nh\=24\&nh\=17\&nh\=18\&nh\=19\&nh\=22\&nh\=23\&nh\=25\&nh\=27\&nh\=1\&nh\=156\&nh\=29\&nh\=30"
+    hills="\&nh\=3\&nh\=4\&nh\=5\&nh\=11\&nh\=23\&nh\=25\&nh\=27\&nh\=29"
+    price="\&maxAsk\=4000"
+    br="\&bedrooms\=1"
+    alias listings="open $apts$hoods$price$br"
+    alias hills="open $apts$hills$price$br"
+    alias listings-fancy="open $apts$hoods$price$br\&query\=garage%2C%20washer"
+}
+craigslist
+alias gifs="open http://f.cl.ly/items/1D1A1w06470M1U2P0311/gifs.txt"
+
+
+# Todo.txt
+alias td="todo.sh"
+alias tdd="todo.sh do"
+alias tdl="todo.sh ls"
+alias tda="todo.sh add"
+alias tdaa="todo.sh add '(A)'"
+alias tdab="todo.sh add '(B)'"
+alias tdac="todo.sh add '(C)'"
+# Lyft todos
+alias ltd="todo.sh pv @lyft"
+alias tdal="tda @lyft"
+alias tdala="tdaa @lyft"
+alias tdalb="tdab @lyft"
+
+# Lyft
+alias mock="mux start mock-api"
+
+# Git(hub)
+alias ghpr=awesome_pull_request
+
+function pastegist() {
+    open "$(pbpaste | gist -p)"
+}
+
+github_slug(){
+    git ls-remote --get-url origin | cut -f 2 -d ':' | cut -f 1 -d '.'
+}
+
+# See git log for the work done on the current branch against `master` or the
+# specified branch.
+# Usage: b [branch] (default: master)
+bl() {
+    git l "${1:-origin}"..HEAD
+}
+
+pulls() {
+    if [[ $1 = "me" ]]; then
+        open "https://github.com/$(github_slug)/pulls/supermarin"
+    else
+        open "https://github.com/$(github_slug)/pulls/$1"
+    fi
+}
+
+issues() {
+    open "https://github.com/$(github_slug)/issues/$1"
+}
+
+# Creates a pull request on Github against the provided branch or `master`
+# After successfull creation, opens it in your web browser.
+function awesome_pull_request() {
+  if [[ -n $1 ]]; then
+      branch=$1
   else
-      if [ `which selecta` ]; then
-          cd "$(find $code_dir -type d -maxdepth 3 | grep -v /Pods | selecta)"
-      else
-          echo "You need to install 'selecta' to get the fuzzy finder"
-      fi
+      branch=master
+  fi
+  hub pull-request -b $branch -o
+}
+
+# Pushes the current branch and sets it to upstream
+function push_and_set_upstream() {
+    git push -u origin "$(git branch | grep '\*' | cut -d ' ' -f 2)"
+}
+
+# The most awesome Git commit you'll find ever.
+# Usage:
+#       $ gc handle cli argumnents. Fixes #213
+function git_awesome_commit() {
+  if [[ -n $1 ]]; then
+      git add .
+      git commit -am "$*"
+  else
+      git commit -v
   fi
 }
 
+# Jira....
+function jira() {
+    if [[ -n $1 ]]; then
+        open "https://lyftme.atlassian.net/browse/$1"
+    else
+        open https://lyftme.atlassian.net/issues/\?filter=-1
+    fi
+}
 
+# Fuzzy finds branches except your current branch, returns the selected branch
+function fuzzy_branch() {
+    git branch | grep -Ev '\*' | $fuzzy_selector | tr -d ' '
+}
+
+function awesome_switch_branch() {
+    if [[ -n $1 ]]; then
+        git checkout "$1"
+    else
+        branch=$(fuzzy_branch)
+        if [[ -n $branch ]]; then
+            git checkout "$branch"
+        fi
+    fi
+}
+
+function awesome_branch_delete() {
+    #set -e
+    branch=$(fuzzy_branch)
+    if [[ -n $branch ]]; then
+        git branch -D "$branch"
+        echo "Delete from remote? [y/N]: "
+        read delete_from_remote
+        if [[ $delete_from_remote = 'y' ]]; then
+            git push origin ":$branch"
+        else
+            echo "Not deleting from remote."
+        fi
+    fi
+}
+
+function awesome_branch_merge() {
+    branch=$(fuzzy_branch)
+    if [[ -n $branch ]]; then
+        git merge "$branch"
+    fi
+}
+
+
+# Fuzzy finds a running proccess using `ps ax`
+function findproccess() {
+    ps ax | $fuzzy_selector
+}
+
+# man(1) with colors!!!1!
+function man() {
+    # shellcheck disable=SC2046
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+        man "$@"
+}
+
+# Search through your code directories and quickly open project folder
+# For example:
+# $ wo sugar
+#     -> will take me to ~/code/OSS/ObjectiveSugar
+#
+# $ wo <Enter>
+#     -> Opens up the fuzzy finder for your code directories
+# shellcheck disable=SC2086
+function wo() {
+    code_dirs=(
+        ~/code
+        ~/code/go/src
+    )
+    dir_list=$(find "${code_dirs[@]}" -type d -maxdepth 3 | grep -v /Pods)
+
+    if [[ -n $1 ]]; then
+        cd "$(grep --max-count=1 -i "$*" <<< $dir_list)"
+    else
+        if [ -x "$(which $fuzzy_selector)" ]; then
+            cd "$(grep -v /Pods <<< $dir_list | $fuzzy_selector)"
+        else
+            echo "You need to install '$fuzzy_selector' to get the fuzzy finder"
+        fi
+    fi
+}
