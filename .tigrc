@@ -1,0 +1,3 @@
+set ignore-space = all
+
+color cursor white black bold
