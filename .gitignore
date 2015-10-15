@@ -1,12 +1,3 @@
 .DS_Store
-.ssh_aliases
 .swp
 .vim/bundle/
-fish_history
-fishd.*
-gh-update
-.oh-my-zsh
-!.oh-my-zsh/custom
-
-# GoSublime
-log.txt
