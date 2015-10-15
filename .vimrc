@@ -40,10 +40,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Color schemes
-Plug 'w0ng/vim-hybrid'
-Plug 'gosukiwi/vim-atom-dark'
-Plug 'tomasr/molokai'
-Plug 'keith/parsec.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ChrisKempson/Tomorrow-Theme', { 'rtp': 'vim/'}
 
@@ -69,12 +65,10 @@ Plug 'tpope/vim-eunuch'
 " Text editing enhancements
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
-"Plug 'Raimondi/delimitMate'
 Plug 'seletskiy/vim-autosurround'
 Plug 'vim-scripts/camelcasemotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'terryma/vim-multiple-cursors'
-"Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
 Plug 'davidbeckingsale/writegood.vim'
 Plug 'valloric/MatchTagAlways'
