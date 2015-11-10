@@ -6,6 +6,7 @@ alias rm=trash
 # Fuzzy selector of choice; fzf, selecta, pick, ...
 local fuzzy_selector=fzf
 
+alias 🚢="git push --force"
 # Common
 alias c=clear
 alias la="ls -lah"
@@ -18,7 +19,7 @@ alias bd=awesome_branch_delete
 alias bm=awesome_branch_merge
 alias gp="git push --recurse-submodules=on-demand"
 alias gpu=push_and_set_upstream
-alias gl="git pull --rebase"
+alias gl="git pull --rebase --stat"
 alias gs="git status -sb"
 alias gd="git diff"
 alias gdi="git diff --ignore-all-space"
@@ -43,13 +44,17 @@ alias decodeprovisioning="security cms -D -i"
 # Open the current .xcworkspace or .xcodeproj
 function xopen() {
     if [[ -n $1 ]]; then
-        wo "$1"
+        open "$1"
     fi
-    open "$(find . -name '*.xcworkspace' -maxdepth 1)" 2> /dev/null
-    if [ $? -ne 0 ]; then
-        open "$(find . -name '*.xcodeproj' -maxdepth 1)" 2> /dev/null
-    fi
-    if [ $? -ne 0 ]; then
+
+    workspace=$(find . -name '*.xcworkspace' -maxdepth 1)
+    project=$(find . -name '*.xcworkspace' -maxdepth 1)
+
+    if [[ -n $workspace ]]; then
+        open "$workspace"
+    elif [[ -n $project ]]; then
+        open "$project"
+    else
         echo "No .xcworkspace or .xcodeproj found in the working directory."
     fi
 }
@@ -176,7 +181,7 @@ function awesome_branch_delete() {
     if [[ -n $branch ]]; then
         git branch -D "$branch"
         echo "Delete from remote? [y/N]: "
-        read delete_from_remote
+        read -r delete_from_remote
         if [[ $delete_from_remote = 'y' ]]; then
             git push origin ":$branch"
         else
@@ -219,7 +224,7 @@ function man() {
 #
 # $ wo <Enter>
 #     -> Opens up the fuzzy finder for your code directories
-# shellcheck disable=SC2086
+# shellcheck disable=SC2086,SC2164
 function wo() {
     code_dirs=(
         ~/code
