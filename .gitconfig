@@ -58,14 +58,12 @@
 [pull]
     rebase = true
 
+[commit]
+    verbose = true
+
 [mergetool]
     keepBackup = false
     prompt = false
-
-[git-pair]
-    authors = Marin Usalj <marin2211@gmail.com>
-    authors = Delisa Mason <iskanamagus@gmail.com>
-    authors = Fabio Pelosin <fabiopelosin@gmail.com>
 
 [ghi]
     token = !security find-internet-password -a supermarin -s github.com -l 'ghi token' -w
@@ -75,3 +73,7 @@
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
+[rerere]
+    enabled = true
+[rebase]
+    autostash = true
