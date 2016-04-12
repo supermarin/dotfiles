@@ -23,14 +23,16 @@
     sp = stash pop
     su = submodule update --recursive
     today = !git whathaveidone 1.day
+    update = !git pull && git submodule update --init
     yolo = push -f origin master
     yoloed = !git fetch origin && git reset --hard origin/master
     week = !git whathaveidone 1.week
     whathaveidone = !git l --author=Marin --since
+    wtc = !sh -c 'git commit $@ -m \""`curl -s http://whatthecommit.com/index.txt`"\"' -
 
 [user]
-	name = Marin Usalj
-	email = marin2211@gmail.com
+    name = Marin Usalj
+    email = marin2211@gmail.com
 
 [github]
     user = supermarin
