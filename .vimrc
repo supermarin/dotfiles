@@ -10,7 +10,8 @@ set autoread   " Watch for file changes and auto update
 set splitbelow
 set splitright
 
-set encoding=utf-8
+"set encoding=utf-8
+" ^ neovim complains about this
 scriptencoding utf-8
 filetype off " required to be set before loading bundles
 
@@ -34,6 +35,9 @@ if has("persistent_undo")
   endif
 endif
 
+" CTAGS for autocompletion
+set tags=./tags;,tags;
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -42,14 +46,13 @@ call plug#begin('~/.vim/plugged')
 " Color schemes
 Plug 'altercation/vim-colors-solarized'
 Plug 'ChrisKempson/Tomorrow-Theme', { 'rtp': 'vim/'}
+Plug 'tomasr/molokai'
 
 " Code Navigation
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
-" autocompletion / snippets
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -59,6 +62,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-repeat' " Repeat plugin commands with '.'
+Plug 'majutsushi/tagbar'
+
 " sudo write
 Plug 'tpope/vim-eunuch'
 
@@ -70,8 +75,9 @@ Plug 'vim-scripts/camelcasemotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/vim-easy-align'
-Plug 'davidbeckingsale/writegood.vim'
+"Plug 'davidbeckingsale/writegood.vim'
 Plug 'valloric/MatchTagAlways'
+Plug 'jiangmiao/auto-pairs'
 
 " Lang specific bundles
 Plug 'vim-ruby/vim-ruby'
@@ -85,6 +91,25 @@ Plug 'tpope/vim-jdaddy'
 Plug 'Keithbsmiley/swift.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'saltstack/salt-vim'
+Plug 'vim-jp/vim-cpp'
+Plug 'darfink/vim-plist'
+
+
+
+" autocompletion / snippets
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'zchee/deoplete-go', { 'do': 'make'}
+    let g:python3_host_skip_check = 1 "maybe can get rid of this. have to bench
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_smart_case = 1
+else
+    Plug 'Shougo/neocomplete.vim'
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_smart_case = 1
+    "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
+    "let g:ycm_collect_identifiers_from_tags_files = 1
+endif
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -95,20 +120,23 @@ call plug#end()
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if strftime("%H") >= 5 && strftime("%H") <= 17
-    "set background=light
+    set background=light
     colorscheme Tomorrow
+    let g:rehash256 = 1 "wtf was this?
 else
+    set background=dark
     colorscheme Tomorrow-Night-Eighties
-    "set background=dark
 endif
 
 " Netrw width
 let g:netrw_winsize = 25
 " GVim
 if has('gui_running')
-  set guifont=Inconsolata-g:h14
+  set guifont=Hack:h12
+  "set guifont=Inconsolata-g:h14
   set guioptions=egmrt " hide the gui menubar
   set guioptions-=r " ^WAT... gotta fix this shit
+  let g:fzf_launcher = "fzf-macvim %s"
 endif
 
 " Source the vimrc file after saving it
@@ -145,7 +173,7 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols.branch = '⎇'
-let g:airline#extensions#tabline#enabled = 1 "tabline
+"let g:airline#extensions#tabline#enabled = 1 "tabline
 
 " Real time search and highlight
 set incsearch
@@ -166,14 +194,15 @@ set expandtab
 set smarttab
 " lang specific indentations
 au BufRead,BufNewFile *.podspec,Podfile set ft=ruby " CocoaPods and Podfiles
+au BufRead,BufNewFile *.gradle,Jenkinsfile set ft=groovy " Android, Jerkins
 au BufRead,BufNewFile *.json set ai filetype=javascript " JSON
 au BufRead,BufNewFile *.md set ft=markdown " Markdown
 autocmd FileType make setlocal noexpandtab
-autocmd FileType ruby,haml,eruby,yaml,sass set ai sw=2 sts=2 et
+autocmd FileType ruby,groovy,haml,eruby,yaml,sass set ai sw=2 sts=2 et
 autocmd FileType html,javascript,python set sw=4 sts=4 et
 
 " Whitespace
-set listchars=tab:\▸\ ,trail:·
+set listchars=tab:\·\ ,trail:·
 
 " Strip trailing spaces on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -183,13 +212,17 @@ set list
 " Ruler
 set cc=80
 autocmd FileType objc set cc=120
-" TODO: see if i can get rid of this or make it smarter
-"highlight ColorColumn guibg=Black
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","
+
+" Better moving up-down for giantass wrapped lines
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 " Toggle comments
 map <silent> <leader>/ :call NERDComment(0,"toggle")<C-m>
@@ -210,8 +243,8 @@ au FileType ruby imap <c-l> <space>=><space>
 au FileType go   imap <c-l> <space>:=<space>
 
 " Better navigation for beginning / end of line
-nnoremap H ^
-nnoremap L $
+noremap H ^
+noremap L $
 
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
@@ -241,26 +274,16 @@ nmap <leader>s :setlocal spell spelllang=en_us<cr>
 nmap <silent> <leader>d <Plug>DashSearch
 
 " Open Tig (git log)
-nnoremap <leader>l :!tig<cr>
+nnoremap <leader>gl :!tig %<cr>
+nnoremap <leader>gs :!tig status<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" YouCompleteMe
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Resolves conflict with ultisnips.
-" Navigating thru selections possible via Ctrl+N and Ctrl+P
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
-
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JSON
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! PrettyJson()
-    :'<,'>!jsonf -s=false
+    :'<,'>!python -m json.tool
 endfunction
 vmap <leader>f :call PrettyJson()<cr>
 
@@ -358,15 +381,20 @@ autocmd Filetype ruby   nmap <leader>r :w\|:!ruby %<cr>
 autocmd Filetype python nmap <leader>r :w\|:!python %<cr>
 autocmd Filetype java   nmap <leader>r :w\|:!javac %<cr> :!java %:r<cr>
 autocmd Filetype swift  nmap <leader>r :w\|:!swift %<cr>
-autocmd Filetype sh,bash,zsh nmap <leader>r :w\|:!%<cr>
+autocmd Filetype sh,bash,zsh nmap <leader>r :w\|:!$SHELL %<cr>
 
 " Golang... I'm shhhpeshial
 autocmd FileType go     nmap <leader>r <Plug>(go-run)
-autocmd FileType go     nmap <leader>t :w\|:!go test<cr>
+"autocmd FileType go     nmap <leader>t <Plug>(go-test)
+autocmd FileType go     nmap <leader>t :wa\|:!go test<cr>
+"autocmd FileType go setlocal omnifunc=gocode#Complete
+
+
+
 autocmd FileType go     nmap <leader>c <Plug>(go-coverage)
 " Definition in a split / vertical
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+autocmd FileType go nmap <Leader>ds <Plug>(go-def-split)
+autocmd FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ruby - RUNNING TESTS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -390,10 +418,14 @@ let $RUST_SRC_PATH="$HOME/code/playground/racer/src/"
 let g:go_fmt_command = "goimports"
 " remove the automatic top bar method info
 "let g:go_auto_type_info = 0
-let g:go_doc_keywordprg_enabled = 0
+"let g:go_doc_keywordprg_enabled = 0
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+
+let g:go_highlight_interfaces = 1
+"let g:go_highlight_operators = 1
+
 let g:go_highlight_build_constraints = 1
 
 "Show a list of interfaces which is implemented by the type under your cursor with <leader>s
@@ -402,8 +434,13 @@ au FileType go nmap <Leader>i <Plug>(go-implements)
 "Show type info for the word under your cursor with <leader>i (useful if you have disabled auto showing type info via g:go_auto_type_info)
 au FileType go nmap <Leader>d <Plug>(go-info)
 
+" Sometimes when using both vim-go and syntastic Vim will start lagging while
+" saving and opening files. The following fixes this:
+"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" clang_complete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" supertab
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:SuperTabDefaultCompletionType = "<c-n>"
