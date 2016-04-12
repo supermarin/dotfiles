@@ -20,13 +20,15 @@ alias bm=awesome_branch_merge
 alias gp="git push --recurse-submodules=on-demand"
 alias gpu=push_and_set_upstream
 alias gl="git pull --rebase --stat"
-alias gs="git status -sb"
+#alias gs="git status -sb"
+alias gs="tig status"
 alias gd="git diff"
 alias gdi="git diff --ignore-all-space"
 alias gds="git difftool --extcmd 'icdiff --highlight --line-numbers' | less"
 alias gdsi="git difftool --ignore-all-space --extcmd 'icdiff --highlight --line-numbers' | less"
 alias ga="git add"
 alias gc=git_awesome_commit
+alias ghp="open https://github.com/pulls"
 
 # Bundler
 alias be="bundle exec"
@@ -48,7 +50,7 @@ function xopen() {
     fi
 
     workspace=$(find . -name '*.xcworkspace' -maxdepth 1)
-    project=$(find . -name '*.xcworkspace' -maxdepth 1)
+    project=$(find . -name '*.xcodeproj' -maxdepth 1)
 
     if [[ -n $workspace ]]; then
         open "$workspace"
@@ -107,7 +109,7 @@ github_slug(){
 # specified branch.
 # Usage: b [branch] (default: master)
 bl() {
-    git l "${1:-origin}"..HEAD
+    git l "${1:-origin}"..HEAD "$@"
 }
 
 pulls() {
@@ -125,12 +127,13 @@ issues() {
 # Creates a pull request on Github against the provided branch or `master`
 # After successfull creation, opens it in your web browser.
 function awesome_pull_request() {
-  if [[ -n $1 ]]; then
-      branch=$1
-  else
-      branch=master
-  fi
-  hub pull-request -b $branch -o
+    if [[ -n $1 ]]; then
+        branch=$1
+    else
+        branch=master
+    fi
+    git push
+    hub pull-request -b $branch -o
 }
 
 # Pushes the current branch and sets it to upstream
@@ -219,26 +222,50 @@ function man() {
 
 # Search through your code directories and quickly open project folder
 # For example:
-# $ wo sugar
-#     -> will take me to ~/code/OSS/ObjectiveSugar
+# $ wo traz
+#     -> will take me to ~/code/oss/Alcatraz
 #
 # $ wo <Enter>
 #     -> Opens up the fuzzy finder for your code directories
-# shellcheck disable=SC2086,SC2164
+# Requirement:
+#     $fuzzy_selector needs to be set, e.g.
+#
+# $fuzzy_selector=fzf
+#
+# shellcheck disable=SC2086,SC2155
+
 function wo() {
     code_dirs=(
-        ~/code
-        ~/code/go/src
+        $HOME/code
+        $HOME/code/go/src
     )
     dir_list=$(find "${code_dirs[@]}" -type d -maxdepth 3 | grep -v /Pods)
 
     if [[ -n $1 ]]; then
-        cd "$(grep --max-count=1 -i "$*" <<< $dir_list)"
+        dir=$(grep --max-count=1 -i "$*" <<< $dir_list)
     else
         if [ -x "$(which $fuzzy_selector)" ]; then
-            cd "$(grep -v /Pods <<< $dir_list | $fuzzy_selector)"
+            dir=$(grep -v /Pods <<< $dir_list | $fuzzy_selector)
         else
             echo "You need to install '$fuzzy_selector' to get the fuzzy finder"
+            exit 1
         fi
+    fi
+
+    cd "$dir" || echo "WAT"
+    tmux rename-window "$(basename $dir)"
+}
+
+
+transfer() {
+    if [ $# -eq 0 ]; then
+        echo -e "No arguments specified. Usage:\n$ transfer [path-to-file]"
+        return 1
+    fi
+    if tty -s; then
+        basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
+        curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile"
+    else
+        curl --progress-bar --upload-file "-" "https://transfer.sh/$1"
     fi
 }
