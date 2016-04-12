@@ -1,10 +1,20 @@
+!.gitignore
+
 .DS_Store
-.swp
-.vim/bundle/
+*.swp
 .gem/
 .htoprc
 .netrc
 .ssh
+
+.netrwhist
+Session.vim
+.vim/*.spl
+.vim/bundle/*
+
+.gnupg/*
+!.gnupg/gpg.conf
+!.gnupg/gpg-agent.conf
 
 # apps putting secrets in .config
 .config/hub
