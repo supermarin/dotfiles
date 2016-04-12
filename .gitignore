@@ -6,6 +6,13 @@
 .netrc
 .ssh
 
+# apps putting secrets in .config
+.config/hub
+.config/keybase
+
 # syncthing
 .stfolder
 .stversions/
+
+# logs
+*.log
