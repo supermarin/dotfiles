@@ -53,7 +53,7 @@
     show = diff-highlight | less
 
 [push]
-    default = upstream
+    default = current
 
 [pull]
     rebase = true
