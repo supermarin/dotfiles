@@ -11,7 +11,6 @@ source "$HOME/.antigen/antigen.zsh"
 antigen use oh-my-zsh
 
 antigen bundle git
-#antigen bundle jimmijj/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle tarruda/zsh-autosuggestions
 antigen bundle zsh-users/zsh-history-substring-search
@@ -25,4 +24,3 @@ antigen apply
 
 ## FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
