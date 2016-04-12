@@ -5,3 +5,7 @@
 .htoprc
 .netrc
 .ssh
+
+# syncthing
+.stfolder
+.stversions/
