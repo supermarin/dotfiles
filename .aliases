@@ -44,7 +44,7 @@ alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
 alias decodeprovisioning="security cms -D -i"
 
 # Open the current .xcworkspace or .xcodeproj
-function xopen() {
+xopen() {
     if [[ -n $1 ]]; then
         open "$1"
     fi
@@ -97,7 +97,7 @@ alias mock="mux start mock-api"
 # Git(hub)
 alias ghpr=awesome_pull_request
 
-function pastegist() {
+pastegist() {
     open "$(pbpaste | gist -p)"
 }
 
@@ -126,7 +126,7 @@ issues() {
 
 # Creates a pull request on Github against the provided branch or `master`
 # After successfull creation, opens it in your web browser.
-function awesome_pull_request() {
+awesome_pull_request() {
     if [[ -n $1 ]]; then
         branch=$1
     else
@@ -137,14 +137,14 @@ function awesome_pull_request() {
 }
 
 # Pushes the current branch and sets it to upstream
-function push_and_set_upstream() {
+push_and_set_upstream() {
     git push -u origin "$(git branch | grep '\*' | cut -d ' ' -f 2)"
 }
 
 # The most awesome Git commit you'll find ever.
 # Usage:
 #       $ gc handle cli argumnents. Fixes #213
-function git_awesome_commit() {
+git_awesome_commit() {
   if [[ -n $1 ]]; then
       git add .
       git commit -am "$*"
@@ -154,7 +154,7 @@ function git_awesome_commit() {
 }
 
 # Jira....
-function jira() {
+jira() {
     if [[ -n $1 ]]; then
         open "https://lyftme.atlassian.net/browse/$1"
     else
@@ -162,12 +162,16 @@ function jira() {
     fi
 }
 
+confluence() {
+    open "https://lyftme.atlassian.net/wiki"
+}
+
 # Fuzzy finds branches except your current branch, returns the selected branch
-function fuzzy_branch() {
+fuzzy_branch() {
     git branch | grep -Ev '\*' | $fuzzy_selector | tr -d ' '
 }
 
-function awesome_switch_branch() {
+awesome_switch_branch() {
     if [[ -n $1 ]]; then
         git checkout "$1"
     else
@@ -178,7 +182,7 @@ function awesome_switch_branch() {
     fi
 }
 
-function awesome_branch_delete() {
+awesome_branch_delete() {
     #set -e
     branch=$(fuzzy_branch)
     if [[ -n $branch ]]; then
@@ -193,7 +197,7 @@ function awesome_branch_delete() {
     fi
 }
 
-function awesome_branch_merge() {
+awesome_branch_merge() {
     branch=$(fuzzy_branch)
     if [[ -n $branch ]]; then
         git merge "$branch"
@@ -202,12 +206,12 @@ function awesome_branch_merge() {
 
 
 # Fuzzy finds a running proccess using `ps ax`
-function findproccess() {
+findproccess() {
     ps ax | $fuzzy_selector
 }
 
 # man(1) with colors!!!1!
-function man() {
+man() {
     # shellcheck disable=SC2046
     env \
         LESS_TERMCAP_mb=$(printf "\e[1;31m") \
@@ -234,7 +238,7 @@ function man() {
 #
 # shellcheck disable=SC2086,SC2155
 
-function wo() {
+wo() {
     code_dirs=(
         $HOME/code
         $HOME/code/go/src
