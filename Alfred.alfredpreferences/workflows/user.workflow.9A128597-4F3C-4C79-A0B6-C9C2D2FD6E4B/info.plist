@@ -60,7 +60,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Utilities/Terminal.app</string>
+					<string>/Applications/iTerm.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
