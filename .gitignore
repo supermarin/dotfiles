@@ -26,3 +26,7 @@ Session.vim
 
 # logs
 *.log
+
+# Dash license / temp
+Library/Application\ Support/Dash/*
+!Library/Application\ Support/Dash/library.dash
