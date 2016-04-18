@@ -8,5 +8,3 @@ bind generic   A    !git commit --amend
 bind main      C    !git commit --verbose
 bind status    C    !git commit --verbose
 bind status    a    !git add -p %(file)
-
-color cursor white black bold
