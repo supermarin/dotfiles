@@ -1,12 +1,16 @@
 !.gitignore
 
 .DS_Store
-*.swp
 .gem/
 .htoprc
 .netrc
 .ssh
 
+# rtv token and history
+.config/rtv
+
+# vim shit
+*.swp
 .netrwhist
 Session.vim
 .vim/*.spl
