@@ -33,7 +33,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Vivaldi.app</string>
+					<string>/Applications/Safari.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
