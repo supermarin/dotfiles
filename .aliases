@@ -6,6 +6,9 @@ alias rm=trash
 # Fuzzy selector of choice; fzf, selecta, pick, ...
 local fuzzy_selector=fzf
 
+# override vim
+alias vi=vim
+
 alias 🚢="git push --force"
 # Common
 alias c=clear
