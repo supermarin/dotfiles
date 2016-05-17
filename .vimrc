@@ -47,6 +47,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'ChrisKempson/Tomorrow-Theme', { 'rtp': 'vim/'}
 Plug 'tomasr/molokai'
+Plug 'joshdick/onedark.vim'
 
 " Code Navigation
 Plug 'rking/ag.vim'
@@ -121,8 +122,11 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if strftime("%H") >= 5 && strftime("%H") <= 17
     set background=light
-    colorscheme Tomorrow
-    let g:rehash256 = 1 "wtf was this?
+    "colorscheme Tomorrow-Night-Eighties
+    "let g:rehash256 = 1 "wtf was this?
+
+    let g:onedark_termcolors=16
+    colorscheme onedark
 else
     set background=dark
     colorscheme Tomorrow-Night-Eighties
