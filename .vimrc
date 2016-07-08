@@ -46,9 +46,6 @@ set tags=./tags;,tags;
 call plug#begin('~/.vim/plugged')
 
 " Color schemes
-Plug 'altercation/vim-colors-solarized'
-Plug 'ChrisKempson/Tomorrow-Theme', { 'rtp': 'vim/'}
-Plug 'tomasr/molokai'
 Plug 'joshdick/onedark.vim'
 
 " Code Navigation
@@ -60,12 +57,14 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Vim enhancements
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-repeat' " Repeat plugin commands with '.'
 Plug 'majutsushi/tagbar'
+Plug 'airblade/vim-gitgutter'
 
 " sudo write
 Plug 'tpope/vim-eunuch'
@@ -80,11 +79,9 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/vim-easy-align'
 "Plug 'davidbeckingsale/writegood.vim'
 Plug 'valloric/MatchTagAlways'
-Plug 'jiangmiao/auto-pairs'
 
 " Lang specific bundles
 Plug 'vim-ruby/vim-ruby'
-Plug 'wting/rust.vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-cucumber'
