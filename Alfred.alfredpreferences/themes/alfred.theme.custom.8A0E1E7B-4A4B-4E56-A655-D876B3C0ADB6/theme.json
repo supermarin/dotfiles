@@ -1,0 +1,61 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 4,
+      "subtext" : {
+        "size" : 14,
+        "colorSelected" : "#FDFDFFFF",
+        "font" : "Helvetica Neue Light",
+        "color" : "#7F7F7FFF"
+      },
+      "shortcut" : {
+        "size" : 16,
+        "colorSelected" : "#FCFBFFFF",
+        "font" : "Helvetica Neue Light",
+        "color" : "#4C4C4CFF"
+      },
+      "backgroundSelected" : "#1A60CBFF",
+      "text" : {
+        "size" : 20,
+        "colorSelected" : "#FDFDFFFF",
+        "font" : "Helvetica Neue Light",
+        "color" : "#FFFFFFFF"
+      },
+      "iconPaddingHorizontal" : 5,
+      "paddingVertical" : 4,
+      "iconSize" : 40
+    },
+    "search" : {
+      "paddingVertical" : 2,
+      "background" : "#00000000",
+      "spacing" : 10,
+      "text" : {
+        "size" : 32,
+        "colorSelected" : "#000000FF",
+        "font" : "Helvetica Neue Light",
+        "color" : "#FFFFFFFF"
+      },
+      "backgroundSelected" : "#B2D7FFFF"
+    },
+    "window" : {
+      "color" : "#272727E0",
+      "paddingHorizontal" : 10,
+      "width" : 680,
+      "borderPadding" : 10,
+      "borderColor" : "#00000000",
+      "blur" : 0,
+      "roundness" : 3,
+      "paddingVertical" : 10
+    },
+    "credit" : "Matt Gemmell",
+    "separator" : {
+      "color" : "#00000000",
+      "thickness" : 1
+    },
+    "scrollbar" : {
+      "color" : "#262626FF",
+      "thickness" : 2
+    },
+    "name" : "Yosemite Spotlight Dark (v2)"
+  }
+}
