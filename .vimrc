@@ -331,12 +331,6 @@ vmap <leader>{ c{<C-R>"}<ESC>
 
 map <leader>` ysiw`
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Delimitmate
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let delimitMate_expand_cr = 1
-" By default it expands ` as well, nobody wants that in the world
-let delimitMate_quotes = "\" '"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " INSTANT MARKDOWN
@@ -408,12 +402,6 @@ autocmd Filetype ruby   map <Leader>a :w\|:call RunAllSpecs()<CR>
 
 autocmd Filetype cucumber map <leader>t :w\|:!cucumber %<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Rust - racer
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set hidden
-let g:racer_cmd = "$HOME/code/playground/racer/target/release/racer"
-let $RUST_SRC_PATH="$HOME/code/playground/racer/src/"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim-GO
