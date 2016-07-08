@@ -9,6 +9,8 @@ set autoread   " Watch for file changes and auto update
 " Unfuck splits to position cursor on the right / below split. Thank you.
 set splitbelow
 set splitright
+" Unfuck backspace in 2016
+set backspace=indent,eol,start
 
 "set encoding=utf-8
 " ^ neovim complains about this
