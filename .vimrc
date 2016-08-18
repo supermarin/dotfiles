@@ -105,9 +105,9 @@ if has('nvim')
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_smart_case = 1
 else
-    "Plug 'Shougo/neocomplete.vim'
-    "let g:neocomplete#enable_at_startup = 1
-    "let g:neocomplete#enable_smart_case = 1
+    Plug 'Shougo/neocomplete.vim'
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_smart_case = 1
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
     "let g:ycm_collect_identifiers_from_tags_files = 1
 endif
