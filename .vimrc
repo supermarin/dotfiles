@@ -6,6 +6,7 @@ set t_Co=256
 set ttyfast    " Set that we have a fast terminal
 set lazyredraw " Don't redraw vim in all situations
 set autoread   " Watch for file changes and auto update
+set autowrite  " Automatically write file before running :make
 " Unfuck splits to position cursor on the right / below split. Thank you.
 set splitbelow
 set splitright
