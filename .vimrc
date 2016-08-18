@@ -63,7 +63,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
-Plug 'ervandew/supertab'
 Plug 'tpope/vim-repeat' " Repeat plugin commands with '.'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
@@ -74,7 +73,7 @@ Plug 'tpope/vim-eunuch'
 " Text editing enhancements
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
-Plug 'seletskiy/vim-autosurround'
+"Plug 'seletskiy/vim-autosurround'
 Plug 'vim-scripts/camelcasemotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -417,11 +416,6 @@ au FileType go nmap <Leader>d <Plug>(go-info)
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" supertab
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:SuperTabDefaultCompletionType = "<c-n>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Disable completion when using multiple cursors
