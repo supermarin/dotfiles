@@ -176,9 +176,6 @@ set incsearch
 set hlsearch
 set ignorecase smartcase
 
-" Highlight trailing whitespace only after some chars
-"/\S\zs\s\+$
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC TEXT EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
