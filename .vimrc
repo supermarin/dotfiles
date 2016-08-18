@@ -120,17 +120,9 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if strftime("%H") >= 5 && strftime("%H") <= 17
-    set background=light
-    "colorscheme Tomorrow-Night-Eighties
-    "let g:rehash256 = 1 "wtf was this?
-
-    let g:onedark_termcolors=16
-    colorscheme onedark
-else
-    set background=dark
-    colorscheme Tomorrow-Night-Eighties
-endif
+set background=dark
+let g:onedark_termcolors=16
+colorscheme onedark
 
 " Netrw width
 let g:netrw_winsize = 25
