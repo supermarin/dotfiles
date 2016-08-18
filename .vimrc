@@ -54,6 +54,7 @@ Plug 'rking/ag.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
+" Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -146,6 +147,8 @@ set nowritebackup
 set noswapfile
 " Highlight current line
 set cursorline
+" display incomplete commands
+set showcmd
 " syntax
 syntax on
 filetype plugin indent on
@@ -364,21 +367,21 @@ let g:netrw_altv = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compile and run
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd Filetype ruby   nmap <leader>r :w\|:!ruby %<cr>
-autocmd Filetype python nmap <leader>r :w\|:!python %<cr>
-autocmd Filetype java   nmap <leader>r :w\|:!javac %<cr> :!java %:r<cr>
-autocmd Filetype swift  nmap <leader>r :w\|:!swift %<cr>
+autocmd Filetype ruby        nmap <leader>r :w\|:!ruby %<cr>
+autocmd Filetype python      nmap <leader>r :w\|:!python %<cr>
+autocmd Filetype java        nmap <leader>r :w\|:!javac %<cr> :!java %:r<cr>
+autocmd Filetype swift       nmap <leader>r :w\|:!swift %<cr>
 autocmd Filetype sh,bash,zsh nmap <leader>r :w\|:!$SHELL %<cr>
 
 " Golang... I'm shhhpeshial
-autocmd FileType go     nmap <leader>r <Plug>(go-run)
-"autocmd FileType go     nmap <leader>t <Plug>(go-test)
-autocmd FileType go     nmap <leader>t :wa\|:!go test<cr>
-"autocmd FileType go setlocal omnifunc=gocode#Complete
+autocmd FileType go          nmap <leader>r <Plug>(go-run)
+autocmd FileType go          nmap <leader>b <Plug>(go-build)
+autocmd FileType go          nmap <leader>t <Plug>(go-test)
+autocmd FileType go          nmap <leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go          nmap <leader>a :GoAlternate<CR>
 
 
 
-autocmd FileType go     nmap <leader>c <Plug>(go-coverage)
 " Definition in a split / vertical
 autocmd FileType go nmap <Leader>ds <Plug>(go-def-split)
 autocmd FileType go nmap <Leader>dv <Plug>(go-def-vertical)
