@@ -172,7 +172,7 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols.branch = '⎇'
-"let g:airline#extensions#tabline#enabled = 1 "tabline
+let g:airline_theme = 'kolor'
 
 " Real time search and highlight
 set incsearch
