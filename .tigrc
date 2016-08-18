@@ -1,5 +1,3 @@
-set ignore-space = all
-
 bind generic   r    refresh
 bind generic   P    ?git stash pop
 bind generic   S    ?git stash
