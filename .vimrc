@@ -251,12 +251,6 @@ function! RemoveHighlights()
 endfunction
 call RemoveHighlights()
 
-" Select all
-function! SelectAll()
-  nnoremap <leader>a gg\|VG
-endfunction
-call SelectAll()
-
 " Tagbar toggle (open methods and props list in a sidebar)
 map <leader>2 :TagbarToggle<CR>
 
