@@ -6,7 +6,7 @@
     commit = commit -v
     c = commit
     co = checkout
-    conflicts = !git ls-files -u | cut -f 2 | sort -u
+    conflicts = diff --name-only --diff-filter=U
     cam = commit --amend
     l = log --graph --pretty='%C(yellow)%h (%cr) %Cblue %an%C(magenta)%d%Creset %s'
     me = !git l --author=Marin
@@ -18,12 +18,11 @@
     releases = !git branch -a | grep release
     s = status -sb
     sl = stash list
-    snc = !git pull && git submodule update --init --recursive
     ss = stash save
     sp = stash pop
     su = submodule update --recursive
     today = !git whathaveidone 1.day
-    update = !git pull && git submodule update --init
+    up = !git pull && git submodule update --init --recursive
     yolo = push -f origin master
     yoloed = !git fetch origin && git reset --hard origin/master
     week = !git whathaveidone 1.week
