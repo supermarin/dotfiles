@@ -59,7 +59,7 @@
 
 [commit]
     verbose = true
-    gpgsign = true
+    ;gpgsign = true
 
 [gpg]
     program = gpg2
