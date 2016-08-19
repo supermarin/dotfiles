@@ -1,5 +1,8 @@
 !.gitignore
 
+# Ignore ~/.bin - it's useful but I don't think there's anything to version
+.bin/
+
 .DS_Store
 .gem/
 .htoprc
