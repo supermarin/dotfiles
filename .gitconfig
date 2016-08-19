@@ -46,10 +46,19 @@
     diff = auto
     status = auto
 
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+
 [pager]
     diff = diff-highlight | less
     log  = diff-highlight | less
     show = diff-highlight | less
+
+[interactive]
+    diffFilter = diff-highlight
 
 [push]
     default = current
@@ -70,13 +79,17 @@
 
 [ghi]
     token = !security find-internet-password -a supermarin -s github.com -l 'ghi token' -w
+
 [i18n]
     commitencoding = utf8
+
 [filter "lfs"]
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
+
 [rerere]
     enabled = true
+
 [rebase]
     autostash = true
