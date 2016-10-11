@@ -6,15 +6,17 @@
 	<string></string>
 	<key>connections</key>
 	<dict>
-		<key>F1731890-D1C5-48E4-B9F1-C1F840633B63</key>
+		<key>E957B2E6-2A6E-425C-A2D9-9DBEE794A179</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>8BC7C56B-0702-4172-BF0C-18F0EE87F4EF</string>
+				<string>26D43307-FDB2-4C5B-AD77-9F3521EA514A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
@@ -25,25 +27,34 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Launch Spotify</string>
+	<string>WAT</string>
 	<key>objects</key>
 	<array>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Spotify.app</string>
-				</array>
-				<key>toggle</key>
+				<key>adduuid</key>
 				<false/>
+				<key>allowemptyfiles</key>
+				<true/>
+				<key>createintermediatefolders</key>
+				<false/>
+				<key>filename</key>
+				<string>/tmp/wat</string>
+				<key>filetext</key>
+				<string>asdf
+</string>
+				<key>relativepathmode</key>
+				<integer>0</integer>
+				<key>type</key>
+				<integer>2</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
+			<string>alfred.workflow.output.writefile</string>
 			<key>uid</key>
-			<string>8BC7C56B-0702-4172-BF0C-18F0EE87F4EF</string>
+			<string>26D43307-FDB2-4C5B-AD77-9F3521EA514A</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -53,11 +64,11 @@
 				<key>argument</key>
 				<integer>0</integer>
 				<key>hotkey</key>
-				<integer>1</integer>
+				<integer>35</integer>
 				<key>hotmod</key>
 				<integer>1310720</integer>
 				<key>hotstring</key>
-				<string>S</string>
+				<string>P</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -68,24 +79,28 @@
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>F1731890-D1C5-48E4-B9F1-C1F840633B63</string>
+			<string>E957B2E6-2A6E-425C-A2D9-9DBEE794A179</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>8BC7C56B-0702-4172-BF0C-18F0EE87F4EF</key>
+		<key>26D43307-FDB2-4C5B-AD77-9F3521EA514A</key>
 		<dict>
+			<key>xpos</key>
+			<integer>440</integer>
 			<key>ypos</key>
-			<real>10</real>
+			<integer>120</integer>
 		</dict>
-		<key>F1731890-D1C5-48E4-B9F1-C1F840633B63</key>
+		<key>E957B2E6-2A6E-425C-A2D9-9DBEE794A179</key>
 		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
 			<key>ypos</key>
-			<real>10</real>
+			<integer>120</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
