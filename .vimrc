@@ -26,8 +26,6 @@ if has("clipboard") " If the feature is available
   set clipboard=unnamed " copy to the system clipboard
 endif
 
-set shortmess=I " I - Disable the startup message
-
 " Write undo tree to a file to resume from next time the file is opened
 if has("persistent_undo")
   set undolevels=2000            " The number of undo items to remember
@@ -166,8 +164,8 @@ set laststatus=2
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-"let g:airline_theme='badwolf'
-let g:airline#extensions#branch#enabled = 1
+
+let g:airline_extensions = ['branch']
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols.branch = '⎇'
