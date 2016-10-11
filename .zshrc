@@ -24,3 +24,6 @@ antigen apply
 
 ## FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Temporary conference hack
+# export PS1='$ '
