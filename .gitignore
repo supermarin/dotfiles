@@ -14,7 +14,7 @@
 
 # vim shit
 *.swp
-.netrwhist
+**/.netrwhist
 Session.vim
 .vim/*.spl
 .vim/bundle/*
