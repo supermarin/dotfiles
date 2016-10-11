@@ -60,6 +60,9 @@
 [interactive]
     diffFilter = diff-highlight
 
+[diff "plist"]
+    textconv = plutil -convert xml1 -o -
+
 [push]
     default = current
 
