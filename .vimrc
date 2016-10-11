@@ -256,7 +256,11 @@ map <leader>2 :TagbarToggle<CR>
 " When using p, adjust indent to the current line
 nmap p ]p
 
-" Turn on spell check
+" Turn on spell check for Markdown files
+function! SpellCheck()
+    setlocal spell spelllang=en_us
+endfunction
+au FileType md,markdown call SpellCheck()
 nmap <leader>s :setlocal spell spelllang=en_us<cr>
 
 " Search a given pattern in Dash.app
