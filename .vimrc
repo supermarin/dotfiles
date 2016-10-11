@@ -60,7 +60,6 @@ Plug 'honza/vim-snippets'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-repeat' " Repeat plugin commands with '.'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
@@ -99,10 +98,12 @@ Plug 'darfink/vim-plist'
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'
     Plug 'zchee/deoplete-go', { 'do': 'make'}
+    Plug 'Neomake/Neomake'
     let g:python3_host_skip_check = 1 "maybe can get rid of this. have to bench
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_smart_case = 1
 else
+    Plug 'scrooloose/syntastic'
     Plug 'Shougo/neocomplete.vim'
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
