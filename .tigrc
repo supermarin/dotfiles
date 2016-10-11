@@ -1,8 +1,12 @@
 bind generic   r    refresh
 bind generic   P    ?git stash pop
 bind generic   S    ?git stash
-bind main      R    ?git rebase -i %(commit)
 bind generic   A    !git commit --amend
+
+bind main      R    ?git rebase -i %(commit)
 bind main      C    !git commit --verbose
+
 bind status    C    !git commit --verbose
 bind status    a    !git add -p %(file)
+bind status    d    !/bin/rm -i %(file)
+bind status    r    !git reset %(file)
