@@ -76,9 +76,17 @@
 [gpg]
     program = gpg2
 
+[merge]
+    tool = vim
+    log = true
+    stat = true
+
 [mergetool]
     keepBackup = false
     prompt = false
+
+[mergetool "vim"]
+    cmd = vim -c "normal\\ gg]c" -f \"$MERGED\"
 
 [ghi]
     token = !security find-internet-password -a supermarin -s github.com -l 'ghi token' -w
