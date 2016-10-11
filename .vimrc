@@ -221,6 +221,7 @@ nnoremap gk k
 
 " Toggle comments
 map <silent> <leader>/ :call NERDComment(0,"toggle")<C-m>
+let g:NERDAltDelims_swift = 1
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
