@@ -48,9 +48,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'joshdick/onedark.vim'
 
 " Code Navigation
-Plug 'rking/ag.vim'
 Plug 'tpope/vim-vinegar'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'
