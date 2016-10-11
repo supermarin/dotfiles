@@ -3,11 +3,8 @@
 # System overrides
 alias rm=trash
 
-# Fuzzy selector of choice; fzf, selecta, pick, ...
-local fuzzy_selector=fzf
-
 # override vim
-alias vi=vim
+alias vi=nvim
 
 alias 🚢="git push --force"
 # Common
@@ -97,8 +94,23 @@ alias tdalb="tdab @lyft"
 # Lyft
 alias mock="mux start mock-api"
 
-# Git(hub)
+# Github
 alias ghpr=awesome_pull_request
+
+# Fuzzy select input with a selector of choice (fzf, selecta, pick...)
+function fuzzy_select() {
+    if [ -x "$(which fzf)" ]; then
+        fzf --color=bw
+    else
+        echo "You need to install 'fzf' to get the fuzzy finder"
+        exit 1
+    fi
+}
+
+# Quickly edit file
+function ef() {
+    file=$(fuzzy_select) || false && $EDITOR "$file"
+}
 
 pastegist() {
     open "$(pbpaste | gist -p)"
@@ -171,7 +183,7 @@ confluence() {
 
 # Fuzzy finds branches except your current branch, returns the selected branch
 fuzzy_branch() {
-    git branch | grep -Ev '\*' | $fuzzy_selector | tr -d ' '
+    git branch | grep -Ev '\*' | fuzzy_select | tr -d ' '
 }
 
 awesome_switch_branch() {
@@ -210,7 +222,7 @@ awesome_branch_merge() {
 
 # Fuzzy finds a running proccess using `ps ax`
 findproccess() {
-    ps ax | $fuzzy_selector
+    ps ax | fuzzy_select
 }
 
 # man(1) with colors!!!1!
@@ -234,13 +246,8 @@ man() {
 #
 # $ wo <Enter>
 #     -> Opens up the fuzzy finder for your code directories
-# Requirement:
-#     $fuzzy_selector needs to be set, e.g.
-#
-# $fuzzy_selector=fzf
-#
-# shellcheck disable=SC2086,SC2155
 
+# shellcheck disable=SC2086
 wo() {
     code_dirs=(
         $HOME/code
@@ -251,18 +258,12 @@ wo() {
     if [[ -n $1 ]]; then
         dir=$(grep --max-count=1 -i "$*" <<< $dir_list)
     else
-        if [ -x "$(which $fuzzy_selector)" ]; then
-            dir=$(grep -v /Pods <<< $dir_list | $fuzzy_selector)
-        else
-            echo "You need to install '$fuzzy_selector' to get the fuzzy finder"
-            exit 1
-        fi
+        dir=$(grep -v /Pods <<< $dir_list | fuzzy_select)
     fi
 
     cd "$dir" || echo "WAT"
     tmux rename-window "$(basename $dir)"
 }
-
 
 transfer() {
     if [ $# -eq 0 ]; then
