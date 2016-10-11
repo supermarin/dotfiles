@@ -135,8 +135,8 @@ endif
 
 " Source the vimrc file after saving it
 augroup VIMRC_LIVE_RELOAD
-    autocmd!
-    autocmd bufwritepost .vimrc source $MYVIMRC
+    au!
+    au bufwritepost .vimrc source $MYVIMRC
 augroup end
 
 set nobackup
@@ -190,21 +190,22 @@ au BufRead,BufNewFile *.podspec,Podfile set ft=ruby " CocoaPods and Podfiles
 au BufRead,BufNewFile *.gradle,Jenkinsfile set ft=groovy " Android, Jerkins
 au BufRead,BufNewFile *.json set ai filetype=javascript " JSON
 au BufRead,BufNewFile *.md set ft=markdown " Markdown
-autocmd FileType make setlocal noexpandtab
-autocmd FileType ruby,groovy,haml,eruby,yaml,sass set ai sw=2 sts=2 et
-autocmd FileType html,javascript,python set sw=4 sts=4 et
+au FileType make setlocal noexpandtab
+au FileType ruby,groovy,haml,eruby,yaml,sass set ai sw=2 sts=2 et
+au FileType html,javascript,python set sw=4 sts=4 et
 
 " Whitespace
 set listchars=tab:\·\ ,trail:·
 
 " Strip trailing spaces on save
-autocmd BufWritePre * :%s/\s\+$//e
+au BufWritePre * :%s/\s\+$//e
 
 
 set list
 " Ruler
 set cc=80
-autocmd FileType objc set cc=120
+au FileType swift set cc=110
+au FileType objc  set cc=120
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
@@ -358,33 +359,33 @@ let g:netrw_altv = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compile and run
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd Filetype ruby        nmap <leader>r :w\|:!ruby %<cr>
-autocmd Filetype python      nmap <leader>r :w\|:!python %<cr>
-autocmd Filetype java        nmap <leader>r :w\|:!javac %<cr> :!java %:r<cr>
-autocmd Filetype swift       nmap <leader>r :w\|:!swift %<cr>
-autocmd Filetype sh,bash,zsh nmap <leader>r :w\|:!$SHELL %<cr>
+au Filetype ruby        nmap <leader>r :w\|:!ruby %<cr>
+au Filetype python      nmap <leader>r :w\|:!python %<cr>
+au Filetype java        nmap <leader>r :w\|:!javac %<cr> :!java %:r<cr>
+au Filetype swift       nmap <leader>r :w\|:!swift %<cr>
+au Filetype sh,bash,zsh nmap <leader>r :w\|:!$SHELL %<cr>
 
 " Golang... I'm shhhpeshial
-autocmd FileType go          nmap <leader>r <Plug>(go-run)
-autocmd FileType go          nmap <leader>b <Plug>(go-build)
-autocmd FileType go          nmap <leader>t <Plug>(go-test)
-autocmd FileType go          nmap <leader>c <Plug>(go-coverage-toggle)
-autocmd FileType go          nmap <leader>a :GoAlternate<CR>
+au FileType go          nmap <leader>r <Plug>(go-run)
+au FileType go          nmap <leader>b <Plug>(go-build)
+au FileType go          nmap <leader>t <Plug>(go-test)
+au FileType go          nmap <leader>c <Plug>(go-coverage-toggle)
+au FileType go          nmap <leader>a :GoAlternate<CR>
 
 
 
 " Definition in a split / vertical
-autocmd FileType go nmap <Leader>ds <Plug>(go-def-split)
-autocmd FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ruby - RUNNING TESTS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd Filetype ruby   map <Leader>t :w\|:call RunCurrentSpecFile()<CR>
-autocmd Filetype ruby   map <Leader>s :w\|:call RunNearestSpec()<CR>
-autocmd Filetype ruby   map <Leader>e :w\|:call RunLastSpec()<CR>
-autocmd Filetype ruby   map <Leader>a :w\|:call RunAllSpecs()<CR>
+au Filetype ruby   map <Leader>t :w\|:call RunCurrentSpecFile()<CR>
+au Filetype ruby   map <Leader>s :w\|:call RunNearestSpec()<CR>
+au Filetype ruby   map <Leader>e :w\|:call RunLastSpec()<CR>
+au Filetype ruby   map <Leader>a :w\|:call RunAllSpecs()<CR>
 
-autocmd Filetype cucumber map <leader>t :w\|:!cucumber %<cr>
+au Filetype cucumber map <leader>t :w\|:!cucumber %<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
