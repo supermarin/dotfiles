@@ -8,10 +8,10 @@
 		<string>/Applications/Xcode.app/Contents/Applications</string>
 		<string>/Developer/Applications</string>
 		<string>/Library/PreferencePanes</string>
-		<string>/opt/homebrew-cask/Caskroom</string>
 		<string>/System/Library/CoreServices/Applications</string>
 		<string>/System/Library/PreferencePanes</string>
-		<string>~/Applications</string>
+		<string>/usr/local/Caskroom</string>
+		<string>/usr/local/Cellar</string>
 		<string>~/Library/Caches/Metadata</string>
 		<string>~/Library/Mobile Documents</string>
 		<string>~/Library/PreferencePanes</string>
