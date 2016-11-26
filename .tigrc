@@ -1,3 +1,12 @@
+# Options
+set mouse			= yes
+set mouse-scroll	= 3
+set line-graphics	= utf-8
+
+# Log customization
+set main-view	    = id:yes date:relative author:full commit-title:yes,graph:v2,refs:yes,overflow:yes
+
+# Key bindings
 bind generic   r    refresh
 bind generic   P    ?git stash pop
 bind generic   S    ?git stash
@@ -7,6 +16,7 @@ bind main      R    ?git rebase -i %(commit)
 bind main      C    !git commit --verbose
 
 bind status    C    !git commit --verbose
-bind status    a    !git add -p %(file)
+bind status a       !?git commit --amend
 bind status    d    !/bin/rm -i %(file)
 bind status    r    !git reset %(file)
+
