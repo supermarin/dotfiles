@@ -12,6 +12,9 @@
 # rtv token and history
 .config/rtv
 
+# Gocode wtf
+.config/gocode
+
 # vim shit
 *.swp
 **/.netrwhist
@@ -38,3 +41,4 @@ Session.vim
 # Dash license / temp
 Library/Application\ Support/Dash/*
 !Library/Application\ Support/Dash/library.dash
+
