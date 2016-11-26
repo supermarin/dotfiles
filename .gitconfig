@@ -8,7 +8,7 @@
     co = checkout
     conflicts = diff --name-only --diff-filter=U
     cam = commit --amend
-    l = log --graph --pretty='%C(yellow)%h (%cr) %Cblue %an%C(magenta)%d%Creset %s'
+    l = log --graph --pretty='[%G?] %C(yellow)%h (%cr)%Cblue %an%C(magenta)%d%Creset %s'
     me = !git l --author=Marin
     mf = merge --no-ff
     rh = reset --hard
@@ -28,6 +28,9 @@
     week = !git whathaveidone 1.week
     whathaveidone = !git l --author=Marin --since
     wtc = !sh -c 'git commit $@ -m \""`curl -s http://whatthecommit.com/index.txt`"\"' -
+
+[log]
+    showSignature = true
 
 [user]
     name = Marin Usalj
@@ -76,17 +79,17 @@
 [gpg]
     program = gpg2
 
-[merge]
-    tool = vim
-    log = true
-    stat = true
-
 [mergetool]
     keepBackup = false
     prompt = false
 
 [mergetool "vim"]
     cmd = vim -c "normal\\ gg]c" -f \"$MERGED\"
+
+[merge]
+    tool = vim
+    log = true
+    stat = true
 
 [ghi]
     token = !security find-internet-password -a supermarin -s github.com -l 'ghi token' -w
