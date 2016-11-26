@@ -1,10 +1,13 @@
 # Options
-set mouse			= yes
-set mouse-scroll	= 3
-set line-graphics	= utf-8
+set mouse = yes
+set mouse-scroll = 3
+set line-graphics = utf-8
 
 # Log customization
-set main-view	    = id:yes date:relative author:full commit-title:yes,graph:v2,refs:yes,overflow:yes
+set main-view = id:yes \
+                date:relative \
+                author:full \
+                commit-title:yes,graph:v2,refs:yes,overflow:yes
 
 # Key bindings
 bind generic   r    refresh
