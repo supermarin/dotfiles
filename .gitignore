@@ -22,6 +22,8 @@ Session.vim
 .vim/*.spl
 .vim/bundle/*
 .vim/autoload/plug.vim
+.config/nvim/plugged
+.config/nvim/autoload/plug.vim
 
 .gnupg/*
 !.gnupg/gpg.conf
