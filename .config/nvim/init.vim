@@ -206,6 +206,16 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","
 
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" Move around tabs with [ ]
+nnoremap <M-}> gt
+nnoremap <M-{> gT
+
 " Better moving up-down for giantass wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -219,12 +229,6 @@ map <silent> <leader>/ :call NERDComment(0,"toggle")<C-m>
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" Move around splits with <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
 
 " Insert a hash rocket with <c-l>
 au FileType ruby imap <c-l> <space>=><space>
