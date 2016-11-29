@@ -4,7 +4,7 @@ scriptencoding utf-8
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 " Color schemes
 Plug 'rakr/vim-one'
