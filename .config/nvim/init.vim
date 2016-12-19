@@ -206,6 +206,9 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","
 
+" Disable default git-gutter shit
+let g:gitgutter_map_keys = 0
+
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -298,9 +301,6 @@ map <leader>{ ysiw{
 vmap <leader>} c{ <C-R>" }<ESC>
 vmap <leader>{ c{<C-R>"}<ESC>
 map <leader>` ysiw`
-
-" Disable default git-gutter shit
-let g:gitgutter_map_keys = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE EXPLORER
