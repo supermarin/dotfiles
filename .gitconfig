@@ -60,6 +60,10 @@
 [interactive]
     diffFilter = diff-highlight
 
+[diff]
+    submodule = log
+    indentHeuristic = true
+
 [diff "plist"]
     textconv = plutil -convert xml1 -o -
 
