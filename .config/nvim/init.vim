@@ -40,11 +40,12 @@ Plug 'vim-ruby/vim-ruby',    { 'for': 'ruby' }
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 Plug 'tpope/vim-cucumber',   { 'for': 'cucumber' }
 Plug 'fatih/vim-go',         { 'for': 'go' }
+Plug 'zchee/deoplete-go',    { 'for': 'go' }
+Plug 'zchee/deoplete-jedi',  { 'for': 'python'}
 Plug 'instant-markdown.vim', { 'for': 'markdown' }
 Plug 'tpope/vim-liquid',     { 'for': 'liquid' }
 Plug 'tpope/vim-jdaddy',     { 'for': 'json' }
 Plug 'keith/swift.vim',      { 'for': 'swift' }
-Plug 'zchee/deoplete-jedi',  { 'for': 'python'}
 Plug 'vim-jp/vim-cpp',       { 'for': ['c', 'objc', 'c++', 'cpp'] }
 Plug 'darfink/vim-plist',    { 'for': 'plist' }
 
