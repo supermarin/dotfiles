@@ -239,6 +239,6 @@ wo() {
         dir=$(grep -v /Pods <<< $dir_list | fuzzy_select)
     fi
 
-    cd "$dir" || echo "WAT"
+    cd "$dir" || { echo "WAT" && return }
     tmux rename-window "$(basename $dir)"
 }
