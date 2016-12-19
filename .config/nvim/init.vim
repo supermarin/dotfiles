@@ -275,11 +275,11 @@ nmap <C-p> :FZF<cr>
 map <leader># ysiw#
 vmap <leader># c#{<C-R>"}<ESC>
 
-" <leader>" Surround a word with "quotes"
+" <leader>" Surround a word with quotes
 map <leader>" ysiw"
 vmap <leader>" c"<C-R>""<ESC>
 
-" <leader>' Surround a word with 'single quotes'
+" <leader>' Surround a word with single quotes
 map <leader>' ysiw'
 vmap <leader>' c'<C-R>"'<ESC>
 
@@ -304,7 +304,7 @@ vmap <leader>{ c{<C-R>"}<ESC>
 map <leader>` ysiw`
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FILE EXPLORER
+" Netrw
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle Vexplore with Leader-1
 function! ToggleVExplorer()
@@ -349,7 +349,6 @@ au FileType go          nmap <leader>b <Plug>(go-build)
 au FileType go          nmap <leader>t <Plug>(go-test)
 au FileType go          nmap <leader>c <Plug>(go-coverage-toggle)
 au FileType go          nmap <leader>a :GoAlternate<CR>
-
 
 " Definition in a split / vertical
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
