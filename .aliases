@@ -19,11 +19,10 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # Git
-alias b=awesome_switch_branch
-alias bd=awesome_branch_delete
-alias bm=awesome_branch_merge
+alias b=switch_branch
+alias bd=branch_delete
+alias bm=branch_merge
 alias gp="git push --recurse-submodules=on-demand"
-alias gpu=push_and_set_upstream
 alias gl="git pull --rebase --stat"
 alias gf="git fetch"
 alias gs="tig status"
@@ -34,10 +33,10 @@ alias gds="git difftool \
 alias gdsi="git difftool --ignore-all-space \
                 --extcmd 'icdiff --highlight --line-numbers' | less"
 alias ga="git add"
-alias gc=git_awesome_commit
+alias gc="git_commit"
 
 # Github
-alias ghpr=awesome_pull_request
+alias ghpr=pull_request
 
 # Bundler
 alias be="bundle exec"
@@ -74,7 +73,7 @@ xc() {
 }
 
 # Fuzzy select input with a selector of choice (fzf, selecta, pick...)
-function fuzzy_select() {
+fuzzy_select() {
     if [ -x "$(which fzf)" ]; then
         fzf --color=bw
     else
@@ -84,7 +83,7 @@ function fuzzy_select() {
 }
 
 # Quickly edit file
-function ef() {
+ef() {
     file=$(fuzzy_select) || false && $EDITOR "$file"
 }
 
@@ -117,7 +116,7 @@ issues() {
 
 # Creates a pull request on Github against the provided branch or `master`
 # After successfull creation, opens it in your web browser.
-awesome_pull_request() {
+pull_request() {
     if [[ -n $1 ]]; then
         branch=$1
     else
@@ -127,15 +126,9 @@ awesome_pull_request() {
     hub pull-request -b $branch -o
 }
 
-# Pushes the current branch and sets it to upstream
-push_and_set_upstream() {
-    git push -u origin "$(git branch | grep '\*' | cut -d ' ' -f 2)"
-}
-
-# The most awesome Git commit you'll find ever.
 # Usage:
 #       $ gc handle cli argumnents. Fixes #213
-git_awesome_commit() {
+git_commit() {
   if [[ -n $1 ]]; then
       git add .
       git commit -am "$*"
@@ -162,7 +155,7 @@ fuzzy_branch() {
     git branch | grep -Ev '\*' | fuzzy_select | tr -d ' '
 }
 
-awesome_switch_branch() {
+switch_branch() {
     if [[ -n $1 ]]; then
         git checkout "$1"
     else
@@ -173,7 +166,7 @@ awesome_switch_branch() {
     fi
 }
 
-awesome_branch_delete() {
+branch_delete() {
     #set -e
     branch=$(fuzzy_branch)
     if [[ -n $branch ]]; then
@@ -188,7 +181,7 @@ awesome_branch_delete() {
     fi
 }
 
-awesome_branch_merge() {
+branch_merge() {
     branch=$(fuzzy_branch)
     if [[ -n $branch ]]; then
         git merge "$branch"
