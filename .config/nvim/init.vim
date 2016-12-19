@@ -156,7 +156,7 @@ au FileType objc  set cc=120
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ack.vim
 " todo: see if i can just use native grep instead of ack.vim
-let g:ackprg = 'rg --vimgrep --no-heading --no-ignore --hidden --follow --glob "!./tags" --glob "!.git/*" --glob "!build/"'
+let g:ackprg = 'rg --vimgrep --no-heading --no-ignore --hidden --follow --glob "!tags" --glob "!.git/*" --glob "!build/"'
 cnoreabbrev ag Ack
 
 " Deoplete
