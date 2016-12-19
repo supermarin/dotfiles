@@ -8,7 +8,7 @@ alias vi=nvim
 
 # Common
 alias c=clear
-alias h="fzf < .zhistory"
+alias h="fzf --history=$HOME/.zhistory --history-size=1000000000000000"
 alias la="ls -lah"
 alias ccat="pygmentize -g"
 alias json="python -m json.tool | pygmentize -l json"
