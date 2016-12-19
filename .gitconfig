@@ -29,9 +29,6 @@
     whathaveidone = !git l --author=Marin --since
     wtc = !sh -c 'git commit $@ -m \""`curl -s http://whatthecommit.com/index.txt`"\"' -
 
-[log]
-    showSignature = true
-
 [user]
     name = Marin Usalj
     email = marin2211@gmail.com
