@@ -93,7 +93,11 @@ augroup end
 
 " Default overrides - check with nvim and revisit!
 set lazyredraw " Don't redraw vim in all situations
-set autoread   " Watch for file changes and auto update
+
+" Watch for file changes and auto update
+set autoread
+au CursorHold * checktime
+
 set autowrite  " Automatically write file before running :make
 
 " Unfuck splits to position cursor on the right / below split. Thank you.
