@@ -231,7 +231,7 @@ wo() {
         $HOME/code
         $HOME/code/go/src
     )
-    dir_list=$(find "${code_dirs[@]}" -type d -maxdepth 3 | grep -v /Pods)
+    dir_list=$(find "${code_dirs[@]}" -maxdepth 3 -type d | grep -v /Pods)
 
     if [[ -n $1 ]]; then
         dir=$(grep --max-count=1 -i "$*" <<< $dir_list)
