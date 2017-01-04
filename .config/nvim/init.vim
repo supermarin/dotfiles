@@ -118,7 +118,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors
 set termguicolors
-set background=light
+set background=dark
 colorscheme one
 
 " Cursor shape change
