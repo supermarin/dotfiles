@@ -103,11 +103,7 @@ bl() {
 }
 
 pulls() {
-    if [[ $1 = "me" ]]; then
-        open "https://github.com/$(github_slug)/pulls/supermarin"
-    else
-        open "https://github.com/$(github_slug)/pulls/$1"
-    fi
+    open "https://github.com/$(github_slug)/pulls/$1"
 }
 
 issues() {
