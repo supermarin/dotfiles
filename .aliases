@@ -75,7 +75,7 @@ xc() {
 # Fuzzy select input with a selector of choice (fzf, selecta, pick...)
 fuzzy_select() {
     if [ -x "$(which fzf)" ]; then
-        fzf --color=bw
+        fzf-tmux --color=bw
     else
         echo "You need to install 'fzf' to get the fuzzy finder"
         exit 1
