@@ -37,6 +37,7 @@ alias gc="git_commit"
 
 # Github
 alias ghpr=pull_request
+alias pm="pulls supermarin"
 
 # Bundler
 alias be="bundle exec"
