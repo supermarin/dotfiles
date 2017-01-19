@@ -33,7 +33,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'valloric/MatchTagAlways'
+Plug 'valloric/MatchTagAlways', { 'for': ['html', 'xhtml', 'xml', 'jinja'] }
 
 " Lang specific bundles
 Plug 'vim-ruby/vim-ruby',    { 'for': 'ruby' }
