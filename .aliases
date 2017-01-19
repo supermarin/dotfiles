@@ -196,8 +196,9 @@ rage_delete_branches() {
 }
 
 # Fuzzy finds a running proccess using `ps ax`
-findproccess() {
-    ps ax | fuzzy_select
+fp() {
+    if [[ -n "$1" ]]; then ps ax | grep -v 'grep' | grep $1;
+    else ps ax | fuzzy_select; fi
 }
 
 # man(1) with colors!!!1!
