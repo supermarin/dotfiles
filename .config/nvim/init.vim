@@ -11,7 +11,7 @@ Plug 'rakr/vim-one'
 
 " Code Navigation
 Plug 'tpope/vim-vinegar'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'mileszs/ack.vim'
 
 " Completion / linting
@@ -163,7 +163,8 @@ au FileType objc  set cc=120
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ack.vim
 " todo: see if i can just use native grep instead of ack.vim
-let g:ackprg = 'rg -S --vimgrep --no-heading --no-ignore --hidden --follow --glob "!tags" --glob "!.git/*" --glob "!build/"'
+let g:ackprg = 'rg --vimgrep --no-heading '
+let g:ackprg .= $RG_DEFAULT_OPTIONS
 cnoreabbrev ag Ack
 
 " Deoplete
@@ -272,7 +273,7 @@ vmap <leader>f :call PrettyJson()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <C-p> :FZF<cr>
+nmap <C-p> :SK<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-SURROUND
