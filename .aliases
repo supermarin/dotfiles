@@ -48,6 +48,10 @@ alias bu="bundle update"
 alias pi="pod install"
 alias pu="pod update"
 
+# ripgrep
+# stupid hack because it still doesn't support ~/.rgrc
+alias rg="rg $RG_DEFAULT_OPTIONS"
+
 # Xcode
 alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
 alias decodeprovisioning="security cms -D -i"
