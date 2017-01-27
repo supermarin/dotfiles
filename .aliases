@@ -77,6 +77,16 @@ xc() {
     fi
 }
 
+# Danger zone
+p() {
+    (
+        set -e
+        cd ~/.password-store
+        file=$(rg --files | fuzzy_select)
+        pass -c ${file%.gpg}
+    )
+}
+
 # Fuzzy select input with a selector of choice (fzf, skim, selecta, pick...)
 fuzzy_select() {
     finder="sk"
