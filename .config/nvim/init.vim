@@ -197,10 +197,6 @@ au FileType go nmap <Leader>i <Plug>(go-implements)
 "(useful if you have disabled auto showing type info via g:go_auto_type_info)
 au FileType go nmap <Leader>d <Plug>(go-info)
 
-" Sometimes when using both vim-go and syntastic Vim will start lagging while
-" saving and opening files. The following fixes this:
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-
 " Nerdcomment
 let g:NERDAltDelims_swift = 1
 
