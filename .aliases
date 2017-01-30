@@ -63,6 +63,7 @@ alias gifs="open http://f.cl.ly/items/1D1A1w06470M1U2P0311/gifs.txt"
 xc() {
     if [[ -n $1 ]]; then
         open "$1"
+        return
     fi
 
     workspace=$(find . -name '*.xcworkspace' -maxdepth 1)
