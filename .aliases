@@ -105,7 +105,7 @@ ef() {
 }
 
 pastegist() {
-    open "$(gist -pP $*)"
+    open "$(gist -pP $@)"
 }
 
 github_slug(){
@@ -212,8 +212,9 @@ rage_delete_branches() {
 }
 
 # Fuzzy finds a running proccess using `ps ax`
+# shellcheck disable=2009
 fp() {
-    if [[ -n "$1" ]]; then ps ax | grep -v 'grep' | grep $1;
+    if [[ -n "$1" ]]; then ps ax | grep -v 'grep' | grep "$1";
     else ps ax | fuzzy_select; fi
 }
 
@@ -239,7 +240,7 @@ man() {
 # $ wo <Enter>
 #     -> Opens up the fuzzy finder for your code directories
 
-# shellcheck disable=SC2086
+# shellcheck disable=SC2086,2181
 wo() {
     code_dirs=(
         $HOME/code
@@ -255,6 +256,6 @@ wo() {
 
     if [[ $? -ne 0 ]]; then return; fi
 
-    cd "$dir"
+    cd "$dir" || return
     tmux rename-window "$(basename $dir)"
 }
