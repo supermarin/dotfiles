@@ -28,10 +28,6 @@ alias gf="git fetch"
 alias gs="tig status"
 alias gd="git diff"
 alias gdi="git diff --ignore-all-space"
-alias gds="git difftool \
-                --extcmd 'icdiff --highlight --line-numbers' | less"
-alias gdsi="git difftool --ignore-all-space \
-                --extcmd 'icdiff --highlight --line-numbers' | less"
 alias ga="git add"
 alias gc="git_commit"
 
@@ -137,6 +133,15 @@ pull_request() {
     fi
     git push
     hub pull-request -b $branch -o
+}
+
+# Side by side diff using `icdiff`.
+# Usage:
+#     $ gds
+#     $ gds --cached
+#     $ gds origin/master
+gds() {
+    git difftool --extcmd "icdiff --highlight --line-numbers" "$@" | less -R
 }
 
 # Usage:
