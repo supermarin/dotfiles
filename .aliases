@@ -115,7 +115,7 @@ pastegist() {
 }
 
 github_slug(){
-    git ls-remote --get-url origin | cut -f 2 -d ':' | cut -f 1 -d '.'
+    print ${${$(git ls-remote --get-url)##*github.com(:|/)}%.git}
 }
 
 # See git log for the work done on the current branch against `master` or the
