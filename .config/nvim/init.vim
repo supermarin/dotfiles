@@ -143,7 +143,6 @@ set expandtab
 " lang specific indentations
 au BufRead,BufNewFile *.podspec,Podfile set ft=ruby " CocoaPods and Podfiles
 au BufRead,BufNewFile *.gradle,Jenkinsfile set ft=groovy " Android, Jerkins
-au BufRead,BufNewFile *.json set ai filetype=javascript " JSON
 au BufRead,BufNewFile *.md set ft=markdown " Markdown
 au FileType make setlocal noexpandtab
 au FileType ruby,groovy,haml,eruby,yaml,sass set ai sw=2 sts=2 et
@@ -257,14 +256,6 @@ endfunction
 au FileType md,markdown call SpellCheck()
 nmap <leader>s :setlocal spell spelllang=en_us<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" JSON
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-function! PrettyJson()
-    :'<,'>!python -m json.tool
-endfunction
-vmap <leader>f :call PrettyJson()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
