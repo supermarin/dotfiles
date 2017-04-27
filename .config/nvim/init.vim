@@ -78,6 +78,10 @@ set modelines=2
 " Start linting when file is opened
 autocmd! BufWritePost,BufEnter * Neomake
 
+" TODO: check if this was fixed in neovim
+" Resize properly when running commands in a tmux pane
+" autocmd FocusGained,FocusLost * mode
+
 " Source the vimrc file after saving it
 augroup VIMRC_LIVE_RELOAD
     au!
