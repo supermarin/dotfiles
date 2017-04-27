@@ -10,7 +10,6 @@ call plug#begin()
 "Plug 'rakr/vim-one'
 
 " Code Navigation
-Plug 'tpope/vim-vinegar'
 Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'mileszs/ack.vim'
 
