@@ -109,11 +109,14 @@ set clipboard^=unnamed,unnamedplus
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors
 set termguicolors
-set background=dark
-colorscheme one
 
 " Cursor shape change
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" less intrusive folds
+set background=dark
+hi Folded guibg=none guifg=#333444
+"set background=light
+"hi Folded guibg=none guifg=#DDDDDD
 
 " Netrw width
 let g:netrw_winsize = 25
