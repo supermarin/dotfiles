@@ -245,6 +245,10 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
+" Find
+nnoremap <leader>f :Ack<SPACE>
+nnoremap K :Ack "\b<C-R><C-W>\b"<CR>:cw<CR>
+
 " Toggle comments
 map <silent> <leader>/ :call NERDComment(0,"toggle")<C-m>
 
