@@ -183,7 +183,6 @@ au FileType * let &tw=&cc
 " todo: see if i can just use native grep instead of ack.vim
 let g:ackprg = 'rg --vimgrep --no-heading '
 let g:ackprg .= $RG_DEFAULT_OPTIONS
-cnoreabbrev ag Ack
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
