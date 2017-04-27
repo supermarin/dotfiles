@@ -314,18 +314,19 @@ let g:netrw_browse_split = 4
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compile and run
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au Filetype ruby        nmap <leader>r :w\|:te ruby %<cr>
-au Filetype python      nmap <leader>r :w\|:te python %<cr>
-au Filetype java        nmap <leader>r :w\|:te javac %<cr> :te java %:r<cr>
-au Filetype swift       nmap <leader>r :w\|:te swift %<cr>
-au Filetype sh,bash,zsh nmap <leader>r :w\|:te $SHELL %<cr>
+au Filetype ruby        nnoremap <leader>r :w\|:te ruby %<cr>
+au Filetype rust        nnoremap <leader>r :RustRun<cr>
+au Filetype python      nnoremap <leader>r :w\|:te python %<cr>
+au Filetype java        nnoremap <leader>r :w\|:te javac %<cr> :te java %:r<cr>
+au Filetype swift       nnoremap <leader>r :w\|:te swift %<cr>
+au Filetype sh,bash,zsh nnoremap <leader>r :w\|:te $SHELL %<cr>
 
 " Golang... I'm shhhpeshial
-au FileType go          nmap <leader>r <Plug>(go-run)
-au FileType go          nmap <leader>b <Plug>(go-build)
-au FileType go          nmap <leader>t <Plug>(go-test)
-au FileType go          nmap <leader>c <Plug>(go-coverage-toggle)
-au FileType go          nmap <leader>a :GoAlternate<CR>
+au FileType go          nnoremap <leader>r <Plug>(go-run)
+au FileType go          nnoremap <leader>b <Plug>(go-build)
+au FileType go          nnoremap <leader>t <Plug>(go-test)
+au FileType go          nnoremap <leader>c <Plug>(go-coverage-toggle)
+au FileType go          nnoremap <leader>a :GoAlternate<CR>
 
 " Definition in a split / vertical
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
@@ -334,10 +335,13 @@ au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ruby - RUNNING TESTS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au Filetype ruby   map <Leader>t :w\|:call RunCurrentSpecFile()<CR>
-au Filetype ruby   map <Leader>s :w\|:call RunNearestSpec()<CR>
-au Filetype ruby   map <Leader>e :w\|:call RunLastSpec()<CR>
-au Filetype ruby   map <Leader>a :w\|:call RunAllSpecs()<CR>
+"let g:rspec_command = ':!tmux split-window -p 75 "rspec {spec};read"'
+"let g:rspec_command = ':tabnew | te rspec {spec}'
+let g:rspec_command = ':!tmux send-keys -t 2 "rspec {spec}" Enter'
+au Filetype ruby   nnoremap <Leader>t :w\|:call RunCurrentSpecFile()<CR>
+au Filetype ruby   nnoremap <Leader>s :w\|:call RunNearestSpec()<CR>
+au Filetype ruby   nnoremap <Leader>e :w\|:call RunLastSpec()<CR>
+au Filetype ruby   nnoremap <Leader>a :w\|:call RunAllSpecs()<CR>
 
 au Filetype cucumber map <leader>t :w\|:!cucumber %<cr>
 
