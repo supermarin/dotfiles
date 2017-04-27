@@ -35,7 +35,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Brave.app</string>
+					<string>/Applications/Safari.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -54,6 +54,10 @@
 				<integer>0</integer>
 				<key>argument</key>
 				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
 				<key>hotkey</key>
 				<integer>11</integer>
 				<key>hotmod</key>
