@@ -7,7 +7,7 @@ scriptencoding utf-8
 call plug#begin()
 
 " Color schemes
-Plug 'rakr/vim-one'
+"Plug 'rakr/vim-one'
 
 " Code Navigation
 Plug 'tpope/vim-vinegar'
