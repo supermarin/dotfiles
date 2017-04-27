@@ -9,6 +9,8 @@ call plug#begin()
 " Color schemes
 "Plug 'rakr/vim-one'
 
+Plug 'tweekmonster/startuptime.vim'
+
 " Code Navigation
 Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'mileszs/ack.vim'
