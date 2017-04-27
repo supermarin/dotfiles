@@ -74,6 +74,9 @@ xc() {
 
 
 
+notes() {
+    $EDITOR ~/Sync/notes
+}
 
 # Fuzzy select input with a selector of choice (fzf, skim, selecta, pick...)
 fuzzy_select() {
