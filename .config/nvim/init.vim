@@ -51,9 +51,6 @@ Plug 'darfink/vim-plist',    { 'for': 'plist' }
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
 
-" stupid features
-Plug 'junegunn/vim-github-dashboard'
-
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
