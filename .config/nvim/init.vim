@@ -25,6 +25,7 @@ Plug 'honza/vim-snippets'
 
 " Vim enhancements
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb' " hub for fugitive
 Plug 'tpope/vim-repeat' " Repeat plugin commands with '.'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
