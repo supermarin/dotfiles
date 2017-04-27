@@ -161,12 +161,6 @@ cnoreabbrev ag Ack
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
-" Neomake
-let g:neomake_error_sign   = {'text': 'E', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {'text': '>>', 'texthl': 'NeomakeWarningSign'}
-let g:neomake_message_sign = {'text': '>', 'texthl': 'NeomakeMessageSign'}
-let g:neomake_info_sign    = {'text': 'i', 'texthl': 'NeomakeInfoSign'}
-
 " InstantMarkdownPreview
 let g:instant_markdown_autostart = 0
 
@@ -176,8 +170,6 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
-"let g:go_highlight_operators = 1
-
 let g:go_highlight_build_constraints = 1
 
 "Show a list of interfaces which is implemented by the type under your cursor with <leader>s
@@ -348,3 +340,4 @@ au Filetype ruby   map <Leader>e :w\|:call RunLastSpec()<CR>
 au Filetype ruby   map <Leader>a :w\|:call RunAllSpecs()<CR>
 
 au Filetype cucumber map <leader>t :w\|:!cucumber %<cr>
+
