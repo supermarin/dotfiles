@@ -181,6 +181,8 @@ au FileType * let &tw=&cc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ack.vim
 " todo: see if i can just use native grep instead of ack.vim
+" https://robots.thoughtbot.com/faster-grepping-in-vim
+"command -nargs=+ -complete=file -bar Ack silent! grep! <args>|cwindow|redraw!
 let g:ackprg = 'rg --vimgrep --no-heading '
 let g:ackprg .= $RG_DEFAULT_OPTIONS
 
