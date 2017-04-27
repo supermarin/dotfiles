@@ -15,6 +15,9 @@
 # Gocode wtf
 .config/gocode
 
+# Viscosity VPN crap
+Library/Application Support/Viscosity/OpenVPN/
+
 # vim shit
 *.swp
 **/.netrwhist
