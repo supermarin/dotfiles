@@ -1,9 +1,6 @@
 #!/bin/bash
 set -o pipefail
 
-# System overrides
-alias rm=trash
-
 # override vim
 alias vi=nvim
 
