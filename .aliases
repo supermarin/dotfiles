@@ -72,23 +72,6 @@ xc() {
     fi
 }
 
-# Danger zone
-p() {
-    (
-        set -e
-        cd ~/.password-store
-        file=$(rg --files | fuzzy_select)
-        pass -c ${file%.gpg}
-    )
-}
-s() {
-    (
-        set -e
-        cd ~/.password-store
-        file=$(rg --files | fuzzy_select)
-        pass show ${file%.gpg}
-    )
-}
 
 
 
@@ -271,4 +254,79 @@ wo() {
 
     cd "$dir" || return
     tmux rename-window "$(basename $dir)"
+}
+
+# Danger zone
+p() {
+    (
+        set -euo pipefail
+        cd ~/.password-store/Password
+        file=$(rg --files | fuzzy_select)
+        pass -c "Password/${file%.gpg}"
+    )
+}
+
+pe() {
+    (
+        set -euo pipefail
+        cd ~/.password-store/Password
+        file=$(rg --files | fuzzy_select)
+        pass edit "Password/${file%.gpg}"
+    )
+}
+
+pw() {
+    (
+        set -euo pipefail
+        cd ~/.password-store/Password
+
+        IFS=$'\n'
+        file=${1:-$(rg --files | fuzzy_select)}
+        contents=$(gpg2 --decrypt --quiet "$file")
+
+        paswd=$(printf "%s" "$contents" | head -n 1)
+        login="${$(printf "%s" "$contents" | grep '^username:')#'username: '}"
+
+        printf "%s" "$login" | pbcopy
+        printf "%s" "Username copied to the clipboard. Press Enter when ready."
+
+        #shellcheck disable=2034
+        read -r enter
+        printf "%s" "$paswd" | pbcopy
+        echo "Password copied to the clipboard. Make sure you trash it."
+    )
+}
+
+pwo() {
+    (
+        set -euo pipefail
+        cd ~/.password-store
+        file=$(rg --files | fuzzy_select)
+        site=${file%.gpg}
+        open "http://${site/*\//}"
+        pw "$file"
+    )
+}
+
+s() {
+    (
+        set -euo pipefail
+        cd ~/.password-store
+        file=$(rg --files | fuzzy_select)
+        gpg2 --decrypt --quiet "$file"
+    )
+}
+
+cc() {
+    (
+        set -euo pipefail
+        cd ~/.password-store/Credit-Card
+
+        cc_data=$(gpg2 --decrypt --quiet "$(rg --files | fuzzy_select)")
+        cc_num=$(echo "$cc_data" | grep '^number' | sed 's/number: //')
+
+        printf "%s" "$cc_num" | pbcopy
+        echo "Copied $cc_num to clipboard"
+        echo "$cc_data"
+    )
 }
