@@ -142,6 +142,7 @@ set expandtab
 
 " lang specific indentations
 au BufRead,BufNewFile *.podspec,Podfile set ft=ruby " CocoaPods and Podfiles
+au BufRead,BufNewFile *.notes,notes set ft=notes " TODO list, notes
 au BufRead,BufNewFile *.gradle,Jenkinsfile set ft=groovy " Android, Jerkins
 au BufRead,BufNewFile *.md set ft=markdown " Markdown
 au FileType make setlocal noexpandtab
