@@ -195,6 +195,9 @@ let mapleader = ","
 " Disable default git-gutter shit
 let g:gitgutter_map_keys = 0
 
+" Replay macro in visual mode over selected lines
+vnoremap <leader>m :normal @q<cr>
+
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
