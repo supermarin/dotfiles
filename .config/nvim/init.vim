@@ -71,6 +71,9 @@ set inccommand=nosplit " Enable search/replace preview in place
 set undolevels=2000
 set undofile
 
+set modeline " Enable overriding vim settings per file
+set modelines=2
+
 " Start linting when file is opened
 autocmd! BufWritePost,BufEnter * Neomake
 
