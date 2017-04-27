@@ -341,3 +341,8 @@ au Filetype ruby   map <Leader>a :w\|:call RunAllSpecs()<CR>
 
 au Filetype cucumber map <leader>t :w\|:!cucumber %<cr>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" notes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au FileType notes nnoremap <leader>n gg:r !date '+\%a, \%b \%d \%Y'<cr>ddkP
+
