@@ -350,3 +350,16 @@ au Filetype cucumber map <leader>t :w\|:!cucumber %<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au FileType notes nnoremap <leader>n gg:r !date '+\%a, \%b \%d \%Y'<cr>ddkP
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Diff & conflicts
+" Borrowed from @keith
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if &diff
+  set modifiable
+  set noreadonly
+else
+  " Jump to next/previous merge conflict marker
+  nnoremap <silent> ]c /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
+  nnoremap <silent> [c ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
+endif
