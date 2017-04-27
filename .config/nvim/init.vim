@@ -54,25 +54,18 @@ Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+syntax on
+set mouse=a
 set nobackup
 set nowritebackup
 set noswapfile
-" Highlight current line
-set cursorline
-" display incomplete commands
-set showcmd
-" syntax
-syntax on
+set cursorline " Highlight current line
+set showcmd " display incomplete commands
 " use emacs-style tab completion when selecting files, etc
 set wildmode=longest,list
-
-" Line numbers
-set number
-
+set number " Line numbers
 set ignorecase smartcase
-
-" Enable search/replace preview in place
-set inccommand=nosplit
+set inccommand=nosplit " Enable search/replace preview in place
 
 " Persistent undo
 set undolevels=2000
