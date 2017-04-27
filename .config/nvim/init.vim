@@ -124,6 +124,26 @@ let g:netrw_winsize = 25
 " keep more context when scrolling off the end of a buffer
 set scrolloff=10
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" STATUSLINE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2 " Always show the statusline
+" Left Side
+set statusline=
+set statusline+=%#IncSearch#%{&paste?'\ \ PASTE\ ':''}%*
+set statusline+=\ %.50f
+set statusline+=\ %m
+set statusline+=\ %r
+set statusline+=%=
+" Right Side
+set statusline+=%y
+set statusline+=\ \ %P
+set statusline+=-%l
+set statusline+=-%c
+set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC TEXT EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
