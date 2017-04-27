@@ -100,10 +100,6 @@ set splitright
 set timeout timeoutlen=1000 ttimeoutlen=100
 
 " Hooking with system clipboard
-"if has("clipboard") " If the feature is available
-  "set clipboard=unnamed " copy to the system clipboard
-"endif
-
 set clipboard^=unnamed,unnamedplus
 
 
