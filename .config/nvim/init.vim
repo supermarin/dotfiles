@@ -47,6 +47,7 @@ Plug 'tpope/vim-jdaddy',     { 'for': 'json' }
 Plug 'keith/swift.vim',      { 'for': 'swift' }
 Plug 'vim-jp/vim-cpp',       { 'for': ['c', 'objc', 'c++', 'cpp'] }
 Plug 'darfink/vim-plist',    { 'for': 'plist' }
+Plug 'rust-lang/rust.vim',   { 'for': 'rust' }
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
