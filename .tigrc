@@ -14,6 +14,7 @@ bind generic   r    refresh
 bind generic   P    ?git stash pop
 bind generic   S    ?git stash
 bind generic   A    !git commit --amend
+bind generic   p    !@sh -c "printf %s %(commit) | cut -c -7 | pbcopy"
 
 bind main      R    ?git rebase -i %(commit)
 bind main      C    !git commit --verbose
