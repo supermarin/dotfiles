@@ -156,6 +156,8 @@ set listchars=tab:\·\ ,trail:·
 set cc=80
 au FileType swift set cc=110
 au FileType objc  set cc=120
+au FileType markdown  set cc=100
+au FileType * let &tw=&cc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin overrides
