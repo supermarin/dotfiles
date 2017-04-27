@@ -35,11 +35,12 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 
 # History
-HISTFILE=$HOME/.zhistory
-HISTSIZE=1000000000000000
-SAVEHIST=$HISTSIZE
+export HISTFILE=$HOME/.zhistory
+export HISTSIZE=1000000000000000
+export SAVEHIST=$HISTSIZE
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
+setopt INC_APPEND_HISTORY_TIME
 setopt HIST_NO_STORE
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
@@ -52,9 +53,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # pasting with tabs doesn't perform completion
 zstyle ':completion:*' insert-tab pending
-
-# ls colors
-export CLICOLOR=1
 
 
 PROMPT='%F{4}%~%f '\$vcs_info_msg_0_"$ "
