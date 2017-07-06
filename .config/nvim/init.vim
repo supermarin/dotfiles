@@ -44,7 +44,6 @@ Plug 'tpope/vim-cucumber',   { 'for': 'cucumber' }
 Plug 'fatih/vim-go',         { 'for': 'go' }
 Plug 'zchee/deoplete-go',    { 'for': 'go' }
 Plug 'zchee/deoplete-jedi',  { 'for': 'python'}
-Plug 'instant-markdown.vim', { 'for': 'markdown' }
 Plug 'tpope/vim-liquid',     { 'for': 'liquid' }
 Plug 'tpope/vim-jdaddy',     { 'for': 'json' }
 Plug 'keith/swift.vim',      { 'for': 'swift' }
@@ -190,9 +189,6 @@ let g:ackprg .= $RG_DEFAULT_OPTIONS
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-
-" InstantMarkdownPreview
-let g:instant_markdown_autostart = 0
 
 " Vim-go
 let g:go_fmt_command = "goimports"
