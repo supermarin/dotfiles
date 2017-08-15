@@ -245,7 +245,7 @@ nnoremap gj j
 nnoremap gk k
 
 " Find
-nnoremap <leader>f :Ack<SPACE>
+nnoremap <leader>f :Ack<SPACE>''<left>
 nnoremap K :Ack "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Toggle comments
