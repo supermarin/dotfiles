@@ -16,6 +16,7 @@
     ri = rebase -i
     rc = rebase --continue
     releases = !git branch -a | grep release
+    rom = rebase origin/master
     s = status -sb
     sl = stash list
     ss = stash save
