@@ -17,7 +17,7 @@ Plug 'mileszs/ack.vim'
 
 " Completion / linting
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -78,7 +78,7 @@ set modeline " Enable overriding vim settings per file
 set modelines=2
 
 " Start linting when file is opened
-autocmd! BufWritePost,BufEnter * Neomake
+"autocmd! BufWritePost,BufEnter * Neomake
 
 " TODO: check if this was fixed in neovim
 " Resize properly when running commands in a tmux pane
@@ -145,7 +145,7 @@ set statusline+=%y
 set statusline+=\ \ %P
 set statusline+=-%l
 set statusline+=-%c
-set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
+"set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
