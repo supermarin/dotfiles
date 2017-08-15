@@ -119,6 +119,8 @@ set termguicolors
 " less intrusive folds
 set background=dark
 hi Folded guibg=none guifg=#333444
+hi ColorColumn guibg=#333366
+
 "set background=light
 "hi Folded guibg=none guifg=#DDDDDD
 
