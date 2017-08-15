@@ -44,6 +44,7 @@ alias pu="pod update"
 # ripgrep
 # stupid hack because it still doesn't support ~/.rgrc
 alias rg="rg $RG_DEFAULT_OPTIONS"
+alias rgc="rg --color=always"
 
 # Xcode
 alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
@@ -100,6 +101,15 @@ pastegist() {
 # Exctracts the repo slug from github. Works with https:// and git@ schemes.
 github_slug(){
     print ${${$(git ls-remote --get-url)##*github.com(:|/)}%.git}
+}
+
+# Code search repos across a github organization or user.
+# Usage:
+#     $ cs actionTimestampMs
+cs() {
+    github_slug=${${$(git ls-remote --get-url)##*github.com(:|/)}%.git}
+    org=${github_slug%/*}
+    open "https://github.com/search?q=org%3A$org+$1&type=Code"
 }
 
 # See git log for the work done on the current branch against `master` or the
