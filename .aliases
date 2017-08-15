@@ -293,7 +293,7 @@ pw() {
 
         IFS=$'\n'
         file=${1:-$(rg --files | fuzzy_select)}
-        contents=$(gpg2 --decrypt --quiet "$file")
+        contents=$(gpg --decrypt --quiet "$file")
 
         paswd=$(printf "%s" "$contents" | head -n 1)
         login="${$(printf "%s" "$contents" | grep '^username:')#'username: '}"
@@ -324,7 +324,7 @@ s() {
         set -euo pipefail
         cd ~/.password-store
         file=$(rg --files | fuzzy_select)
-        gpg2 --decrypt --quiet "$file"
+        gpg --decrypt --quiet "$file"
     )
 }
 
@@ -333,7 +333,7 @@ cc() {
         set -euo pipefail
         cd ~/.password-store/Credit-Card
 
-        cc_data=$(gpg2 --decrypt --quiet "$(rg --files | fuzzy_select)")
+        cc_data=$(gpg --decrypt --quiet "$(rg --files | fuzzy_select)")
         cc_num=$(echo "$cc_data" | grep '^number' | sed 's/number: //')
 
         printf "%s" "$cc_num" | pbcopy
