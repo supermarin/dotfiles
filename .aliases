@@ -1,12 +1,11 @@
 #!/bin/bash
 set -o pipefail
 
-# override vim
+# use neovim all day every day
 alias vi=nvim
 
 # Common
 alias c=clear
-alias h="fzf --history=$HOME/.zhistory --history-size=1000000000000000"
 alias la="ls -lah"
 alias ccat="pygmentize -g"
 alias json="python -m json.tool | pygmentize -l json"
@@ -98,6 +97,7 @@ pastegist() {
     open "$(gist -pP $@)"
 }
 
+# Exctracts the repo slug from github. Works with https:// and git@ schemes.
 github_slug(){
     print ${${$(git ls-remote --get-url)##*github.com(:|/)}%.git}
 }
@@ -120,13 +120,12 @@ issues() {
 # Creates a pull request on Github against the provided branch or `master`
 # After successfull creation, opens it in your web browser.
 pull_request() {
-    if [[ -n $1 ]]; then
-        branch=$1
-    else
-        branch=master
-    fi
-    git push
-    hub pull-request -b $branch -o
+    (
+        set -x
+        git push
+        #shellcheck disable=2063
+        hub pull-request -b "${1:-master}" -h "${$(git branch | grep \*)#'* '}" -o
+    )
 }
 
 # Side by side diff using `icdiff`.
@@ -141,12 +140,13 @@ gds() {
 # Usage:
 #       $ gc handle cli argumnents. Fixes #213
 git_commit() {
-  if [[ -n $1 ]]; then
-      git add .
-      git commit -am "$*"
-  else
-      git commit -v
-  fi
+    set +u
+    if [[ -n $1 ]]; then
+        git add .
+        git commit -am "$*"
+    else
+        git commit -v
+    fi
 }
 
 # Jira....
@@ -179,16 +179,14 @@ switch_branch() {
 }
 
 branch_delete() {
-    #set -e
-    branch=$(fuzzy_branch)
+    set -e
+    branch=${1:-$(fuzzy_branch)}
     if [[ -n $branch ]]; then
         git branch -D "$branch"
-        echo "Delete from remote? [y/N]: "
-        read -r delete_from_remote
-        if [[ $delete_from_remote = 'y' ]]; then
-            git push origin ":$branch"
-        else
-            echo "Not deleting from remote."
+        echo -n "Delete from remote? [y/N]: "
+        if read -rq; then
+            set +e
+            ( git push origin ":$branch" ) &
         fi
     fi
 }
@@ -202,10 +200,10 @@ branch_merge() {
 
 rage_delete_branches() {
     for branch in $(git branch | grep -Ev '\smaster$|^\*'); do
-        echo "Delete branch '$branch'?"
-        read -r confirm
-        if [[ $confirm = 'y' ]]; then
-            git branch -D "$branch"
+        echo -n "Delete branch '$branch' [yN]? "
+        if read -rq; then
+            echo
+            bd "$branch"
         fi
     done
 }
