@@ -72,7 +72,7 @@
     diff = exif
 
 [diff "gpg"]
-    textconv = gpg2 --no-tty --decrypt
+    textconv = gpg --no-tty --decrypt
 
 [push]
     default = current
@@ -85,7 +85,7 @@
     gpgsign = true
 
 [gpg]
-    program = gpg2
+    program = gpg
 
 [mergetool]
     keepBackup = false
