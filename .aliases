@@ -104,7 +104,7 @@ ef() {
 }
 
 pastegist() {
-    open "$(gist -pP $@)"
+    open "$(gist -pP '$@')"
 }
 
 # Exctracts the repo slug from github. Works with https:// and git@ schemes.
