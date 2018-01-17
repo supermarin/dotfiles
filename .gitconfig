@@ -115,3 +115,6 @@
 
 [rebase]
     autostash = true
+
+[submodule]
+    fetchJobs = 0
