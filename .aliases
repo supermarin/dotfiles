@@ -303,7 +303,7 @@ pw() {
         cd ~/.password-store/Password
 
         IFS=$'\n'
-        file=${1:-$(rg --files | fuzzy_select)}
+        file=${1:-"$(rg --files | fuzzy_select)"}
         contents=$(gpg --decrypt --quiet "$file")
 
         paswd=$(printf "%s" "$contents" | head -n 1)
@@ -322,7 +322,7 @@ pw() {
 pwo() {
     (
         set -euo pipefail
-        cd ~/.password-store
+        cd ~/.password-store/Password
         file=$(rg --files | fuzzy_select)
         site=${file%.gpg}
         open "http://${site/*\//}"
