@@ -171,9 +171,11 @@ git_commit() {
 # Jira....
 jira() {
     if [[ -n $1 ]]; then
-        open "https://lyftme.atlassian.net/browse/$1"
+        open \
+        "http://jira.lyft.net/secure/QuickSearch.jspa?searchString=${1// /+}"
+
     else
-        open https://lyftme.atlassian.net/issues/\?filter=-1
+        open https://jira.lyft.net/issues/\?filter=-1
     fi
 }
 
