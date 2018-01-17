@@ -2,6 +2,10 @@
 set mouse = yes
 set mouse-scroll = 3
 set line-graphics = utf-8
+set ignore-case = yes
+
+# Diff
+set diff-highlight = true
 
 # Log customization
 set main-view = id:yes \
