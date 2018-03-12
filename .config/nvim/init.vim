@@ -77,13 +77,6 @@ set undofile
 set modeline " Enable overriding vim settings per file
 set modelines=2
 
-" Start linting when file is opened
-"autocmd! BufWritePost,BufEnter * Neomake
-
-" TODO: check if this was fixed in neovim
-" Resize properly when running commands in a tmux pane
-" autocmd FocusGained,FocusLost * mode
-
 " Source the vimrc file after saving it
 augroup VIMRC_LIVE_RELOAD
     au!
@@ -95,9 +88,9 @@ set lazyredraw " Don't redraw vim in all situations
 
 " Watch for file changes and auto update
 set autoread
-au CursorHold * checktime
 
-set autowrite  " Automatically write file before running :make
+" Automatically write file before running :make
+set autowrite
 
 " Unfuck splits to position cursor on the right / below split. Thank you.
 set splitbelow
@@ -114,15 +107,9 @@ set clipboard^=unnamed,unnamedplus
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors
+"colorscheme wonka-light
+colorscheme ir_black
 set termguicolors
-
-" less intrusive folds
-set background=dark
-hi Folded guibg=none guifg=#333444
-hi ColorColumn guibg=#333366
-
-"set background=light
-"hi Folded guibg=none guifg=#DDDDDD
 
 " Netrw width
 let g:netrw_winsize = 25
@@ -207,11 +194,7 @@ au FileType go nmap <Leader>i <Plug>(go-implements)
 "(useful if you have disabled auto showing type info via g:go_auto_type_info)
 au FileType go nmap <Leader>d <Plug>(go-info)
 
-" Nerdcomment
-let g:NERDAltDelims_swift = 1
-
 " Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
@@ -236,22 +219,16 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" Move around tabs with [ ]
-nnoremap <M-}> gt
-nnoremap <M-{> gT
-
 " Better moving up-down for giantass wrapped lines
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-" Find
+" Find all
 nnoremap <leader>f :Ack<SPACE>''<left>
+" Find tokens under cursor.
 nnoremap K :Ack "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-" Toggle comments
-map <silent> <leader>/ :call NERDComment(0,"toggle")<C-m>
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
