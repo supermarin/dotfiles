@@ -320,6 +320,21 @@ vmap <leader>{ c{<C-R>"}<ESC>
 map <leader>` ysiw`
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Multiple cursors
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! Multiple_cursors_before()
+    if exists('g:deoplete#disable_auto_complete')
+       let g:deoplete#disable_auto_complete = 1
+    endif
+endfunction
+
+function! Multiple_cursors_after()
+    if exists('g:deoplete#disable_auto_complete')
+       let g:deoplete#disable_auto_complete = 0
+    endif
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Netrw
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle Vexplore with Leader-1
