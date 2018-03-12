@@ -28,7 +28,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " hub for fugitive
 Plug 'tpope/vim-repeat' " Repeat plugin commands with '.'
 Plug 'majutsushi/tagbar'
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 
 " Text editing enhancements
 Plug 'tpope/vim-commentary'
