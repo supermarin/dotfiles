@@ -31,7 +31,7 @@ Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 
 " Text editing enhancements
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
 Plug 'terryma/vim-multiple-cursors'
