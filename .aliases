@@ -48,8 +48,7 @@ alias decodeprovisioning="security cms -D -i"
 # Bookmarks
 alias gifs="open http://f.cl.ly/items/1D1A1w06470M1U2P0311/gifs.txt"
 
-# ripgrep
-# stupid hack because it still doesn't support ~/.rgrc
+# ripgrep stupid hack because it still doesn't support ~/.rgrc
 # shellcheck disable=2139
 {
     alias rg="rg $RG_DEFAULT_OPTIONS"
@@ -58,8 +57,8 @@ alias gifs="open http://f.cl.ly/items/1D1A1w06470M1U2P0311/gifs.txt"
 }
 
 tag() {
-    # shellcheck disable=1091
-    command tag "$@" && source /tmp/tag_aliases_$USER 2>/dev/null
+    # shellcheck disable=1090
+    command tag "$@" && source "/tmp/tag_aliases_$USER" 2>/dev/null
 }
 
 # Open the current .xcworkspace or .xcodeproj
