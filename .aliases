@@ -199,8 +199,8 @@ switch_branch() {
 }
 
 branch_delete() {
-    set -e
     branch=${1:-$(fuzzy_branch)}
+    set -e
     if [[ -n $branch ]]; then
         git branch -D "$branch"
         echo -n "Delete from remote? [y/N]: "
