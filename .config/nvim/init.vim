@@ -4,12 +4,7 @@ scriptencoding utf-8
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin()
-
-" Color schemes
-"Plug 'rakr/vim-one'
-
-Plug 'tweekmonster/startuptime.vim'
+call plug#begin("~/.config/nvim/plugged")
 
 " Code Navigation
 Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
@@ -28,7 +23,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " hub for fugitive
 Plug 'tpope/vim-repeat' " Repeat plugin commands with '.'
 Plug 'majutsushi/tagbar'
-"Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-vinegar' " unfuck netrw
 
 " Text editing enhancements
 Plug 'tpope/vim-commentary'
@@ -41,18 +36,27 @@ Plug 'valloric/MatchTagAlways', { 'for': ['html', 'xhtml', 'xml', 'jinja'] }
 Plug 'vim-ruby/vim-ruby',    { 'for': 'ruby' }
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 Plug 'tpope/vim-cucumber',   { 'for': 'cucumber' }
-Plug 'fatih/vim-go',         { 'for': 'go' }
+Plug 'fatih/vim-go',         { 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'zchee/deoplete-go',    { 'for': 'go' }
+Plug 'sebdah/vim-delve',     { 'for': 'go' }
 Plug 'zchee/deoplete-jedi',  { 'for': 'python'}
+Plug 'zchee/deoplete-clang', { 'for': ['c', 'objc', 'c++', 'cpp', 'swift'] }
 Plug 'tpope/vim-liquid',     { 'for': 'liquid' }
 Plug 'tpope/vim-jdaddy',     { 'for': 'json' }
 Plug 'keith/swift.vim',      { 'for': 'swift' }
-Plug 'vim-jp/vim-cpp',       { 'for': ['c', 'objc', 'c++', 'cpp'] }
+Plug 'vim-jp/vim-cpp',       { 'for': ['c', 'objc', 'c++', 'cpp'] } "syntax
 Plug 'darfink/vim-plist',    { 'for': 'plist' }
 Plug 'rust-lang/rust.vim',   { 'for': 'rust' }
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
+
+" Benchmarking. Disable when not in use
+Plug 'tweekmonster/startuptime.vim'
+
+" Colors
+Plug 'flazz/vim-colorschemes'
+Plug 'andreypopp/vim-colors-plain'
 
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -66,7 +70,7 @@ set cursorline " Highlight current line
 set showcmd " display incomplete commands
 " use emacs-style tab completion when selecting files, etc
 set wildmode=longest,list
-set number " Line numbers
+" set number " Line numbers
 set ignorecase smartcase
 set inccommand=nosplit " Enable search/replace preview in place
 
@@ -88,6 +92,8 @@ set lazyredraw " Don't redraw vim in all situations
 
 " Watch for file changes and auto update
 set autoread
+au BufEnter,FocusGained,CursorHold,CursorHoldI * checktime
+
 
 " Automatically write file before running :make
 set autowrite
@@ -107,16 +113,16 @@ set clipboard^=unnamed,unnamedplus
 " VIM APPEARANCE / BEHAVIOR CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors
-"colorscheme wonka-light
-colorscheme ir_black
 set termguicolors
-
-" Netrw width
-let g:netrw_winsize = 25
+set background=dark
+colorscheme dracula
 
 " keep more context when scrolling off the end of a buffer
 set scrolloff=10
 
+" margin because we're not animals
+set foldcolumn=1
+hi FoldColumn guibg=default
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUSLINE
@@ -177,15 +183,26 @@ let g:ackprg .= $RG_DEFAULT_OPTIONS
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#auto_complete_delay = 25
+
+let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+" let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/5.0.1/lib/libclang.dylib'
+let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/5.0.1/lib/clang'
+inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><CR>  pumvisible() ? "\<C-n>" : "\<CR>"
+
+" inoremap <expr><Enter> pumvisible() ? deoplete#complete_common_string() && deoplete#close_popup() : "\<Enter>"
+" inoremap <expr><Enter> pumvisible() ? :  "\<Enter>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 
 " Vim-go
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_build_constraints = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
 
 "Show a list of interfaces which is implemented by the type under your cursor with <leader>s
 au FileType go nmap <Leader>i <Plug>(go-implements)
@@ -228,7 +245,7 @@ nnoremap gk k
 " Find all
 nnoremap <leader>f :Ack<SPACE>''<left>
 " Find tokens under cursor.
-nnoremap K :Ack "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :Ack "\b<C-R><C-W>\b" --glob "!*.xcodeproj"<CR>:cw<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
@@ -311,37 +328,6 @@ function! Multiple_cursors_after()
     endif
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Netrw
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle Vexplore with Leader-1
-function! ToggleVExplorer()
-  if exists("t:expl_buf_num")
-      let expl_win_num = bufwinnr(t:expl_buf_num)
-      if expl_win_num != -1
-          let cur_win_nr = winnr()
-          exec expl_win_num . 'wincmd w'
-          close
-          exec cur_win_nr . 'wincmd w'
-          unlet t:expl_buf_num
-      else
-          unlet t:expl_buf_num
-      endif
-  else
-      exec '1wincmd w'
-      Vexplore
-      let t:expl_buf_num = bufnr("%")
-  endif
-endfunction
-map <silent> <leader>1 :call ToggleVExplorer()<CR>
-
-" Use tree-mode as default view
-let g:netrw_liststyle=3
-" Hit enter in the file browser to open the selected
-" file with :vsplit to the right of the browser.
-let g:netrw_browse_split = 4
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compile and run
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -349,7 +335,7 @@ au Filetype ruby        nmap <leader>r :w\|:te ruby %<cr>
 au Filetype rust        nmap <leader>r :RustRun<cr>
 au Filetype python      nmap <leader>r :w\|:te python %<cr>
 au Filetype java        nmap <leader>r :w\|:te javac %<cr> :te java %:r<cr>
-au Filetype swift       nmap <leader>r :w\|:te swift %<cr>
+au Filetype swift       nmap <leader>r :w\|:te swift %<cr>i
 au Filetype sh,bash,zsh nmap <leader>r :w\|:te $SHELL %<cr>
 
 " Golang... I'm shhhpeshial
@@ -360,8 +346,13 @@ au FileType go          nmap <leader>c <Plug>(go-coverage-toggle)
 au FileType go          nmap <leader>a :GoAlternate<CR>
 
 " Definition in a split / vertical
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go          nmap <Leader>ds <Plug>(go-def-split)
+au FileType go          nmap <Leader>dv <Plug>(go-def-vertical)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lint
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Leader>l :make! lint \| copen<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ruby - RUNNING TESTS
