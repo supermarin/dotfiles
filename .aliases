@@ -1,9 +1,6 @@
 #!/bin/bash
 set -o pipefail
 
-# use neovim all day every day
-alias vi=nvim
-
 # Common
 alias c=clear
 alias la="ls -lah"
