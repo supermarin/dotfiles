@@ -347,3 +347,37 @@ cc() {
         echo "$cc_data"
     )
 }
+
+h() {
+    local selected
+
+    # expand the history result in array
+    selected=( $(fc -rlE 1 | fuzzy_select) )
+
+    if [[ $? -ne 0 ]]; then
+        return;
+    fi
+
+    # TODO: probably the better way is fetching from history on 1st arg
+    print -z ${selected:3}
+}
+
+
+e() {
+    local file
+    if [[ $# -ne 1 ]]; then
+        file=$(fzf --preview '[[ $(file --mime {}) =~ binary ]] &&
+                         echo {} is a binary file ||
+                         (highlight -O ansi {} || cat {}) 2> /dev/null | head -500')
+
+        if [[ $? -ne 0 ]]; then
+            return
+        fi
+    else
+        file=$1
+    fi
+
+    # tmux rename-window "$(basename $file)"
+    $EDITOR $file
+}
+
