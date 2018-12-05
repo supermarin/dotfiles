@@ -203,10 +203,6 @@ jira() {
     fi
 }
 
-confluence() {
-    open "https://lyftme.atlassian.net/wiki"
-}
-
 # Fuzzy finds branches except your current branch, returns the selected branch
 fuzzy_branch() {
     git branch | grep -Ev '\*' | fuzzy_select | tr -d ' '
