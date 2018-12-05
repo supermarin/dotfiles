@@ -118,7 +118,7 @@ notes() {
 
 # Fuzzy select input with a selector of choice (fzf, skim, selecta, pick...)
 fuzzy_select() {
-    finder="sk"
+    finder="fzf"
     if [ -x "$(which $finder)" ]; then
         ${finder}-tmux --color=bw
     else
