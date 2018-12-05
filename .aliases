@@ -49,7 +49,6 @@ alias gifs="open http://f.cl.ly/items/1D1A1w06470M1U2P0311/gifs.txt"
 # shellcheck disable=2139
 {
     alias rg="rg $RG_DEFAULT_OPTIONS"
-    alias rgc="rg --color=always"
     alias g="tag rg $RG_DEFAULT_OPTIONS"
 }
 
