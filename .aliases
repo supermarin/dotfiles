@@ -127,11 +127,6 @@ fuzzy_select() {
     fi
 }
 
-# Quickly edit file
-ef() {
-    file=$(fuzzy_select) || false && $EDITOR "$file"
-}
-
 pastegist() {
     open "$(gist -pP '$@')"
 }
