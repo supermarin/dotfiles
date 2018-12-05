@@ -6,6 +6,7 @@ alias c=clear
 alias la="ls -lah"
 alias ccat="pygmentize -g"
 alias json="python -m json.tool | pygmentize -l json"
+alias ip="ifconfig en0 | grep 'inet ' | cut -f 2 -d ' '"
 
 # Navigation
 alias ..="cd .."
