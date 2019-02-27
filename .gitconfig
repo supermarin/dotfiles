@@ -84,9 +84,6 @@
     verbose = true
     gpgsign = true
 
-[gpg]
-    program = gpg
-
 [mergetool]
     keepBackup = false
     prompt = false
