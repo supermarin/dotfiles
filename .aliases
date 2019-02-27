@@ -16,19 +16,21 @@ alias ....="cd ../../.."
 # Git
 alias b=switch_branch
 alias bd=branch_delete
-alias bm=branch_merge
 alias gp="git push --recurse-submodules=on-demand"
 alias gl="git pull --rebase --stat"
 alias gf="git fetch"
 alias gs="tig status"
 alias gd="git diff"
+alias gb="git branch"
+alias gdom="git diff origin/master"
+alias grom="git rebase origin/master"
+alias griom="git rebase -i origin/master"
 alias gdi="git diff --ignore-all-space"
 alias ga="git add"
 alias gc="git_commit"
 
 # Github
 alias ghpr=pull_request
-alias pm="pulls supermarin"
 
 # Bundler
 alias be="bundle exec"
@@ -58,7 +60,7 @@ h() {
     local selected
 
     # expand the history result in array
-    selected=( $(fc -rlE 1 | fuzzy_select) )
+    selected=( $(fc -lEr 1 | fuzzy_select) )
 
     if [[ $? -ne 0 ]]; then
         return;
@@ -72,9 +74,10 @@ h() {
 e() {
     local file
     if [[ $# -ne 1 ]]; then
-        file=$(fzf --preview '[[ $(file --mime {}) =~ binary ]] &&
-                         echo {} is a binary file ||
-                         (highlight -O ansi {} || cat {}) 2> /dev/null | head -500')
+        # file=$(fzf --preview '[[ $(file --mime {}) =~ binary ]] &&
+        #                  echo {} is a binary file ||
+        #                  (highlight -O ansi {} || cat {}) 2> /dev/null | head -500')
+        file=$(fd | fzy)
 
         if [[ $? -ne 0 ]]; then
             return
@@ -114,14 +117,15 @@ xc() {
 
 
 notes() {
-    $EDITOR ~/Sync/notes
+    $EDITOR ~/notes
 }
 
 # Fuzzy select input with a selector of choice (fzf, skim, selecta, pick...)
 fuzzy_select() {
-    finder="fzf"
+    finder="fzy"
     if [ -x "$(which $finder)" ]; then
-        ${finder}-tmux --color=bw
+        # ${finder}-tmux --color=bw
+        ${finder}
     else
         echo "You need to install '$finder' to get the fuzzy finder"
         exit 1
@@ -137,6 +141,12 @@ github_slug(){
     print ${${$(git ls-remote --get-url)##*github.com(:|/)}%.git}
 }
 
+# Opens the file:line in github
+open_in_github() {
+    branch="${$(git branch | grep \*)#'* '}"
+    hub browse -- "blob/$branch/$1#L$2"
+}
+
 # Code search repos across a github organization or user.
 # Usage:
 #     $ cs actionTimestampMs
@@ -144,21 +154,6 @@ cs() {
     github_slug=${${$(git ls-remote --get-url)##*github.com(:|/)}%.git}
     org=${github_slug%/*}
     open "https://github.com/search?q=org%3A$org+$1&type=Code"
-}
-
-# See git log for the work done on the current branch against `master` or the
-# specified branch.
-# Usage: b [branch] (default: master)
-bl() {
-    git l "${1:-origin}"..HEAD "$@"
-}
-
-pulls() {
-    open "https://github.com/$(github_slug)/pulls/$1"
-}
-
-issues() {
-    open "https://github.com/$(github_slug)/issues/$1"
 }
 
 # Creates a pull request on Github against the provided branch or `master`
@@ -172,15 +167,6 @@ pull_request() {
     )
 }
 
-# Side by side diff using `icdiff`.
-# Usage:
-#     $ gds
-#     $ gds --cached
-#     $ gds origin/master
-gds() {
-    git difftool --extcmd "icdiff --highlight --line-numbers" "$@" | less -R
-}
-
 # Usage:
 #       $ gc handle cli argumnents. Fixes #213
 git_commit() {
@@ -190,17 +176,6 @@ git_commit() {
         git commit -am "$*"
     else
         git commit -v
-    fi
-}
-
-# Jira....
-jira() {
-    if [[ -n $1 ]]; then
-        open \
-        "http://jira.lyft.net/secure/QuickSearch.jspa?searchString=${1// /+}"
-
-    else
-        open https://jira.lyft.net/issues/\?filter=-1
     fi
 }
 
@@ -233,13 +208,6 @@ branch_delete() {
     fi
 }
 
-branch_merge() {
-    branch=$(fuzzy_branch)
-    if [[ -n $branch ]]; then
-        git merge "$branch"
-    fi
-}
-
 rage_delete_branches() {
     for branch in $(git branch | grep -Ev '\smaster$|^\*'); do
         echo -n "Delete branch '$branch' [yN]? "
@@ -255,6 +223,11 @@ rage_delete_branches() {
 fp() {
     if [[ -n "$1" ]]; then ps ax | grep -v 'grep' | grep "$1";
     else ps ax | fuzzy_select; fi
+}
+
+# Prints all the 256 term colors
+printcolors() {
+    for i in $(seq 0 255); do printf "\e[38;5;%dm colour%d" $i $i; done
 }
 
 # man(1) with colors!!!1!
@@ -375,4 +348,18 @@ cc() {
 }
 
 
+bssh() {
+    (
+        source '/Users/supermarin/code/lyft/blessclient/lyftprofile'
+        ssh "$@"
+    )
+}
+
+ve() {
+    if [[ ! -d ./venv/ ]]; then
+        echo "./venv/ not found, creating one..."
+        virtualenv venv
+    fi
+
+    source ./venv/bin/activate
 }
