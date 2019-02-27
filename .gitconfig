@@ -15,8 +15,10 @@
     ra = rebase --abort
     ri = rebase -i
     rc = rebase --continue
+    rs = rebase --skip
     releases = !git branch -a | grep release
     rom = rebase origin/master
+    riom = rebase -i origin/master
     s = status -sb
     sl = stash list
     ss = stash save
