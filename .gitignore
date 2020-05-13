@@ -1,11 +1,6 @@
 !.gitignore
 
-# Ignore ~/.bin - it's useful but I don't think there's anything to version
-.bin/
-
 .DS_Store
-.gem/
-.htoprc
 .netrc
 .ssh
 
@@ -15,18 +10,9 @@
 # Gocode wtf
 .config/gocode
 
-# Viscosity VPN crap
-Library/Application Support/Viscosity/OpenVPN/
-
-# vim shit
+# vim
 *.swp
 **/.netrwhist
-Session.vim
-.vim/*.spl
-.vim/bundle/*
-.vim/autoload/plug.vim
-.config/nvim/plugged
-.config/nvim/autoload/plug.vim
 
 .gnupg/*
 !.gnupg/gpg.conf
@@ -34,16 +20,3 @@ Session.vim
 
 # apps putting secrets in .config
 .config/hub
-.config/keybase
-
-# syncthing
-.stfolder
-.stversions/
-
-# logs
-*.log
-
-# Dash license / temp
-Library/Application\ Support/Dash/*
-!Library/Application\ Support/Dash/library.dash
-
