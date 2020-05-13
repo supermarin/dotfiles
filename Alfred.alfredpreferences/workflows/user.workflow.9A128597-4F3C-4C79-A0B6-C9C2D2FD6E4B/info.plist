@@ -10,7 +10,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>2C1B5EC1-98D5-4E2F-918B-88E3168E3584</string>
+				<string>20F37394-E0B1-4549-AA44-0A139589B6B4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -35,7 +35,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Utilities/Terminal.app</string>
+					<string>/System/Applications/Utilities/Terminal.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>

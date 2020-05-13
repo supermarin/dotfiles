@@ -78,6 +78,23 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Xcode-beta.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>B6D2D6A8-961C-472B-9D97-240D5ED26BEF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -86,9 +103,9 @@
 		<key>5368C7EB-803C-4776-88D2-59C5DEB31C9C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>500</integer>
+			<integer>490</integer>
 			<key>ypos</key>
-			<real>10</real>
+			<integer>10</integer>
 		</dict>
 		<key>87F33A7E-002E-4566-8501-C4CD22DB66B9</key>
 		<dict>
@@ -96,6 +113,13 @@
 			<integer>100</integer>
 			<key>ypos</key>
 			<real>10</real>
+		</dict>
+		<key>B6D2D6A8-961C-472B-9D97-240D5ED26BEF</key>
+		<dict>
+			<key>xpos</key>
+			<integer>490</integer>
+			<key>ypos</key>
+			<integer>150</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
