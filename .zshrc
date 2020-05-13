@@ -2,6 +2,11 @@
 source ~/.env
 source ~/.aliases
 
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+  source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+ 
+
 # emacs keys in shell prompt
 bindkey -e
 
