@@ -3,58 +3,24 @@ set -o pipefail
 
 # Common
 alias c=clear
-alias la="ls -lah"
-alias ccat="pygmentize -g"
-alias json="python -m json.tool | pygmentize -l json"
+alias l="ls -lah"
 alias ip="ifconfig en0 | grep 'inet ' | cut -f 2 -d ' '"
 
 # Navigation
 alias ..="cd .."
 alias ...="cd ../.."
-alias ....="cd ../../.."
 
 # Git
+alias t="tig status"
+alias g="git"
 alias b=switch_branch
 alias bd=branch_delete
-alias gp="git push --recurse-submodules=on-demand"
-alias gl="git pull --rebase --stat"
-alias gf="git fetch"
-alias gs="tig status"
-alias gd="git diff"
-alias gb="git branch"
-alias gdom="git diff origin/master"
-alias grom="git rebase origin/master"
-alias griom="git rebase -i origin/master"
-alias gdi="git diff --ignore-all-space"
-alias ga="git add"
-alias gc="git_commit"
 
 # Github
 alias ghpr=pull_request
 
-# Bundler
-alias be="bundle exec"
-alias bi="bundle install"
-alias bu="bundle update"
-
-# CocoaPods
-alias pi="pod install"
-alias pu="pod update"
-
 # Xcode
-alias stupidXcode="rm -rf ~/Library/Developer/Xcode/DerivedData"
 alias decodeprovisioning="security cms -D -i"
-
-# Bookmarks
-alias gifs="open http://f.cl.ly/items/1D1A1w06470M1U2P0311/gifs.txt"
-
-# ripgrep stupid hack because it still doesn't support ~/.rgrc
-# shellcheck disable=2139
-{
-    alias rg="rg $RG_DEFAULT_OPTIONS"
-    alias g="tag rg $RG_DEFAULT_OPTIONS"
-}
-
 
 h() {
     local selected
@@ -74,11 +40,9 @@ h() {
 e() {
     local file
     if [[ $# -ne 1 ]]; then
-        # file=$(fzf --preview '[[ $(file --mime {}) =~ binary ]] &&
-        #                  echo {} is a binary file ||
-        #                  (highlight -O ansi {} || cat {}) 2> /dev/null | head -500')
-        file=$(fd | fzy)
-
+        file=$(fzf --preview '[[ $(file --mime {}) =~ binary ]] &&
+                         echo {} is a binary file ||
+                         (highlight -O ansi {} || cat {}) 2> /dev/null | head -500')
         if [[ $? -ne 0 ]]; then
             return
         fi
@@ -88,11 +52,6 @@ e() {
 
     # tmux rename-window "$(basename $file)"
     $EDITOR $file
-}
-
-tag() {
-    # shellcheck disable=1090
-    command tag "$@" && source "/tmp/tag_aliases_$USER" 2>/dev/null
 }
 
 # Open the current .xcworkspace or .xcodeproj
@@ -115,14 +74,9 @@ xc() {
 }
 
 
-
-notes() {
-    $EDITOR ~/notes
-}
-
 # Fuzzy select input with a selector of choice (fzf, skim, selecta, pick...)
 fuzzy_select() {
-    finder="fzy"
+    finder="fzf"
     if [ -x "$(which $finder)" ]; then
         # ${finder}-tmux --color=bw
         ${finder}
@@ -165,18 +119,6 @@ pull_request() {
         #shellcheck disable=2063
         hub pull-request -b "${1:-master}" -h "${$(git branch | grep \*)#'* '}" -o
     )
-}
-
-# Usage:
-#       $ gc handle cli argumnents. Fixes #213
-git_commit() {
-    set +u
-    if [[ -n $1 ]]; then
-        git add .
-        git commit -am "$*"
-    else
-        git commit -v
-    fi
 }
 
 # Fuzzy finds branches except your current branch, returns the selected branch
@@ -258,7 +200,7 @@ wo() {
         $HOME/code
         $HOME/code/go/src
     )
-    dir_list=$(find "${code_dirs[@]}" -maxdepth 3 -type d | grep -v /Pods)
+    dir_list=$(find "${code_dirs[@]}" -maxdepth 3 -type d)
 
     if [[ -n $1 ]]; then
         dir=$(grep --max-count=1 -i "$*" <<< $dir_list)
@@ -269,7 +211,9 @@ wo() {
     if [[ $? -ne 0 ]]; then return; fi
 
     cd "$dir" || return
-    tmux rename-window "$(basename $dir)"
+    if [[ -x tmux ]]; then
+        tmux rename-window "$(basename $dir)"
+    fi
 }
 
 # Danger zone
@@ -289,6 +233,27 @@ pe() {
         file=$(rg --files | fuzzy_select)
         pass edit "Password/${file%.gpg}"
     )
+}
+
+pg() {
+    protocol="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+    url="$(echo ${1/$protocol/})"
+    user="$(echo $url | grep @ | cut -d@ -f1)"
+    host="$(echo ${url/$user@/} | cut -d/ -f1)"
+    
+    name=${$(echo $host | rev | cut -d. -f1-2 | rev)/.*/}
+    capitalized="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})${name:1}"
+    echo -n "Name for the new password [$capitalized]: "
+    read -r input 
+    if [[ -n $input ]]; then
+        echo "Using new: $input"
+        pwname=$input
+    else
+        echo "Using default: $capitalized"
+        pwname=$capitalized
+    fi
+
+    pass insert --multiline "Password/$host/$pwname"
 }
 
 pw() {
@@ -345,21 +310,4 @@ cc() {
         echo "Copied $cc_num to clipboard"
         echo "$cc_data"
     )
-}
-
-
-bssh() {
-    (
-        source '/Users/supermarin/code/lyft/blessclient/lyftprofile'
-        ssh "$@"
-    )
-}
-
-ve() {
-    if [[ ! -d ./venv/ ]]; then
-        echo "./venv/ not found, creating one..."
-        virtualenv venv
-    fi
-
-    source ./venv/bin/activate
 }
