@@ -63,7 +63,7 @@ function git_prompt
         set git_status_color (set_color -o red)
     end
 
-    echo $git_status_color$revision $purple(stashed) $green(ahead) $red(behind)
+    echo $git_status_color$revision $purple(stashed) $normal(ahead) $normal(behind)
 end
 
 
