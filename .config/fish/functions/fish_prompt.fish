@@ -59,7 +59,7 @@ function git_prompt
         end
     end
 
-    if [ is_git_dirty ]
+    if [ (is_git_dirty) ]
         set git_status_color (set_color -o red)
     end
 
@@ -68,7 +68,7 @@ end
 
 
 function fish_prompt
-    if [ is_in_git_repo ]
+    if [ (is_in_git_repo) ]
         set supemarin_git_info (git_prompt)
     end
     echo $supemarin_git_info $normal'$ '
