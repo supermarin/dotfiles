@@ -1,0 +1,104 @@
+[alias]
+    a = add --all
+    b = branch
+    ba = branch -a
+    c = commit
+    co = checkout
+    cp = cherry-pick
+    cam = commit --amend
+    d = diff
+    di = diff --ignore-all-space
+    f = fetch
+    l = pull --stat
+    p = push --recurse-submodules=on-demand
+    r = rebase
+    rh = reset --hard
+    ra = rebase --abort
+    ri = rebase -i
+    rc = rebase --continue
+    rs = rebase --skip
+    rom = rebase origin/master
+    riom = rebase -i origin/master
+    s = !tig status
+    sb = status -sb
+    sl = stash list
+    ss = stash save
+    sp = stash pop
+    su = submodule update --recursive
+    wtc = !sh -c 'git commit $@ -m \""`curl -s http://whatthecommit.com/index.txt`"\"' -
+
+[user]
+    name = Marin Usalj
+    email = marin2211@gmail.com
+
+[github]
+    user = supermarin
+
+[core]
+    excludesfile = ~/.config/git/gitignore_global
+    quotepath = false
+    trustctime = false
+    pager = diffr | less
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+
+[interactive]
+    diffFilter = diffr
+
+[diff]
+    submodule = log
+    indentHeuristic = true
+
+[diff "plist"]
+    textconv = plutil -convert xml1 -o -
+
+[diff "png"]
+    diff = exif
+
+[diff "gpg"]
+    textconv = gpg --no-tty --decrypt
+
+[push]
+    default = current
+
+[pull]
+    rebase = true
+
+[commit]
+    verbose = true
+    ;gpgsign = true
+
+[mergetool]
+    keepBackup = false
+    prompt = false
+
+[mergetool "vim"]
+    cmd = vim -c "normal\\ gg]c" -f \"$MERGED\"
+
+[merge]
+    tool = vim
+    log = true
+    stat = true
+
+[ghi]
+    token = !security find-internet-password -a supermarin -s github.com -l 'ghi token' -w
+
+[i18n]
+    commitencoding = utf8
+
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
+
+[rerere]
+    enabled = true
+
+[rebase]
+    autostash = true
+
+[submodule]
+    fetchJobs = 0
