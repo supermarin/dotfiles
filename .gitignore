@@ -20,3 +20,7 @@
 
 # apps putting secrets in .config
 .config/hub
+.config/stripe
+.config/configstore
+
+.config/fish/fish_variables
