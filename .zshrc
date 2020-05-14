@@ -41,5 +41,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
+# fish-style autosuggestions
+# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # Prompt
-PROMPT='$(prompt)'
+# PROMPT='$(prompt)'
