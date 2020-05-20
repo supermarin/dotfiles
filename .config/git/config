@@ -75,16 +75,10 @@
     keepBackup = false
     prompt = false
 
-[mergetool "vim"]
-    cmd = vim -c "normal\\ gg]c" -f \"$MERGED\"
-
 [merge]
     tool = vim
     log = true
     stat = true
-
-[ghi]
-    token = !security find-internet-password -a supermarin -s github.com -l 'ghi token' -w
 
 [i18n]
     commitencoding = utf8
