@@ -68,8 +68,14 @@ end
 
 
 function fish_prompt
-    if [ (is_in_git_repo) ]
-        set supemarin_git_info (git_prompt)
+    set -l s $status # needed because $status gets overriden to 0 immediately
+    if [ $s -ne 0 ]
+      set last_status_info $red$s
     end
-    echo $supemarin_git_info $normal'$ '
+
+    if [ (is_in_git_repo) ]
+      set supemarin_git_info (git_prompt)
+    end
+
+    echo $supemarin_git_info $last_status_info $normal'$ '
 end
