@@ -5,6 +5,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    bat
     cacert
     diffr
     fd
@@ -15,12 +16,12 @@
     gnupg
     go
     jq
+    neovim # TODO: remove completely?
     nix
     notmuch
     pass
     ripgrep
     tig
-    neovim
     vim
   ] ++ stdenv.lib.optionals stdenv.isDarwin [
     swiftformat
@@ -29,15 +30,8 @@
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 4800;
-    #enableSshSupport = true;
   };
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font.size = 16;
-    };
-  };
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
