@@ -22,16 +22,38 @@
     pass
     ripgrep
     tig
-    vim
   ] ++ stdenv.lib.optionals stdenv.isDarwin [
     swiftformat
   ];
 
-  services.gpg-agent = {
+  programs.vim = {
     enable = true;
-    defaultCacheTtl = 4800;
-  };
+    plugins = [
+      #pkgs.vimPlugins.coc-nvim
+      pkgs.vimPlugins.fzfWrapper
+      pkgs.vimPlugins.fzf-vim
+      pkgs.vimPlugins.gruvbox
+    ];
+    settings = {
+      expandtab = true;
+      tabstop = 2;
+      shiftwidth = 2;
+      smartcase = true;
+    };
+    extraConfig = ''
+      set smartindent
+      set grepprg=rg\ --vimgrep
+      set splitright
+      set splitbelow
 
+      set termguicolors
+      color gruvbox
+
+      nnoremap gh ^
+      nnoremap gl $
+      nnoremap <C-p> :GitFiles<cr>
+    '';
+  };
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
