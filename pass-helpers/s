@@ -1,0 +1,8 @@
+#!/bin/bash
+
+(
+    set -euo pipefail
+    cd $PASS_STORE
+    file=$(rg --files | $FUZZY)
+    gpg --decrypt --quiet "$file"
+)

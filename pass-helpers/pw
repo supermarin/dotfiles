@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+(
+    set -euo pipefail
+    cd $PASS_STORE/Password
+
+    IFS=$'\n'
+    file=${1:-"$(rg --files | fzf)"}
+    contents=$(gpg --decrypt --quiet "$file")
+
+    paswd=$(printf "%s" "$contents" | head -n 1)
+    login="${$(printf "%s" "$contents" | grep '^username:')#'username: '}"
+
+    printf "%s" "$login" | pbcopy
+    printf "%s" "Username copied to the clipboard. Press Enter when ready."
+
+    #shellcheck disable=2034
+    read -r enter
+    printf "%s" "$paswd" | pbcopy
+    echo "Password copied to the clipboard. Make sure you trash it."
+)

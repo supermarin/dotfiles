@@ -1,0 +1,10 @@
+#!/bin/bash
+
+(
+    set -euo pipefail
+    cd $PASS_STORE/Password
+    file=$(rg --files | $FUZZY)
+    site=${file%.gpg}
+    open "http://${site/*\//}"
+    pw "$file"
+)

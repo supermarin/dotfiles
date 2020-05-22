@@ -14,10 +14,4 @@ if status --is-interactive
     abbr c clear
     abbr g git
     abbr l la
-    # backported functions from zsh
-    alias cc "zsh -c 'source ~/.aliases && cc'"
-    alias p "zsh -c 'source ~/.aliases && p'"
-    alias pe "zsh -c 'source ~/.aliases && pe'"
-    alias pw "zsh -c 'source ~/.aliases && pw'"
-    alias s "zsh -c 'source ~/.aliases && s'"
 end

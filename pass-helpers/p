@@ -1,0 +1,8 @@
+#!/bin/bash
+
+(
+    set -euo pipefail
+    cd $PASS_STORE/Password
+    file=$(rg --files | $FUZZY)
+    pass -c "Password/${file%.gpg}"
+)

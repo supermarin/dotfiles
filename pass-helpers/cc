@@ -1,0 +1,13 @@
+#!/bin/bash
+
+(
+    set -euo pipefail
+    cd $PASS_STORE/Credit-Card
+
+    cc_data=$(gpg --decrypt --quiet "$(rg --files | $FUZZY)")
+    cc_num=$(echo "$cc_data" | grep '^number' | sed 's/number: //')
+
+    printf "%s" "$cc_num" | pbcopy
+    echo "Copied $cc_num to clipboard"
+    echo "$cc_data"
+)
