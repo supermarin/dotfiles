@@ -154,33 +154,3 @@ fp() {
     else ps ax | fuzzy_select; fi
 }
 
-# Search through your code directories and quickly open project folder
-# For example:
-# $ wo traz
-#     -> will take me to ~/code/oss/Alcatraz
-#
-# $ wo <Enter>
-#     -> Opens up the fuzzy finder for your code directories
-
-# shellcheck disable=SC2086,2181
-wo() {
-    code_dirs=(
-        $HOME/code
-        $HOME/code/go/src
-    )
-    dir_list=$(find "${code_dirs[@]}" -maxdepth 3 -type d)
-
-    if [[ -n $1 ]]; then
-        dir=$(grep --max-count=1 -i "$*" <<< $dir_list)
-    else
-        dir=$(grep -v /Pods <<< $dir_list | fuzzy_select)
-    fi
-
-    if [[ $? -ne 0 ]]; then return; fi
-
-    cd "$dir" || return
-    if [[ -x tmux ]]; then
-        tmux rename-window "$(basename $dir)"
-    fi
-}
-
