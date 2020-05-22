@@ -26,7 +26,7 @@ h() {
     local selected
 
     # expand the history result in array
-    selected=( $(fc -lEr 1 | fuzzy_select) )
+    selected=( $(fc -lEr 1 | $FUZZY) )
 
     if [[ $? -ne 0 ]]; then
         return;
@@ -70,19 +70,6 @@ xc() {
         open "$project"
     else
         echo "No .xcworkspace or .xcodeproj found in the working directory."
-    fi
-}
-
-
-# Fuzzy select input with a selector of choice (fzf, skim, selecta, pick...)
-fuzzy_select() {
-    finder="fzf"
-    if [ -x "$(which $finder)" ]; then
-        # ${finder}-tmux --color=bw
-        ${finder}
-    else
-        echo "You need to install '$finder' to get the fuzzy finder"
-        exit 1
     fi
 }
 
@@ -167,25 +154,6 @@ fp() {
     else ps ax | fuzzy_select; fi
 }
 
-# Prints all the 256 term colors
-printcolors() {
-    for i in $(seq 0 255); do printf "\e[38;5;%dm colour%d" $i $i; done
-}
-
-# man(1) with colors!!!1!
-man() {
-    # shellcheck disable=SC2046
-    env \
-        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-        LESS_TERMCAP_md=$(printf "\e[1;31m") \
-        LESS_TERMCAP_me=$(printf "\e[0m") \
-        LESS_TERMCAP_se=$(printf "\e[0m") \
-        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-        LESS_TERMCAP_ue=$(printf "\e[0m") \
-        LESS_TERMCAP_us=$(printf "\e[1;32m") \
-        man "$@"
-}
-
 # Search through your code directories and quickly open project folder
 # For example:
 # $ wo traz
@@ -216,98 +184,3 @@ wo() {
     fi
 }
 
-# Danger zone
-p() {
-    (
-        set -euo pipefail
-        cd ~/.password-store/Password
-        file=$(rg --files | fuzzy_select)
-        pass -c "Password/${file%.gpg}"
-    )
-}
-
-pe() {
-    (
-        set -euo pipefail
-        cd ~/.password-store/Password
-        file=$(rg --files | fuzzy_select)
-        pass edit "Password/${file%.gpg}"
-    )
-}
-
-pg() {
-    protocol="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
-    url="$(echo ${1/$protocol/})"
-    user="$(echo $url | grep @ | cut -d@ -f1)"
-    host="$(echo ${url/$user@/} | cut -d/ -f1)"
-    
-    name=${$(echo $host | rev | cut -d. -f1-2 | rev)/.*/}
-    capitalized="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})${name:1}"
-    echo -n "Name for the new password [$capitalized]: "
-    read -r input 
-    if [[ -n $input ]]; then
-        echo "Using new: $input"
-        pwname=$input
-    else
-        echo "Using default: $capitalized"
-        pwname=$capitalized
-    fi
-
-    pass insert --multiline "Password/$host/$pwname"
-}
-
-pw() {
-    (
-        set -euo pipefail
-        cd ~/.password-store/Password
-
-        IFS=$'\n'
-        file=${1:-"$(rg --files | fuzzy_select)"}
-        contents=$(gpg --decrypt --quiet "$file")
-
-        paswd=$(printf "%s" "$contents" | head -n 1)
-        login="${$(printf "%s" "$contents" | grep '^username:')#'username: '}"
-
-        printf "%s" "$login" | pbcopy
-        printf "%s" "Username copied to the clipboard. Press Enter when ready."
-
-        #shellcheck disable=2034
-        read -r enter
-        printf "%s" "$paswd" | pbcopy
-        echo "Password copied to the clipboard. Make sure you trash it."
-    )
-}
-
-pwo() {
-    (
-        set -euo pipefail
-        cd ~/.password-store/Password
-        file=$(rg --files | fuzzy_select)
-        site=${file%.gpg}
-        open "http://${site/*\//}"
-        pw "$file"
-    )
-}
-
-s() {
-    (
-        set -euo pipefail
-        cd ~/.password-store
-        file=$(rg --files | fuzzy_select)
-        gpg --decrypt --quiet "$file"
-    )
-}
-
-cc() {
-    (
-        set -euo pipefail
-        cd ~/.password-store/Credit-Card
-
-        cc_data=$(gpg --decrypt --quiet "$(rg --files | fuzzy_select)")
-        cc_num=$(echo "$cc_data" | grep '^number' | sed 's/number: //')
-
-        printf "%s" "$cc_num" | pbcopy
-        echo "Copied $cc_num to clipboard"
-        echo "$cc_data"
-    )
-}
