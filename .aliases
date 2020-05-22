@@ -37,22 +37,6 @@ h() {
 }
 
 
-e() {
-    local file
-    if [[ $# -ne 1 ]]; then
-        file=$(fzf --preview '[[ $(file --mime {}) =~ binary ]] &&
-                         echo {} is a binary file ||
-                         (highlight -O ansi {} || cat {}) 2> /dev/null | head -500')
-        if [[ $? -ne 0 ]]; then
-            return
-        fi
-    else
-        file=$1
-    fi
-
-    # tmux rename-window "$(basename $file)"
-    $EDITOR $file
-}
 
 # Open the current .xcworkspace or .xcodeproj
 xc() {

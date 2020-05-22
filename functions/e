@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ $# -ne 1 ]]; then
+    file=$(fzf --preview 'bat --style=numbers --color=always {} | head -500')
+    if [[ $? -ne 0 ]]; then
+        exit 0
+    fi
+else
+    file=$1
+fi
+
+$EDITOR $file
