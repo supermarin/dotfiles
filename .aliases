@@ -1,40 +1,4 @@
 #!/bin/bash
-set -o pipefail
-
-# Common
-alias c=clear
-alias l="ls -lah"
-alias ip="ifconfig en0 | grep 'inet ' | cut -f 2 -d ' '"
-
-# Navigation
-alias ..="cd .."
-alias ...="cd ../.."
-
-# Git
-alias t="tig status"
-alias g="git"
-alias b=switch_branch
-alias bd=branch_delete
-
-# Github
-alias ghpr=pull_request
-
-# Xcode
-alias decodeprovisioning="security cms -D -i"
-
-h() {
-    local selected
-
-    # expand the history result in array
-    selected=( $(fc -lEr 1 | $FUZZY) )
-
-    if [[ $? -ne 0 ]]; then
-        return;
-    fi
-
-    # TODO: probably the better way is fetching from history on 1st arg
-    print -z ${selected:3}
-}
 
 
 
