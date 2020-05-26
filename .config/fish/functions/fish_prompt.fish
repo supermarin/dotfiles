@@ -9,7 +9,7 @@ function is_in_git_repo
 end
 
 function git_branch_name
-    echo (git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+    echo (git symbolic-ref --short --quiet HEAD)
 end
 
 function git_current_commit
