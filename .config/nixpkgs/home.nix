@@ -28,30 +28,37 @@
 
   programs.vim = {
     enable = true;
-    plugins = [
-      #pkgs.vimPlugins.coc-nvim
-      pkgs.vimPlugins.fzfWrapper
-      pkgs.vimPlugins.fzf-vim
-      pkgs.vimPlugins.gruvbox
+    plugins = with pkgs.vimPlugins; [
+      #coc-nvim
+      fzf-vim
+      fzfWrapper
+      gruvbox
+      vim-commentary
+      vim-repeat
+      vim-surround
     ];
     settings = {
       expandtab = true;
       tabstop = 2;
       shiftwidth = 2;
       smartcase = true;
+      ignorecase = true;
     };
     extraConfig = ''
       set smartindent
       set grepprg=rg\ --vimgrep
       set splitright
       set splitbelow
+      set signcolumn=number
+      let mapleader=" "
 
       set termguicolors
       color gruvbox
 
       nnoremap gh ^
       nnoremap gl $
-      nnoremap <C-p> :GitFiles<cr>
+      nnoremap <leader>p :GitFiles<cr>
+      nnoremap <leader>b :Buffers<cr>
     '';
   };
   # This value determines the Home Manager release that your
