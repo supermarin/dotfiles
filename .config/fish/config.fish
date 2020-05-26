@@ -16,4 +16,5 @@ if status --is-interactive
     abbr c clear
     abbr g git
     abbr l la
+    abbr b git co
 end
