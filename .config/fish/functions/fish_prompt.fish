@@ -60,7 +60,7 @@ function git_prompt
     end
 
     if [ (is_git_dirty) ]
-        set git_status_color (set_color -o red)
+        set git_status_color $red
     end
 
     echo $git_status_color$revision $purple(stashed) $normal(ahead) $normal(behind)
