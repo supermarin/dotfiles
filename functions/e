@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export FZF_DEFAULT_COMMAND='fd --hidden'
 if [[ $# -ne 1 ]]; then
     file=$(fzf --preview 'bat --style=numbers --color=always {} | head -500')
     if [[ $? -ne 0 ]]; then
