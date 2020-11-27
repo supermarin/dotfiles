@@ -4,63 +4,35 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # WAT this seems required as of 20.09. Maybe a bug?
+  home.username = "marinusalj";
+  home.homeDirectory = /Users/marinusalj;
   home.packages = with pkgs; [
-    bat
-    cacert
-    diffr
+    bat # used in `e` for live preview of files
+    cacert # req by nix
+    diffr # used in git stuff
     fd
     fish
     fzf
     git
     gitAndTools.hub
+    gitAndTools.gh
     gnupg
     go
     jq
-    neovim # TODO: remove completely?
     nix
-    notmuch
     pass
     ripgrep
     tig
   ] ++ stdenv.lib.optionals stdenv.isDarwin [
     swiftformat
+  ] ++ stdenv.lib.optionals stdenv.isLinux [
+    alacritty
   ];
 
-  programs.vim = {
-    enable = true;
-    plugins = with pkgs.vimPlugins; [
-      #coc-nvim
-      fzf-vim
-      fzfWrapper
-      gruvbox
-      vim-commentary
-      vim-repeat
-      vim-surround
-    ];
-    settings = {
-      expandtab = true;
-      tabstop = 2;
-      shiftwidth = 2;
-      smartcase = true;
-      ignorecase = true;
-    };
-    extraConfig = ''
-      set smartindent
-      set grepprg=rg\ --vimgrep
-      set splitright
-      set splitbelow
-      set signcolumn=number
-      let mapleader=" "
+  programs.neovim = import ./vim.nix pkgs;
+  programs.alacritty = import ./alacritty.nix;
 
-      set termguicolors
-      color gruvbox
-
-      nnoremap gh ^
-      nnoremap gl $
-      nnoremap <leader>p :GitFiles<cr>
-      nnoremap <leader>b :Buffers<cr>
-    '';
-  };
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -69,5 +41,5 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "20.03";
-}
+  home.stateVersion = "20.09";
+} 
