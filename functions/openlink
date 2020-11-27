@@ -1,0 +1,3 @@
+#!/bin/bash
+
+xcrun simctl openurl booted "$(pbpaste)"

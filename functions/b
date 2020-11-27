@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Fuzzy finds branches except your current branch, returns the selected branch
+fuzzy_branch() {
+  git branch | grep -Ev '\*' | fzf | tr -d ' '
+}
+
+if [[ -n $1 ]]; then
+  git checkout "$1"
+else
+  branch=$(fuzzy_branch)
+  if [[ -n $branch ]]; then
+    git checkout "$branch"
+  fi
+fi
