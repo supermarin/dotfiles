@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export FZF_DEFAULT_COMMAND='fd --hidden'
+# export FZF_DEFAULT_COMMAND='fd --hidden'
+export FZF_DEFAULT_COMMAND='fd'
 if [[ $# -ne 1 ]]; then
     file=$(fzf --preview 'bat --style=numbers --color=always {} | head -500')
     if [[ $? -ne 0 ]]; then
@@ -10,4 +11,4 @@ else
     file=$1
 fi
 
-$EDITOR $file
+$EDITOR "$file"
