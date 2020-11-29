@@ -9,7 +9,6 @@
   home.homeDirectory = /Users/marinusalj;
   home.packages = with pkgs; [
     bat # used in `e` for live preview of files
-    cacert # req by nix
     diffr # used in git stuff
     fd
     fish
@@ -20,7 +19,6 @@
     gnupg
     go
     jq
-    nix
     pass
     ripgrep
     tig
