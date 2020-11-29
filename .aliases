@@ -61,17 +61,6 @@ fuzzy_branch() {
     git branch | grep -Ev '\*' | fuzzy_select | tr -d ' '
 }
 
-switch_branch() {
-    if [[ -n $1 ]]; then
-        git checkout "$1"
-    else
-        branch=$(fuzzy_branch)
-        if [[ -n $branch ]]; then
-            git checkout "$branch"
-        fi
-    fi
-}
-
 branch_delete() {
     branch=${1:-$(fuzzy_branch)}
     set -e
