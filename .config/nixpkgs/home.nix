@@ -1,10 +1,7 @@
 { config, pkgs, ... }:
-
 {
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # WAT this seems required as of 20.09. Maybe a bug?
   home.username = "marinusalj";
   home.homeDirectory = /Users/marinusalj;
   home.packages = with pkgs; [
@@ -22,10 +19,11 @@
     pass
     ripgrep
     tig
-  ] ++ stdenv.lib.optionals stdenv.isDarwin [
+  ] ++ pkgs.stdenv.lib.optionals stdenv.isDarwin [
+    # Only macOS software
     swiftformat
   ] ++ stdenv.lib.optionals stdenv.isLinux [
-    alacritty
+    # Only Linux software
   ];
 
   programs.neovim = import ./vim.nix pkgs;
@@ -40,4 +38,5 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "20.09";
-} 
+}
+#// lib.mkIf pkgs.stdenv.isLinux {}
