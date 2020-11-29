@@ -10,7 +10,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>2C1B5EC1-98D5-4E2F-918B-88E3168E3584</string>
+				<string>BD77DD1F-1C9D-4725-88BF-AD7D60531F26</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -83,7 +83,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Alacritty.app</string>
+					<string>/Applications/WezTerm.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>

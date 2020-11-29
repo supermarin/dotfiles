@@ -10,7 +10,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>EE0CF3F7-5CD2-4175-9D72-D412281B4DB5</string>
+				<string>A5913FD4-ADA8-4674-9712-519658B3F7D2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -35,7 +35,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Visual Studio Code.app</string>
+					<string>/nix/store/fdvvf61asv62662964ypb29a0a8vxc6z-user-environment/bin/codium</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -43,7 +43,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>EE0CF3F7-5CD2-4175-9D72-D412281B4DB5</string>
+			<string>A5913FD4-ADA8-4674-9712-519658B3F7D2</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -90,12 +90,14 @@
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
-		<key>EE0CF3F7-5CD2-4175-9D72-D412281B4DB5</key>
+		<key>A5913FD4-ADA8-4674-9712-519658B3F7D2</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
 			<key>xpos</key>
-			<integer>500</integer>
+			<integer>370</integer>
 			<key>ypos</key>
-			<real>10</real>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
