@@ -2,8 +2,6 @@
 {
   programs.home-manager.enable = true;
 
-  home.username = "marinusalj";
-  home.homeDirectory = /Users/marinusalj;
   home.packages = with pkgs; [
     bat # used in `e` for live preview of files
     diffr # used in git stuff
@@ -37,6 +35,6 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "20.09";
+  home.stateVersion = "20.03";
 }
 #// lib.mkIf pkgs.stdenv.isLinux {}
