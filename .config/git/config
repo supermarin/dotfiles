@@ -35,7 +35,6 @@
     user = supermarin
 
 [core]
-    excludesfile = ~/.config/git/gitignore_global
     quotepath = false
     trustctime = false
     pager = diffr | less
