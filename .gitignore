@@ -23,6 +23,7 @@
 
 # apps putting secrets in .config
 .config/hub
+.config/gh
 .config/stripe
 .config/configstore
 
