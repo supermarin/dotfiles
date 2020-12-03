@@ -10,7 +10,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>BD77DD1F-1C9D-4725-88BF-AD7D60531F26</string>
+				<string>20F37394-E0B1-4549-AA44-0A139589B6B4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -134,7 +134,7 @@
 		<key>BD77DD1F-1C9D-4725-88BF-AD7D60531F26</key>
 		<dict>
 			<key>xpos</key>
-			<integer>490</integer>
+			<integer>480</integer>
 			<key>ypos</key>
 			<integer>150</integer>
 		</dict>
