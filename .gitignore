@@ -7,6 +7,9 @@
 # rtv token and history
 .config/rtv
 
+# alacritty (moved to nix)
+.config/alacritty
+
 # Gocode wtf
 .config/gocode
 
@@ -23,4 +26,5 @@
 .config/stripe
 .config/configstore
 
-.config/fish/fish_variables
+# fish (moved to nix)
+.config/fish
