@@ -1,17 +1,1 @@
---color=auto 
-
-# Search hidden files?
---hidden 
-
-# Follow symbolic links while recursively searching.
---follow
-
-# Using glob patterns to include/exclude files or folders
---glob=!.git/*
-
-# Because who cares about case!?
---smart-case
-
-# Don't let ripgrep vomit really long lines to my terminal, and show a preview.
---max-columns=150
---max-columns-preview
+/nix/store/bf84zl6crcs1fz85x5r17hqpr02nha6w-home-manager-files/.config/.rgrc
