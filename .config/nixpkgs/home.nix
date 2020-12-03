@@ -26,6 +26,7 @@
 
   programs.neovim = import ./vim.nix pkgs;
   programs.alacritty = import ./alacritty.nix;
+  programs.fish = import ./fish/fish.nix pkgs;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

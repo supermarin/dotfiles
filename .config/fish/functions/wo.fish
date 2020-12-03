@@ -1,7 +1,1 @@
-function wo
-    set --local dir (find -L ~/code -maxdepth 2 | fzf)
-    if [ $dir ]
-        cd $dir
-        clear
-    end
-end
+/nix/store/d47mv8jnygmb2sr6j0rizfdczxa6z4bk-home-manager-files/.config/fish/functions/wo.fish
