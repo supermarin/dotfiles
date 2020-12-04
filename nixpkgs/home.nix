@@ -30,8 +30,8 @@ in
     EDITOR = "vim";
     FUZZY = "fzf";
     PASS_STORE = ~/.password-store;
-    #PATH = "~/.local/bin:$PATH";
   };
+  home.sessionPath = [ "${config.xdg.configHome}/nixpkgs/functions" ];
 
   imports = [
     (import ./rg/rg.nix config)
