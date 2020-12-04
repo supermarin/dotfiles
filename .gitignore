@@ -10,3 +10,7 @@
 # vim
 *.swp
 **/.netrwhist
+
+.gnupg/*
+!.gnupg/gpg.conf
+!.gnupg/gpg-agent.conf
