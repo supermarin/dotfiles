@@ -29,3 +29,9 @@
 
 # fish (moved to nix)
 .config/fish
+
+# rg (moved to nix)
+.config/rg
+
+# tig (moved to nix)
+.config/tig
