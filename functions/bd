@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Fuzzy finds branches except your current branch, returns the selected branch
+fuzzy_branch() {
+  git branch | grep -Ev '\*' | fzf | tr -d ' '
+}
+
+branch=${1:-$(fuzzy_branch)}
+set -e
+if [[ -n $branch ]]; then
+  git branch -D "$branch"
+  echo -n "Delete from remote? [y/N]: "
+  if read -rq; then
+    set +e
+    ( git push origin ":$branch" ) &
+  fi
+fi
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for branch in $(git branch | grep -Ev '\smaster$|^\*'); do
+  echo -n "Delete branch '$branch' [yN]? "
+  if read -rq; then
+    echo
+    bd "$branch"
+  fi
+done
