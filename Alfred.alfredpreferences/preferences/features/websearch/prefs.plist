@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>B52F4DD9-E90B-46E5-BB8F-2496CC644F31</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>nix</string>
+			<key>text</key>
+			<string>nix pkgs</string>
+			<key>url</key>
+			<string>https://search.nixos.org/packages?channel=unstable&amp;from=0&amp;size=30&amp;sort=relevance&amp;query={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
