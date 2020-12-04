@@ -1,45 +1,51 @@
+# TODO: try ditching home manager in favor of
+# https://github.com/nmattia/homies
 { config, pkgs, ... }:
+let
+  inherit (pkgs.stdenv.lib) mkIf;
+  inherit (pkgs.stdenv) isLinux isDarwin;
+in
 {
-  programs.home-manager.enable = true;
-
   home.packages = with pkgs; [
     bat # used in `e` for live preview of files
     diffr # used in git stuff
     fd
-    fish
     fzf
     git
-    gitAndTools.hub
     gitAndTools.gh
+    gitAndTools.hub
     gnupg
     go
     jq
     pass
     ripgrep
     tig
-  ] ++ pkgs.stdenv.lib.optionals stdenv.isDarwin [
-    # Only macOS software
+  ] ++ lib.optionals isDarwin [
     swiftformat
-  ] ++ stdenv.lib.optionals stdenv.isLinux [
-    # Only Linux software
+  ] ++ lib.optionals isLinux [
+    firefox
   ];
 
-  programs.neovim = import ./vim.nix pkgs;
+  home.sessionVariables = {
+    EDITOR = "vim";
+    FUZZY = "fzf";
+    PASS_STORE = ~/.password-store;
+    #PATH = "~/.local/bin:$PATH";
+  };
+
   imports = [
     (import ./rg/rg.nix config)
     (import ./tig/tig.nix config)
   ];
   programs.alacritty = import ./alacritty.nix;
   programs.fish = import ./fish/fish.nix pkgs;
+  programs.home-manager.enable = true;
+  programs.neovim = import ./vim.nix pkgs;
+  # programs.rnix-lsp = {
+  #   enable = true;
+  #   package = pkgs.rnix-lsp-nightly;
+  # };
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "20.03";
+  # Linux only
+  xsession = mkIf isLinux (import ./linux/xsession.nix pkgs);
 }
-#// lib.mkIf pkgs.stdenv.isLinux {}
