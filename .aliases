@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# Fuzzy finds a running proccess using `ps ax`
-# shellcheck disable=2009
-fp() {
-    if [[ -n "$1" ]]; then ps ax | grep -v 'grep' | grep "$1";
-    else ps ax | fuzzy_select; fi
-}
-
