@@ -4,34 +4,9 @@
 .netrc
 .ssh
 
-# rtv token and history
-.config/rtv
-
-# alacritty (moved to nix)
-.config/alacritty
-
-# Gocode wtf
-.config/gocode
+.config/
+!.config/nixpkgs/**/**
 
 # vim
 *.swp
 **/.netrwhist
-
-.gnupg/*
-!.gnupg/gpg.conf
-!.gnupg/gpg-agent.conf
-
-# apps putting secrets in .config
-.config/hub
-.config/gh
-.config/stripe
-.config/configstore
-
-# fish (moved to nix)
-.config/fish
-
-# rg (moved to nix)
-.config/rg
-
-# tig (moved to nix)
-.config/tig
