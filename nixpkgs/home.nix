@@ -19,6 +19,7 @@ in
     jq
     pass
     ripgrep
+    rnix-lsp-nightly
     tig
   ] ++ lib.optionals isDarwin [
     swiftformat
@@ -41,10 +42,6 @@ in
   programs.fish = import ./fish/fish.nix pkgs;
   programs.home-manager.enable = true;
   programs.neovim = import ./vim.nix pkgs;
-  # programs.rnix-lsp = {
-  #   enable = true;
-  #   package = pkgs.rnix-lsp-nightly;
-  # };
 
   # Linux only
   xsession = mkIf isLinux (import ./linux/xsession.nix pkgs);

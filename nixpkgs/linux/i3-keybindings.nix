@@ -2,7 +2,7 @@ mod:
 {
   "${mod}+w" = "exec firefox";
   "${mod}+Return" = "exec alacritty";
-  "${mod}+c" = "kill";
+  # "${mod}+c" = "kill";
   "${mod}+Shift+g" = "exec dm-tool switch-to-greeter";
   #"XF86AudioRaiseVolume" = "exec amixer -q sset Master 10%+";
   #"XF86AudioLowerVolume" = "exec amixer -q sset Master 10%-";

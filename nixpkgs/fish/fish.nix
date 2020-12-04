@@ -12,11 +12,8 @@ pkgs:
     end
   '';
   promptInit = builtins.readFile ./functions/fish_prompt.fish;
-  # abbrsStr = ''
-  # '';
   functions = with builtins; {
     wo = readFile ./functions/wo.fish;
-    # fish_prompt = 
     fish_right_prompt = readFile ./functions/fish_right_prompt.fish;
   };
 }
