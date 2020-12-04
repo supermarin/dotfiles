@@ -25,6 +25,10 @@
   ];
 
   programs.neovim = import ./vim.nix pkgs;
+  imports = [
+    (import ./rg/rg.nix config)
+    (import ./tig/tig.nix config)
+  ];
   programs.alacritty = import ./alacritty.nix;
   programs.fish = import ./fish/fish.nix pkgs;
 
