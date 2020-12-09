@@ -28,6 +28,7 @@ in
     swiftformat
   ] ++ lib.optionals isLinux [
     firefox
+    rofi
   ];
 
   home.sessionVariables = {
