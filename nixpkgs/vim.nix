@@ -7,11 +7,9 @@ pkgs:
   withPython3 = true;
   package = pkgs.neovim-nightly;
   plugins = with pkgs.vimPlugins; [
-    completion-nvim 
     fzf-vim
     fzfWrapper
     gruvbox
-    nvim-lspconfig
     vim-commentary
     vim-fish
     vim-nix
@@ -41,15 +39,5 @@ pkgs:
     " experimental: neovim terminal
     tnoremap <Esc> <C-\><C-n>
     au CursorHold,CursorHoldI * checktime
-
-    let g:LanguageClient_serverCommands = {
-    \ 'nix': ['rnix-lsp'],
-    \ 'python': ['python-language-server'],
-    \ 'rust': ['rls']
-    \ }
-
-    lua <<EOF
-    ${builtins.readFile ./nvim-lsp.lua}
-    EOF
   '';
 }
