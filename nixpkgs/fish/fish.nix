@@ -7,8 +7,8 @@ pkgs:
       abbr g git
       abbr l la
       abbr ns nix-shell
-      abbr hms home-manager switch
-      abbr hme home-manager edit
+      abbr hs home-manager switch
+      abbr he home-manager edit
     end
   '';
   promptInit = builtins.readFile ./functions/fish_prompt.fish;
