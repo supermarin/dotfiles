@@ -8,6 +8,7 @@ in
 {
   home.packages = with pkgs; [
     bat # used in `e` for live preview of files
+    coreutils # used for `shred`
     diffr # used in git stuff
     fd
     fzf
@@ -17,7 +18,9 @@ in
     gnupg
     go
     jq
+    oathToolkit # used for OTP
     pass
+    rage
     ripgrep
     rnix-lsp-nightly
     tig

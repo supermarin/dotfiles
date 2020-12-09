@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# deps:
+#   - rage
+#   - oathtool (found in oathToolkit nix pkg)
+#
+# TODO: figure out why executing with nix-shell fails, currently on macOS:
+# Failed to execute process '/Users/marinusalj/.config/nixpkgs/functions/otp'. Reason:
+# exec: Not a directory
+#! /usr/bin/env/nix-shell
+#! nix-shell -i /bin/bash -p oathToolkit rage-fixed
+#
+set -euo pipefail
+whichlogin="$1"
+
+if [[ $# -ne 1 ]]; then
+  echo "Not sure what to do with $#"
+  echo "Usage: $0 [name]"
+  exit 1
+fi
+
+encryptedfile="$OTPDIR/$whichlogin"
+if [[ ! -f "$encryptedfile" ]]; then
+  echo "Unknown file: $encryptedfile"
+  exit 1
+fi
+
+# TODO: properly get PK out
+#       this will ask for password interactively.
+value=$(rage -d -i ~/.ssh/id_ed25519 "$encryptedfile")
+oathtool --base32 --totp "$value"

@@ -1,0 +1,100 @@
+#!/bin/bash
+# Deps:
+# - rage
+# - shred
+# TODO: convert to nix-shell if performant enough
+
+set -o pipefail
+PREFIX=~/.otp
+PROGRAM='otpedit'
+
+####
+#### The following few helper functions have been ~copied~
+#### shamelessly stolen from `pass`. Mostly secure tmp creation
+#### and ensuring we leave no garbage behind.
+####
+die() {
+	echo "$@" >&2
+	exit 1
+}
+
+yesno() {
+	[[ -t 0 ]] || return 0
+	local response
+	read -r -p "$1 [y/N] " response
+	[[ $response == [yY] ]] || exit 1
+}
+
+check_sneaky_paths() {
+	local path
+	for path in "$@"; do
+		[[ $path =~ /\.\.$ || $path =~ ^\.\./ || $path =~ /\.\./ || $path =~ ^\.\.$ ]] \
+      && die "Error: You've attempted to pass a sneaky path to otp. Go home."
+	done
+}
+
+tmpdir() {
+	[[ -n $SECURE_TMPDIR ]] && return
+	local warn=1
+	[[ $1 == "nowarn" ]] && warn=0
+	local template="$PROGRAM.XXXXXXXXXXXXX"
+	if [[ -d /dev/shm && -w /dev/shm && -x /dev/shm ]]; then
+		SECURE_TMPDIR="$(mktemp -d "/dev/shm/$template")"
+		remove_tmpfile() {
+			rm -rf "$SECURE_TMPDIR"
+		}
+		trap remove_tmpfile EXIT
+	else
+		[[ $warn -eq 1 ]] && yesno "$(cat <<-_EOF
+		Your system does not have /dev/shm, which means that it may
+		be difficult to entirely erase the temporary non-encrypted
+		password file after editing.
+
+		Are you sure you would like to continue?
+		_EOF
+		)"
+		SECURE_TMPDIR="$(mktemp -d "${TMPDIR:-/tmp}/$template")"
+		shred_tmpfile() {
+			find "$SECURE_TMPDIR" -type f -exec shred -f -z {} +
+			rm -rf "$SECURE_TMPDIR"
+		}
+		trap shred_tmpfile EXIT
+	fi
+
+}
+
+cmd_edit() {
+	[[ $# -ne 1 ]] && die "Usage: $PROGRAM pass-name"
+
+	local path="${1%/}"
+	check_sneaky_paths "$path"
+  set -e
+	mkdir -p -v "$PREFIX/$(dirname -- "$path")"
+	local otpfile="$PREFIX/$path"
+
+	tmpdir #Defines $SECURE_TMPDIR
+	local tmp_file="$(mktemp -u "$SECURE_TMPDIR/XXXXXX")-${path//\//-}.txt"
+
+	if [[ -f $otpfile ]]; then
+    rage -d -o "$tmp_file" -i ~/.ssh/id_ed25519 "$otpfile" || exit 1
+  else
+    die "Can't find $otpfile"
+	fi
+
+	${EDITOR:-vi} "$tmp_file"
+	[[ -f $tmp_file ]] || die "New password not saved."
+  rage -d -o - "$otpfile" 2>/dev/null | diff - "$tmp_file" &>/dev/null && die "Password unchanged."
+
+  tmpencrypted="$tmp_file.tmp"
+  while ! rage -r ~/.ssh/id_ed25519.pub -o "$tmpencrypted" "$tmp_file"; do
+		yesno "Encryption failed. Would you like to try again?"
+	done
+
+  mv "$tmpencrypted" "$otpfile"
+}
+
+if [ ! $(which shred) ] || [ ! $(which rage) ]; then
+  die "Dependencies are not installed"
+fi
+
+cmd_edit $*
