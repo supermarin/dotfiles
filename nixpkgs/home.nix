@@ -21,7 +21,6 @@ in
     pass
     rage
     ripgrep
-    rnix-lsp-nightly
     tig
   ] ++ lib.optionals isDarwin [
     swiftformat
