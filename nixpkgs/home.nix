@@ -12,7 +12,6 @@ in
     diffr # used in git stuff
     fd
     fzf
-    git
     gitAndTools.gh
     gitAndTools.hub
     gnupg
@@ -46,6 +45,7 @@ in
   programs.fish = import ./fish/fish.nix pkgs;
   programs.home-manager.enable = true;
   programs.neovim = import ./vim.nix pkgs;
+  programs.git = import ./git.nix;
 
   # Linux only
   xsession = mkIf isLinux (import ./linux/xsession.nix pkgs);
