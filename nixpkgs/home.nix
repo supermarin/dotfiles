@@ -35,6 +35,7 @@ in
     EDITOR = "vim";
     FUZZY = "fzf";
     PASS_STORE = ~/.password-store;
+    OTPDIR = ~/.otp;
   };
   home.sessionPath = [ "${config.xdg.configHome}/nixpkgs/functions" ];
 
