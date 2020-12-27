@@ -30,15 +30,13 @@ function stashed
 end
 
 function jobs_info
-  set -l jobs_or_die (jobs)
-  if [ $status = 0 ]
-    if [ (echo $jobs_or_die | wc -l | tr -d ' ') = 1 ]
-      echo "[$jc job]"
-    else
-      echo "[$jc jobs]"
-    end
+  set -l jobs_no (jobs | wc -l | tr -d ' ')
+  if [ $jobs_no = 1 ]
+    echo "[$jobs_no job]"
+  else if [ $jobs_no -ge 2 ]
+    echo "[$jobs_no jobs]"
   end
-  set -e jobs_or_die
+  set -e $jobs_no
 end
 
 function ahead
