@@ -7,6 +7,7 @@ pkgs:
   withPython3 = true;
   package = pkgs.neovim-nightly;
   plugins = with pkgs.vimPlugins; [
+    editorconfig-vim
     fzf-vim
     fzfWrapper
     gruvbox
