@@ -2,7 +2,8 @@ set red (set_color -o red)
 set normal (set_color normal)
 set cyan (set_color -o cyan)
 set green (set_color -o green)
-set purple (set_color -o purple)
+set purple (set_color -o brpurple)
+set chocolate (set_color -o D2691E)
 
 function is_in_git_repo
     echo (git rev-parse --is-inside-work-tree ^/dev/null)
@@ -61,7 +62,7 @@ end
 function git_prompt
     set -l branch (git_branch_name)
     if [ $branch ]
-        set git_status_color $cyan
+        set git_status_color $green
         set revision $branch
     else
         set -l current_commit (git_current_commit)
@@ -72,7 +73,7 @@ function git_prompt
     end
 
     if [ (is_git_dirty) ]
-        set git_status_color $red
+        set git_status_color $chocolate
     end
 
     echo $git_status_color$revision $purple(stashed) $normal(ahead) $normal(behind)
