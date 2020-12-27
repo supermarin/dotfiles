@@ -11,7 +11,6 @@
 #! nix-shell -i /bin/bash -p oathToolkit rage-fixed
 #
 set -euo pipefail
-whichlogin="$1"
 
 if [[ $# -ne 1 ]]; then
   echo "Not sure what to do with $#"
@@ -19,7 +18,9 @@ if [[ $# -ne 1 ]]; then
   exit 1
 fi
 
+whichlogin="$1"
 encryptedfile="$OTPDIR/$whichlogin"
+
 if [[ ! -f "$encryptedfile" ]]; then
   echo "Unknown file: $encryptedfile"
   exit 1
