@@ -1,14 +1,15 @@
 mod:
 {
   "${mod}+w" = "exec firefox";
-  "${mod}+Return" = "exec alacritty";
-  # "${mod}+c" = "kill";
-  "${mod}+Shift+g" = "exec dm-tool switch-to-greeter";
+  "${mod}+Return" = "exec alacritty -vvv 2>&1 | tee /tmp/alacritty.log";
+  "${mod}+d" = "exec rofi -show run";
+  "${mod}+Space" = "rofi -combi-modi window#drun#ssh -font 'hack 17' -show combi";
+  "${mod}+shift+g" = "exec dm-tool switch-to-greeter";
   #"XF86AudioRaiseVolume" = "exec amixer -q sset Master 10%+";
   #"XF86AudioLowerVolume" = "exec amixer -q sset Master 10%-";
   #"XF86AudioMute" = "exec amixer -q sset Master toggle";
 
-  "${mod}+Shift+grave" = "move scratchpad";
+  "${mod}+shift+grave" = "move scratchpad";
   "${mod}+grave" = "scratchpad show";
   "${mod}+h" = "focus left";
   "${mod}+j" = "focus down";
@@ -32,7 +33,7 @@ mod:
   "${mod}+Shift+s" = "layout stacking";
   "${mod}+Shift+t" = "layout tabbed";
   "${mod}+Shift+f" = "floating toggle";
-  "${mod}+space" = "focus mode_toggle";
+  "${mod}+shift+Space" = "focus mode_toggle";
   "${mod}+1" = "workspace 1";
   "${mod}+2" = "workspace \"2: web\"";
   "${mod}+3" = "workspace 3";
