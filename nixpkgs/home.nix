@@ -35,6 +35,8 @@ in
     PASS_STORE = ~/.password-store;
     OTPDIR = ~/.otp;
   };
+
+  # Add functions/ to PATH
   home.sessionPath = [ "${config.xdg.configHome}/nixpkgs/functions" ];
 
   imports = [
