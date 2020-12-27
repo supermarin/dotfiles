@@ -22,10 +22,9 @@ in
     pass
     rage
     ripgrep
-    rnix-lsp-nightly
     tig
+    tree-sitter # for neovim
   ] ++ lib.optionals isDarwin [
-    swiftformat
   ] ++ lib.optionals isLinux [
     firefox
     rofi
