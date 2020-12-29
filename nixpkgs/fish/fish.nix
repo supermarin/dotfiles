@@ -2,6 +2,8 @@ pkgs:
 {
   enable = true;
   shellInit = ''
+    ${builtins.readFile ./nix.fish}
+
     if status --is-interactive
       abbr c clear
       abbr g git
@@ -13,7 +15,7 @@ pkgs:
   '';
   promptInit = builtins.readFile ./functions/fish_prompt.fish;
   functions = with builtins; {
-    wo = readFile ./functions/wo.fish;
-    fish_right_prompt = readFile ./functions/fish_right_prompt.fish;
+    wo = builtins.readFile ./functions/wo.fish;
+    fish_right_prompt = builtins.readFile ./functions/fish_right_prompt.fish;
   };
 }
