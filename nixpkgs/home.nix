@@ -6,6 +6,16 @@ let
   inherit (pkgs.stdenv) isLinux isDarwin;
 in
 {
+  home.sessionVariables = {
+    EDITOR = "vim";
+    FUZZY = "fzf";
+    PASS_STORE = "$HOME/.password-store";
+    OTPDIR = "$HOME/.otp";
+  };
+  home.sessionPath = [
+    "${config.xdg.configHome}/nixpkgs/functions"
+  ];
+
   home.packages = with pkgs; [
     bat # used in `e` for live preview of files
     coreutils # used for `shred`
@@ -29,20 +39,12 @@ in
     rofi
   ];
 
-  home.sessionVariables = {
-    EDITOR = "vim";
-    FUZZY = "fzf";
-    PASS_STORE = ~/.password-store;
-    OTPDIR = ~/.otp;
-  };
-
-  # Add functions/ to PATH
-  home.sessionPath = [ "${config.xdg.configHome}/nixpkgs/functions" ];
 
   imports = [
     (import ./rg/rg.nix config)
     (import ./tig/tig.nix config)
   ];
+
   programs.alacritty = import ./alacritty.nix;
   programs.fish = import ./fish/fish.nix pkgs;
   programs.home-manager.enable = true;
