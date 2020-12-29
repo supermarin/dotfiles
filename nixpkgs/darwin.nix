@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  users.users.supermarin = {
-    shell = pkgs.bash;
-  };
-
   # Darwin only below. TODO: move to separate file
   system.defaults.finder.QuitMenuItem = true;
   system.defaults.dock.orientation = "right";
