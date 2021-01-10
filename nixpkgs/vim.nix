@@ -25,6 +25,9 @@ pkgs:
     set splitbelow
     set splitright
     set ts=2 sw=2 expandtab
+    set undofile
+    call mkdir($HOME."/.vim/undo", "p", 0700)
+    set undodir=~/.vim/undo
 
     color gruvbox
 
