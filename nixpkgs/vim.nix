@@ -40,9 +40,6 @@ pkgs:
     nnoremap <leader>b :Buffers<cr>
     nnoremap <leader>f :FZF<cr>
 
-    " experimental: neovim terminal
-    tnoremap <c-w> <C-\><C-n><c-w>
-    tnoremap <Esc> <C-\><C-n>
     au CursorHold,CursorHoldI * checktime
   '';
 }
