@@ -16,7 +16,7 @@ pkgs:
   ];
   extraConfig = ''
     let mapleader=" "
-    set clipboard=unnamedplus
+    set clipboard=unnamed
     set grepprg=rg\ --vimgrep
     set ignorecase
     set mouse=a
