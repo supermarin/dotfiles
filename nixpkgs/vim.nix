@@ -30,6 +30,9 @@ pkgs:
     set undodir=~/.vim/undo
 
     color gruvbox
+    set termguicolors
+    set background=dark
+    set t_ut=
 
     nnoremap gh ^
     nnoremap gl $
