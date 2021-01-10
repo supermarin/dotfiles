@@ -14,6 +14,8 @@ in
   };
   home.sessionPath = [
     "${config.xdg.configHome}/nixpkgs/functions"
+    "$HOME/sdk/gotip/bin/darwin_arm64"
+    "$HOME/go/bin"
   ];
 
   home.packages = with pkgs; [
@@ -25,18 +27,16 @@ in
     gitAndTools.gh
     gitAndTools.hub
     gnupg
-    go
     jq
     oathToolkit # used for OTP
     pass
     rage
     ripgrep
-    tig
-    tree-sitter # for neovim
   ] ++ lib.optionals isDarwin [
   ] ++ lib.optionals isLinux [
     firefox
     rofi
+    tig
   ];
 
 
