@@ -8,9 +8,11 @@ pkgs:
     gruvbox
     vim-commentary
     vim-fish
+    vim-gitgutter
     vim-nix
     vim-repeat
     vim-surround
+    vim-visual-multi
   ];
   extraConfig = ''
     let mapleader=" "
