@@ -32,6 +32,8 @@ if [ -n "$HOME" ] && [ -n "$USER" ]
     end
 
     set -gx PATH "$NIX_LINK/bin" "$PATH"
+    # HACK until nix compiles arm64 binaries
+    set -gx PATH "$HOME/.local/bin" "$PATH"
     set -e NIX_LINK
     set -e NIX_USER_PROFILE_DIR
 end
