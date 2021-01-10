@@ -48,7 +48,7 @@ in
   programs.alacritty = import ./alacritty.nix;
   programs.fish = import ./fish/fish.nix pkgs;
   programs.home-manager.enable = true;
-  programs.neovim = import ./vim.nix pkgs;
+  programs.vim = import ./vim.nix pkgs;
   programs.git = import ./git.nix;
 
   # Linux only
