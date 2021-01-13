@@ -7,7 +7,7 @@ let
 in
 {
   home.sessionVariables = {
-    EDITOR = "v";
+    EDITOR = "vim";
     FUZZY = "fzf";
     PASS_STORE = "$HOME/.password-store";
     OTPDIR = "$HOME/.otp";
