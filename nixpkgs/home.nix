@@ -48,8 +48,8 @@ in
   programs.alacritty = import ./alacritty.nix;
   programs.fish = import ./fish/fish.nix pkgs;
   programs.home-manager.enable = true;
-  programs.vim = import ./vim.nix pkgs;
   programs.git = import ./git.nix;
+  home.file.".vimrc".text = "${builtins.readFile ./vim/vimrc}";
 
   # Linux only
   xsession = mkIf isLinux (import ./linux/xsession.nix pkgs);
