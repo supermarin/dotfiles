@@ -77,6 +77,12 @@ function git_prompt
     echo $git_status_color$revision $purple(stashed) $normal(ahead) $normal(behind)
 end
 
+function duration
+  if [ $CMD_DURATION -gt 100 ]
+    echo " $normal($CMD_DURATION ms)"
+  end
+end
+
 
 function fish_prompt
     set -l s $status # needed because $status gets overriden to 0 immediately
@@ -88,5 +94,5 @@ function fish_prompt
       set supemarin_git_info (git_prompt)
     end
 
-    echo (jobs_info) $supemarin_git_info $last_status_info $normal'$ '
+    echo (jobs_info) $supemarin_git_info $last_status_info(duration) $normal'$ '
 end
