@@ -2,7 +2,7 @@
 
 (
     set -euo pipefail
-    cd $PASS_STORE
+    cd $PASSWORD_STORE_DIR
     file=$(rg --files | $FUZZY)
     pass edit "${file%.gpg}"
 )

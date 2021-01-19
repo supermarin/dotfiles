@@ -2,7 +2,7 @@
 
 (
     set -euo pipefail
-    cd $PASS_STORE/Credit-Card
+    cd $PASSWORD_STORE_DIR/Credit-Card
 
     cc_data=$(gpg --decrypt --quiet "$(rg --files | $FUZZY)")
     cc_num=$(echo "$cc_data" | grep '^number' | sed 's/number: //')

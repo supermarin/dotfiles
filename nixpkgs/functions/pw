@@ -2,7 +2,7 @@
 
 (
     set -euo pipefail
-    cd $PASS_STORE/Password
+    cd $PASSWORD_STORE_DIR/Password
 
     IFS=$'\n'
     file=${1:-"$(rg --files | fzf)"}
