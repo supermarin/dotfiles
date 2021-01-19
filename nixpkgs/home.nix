@@ -9,7 +9,7 @@ in
   home.sessionVariables = {
     EDITOR = "vim";
     FUZZY = "fzf";
-    PASS_STORE = "$HOME/.password-store";
+    PASSWORD_STORE_DIR="$HOME/.p";
     OTPDIR = "$HOME/.otp";
   };
   home.sessionPath = [
