@@ -30,7 +30,7 @@ in
     jq
     oathToolkit # used for OTP
     pass
-    rage
+    age
     ripgrep
   ] ++ lib.optionals isDarwin [
   ] ++ lib.optionals isLinux [
