@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 (
     set -euo pipefail
@@ -9,9 +9,9 @@
     contents=$(gpg --decrypt --quiet "$file")
 
     paswd=$(printf "%s" "$contents" | head -n 1)
-    login="${$(printf "%s" "$contents" | grep '^username:')#'username: '}"
+    login=$(printf "%s" "$contents" | tail -n 1)
 
-    printf "%s" "$login" | pbcopy
+    printf "%s" "${login#username: }" | pbcopy
     printf "%s" "Username copied to the clipboard. Press Enter when ready."
 
     #shellcheck disable=2034
