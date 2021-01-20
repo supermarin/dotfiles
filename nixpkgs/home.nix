@@ -37,6 +37,7 @@ in
     firefox
     rofi
     tig
+    xsel
   ];
 
 
