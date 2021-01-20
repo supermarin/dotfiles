@@ -32,7 +32,6 @@ in
     ripgrep
   ] ++ lib.optionals isDarwin [
   ] ++ lib.optionals isLinux [
-    firefox
     go
     gopls
     rofi
