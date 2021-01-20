@@ -35,8 +35,11 @@ in
   ] ++ lib.optionals isDarwin [
   ] ++ lib.optionals isLinux [
     firefox
+    go
+    gopls
     rofi
     tig
+    vim
     xsel
   ];
 
