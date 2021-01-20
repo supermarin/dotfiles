@@ -43,7 +43,6 @@ in
     xsel
   ];
 
-
   imports = [
     (import ./rg/rg.nix config)
     (import ./tig/tig.nix config)
