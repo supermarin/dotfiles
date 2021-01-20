@@ -22,4 +22,3 @@ fi
 value=$(rage -d -i ~/.ssh/id_ed25519 "$encryptedfile")
 oathtool --base32 --totp "$value" | pbcopy
 echo "OTP $whichlogin copied to the clipboard."
-echo "fix this for linux"
