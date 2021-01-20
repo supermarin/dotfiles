@@ -24,8 +24,6 @@ in
     diffr # used in git stuff
     fd
     fzf
-    gitAndTools.gh
-    gitAndTools.hub
     gnupg
     jq
     oathToolkit # used for OTP
