@@ -19,6 +19,7 @@ in
   ];
 
   home.packages = with pkgs; [
+    age
     bat # used in `e` for live preview of files
     coreutils # used for `shred`
     diffr # used in git stuff
@@ -28,7 +29,6 @@ in
     jq
     oathToolkit # used for OTP
     pass
-    age
     ripgrep
   ] ++ lib.optionals isDarwin [
   ] ++ lib.optionals isLinux [
