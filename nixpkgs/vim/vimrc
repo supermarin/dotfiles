@@ -20,6 +20,7 @@ let mapleader=" "
 set clipboard=unnamed
 set grepprg=rg\ --vimgrep
 set ignorecase
+set laststatus=2
 set mouse=a
 set smartcase
 set smartindent
@@ -84,3 +85,11 @@ if executable('gopls')
 else
   echo("gopls not found!??")
 endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" STATUS LINE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline=
+" show full file path
+set statusline+=%F:%l:%c
