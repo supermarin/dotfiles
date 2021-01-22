@@ -36,7 +36,6 @@ in
     gopls
     rofi
     tig
-    vim
     xsel
   ];
 
