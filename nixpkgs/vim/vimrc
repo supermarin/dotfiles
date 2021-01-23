@@ -30,6 +30,7 @@ set ts=2 sw=2 expandtab
 set undofile
 call mkdir($HOME."/.vim/undo", "p", 0700)
 set undodir=~/.vim/undo
+au CursorHold,CursorHoldI * checktime
 
 color gruvbox
 set termguicolors
@@ -41,8 +42,6 @@ nnoremap gl $
 nnoremap <leader>p :GitFiles<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>f :FZF<cr>
-
-au CursorHold,CursorHoldI * checktime
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
