@@ -37,12 +37,19 @@ set termguicolors
 set background=dark
 set t_ut=
 
+" kakoune-style begeinning/end of line
 nnoremap gh ^
 nnoremap gl $
+
+" File navigation
 nnoremap <leader>p :GitFiles<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>f :FZF<cr>
-
+nnoremap <leader>r :Rg<cr>
+" experimental mappings: see if i use them
+nnoremap <leader>q :q<cr>
+nnoremap <leader>v :vs<cr>
+nnoremap <leader>s :w<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LSP
