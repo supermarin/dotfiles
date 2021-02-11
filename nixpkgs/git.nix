@@ -26,6 +26,7 @@
     sl = "stash list";
     ss = "stash save";
     sp = "stash pop";
+    sd = "stash drop";
     su = "submodule update --recursive";
   };
   ignores = [".DS_Store" "*.swp" "tags" ".vscode"];
