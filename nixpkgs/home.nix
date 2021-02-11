@@ -2,7 +2,7 @@
 # https://github.com/nmattia/homies
 { config, pkgs, ... }:
 let
-  inherit (pkgs.stdenv.lib) mkIf;
+  inherit (pkgs.lib) mkIf;
   inherit (pkgs.stdenv) isLinux isDarwin;
 in
 {
