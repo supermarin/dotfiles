@@ -32,9 +32,8 @@ in
     ripgrep
   ] ++ lib.optionals isDarwin [
   ] ++ lib.optionals isLinux [
-    go
-    gopls
     rofi
+    rofi-pass
     tig
     xsel
   ];
