@@ -17,7 +17,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
 
 let mapleader=" "
-set clipboard=unnamed
+set clipboard=unnamedplus
 set grepprg=rg\ --vimgrep
 set ignorecase
 set laststatus=2
