@@ -15,7 +15,7 @@ pkgs:
   '';
   promptInit = builtins.readFile ./functions/fish_prompt.fish;
   functions = with builtins; {
-    wo = builtins.readFile ./functions/wo.fish;
-    fish_right_prompt = builtins.readFile ./functions/fish_right_prompt.fish;
+    wo = readFile ./functions/wo.fish;
+    fish_right_prompt = readFile ./functions/fish_right_prompt.fish;
   };
 }
