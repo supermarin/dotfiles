@@ -48,6 +48,7 @@ in
   programs.home-manager.enable = true;
   programs.git = import ./git.nix;
   home.file.".vimrc".text = "${builtins.readFile ./vim/vimrc}";
+  home.file.".sqliterc".text = "${builtins.readFile ./sqliterc}";
 
   # Linux only
   xsession = mkIf isLinux (import ./linux/xsession.nix pkgs);
