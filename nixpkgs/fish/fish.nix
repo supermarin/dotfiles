@@ -12,6 +12,8 @@ pkgs:
       abbr hs home-manager switch
       abbr he home-manager edit
     end
+
+    any-nix-shell fish --info-right | source
   '';
   promptInit = builtins.readFile ./functions/fish_prompt.fish;
   functions = with builtins; {
