@@ -1,11 +1,12 @@
-#!/bin/zsh
+#!/bin/bash
 
 protocol="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
 url="$(echo ${1/$protocol/})"
 user="$(echo $url | grep @ | cut -d@ -f1)"
 host="$(echo ${url/$user@/} | cut -d/ -f1)"
 
-name=${$(echo $host | rev | cut -d. -f1-2 | rev)/.*/}
+hostwithdomain=$(echo $host | rev | cut -d. -f1-2 | rev)
+name=${hostwithdomain/.*/}
 capitalized="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})${name:1}"
 echo -n "Name for the new password [$capitalized]: "
 read -r input 
