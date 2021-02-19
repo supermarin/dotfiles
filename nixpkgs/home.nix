@@ -47,6 +47,7 @@ in
   programs.fish = import ./fish/fish.nix pkgs;
   programs.home-manager.enable = true;
   programs.git = import ./git.nix;
+  home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
   home.file.".vimrc".text = "${builtins.readFile ./vim/vimrc}";
   home.file.".sqliterc".text = "${builtins.readFile ./sqliterc}";
 
