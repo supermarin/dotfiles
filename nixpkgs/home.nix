@@ -17,6 +17,7 @@ in
     "$HOME/go/bin"
   ];
 
+  # TODO: on mac, remove /usr/local/go once Nix builds for arm64
   home.packages = with pkgs; [
     age
     any-nix-shell
