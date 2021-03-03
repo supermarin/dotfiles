@@ -14,7 +14,6 @@ in
   };
   home.sessionPath = [
     "${config.xdg.configHome}/nixpkgs/functions"
-    "$HOME/sdk/gotip/bin/darwin_arm64"
     "$HOME/go/bin"
   ];
 
