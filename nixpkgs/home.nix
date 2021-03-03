@@ -48,6 +48,25 @@ in
   programs.fish = import ./fish/fish.nix pkgs;
   programs.home-manager.enable = true;
   programs.git = import ./git.nix;
+  programs.vscode = with pkgs; {
+    enable = true;
+    package = vscodium;
+    extensions = [
+      vscode-extensions.brettm12345.nixfmt-vscode
+      vscode-extensions.jnoortheen.nix-ide
+      vscode-extensions.golang.Go
+      vscode-extensions.vscodevim.vim
+    ];
+    userSettings = {
+      "go.useLanguageServer" = true;
+      "editor.minimap.enabled" = false;
+      "nix.enableLanguageServer" = true;
+      "update.mode" = "none";
+      "workbench.activityBar.visible" = false;
+      "workbench.colorTheme" = "Gruvbox Dark Medium";
+      "telemetry.enableTelemetry" = false;
+    };
+  };
   home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
   home.file.".vimrc".text = "${builtins.readFile ./vim/vimrc}";
   home.file.".sqliterc".text = "${builtins.readFile ./sqliterc}";
