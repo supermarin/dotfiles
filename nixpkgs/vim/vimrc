@@ -32,10 +32,10 @@ call mkdir($HOME."/.vim/undo", "p", 0700)
 set undodir=~/.vim/undo
 au CursorHold,CursorHoldI * checktime
 
-color gruvbox
 set termguicolors
 set background=dark
 set t_ut=
+color gruvbox
 
 " kakoune-style begeinning/end of line
 nnoremap gh ^
