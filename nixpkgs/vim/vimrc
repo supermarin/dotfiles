@@ -1,19 +1,20 @@
 call plug#begin()
-Plug 'editorconfig/editorconfig-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-commentary'
-Plug 'airblade/vim-gitgutter'
 Plug 'LnL7/vim-nix'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'mg979/vim-visual-multi'
+Plug 'airblade/vim-gitgutter'
+Plug 'davidbeckingsale/writegood.vim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'mg979/vim-visual-multi'
+Plug 'morhetz/gruvbox'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 let mapleader=" "
