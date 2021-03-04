@@ -7,7 +7,3 @@ Host supermar.in
 Host eric
   Hostname 192.168.1.140
   User marin
-
-Host api
-  Hostname api.sailefx.com
-  User root
