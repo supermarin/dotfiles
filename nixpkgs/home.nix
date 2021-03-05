@@ -58,13 +58,17 @@ in
       vscode-extensions.vscodevim.vim
     ];
     userSettings = {
-      "go.useLanguageServer" = true;
+      "editor.fontFamily" = "'Go Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'";
+      "editor.fontSize" = 13;
       "editor.minimap.enabled" = false;
+      "go.useLanguageServer" = true;
       "nix.enableLanguageServer" = true;
       "update.mode" = "none";
+      "vim.useSystemClipboard" = true;
+      "window.menuBarVisibility" = "toggle";
+      "window.zoomLevel" = -1;
       "workbench.activityBar.visible" = false;
-      "workbench.colorTheme" = "Gruvbox Dark Medium";
-      "telemetry.enableTelemetry" = false;
+      "workbench.colorTheme" = "Gruvbox Dark Hard";
     };
   };
   home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
