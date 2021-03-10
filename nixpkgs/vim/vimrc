@@ -1,7 +1,6 @@
 call plug#begin()
 Plug 'LnL7/vim-nix'
 Plug 'airblade/vim-gitgutter'
-Plug 'davidbeckingsale/writegood.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
