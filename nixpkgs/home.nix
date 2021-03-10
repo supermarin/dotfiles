@@ -31,6 +31,7 @@ in
     oathToolkit # used for OTP
     pass
     ripgrep
+    rnix-lsp
   ] ++ lib.optionals isDarwin [
   ] ++ lib.optionals isLinux [
     rofi
