@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i /bin/bash -p oathToolkit rage
+#! nix-shell -i /bin/bash -p oathToolkit age fzf
 set -euo pipefail
 
 # if [[ $# -ne 1 ]]; then
@@ -19,6 +19,6 @@ fi
 
 # TODO: properly get PK out
 #       this will ask for password interactively.
-value=$(rage -d -i ~/.ssh/id_ed25519 "$encryptedfile")
+value=$(age -d -i ~/.ssh/id_ed25519 "$encryptedfile")
 oathtool --base32 --totp "$value" | pbcopy
 echo "OTP $whichlogin copied to the clipboard."
