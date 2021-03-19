@@ -11,6 +11,7 @@ in
     FUZZY = "fzf";
     PASSWORD_STORE_DIR="$HOME/.p";
     OTPDIR = "$HOME/.otp";
+    RIPGREP_CONFIG_PATH = ./rg/config;
   };
   home.sessionPath = [
     "${config.xdg.configHome}/nixpkgs/functions"
@@ -35,15 +36,12 @@ in
     rnix-lsp
   ] ++ lib.optionals isDarwin [
   ] ++ lib.optionals isLinux [
-    rofi
-    rofi-pass
+    # The following are here because of M1:
+    # Nix can't compile for arm64, so I'm just using the
+    # system binaries / hand compiling on the mac.
+    git
     tig
-    xsel
-  ];
-
-  imports = [
-    (import ./rg/rg.nix config)
-    (import ./tig/tig.nix config)
+    vim
   ];
 
   programs.alacritty = import ./alacritty.nix;
@@ -77,6 +75,8 @@ in
     };
   };
   home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
-  home.file.".vimrc".text = "${builtins.readFile ./vim/vimrc}";
-  home.file.".sqliterc".text = "${builtins.readFile ./sqliterc}";
+  home.file.".vimrc".text = builtins.readFile ./vim/vimrc;
+  home.file.".sqliterc".text = builtins.readFile ./sqliterc;
+  xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
+  xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
 }
