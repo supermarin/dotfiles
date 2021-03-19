@@ -79,7 +79,4 @@ in
   home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
   home.file.".vimrc".text = "${builtins.readFile ./vim/vimrc}";
   home.file.".sqliterc".text = "${builtins.readFile ./sqliterc}";
-
-  # Linux only
-  xsession = mkIf isLinux (import ./linux/xsession.nix pkgs);
 }
