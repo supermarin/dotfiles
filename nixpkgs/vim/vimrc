@@ -44,7 +44,7 @@ nnoremap gl $
 " File navigation
 nnoremap <leader>p :GitFiles<cr>
 nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>f :FZF<cr>
+nnoremap <leader>f :Files<cr>
 nnoremap <leader>r :Rg<cr>
 " experimental mappings: see if i use them
 nnoremap <leader>q :q<cr>
