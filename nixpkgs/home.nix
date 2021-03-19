@@ -66,10 +66,13 @@ in
       "nix.enableLanguageServer" = true;
       "update.mode" = "none";
       "vim.useSystemClipboard" = true;
+      "window.autoDetectColorScheme" = true;
       "window.menuBarVisibility" = "toggle";
       "window.zoomLevel" = -1;
       "workbench.activityBar.visible" = false;
-      "workbench.colorTheme" = "Gruvbox Dark Hard";
+      "workbench.colorTheme" = "Gruvbox Light Hard";
+      "workbench.preferredDarkColorTheme" = "Gruvbox Dark Hard";
+      "workbench.preferredLightColorTheme" = "Gruvbox Light Hard";
     };
   };
   home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
