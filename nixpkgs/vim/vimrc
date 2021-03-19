@@ -17,7 +17,7 @@ Plug 'tpope/vim-surround'
 call plug#end()
 
 let mapleader=" "
-set clipboard=unnamedplus
+set clipboard=unnamed
 set grepprg=rg\ --vimgrep
 set ignorecase
 set laststatus=2
