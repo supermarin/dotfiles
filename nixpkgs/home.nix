@@ -28,6 +28,7 @@ in
     fzf
     gnupg
     jq
+    magic-wormhole
     oathToolkit # used for OTP
     pass
     ripgrep
