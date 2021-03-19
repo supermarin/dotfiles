@@ -61,7 +61,7 @@ in
     ];
     userSettings = {
       "editor.fontFamily" = "'Go Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'";
-      "editor.fontSize" = 13;
+      "editor.fontSize" = 15;
       "editor.minimap.enabled" = false;
       "go.useLanguageServer" = true;
       "nix.enableLanguageServer" = true;
