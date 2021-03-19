@@ -7,6 +7,7 @@ pkgs:
     if status --is-interactive
       abbr c clear
       abbr g git
+      abbr gs git s
       abbr l la
       abbr ns nix-shell
       abbr hs home-manager switch
