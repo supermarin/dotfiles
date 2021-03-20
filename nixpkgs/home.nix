@@ -4,6 +4,11 @@
 let
   inherit (pkgs.lib) mkIf;
   inherit (pkgs.stdenv) isLinux isDarwin;
+  fonts = with pkgs; [
+    fira-code
+    jetbrains-mono
+    go-font
+  ];
 in
 {
   home.sessionVariables = {
@@ -21,7 +26,6 @@ in
   # TODO: on mac, remove /usr/local/go once Nix builds for arm64
   home.packages = with pkgs; [
     age
-    any-nix-shell
     bat # used in `e` for live preview of files
     coreutils # used for `shred`
     diffr # used in git stuff
@@ -34,8 +38,10 @@ in
     pass
     ripgrep
     rnix-lsp
-  ] ++ lib.optionals isDarwin [
-  ] ++ lib.optionals isLinux [
+  ]
+  ++ fonts
+  ++ lib.optionals isDarwin [] 
+  ++ lib.optionals isLinux [
     # The following are here because of M1:
     # Nix can't compile for arm64, so I'm just using the
     # system binaries / hand compiling on the mac.
@@ -76,6 +82,7 @@ in
   };
   home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
   home.file.".vimrc".text = builtins.readFile ./vim/vimrc;
+  home.file.".gvimrc".text = "${builtins.readFile ./vim/gvimrc}";
   home.file.".sqliterc".text = builtins.readFile ./sqliterc;
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
