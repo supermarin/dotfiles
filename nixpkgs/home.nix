@@ -26,6 +26,7 @@ in
   # TODO: on mac, remove /usr/local/go once Nix builds for arm64
   home.packages = with pkgs; [
     age
+    any-nix-shell
     bat # used in `e` for live preview of files
     coreutils # used for `shred`
     diffr # used in git stuff
