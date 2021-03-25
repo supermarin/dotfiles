@@ -45,6 +45,7 @@
   environment.systemPackages = with pkgs; [
     alacritty
     wget
+    albert
     vim
     firefox-wayland
     rofi
