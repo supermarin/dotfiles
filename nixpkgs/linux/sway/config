@@ -1,5 +1,5 @@
 # UI
-default_border pixel 5
+default_border pixel 4
 gaps inner 10
 
 ### Variables
