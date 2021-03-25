@@ -23,6 +23,7 @@
     networkmanager.enable = true;
   };
 
+  programs.ssh.startAgent = true;
   services.openssh.enable = true;
   hardware.pulseaudio.enable = true;
   sound.enable = true;
