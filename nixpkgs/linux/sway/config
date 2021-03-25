@@ -15,7 +15,7 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu 'albert show'
-set $dmenu 'rofi -modi run,drun,window -show drun'
+set $dmenu 'rofi -theme gruvbox-dark-soft -modi run,drun,window -show drun'
 
 ### Output configuration
 #
