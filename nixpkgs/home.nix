@@ -2,7 +2,7 @@
 # https://github.com/nmattia/homies
 { config, pkgs, ... }:
 let
-  inherit (pkgs.lib) mkIf;
+  inherit (pkgs.lib) mkIf optionals;
   inherit (pkgs.stdenv) isLinux isDarwin;
 in
 {
@@ -60,4 +60,5 @@ in
   home.file.".sqliterc".text = builtins.readFile ./sqliterc;
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
+  xdg.configFile."sway/config".text = optionals isLinux (builtins.readFile ./linux/sway/config);
 }
