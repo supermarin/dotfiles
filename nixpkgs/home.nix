@@ -4,11 +4,6 @@
 let
   inherit (pkgs.lib) mkIf;
   inherit (pkgs.stdenv) isLinux isDarwin;
-  fonts = with pkgs; [
-    fira-code
-    jetbrains-mono
-    go-font
-  ];
 in
 {
   home.sessionVariables = {
@@ -23,7 +18,6 @@ in
     "$HOME/go/bin"
   ];
 
-  # TODO: on mac, remove /usr/local/go once Nix builds for arm64
   home.packages = with pkgs; [
     age
     any-nix-shell
@@ -40,7 +34,11 @@ in
     ripgrep
     rnix-lsp
   ]
-  ++ fonts
+  ++ [ # fonts
+    fira-code
+    jetbrains-mono
+    go-font
+  ]
   ++ lib.optionals isDarwin [] 
   ++ lib.optionals isLinux [
     # The following are here because of M1:
