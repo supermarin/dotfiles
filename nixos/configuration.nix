@@ -30,6 +30,9 @@
   users.users.supermarin = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; 
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in"
+    ];
   };
 
 
