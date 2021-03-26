@@ -61,7 +61,6 @@
     extraPackages = with pkgs; [
       flameshot       # Screenshot tool https://flameshot.org
       mako            # notification daemon
-      rofi
       swaylock
       swayidle
       wayvnc

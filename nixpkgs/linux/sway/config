@@ -1,11 +1,11 @@
-# UI
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # !! This file is managed by home-manager. Don't forget to home-manager switch
 # !! testing changes if you don't want to waste another hour
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #
+### UI
 default_border pixel 4
-gaps inner 10
+gaps inner 15
 
 ### Variables
 #
@@ -21,7 +21,6 @@ set $browser firefox
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu 'albert show'
-set $dmenu 'rofi -theme gruvbox-dark-soft -modi run,drun,window -show drun'
 
 ### Output configuration
 #
@@ -56,6 +55,10 @@ exec swayidle -w \
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+input * {
+    repeat_delay 175
+    repeat_rate  75
+}
 
 ### Key bindings
 #
@@ -69,12 +72,10 @@ exec swayidle -w \
 
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
 
     # Start your launcher
     bindsym $mod+Space exec $menu
-    # backup if albert doesn't start
-    bindsym $mod+d exec $dmenu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -101,6 +102,10 @@ exec swayidle -w \
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
+
+    # Try macos CMD+C|V|...
+    # bindsym $mod+c exec 'wl-copy'
+    # bindsym $mod+v wl-paste
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -138,10 +143,8 @@ exec swayidle -w \
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+backslash splith
+    bindsym $mod+minus splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -166,11 +169,11 @@ exec swayidle -w \
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    # bindsym $mod+Shift+p move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    # bindsym $mod+p scratchpad show
 #
 # Resizing containers:
 #
@@ -188,19 +191,18 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-# bar {
-#     position top
-
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
-#     }
-# }
 bar {
-    swaybar_command waybar
+    position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
 }
+
+exec albert
