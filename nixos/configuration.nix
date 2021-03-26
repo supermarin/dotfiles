@@ -43,8 +43,6 @@
 
 
   environment.sessionVariables = {
-    MOZ_ENABLE_WAYLAND = "1";
-    XDG_CURRENT_DESKTOP = "sway"; 
   };
 
   environment.systemPackages = with pkgs; [
@@ -83,6 +81,8 @@
     ];
     extraSessionCommands = ''
       export XKB_DEFAULT_OPTIONS=ctrl:nocaps
+      export MOZ_ENABLE_WAYLAND=1
+      export XDG_CURRENT_DESKTOP=sway 
     '';
   };
 
