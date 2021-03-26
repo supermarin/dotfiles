@@ -73,7 +73,7 @@ set $dmenu 'rofi -theme gruvbox-dark-soft -modi run,drun,window -show drun'
     # Start your launcher
     bindsym $mod+Space exec $menu
     # backup if albert doesn't start
-    bindsym $mod+Space exec $dmenu
+    bindsym $mod+d exec $dmenu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
