@@ -13,7 +13,7 @@
     efiSupport = true;
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_5_10;
+  boot.kernelPackages = pkgs.linuxPackages_5_11;
   time.timeZone = "America/New_York";
 
   networking = {
