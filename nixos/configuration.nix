@@ -76,17 +76,7 @@
   services.xserver = {
     autorun = false;
     enable = true;
-    displayManager.defaultSession = "none+i3";
     xkbOptions = "ctrl:nocaps";
-    windowManager.i3 = {
-      enable = true;
-      package = pkgs.i3-gaps;
-      extraPackages = with pkgs; [
-        i3status
-        i3lock
-        xsel
-      ];
-    };
   };
 
   system.stateVersion = "21.05";
