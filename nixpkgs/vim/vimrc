@@ -88,8 +88,6 @@ if executable('gopls')
       \ 'cmd': {server_info->['gopls']},
       \ 'allowlist': ['go'],
       \ })
-else
-  echo("gopls not found!??")
 endif
 
 
