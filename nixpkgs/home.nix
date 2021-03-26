@@ -27,6 +27,7 @@ in
     fd
     fzf
     gnupg
+    htop
     jq
     magic-wormhole
     oathToolkit # used for OTP
@@ -35,7 +36,6 @@ in
     rnix-lsp
   ]
   ++ [ # fonts
-    fira-code
     jetbrains-mono
     go-font
   ]
