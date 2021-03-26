@@ -1,4 +1,9 @@
 # UI
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# !! This file is managed by home-manager. Don't forget to home-manager switch
+# !! testing changes if you don't want to waste another hour
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#
 default_border pixel 4
 gaps inner 10
 
