@@ -12,6 +12,7 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
+set $browser firefox
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu 'albert show'
@@ -61,6 +62,10 @@ set $dmenu 'rofi -theme gruvbox-dark-soft -modi run,drun,window -show drun'
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    
+    # Start a browser
+    bindsym $mod+b exec $browser
+
 
     # Kill focused window
     bindsym $mod+Shift+q kill
