@@ -15,23 +15,24 @@
 
   boot.kernelPackages = pkgs.linuxPackages_5_11;
   time.timeZone = "America/New_York";
+  hardware.pulseaudio.enable = true;
+  sound.enable = true;
 
   networking = {
     firewall.allowedTCPPorts = [ 22 ];
+    # TODO: firewall.allowedTCPPorts = [ 22 5800 ];
     hostName = "pumba";
     nameservers = [ "1.1.1.1" ];
     networkmanager.enable = true;
   };
-
+ 
+  services.openssh.enable = true;
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
     enable = true;
     pinentryFlavor = "curses";
   };
 
-  services.openssh.enable = true;
-  hardware.pulseaudio.enable = true;
-  sound.enable = true;
 
   users.users.supermarin = {
     isNormalUser = true;
@@ -61,9 +62,9 @@
     extraPackages = with pkgs; [
       flameshot       # Screenshot tool https://flameshot.org
       mako            # notification daemon
-      swaylock
-      swayidle
-      wayvnc
+      swaylock        # idle lock
+      swayidle        # idle lock
+      # wayvnc        # TODO
       wl-clipboard    # wl-copy, wl-paste
     ];
     extraSessionCommands = ''
