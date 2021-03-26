@@ -77,6 +77,8 @@
     autorun = false;
     enable = true;
     xkbOptions = "ctrl:nocaps";
+    displayManager.gdm.enable = true;
+    desktopManager.gnome3.enable = true;
   };
 
   system.stateVersion = "21.05";
