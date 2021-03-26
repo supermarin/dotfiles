@@ -24,6 +24,11 @@
   };
 
   programs.ssh.startAgent = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "curses";
+  };
+
   services.openssh.enable = true;
   hardware.pulseaudio.enable = true;
   sound.enable = true;
