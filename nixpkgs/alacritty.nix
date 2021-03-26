@@ -7,6 +7,12 @@
     font = {
       size = 11;
     };
+    window = {
+      padding = {
+        x = 10;
+        y = 5;
+      };
+    };
     keybindings = [
       { key = "Equals";     mods = "Control";     action = "IncreaseFontSize"; }
       { key = "Add";        mods = "Control";     action = "IncreaseFontSize"; }
