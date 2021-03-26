@@ -56,20 +56,6 @@
     rofi-pass
   ];
 
-  fonts = {
-    fonts = with pkgs; [
-      inter
-      liberation_ttf
-      fira-code
-      fira-code-symbols
-    ];
-    fontconfig.defaultFonts = {
-      serif = [ "Inter" ];
-      sansSerif = [ "Inter" ];
-      monospace = [ "Fira Code" ];
-    };
-  };
-
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
