@@ -48,12 +48,10 @@
 
   environment.systemPackages = with pkgs; [
     alacritty
-    wget
     albert
+    firefox
     vim
-    firefox-wayland
-    rofi
-    rofi-pass
+    wget
   ];
 
   programs.sway = {
@@ -61,10 +59,13 @@
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
-      wl-clipboard     # wl-copy, wl-paste
-      mako             # notification daemon
-      wofi
-      kanshi
+      flameshot       # Screenshot tool https://flameshot.org
+      mako            # notification daemon
+      rofi
+      swaylock
+      swayidle
+      wayvnc
+      wl-clipboard    # wl-copy, wl-paste
     ];
     extraSessionCommands = ''
       export XKB_DEFAULT_OPTIONS=ctrl:nocaps
