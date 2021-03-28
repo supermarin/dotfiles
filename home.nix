@@ -35,6 +35,8 @@ in
     pass
     ripgrep
     rnix-lsp
+    tdesktop
+    signal-desktop
   ]
   ++ [ # fonts
     jetbrains-mono
