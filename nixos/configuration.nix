@@ -57,6 +57,8 @@
     EDITOR = "vim";
   };
 
+
+  nixpkgs.config.allowUnfree = true; # only for slack, might nix it out
   environment.systemPackages = with pkgs; [
     alacritty
     albert
