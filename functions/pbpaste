@@ -3,7 +3,7 @@
 
 if [[ $(uname) = Linux ]]; then
   if [[ $XDG_SESSION_TYPE = "wayland" ]]; then
-    wl-copy
+    wl-paste
   else
     xsel --clipboard --output
   fi
