@@ -7,7 +7,7 @@ let
 in
 {
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
     FUZZY = "fzf";
     PASSWORD_STORE_DIR="$HOME/.p";
     OTPDIR = "$HOME/.otp";
@@ -47,7 +47,6 @@ in
     # system binaries / hand compiling on the mac.
     git
     tig
-    vim
   ];
 
   programs.alacritty = import ./alacritty.nix;
@@ -56,8 +55,6 @@ in
   programs.git = import ./git.nix;
   programs.vscode = import ./bscode.nix pkgs;
   home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
-  home.file.".vimrc".text = builtins.readFile ./vim/vimrc;
-  home.file.".gvimrc".text = "${builtins.readFile ./vim/gvimrc}";
   home.file.".sqliterc".text = builtins.readFile ./sqliterc;
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
