@@ -30,6 +30,7 @@ in
     htop
     jq
     magic-wormhole
+    neovim-nightly
     oathToolkit # used for OTP
     pass
     ripgrep
@@ -61,4 +62,11 @@ in
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
+
+  nixpkgs.overlays = [
+    # Neovim nightly until 0.5.0 is released (or forever?)
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
 }
