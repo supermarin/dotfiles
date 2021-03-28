@@ -35,6 +35,7 @@
 
 
   users.users.supermarin = {
+    shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; 
     openssh.authorizedKeys.keys = [
