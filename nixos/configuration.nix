@@ -2,7 +2,6 @@
 
 {
   imports = [
-      ./hardware-x1.nix
       (import "${builtins.fetchTarball 
         https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
   ];
