@@ -1,10 +1,13 @@
-{ config, pkgs, ... }:
+{ hostname, config, pkgs, ... }:
 
 {
   imports = [
-      ./hardware-configuration.nix
+      ./hardware-x1.nix
+      (import "${builtins.fetchTarball 
+        https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
   ];
 
+  home-manager.users.supermarin = (import ../home.nix);
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
@@ -21,7 +24,7 @@
   networking = {
     firewall.allowedTCPPorts = [ 22 ];
     # TODO: firewall.allowedTCPPorts = [ 22 5800 ];
-    hostName = "pumba";
+    hostName = hostname;
     nameservers = [ "1.1.1.1" ];
     networkmanager.enable = true;
   };
@@ -58,6 +61,7 @@
     alacritty
     albert
     firefox
+    slack
     vim
     wget
   ];
@@ -97,6 +101,7 @@
       inter # UI Sans
       source-serif-pro # Serif
       hack-font # mono
+      (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" ]; })
     ];
     fontconfig = {
       defaultFonts = {
