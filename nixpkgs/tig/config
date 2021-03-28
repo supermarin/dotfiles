@@ -26,7 +26,7 @@ bind main      G    !sh -c "url=$(git ls-remote --get-url | cut -d ':' -f2); ope
 
 bind status    C    !git commit --verbose
 bind status a       !?git commit --amend
-bind status    d    !/bin/rm -i %(file)
+bind status    d    !rm -i %(file)
 bind status    r    !git reset %(file)
 
 
