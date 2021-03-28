@@ -31,7 +31,6 @@ in
     htop
     jq
     magic-wormhole
-    neovim-nightly
     oathToolkit # used for OTP
     pass
     ripgrep
@@ -50,6 +49,11 @@ in
     tig
   ];
 
+  programs.neovim = {
+    package = pkgs.neovim-nightly;
+    enable = true;
+    vimAlias = true;
+  };
   programs.alacritty = import ./alacritty.nix;
   programs.fish = import ./fish/fish.nix pkgs;
   programs.home-manager.enable = true;
