@@ -61,6 +61,8 @@
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
+      brightnessctl
+      playerctl
       flameshot       # Screenshot tool https://flameshot.org
       mako            # notification daemon
       swaylock        # idle lock
