@@ -85,6 +85,22 @@
     desktopManager.gnome3.enable = true;
   };
 
+  fonts = {
+    enableDefaultFonts = true;
+    fonts = with pkgs; [
+      inter # UI Sans
+      source-serif-pro # Serif
+      hack-font # mono
+    ];
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "Source Serif Pro" ];
+        sansSerif = [ "Inter" ];
+        monospace = [ "Hack" ];
+      };
+    };
+  };
+
   system.stateVersion = "21.05";
 }
 
