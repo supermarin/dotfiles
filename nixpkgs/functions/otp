@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i /bin/bash -p oathToolkit age fzf
+#! nix-shell -i bash -p oathToolkit age fzf
 set -euo pipefail
 
 # if [[ $# -ne 1 ]]; then
