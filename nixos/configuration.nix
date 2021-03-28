@@ -64,7 +64,7 @@
     albert
     firefox
     slack
-    vim
+    tdesktop
     wget
   ];
 
