@@ -6,7 +6,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-      ./hardware-x1.nix
+      ./hardware-pn50.nix
       (import ./configuration.nix { hostname = "pumba"; config = config; pkgs = pkgs; })
   ];
 }
