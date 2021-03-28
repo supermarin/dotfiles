@@ -2,8 +2,6 @@ pkgs:
 {
   enable = true;
   shellInit = ''
-    ${builtins.readFile ./nix.fish}
-
     if status --is-interactive
       abbr c clear
       abbr g git
@@ -23,3 +21,6 @@ pkgs:
     fish_right_prompt = readFile ./functions/fish_right_prompt.fish;
   };
 }
+
+# Figure out what to do with this: works on macos/popos, not on nixos.
+# ${builtins.readFile ./nix.fish}
