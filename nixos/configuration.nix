@@ -26,13 +26,19 @@
     networkmanager.enable = true;
   };
  
+  services.avahi = { # TODO: still not properly working
+    enable = true;
+    publish.enable = true;
+    publish.workstation = true;
+    publish.addresses = true;
+  };
+
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
     enable = true;
     pinentryFlavor = "curses";
   };
-
 
   users.users.supermarin = {
     shell = pkgs.fish;
