@@ -13,10 +13,11 @@ in
     OTPDIR = "$HOME/.otp";
     RIPGREP_CONFIG_PATH = ./rg/config;
   };
-#  home.sessionPath = [
-#    "${config.xdg.configHome}/nixpkgs/functions"
-#    "$HOME/go/bin"
-#  ];
+
+  home.sessionPath = [
+    "$HOME/dotfiles/functions"
+    "$HOME/go/bin"
+  ];
 
   home.packages = with pkgs; [
     age
