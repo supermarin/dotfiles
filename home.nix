@@ -6,6 +6,7 @@ let
   inherit (pkgs.stdenv) isLinux isDarwin;
 in
 {
+  nixpkgs.config.allowUnfree = true;
   home.sessionVariables = {
     EDITOR = "nvim";
     FUZZY = "fzf";
@@ -37,6 +38,7 @@ in
     rnix-lsp
     tdesktop
     signal-desktop
+    slack
   ]
   ++ [ # fonts
     jetbrains-mono

@@ -57,7 +57,6 @@
   };
 
 
-  nixpkgs.config.allowUnfree = true; # only for slack, might nix it out
   # Only put system software in here, e.g. stuff that is installed by
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
