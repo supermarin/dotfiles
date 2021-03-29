@@ -3,6 +3,40 @@ local bo = vim.bo
 local map = vim.api.nvim_set_keymap
 local shareDir = vim.fn.stdpath('data')
 
+-- PLUGINS
+-- Auto install packer.nvim if not exists. Needs to be done first because
+-- lua crashes while loading other options depending on plugins.
+local install_path = shareDir..'/site/pack/packer/opt/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.api.nvim_command(
+    '!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+end
+vim.cmd [[packadd packer.nvim]]
+vim.cmd 'autocmd BufWritePost init.lua PackerCompile'
+require('packer').startup(function()
+  use { 'wbthomason/packer.nvim', opt = true }
+   -- Fuzzy finder
+  use { 'nvim-telescope/telescope.nvim', requires = {
+      {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}
+  }}
+  -- LSP, completion, tree-sitter
+  use { 'neovim/nvim-lspconfig' }
+  use { 'nvim-lua/completion-nvim' }
+  use { 'nvim-treesitter/nvim-treesitter' }
+  use { 'hrsh7th/nvim-compe' }
+  use { 'hrsh7th/vim-vsnip-integ', requires = { 'hrsh7th/vim-vsnip' } }
+  use { 'honza/vim-snippets' }
+  -- Misc
+  use { 'LnL7/vim-nix' }
+  use { 'airblade/vim-gitgutter' }
+  use { 'morhetz/gruvbox' }
+  use { 'tpope/vim-commentary' }
+  use { 'tpope/vim-repeat' }
+  use { 'tpope/vim-surround' }
+  use { 'mg979/vim-visual-multi' }
+end)
+
+-- Config
 bo.expandtab = true
 bo.smartindent = true
 bo.sw = 2
@@ -37,6 +71,7 @@ map('i', '<C-Space>', '<Plug>(completion_trigger)', { silent = true })
 map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
 map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
+-- LSP
 local on_attach = function(client, bufnr)
   require('completion').on_attach()
   require('nvim-treesitter.configs').setup { 
@@ -64,49 +99,15 @@ local on_attach = function(client, bufnr)
   map_buf('n', '<leader>dd', '<cmd>lua vim.lsp.buf.document_diagnostics()<cr>', lsp_opts)
 end
 
--- Plugins
--- Auto install packer.nvim if not exists
-local install_path = shareDir..'/site/pack/packer/opt/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.api.nvim_command(
-    '!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-end
-vim.cmd [[packadd packer.nvim]]
-vim.cmd 'autocmd BufWritePost init.lua PackerCompile'
-
-require('packer').startup(function()
-  use { 'wbthomason/packer.nvim', opt = true }
-   -- Fuzzy finder
-  use { 'nvim-telescope/telescope.nvim', requires = {
-      {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}
-  }}
-  -- LSP, completion, tree-sitter
-  use { 'neovim/nvim-lspconfig' }
-  use { 'nvim-lua/completion-nvim' }
-  use { 'nvim-treesitter/nvim-treesitter' }
-  use { 'hrsh7th/nvim-compe' }
-  use { 'hrsh7th/vim-vsnip-integ', requires = { 'hrsh7th/vim-vsnip' } }
-  use { 'honza/vim-snippets' }
-  -- Misc
-  use { 'LnL7/vim-nix' }
-  use { 'airblade/vim-gitgutter' }
-  use { 'morhetz/gruvbox' }
-  use { 'tpope/vim-commentary' }
-  use { 'tpope/vim-repeat' }
-  use { 'tpope/vim-surround' }
-  use { 'mg979/vim-visual-multi' }
-end)
-
 local lsp = require 'lspconfig'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lsp.gopls.setup{on_attach=on_attach, capabilities=capabilities}
 lsp.sumneko_lua.setup{on_attach=on_attach}
-
-vim.cmd 'autocmd BufWritePost init.lua PackerCompile'
 vim.cmd 'au BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)'
 
+-- Completion
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
