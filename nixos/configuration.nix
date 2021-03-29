@@ -32,6 +32,7 @@
     publish.enable = true;
     publish.workstation = true;
     publish.addresses = true;
+    nssmdns = true;
   };
 
   services.openssh.enable = true;
