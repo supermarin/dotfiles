@@ -36,6 +36,7 @@ in
     ripgrep
     rnix-lsp
     tdesktop
+    tree-sitter
     signal-desktop
     slack
   ]
@@ -56,6 +57,7 @@ in
     package = pkgs.neovim-nightly;
     enable = true;
     vimAlias = true;
+    viAlias = true;
   };
   programs.alacritty = import ./alacritty.nix;
   programs.fish = import ./fish/fish.nix pkgs;
