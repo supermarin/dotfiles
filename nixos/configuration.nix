@@ -6,7 +6,7 @@
         https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
   ];
 
-  home-manager.users.supermarin = (import ../home.nix);
+  boot.kernelPackages = pkgs.linuxPackages_5_11;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
@@ -15,10 +15,9 @@
     efiSupport = true;
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_5_11;
-  time.timeZone = "America/New_York";
   hardware.pulseaudio.enable = true;
   sound.enable = true;
+  time.timeZone = "America/New_York";
 
   networking = {
     firewall.allowedTCPPorts = [ 22 ];
@@ -42,6 +41,7 @@
     pinentryFlavor = "curses";
   };
 
+  programs.fish.enable = true;
   users.users.supermarin = {
     shell = pkgs.fish;
     isNormalUser = true;
@@ -51,11 +51,9 @@
     ];
   };
 
-
   environment.sessionVariables = {
     EDITOR = "vim";
   };
-
 
   # Only put system software in here, e.g. stuff that is installed by
   # default on macOS and Ubuntu. The user software goes in home.nix.
@@ -113,6 +111,7 @@
     };
   };
 
+  home-manager.users.supermarin = (import ../home.nix);
   system.stateVersion = "21.05";
 }
 

@@ -6,7 +6,6 @@ let
   inherit (pkgs.stdenv) isLinux isDarwin;
 in
 {
-  nixpkgs.config.allowUnfree = true;
   home.sessionVariables = {
     EDITOR = "nvim";
     FUZZY = "fzf";
@@ -71,6 +70,7 @@ in
   xdg.configFile."waybar/config".text = builtins.readFile ./linux/waybar/config;
   xdg.configFile."waybar/style.css".text = builtins.readFile ./linux/waybar/style.css;
 
+  nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     # Neovim nightly until 0.5.0 is released (or forever?)
     (import (builtins.fetchTarball {
