@@ -66,6 +66,8 @@ in
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
+  xdg.configFile."waybar/config".text = builtins.readFile ./linux/waybar/config;
+  xdg.configFile."waybar/style.css".text = builtins.readFile ./linux/waybar/style.css;
 
   nixpkgs.overlays = [
     # Neovim nightly until 0.5.0 is released (or forever?)
