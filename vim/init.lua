@@ -104,7 +104,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lsp.gopls.setup{on_attach=on_attach, capabilities=capabilities}
-lsp.sumneko_lua.setup{on_attach=on_attach}
+
+-- TODO: do we need to move this to an autogroup?
+vim.cmd 'autocmd BufWritePost init.lua PackerCompile'
 vim.cmd 'au BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)'
 
 -- Completion
