@@ -4,8 +4,7 @@
     }
 
     to {
-        color: white;
-        background-color: orange;
+        color: orange;
     }
 }
 
@@ -15,8 +14,7 @@
     }
 
     to {
-        color: white;
-        background-color: red;
+        color: red;
     }
 }
 
@@ -74,7 +72,7 @@
 
 #battery.warning.discharging {
     animation-name: blink-warning;
-    animation-duration: 3s;
+    animation-duration: 5s;
 }
 
 #battery.critical.discharging {
