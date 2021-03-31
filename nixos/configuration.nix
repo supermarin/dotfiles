@@ -72,7 +72,6 @@
     extraPackages = with pkgs; [
       brightnessctl
       playerctl
-      flameshot       # Screenshot tool https://flameshot.org
       mako            # notification daemon
       swaylock        # idle lock
       swayidle        # idle lock
