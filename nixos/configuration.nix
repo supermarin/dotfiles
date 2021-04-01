@@ -61,6 +61,7 @@
   environment.systemPackages = with pkgs; [
     alacritty
     albert
+    file # file(1)
     firefox
     wget
   ];
