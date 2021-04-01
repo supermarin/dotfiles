@@ -181,20 +181,20 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-# missing: external screen button? desktop button?
-# missing: wifi off button
-
-# missing: chat button?
-# missing: phone open button?
-# missing: phone close button?
-# missing: star button?
-
-# bindsym XF86AudioPlay exec playerctl play-pause
-# bindsym XF86AudioNext exec playerctl next
-# bindsym XF86AudioPrev exec playerctl previous
-
-# missing: PrtSc button
-# no idea what this is:bindsym XF86Search exec bemenu-run
+  # missing: external screen button? desktop button?
+  # missing: wifi off button
+  
+  # missing: chat button?
+  # missing: phone open button?
+  # missing: phone close button?
+  # missing: star button?
+  
+  # bindsym XF86AudioPlay exec playerctl play-pause
+  # bindsym XF86AudioNext exec playerctl next
+  # bindsym XF86AudioPrev exec playerctl previous
+  
+  # missing: PrtSc button
+  # no idea what this is:bindsym XF86Search exec bemenu-run
 
 
 # Status Bar:
