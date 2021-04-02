@@ -71,6 +71,7 @@ map('n', '<leader>b', ':Telescope buffers<cr>', mapopts)
 map('i', '<C-Space>', '<Plug>(completion_trigger)', { silent = true })
 map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
 map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
+map('v', 'p', '"_dP"', mapopts)
 
 -- LSP
 local on_attach = function(client, bufnr)
