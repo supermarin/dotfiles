@@ -49,6 +49,7 @@ in
     # The following are here because of M1:
     # Nix can't compile for arm64, so I'm just using the
     # system binaries / hand compiling on the mac.
+    cawbird # twitter
     git
     tig
   ];
