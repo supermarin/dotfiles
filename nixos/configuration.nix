@@ -63,7 +63,7 @@
     albert
     file # file(1)
     firefox
-    wget
+    killall # killall(1)
   ];
 
   programs.sway = {
