@@ -76,7 +76,6 @@
       mako            # notification daemon
       swaylock        # idle lock
       swayidle        # idle lock
-      # wayvnc        # TODO
       waybar
       wl-clipboard    # wl-copy, wl-paste
     ];
