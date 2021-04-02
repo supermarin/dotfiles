@@ -91,6 +91,10 @@
     autorun = false;
     enable = true;
     xkbOptions = "ctrl:nocaps";
+    # TODO: - figure out why below doesn't work on GNOME3.
+    #       - check if it works on sway. if yes, remove input * {} from sway
+    # autoRepeatDelay = 175;
+    # autoRepeatInterval = 75;
     displayManager.gdm.enable = true;
     desktopManager.gnome3.enable = true;
   };
