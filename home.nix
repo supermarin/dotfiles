@@ -41,7 +41,6 @@ in
     slack
   ]
   ++ [ # fonts
-    jetbrains-mono
     go-font
   ]
   ++ lib.optionals isDarwin [] 
