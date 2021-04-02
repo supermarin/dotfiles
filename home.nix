@@ -63,7 +63,6 @@ in
   programs.fish = import ./fish/fish.nix pkgs;
   programs.home-manager.enable = true;
   programs.git = import ./git.nix;
-  programs.vscode = import ./bscode.nix pkgs;
   home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
   home.file.".sqliterc".text = builtins.readFile ./sqliterc;
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
