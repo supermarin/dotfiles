@@ -42,6 +42,7 @@ bo.smartindent = true
 bo.sw = 2
 bo.ts = 2
 bo.swapfile = false
+o.guicursor = ""
 o.clipboard = 'unnamed'
 o.completeopt = "menuone,noselect"
 o.grepprg = 'rg --vimgrep'
