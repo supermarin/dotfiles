@@ -51,6 +51,7 @@ in
     cawbird # twitter
     evolution # mail, contacts, cal
     git
+    signal-desktop # for an unknown reason not avail on mac
     tig
   ];
 
