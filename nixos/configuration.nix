@@ -87,7 +87,7 @@
   };
 
   services.xserver = {
-    autorun = false;
+    # autorun = false;
     enable = true;
     xkbOptions = "ctrl:nocaps";
     # TODO: - figure out why below doesn't work on GNOME3.
