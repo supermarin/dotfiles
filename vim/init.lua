@@ -29,11 +29,12 @@ require('packer').startup(function()
   -- Misc
   use { 'LnL7/vim-nix' }
   use { 'airblade/vim-gitgutter' }
+  use { 'mg979/vim-visual-multi' }
   use { 'morhetz/gruvbox' }
   use { 'tpope/vim-commentary' }
+  use { 'tpope/vim-fugitive' }
   use { 'tpope/vim-repeat' }
   use { 'tpope/vim-surround' }
-  use { 'mg979/vim-visual-multi' }
 end)
 
 -- Config
