@@ -90,8 +90,8 @@ local on_attach = function(client, bufnr)
   local lsp_opts = { noremap=true, silent=true }
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-  map_buf('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', lsp_opts)
-  map_buf('n', 'gD', '<cmd>lua vim.lsp.buf.definition()<cr>', lsp_opts)
+  map_buf('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', lsp_opts)
+  map_buf('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', lsp_opts)
   map_buf('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', lsp_opts)
   map_buf('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', lsp_opts)
   map_buf('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', lsp_opts)
