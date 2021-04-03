@@ -41,12 +41,10 @@ in
   ]
   ++ lib.optionals isDarwin [] 
   ++ lib.optionals isLinux [
-    # The following are here because of M1:
-    # Nix can't compile for arm64, so I'm just using the
-    # system binaries / hand compiling on the mac.
     cawbird # twitter
     evolution # mail, contacts, cal
     git
+    qutebrowser
     signal-desktop # for an unknown reason not avail on mac
     slack
     tdesktop
