@@ -34,10 +34,7 @@ in
     pass
     ripgrep
     rnix-lsp
-    tdesktop
     tree-sitter
-    signal-desktop
-    slack
   ]
   ++ [ # fonts
     go-font
@@ -51,6 +48,8 @@ in
     evolution # mail, contacts, cal
     git
     signal-desktop # for an unknown reason not avail on mac
+    slack
+    tdesktop
     tig
   ];
 
