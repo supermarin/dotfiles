@@ -36,11 +36,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 vnoremap p "_dP
 
 lua <<EOF
-local o = vim.o
-local bo = vim.bo
-local map = vim.api.nvim_set_keymap
 local shareDir = vim.fn.stdpath('data')
-o.undodir = shareDir..'/undo'
+vim.o.undodir = shareDir..'/undo'
 
 -- PLUGINS
 -- Auto install packer.nvim if not exists. Needs to be done first because
