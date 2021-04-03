@@ -21,7 +21,6 @@ in
 
   home.packages = with pkgs; [
     age
-    any-nix-shell
     bat # used in `e` for live preview of files
     coreutils # used for `shred`
     diffr # used in git stuff
