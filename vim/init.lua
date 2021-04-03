@@ -52,6 +52,7 @@ o.mouse = 'a'
 o.scrolloff = 8
 o.smartcase = true
 o.splitbelow = true
+o.hidden = true
 o.splitright = true
 o.termguicolors = true
 o.undodir = shareDir..'/undo'
