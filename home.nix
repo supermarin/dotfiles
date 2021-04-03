@@ -71,12 +71,14 @@ in
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
   xdg.configFile."waybar/config".text = builtins.readFile ./linux/waybar/config;
   xdg.configFile."waybar/style.css".text = builtins.readFile ./linux/waybar/style.css;
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [
-    # Neovim nightly until 0.5.0 is released (or forever?)
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
+  
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      # Neovim nightly until 0.5.0 is released (or forever?)
+      (import (builtins.fetchTarball {
+        url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+      }))
+    ];
+  };
 }
