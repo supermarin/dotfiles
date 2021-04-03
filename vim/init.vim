@@ -1,7 +1,46 @@
+let mapleader=" "
+set cc=80
+set clipboard=unnamedplus
+set completeopt=menuone,noinsert,noselect
+set expandtab
+set grepprg=rg\ --vimgrep
+set guicursor=
+set hidden
+set ignorecase
+set laststatus=2
+set mouse=a
+set noswapfile
+set scrolloff=8
+set smartcase
+set smartindent
+set smartindent
+set splitbelow
+set splitright
+set ts=2 sw=2 expandtab
+set undofile
+
+set termguicolors
+color gruvbox
+
+" Mappings
+nnoremap <leader>h :nohlsearch<cr>
+nnoremap <leader>p :Telescope find_files<cr>
+nnoremap <leader>g :Telescope live_grep<cr>
+nnoremap <leader>b :Telescope buffers<cr>
+nnoremap gh ^
+nnoremap gl $
+inoremap <silent> <C-Space> <Plug>(completion_trigger)
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Unfuck paste when visual selecting
+vnoremap p "_dP
+
+lua <<EOF
 local o = vim.o
 local bo = vim.bo
 local map = vim.api.nvim_set_keymap
 local shareDir = vim.fn.stdpath('data')
+o.undodir = shareDir..'/undo'
 
 -- PLUGINS
 -- Auto install packer.nvim if not exists. Needs to be done first because
@@ -37,44 +76,6 @@ require('packer').startup(function()
   use { 'tpope/vim-surround' }
 end)
 
--- Config
-bo.expandtab = true
-bo.smartindent = true
-bo.sw = 2
-bo.ts = 2
-bo.swapfile = false
-o.guicursor = ""
-o.clipboard = 'unnamed'
-o.completeopt = "menuone,noinsert,noselect"
-o.grepprg = 'rg --vimgrep'
-o.ignorecase = true
-o.laststatus = 2
-o.mouse = 'a'
-o.scrolloff = 8
-o.smartcase = true
-o.splitbelow = true
-o.hidden = true
-o.splitright = true
-o.termguicolors = true
-o.undodir = shareDir..'/undo'
-o.undofile = true
-vim.wo.cc = "80"
-vim.cmd 'color gruvbox'
-
--- Mappings
-vim.g.mapleader = ' '
-local mapopts = { noremap = true }
-map('n', '<leader>h', ':nohlsearch<cr>', mapopts)
-map('n', 'gh', '^', mapopts)
-map('n', 'gl', '$', mapopts)
-map('n', '<leader>p', ':Telescope find_files<cr>', mapopts)
-map('n', '<leader>g', ':Telescope live_grep<cr>', mapopts)
-map('n', '<leader>b', ':Telescope buffers<cr>', mapopts)
-map('i', '<C-Space>', '<Plug>(completion_trigger)', { silent = true })
-map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
-map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
-map('v', 'p', '"_dP"', mapopts)
-
 -- LSP
 local on_attach = function(client, bufnr)
   require('completion').on_attach()
@@ -108,6 +109,8 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lsp.gopls.setup{on_attach=on_attach, capabilities=capabilities}
+lsp.rnix.setup{on_attach=on_attach, capabilities=capabilities}
+lsp.sourcekit.setup{on_attach=on_attach, capabilities=capabilities}
 
 -- TODO: do we need to move this to an autogroup?
 vim.cmd 'autocmd BufWritePost init.lua PackerCompile'
@@ -137,3 +140,4 @@ require'compe'.setup {
     vsnip = true;
   };
 }
+EOF
