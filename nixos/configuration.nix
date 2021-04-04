@@ -63,9 +63,10 @@
     albert
     file # file(1)
     firefox
-    killall # killall(1)
     gnome3.gnome-tweaks # TODO: remove this once we figure out how to configure
                         #       GNOME declaratively.
+    killall # killall(1)
+    libreoffice
   ];
 
   programs.sway = {
