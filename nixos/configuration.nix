@@ -101,7 +101,7 @@
   };
 
   fonts = {
-    enableDefaultFonts = true;
+    enableDefaultFonts = false;
     fonts = with pkgs; [
       inter # UI Sans
       source-serif-pro # Serif
