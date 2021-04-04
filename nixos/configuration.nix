@@ -107,7 +107,7 @@
       inter # UI Sans
       source-serif-pro # Serif
       hack-font # mono
-      (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" ]; })
+      (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
     fontconfig = {
       defaultFonts = {
