@@ -89,11 +89,12 @@ local on_attach = function(client, bufnr)
     highlight = {enable = true}
   }
 
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
   local function map_buf(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local lsp_opts = { noremap=true, silent=true }
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
   map_buf('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', lsp_opts)
   map_buf('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', lsp_opts)
   map_buf('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', lsp_opts)
