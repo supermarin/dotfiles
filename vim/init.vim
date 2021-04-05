@@ -18,7 +18,6 @@ set splitbelow
 set splitright
 set ts=2 sw=2 expandtab
 set undofile
-
 set termguicolors
 color gruvbox
 
@@ -122,9 +121,9 @@ require'compe'.setup {
   enabled = true;
   autocomplete = true;
   debug = false;
-  min_length = 1;
+  min_length = 2;
   preselect = 'enable';
-  throttle_time = 80;
+  throttle_time = 180;
   source_timeout = 200;
   incomplete_delay = 400;
   max_abbr_width = 100;
