@@ -35,6 +35,13 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Unfuck paste when visual selecting
 vnoremap p "_dP
 
+augroup YO_OY
+  autocmd!
+  au BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
+  autocmd BufWritePost init.lua PackerCompile
+augroup END
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua <<EOF
 local shareDir = vim.fn.stdpath('data')
 vim.o.undodir = shareDir..'/undo'
@@ -48,7 +55,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     '!git clone https://github.com/wbthomason/packer.nvim '..install_path)
 end
 vim.cmd [[packadd packer.nvim]]
-vim.cmd 'autocmd BufWritePost init.lua PackerCompile'
 require('packer').startup(function()
   use { 'wbthomason/packer.nvim', opt = true }
    -- Fuzzy finder
@@ -109,9 +115,6 @@ lsp.gopls.setup{on_attach=on_attach, capabilities=capabilities}
 lsp.rnix.setup{on_attach=on_attach, capabilities=capabilities}
 lsp.sourcekit.setup{on_attach=on_attach, capabilities=capabilities}
 
--- TODO: do we need to move this to an autogroup?
-vim.cmd 'autocmd BufWritePost init.lua PackerCompile'
-vim.cmd 'au BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)'
 
 -- Completion
 require'compe'.setup {
