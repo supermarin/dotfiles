@@ -1,5 +1,4 @@
-#!/usr/bin/env nix-shell
-#!nix-shell -p bash fzf ripgrep -i bash
+#!/usr/bin/env bash
 
 (
     set -euo pipefail
