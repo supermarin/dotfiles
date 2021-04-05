@@ -54,6 +54,7 @@
 
   environment.sessionVariables = {
     EDITOR = "vim";
+    XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
   };
 
   # Only put system software in here, e.g. stuff that is installed by
@@ -83,7 +84,6 @@
       wl-clipboard    # wl-copy, wl-paste
     ];
     extraSessionCommands = ''
-      export XKB_DEFAULT_OPTIONS=ctrl:nocaps
       export MOZ_ENABLE_WAYLAND=1
       export XDG_CURRENT_DESKTOP=sway 
     '';
@@ -92,7 +92,6 @@
   services.xserver = {
     # autorun = false;
     enable = true;
-    xkbOptions = "ctrl:nocaps";
     # TODO: - figure out why below doesn't work on GNOME3.
     #       - check if it works on sway. if yes, remove input * {} from sway
     # autoRepeatDelay = 175;
