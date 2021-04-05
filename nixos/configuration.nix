@@ -102,6 +102,7 @@
       inter # UI Sans
       source-serif-pro # Serif
       hack-font # mono
+      noto-fonts-emoji # emoji
       (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
     fontconfig = {
