@@ -54,6 +54,7 @@
 
   environment.sessionVariables = {
     EDITOR = "vim";
+    QT_QPA_PLATFORM = "wayland";
     XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
   };
 
