@@ -21,13 +21,12 @@
 
   networking = {
     firewall.allowedTCPPorts = [ 22 ];
-    # TODO: firewall.allowedTCPPorts = [ 22 5800 ];
     hostName = hostname;
     nameservers = [ "1.1.1.1" ];
     networkmanager.enable = true;
   };
  
-  services.avahi = { # TODO: still not properly working
+  services.avahi = {
     enable = true;
     publish.enable = true;
     publish.workstation = true;
@@ -65,8 +64,7 @@
     albert
     file # file(1)
     firefox
-    gnome3.gnome-tweaks # TODO: remove this once we figure out how to configure
-                        #       GNOME declaratively.
+    gnome3.gnome-tweaks # TODO: remove this once we figure out how to configure GNOME declaratively.
     killall # killall(1)
     libreoffice
   ];
@@ -86,17 +84,14 @@
     ];
     extraSessionCommands = ''
       export MOZ_ENABLE_WAYLAND=1
-      export XDG_CURRENT_DESKTOP=sway 
+      export XDG_CURRENT_DESKTOP=GNOME
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
     '';
   };
 
   services.xserver = {
-    # autorun = false;
+    autorun = false;
     enable = true;
-    # TODO: - figure out why below doesn't work on GNOME3.
-    #       - check if it works on sway. if yes, remove input * {} from sway
-    # autoRepeatDelay = 175;
-    # autoRepeatInterval = 75;
     displayManager.gdm.enable = true;
     desktopManager.gnome3.enable = true;
   };
