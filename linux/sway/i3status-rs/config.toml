@@ -1,0 +1,36 @@
+theme = "native"
+icons = "awesome"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = " {barchart}"
+on_click = "gnome-system-monitor"
+
+[[block]]
+block = "backlight"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{MUg}GB"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "networkmanager"
+on_click = "alacritty -e nmtui-connect"
+ap_format = "{ssid}"
+device_format = "{icon}{ap}"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}%"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
+on_click = "gnome-clocks"

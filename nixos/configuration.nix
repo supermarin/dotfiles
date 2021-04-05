@@ -79,7 +79,7 @@
       mako            # notification daemon
       swaylock        # idle lock
       swayidle        # idle lock
-      waybar
+      i3status-rust
       wl-clipboard    # wl-copy, wl-paste
     ];
     extraSessionCommands = ''

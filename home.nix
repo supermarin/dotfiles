@@ -67,8 +67,7 @@ in
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
-  xdg.configFile."waybar/config".text = builtins.readFile ./linux/waybar/config;
-  xdg.configFile."waybar/style.css".text = builtins.readFile ./linux/waybar/style.css;
+  xdg.configFile."i3status-rust/config.toml".text = builtins.readFile ./linux/sway/i3status-rs/config.toml;
   
   nixpkgs = {
     config.allowUnfree = true;

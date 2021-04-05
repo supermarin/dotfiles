@@ -204,7 +204,18 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # Status Bar:
 #
 bar {
-    swaybar_command waybar
+    position top
+    font pango: Inter 9
+    status_command i3status-rs
+    colors {
+        separator #222222
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
 }
 
 # Startup commands
