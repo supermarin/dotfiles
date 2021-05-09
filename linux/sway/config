@@ -14,12 +14,12 @@ set $c_bg #171717
 set $c_bg_2nd #272727
 set $c_fg #DEDEDE
 set $c_fg_2nd #64727D
-set $c_prpl #552299
+set $c_cyan #0088CC
 
-# class                 border  background   text      indicator   child_border
-client.focused          $c_prpl  $c_prpl     $c_fg       $c_bg      $c_prpl
-client.focused_inactive $c_bg    $c_bg_2nd   $c_fg       $c_bg      $c_bg
-client.unfocused        $c_bg    $c_bg       $c_fg_2nd   $c_bg      $c_bg
+# class                 border    background  text        indicator   child_border
+client.focused          $c_cyan   $c_cyan     $c_fg       $c_bg       $c_cyan
+client.focused_inactive $c_bg     $c_bg_2nd   $c_fg       $c_bg       $c_bg
+client.unfocused        $c_bg     $c_bg       $c_fg_2nd   $c_bg       $c_bg
 
 ###############################################################################
 
