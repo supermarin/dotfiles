@@ -17,7 +17,7 @@
 
   hardware.pulseaudio.enable = true;
   sound.enable = true;
-  time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Malta";
 
   networking = {
     firewall.allowedTCPPorts = [ 22 ];
