@@ -45,7 +45,7 @@
   users.users.supermarin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; 
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" ]; 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in"
     ];
@@ -67,6 +67,7 @@
     gnome3.gnome-tweaks # TODO: remove this once we figure out how to configure GNOME declaratively.
     killall # killall(1)
     libreoffice
+    virt-manager
   ];
 
   programs.sway = {
@@ -113,6 +114,12 @@
       };
     };
   };
+
+  # Virtualisation
+  programs.dconf.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+  services.spice-vdagentd.enable = true;
 
   home-manager.users.supermarin = (import ../home.nix);
   system.stateVersion = "21.05";
