@@ -3,7 +3,7 @@
 {
   imports = [
       (import "${builtins.fetchTarball 
-        https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
+        https://github.com/rycee/home-manager/archive/64607f58b75741470284c698f82f0199fcecdfa7.tar.gz}/nixos")
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_5_11;
