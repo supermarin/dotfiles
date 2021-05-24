@@ -42,9 +42,7 @@ in
   ++ lib.optionals isDarwin [] 
   ++ lib.optionals isLinux [
     cawbird # twitter
-    evolution # mail, contacts, cal
     git
-    qutebrowser
     signal-desktop # for an unknown reason not avail on mac
     slack
     tdesktop
