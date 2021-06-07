@@ -38,6 +38,7 @@ in
   ]
   ++ [ # fonts
     go-font
+    jetbrains-mono
   ]
   ++ lib.optionals isDarwin [] 
   ++ lib.optionals isLinux [
