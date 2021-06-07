@@ -7,7 +7,7 @@
   boot.kernelParams = [
     "mem_sleep_default=deep"
   ];
-  services.fwupd.enable = true;
   # For thinkpad
+  services.fwupd.enable = true;
   services.tlp.enable = true;
 }
