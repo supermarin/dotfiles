@@ -1,5 +1,4 @@
-#!/usr/bin/env nix-shell
-#!nix-shell -i bash -p bash
+#!/usr/bin/env bash
 
 # export FZF_DEFAULT_COMMAND='fd --hidden'
 export FZF_DEFAULT_COMMAND='fd'
