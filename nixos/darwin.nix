@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 {
   imports = [
-    <home-manager/nix-darwin>
+      (import "${builtins.fetchTarball 
+        https://github.com/rycee/home-manager/archive/64607f58b75741470284c698f82f0199fcecdfa7.tar.gz}/nix-darwin")
   ];
 
   # anything macos specific to install 
@@ -13,9 +14,6 @@
   home-manager.users.supermarin = {
     imports = [ ../home.nix ];
   };
-
-  # default shell
-  programs.fish.enable = true;
 
   # macOS defaults
   system.defaults.finder.QuitMenuItem = true;

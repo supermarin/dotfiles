@@ -13,12 +13,13 @@ pkgs:
       abbr he home-manager edit
     end
   '';
+  ''
+  # Unfuck nix-darwin integration with home-manager
+  + pkgs.lib.optionals pkgs.stdenv.isDarwin builtins.readFile ./nix.fish;
+
   promptInit = builtins.readFile ./functions/fish_prompt.fish;
   functions = with builtins; {
     wo = readFile ./functions/wo.fish;
     fish_right_prompt = readFile ./functions/fish_right_prompt.fish;
   };
 }
-
-# Figure out what to do with this: works on macos/popos, not on nixos.
-# ${builtins.readFile ./nix.fish}
