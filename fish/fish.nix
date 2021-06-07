@@ -9,10 +9,7 @@ pkgs:
       abbr gd git d
       abbr l la
       abbr ns nix-shell
-      abbr hs home-manager switch
-      abbr he home-manager edit
     end
-  '';
   ''
   # Unfuck nix-darwin integration with home-manager
   + pkgs.lib.optionals pkgs.stdenv.isDarwin builtins.readFile ./nix.fish;
