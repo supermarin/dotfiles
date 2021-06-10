@@ -43,11 +43,12 @@ in
   ++ lib.optionals isDarwin [] 
   ++ lib.optionals isLinux [
     cawbird # twitter
-    git
+    fractal # matrix
+    git # is here only because of arm64 git on mac
     signal-desktop # for an unknown reason not avail on mac
-    slack
-    tdesktop
-    tig
+    slack # same arm64
+    tdesktop # telegram
+    tig # same arm64
   ];
 
   programs.neovim = {
