@@ -95,6 +95,7 @@
     displayManager.gdm.enable = true;
     desktopManager.gnome3.enable = true;
   };
+  programs.dconf.enable = true;
 
   fonts = {
     enableDefaultFonts = false;
@@ -115,7 +116,6 @@
   };
 
   # Virtualisation
-  programs.dconf.enable = true;
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
   services.spice-vdagentd.enable = true;
