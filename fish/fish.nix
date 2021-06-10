@@ -12,7 +12,7 @@ pkgs:
     end
   ''
   # Unfuck nix-darwin integration with home-manager
-  + pkgs.lib.optionals pkgs.stdenv.isDarwin builtins.readFile ./nix.fish;
+  + pkgs.lib.optionalString pkgs.stdenv.isDarwin (builtins.readFile ./nix.fish);
 
   promptInit = builtins.readFile ./functions/fish_prompt.fish;
   functions = with builtins; {
