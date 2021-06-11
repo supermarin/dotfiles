@@ -6,7 +6,7 @@
         https://github.com/rycee/home-manager/archive/64607f58b75741470284c698f82f0199fcecdfa7.tar.gz}/nixos")
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_5_11;
+  boot.kernelPackages = pkgs.linuxPackages_5_12;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
