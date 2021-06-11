@@ -7,3 +7,11 @@ Host supermar.in
 Host eric
   Hostname 192.168.1.140
   User marin
+
+Host vpn
+  User root
+  Hostname 206.189.233.132
+
+Host butters
+  User pi
+  Hostname butters.local
