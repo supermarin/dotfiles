@@ -20,7 +20,7 @@
   time.timeZone = "Europe/Malta";
 
   networking = {
-    firewall.allowedTCPPorts = [ 22 ];
+    firewall.allowedTCPPorts = [ 22 3333 ];
     hostName = hostname;
     nameservers = [ "1.1.1.1" ];
     networkmanager.enable = true;
