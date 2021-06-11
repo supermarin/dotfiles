@@ -64,7 +64,8 @@
     albert
     file # file(1)
     firefox
-    gnome3.gnome-tweaks # TODO: remove this once we figure out how to configure GNOME declaratively.
+    gnome.gnome-tweaks # TODO: remove this once we figure out how to configure GNOME declaratively.
+    gnomeExtensions.vitals
     killall # killall(1)
     libreoffice
     virt-manager
@@ -93,7 +94,7 @@
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
-    desktopManager.gnome3.enable = true;
+    desktopManager.gnome.enable = true;
   };
   programs.dconf.enable = true;
 
