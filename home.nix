@@ -74,7 +74,7 @@ in
     overlays = [
       # Neovim nightly until 0.5.0 is released (or forever?)
       (import (builtins.fetchTarball {
-        url = https://github.com/nix-community/neovim-nightly-overlay/archive/d59e24f099593fecbb006dc61c475f8a74069d46.tar.gz;
+        url = https://github.com/nix-community/neovim-nightly-overlay/archive/299153ad59957dbd9a8e51aea676b44db371a2af.tar.gz;
       }))
     ];
   };
