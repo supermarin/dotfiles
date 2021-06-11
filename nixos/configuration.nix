@@ -119,7 +119,6 @@
   # Virtualisation
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-  services.spice-vdagentd.enable = true;
 
   home-manager.users.supermarin = (import ../home.nix);
   system.stateVersion = "21.05";
