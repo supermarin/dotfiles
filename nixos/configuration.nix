@@ -111,7 +111,8 @@
       defaultFonts = {
         serif = [ "Source Serif Pro" ];
         sansSerif = [ "Inter" ];
-        monospace = [ "Hack" ];
+        monospace = [ "JetBrains Mono" ];
+        emoji = [ "Noto" ];
       };
     };
   };
