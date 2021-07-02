@@ -7,7 +7,6 @@ pkgs:
       abbr g git
       abbr gs git s
       abbr gd git d
-      abbr l la
       abbr ns nix-shell
     end
   ''
