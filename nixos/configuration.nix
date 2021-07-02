@@ -45,7 +45,7 @@
   users.users.supermarin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" ]; 
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ]; 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in"
     ];
@@ -120,6 +120,7 @@
   # Virtualisation
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.docker.enable = true;
 
   home-manager.users.supermarin = (import ../home.nix);
   system.stateVersion = "21.05";
