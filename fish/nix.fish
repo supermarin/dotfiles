@@ -6,7 +6,7 @@ if [ -n "$HOME" ] && [ -n "$USER" ]
 
     # Append ~/.nix-defexpr/channels to $NIX_PATH so that <nixpkgs>
     # paths work when the user has fetched the Nixpkgs channel.
-    set -gx NIX_PATH $HOME/.nix-defexpr/channels
+    set -gx NIX_PATH $HOME/.nix-defexpr/channels darwin-config=$HOME/dotfiles/nixos/darwin.nix
 
     # Set up environment.
     # This part should be kept in sync with nixpkgs:nixos/modules/programs/environment.nix
