@@ -7,7 +7,6 @@
 
   # anything macos specific to install 
   environment.systemPackages = [];
-  environment.darwinConfig = "$HOME/dotfiles/nixos/darwin.nix";
   networking.hostName = "simba";
 
   users.users.supermarin.home = /Users/supermarin; # important for home-manager
