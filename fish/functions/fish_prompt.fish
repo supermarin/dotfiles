@@ -6,7 +6,7 @@ set purple (set_color -o brpurple)
 set chocolate (set_color -o D2691E)
 
 function is_in_git_repo
-    echo (git rev-parse --is-inside-work-tree ^/dev/null)
+    echo (git rev-parse --is-inside-work-tree 2>/dev/null)
 end
 
 function git_branch_name
@@ -18,11 +18,11 @@ function git_current_commit
 end
 
 function is_git_dirty
-    echo (git status -s --ignore-submodules=dirty ^/dev/null)
+    echo (git status -s --ignore-submodules=dirty 2>/dev/null)
 end
 
 function stashed
-    set -l testStash (git rev-parse --verify refs/stash ^/dev/null)
+    set -l testStash (git rev-parse --verify refs/stash 2>/dev/null)
 
     if [ $status = 0 ]
         echo "S"(git stash list | wc -l | tr -d ' ')
@@ -40,7 +40,7 @@ function jobs_info
 end
 
 function ahead
-    set -l ahead_count (git rev-list --left-only --count HEAD...@'{u}' ^/dev/null)
+    set -l ahead_count (git rev-list --left-only --count HEAD...@'{u}' 2>/dev/null)
     if [ $ahead_count ]
         if [ $ahead_count -gt 0 ]
             echo "↑$ahead_count"
@@ -49,7 +49,7 @@ function ahead
 end
 
 function behind
-    set -l behind_count (git rev-list --right-only --count HEAD...@'{u}' ^/dev/null)
+    set -l behind_count (git rev-list --right-only --count HEAD...@'{u}' 2>/dev/null)
     if [ $behind_count ]
         if [ $behind_count -gt 0 ]
             echo "↓$behind_count"
