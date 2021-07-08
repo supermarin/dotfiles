@@ -44,7 +44,7 @@ output * bg ~/.wallpaper fill
 
 set $laptop eDP-1
 output $laptop {
-  scale 1.5
+  scale 1
 }
 
 bindswitch --reload --locked lid:on output $laptop disable
