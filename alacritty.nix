@@ -5,7 +5,7 @@
       TERM = "xterm-256color";
     };
     font = {
-      size = 10;
+      size = 13;
     };
     window = {
       padding = {
