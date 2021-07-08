@@ -205,7 +205,7 @@ bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date
 #
 bar {
     position top
-    font pango: Inter 9
+    font pango: Inter 13
     status_command i3status-rs
     colors {
         separator #222222
