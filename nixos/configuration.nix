@@ -78,7 +78,9 @@
     extraPackages = with pkgs; [
       brightnessctl
       playerctl
+      grim            # wayland screenshot tool
       mako            # notification daemon
+      slurp           # screenshot: select a region in wayland
       swaylock        # idle lock
       swayidle        # idle lock
       i3status-rust

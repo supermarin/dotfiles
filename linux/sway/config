@@ -185,6 +185,10 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+# Take a screenshot with all output and save it into screenshots
+bindsym Print exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+# Take a Screenshot with the region select
+bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
   # missing: external screen button? desktop button?
   # missing: wifi off button
   
@@ -197,10 +201,6 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
   # bindsym XF86AudioNext exec playerctl next
   # bindsym XF86AudioPrev exec playerctl previous
   
-  # missing: PrtSc button
-  # no idea what this is:bindsym XF86Search exec bemenu-run
-
-
 # Status Bar:
 #
 bar {
