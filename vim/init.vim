@@ -41,7 +41,7 @@ vnoremap p "_dP
 augroup YO_OY
   autocmd!
   au BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
-  autocmd BufWritePost init.lua PackerCompile
+  autocmd BufWritePost luainit.lua PackerCompile
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
