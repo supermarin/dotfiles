@@ -2,10 +2,8 @@ theme = "native"
 icons = "awesome"
 
 [[block]]
-block = "backlight"
-
-[[block]]
 block = "sound"
+format = ""
 
 [[block]]
 block = "networkmanager"
