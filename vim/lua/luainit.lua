@@ -20,8 +20,9 @@ require('packer').startup(function()
   use { 'neovim/nvim-lspconfig' }
   use { 'nvim-lua/completion-nvim' }
   use { 'nvim-treesitter/nvim-treesitter' }
-  use { 'hrsh7th/vim-vsnip-integ', requires = { 'hrsh7th/vim-vsnip' } }
-  use { 'honza/vim-snippets' }
+  use { 'hrsh7th/vim-vsnip-integ' }
+  use { 'hrsh7th/vim-vsnip' }
+  use { "rafamadriz/friendly-snippets" } 
   -- Misc
   use { 'LnL7/vim-nix' }
   use { 'airblade/vim-gitgutter' }
