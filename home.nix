@@ -1,5 +1,3 @@
-# TODO: try ditching home manager in favor of
-# https://github.com/nmattia/homies
 { config, pkgs, ... }:
 let
   inherit (pkgs.lib) mkIf optionals;
@@ -75,7 +73,7 @@ in
     overlays = [
       # Neovim nightly until 0.5.0 is released (or forever?)
       (import (builtins.fetchTarball {
-        url = https://github.com/nix-community/neovim-nightly-overlay/archive/299153ad59957dbd9a8e51aea676b44db371a2af.tar.gz;
+        url = https://github.com/nix-community/neovim-nightly-overlay/archive/4568a5f77ec3359513e5849b23a89a03ffe16f2a.tar.gz;
       }))
     ];
   };
