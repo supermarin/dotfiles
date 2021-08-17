@@ -45,7 +45,7 @@
   users.users.supermarin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ]; 
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" "video" ]; 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in"
     ];
@@ -71,20 +71,25 @@
     virt-manager
   ];
 
+  # only for sway
+  programs.light.enable = true;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
-      brightnessctl
-      playerctl
+      brightnessctl   # Brightness control
       grim            # wayland screenshot tool
+      pamixer         # used for volume up/down
       mako            # notification daemon
       slurp           # screenshot: select a region in wayland
       swaylock        # idle lock
       swayidle        # idle lock
       i3status-rust
       wl-clipboard    # wl-copy, wl-paste
+
+      # custom
+      (import ../linux/sway/avizo.nix)
     ];
     extraSessionCommands = ''
       export MOZ_ENABLE_WAYLAND=1
