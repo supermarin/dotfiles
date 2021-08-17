@@ -66,7 +66,7 @@
     file # file(1)
     firefox
     gnome.gnome-tweaks # TODO: remove this once we figure out how to configure GNOME declaratively.
-    gnomeExtensions.vitals
+    gnomeExtensions.vitals # TODO: document what's this
     killall # killall(1)
     libreoffice
     virt-manager
@@ -81,12 +81,12 @@
     extraPackages = with pkgs; [
       brightnessctl   # Brightness control
       grim            # wayland screenshot tool
+      i3status-rust   # Menu bar
       pamixer         # used for volume up/down
       mako            # notification daemon
       slurp           # screenshot: select a region in wayland
       swaylock        # idle lock
       swayidle        # idle lock
-      i3status-rust
       wl-clipboard    # wl-copy, wl-paste
 
       # custom
