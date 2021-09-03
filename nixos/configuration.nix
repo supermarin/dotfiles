@@ -6,7 +6,7 @@
         https://github.com/nix-community/home-manager/archive/775cb20bd4af7781fbf336fb201df02ee3d544bb.tar.gz}/nixos")
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_5_12;
+  # boot.kernelPackages = pkgs.linuxPackages_5_12;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
