@@ -54,16 +54,17 @@ in
     vimAlias = true;
     viAlias = true;
   };
+  
+  home.file.".sqliterc".text = builtins.readFile ./sqliterc;
+  home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
   programs.alacritty = import ./alacritty.nix;
   programs.fish = import ./fish/fish.nix pkgs;
-  programs.home-manager.enable = true;
   programs.git = import ./git.nix;
-  home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
-  home.file.".sqliterc".text = builtins.readFile ./sqliterc;
+  programs.home-manager.enable = true;
+  xdg.configFile."i3status-rust/config.toml".text = builtins.readFile ./linux/sway/i3status-rs/config.toml;
   xdg.configFile."nvim/init.vim".text = builtins.readFile ./vim/init.vim;
   xdg.configFile."nvim/lua/luainit.lua".text = builtins.readFile ./vim/lua/luainit.lua;
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
-  xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
-  xdg.configFile."i3status-rust/config.toml".text = builtins.readFile ./linux/sway/i3status-rs/config.toml;
+  xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
 }
