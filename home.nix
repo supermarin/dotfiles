@@ -50,7 +50,6 @@ in
   ];
 
   programs.neovim = {
-    package = pkgs.neovim-nightly;
     enable = true;
     vimAlias = true;
     viAlias = true;
@@ -67,14 +66,4 @@ in
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
   xdg.configFile."i3status-rust/config.toml".text = builtins.readFile ./linux/sway/i3status-rs/config.toml;
-  
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [
-      # Neovim nightly until 0.5.0 is released (or forever?)
-      (import (builtins.fetchTarball {
-        url = https://github.com/nix-community/neovim-nightly-overlay/archive/4568a5f77ec3359513e5849b23a89a03ffe16f2a.tar.gz;
-      }))
-    ];
-  };
 }
