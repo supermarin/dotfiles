@@ -94,7 +94,6 @@
     ];
     extraSessionCommands = ''
       export MOZ_ENABLE_WAYLAND=1
-      export XDG_CURRENT_DESKTOP=GNOME
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
     '';
   };
