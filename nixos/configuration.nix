@@ -127,6 +127,7 @@
   # Virtualisation
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
+  services.spice-vdagentd.enable = true;
   virtualisation.docker.enable = true;
 
   home-manager.users.supermarin = (import ../home.nix);
