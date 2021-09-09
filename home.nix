@@ -42,6 +42,7 @@ in
   ++ lib.optionals isLinux [
     cawbird # twitter
     fractal # matrix
+    gcc # for neovim
     git # is here only because of arm64 git on mac
     signal-desktop # for an unknown reason not avail on mac
     slack # same arm64
