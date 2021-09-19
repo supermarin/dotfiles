@@ -1,5 +1,11 @@
-theme = "native"
-icons = "awesome"
+[theme]
+name = "native"
+[icons]
+name = "awesome"
+
+[theme.overrides]
+critical_fg = "#FF5555"
+warning_fg = "#F96A02"
 
 [[block]]
 block = "sound"
