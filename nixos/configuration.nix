@@ -2,8 +2,10 @@
 
 {
   imports = [
-      (import "${builtins.fetchTarball 
-        https://github.com/nix-community/home-manager/archive/775cb20bd4af7781fbf336fb201df02ee3d544bb.tar.gz}/nixos")
+    # TODO: see why in the world is it always trying to download the same archive?
+    #       it makes it impossible to nixos-rebuild offline.
+    (import "${builtins.fetchTarball 
+    https://github.com/nix-community/home-manager/archive/775cb20bd4af7781fbf336fb201df02ee3d544bb.tar.gz}/nixos")
   ];
 
   boot.loader.systemd-boot.enable = true;
