@@ -230,6 +230,7 @@ bindsym XF86MonBrightnessDown exec lightctl lower
 bindsym Print exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 # Take a Screenshot with the region select
 bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+bindsym Shift+Print exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
   
 # Startup commands
 exec albert
