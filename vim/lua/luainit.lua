@@ -17,21 +17,22 @@ require('packer').startup(function()
       {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}
   }}
   -- LSP, completion, tree-sitter
-  use { 'neovim/nvim-lspconfig' }
-  use { 'nvim-lua/completion-nvim' }
-  use { 'nvim-treesitter/nvim-treesitter' }
-  use { 'hrsh7th/vim-vsnip-integ' }
-  use { 'hrsh7th/vim-vsnip' }
-  use { "rafamadriz/friendly-snippets" } 
+  use 'neovim/nvim-lspconfig'
+  use 'nvim-lua/completion-nvim'
+  use 'nvim-treesitter/nvim-treesitter'
+  use 'hrsh7th/vim-vsnip-integ'
+  use 'hrsh7th/vim-vsnip'
+  use "rafamadriz/friendly-snippets" 
   -- Misc
-  use { 'LnL7/vim-nix' }
-  use { 'airblade/vim-gitgutter' }
-  use { 'mg979/vim-visual-multi' }
-  use { 'morhetz/gruvbox' }
-  use { 'tpope/vim-commentary' }
-  use { 'tpope/vim-fugitive' }
-  use { 'tpope/vim-repeat' }
-  use { 'tpope/vim-surround' }
+  use 'LnL7/vim-nix'
+  use 'airblade/vim-gitgutter'
+  use 'mg979/vim-visual-multi'
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-repeat'
+  use 'tpope/vim-surround'
+  -- Appearance
+  use 'morhetz/gruvbox'
 end)
 
 -- LSP
