@@ -10,17 +10,34 @@ gaps inner 7
 smart_borders on
 smart_gaps on
 
-# Set colors
-set $c_bg #171717
-set $c_bg_2nd #272727
-set $c_fg #DEDEDE
-set $c_fg_2nd #64727D
-set $c_cyan #0088CC
+# # Set colors
+set $c_black #171717
+set $c_darkgrey #222222
+set $c_lightgrey #DEDEDE
+set $c_grey #64727D
+set $c_accent $c_grey
 
-# class                 border    background  text        indicator   child_border
-client.focused          $c_cyan   $c_cyan     $c_fg       $c_bg       $c_cyan
-client.focused_inactive $c_bg     $c_bg_2nd   $c_fg       $c_bg       $c_bg
-client.unfocused        $c_bg     $c_bg       $c_fg_2nd   $c_bg       $c_bg
+# class                 border     background  text         indicator  child_border
+client.focused          $c_accent  $c_accent   $c_lightgrey $c_accent  $c_accent
+client.focused_inactive $c_black   $c_darkgrey $c_lightgrey $c_black   $c_black
+client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
+
+# Status Bar:
+#
+bar {
+    position top
+    font pango: Inter 13
+    status_command i3status-rs
+    colors {
+        separator          $c_darkgrey
+        background         $c_darkgrey
+        statusline         #ffffff
+        focused_workspace  $c_accent    $c_accent   #ffffff
+        active_workspace   #900000      #333333     #ffffff
+        inactive_workspace $c_darkgrey  $c_darkgrey $c_lightgrey
+        urgent_workspace   #900000      #900000     #ffffff
+    }
+}
 
 ###############################################################################
 
@@ -214,23 +231,6 @@ bindsym Print exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s
 # Take a Screenshot with the region select
 bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
   
-# Status Bar:
-#
-bar {
-    position top
-    font pango: Inter 13
-    status_command i3status-rs
-    colors {
-        separator #222222
-        background #222222
-        statusline #ffffff
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #900000 #ffffff
-    }
-}
-
 # Startup commands
 exec albert
 
