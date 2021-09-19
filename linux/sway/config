@@ -188,28 +188,30 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Media controls (sorted by lenovo kb):
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioRaiseVolume exec volumectl raise
+bindsym XF86AudioLowerVolume exec volumectl lower
+bindsym XF86AudioMute exec volumectl mute
+bindsym XF86AudioMicMute exec volumectl mute --mic
+# gap
+bindsym XF86MonBrightnessUp exec lightctl raise
+bindsym XF86MonBrightnessDown exec lightctl lower
+# missing: external screen button? desktop button?
+# missing: wifi off button
+# gap
+# missing: chat button?
+# missing: phone open button?
+# missing: phone close button?
+# missing: star button?
 
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+# missing completely from the keyboard:
+  # bindsym XF86AudioPlay exec playerctl play-pause
+  # bindsym XF86AudioNext exec playerctl next
+  # bindsym XF86AudioPrev exec playerctl previous
+ 
 # Take a screenshot with all output and save it into screenshots
 bindsym Print exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 # Take a Screenshot with the region select
 bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
-  # missing: external screen button? desktop button?
-  # missing: wifi off button
-  
-  # missing: chat button?
-  # missing: phone open button?
-  # missing: phone close button?
-  # missing: star button?
-  
-  # bindsym XF86AudioPlay exec playerctl play-pause
-  # bindsym XF86AudioNext exec playerctl next
-  # bindsym XF86AudioPrev exec playerctl previous
   
 # Status Bar:
 #
@@ -230,5 +232,7 @@ bar {
 
 # Startup commands
 exec albert
+
+# Brightness / volume indicator
 exec systemctl --user import-environment
 exec "mako"
