@@ -7,6 +7,7 @@
 ### UI
 default_border pixel 1
 gaps inner 7
+smart_borders on
 smart_gaps on
 
 # Set colors
