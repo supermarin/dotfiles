@@ -83,15 +83,12 @@
       brightnessctl   # Brightness control
       grim            # wayland screenshot tool
       i3status-rust   # Menu bar
-      pamixer         # used for volume up/down
       mako            # notification daemon
       slurp           # screenshot: select a region in wayland
       swaylock        # idle lock
       swayidle        # idle lock
       wl-clipboard    # wl-copy, wl-paste
-
-      # custom
-      (import ../linux/sway/avizo.nix)
+      wob             # indicator bar
     ];
     extraSessionCommands = ''
       export MOZ_ENABLE_WAYLAND=1

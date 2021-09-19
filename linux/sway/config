@@ -206,16 +206,20 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Media controls (sorted by lenovo kb):
-bindsym XF86AudioRaiseVolume exec volumectl raise
-bindsym XF86AudioLowerVolume exec volumectl lower
-bindsym XF86AudioMute exec volumectl mute
-bindsym XF86AudioMicMute exec volumectl mute --mic
-# gap
-bindsym XF86MonBrightnessUp exec lightctl raise
-bindsym XF86MonBrightnessDown exec lightctl lower
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
+bindsym XF86AudioLowerVolume exec amixer set Master 5%- | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
+bindsym $mod2+XF86AudioRaiseVolume exec amixer set Master 1%+ | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
+bindsym $mod2+XF86AudioLowerVolume exec amixer set Master 1%- | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
+bindsym XF86AudioMute exec amixer set Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' | head -1 > $WOBSOCK
+bindsym XF86AudioMicMute exec amixer set Capture toggle
+# keyboard gap
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+bindsym $mod2+XF86MonBrightnessDown exec brightnessctl set 1%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+bindsym $mod2+XF86MonBrightnessUp exec brightnessctl set +1% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 # missing: external screen button? desktop button?
 # missing: wifi off button
-# gap
+# keyboard gap
 # missing: chat button?
 # missing: phone open button?
 # missing: phone close button?
@@ -228,13 +232,17 @@ bindsym XF86MonBrightnessDown exec lightctl lower
  
 # Take a screenshot with all output and save it into screenshots
 bindsym Print exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
-# Take a Screenshot with the region select
 bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 bindsym Shift+Print exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
   
+# Unfuck launching GNOME apps (takes 20 seconds otherwise)
+exec systemctl --user import-environment
+
 # Startup commands
 exec albert
+exec mako
 
-# Brightness / volume indicator
-exec systemctl --user import-environment
-exec "mako"
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+# TODO: figure out why these two can't go in the same line, and fix the initial bar showing on sway load
+exec mkfifo $WOBSOCK
+exec tail -f $WOBSOCK | wob
