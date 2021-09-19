@@ -71,7 +71,7 @@ exec swayidle -w \
          before-sleep 'swaylock -f -c 000000'
 
 # Screen lock
-bindsym $mod+Control+q exec swaylock -f -c 000000
+bindsym $mod+Shift+q exec swaylock -f -c 000000
 
 ### Key bindings
 #
