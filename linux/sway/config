@@ -26,8 +26,8 @@ client.unfocused        $c_bg     $c_bg       $c_fg_2nd   $c_bg       $c_bg
 ### Variables
 #
 # Mod4 - Logo key. Mod1 - Alt.
-set $mod Mod1
-set $mod2 Mod4
+set $mod Mod4
+set $mod2 Mod1
 
 set $left h
 set $down j
