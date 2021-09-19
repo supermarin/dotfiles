@@ -225,3 +225,4 @@ bar {
 # Startup commands
 exec albert
 exec systemctl --user import-environment
+exec "mako"
