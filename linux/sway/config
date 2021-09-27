@@ -122,8 +122,8 @@ bindsym $mod+Shift+c reload
 floating_modifier $mod normal
 
 # Assign apps to consistent workspaces
-assign [app_id="firefox"] 2: web
-assign [app_id="Alacritty"] 3: tty
+assign [app_id="firefox"] 2
+assign [app_id="Alacritty"] 3
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
