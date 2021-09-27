@@ -237,6 +237,8 @@ bindsym Shift+Print exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(dat
   
 # Unfuck launching GNOME apps (takes 20 seconds otherwise)
 exec systemctl --user import-environment
+# Unfuck GNOME keyring
+exec dbus-update-activation-environment --systemd DISPLAY
 
 # Startup commands
 exec albert
