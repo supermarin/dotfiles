@@ -1,4 +1,13 @@
+" completion config
+let g:completion_enable_snippet = "vim-vsnip"
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
+let g:completion_matching_smart_case = 1
+" gruvbox use hard contrast for readability
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_light = 'hard'
+" leader key
 let mapleader=" "
+
 set cc=80
 set clipboard=unnamedplus
 set completeopt=menuone,noinsert,noselect
@@ -20,15 +29,6 @@ set ts=2 sw=2 expandtab
 set undofile
 set termguicolors
 color gruvbox
-
-" completion config
-let g:completion_enable_snippet = "vim-vsnip"
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
-let g:completion_matching_smart_case = 1
-
-" gruvbox use hard contrast for readability
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_contrast_light = 'hard'
 
 " Mappings
 nnoremap <leader>h :nohlsearch<cr>
