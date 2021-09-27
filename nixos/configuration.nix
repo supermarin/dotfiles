@@ -47,7 +47,7 @@
   users.users.supermarin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" "video" ]; 
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ]; 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in"
     ];
@@ -74,7 +74,6 @@
   ];
 
   # only for sway
-  programs.light.enable = true;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
