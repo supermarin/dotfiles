@@ -22,6 +22,12 @@ require('packer').startup(function()
       require'telescope'.load_extension('frecency')
     end
   }
+  use { 'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
   -- LSP, completion, tree-sitter
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/completion-nvim'
@@ -31,7 +37,6 @@ require('packer').startup(function()
   use "rafamadriz/friendly-snippets" 
   -- Misc
   use 'LnL7/vim-nix'
-  use 'airblade/vim-gitgutter'
   use 'mg979/vim-visual-multi'
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
