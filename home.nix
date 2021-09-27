@@ -7,6 +7,7 @@ in
   home.sessionVariables = {
     EDITOR = "nvim";
     FUZZY = "fzf";
+    MAILDIR = "$HOME/.mail";
     PASSWORD_STORE_DIR="$HOME/.p";
     OTPDIR = "$HOME/.otp";
     RIPGREP_CONFIG_PATH = ./rg/config;
@@ -15,6 +16,10 @@ in
   home.sessionPath = [
     "$HOME/dotfiles/functions"
     "$HOME/go/bin"
+  ];
+
+  imports = [
+    ./mail.nix
   ];
 
   home.packages = with pkgs; [
