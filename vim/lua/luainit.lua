@@ -13,9 +13,15 @@ vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function()
   use { 'wbthomason/packer.nvim', opt = true }
    -- Fuzzy finder
-  use { 'nvim-telescope/telescope.nvim', requires = {
-      {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}
-  }}
+  use { 'nvim-telescope/telescope.nvim',
+    requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
+  }
+  use { 'nvim-telescope/telescope-frecency.nvim',
+    requires = {'tami5/sqlite.lua'},
+    config = function()
+      require'telescope'.load_extension('frecency')
+    end
+  }
   -- LSP, completion, tree-sitter
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/completion-nvim'

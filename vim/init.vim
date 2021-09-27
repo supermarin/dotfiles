@@ -32,7 +32,8 @@ color gruvbox
 
 " Mappings
 nnoremap <leader>h :nohlsearch<cr>
-nnoremap <leader>p :Telescope find_files<cr>
+nnoremap <leader>p :Telescope frecency<cr>
+nnoremap <leader>f :Telescope find_files<cr>
 nnoremap <leader>g :Telescope live_grep<cr>
 nnoremap <leader>b :Telescope buffers<cr>
 nnoremap gh ^

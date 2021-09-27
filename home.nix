@@ -51,6 +51,7 @@ in
     git # is here only because of arm64 git on mac
     signal-desktop # for an unknown reason not avail on mac
     slack # same arm64
+    sqlite # needed by neovim sqlite. not by default in the OS
     tdesktop # telegram
     tig # same arm64
   ];
@@ -68,7 +69,11 @@ in
   programs.git = import ./git.nix;
   programs.home-manager.enable = true;
   xdg.configFile."i3status-rust/config.toml".text = builtins.readFile ./linux/sway/i3status-rs/config.toml;
-  xdg.configFile."nvim/init.vim".text = builtins.readFile ./vim/init.vim;
+  xdg.configFile."nvim/init.vim".text = ''
+    " The line below is generated from home-manager
+    let g:sqlite_clib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so"
+    ''
+    + builtins.readFile ./vim/init.vim;
   xdg.configFile."nvim/lua/luainit.lua".text = builtins.readFile ./vim/lua/luainit.lua;
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
