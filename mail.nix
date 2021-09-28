@@ -48,29 +48,29 @@
           showSignature = "append";
         };
       };
-    fastmail = {
-      astroid.enable = true;
-      msmtp.enable = true;
-      notmuch.enable = true;
-      mu.enable = true;
-      mbsync = {
-        enable = true;
-        create = "both";
-      };
-      primary = true;
-      realName = "Marin Usalj";
-      address = "m@supermar.in";
-      userName = "supermarin@imap.cc";
-      passwordCommand = "age -i $HOME/.age/pk.age -d $HOME/.age/fm.age";
-      imap.host = "imap.fastmail.com";
-      smtp.host = "smtp.fastmail.com";
-      signature = {
-        text = ''
-        Marin
-        '';
-        showSignature = "append";
+      fastmail = {
+        astroid.enable = true;
+        msmtp.enable = true;
+        notmuch.enable = true;
+        mu.enable = true;
+        mbsync = {
+          enable = true;
+          create = "both";
+        };
+        primary = true;
+        realName = "Marin Usalj";
+        address = "m@supermar.in";
+        userName = "supermarin@imap.cc";
+        passwordCommand = "age -i $HOME/.age/pk.age -d $HOME/.age/fm.age";
+        imap.host = "imap.fastmail.com";
+        smtp.host = "smtp.fastmail.com";
+        signature = {
+          text = ''
+          Marin
+          '';
+          showSignature = "append";
+        };
       };
     };
-};
   };
 }
