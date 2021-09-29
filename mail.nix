@@ -72,6 +72,29 @@
           showSignature = "append";
         };
       };
+      sailefx = {
+        astroid.enable = true;
+        msmtp.enable = true;
+        notmuch.enable = true;
+        mu.enable = true;
+        mbsync = {
+          enable = true;
+          create = "both";
+          expunge = "both";
+        };
+        realName = "Marin Usalj";
+        address = "marin@sailefx.com";
+        userName = "marin@sailefx.com";
+        passwordCommand = "age -i $HOME/.age/pk.age -d $HOME/.age/sfx.age";
+        imap.host = "imap.zoho.com";
+        smtp.host = "smtp.zoho.com";
+        signature = {
+          text = ''
+          Marin
+          '';
+          showSignature = "append";
+        };
+      };
     };
   };
 }
