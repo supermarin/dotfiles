@@ -20,10 +20,6 @@
       butters = {
         astroid = {
           enable = true;
-          extraConfig = {
-            save_sent_to = "butters/Sent/cur";
-            save_drafts_to = "butters/Drafts/cur";
-          };
         };
         msmtp.enable = true;
         notmuch.enable = true;
