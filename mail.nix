@@ -33,7 +33,6 @@
           create = "both";
           expunge = "both";
         };
-        # primary = true;
         realName = "SV BUTTERS";
         address = "info@butte.rs";
         userName = "butters@mailbox.org";
