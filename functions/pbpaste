@@ -1,5 +1,4 @@
-#!/usr/bin/env nix-shell
-#!nix-shell -p bash -i bash
+#!/usr/bin/env bash
 
 if [[ $(uname) = Linux ]]; then
   if [[ $XDG_SESSION_TYPE = "wayland" ]]; then
