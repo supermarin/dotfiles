@@ -1,11 +1,14 @@
 { hostname, config, pkgs, ... }:
+let
+  hm = builtins.fetchTarball {
+    url = https://github.com/nix-community/home-manager/archive/959217e51dbd07d0de6dcbddfbfcb4f2efdc0c1e.tar.gz;
+    sha256 = "1hhdk23rd5drgpm8pfpkyg1dl2fgn0pqwandx96qhqdv7k44lqnh";
+  };
+in
 
 {
   imports = [
-    # TODO: see why in the world is it always trying to download the same archive?
-    #       it makes it impossible to nixos-rebuild offline.
-    (import "${builtins.fetchTarball 
-    https://github.com/nix-community/home-manager/archive/775cb20bd4af7781fbf336fb201df02ee3d544bb.tar.gz}/nixos")
+    (import "${hm}/nixos")
   ];
 
   boot.loader.systemd-boot.enable = true;
