@@ -56,6 +56,7 @@
         mbsync = {
           enable = true;
           create = "both";
+          expunge = "both";
         };
         primary = true;
         realName = "Marin Usalj";
