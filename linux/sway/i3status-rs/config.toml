@@ -25,5 +25,6 @@ format = "{percentage}"
 [[block]]
 block = "time"
 interval = 60
-format = "%a %e %b %R"
+format = "%a %b %-d %R"
 on_click = "gnome-clocks"
+icons_format = ""
