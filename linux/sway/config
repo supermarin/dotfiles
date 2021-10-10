@@ -37,6 +37,7 @@ bar {
         inactive_workspace $c_darkgrey  $c_darkgrey $c_lightgrey
         urgent_workspace   #900000      #900000     #ffffff
     }
+    tray_output none
 }
 
 ###############################################################################
