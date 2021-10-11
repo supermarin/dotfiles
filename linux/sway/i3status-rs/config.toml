@@ -8,20 +8,34 @@ critical_fg = "#FF5555"
 warning_fg = "#F96A02"
 
 [[block]]
+block = "cpu"
+format = "{barchart}"
+icons_format = ""
+
+[[block]]
+block = "custom"
+command = ''' bash -c "notmuch count --output=threads 'folder:/.*/Inbox/' 2>/dev/null || echo 0" | jq '{icon:"mail", text: . | tostring}' '''
+on_click = "astroid"
+json = true
+interval = 10
+
+[[block]]
 block = "sound"
 format = ""
 
 [[block]]
 block = "networkmanager"
-on_click = "alacritty -e nmtui-connect"
+on_click = "alacritty -e nmtui edit"
 ap_format = "{ssid}"
 device_format = "{icon}{ap}"
+interface_name_exclude = ["virbr[0-9]", "br\\-[0-9a-f]{12}", "docker\\d+"]
 
 [[block]]
 block = "battery"
 interval = 10
-driver = "upower"
 format = "{percentage}"
+allow_missing = true
+hide_missing = true
 
 [[block]]
 block = "time"
