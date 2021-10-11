@@ -104,7 +104,9 @@ bindsym $mod+Shift+q exec swaylock -f -c 000000
 bindsym $mod+Return exec $term
 
 # Start a browser
-bindsym $mod+b exec $browser
+bindsym $mod+b workspace 2; exec pgrep $browser || $browser
+# Opencpn
+bindsym $mod+o workspace 5; exec pgrep opencpn || flatpak run org.opencpn.OpenCPN 
 
 # Kill focused window
 bindsym $mod+q kill
