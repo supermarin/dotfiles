@@ -132,5 +132,6 @@ in
 
   home-manager.users.supermarin = (import ../home.nix);
   system.stateVersion = "21.05";
+  nix.trustedUsers = [ "supermarin" ]; # enable nix-copy-closure
 }
 
