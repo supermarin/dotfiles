@@ -239,8 +239,9 @@ bindsym $mod2+XF86MonBrightnessUp exec brightnessctl set +1% | sed -En 's/.*\(([
  
 # Take a screenshot with all output and save it into screenshots
 bindsym Print exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
-bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
-bindsym Shift+Print exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+bindsym $mod+Print   exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+bindsym $mod2+Print  exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+bindsym Shift+Print  exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
   
 # Unfuck launching GNOME apps (takes 20 seconds otherwise)
 exec systemctl --user import-environment
