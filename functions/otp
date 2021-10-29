@@ -18,6 +18,6 @@ fi
 
 # TODO: properly get PK out
 #       this will ask for password interactively.
-value=$(age -d -i ~/.ssh/id_ed25519 "$encryptedfile")
+value=$(age -d -i ~/.age/otp-ssh "$encryptedfile")
 oathtool --base32 --totp "$value" | pbcopy
 echo "OTP $whichlogin copied to the clipboard."
