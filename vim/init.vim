@@ -38,6 +38,7 @@ nnoremap <leader>g :Telescope live_grep<cr>
 nnoremap <leader>b :Telescope buffers<cr>
 nnoremap gh ^
 nnoremap gl $
+nnoremap <cr> :noh<cr>
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Unfuck paste when visual selecting
