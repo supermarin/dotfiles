@@ -54,9 +54,7 @@ set $up k
 set $right l
 set $term alacritty
 set $browser firefox
-# Note: pass the final command to swaymsg so that the resulting window can be
-# opened on the original workspace that the command was run on.
-set $menu swaymsg exec 'albert show'
+set $menu "rofi -combi-modi window,drun,ssh,run,calc -show combi -show-icons"
 
 ### Output configuration
 #
