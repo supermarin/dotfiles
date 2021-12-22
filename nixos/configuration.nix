@@ -1,8 +1,8 @@
 { hostname, config, pkgs, ... }:
 let
   hm = builtins.fetchTarball {
-    url = https://github.com/nix-community/home-manager/archive/959217e51dbd07d0de6dcbddfbfcb4f2efdc0c1e.tar.gz;
-    sha256 = "1hhdk23rd5drgpm8pfpkyg1dl2fgn0pqwandx96qhqdv7k44lqnh";
+    url = https://github.com/nix-community/home-manager/archive/6c6f934f0ba77dbcaefa84c106cab505f1e5bc58.tar.gz;
+    sha256 = "1cqlnb5fmpbdcskp9jjw2hwh5r45jiqcx83qiss5bs46gd0lpcx7";
   };
 in
 
