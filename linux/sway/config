@@ -26,7 +26,7 @@ client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
 #
 bar {
     position top
-    font pango: Inter 13
+    font pango: Inter Medium 13
     status_command i3status-rs
     colors {
         separator          $c_darkgrey
