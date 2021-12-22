@@ -25,6 +25,7 @@ in
   home.packages = with pkgs; [
     age
     bat # used in `e` for live preview of files
+    calibre
     coreutils # used for `shred`
     diffr # used in git stuff
     fd
@@ -55,6 +56,7 @@ in
     sqlite # needed by neovim sqlite. not by default in the OS
     tdesktop # telegram
     tig # same arm64
+    vlc
   ];
 
   programs.neovim = {
