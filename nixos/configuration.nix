@@ -20,8 +20,9 @@ in
   };
 
   hardware.pulseaudio.enable = true;
+  hardware.bluetooth.enable = true; # enables bluez
   sound.enable = true;
-  time.timeZone = "Europe/Malta";
+  time.timeZone = "EST";
 
   networking = {
     firewall.allowedTCPPorts = [ 22 3333 ];
@@ -38,6 +39,7 @@ in
     nssmdns = true;
   };
 
+  xdg.portal.enable = true; # needed for flatpak
   services.flatpak.enable = true;
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
@@ -65,14 +67,11 @@ in
   # Only put system software in here, e.g. stuff that is installed by
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
-    alacritty
-    albert
     file # file(1)
     firefox
-    gnome.gnome-tweaks # TODO: remove this once we figure out how to configure GNOME declaratively.
-    gnomeExtensions.vitals # TODO: document what's this
     killall # killall(1)
     libreoffice
+    unzip
     virt-manager
   ];
 
@@ -82,10 +81,16 @@ in
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
+      alacritty       # Terminal
+      gnome.gnome-bluetooth # bluetooth-sendto for sending files
+      blueberry       # Bluetooth devices management gui
       brightnessctl   # Brightness control
       grim            # wayland screenshot tool
       i3status-rust   # Menu bar
+      libnotify       # notify-send
       mako            # notification daemon
+      rofi
+      rofi-calc
       slurp           # screenshot: select a region in wayland
       swaylock        # idle lock
       swayidle        # idle lock
@@ -95,14 +100,8 @@ in
     extraSessionCommands = ''
       export MOZ_ENABLE_WAYLAND=1
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      export QT_SCALE_FACTOR=1.25
     '';
-  };
-
-  services.xserver = {
-    enable = true;
-    autorun = false;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
   };
 
   fonts = {
