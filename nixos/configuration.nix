@@ -131,6 +131,19 @@ in
 
   home-manager.users.supermarin = (import ../home.nix);
   system.stateVersion = "21.05";
-  nix.trustedUsers = [ "supermarin" ]; # enable nix-copy-closure
+  nix = {
+    trustedUsers = [ "supermarin" ]; # enable nix-copy-closure
+    extraOptions = ''
+    experimental-features = nix-command flakes
+    '';
+    gc = {
+      automatic = true;
+      dates = "monthly";
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "monthly" ];
+    };
+  };
 }
 
