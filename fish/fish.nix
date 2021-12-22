@@ -13,7 +13,7 @@ pkgs:
   # Unfuck nix-darwin integration with home-manager
   + pkgs.lib.optionalString pkgs.stdenv.isDarwin (builtins.readFile ./nix.fish);
 
-  promptInit = builtins.readFile ./functions/fish_prompt.fish;
+  interactiveShellInit = builtins.readFile ./functions/fish_prompt.fish;
   functions = with builtins; {
     wo = readFile ./functions/wo.fish;
     fish_right_prompt = readFile ./functions/fish_right_prompt.fish;
