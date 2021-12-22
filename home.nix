@@ -36,6 +36,7 @@ in
     magic-wormhole
     oathToolkit # used for OTP
     pass
+    qutebrowser
     ripgrep
     rnix-lsp
     tree-sitter
