@@ -9,4 +9,6 @@
   ];
   # For thinkpad
   services.fwupd.enable = true;
+  # Power management
+  services.tlp.enable = true;
 }
