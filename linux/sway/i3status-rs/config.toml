@@ -25,7 +25,7 @@ format = ""
 
 [[block]]
 block = "networkmanager"
-on_click = "alacritty -e nmtui edit"
+on_click = "alacritty --class floating_term -e nmtui connect"
 ap_format = "{ssid}"
 device_format = "{icon}{ap}"
 interface_name_exclude = ["virbr[0-9]", "br\\-[0-9a-f]{12}", "docker\\d+"]
