@@ -68,7 +68,6 @@ in
   
   home.file.".sqliterc".text = builtins.readFile ./sqliterc;
   home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
-  programs.alacritty = import ./alacritty.nix;
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix;
   programs.home-manager.enable = true;
