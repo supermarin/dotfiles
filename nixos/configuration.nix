@@ -61,7 +61,7 @@ in
   environment.sessionVariables = {
     EDITOR = "vim";
     QT_QPA_PLATFORM = "wayland";
-    XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
+    XKB_DEFAULT_OPTIONS = "ctrl:nocaps,altwin:swap_lalt_lwin";
   };
 
   # Only put system software in here, e.g. stuff that is installed by
