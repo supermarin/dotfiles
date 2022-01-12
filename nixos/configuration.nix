@@ -81,7 +81,6 @@ in
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
-      alacritty       # Terminal
       gnome.gnome-bluetooth # bluetooth-sendto for sending files
       blueberry       # Bluetooth devices management gui
       brightnessctl   # Brightness control
@@ -92,6 +91,7 @@ in
       rofi
       rofi-calc
       slurp           # screenshot: select a region in wayland
+      foot            # terminal
       swaylock        # idle lock
       swayidle        # idle lock
       wl-clipboard    # wl-copy, wl-paste
