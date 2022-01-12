@@ -111,7 +111,7 @@ in
       source-serif-pro # Serif
       hack-font # mono
       noto-fonts-emoji # emoji
-      (nerdfonts.override { fonts = [ "Hack" ]; })
+      font-awesome # i3status-rust
     ];
     fontconfig = {
       defaultFonts = {

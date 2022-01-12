@@ -1,7 +1,7 @@
 [theme]
 name = "native"
 [icons]
-name = "awesome"
+name = "awesome5"
 
 [theme.overrides]
 critical_fg = "#FF5555"
