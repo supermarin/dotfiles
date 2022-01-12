@@ -79,6 +79,10 @@ in
     + builtins.readFile ./vim/init.vim;
   xdg.configFile."nvim/lua/luainit.lua".text = builtins.readFile ./vim/lua/luainit.lua;
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
+  xdg.configFile."foot/foot.ini".text = ''
+  [colors]
+  foreground = ffffff
+  '';
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
 
