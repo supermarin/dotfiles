@@ -22,7 +22,7 @@ in
   hardware.pulseaudio.enable = true;
   hardware.bluetooth.enable = true; # enables bluez
   sound.enable = true;
-  time.timeZone = "EST";
+  time.timeZone = "America/Guadeloupe";
 
   networking = {
     firewall.allowedTCPPorts = [ 22 3333 ];
