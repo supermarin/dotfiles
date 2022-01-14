@@ -24,6 +24,12 @@ block = "sound"
 format = ""
 
 [[block]]
+block = "bluetooth"
+mac = "84:5C:F3:93:79:42"
+on_click = "blueberry"
+format_unavailable = ""
+
+[[block]]
 block = "networkmanager"
 on_click = "alacritty --class floating_term -e nmtui connect"
 ap_format = "{ssid}"
