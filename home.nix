@@ -70,7 +70,6 @@ in
   home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix;
-  programs.home-manager.enable = true;
   xdg.configFile."i3status-rust/config.toml".text = builtins.readFile ./linux/sway/i3status-rs/config.toml;
   xdg.configFile."nvim/init.vim".text = ''
     " The line below is generated from home-manager
