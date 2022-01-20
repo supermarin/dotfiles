@@ -124,7 +124,7 @@ floating_modifier $mod normal
 # Assign apps to consistent workspaces
 for_window [title="floating_term"] floating enable
 assign [app_id="firefox"] 2
-assign [title="term"] 3
+assign [title="^term$"] 3
 for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird)"] {
   floating enable
   border none
