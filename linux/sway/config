@@ -79,11 +79,7 @@ bindswitch --reload --locked lid:off output $laptop enable
 input * {
     repeat_delay 175
     repeat_rate  75
-}
-
-input type:touchpad {
-  tap enabled
-  natural_scroll enabled
+    natural_scroll enabled
 }
 
 ### Idle configuration
