@@ -125,9 +125,11 @@ floating_modifier $mod normal
 for_window [title="floating_term"] floating enable
 assign [app_id="firefox"] 2
 assign [title="^term$"] 3
+
 for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird)"] {
   floating enable
   border none
+  assign 4
 }
 
 # Exit sway (logs you out of your Wayland session)
