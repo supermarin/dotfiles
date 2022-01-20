@@ -25,7 +25,11 @@ in
   time.timeZone = "America/Guadeloupe";
 
   networking = {
-    firewall.allowedTCPPorts = [ 22 3333 ];
+    firewall.allowedTCPPorts = [ 
+      22 # ssh
+      3333 # sailefx
+      8080 # calibre
+    ];
     hostName = hostname;
     nameservers = [ "1.1.1.1" ];
     networkmanager.enable = true;
