@@ -145,12 +145,6 @@ bindsym $mod+$right focus right
 # bindsym $mod+c exec 'wl-copy'
 # bindsym $mod+v wl-paste
 
-# Move the focused window with the same, but add Shift
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-
 # Workspaces:
 # Switch to workspace
 bindsym $mod+1 workspace number 1
