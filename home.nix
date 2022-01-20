@@ -81,6 +81,8 @@ in
   xdg.configFile."foot/foot.ini".text = ''
   [colors]
   foreground = ffffff
+  [mouse-bindings]
+  primary-paste = none
   '';
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
