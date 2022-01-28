@@ -1,10 +1,5 @@
 { pkgs, config, ... }:
-
 { 
-  programs.astroid = {
-    enable = true;
-    externalEditor = "alacritty -e nvim -c 'set ft=mail' '+set fileencoding=utf-8' '+set ff=unix' '+set enc=utf-8' %1";
-  };
   programs.mbsync.enable = true;
   programs.msmtp.enable = true;
   programs.mu.enable = true;
@@ -18,9 +13,6 @@
     maildirBasePath = ".mail";
     accounts = {
       butters = {
-        astroid = {
-          enable = true;
-        };
         msmtp.enable = true;
         notmuch.enable = true;
         mu.enable = true;
@@ -44,7 +36,6 @@
         };
       };
       fastmail = {
-        astroid.enable = true;
         msmtp.enable = true;
         notmuch.enable = true;
         mu.enable = true;
@@ -68,7 +59,6 @@
         };
       };
       sailefx = {
-        astroid.enable = true;
         msmtp.enable = true;
         notmuch.enable = true;
         mu.enable = true;
