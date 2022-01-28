@@ -7,11 +7,13 @@ pkgs:
       abbr g git
       abbr gs git s
       abbr gd git d
-      abbr ns nix-shell -p 
-      abbr nss nix search nixpkgs 
+      abbr ns nix-shell
+      abbr nsp nix-shell -p 
+      abbr nss nix search nixpkgs
       abbr nd nix develop
       abbr nr nix run
       abbr nb nix build
+      abbr nrs sudo nixos-rebuild switch
     end
   ''
   # Unfuck nix-darwin integration with home-manager
