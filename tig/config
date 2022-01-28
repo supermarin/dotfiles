@@ -40,7 +40,7 @@ bind status    r    !git reset %(file)
 # Main UI
 # ==============================================================================
 # color default           250             234 # original value, keep for light term
-color default           250             default
+color default           255             default
 color 'Author '         15              default
 color 'Commit: '        15             default
 color 'Merge: '         45              default
