@@ -1,16 +1,12 @@
-" completion config
-let g:completion_enable_snippet = "vim-vsnip"
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
-let g:completion_matching_smart_case = 1
+" leader key
+let mapleader=" "
 " gruvbox use hard contrast for readability
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'hard'
-" leader key
-let mapleader=" "
 
 set cc=80
 set clipboard=unnamedplus
-set completeopt=menuone,noinsert,noselect
+set completeopt=menu,menuone,noselect
 set expandtab
 set grepprg=rg\ --vimgrep
 set guicursor=
@@ -28,10 +24,11 @@ set splitright
 set ts=2 sw=2 expandtab
 set undofile
 set termguicolors
-color gruvbox
+set background=dark
+color modus-vivendi
 
 " Mappings
-nnoremap <leader>h :nohlsearch<cr>
+" TODO: move this into separate mappings lua?
 nnoremap <leader>p :Telescope frecency<cr>
 nnoremap <leader>f :Telescope find_files<cr>
 nnoremap <leader>g :Telescope live_grep<cr>
@@ -47,10 +44,8 @@ vnoremap p "_dP
 augroup YO_OY
   autocmd!
   au BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
-  autocmd BufWritePost luainit.lua PackerCompile
 augroup END
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua <<EOF
 require("luainit")
 EOF
