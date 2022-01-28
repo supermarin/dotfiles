@@ -79,8 +79,29 @@ in
   xdg.configFile."nvim/lua/luainit.lua".text = builtins.readFile ./vim/lua/luainit.lua;
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
   xdg.configFile."foot/foot.ini".text = ''
+  [cursor]
+  color=000000 ffffff
   [colors]
+  alpha = 1.0
   foreground = ffffff
+  background = 000000
+  regular0=666666
+  regular1=cc6666
+  regular2=66cc99
+  regular3=cc9966
+  regular4=6699cc
+  regular5=cc6699
+  regular6=66cccc
+  regular7=cccccc
+  bright0=999999
+  bright1=ff9999
+  bright2=99ffcc
+  bright3=ffcc99
+  bright4=99ccff
+  bright5=ff99cc
+  bright6=99ffff
+  bright7=ffffff
+
   [mouse-bindings]
   primary-paste = none
   '';
