@@ -7,11 +7,12 @@ pkgs:
       abbr g git
       abbr gs git s
       abbr gd git d
-      abbr ns nix-shell
-      abbr nsp nix-shell -p 
+      abbr ns nix shell nixpkgs#
+      abbr nsp nix-shell -p
       abbr nss nix search nixpkgs
       abbr nd nix develop
       abbr nr nix run
+      abbr nrr nix run nixpkgs#
       abbr nb nix build
       abbr nrs sudo nixos-rebuild switch
     end
