@@ -111,11 +111,13 @@ in
 
   xdg.mimeApps = { 
     enable = true;
-    # associations.added = { 
-    #   "application/pdf" = ["org.gnome.Evince.desktop"];
-    # };
+    associations.added = { 
+      "application/pdf" = ["org.qutebrowser.qutebrowser.desktop"];
+      "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
+    };
     defaultApplications = { 
-      "application/pdf" = ["qutebrowser"];
+      "application/pdf" = ["org.qutebrowser.qutebrowser.desktop"];
+      "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
     };
   }; 
 
