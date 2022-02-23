@@ -1,15 +1,7 @@
-{ hostname, config, pkgs, ... }:
-let
-  hm = builtins.fetchTarball {
-    url = https://github.com/nix-community/home-manager/archive/6c6f934f0ba77dbcaefa84c106cab505f1e5bc58.tar.gz;
-    sha256 = "1cqlnb5fmpbdcskp9jjw2hwh5r45jiqcx83qiss5bs46gd0lpcx7";
-  };
-in
-
+{ hostname, home-manager, pkgs, ... }:
 {
-  imports = [
-    (import "${hm}/nixos")
-  ];
+  # imports = [ home-manager.nixosModule ];
+  # home-manager.users.supermarin = (import ../home.nix);
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
@@ -152,12 +144,12 @@ in
     timerConfig.OnBootSec = "10s";
   };
 
-  home-manager.users.supermarin = (import ../home.nix);
 
   system.stateVersion = "21.05";
   nix = {
-    package = pkgs.nixUnstable;
-    trustedUsers = [ "supermarin" ]; # enable nix-copy-closure
+    settings = {
+      trusted-users = [ "supermarin" ]; # enable nix-copy-closure
+    };
     extraOptions = ''
     experimental-features = nix-command flakes
     '';
