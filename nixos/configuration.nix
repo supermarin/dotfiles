@@ -93,6 +93,7 @@ in
       mako            # notification daemon
       rofi
       rofi-calc
+      rofimoji
       slurp           # screenshot: select a region in wayland
       foot            # terminal
       swaylock        # idle lock
@@ -112,7 +113,7 @@ in
     fonts = with pkgs; [
       inter # UI Sans
       source-serif-pro # Serif
-      hack-font # mono
+      jetbrains-mono # mono
       noto-fonts-emoji # emoji
       font-awesome # i3status-rust
     ];
@@ -120,7 +121,7 @@ in
       defaultFonts = {
         serif = [ "Source Serif Pro" ];
         sansSerif = [ "Inter" ];
-        monospace = [ "JetBrains Mono" ];
+        monospace = [ "JetBrainsMono" ];
         emoji = [ "Noto" ];
       };
     };
@@ -135,6 +136,7 @@ in
   home-manager.users.supermarin = (import ../home.nix);
   system.stateVersion = "21.05";
   nix = {
+    package = pkgs.nixUnstable;
     trustedUsers = [ "supermarin" ]; # enable nix-copy-closure
     extraOptions = ''
     experimental-features = nix-command flakes
