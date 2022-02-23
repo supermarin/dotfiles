@@ -1,8 +1,5 @@
-{ hostname, home-manager, pkgs, ... }:
+{ hostname, pkgs, ... }:
 {
-  # imports = [ home-manager.nixosModule ];
-  # home-manager.users.supermarin = (import ../home.nix);
-
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
@@ -146,6 +143,7 @@
 
 
   system.stateVersion = "21.05";
+  nixpkgs.config.allowUnfree = true; 
   nix = {
     settings = {
       trusted-users = [ "supermarin" ]; # enable nix-copy-closure
