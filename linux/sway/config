@@ -11,7 +11,7 @@ smart_borders on
 smart_gaps on
 
 # # Set colors
-set $c_black #171717
+set $c_black #111111
 set $c_darkgrey #222222
 set $c_lightgrey #DEDEDE
 set $c_grey #64727D
@@ -32,7 +32,7 @@ bar {
         separator          $c_darkgrey
         background         $c_darkgrey
         statusline         #ffffff
-        focused_workspace  $c_accent    $c_accent   #ffffff
+        focused_workspace  $c_darkgrey  $c_black    #ffffff
         active_workspace   #900000      #333333     #ffffff
         inactive_workspace $c_darkgrey  $c_darkgrey $c_lightgrey
         urgent_workspace   #900000      #900000     #ffffff
@@ -54,7 +54,7 @@ set $up k
 set $right l
 set $term foot --title term
 set $browser firefox
-set $menu "rofi -combi-modi window,drun,ssh,run,calc -show combi -show-icons"
+set $menu "rofi -combi-modi window,drun,run,calc -show combi -show-icons"
 
 ### Output configuration
 #
@@ -123,7 +123,7 @@ floating_modifier $mod normal
 
 # Assign apps to consistent workspaces
 for_window [title="floating_term"] floating enable
-assign [app_id="firefox"] 2
+# assign [app_id="firefox"] 2
 assign [title="^term$"] 3
 
 for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird)"] {
