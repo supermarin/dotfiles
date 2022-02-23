@@ -133,7 +133,27 @@ in
   services.spice-vdagentd.enable = true;
   virtualisation.docker.enable = true;
 
+  # Mail
+  systemd.user.services.mbsync = {
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+    };
+    script = ''
+    ${pkgs.isync}/bin/mbsync -a
+    ${pkgs.notmuch}/bin/notmuch new 
+    '';
+  };
+
+  systemd.user.timers.mbsync = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "mbsync.service" ];
+    timerConfig.OnUnitInactiveSec = "5m";
+    timerConfig.OnBootSec = "10s";
+  };
+
   home-manager.users.supermarin = (import ../home.nix);
+
   system.stateVersion = "21.05";
   nix = {
     package = pkgs.nixUnstable;
