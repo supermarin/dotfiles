@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Fuzzy finds branches except your current branch, returns the selected branch
 fuzzy_branch() {
