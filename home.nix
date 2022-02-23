@@ -53,7 +53,7 @@ in
     gcc # for neovim
     git # is here only because of arm64 git on mac
     signal-desktop # for an unknown reason not avail on mac
-    slack # same arm64
+    slack
     sqlite # needed by neovim sqlite. not by default in the OS
     tdesktop # telegram
     tig # same arm64
@@ -109,11 +109,6 @@ in
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
 
-  nixpkgs = {
-    config.allowUnfree = true;
-    # overlays = [
-    # ];
-  };
   xdg.mimeApps = { 
     enable = true;
     # associations.added = { 
@@ -123,4 +118,10 @@ in
       "application/pdf" = ["qutebrowser"];
     };
   }; 
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
 }
