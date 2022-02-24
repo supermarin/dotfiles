@@ -2,7 +2,7 @@
 {
   imports = [
       (import "${builtins.fetchTarball 
-        https://github.com/rycee/home-manager/archive/64607f58b75741470284c698f82f0199fcecdfa7.tar.gz}/nix-darwin")
+        https://github.com/nix-community/home-manager/archive/a28cf79a78040b4e6d8d50a39760a296d5e95dd6.tar.gz}/nix-darwin")
   ];
 
   # anything macos specific to install 
@@ -20,7 +20,7 @@
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  # Auto upgrade nix package and the daemon service.
+  nix.useDaemon = true;
+  nix.package = pkgs.nix;
 }
