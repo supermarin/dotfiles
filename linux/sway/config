@@ -96,6 +96,7 @@ bindsym $mod+Shift+q exec swaylock -f -c 000000
 #
 # Start a terminal
 bindsym $mod+Return exec $term, workspace 3
+bindsym $mod+Ctrl+Space exec rofimoji
 
 # Start a browser
 bindsym $mod+b workspace 2; exec pgrep $browser || $browser
