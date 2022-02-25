@@ -27,6 +27,13 @@
         ];
         specialArgs = inputs // { hostname = "pumba"; };
       };
+      vpn = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./vpn-configuration.nix
+        ];
+        specialArgs = inputs // { hostname = "vpn"; };
+      };
     };
   };
 }
