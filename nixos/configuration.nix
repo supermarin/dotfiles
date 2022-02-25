@@ -96,6 +96,11 @@
       export QT_SCALE_FACTOR=1.25
     '';
   };
+  environment.loginShellInit = ''
+    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+      exec sway
+    fi
+  '';
 
   fonts = {
     enableDefaultFonts = false;
