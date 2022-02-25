@@ -1,7 +1,7 @@
 [theme]
 name = "native"
 [icons]
-name = "awesome5"
+name = "awesome"
 
 [theme.overrides]
 critical_fg = "#FF5555"
@@ -13,11 +13,20 @@ format = "{barchart}"
 icons_format = ""
 
 [[block]]
-block = "custom"
-command = '''bash -c "notmuch count --output=threads 'path:/.*/Inbox/new/' 2>/dev/null || echo 0" | jq '{icon:"mail", text: . | tostring}''''
-on_click = "swaymsg workspace 4"
-json = true
-interval = 10
+block = "maildir"
+interval = 60
+inboxes = ["/home/supermarin/.mail/fastmail/Inbox", "/home/supermarin/.mail/butters/Inbox"]
+threshold_warning = 1
+threshold_critical = 10
+display_type = "new"
+
+
+# [[block]]
+# block = "custom"
+# command = '''bash -c "notmuch count --output=threads 'path:/.*/Inbox/new/' 2>/dev/null || echo 0" | jq '{icon:"mail", text: . | tostring}''''
+# on_click = "swaymsg workspace 4"
+# json = true
+# interval = 10
 
 [[block]]
 block = "sound"
