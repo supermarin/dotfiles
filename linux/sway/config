@@ -96,6 +96,7 @@ bindsym $mod+Shift+q exec swaylock -f -c 000000
 #
 # Start a terminal
 bindsym $mod+Return exec $term, workspace 3
+bindsym $mod+Shift+w exec $term --title floating_term nmtui-connect
 bindsym $mod+Ctrl+Space exec rofimoji
 
 # Start a browser
