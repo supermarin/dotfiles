@@ -95,7 +95,7 @@ bindsym $mod+Shift+q exec swaylock -f -c 000000
 ### Key bindings
 #
 # Start a terminal
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec $term, workspace 3
 
 # Start a browser
 bindsym $mod+b workspace 2; exec pgrep $browser || $browser
