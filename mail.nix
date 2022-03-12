@@ -5,7 +5,6 @@
   programs.mu.enable = true;
   programs.notmuch = {
     enable = true;
-    # hooks.preNew = "mbsync --all";  # custom script
     new.tags = [ "new" ];
   };
 
