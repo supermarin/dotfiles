@@ -24,7 +24,7 @@
         realName = "SV BUTTERS";
         address = "info@butte.rs";
         userName = "butters@mailbox.org";
-        passwordCommand = "age -i ~/.age/pk.age -d ~/.age/btrs.age";
+        passwordCommand = "${pkgs.age}/bin/age -i ~/.age/pk.age -d ~/.age/btrs.age";
         imap.host = "imap.mailbox.org";
         smtp.host = "smtp.mailbox.org";
         signature = {
@@ -48,7 +48,7 @@
         realName = "Marin Usalj";
         address = "m@supermar.in";
         userName = "supermarin@imap.cc";
-        passwordCommand = "age -i $HOME/.age/pk.age -d $HOME/.age/fm.age";
+        passwordCommand = "${pkgs.age}/bin/age -i ~/.age/pk.age -d ~/.age/fm.age";
         imap.host = "imap.fastmail.com";
         smtp.host = "smtp.fastmail.com";
         signature = {
