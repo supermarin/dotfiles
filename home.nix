@@ -112,12 +112,12 @@ in
   xdg.mimeApps = { 
     enable = true;
     associations.added = { 
-      "application/pdf" = ["org.qutebrowser.qutebrowser.desktop"];
-      "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
+      "application/pdf" = ["mupdf.desktop"];
+      "text/html" = ["mupdf.desktop"];
     };
     defaultApplications = { 
-      "application/pdf" = ["org.qutebrowser.qutebrowser.desktop"];
-      "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
+      "application/pdf" = ["mupdf.desktop"];
+      "text/html" = ["mupdf.desktop"];
     };
   }; 
 
