@@ -65,6 +65,7 @@
     qutebrowser
     unzip
     virt-manager
+    xdg-utils
   ];
 
   # only for sway
