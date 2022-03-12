@@ -82,7 +82,6 @@
       libnotify       # notify-send
       mako            # notification daemon
       rofi
-      rofi-calc
       rofimoji
       slurp           # screenshot: select a region in wayland
       foot            # terminal
