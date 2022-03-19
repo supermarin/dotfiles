@@ -1,5 +1,11 @@
 { pkgs, config, ... }:
 { 
+
+  home.packages = with pkgs; [
+    # home built aerc
+    vdirsyncer
+  ];
+
   programs.mbsync.enable = true;
   programs.msmtp.enable = true;
   programs.mu.enable = true;
@@ -57,28 +63,28 @@
           showSignature = "append";
         };
       };
-      sailefx = {
-        msmtp.enable = true;
-        notmuch.enable = true;
-        mu.enable = true;
-        mbsync = {
-          enable = true;
-          create = "both";
-          expunge = "both";
-        };
-        realName = "Marin Usalj";
-        address = "marin@sailefx.com";
-        userName = "marin@sailefx.com";
-        passwordCommand = "age -i $HOME/.age/pk.age -d $HOME/.age/sfx.age";
-        imap.host = "imap.zoho.com";
-        smtp.host = "smtp.zoho.com";
-        signature = {
-          text = ''
-          Marin
-          '';
-          showSignature = "append";
-        };
-      };
+      # sailefx = {
+      #   msmtp.enable = true;
+      #   notmuch.enable = true;
+      #   mu.enable = true;
+      #   mbsync = {
+      #     enable = true;
+      #     create = "both";
+      #     expunge = "both";
+      #   };
+      #   realName = "Marin Usalj";
+      #   address = "marin@sailefx.com";
+      #   userName = "marin@sailefx.com";
+      #   passwordCommand = "age -i $HOME/.age/pk.age -d $HOME/.age/sfx.age";
+      #   imap.host = "imap.zoho.com";
+      #   smtp.host = "smtp.zoho.com";
+      #   signature = {
+      #     text = ''
+      #     Marin
+      #     '';
+      #     showSignature = "append";
+      #   };
+      # };
     };
   };
 }
