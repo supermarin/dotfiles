@@ -95,7 +95,6 @@
     extraSessionCommands = ''
       export MOZ_ENABLE_WAYLAND=1
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-      export QT_SCALE_FACTOR=1.25
     '';
   };
   environment.loginShellInit = ''
