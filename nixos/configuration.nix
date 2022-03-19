@@ -87,6 +87,7 @@
       foot            # terminal
       swaylock        # idle lock
       swayidle        # idle lock
+      w3m             # for ranger, email, ...
       wl-clipboard    # wl-copy, wl-paste
       wob             # indicator bar
     ];

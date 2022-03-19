@@ -40,7 +40,6 @@ in
     ripgrep
     rnix-lsp
     tree-sitter
-    w3m # for mail
   ]
   ++ [ # fonts
     go-font
