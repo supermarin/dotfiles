@@ -62,6 +62,7 @@
     file # file(1)
     killall # killall(1)
     libreoffice
+    mupdf
     qutebrowser
     unzip
     virt-manager
