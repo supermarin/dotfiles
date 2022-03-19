@@ -30,7 +30,7 @@ bar {
     status_command i3status-rs
     colors {
         separator          $c_darkgrey
-        background         $c_darkgrey
+        background         #22222299
         statusline         #ffffff
         focused_workspace  $c_darkgrey  $c_black    #ffffff
         active_workspace   #900000      #333333     #ffffff
