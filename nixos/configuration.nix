@@ -85,7 +85,7 @@
       rofi
       rofimoji
       slurp           # screenshot: select a region in wayland
-      foot            # terminal
+      kitty           # terminal
       swaylock        # idle lock
       swayidle        # idle lock
       w3m             # for ranger, email, ...

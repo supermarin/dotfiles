@@ -52,7 +52,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term foot --title term
+set $term kitty --title term
 set $browser qutebrowser
 set $menu "rofi -combi-modi window,drun,run,calc -show combi -show-icons"
 
