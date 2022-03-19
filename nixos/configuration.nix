@@ -60,13 +60,12 @@
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
     file # file(1)
+    firefox
     killall # killall(1)
     libreoffice
-    mupdf
     qutebrowser
     unzip
     virt-manager
-    xdg-utils
   ];
 
   # only for sway
@@ -82,12 +81,14 @@
       i3status-rust   # Menu bar
       libnotify       # notify-send
       mako            # notification daemon
+      mupdf
       rofi
       rofimoji
       slurp           # screenshot: select a region in wayland
       kitty           # terminal
       swaylock        # idle lock
       swayidle        # idle lock
+      xdg-utils
       w3m             # for ranger, email, ...
       wl-clipboard    # wl-copy, wl-paste
       wob             # indicator bar
