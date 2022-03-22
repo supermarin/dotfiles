@@ -25,7 +25,6 @@ in
   home.packages = with pkgs; [
     age
     bat # used in `e` for live preview of files
-    calibre
     coreutils # used for `shred`
     diffr # used in git stuff
     fd
@@ -36,9 +35,9 @@ in
     magic-wormhole
     oathToolkit # used for OTP
     pass
-    qutebrowser
     ripgrep
     rnix-lsp
+    sqlite # needed by neovim sqlite. not by default in the OS
     tree-sitter
   ]
   ++ [ # fonts
@@ -47,13 +46,13 @@ in
   ]
   ++ lib.optionals isDarwin [] 
   ++ lib.optionals isLinux [
+    calibre # books
     cawbird # twitter
     fractal # matrix
     gcc # for neovim
     git # is here only because of arm64 git on mac
     signal-desktop # for an unknown reason not avail on mac
     slack
-    sqlite # needed by neovim sqlite. not by default in the OS
     tdesktop # telegram
     tig # same arm64
     vlc
@@ -82,7 +81,7 @@ in
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
 
   xdg.mimeApps = { 
-    enable = true;
+    enable = isLinux;
     associations.added = { 
       "application/pdf" = ["mupdf.desktop"];
       "text/html" = ["mupdf.desktop"];

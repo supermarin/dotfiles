@@ -1,12 +1,14 @@
 {
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs;
+    nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
     home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.url = github:lnl7/nix-darwin/master;
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager }:
-  {
+  outputs = { self, nixpkgs, darwin, home-manager, ... }: {
+
     nixosConfigurations = {
       tokio = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -80,5 +82,20 @@
         ];
       };
     };
+    
+    darwinConfigurations = {
+      simba = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [ 
+          ./darwin.nix
+          home-manager.darwinModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            # home-manager.useUserPackages = true;
+            home-manager.users.supermarin = import ../home.nix;            
+          }
+        ];
+      };
+    };
+
   };
 }
