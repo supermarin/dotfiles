@@ -29,7 +29,7 @@
     sd = "stash drop";
     su = "submodule update --recursive";
   };
-  ignores = [".DS_Store" "*.swp" "tags" ".vscode"];
+  ignores = [".DS_Store" "*.swp" "tags" ".vscode" "result"];
   extraConfig = {
     commit.verbose = true;
     core = {
