@@ -25,7 +25,8 @@ set ts=2 sw=2 expandtab
 set undofile
 set termguicolors
 set background=dark
-color supermarin
+" color supermarin
+color gruvbox
 
 " Mappings
 " TODO: move this into separate mappings lua?
