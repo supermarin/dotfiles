@@ -8,8 +8,8 @@
   };
 
   hardware.pulseaudio.enable = true;
-  hardware.bluetooth.enable = true; # enables bluez
   sound.enable = true;
+  hardware.bluetooth.enable = true; # enables bluez
   time.timeZone = "America/Guadeloupe";
 
   networking = {
@@ -148,7 +148,6 @@
     timerConfig.OnBootSec = "10s";
   };
 
-  # system.stateVersion = "21.05";
   nixpkgs.config.allowUnfree = true; 
   nix = {
     settings = {
