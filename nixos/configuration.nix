@@ -98,11 +98,11 @@
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
     '';
   };
-  environment.loginShellInit = ''
-    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-      exec sway
-    fi
-  '';
+  # environment.loginShellInit = ''
+  #   if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+  #     exec sway
+  #   fi
+  # '';
 
   fonts = {
     enableDefaultFonts = false;
