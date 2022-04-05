@@ -31,8 +31,9 @@
     nssmdns = true;
   };
 
-  # xdg.portal.enable = true; # needed for flatpak
-  # services.flatpak.enable = true;
+  xdg.portal.enable = true; # needed for flatpak
+  services.flatpak.enable = true; # for opencpn
+
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
