@@ -105,6 +105,14 @@
   #   fi
   # '';
 
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = with pkgs; [ 
+    epiphany gnome.tali gnome.iagno gnome.hitori gnome.atomix gnome-tour
+    gnome.gnome-music
+  ];
+              
   fonts = {
     enableDefaultFonts = false;
     fonts = with pkgs; [
