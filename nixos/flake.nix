@@ -5,10 +5,21 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = github:lnl7/nix-darwin/master;
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, ... }: {
-
+  outputs = { self, nixpkgs, home-manager, darwin, nixos-generators }:
+  {
+    packages.x86_64-linux = {
+      vpn = nixos-generators.nixosGenerate {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [
+          ./vpn-configuration.nix
+        ];
+        format = "do";
+      };
+    };
     nixosConfigurations = {
       tokio = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -38,14 +49,6 @@
           }
         ];
         specialArgs = { hostname = "pumba"; };
-      };
-
-      vpn = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./vpn-configuration.nix
-        ];
-        specialArgs = { hostname = "vpn"; };
       };
 
       popvm = nixpkgs.lib.nixosSystem {
