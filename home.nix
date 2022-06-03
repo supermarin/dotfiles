@@ -29,6 +29,7 @@ in
     diffr # used in git stuff
     fd
     fzf
+    git
     gnupg
     helix # kakoune with batteries
     htop
@@ -39,6 +40,7 @@ in
     ripgrep
     rnix-lsp
     sqlite # needed by neovim sqlite. not by default in the OS
+    tig
     tree-sitter
   ]
   ++ [ # fonts
@@ -51,11 +53,9 @@ in
     cawbird # twitter
     fractal # matrix
     gcc # for neovim
-    git # is here only because of arm64 git on mac
     signal-desktop # for an unknown reason not avail on mac
     slack
     tdesktop # telegram
-    tig # same arm64
     vlc
   ];
 
