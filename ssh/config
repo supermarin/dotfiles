@@ -10,7 +10,7 @@ Host eric
 
 Host vpn
   User root
-  Hostname 206.189.233.132
+  Hostname 104.248.7.113 
 
 Host butters
   User pi
