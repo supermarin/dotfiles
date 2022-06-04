@@ -4,7 +4,14 @@
   environment.systemPackages = [];
   networking.hostName = "simba";
 
-  users.users.supermarin.home = /Users/supermarin;
+  users.users.supermarin = {
+    home = /Users/supermarin; # important for home-manager
+    shell = pkgs.bash;
+  };
+
+  home-manager.users.supermarin = {
+    imports = [ ../home.nix ];
+  };
 
   # macOS defaults
   system.defaults.finder.QuitMenuItem = true;
