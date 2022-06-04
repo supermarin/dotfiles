@@ -45,6 +45,12 @@ vnoremap p "_dP
 augroup YO_OY
   autocmd!
   au BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
+  "  Restore cursor position on vim relaunch
+  "  TODO: check if it's not git committing
+  au BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
 augroup END
 
 lua <<EOF
