@@ -2,7 +2,6 @@
 {
   imports = [ (modulesPath + "/virtualisation/digital-ocean-config.nix") ];
   virtualisation.digitalOcean.setSshKeys = false;
-  virtualisation.digitalOceanImage.compressionMethod = "bzip2";
 
   swapDevices = [{ device = "/swapfile"; size = 2048; }];
   users.users.root = {
@@ -40,7 +39,7 @@
             allowedIPs = [ "10.100.0.3/32" ];
           }
           { # tokio
-            publicKey = "BS2HfRpD+zcj4ZFuaM1EGHOZGS/SFtuKOxjy8d6hK3g=";
+            publicKey = "9zlfIRmvON2kTh1zi8A/xOfP9LSRGWX/SE3GC+8VDgQ=";
             allowedIPs = [ "10.100.0.4/32" ];
           }
         ];
