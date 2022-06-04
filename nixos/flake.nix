@@ -16,20 +16,26 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
           ./vpn-configuration.nix
+          { virtualisation.digitalOceanImage.compressionMethod = "bzip2"; }
         ];
         format = "do";
       };
     };
+
     nixosConfigurations = {
       tokio = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ 
           ./configuration.nix 
           ./hardware-x1.nix
-          ({ config, pkgs, ... }: {
+          {
+            # services.tlp.enable = true; # disabled since GNOME has it's own
             services.fwupd.enable = true;
-            services.tlp.enable = true;
-          })
+          }
+          { 
+            nix.registry.nixpkgs.flake = nixpkgs;
+            nix.registry.home-manager.flake = home-manager;
+          }
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.users.supermarin = import ../home.nix;
@@ -49,6 +55,14 @@
           }
         ];
         specialArgs = { hostname = "pumba"; };
+      };
+
+      vpn = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./vpn-configuration.nix
+        ];
+        specialArgs = { hostname = "vpn"; };
       };
 
       popvm = nixpkgs.lib.nixosSystem {
