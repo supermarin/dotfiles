@@ -64,40 +64,6 @@
         ];
         specialArgs = { hostname = "vpn"; };
       };
-
-      popvm = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ({ config, pkgs, ... }: {
-            services.xserver = {
-              enable = true;
-              # videoDrivers = [ "iommu" ];
-              videoDrivers = [ "virtio" ];
-              displayManager.gdm.enable = true;
-              desktopManager.gnome.enable = true;
-            };
-
-            services.qemuGuest.enable = true;
-            services.spice-vdagentd.enable = true;
-
-            environment.gnome.excludePackages = with pkgs.gnome; [
-              cheese pkgs.gnome-photos gnome-music gedit
-              pkgs.epiphany pkgs.evince gnome-characters totem tali hitori
-              atomix
-            ];
-
-            environment.systemPackages = [
-              pkgs.gnomeExtensions.pop-shell
-            ];
-
-            users.users.supermarin = {
-              isNormalUser = true;
-              extraGroups = [ "wheel" ];
-              initialHashedPassword = "$6$WWYEnfo5cQm5paCr$Uhr4EebRNFp9h22QG1lK5j9SHkzGxykQErDMF9sphu3UVusqTUskBM564/RjuTQXZjIBCuFy0Qo56Auth6xC6/";
-            };
-          })
-        ];
-      };
     };
     
     darwinConfigurations = {
