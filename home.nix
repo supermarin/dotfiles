@@ -71,11 +71,12 @@ in
   programs.git = import ./git.nix;
   xdg.configFile."i3status-rust/config.toml".text = builtins.readFile ./linux/sway/i3status-rs/config.toml;
   xdg.configFile."nvim/colors/supermarin.vim".text = builtins.readFile ./vim/colors/supermarin.vim;
-  xdg.configFile."nvim/init.vim".text = ''
-    " The line below is generated from home-manager
-    let g:sqlite_clib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so"
+  xdg.configFile."nvim/init.vim".text = 
     ''
-    + builtins.readFile ./vim/init.vim;
+    " The line below is generated from home-manager
+    let g:sqlite_clib_path = "${pkgs.sqlite.out}/lib/libsqlite3.dylib"
+    '' + 
+    builtins.readFile ./vim/init.vim;
   xdg.configFile."nvim/lua/luainit.lua".text = builtins.readFile ./vim/lua/luainit.lua;
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
