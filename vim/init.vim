@@ -48,7 +48,7 @@ augroup YO_OY
   "  Restore cursor position on vim relaunch
   "  TODO: check if it's not git committing
   au BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+    \ if !(bufname("%") =~ '\(COMMIT_EDITMSG\)') && line("'\"") >= 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
 augroup END
