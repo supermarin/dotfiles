@@ -1,8 +1,7 @@
 { pkgs, lib, ... }:
 {
-  # anything macos specific to install 
-  environment.systemPackages = [];
   networking.hostName = "simba";
+  environment.shells = [ pkgs.bashInteractive pkgs.fish ];
 
   users.users.supermarin = {
     home = /Users/supermarin; # important for home-manager
@@ -12,19 +11,29 @@
   home-manager.users.supermarin = {
     imports = [ ../home.nix ];
   };
+  system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
+  system.defaults.NSGlobalDomain.KeyRepeat = 1;
+  system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
 
-  # macOS defaults
+  system.defaults.finder.AppleShowAllExtensions = true;
   system.defaults.finder.QuitMenuItem = true;
+  system.defaults.dock.autohide = true;
   system.defaults.dock.orientation = "right";
+
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
 
   nix.useDaemon = true;
-  # nix.registry.nixpkgs.flake = nixpkgs;
   nix.extraOptions = ''
     auto-optimise-store = true
     experimental-features = nix-command flakes
   '' + lib.optionalString (pkgs.system == "aarch64-darwin") ''
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
+  # TODO: document for which packages we're enabling this
+  # nixpkgs.config.allowBroken = true;
 }
