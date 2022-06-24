@@ -30,6 +30,7 @@ in
     fd
     fzf
     gnupg
+    helix # kakoune with batteries
     htop
     jq
     magic-wormhole
