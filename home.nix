@@ -31,10 +31,10 @@ in
     fzf
     git
     gnupg
-    helix # kakoune with batteries
+    helix
     htop
     jq
-    magic-wormhole
+    wormhole-william
     oathToolkit # used for OTP
     pass
     ripgrep
