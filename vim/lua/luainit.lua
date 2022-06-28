@@ -132,7 +132,7 @@ require("luasnip.loaders.from_vscode").load()
 local on_attach = function(client, bufnr)
   -- tree-sitter
   require('nvim-treesitter.configs').setup { 
-    ensure_installed = 'maintained',  
+    -- ensure_installed = 'maintained',  
     highlight = {enable = true}
   }
 
