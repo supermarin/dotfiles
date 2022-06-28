@@ -48,10 +48,6 @@ require('packer').startup(function()
   -- Appearance
   use 'ellisonleao/gruvbox.nvim'
   use 'ishan9299/modus-theme-vim'
-  use {
-      "mcchrish/zenbones.nvim",
-      requires = "rktjmp/lush.nvim"
-  }
 end)
 
 
