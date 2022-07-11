@@ -66,7 +66,7 @@ in
   };
   
   home.file.".sqliterc".text = builtins.readFile ./sqliterc;
-  home.file.".ssh/config".text = "${builtins.readFile ./ssh/config}";
+  home.file.".ssh/config".text = builtins.readFile ./ssh/config;
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix;
   xdg.configFile."i3status-rust/config.toml".text = builtins.readFile ./linux/sway/i3status-rs/config.toml;
