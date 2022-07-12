@@ -159,12 +159,10 @@
 
   nixpkgs.config.allowUnfree = true; 
   nix = {
+    package = pkgs.nixFlakes;
     settings = {
       trusted-users = [ "supermarin" ]; # enable nix-copy-closure
     };
-    extraOptions = ''
-    experimental-features = nix-command flakes
-    '';
     gc = {
       automatic = true;
       dates = "monthly";
@@ -174,5 +172,8 @@
       dates = [ "monthly" ];
     };
   };
+
+  # don't touch
+  system.stateVersion = "22.05";
 }
 
