@@ -94,12 +94,6 @@ in
     };
   }; 
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   dconf = {
     enable = isLinux;
     settings = {
