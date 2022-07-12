@@ -16,6 +16,7 @@
     nat.externalInterface = "ens3";
     nat.internalInterfaces = [ "wg0" ];
     firewall = {
+      allowedTCPPorts = [ 22 ];
       allowedUDPPorts = [ 51820 ];
     };
     wireguard.interfaces = {
