@@ -35,7 +35,7 @@
             allowedIPs = [ "10.100.0.2/32" ];
           }
           { # pixel
-            publicKey = "BS2HfRpD+zcj4ZFuaM1EGHOZGS/SFtuKOxjy8d6hK3g=";
+            publicKey = "QyWh7GoD4YKQZ3BYR2/Gmn79pTOR/IHWQLPHbIzpvAU=";
             allowedIPs = [ "10.100.0.3/32" ];
           }
           { # tokio
