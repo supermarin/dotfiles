@@ -13,7 +13,7 @@
   networking = {
     hostName = "vpn";
     nat.enable = true;
-    nat.externalInterface = "eth0";
+    nat.externalInterface = "ens3";
     nat.internalInterfaces = [ "wg0" ];
     firewall = {
       allowedUDPPorts = [ 51820 ];
