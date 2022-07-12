@@ -6,8 +6,8 @@
   swapDevices = [{ device = "/swapfile"; size = 2048; }];
   users.users.root = {
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx9yl0N1u8n7nO3uZilfOGa/MtyFTfHsEgs8MDGAnAL supermarin@tokio"
-      # TODO: add simba's key
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx9yl0N1u8n7nO3uZilfOGa/MtyFTfHsEgs8MDGAnAL supermarin@tokio" # tokio
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in" # simba
     ];
   };
   networking = {
@@ -31,7 +31,7 @@
         privateKeyFile = "/wireguard/private";
         peers = [
           { # simba
-            publicKey = "BS2HfRpD+zcj4ZFuaM1EGHOZGS/SFtuKOxjy8d6hK3g=";
+            publicKey = "8u+pT5OVrgWMo3TebulvnSkMRqy1VdQQ/9bm3LHLqU8=";
             allowedIPs = [ "10.100.0.2/32" ];
           }
           { # pixel
