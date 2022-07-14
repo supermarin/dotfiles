@@ -47,7 +47,7 @@ set $down j
 set $up k
 set $right l
 set $term kitty --title term
-set $browser qutebrowser
+set $browser firefox
 set $menu "rofi -combi-modi window,drun,run,calc -show combi -show-icons"
 
 ### Output configuration
