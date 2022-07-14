@@ -58,7 +58,7 @@ set $laptop eDP-1
 output $laptop {
   scale 1.25
 }
-set $retina DP-*
+set $retina DP-3
 output $retina {
   scale 2.0
 }
