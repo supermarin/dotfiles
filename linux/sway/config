@@ -64,6 +64,10 @@ set $laptop eDP-1
 output $laptop {
   scale 1.25
 }
+set $retina DP-*
+output $retina {
+  scale 2.0
+}
 
 # Rotate ext. monitor by 180. Uncomment if need be
 # set $externalMonitor DP-2
