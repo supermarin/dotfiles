@@ -254,7 +254,6 @@ exec dbus-sway-environment
 exec configure-gtk
 
 # Startup commands
-exec albert
 exec mako
 
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
