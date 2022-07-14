@@ -64,11 +64,6 @@ output $retina {
   scale 1.5
 }
 
-# Rotate ext. monitor by 180. Uncomment if need be
-# set $externalMonitor DP-2
-# output $externalMonitor {
-#   transform 180
-# }
 
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
