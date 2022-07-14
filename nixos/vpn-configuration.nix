@@ -19,8 +19,8 @@ in
     nat.externalInterface = networkInterface;
     nat.internalInterfaces = [ "wg0" ];
     firewall = {
-      allowedTCPPorts = [ 22 ];
-      allowedUDPPorts = [ 51820 ];
+      allowedTCPPorts = [ 53 22 ];
+      allowedUDPPorts = [ 53 51820 ];
     };
     wireguard.interfaces = {
       wg0 = {
