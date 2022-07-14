@@ -20,11 +20,11 @@ client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
 #
 bar {
     position top
-    font pango: Inter Semi Bold 11
+    font pango: Inter Medium 11
     status_command i3status-rs
     colors {
-        separator          $c_darkgrey
-        background         #22222299
+        separator          #111111AA 
+        background         #111111AA
         statusline         #ffffff
         focused_workspace  $c_darkgrey  $c_black    #ffffff
         active_workspace   #900000      #333333     #ffffff
