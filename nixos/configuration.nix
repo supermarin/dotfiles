@@ -94,6 +94,9 @@ in
   xdg.portal.enable = true; # needed for flatpak
   services.flatpak.enable = true; # for opencpn
 
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.hplip ];
+
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
