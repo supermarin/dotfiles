@@ -247,7 +247,10 @@ bindsym Shift+Print  exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(da
 # Unfuck launching GNOME apps (takes 20 seconds otherwise)
 exec systemctl --user import-environment
 # Unfuck GNOME keyring
-exec dbus-update-activation-environment --systemd DISPLAY
+# exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY
+
+exec dbus-sway-environment
+exec configure-gtk
 
 # Startup commands
 exec albert
