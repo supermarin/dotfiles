@@ -106,7 +106,9 @@ in
         font-name = "Inter 9";
         monospace-font-name = "JetBrains Mono 10";
         show-battery-percentage = true;
-        text-scaling-factor = 1.25;
+        # text-scaling-factor = 1.25;
+        # TODO: figure out how to scale per monitor in GNOME.
+        text-scaling-factor = 1; 
         locate-pointer = true;
       };
       "org/gnome/settings-daemon/plugins/color" = {
