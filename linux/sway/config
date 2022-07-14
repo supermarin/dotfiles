@@ -58,12 +58,11 @@ set $laptop eDP-1
 output $laptop {
   scale 1.25
 }
-set $retina DP-3
-output $retina {
-  # TODO: figure out why 2.0 looks way too big
+
+output "Goldstar Company Ltd LG UltraFine 806NTJJ3B908" {
+  mode 5120x2880
   scale 1.5
 }
-
 
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
