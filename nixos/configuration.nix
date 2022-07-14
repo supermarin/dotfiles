@@ -13,14 +13,34 @@
   time.timeZone = "America/Guadeloupe";
 
   networking = {
-    firewall.allowedTCPPorts = [ 
-      22 # ssh
-      3333 # sailefx
-      8080 # calibre
-    ];
+    firewall = { 
+      allowedTCPPorts = [ 
+        22 # ssh
+        3333 # sailefx
+        8080 # calibre
+      ];
+      allowedUDPPorts = [ 
+        51820 # vpn
+      ];
+    };
     hostName = hostname;
     nameservers = [ "1.1.1.1" ];
     networkmanager.enable = true;
+    wg-quick.interfaces = {
+      wg0 = {
+        address = [ "10.100.0.4/24" ];
+        dns = [ "1.1.1.1" ];
+        privateKeyFile = "/wg/private";
+        listenPort = 51820;
+        peers = [
+          {
+            publicKey = "qpt3/3sZrR9Jlw98l8FoPUjcgo1TvDk8eSFZjLyoNlc=";
+            allowedIPs = [ "0.0.0.0/0" "::/0" ];
+            endpoint = "104.248.7.113:51820";
+          }
+        ];
+      };
+    };
   };
  
   services.avahi = {
