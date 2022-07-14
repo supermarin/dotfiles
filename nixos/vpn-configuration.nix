@@ -1,4 +1,7 @@
 { pkgs, modulesPath, ... }:
+let
+  networkInterface = "ens3";
+in
 {
   imports = [ (modulesPath + "/virtualisation/digital-ocean-config.nix") ];
   virtualisation.digitalOcean.setSshKeys = false;
@@ -13,7 +16,7 @@
   networking = {
     hostName = "vpn";
     nat.enable = true;
-    nat.externalInterface = "ens3";
+    nat.externalInterface = networkInterface;
     nat.internalInterfaces = [ "wg0" ];
     firewall = {
       allowedTCPPorts = [ 22 ];
@@ -24,10 +27,10 @@
         ips = [ "10.100.0.1/24" ];
         listenPort = 51820;
         postSetup = ''
-          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
+          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ${networkInterface} -j MASQUERADE
         '';
         postShutdown = ''
-          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
+          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ${networkInterface} -j MASQUERADE
         '';
         privateKeyFile = "/wireguard/private";
         peers = [
