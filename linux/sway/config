@@ -1,9 +1,3 @@
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# !! This file is managed by home-manager.
-# !! Edit it in nixpkgs/linux/sway, NOT in ~/.config/sway.
-# !! Run `home-manager switch` to apply changes after changing.
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#
 ### UI
 default_border pixel 4
 gaps inner 7
@@ -216,6 +210,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 bindsym $mod+r mode "resize"
 
 # Media controls (sorted by lenovo kb):
@@ -242,13 +237,13 @@ bindsym $mod2+XF86MonBrightnessUp exec brightnessctl set +1% | sed -En 's/.*\(([
   # bindsym XF86AudioPlay exec playerctl play-pause
   # bindsym XF86AudioNext exec playerctl next
   # bindsym XF86AudioPrev exec playerctl previous
- 
+
 # Take a screenshot with all output and save it into screenshots
 bindsym Print exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 bindsym $mod+Print   exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 bindsym $mod2+Print  exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 bindsym Shift+Print  exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
-  
+
 # Unfuck launching GNOME apps (takes 20 seconds otherwise)
 exec systemctl --user import-environment
 # Unfuck GNOME keyring
