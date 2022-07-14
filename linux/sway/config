@@ -1,5 +1,5 @@
 ### UI
-default_border pixel 4
+default_border pixel 2
 gaps inner 7
 smart_borders on
 smart_gaps on
@@ -60,7 +60,8 @@ output $laptop {
 }
 set $retina DP-3
 output $retina {
-  scale 2.0
+  # TODO: figure out why 2.0 looks way too big
+  scale 1.5
 }
 
 # Rotate ext. monitor by 180. Uncomment if need be
