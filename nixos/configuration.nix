@@ -179,10 +179,9 @@
 
   nixpkgs.config.allowUnfree = true; 
   nix = {
-    package = pkgs.nixFlakes;
-    settings = {
-      trusted-users = [ "supermarin" ]; # enable nix-copy-closure
-    };
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
     gc = {
       automatic = true;
       dates = "monthly";
@@ -190,6 +189,10 @@
     optimise = {
       automatic = true;
       dates = [ "monthly" ];
+    };
+    package = pkgs.nixFlakes;
+    settings = {
+      trusted-users = [ "supermarin" ]; # enable nix-copy-closure
     };
   };
 
