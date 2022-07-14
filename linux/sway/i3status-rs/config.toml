@@ -40,7 +40,6 @@ interface_name_exclude = ["virbr[0-9]", "br\\-[0-9a-f]{12}", "docker\\d+"]
 block = "battery"
 interval = 10
 format = "{percentage}"
-allow_missing = true
 hide_missing = true
 
 [[block]]
