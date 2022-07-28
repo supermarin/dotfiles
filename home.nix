@@ -43,7 +43,7 @@ in
     tig
     tree-sitter
   ]
-  ++ [ # fonts
+  ++ [ # text editing (non-system) fonts
     go-font
     jetbrains-mono
   ]
