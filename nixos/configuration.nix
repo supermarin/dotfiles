@@ -218,11 +218,11 @@ in
       automatic = true;
       dates = "monthly";
     };
+    package = pkgs.nixFlakes;
     optimise = {
       automatic = true;
       dates = [ "monthly" ];
     };
-    package = pkgs.nixFlakes;
     settings = {
       trusted-users = [ "supermarin" ]; # enable nix-copy-closure
     };
