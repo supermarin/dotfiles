@@ -35,13 +35,13 @@ in
     helix
     htop
     jq
-    wormhole-william
     oathToolkit # used for OTP
     pass
     ripgrep
     rnix-lsp
     tig
     tree-sitter
+    wormhole-william
   ]
   ++ [ # text editing (non-system) fonts
     go-font
