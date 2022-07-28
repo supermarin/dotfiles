@@ -35,6 +35,4 @@
   '' + lib.optionalString (pkgs.system == "aarch64-darwin") ''
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
-  # TODO: document for which packages we're enabling this
-  # nixpkgs.config.allowBroken = true;
 }
