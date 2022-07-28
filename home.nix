@@ -36,6 +36,7 @@ in
     htop
     jq
     oathToolkit # used for OTP
+    obsidian
     pass
     ripgrep
     rnix-lsp
