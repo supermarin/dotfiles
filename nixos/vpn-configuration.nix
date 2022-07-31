@@ -35,7 +35,7 @@ in
         privateKeyFile = "/wireguard/private";
         peers = [
           { # simba
-            publicKey = "8u+pT5OVrgWMo3TebulvnSkMRqy1VdQQ/9bm3LHLqU8=";
+            publicKey = "1IhkeEMG1rBmUq3tg3st9lUmNBHC+yrGmCzC1QOwW2Q=";
             allowedIPs = [ "10.100.0.2/32" ];
           }
           { # pixel
