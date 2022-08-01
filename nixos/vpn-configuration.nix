@@ -19,8 +19,17 @@ in
     nat.externalInterface = networkInterface;
     nat.internalInterfaces = [ "wg0" ];
     firewall = {
-      allowedTCPPorts = [ 53 22 ];
-      allowedUDPPorts = [ 53 51820 ];
+      allowedTCPPorts = [ 
+          53 # dns
+          22 # ssh
+      ];
+      allowedUDPPorts = [ 
+          53 # dns
+          51820 # wireguard
+      ];
+      interfaces.wg0.allowedTCPPorts = [ 
+        8053 # pi-hole
+      ];
     };
     wireguard.interfaces = {
       wg0 = {
@@ -49,5 +58,18 @@ in
         ];
       };
     };
+  };
+  virtualisation.oci-containers.containers.pi-hole = {
+      image = "pihole/pihole:2022.07.1";
+      volumes = [
+        "pihole:/etc/pihole"
+        "dnsmasq:/etc/dnsmasq.d"
+      ];
+      extraOptions = [
+        "--network=host"
+      ];
+      environment = {
+        WEB_PORT = "8053";
+      };
   };
 }
