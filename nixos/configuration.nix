@@ -180,7 +180,7 @@
       automatic = true;
       dates = [ "monthly" ];
     };
-    registry.nixpkgs.flake = nixpkgs;
+    registry.nixpkgs.flake = pkgs;
     settings = {
       trusted-users = [ "supermarin" ]; # enable nix-copy-closure
     };
