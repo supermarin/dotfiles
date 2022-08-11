@@ -57,6 +57,7 @@ in
     signal-desktop # for an unknown reason not avail on mac
     slack
     tdesktop # telegram
+    thunderbird
     vlc
   ];
 
