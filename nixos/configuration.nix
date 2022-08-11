@@ -64,7 +64,7 @@ in
       ];
     };
     hostName = hostname;
-    nameservers = [ "1.1.1.1" ];
+    nameservers = [ "104.248.7.113"  ];
     networkmanager.enable = true;
     wg-quick.interfaces = {
       wg0 = {
