@@ -8,9 +8,6 @@
     shell = pkgs.bash;
   };
 
-  home-manager.users.supermarin = {
-    imports = [ ../home.nix ];
-  };
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
   system.defaults.NSGlobalDomain.KeyRepeat = 1;
   system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
