@@ -16,9 +16,6 @@ pkgs:
       abbr nb nix build
       abbr nrs sudo nixos-rebuild switch
     end
-  ''
-  # Unfuck nix-darwin integration with home-manager
-  + pkgs.lib.optionalString pkgs.stdenv.isDarwin (builtins.readFile ./nix.fish);
 
   interactiveShellInit = builtins.readFile ./functions/fish_prompt.fish;
   functions = with builtins; {
