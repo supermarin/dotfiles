@@ -2,10 +2,12 @@
 {
   networking.hostName = "simba";
   environment.shells = [ pkgs.bashInteractive pkgs.fish ];
+  environment.loginShell = "${pkgs.bashInteractive} -l";
+  environment.loginShellInit = "exec fish";
 
   users.users.supermarin = {
     home = /Users/supermarin; # important for home-manager
-    shell = pkgs.bash;
+    shell = pkgs.bashInteractive;
   };
 
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
