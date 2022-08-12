@@ -32,6 +32,8 @@ require('packer').startup(function()
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets' 
   use 'nvim-treesitter/nvim-treesitter'
+  -- Copilot
+  use 'github/copilot.vim'
   -- Misc
   use 'LnL7/vim-nix'
   use 'mg979/vim-visual-multi'
