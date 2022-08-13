@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/c869aa9ac9553c49ee7dff9ac7f8f510b1e8d5f7;
+    nixpkgs.url = github:nixos/nixpkgs/9cef96fc0ecc1955e582462445261b9cf8183265;
     home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = github:lnl7/nix-darwin;
