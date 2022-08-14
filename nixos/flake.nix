@@ -43,6 +43,7 @@
           { 
             nix.registry.nixpkgs.flake = nixpkgs;
             nix.registry.home-manager.flake = home-manager;
+            boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
           }
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
