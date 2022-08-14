@@ -32,6 +32,7 @@ require('packer').startup(function()
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets' 
   use 'nvim-treesitter/nvim-treesitter'
+  use 'p00f/nvim-ts-rainbow' -- rainbow parentheses
   -- Copilot
   use 'github/copilot.vim'
   -- Misc
@@ -127,6 +128,11 @@ require("luasnip.loaders.from_vscode").load()
 require('nvim-treesitter.configs').setup { 
   -- ensure_installed = 'maintained',  
   highlight = {enable = true},
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+  }
 }
 
 
