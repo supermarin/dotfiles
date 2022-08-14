@@ -23,10 +23,26 @@
       tokio-vm = nixos-generators.nixosGenerate {
         pkgs = nixpkgs.legacyPackages.aarch64-linux;
         modules = [
-          # ./configuration.nix
+          {
+            nix.registry.nixpkgs.flake = nixpkgs;
+            nix.registry.home-manager.flake = home-manager; 
+          }
+          {
+            users.users.supermarin = {
+              # shell = pkgs.fish;
+              isNormalUser = true;
+              extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ]; 
+              openssh.authorizedKeys.keys = [
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx9yl0N1u8n7nO3uZilfOGa/MtyFTfHsEgs8MDGAnAL supermarin@tokio"
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in" # simba
+              ];
+              initialHashedPassword = "$6$W8BKWfCN7uGFU5MF$hUUiVurJyLBC4RWfqt4l2SFRLSaSzqI5SL2H.kBdkLtkWmtLGExK0BxxaDY7fAIfkvJtt394n3K0BPKHA61F01";
+            };
+            time.timeZone = "America/NewYork";
+          }
         ];
-        format = "qcow";
-        # specialArgs = { hostname = "tokio"; };
+        format = "raw-efi";
+        specialArgs = { hostname = "tokio-vm"; };
       };
     };
 
