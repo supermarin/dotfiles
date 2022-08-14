@@ -20,14 +20,14 @@
         ];
         format = "do";
       };
-      # tokio-vm = nixos-generators.nixosGenerate {
-      #   pkgs = nixpkgs.legacyPackages.aarch64-linux;
-      #   modules = [
-      #     # ./configuration.nix
-      #   ];
-      #   format = "qcow";
-      #   # specialArgs = { hostname = "tokio"; };
-      # };
+      tokio-vm = nixos-generators.nixosGenerate {
+        pkgs = nixpkgs.legacyPackages.aarch64-linux;
+        modules = [
+          # ./configuration.nix
+        ];
+        format = "qcow";
+        # specialArgs = { hostname = "tokio"; };
+      };
     };
 
     nixosConfigurations = {
