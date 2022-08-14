@@ -67,6 +67,15 @@ in
     vimAlias = true;
     viAlias = true;
   };
+
+  programs.kitty = {
+    enable = true;
+    theme = "Ir Black";
+    font = {
+      name = "JetBrains Mono";
+      size = 14;
+    };
+  };
   
   home.file.".sqliterc".text = builtins.readFile ./sqliterc;
   home.file.".ssh/config".text = builtins.readFile ./ssh/config;
