@@ -41,6 +41,7 @@ in
     pass
     ripgrep
     rnix-lsp
+    slack
     tig
     tree-sitter
     wormhole-william
@@ -55,7 +56,6 @@ in
     cawbird # twitter
     fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
     gcc # for neovim
-    slack
     signal-desktop # Unsupported on aarch64-darwin as of Aug 10 2022
     tdesktop # telegram
     thunderbird
