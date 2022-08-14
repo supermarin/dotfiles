@@ -39,11 +39,9 @@
           {
             # services.tlp.enable = true; # disabled since GNOME has it's own
             services.fwupd.enable = true;
-          }
-          { 
-            nix.registry.nixpkgs.flake = nixpkgs;
-            nix.registry.home-manager.flake = home-manager;
             boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+            nix.registry.nixpkgs.flake = nixpkgs;
+            nix.registry.home-manager.flake = home-manager; 
           }
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
@@ -75,17 +73,33 @@
         ];
         specialArgs = { hostname = "vpn"; };
       };
+    };
+    
+    darwinConfigurations = {
+      simba = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [ 
+          ./darwin.nix
+          home-manager.darwinModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.supermarin = import ../home.nix;
+          }
+        ];
+      };
+    };
 
-      butters = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        modules = [
-          {
-            boot.loader.efi.canTouchEfiVariables = true;
-            boot.loader.grub = {
-              enable = true;
-              device = "nodev";
-              efiSupport = true;
-            };
+    # Experimental - raspberry pi
+    nixosConfigurations.butters = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [
+        {
+          boot.loader.efi.canTouchEfiVariables = true;
+          boot.loader.grub = {
+            enable = true;
+            device = "nodev";
+            efiSupport = true;
+          };
             # environment.systemPackages = with pkgs; [
             #   file # file(1)
             #   firefox
@@ -126,20 +140,4 @@
         ];
       };
     };
-    
-    darwinConfigurations = {
-      simba = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [ 
-          ./darwin.nix
-          home-manager.darwinModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.supermarin = import ../home.nix;
-          }
-        ];
-      };
-    };
-
-  };
-}
+  }
