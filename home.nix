@@ -81,6 +81,15 @@ in
     enable = isLinux;
   };
   
+  programs.kitty = {
+    enable = true;
+    theme = "Ir Black";
+    font = {
+      name = "JetBrains Mono 14";
+      size = 14;
+    };
+  };
+
   home.file.".sqliterc".text = builtins.readFile ./sqliterc;
   home.file.".ssh/config".text = builtins.readFile ./ssh/config;
   programs.fish = import ./fish/fish.nix pkgs;
