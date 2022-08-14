@@ -120,18 +120,20 @@ cmp.setup.cmdline(':', {
   })
 })
 
+-- snippets
 require("luasnip.loaders.from_vscode").load()
+
+-- tree-sitter
+require('nvim-treesitter.configs').setup { 
+  -- ensure_installed = 'maintained',  
+  highlight = {enable = true},
+}
+
 
 -------------------------------------------------------------------------------
 -- LSP
 -------------------------------------------------------------------------------
 local on_attach = function(client, bufnr)
-  -- tree-sitter
-  require('nvim-treesitter.configs').setup { 
-    -- ensure_installed = 'maintained',  
-    highlight = {enable = true}
-  }
-
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   local lsp_opts = { noremap=true, silent=true }
