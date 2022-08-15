@@ -20,6 +20,14 @@
         ];
         format = "do";
       };
+      builder = nixos-generators.nixosGenerate {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [
+          ./builder-configuration.nix
+          { virtualisation.digitalOceanImage.compressionMethod = "bzip2"; }
+        ];
+        format = "do";
+      };
       tokio-vm = nixos-generators.nixosGenerate {
         pkgs = nixpkgs.legacyPackages.aarch64-linux;
         modules = [
