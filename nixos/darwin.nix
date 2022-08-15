@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 {
   networking.hostName = "simba";
   environment.shells = [ pkgs.bashInteractive pkgs.fish ];
@@ -18,12 +18,10 @@
   system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
   system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
   system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
-
   system.defaults.finder.AppleShowAllExtensions = true;
   system.defaults.finder.QuitMenuItem = true;
   system.defaults.dock.autohide = true;
   system.defaults.dock.orientation = "right";
-
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
 
