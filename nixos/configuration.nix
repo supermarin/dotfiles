@@ -92,7 +92,7 @@
     virt-manager
   ];
 
-  # GNOME
+  # GNOME - TODO: remove this
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
@@ -110,6 +110,7 @@
       gnome.gnome-bluetooth # bluetooth-sendto for sending files
       blueberry       # Bluetooth devices management gui
       brightnessctl   # Brightness control
+      gnome.nautilus  # file manager
       grim            # wayland screenshot tool
       i3status-rust   # Menu bar
       libnotify       # notify-send
