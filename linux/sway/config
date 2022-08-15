@@ -85,29 +85,6 @@ exec swayidle -w \
 # Screen lock
 bindsym $mod+Shift+q exec swaylock -f -c 000000
 
-### Key bindings
-#
-# Start a terminal
-bindsym $mod+Return exec $term, workspace 3
-bindsym $mod+Shift+w exec $term --title floating_term nmtui-connect
-bindsym $mod+Ctrl+Space exec rofimoji
-
-# Start a browser
-bindsym $mod+b workspace 2; exec pgrep $browser || $browser
-# Opencpn
-bindsym $mod+o workspace 5; exec pgrep opencpn || flatpak run org.opencpn.OpenCPN 
-
-# Kill focused window
-bindsym $mod+q kill
-
-# Start launcher
-bindsym $mod+Space exec $menu
-
-# Reload the configuration file
-bindsym $mod+Shift+c reload
-
-# Open the last notification
-bindsym $mod+n exec makoctl dismiss
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -120,15 +97,35 @@ floating_modifier $mod normal
 for_window [title="floating_term"] floating enable
 assign [title="^term$"] 3
 
+# Make all GNOME (and some other) apps float
 for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird)"] {
   floating enable
   border none
   assign 4
 }
 
+### Key bindings
+#
+# Start a terminal
+bindsym $mod+Return exec $term, workspace 3
+# NetworkManager connect
+bindsym $mod+Shift+w exec $term --title floating_term nmtui-connect
+# Emoji
+bindsym $mod+Ctrl+Space exec rofimoji
+# File manager
+bindsym $mod+e exec nautilus --new-window
+# Start a browser
+bindsym $mod+b workspace 2; exec pgrep $browser || $browser
+# Kill focused window
+bindsym $mod+q kill
+# Start launcher
+bindsym $mod+Space exec $menu
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+# Open the last notification
+bindsym $mod+n exec makoctl dismiss
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-
 # Moving around:
 #
 # Move your focus around
@@ -185,7 +182,7 @@ bindsym $mod+minus splitv
 # Switch the current container between different layout styles
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+d layout toggle split
 
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
