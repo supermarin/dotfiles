@@ -58,6 +58,15 @@
         specialArgs = { hostname = "tokio"; };
       };
 
+      tokio-vm = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+	  ./hardware-vm.nix
+          ./configuration-vm.nix
+        ];
+        specialArgs = { hostname = "tokio-vm"; };
+      };
+
       pumba = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
