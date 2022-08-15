@@ -88,16 +88,4 @@ in
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
-
-  xdg.mimeApps = { 
-    enable = isLinux;
-    associations.added = { 
-      "application/pdf" = ["mupdf.desktop"];
-      "text/html" = ["mupdf.desktop"];
-    };
-    defaultApplications = { 
-      "application/pdf" = ["mupdf.desktop"];
-      "text/html" = ["mupdf.desktop"];
-    };
-  }; 
 }
