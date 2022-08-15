@@ -42,7 +42,9 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx9yl0N1u8n7nO3uZilfOGa/MtyFTfHsEgs8MDGAnAL supermarin@tokio"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in" # simba
     ];
+    initialHashedPassword = "$6$Hb6ndAxg4esaVOjz$TouriSv6Ea0KaUbftzM76X2fMenAcrpJcImrpYPOJEiVBPyvEgJYVTHnIZvukDc3bZlT/Ed46ckDpsxi1n2.R1";
   };
+  security.sudo.wheelNeedsPassword = false;
 
   environment.variables.LIBGL_ALWAYS_SOFTWARE = "1";
   environment.sessionVariables = {
