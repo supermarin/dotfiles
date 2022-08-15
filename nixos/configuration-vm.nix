@@ -58,11 +58,14 @@
   environment.systemPackages = with pkgs; [
     file # file(1)
     firefox
+    helix
+    git
     killall # killall(1)
     libreoffice
     qutebrowser
     unzip
     virt-manager
+    vim
   ];
 
   programs.sway = {
