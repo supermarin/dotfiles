@@ -185,12 +185,10 @@
       automatic = true;
       dates = "monthly";
     };
-    package = pkgs.nixFlakes;
     optimise = {
       automatic = true;
       dates = [ "monthly" ];
     };
-    registry.nixpkgs.flake = pkgs;
     settings = {
       trusted-users = [ "supermarin" ]; # enable nix-copy-closure
     };

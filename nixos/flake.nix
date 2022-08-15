@@ -32,10 +32,6 @@
         pkgs = nixpkgs.legacyPackages.aarch64-linux;
         modules = [
           {
-            nix.registry.nixpkgs.flake = nixpkgs;
-            nix.registry.home-manager.flake = home-manager; 
-          }
-          {
             users.users.supermarin = {
               # shell = pkgs.fish;
               isNormalUser = true;
@@ -64,8 +60,6 @@
             # services.tlp.enable = true; # disabled since GNOME has it's own
             services.fwupd.enable = true;
             boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-            nix.registry.nixpkgs.flake = nixpkgs;
-            nix.registry.home-manager.flake = home-manager; 
           }
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
