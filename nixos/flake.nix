@@ -42,10 +42,9 @@
               ];
               initialHashedPassword = "$6$W8BKWfCN7uGFU5MF$hUUiVurJyLBC4RWfqt4l2SFRLSaSzqI5SL2H.kBdkLtkWmtLGExK0BxxaDY7fAIfkvJtt394n3K0BPKHA61F01";
             };
-            time.timeZone = "America/NewYork";
           }
         ];
-        format = "raw-efi";
+        format = "qcow";
         specialArgs = { hostname = "tokio-vm"; };
       };
     };
