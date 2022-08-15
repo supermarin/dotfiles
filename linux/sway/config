@@ -138,11 +138,15 @@ bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
 # Move the focused window with the same, but add Shift
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$left move left
 
+bindsym $mod+Control+Shift+$up move workspace to output up
+bindsym $mod+Control+Shift+$right move workspace to output right
+bindsym $mod+Control+Shift+$down move workspace to output down
+bindsym $mod+Control+Shift+$left move workspace to output left
 
 # Try macos CMD+C|V|...
 # bindsym $mod+c exec 'wl-copy'
