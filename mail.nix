@@ -1,5 +1,7 @@
-{ pkgs, config, ... }:
-{ 
+{ pkgs, config, lib, ... }:
+
+# TODO: see if it makes sense to enable this on macOS later.
+lib.mkIf pkgs.stdenv.isLinux { 
 
   home.packages = with pkgs; [
     # home built aerc
