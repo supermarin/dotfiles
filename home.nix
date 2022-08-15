@@ -76,6 +76,10 @@ in
       size = 14;
     };
   };
+
+  services.syncthing = {
+    enable = isLinux;
+  };
   
   home.file.".sqliterc".text = builtins.readFile ./sqliterc;
   home.file.".ssh/config".text = builtins.readFile ./ssh/config;
