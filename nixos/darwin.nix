@@ -6,7 +6,7 @@
   environment.loginShellInit = "exec fish";
 
   users.users.supermarin = {
-    home = /Users/supermarin; # important for home-manager
+    home = "/Users/supermarin"; # important for home-manager
     shell = pkgs.bashInteractive;
   };
 
