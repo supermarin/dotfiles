@@ -10,7 +10,20 @@
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, nixos-generators }:
+  let
+    vm = nixos-generators.nixosGenerate {
+        pkgs = nixpkgs.legacyPackages.aarch64-linux;
+        modules = [
+          ./configuration-vm.nix
+        ];
+        format = "qcow";
+        specialArgs = { hostname = "tokio-vm"; };
+      };
+  in
   {
+    packages.aarch64-linux = {
+      tokio-vm = vm;
+    };
     packages.x86_64-linux = {
       vpn = nixos-generators.nixosGenerate {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -28,14 +41,7 @@
         ];
         format = "do";
       };
-      tokio-vm = nixos-generators.nixosGenerate {
-        pkgs = nixpkgs.legacyPackages.aarch64-linux;
-        modules = [
-          ./configuration-vm.nix
-        ];
-        format = "qcow";
-        specialArgs = { hostname = "tokio-vm"; };
-      };
+      tokio-vm = vm;
     };
 
     nixosConfigurations = {
@@ -58,14 +64,7 @@
         specialArgs = { hostname = "tokio"; };
       };
 
-      tokio-vm = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        modules = [
-	  ./hardware-vm.nix
-          ./configuration-vm.nix
-        ];
-        specialArgs = { hostname = "tokio-vm"; };
-      };
+      tokio-vm = vm;
 
       pumba = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
