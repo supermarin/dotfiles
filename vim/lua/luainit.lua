@@ -11,14 +11,27 @@ vim.cmd [[packadd packer.nvim]]
 ---
 
 require('packer').startup(function()
-  use { 'wbthomason/packer.nvim', opt = true }
-  use { 'nvim-telescope/telescope.nvim',
+  use { 
+    'wbthomason/packer.nvim', 
+    opt = true 
+  }
+  use { 
+    'nvim-telescope/telescope.nvim',
     requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
   }
-  use { 'lewis6991/gitsigns.nvim',
+  use {
+    'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('gitsigns').setup()
+    end
+  }
+  use {
+    'folke/which-key.nvim',
+    config = function()
+      require('which-key').setup {
+        timeoutlen = 0
+      }
     end
   }
   -- LSP, completion, snippets, tree-sitter
@@ -33,6 +46,11 @@ require('packer').startup(function()
   use 'rafamadriz/friendly-snippets' 
   use 'nvim-treesitter/nvim-treesitter'
   use 'p00f/nvim-ts-rainbow' -- rainbow parentheses
+  -- Debugger
+  use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+  use 'theHamsta/nvim-dap-virtual-text'
+
   -- Copilot
   use 'github/copilot.vim'
   -- Misc
@@ -42,7 +60,7 @@ require('packer').startup(function()
   use 'tpope/vim-fugitive'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
-  -- Appearance
+  -- Color Schemes
   use 'ellisonleao/gruvbox.nvim'
   use 'ishan9299/modus-theme-vim'
 end)
@@ -179,3 +197,72 @@ for _, server in ipairs(servers) do
     }
   }
 end
+
+
+-------------------------------------------------------------------------------
+-- DAP
+-------------------------------------------------------------------------------
+vim.keymap.set("n", "<leader>dc", ":lua require'dap'.continue()<CR>")
+vim.keymap.set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set("n", "<leader>dn", ":lua require'dap'.step_over()<CR>")
+vim.keymap.set("n", "<leader>di", ":lua require'dap'.step_into()<CR>")
+vim.keymap.set("n", "<leader>do", ":lua require'dap'.step_out()<CR>")
+vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
+vim.keymap.set("n", "<leader>du", ":lua require'dapui'.open()<CR>")
+
+require('dapui').setup()
+require('nvim-dap-virtual-text').setup()
+local dap = require('dap')
+
+dap.adapters.delve = {
+  type = 'server',
+  port = '${port}',
+  executable = {
+    command = 'dlv',
+    args = {'dap', '-l', '127.0.0.1:${port}'},
+  }
+}
+
+dap.configurations.go = {
+  {
+    type = "delve",
+    name = "Debug file",
+    request = "launch",
+    program = "${file}"
+  },
+  {
+    type = "delve",
+    name = "Test file",
+    request = "launch",
+    mode = "test",
+    program = "${file}"
+  },
+  {
+    type = "delve",
+    name = "Debug project (go.mod)",
+    request = "launch",
+    mode = "launch",
+    program = "./${relativeFileDirname}"
+  },
+  {
+    type = "delve",
+    name = "Test project (go.mod)",
+    request = "launch",
+    mode = "test",
+    program = "./${relativeFileDirname}"
+  },
+  {
+    name = "Attach to process",
+    type = 'delve',  -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+    request = 'attach',
+    pid = require('dap.utils').pick_process,
+    args = {},
+  },
+  {
+    name = "Attach to process",
+    type = 'delve',  -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+    request = 'attach',
+    pid = require('dap.utils').pick_process,
+    args = { 'pidof',  'aerc.debug', },
+  },
+}
