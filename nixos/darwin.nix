@@ -25,6 +25,19 @@
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
 
+  launchd.user.agents.syncthing = {
+    environment = {
+      STNORESTART = "1";
+    };
+    command = "${pkgs.syncthing}/bin/syncthing";
+    serviceConfig = {
+      ProcessType = "Background";
+      LowPriorityIO = true;
+      KeepAlive = true;
+      Label = "net.syncthing.syncthing";
+    };
+  };
+
   nix.useDaemon = true;
   nix.extraOptions = ''
     auto-optimise-store = true
