@@ -98,7 +98,7 @@ for_window [title="floating_term"] floating enable
 assign [title="^term$"] 3
 
 # Make all GNOME (and some other) apps float
-for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird)"] {
+for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays)"] {
   floating enable
   border none
   assign 4
