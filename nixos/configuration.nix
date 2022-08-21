@@ -116,6 +116,7 @@
       xdg-utils
       w3m             # for ranger, email, ...
       wl-clipboard    # wl-copy, wl-paste
+      wdisplays       # TODO: fix no gl implementation available
       wob             # indicator bar
     ];
     extraSessionCommands = ''
