@@ -11,6 +11,7 @@ vim.cmd [[packadd packer.nvim]]
 ---
 
 require('packer').startup(function()
+  -- Core editor functionality
   use { 
     'wbthomason/packer.nvim', 
     opt = true 
@@ -34,7 +35,8 @@ require('packer').startup(function()
       }
     end
   }
-  -- LSP, completion, snippets, tree-sitter
+  use 'gpanders/editorconfig.nvim'
+  -- LSP, completion, snippets
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -44,6 +46,7 @@ require('packer').startup(function()
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets' 
+  -- Tree Sitter
   use 'nvim-treesitter/nvim-treesitter'
   use 'p00f/nvim-ts-rainbow' -- rainbow parentheses
   -- Debugger
