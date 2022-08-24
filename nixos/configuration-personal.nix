@@ -17,7 +17,7 @@
   security.sudo.wheelNeedsPassword = false;
   security.acme = {
     acceptTerms = true;
-    email = "admin+acme@supermar.in"; # TODO: switch to mar.in
+    defaults.email = "admin+acme@supermar.in"; # TODO: switch to mar.in
   };
 
   services.openssh = {
@@ -69,4 +69,7 @@
     options = "--delete-older-than 30d";
   };
   nix.optimise.automatic = true;
+
+  # don't touch
+  system.stateVersion = "22.10";
 }
