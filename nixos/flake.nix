@@ -24,6 +24,9 @@
     packages.aarch64-linux = {
       tokio-vm = vm;
     };
+    packages.aarch64-darwin = {
+      tokio-vm = vm;
+    };
     packages.x86_64-linux = {
       vpn = nixos-generators.nixosGenerate {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
