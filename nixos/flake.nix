@@ -36,10 +36,10 @@
         ];
         format = "do";
       };
-      builder = nixos-generators.nixosGenerate {
+      personal = nixos-generators.nixosGenerate {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
-          ./builder-configuration.nix
+          ./configuration-personal.nix
           { virtualisation.digitalOceanImage.compressionMethod = "bzip2"; }
         ];
         format = "do";
