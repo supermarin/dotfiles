@@ -46,5 +46,5 @@
   };
 
   # don't touch
-  system.stateVersion = "22.10";
+  system.stateVersion = "22.05";
 }
