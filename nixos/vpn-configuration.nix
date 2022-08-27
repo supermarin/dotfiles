@@ -55,6 +55,10 @@ in
             publicKey = "9zlfIRmvON2kTh1zi8A/xOfP9LSRGWX/SE3GC+8VDgQ=";
             allowedIPs = [ "10.100.0.4/32" ];
           }
+          { # boox
+            publicKey = "DdbOf4jyx8AOGV7tFwUoszibrplRGB1lQPni16BzBGc=";
+            allowedIPs = [ "10.100.0.5/32" ];
+          }
         ];
       };
     };
