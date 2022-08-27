@@ -28,6 +28,7 @@ in
           51820 # wireguard
       ];
       interfaces.wg0.allowedTCPPorts = [ 
+        # 8052 # wallabag. Looks like podman automaticallly exposes this
         8053 # pi-hole
       ];
     };
@@ -63,10 +64,26 @@ in
       };
     };
   };
-  virtualisation.oci-containers.containers.pi-hole = {
+  virtualisation.oci-containers.containers = {
+    wallabag = {
+      image = "wallabag/wallabag";
+      volumes = [
+        "wallabag-data:/var/www/wallabag/data"
+        "wallabag-images:/var/www/wallabag/web/assets/images"
+      ];
+      ports = [ "10.100.0.1:8052:80" ];
+      environment = {
+        SYMFONY__ENV__DOMAIN_NAME = "http://10.100.0.1:8052";
+        SYMFONY__ENV__FOSUSER_CONFIRMATION = "false";
+        SERVER_PORT = "8052";
+      };
+    };
+    pi-hole = {
       image = "pihole/pihole:2022.07.1";
       volumes = [
         "pihole:/etc/pihole"
+        # locally resolves to
+        # /var/lib/containers/storage/volumes/dnsmasq
         "dnsmasq:/etc/dnsmasq.d"
       ];
       extraOptions = [
@@ -75,5 +92,6 @@ in
       environment = {
         WEB_PORT = "8053";
       };
+    };
   };
 }
