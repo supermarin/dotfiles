@@ -1,24 +1,39 @@
 {
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/280a0f86005770d321a8c3be5670a7c5d7a149d3;
+    nixpkgs.url = github:nixos/nixpkgs/104e7ab416917721b27b8815c3d68969b4dacd29;
     home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = github:lnl7/nix-darwin;
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.url = github:nix-community/nixos-generators;
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+    deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, nixos-generators }:
+  outputs = { self, nixpkgs, home-manager, darwin, nixos-generators, deploy-rs }:
   let
     vm = nixos-generators.nixosGenerate {
-        pkgs = nixpkgs.legacyPackages.aarch64-linux;
-        modules = [
-          ./configuration-vm.nix
-        ];
-        format = "qcow";
-        specialArgs = { hostname = "tokio-vm"; };
-      };
+      modules = [
+        ./configuration-vm.nix
+      ];
+      format = "qcow";
+      specialArgs = { hostname = "tokio-vm"; };
+    };
+    vpn = nixos-generators.nixosGenerate {
+      modules = [
+        ./vpn-configuration.nix
+        { virtualisation.digitalOceanImage.compressionMethod = "bzip2"; }
+      ];
+      format = "do";
+    };
+    personal = nixos-generators.nixosGenerate {
+      modules = [
+        ./configuration-personal.nix
+        { virtualisation.digitalOceanImage.compressionMethod = "bzip2"; }
+      ];
+      format = "do";
+    };
   in
   {
     packages.aarch64-linux = {
@@ -28,24 +43,18 @@
       tokio-vm = vm;
     };
     packages.x86_64-linux = {
-      vpn = nixos-generators.nixosGenerate {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [
-          ./vpn-configuration.nix
-          { virtualisation.digitalOceanImage.compressionMethod = "bzip2"; }
-        ];
-        format = "do";
-      };
-      personal = nixos-generators.nixosGenerate {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [
-          ./configuration-personal.nix
-          { virtualisation.digitalOceanImage.compressionMethod = "bzip2"; }
-        ];
-        format = "do";
-      };
+      personal = personal;
+      vpn = vpn;
       tokio-vm = vm;
     };
+
+    deploy.nodes.personal.profiles.system = {
+      user = "root";
+      path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.personal;
+    };
+
+    # This is highly advised, and will prevent many possible mistakes
+    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
     nixosConfigurations = {
       tokio = nixpkgs.lib.nixosSystem {
@@ -67,8 +76,6 @@
         specialArgs = { hostname = "tokio"; };
       };
 
-      tokio-vm = vm;
-
       pumba = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -83,6 +90,13 @@
         specialArgs = { hostname = "pumba"; };
       };
 
+      personal = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration-personal.nix
+        ];
+        specialArgs = { hostname = "personal"; };
+      };
       vpn = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -91,7 +105,7 @@
         specialArgs = { hostname = "vpn"; };
       };
     };
-    
+
     darwinConfigurations = {
       simba = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -105,56 +119,5 @@
         ];
       };
     };
-
-    # Experimental - raspberry pi
-    nixosConfigurations.butters = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
-      modules = [
-        {
-          boot.loader.efi.canTouchEfiVariables = true;
-          boot.loader.grub = {
-            enable = true;
-            device = "nodev";
-            efiSupport = true;
-          };
-            # environment.systemPackages = with pkgs; [
-            #   file # file(1)
-            #   firefox
-            #   killall # killall(1)
-            #   unzip
-            # ];
-            hardware.pulseaudio.enable = true;
-            hardware.bluetooth.enable = true; # enables bluez
-            programs.ssh.startAgent = true;
-            sound.enable = true;
-            services.openssh.enable = true;
-            nix = {
-              settings = {
-                trusted-users = [ "supermarin" ]; # enable nix-copy-closure
-              };
-              extraOptions = ''
-              experimental-features = nix-command flakes
-              '';
-              gc = {
-                automatic = true;
-                dates = "monthly";
-              };
-              optimise = {
-                automatic = true;
-                dates = [ "monthly" ];
-              };
-            };
-            time.timeZone = "America/NewYork";
-            users.users.supermarin = {
-              # shell = pkgs.fish;
-              isNormalUser = true;
-              extraGroups = [ "wheel" ]; 
-              openssh.authorizedKeys.keys = [
-                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx9yl0N1u8n7nO3uZilfOGa/MtyFTfHsEgs8MDGAnAL supermarin@tokio"
-              ];
-            };
-          }
-        ];
-      };
-    };
-  }
+  };
+}
