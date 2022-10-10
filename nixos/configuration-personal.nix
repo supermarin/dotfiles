@@ -4,11 +4,6 @@
   imports = [ (modulesPath + "/virtualisation/digital-ocean-config.nix") ];
   virtualisation.digitalOcean.setSshKeys = false;
 
-  # imports = [
-    # ./hardware-configuration.nix
-    # ./networking.nix # generated at runtime by nixos-infect    
-  # ];
-
   swapDevices = [{device = "/swapfile"; size = 2048;}];
   boot.cleanTmpDir = true;
   networking.hostName = hostname;
