@@ -1,4 +1,4 @@
-{ config, pkgs, modulesPath, ... }:
+{ config, pkgs, modulesPath, hostname, ... }:
 {
 
   imports = [ (modulesPath + "/virtualisation/digital-ocean-config.nix") ];
@@ -11,7 +11,7 @@
 
   swapDevices = [{device = "/swapfile"; size = 2048;}];
   boot.cleanTmpDir = true;
-  networking.hostName = "nix";
+  networking.hostName = hostname;
   networking.firewall.allowedTCPPorts = [ 80 443 22 ];
 
   security.sudo.wheelNeedsPassword = false;
