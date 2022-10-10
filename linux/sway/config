@@ -64,6 +64,7 @@ output "Goldstar Company Ltd LG UltraFine 806NTJJ3B908" {
   scale 1.5
 }
 
+# Turn off laptop monitor when lid is down
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
@@ -160,7 +161,8 @@ bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+bindsym $mod+0 scratchpad show
+
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
@@ -171,7 +173,6 @@ bindsym $mod+Shift+6 move container to workspace number 6
 bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
 
 # Layout stuff:
 #
@@ -189,6 +190,9 @@ bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+space floating toggle
+
+# Send the current window to scratchpad
+bindsym $mod+Shift+0 move container to scratchpad
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+$mod2+space focus mode_toggle
