@@ -26,6 +26,7 @@ in
 
   home.packages = with pkgs; [
     age
+    brave
     bat # used in `e` for live preview of files
     coreutils # used for `shred`
     diffr # used in git stuff
@@ -44,6 +45,7 @@ in
     ripgrep
     rnix-lsp
     slack
+    sqlite
     tig
     tree-sitter
     wormhole-william
