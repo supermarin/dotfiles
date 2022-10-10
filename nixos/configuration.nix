@@ -84,7 +84,7 @@
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
     file # file(1)
-    firefox
+    brave
     killall # killall(1)
     libreoffice
     qutebrowser
