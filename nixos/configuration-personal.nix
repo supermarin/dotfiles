@@ -12,7 +12,7 @@
   security.sudo.wheelNeedsPassword = false;
   security.acme = {
     acceptTerms = true;
-    defaults.email = "admin+acme@supermar.in"; # TODO: switch to mar.in
+    defaults.email = "admin+acme@mar.in"; # TODO: switch to mar.in
   };
 
   services.openssh = {
@@ -36,15 +36,10 @@
 
   services.nginx = with config.services; {
     enable = true;
-    virtualHosts."supermar.in" = {
-      forceSSL = true;
-      enableACME = true;
-      root = "/repos/supermar.in/result/public";
-    };
     virtualHosts."mar.in" = {
       forceSSL = true;
       enableACME = true;
-      root = "/repos/supermar.in/result/public";
+      root = "/repos/mar.in/result/public";
     };
     virtualHosts."butte.rs" = {
       forceSSL = true;
