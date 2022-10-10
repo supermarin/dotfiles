@@ -20,6 +20,10 @@ format = "{barchart}"
 icons_format = ""
 
 [[block]]
+block = "memory"
+format_mem = "{mem_used;M}"
+
+[[block]]
 block = "sound"
 format = ""
 
