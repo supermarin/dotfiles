@@ -87,7 +87,6 @@
     brave
     killall # killall(1)
     libreoffice
-    qutebrowser
     unzip
     virt-manager
   ];
