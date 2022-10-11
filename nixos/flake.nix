@@ -75,7 +75,6 @@
         ];
         specialArgs = { hostname = "tokio"; };
       };
-
       pumba = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -89,7 +88,6 @@
         ];
         specialArgs = { hostname = "pumba"; };
       };
-
       personal = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
