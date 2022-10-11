@@ -56,15 +56,13 @@
   # Only put system software in here, e.g. stuff that is installed by
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
+    brave
     file # file(1)
-    firefox
     helix
     git
     killall # killall(1)
     libreoffice
-    qutebrowser
     unzip
-    virt-manager
     vim
   ];
 
