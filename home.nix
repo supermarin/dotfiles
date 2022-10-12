@@ -58,7 +58,6 @@ in
   ++ lib.optionals isDarwin [] 
   ++ lib.optionals isLinux [
     calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022
-    cawbird # twitter
     fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
     gcc # for neovim
     signal-desktop # Unsupported on aarch64-darwin as of Aug 10 2022
