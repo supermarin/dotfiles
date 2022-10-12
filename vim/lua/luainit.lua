@@ -53,7 +53,6 @@ require('packer').startup(function()
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
   use 'theHamsta/nvim-dap-virtual-text'
-
   -- Copilot
   use 'github/copilot.vim'
   -- Misc
@@ -66,6 +65,8 @@ require('packer').startup(function()
   -- Color Schemes
   use 'ellisonleao/gruvbox.nvim'
   use 'ishan9299/modus-theme-vim'
+  -- Tests
+  use 'vim-test/vim-test'
 end)
 
 
@@ -201,7 +202,14 @@ for _, server in ipairs(servers) do
   }
 end
 
-
+-------------------------------------------------------------------------------
+-- Tests
+-------------------------------------------------------------------------------
+vim.keymap.set("n", "<leader>tt", ":TestNearest<CR>")
+vim.keymap.set("n", "<leader>ta", ":TestFile<CR>")
+vim.keymap.set("n", "<leader>ts", ":TestSuite<CR>")
+vim.keymap.set("n", "<leader>tl", ":TestLast<CR>")
+vim.keymap.set("n", "<leader>tg", ":TestVisit<CR>")
 -------------------------------------------------------------------------------
 -- DAP
 -------------------------------------------------------------------------------
