@@ -50,6 +50,7 @@ in
     tig
     tree-sitter
     wormhole-william
+    zig
   ]
   ++ [ # text editing (non-system) fonts
     go-font
@@ -59,7 +60,6 @@ in
   ++ lib.optionals isLinux [
     calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022
     fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
-    gcc # for neovim
     signal-desktop # Unsupported on aarch64-darwin as of Aug 10 2022
     tdesktop # telegram
     thunderbird
