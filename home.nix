@@ -26,7 +26,6 @@ in
 
   home.packages = with pkgs; [
     age
-    brave
     bat # used in `e` for live preview of files
     coreutils # used for `shred`
     diffr # used in git stuff
@@ -58,6 +57,7 @@ in
   ]
   ++ lib.optionals isDarwin [] 
   ++ lib.optionals isLinux [
+    brave # https://github.com/NixOS/nixpkgs/pull/98853/files
     calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022
     fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
     signal-desktop # Unsupported on aarch64-darwin as of Aug 10 2022
