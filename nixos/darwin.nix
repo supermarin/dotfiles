@@ -47,17 +47,4 @@
   '';
 
   nixpkgs.config.allowUnfree = true; # Obsidian needs this ATM
-
-  # Unfuck ~/Applications
-  system.activationScripts.applications.text = pkgs.lib.mkForce (
-    ''
-      echo "[CUSTOM][darwin.nix] setting up ~/Applications..." >&2
-      rm -rf ~/Applications/Nix\ Apps
-      mkdir -p ~/Applications/Nix\ Apps
-      for app in $(find ${config.system.build.applications}/Applications -maxdepth 1 -type l); do
-        src="$(/usr/bin/stat -f%Y "$app")"
-        cp -r "$src" ~/Applications/Nix\ Apps
-      done
-    ''
-  );
 }
