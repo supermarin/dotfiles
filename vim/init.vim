@@ -30,10 +30,6 @@ color gruvbox
 
 " Mappings
 " TODO: move this into separate mappings lua?
-nnoremap <leader>p :Telescope frecency<cr>
-nnoremap <leader>f :Telescope find_files<cr>
-nnoremap <leader>g :Telescope live_grep<cr>
-nnoremap <leader>b :Telescope buffers<cr>
 nnoremap gh ^
 nnoremap gl $
 nnoremap <cr> :noh<cr>
