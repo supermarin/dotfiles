@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, nixpkgs, lib, config, ... }:
 {
   networking.hostName = "simba";
   environment.shells = [ pkgs.bashInteractive pkgs.fish ];
@@ -47,4 +47,5 @@
   '';
 
   nixpkgs.config.allowUnfree = true; # Obsidian needs this ATM
+  nix.registry.nixpkgs.flake = nixpkgs;
 }
