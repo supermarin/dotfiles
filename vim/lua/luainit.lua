@@ -12,23 +12,16 @@ vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup(function()
   -- Core editor functionality
-  use { 
-    'wbthomason/packer.nvim', 
-    opt = true 
-  }
-  use { 
-    'nvim-telescope/telescope.nvim',
+  use { 'wbthomason/packer.nvim', opt = true }
+  use { 'nvim-telescope/telescope.nvim',
     requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
   }
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
+  use { 'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup()
     end
   }
-  use {
-    'folke/which-key.nvim',
+  use { 'folke/which-key.nvim',
     config = function()
       require('which-key').setup {
         timeoutlen = 0
@@ -53,8 +46,6 @@ require('packer').startup(function()
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
   use 'theHamsta/nvim-dap-virtual-text'
-  -- Copilot
-  use 'github/copilot.vim'
   -- Misc
   use 'LnL7/vim-nix'
   use 'mg979/vim-visual-multi'
@@ -85,7 +76,7 @@ cmp.setup({
   },
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -190,15 +181,11 @@ local on_attach = function(client, bufnr)
 end
 
 
-
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lsp = require('lspconfig')
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
 local servers = { "gopls", "rnix" }
 
 for _, server in ipairs(servers) do

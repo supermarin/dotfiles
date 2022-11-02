@@ -40,7 +40,10 @@ vnoremap p "_dP
 
 augroup YO_OY
   autocmd!
+  " Automatically format Go files with LSP
   au BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
+  " TODO: Automatically format nix files with LSP
+  "
   "  Restore cursor position on vim relaunch
   "  TODO: check if it's not git committing
   au BufReadPost *
