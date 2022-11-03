@@ -29,13 +29,15 @@ require('packer').startup(function()
     end
   }
   use 'gpanders/editorconfig.nvim'
-  -- LSP, completion, snippets
+  -- LSP, completion
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
+  -- snippets
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets' 
@@ -63,22 +65,36 @@ end)
 
 -- Completion & snippets
 
-local cmp = require("cmp")
 local luasnip = require("luasnip")
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local cmp = require("cmp")
 cmp.setup({
+  snippet = {
+    expand = function(args) require('luasnip').lsp_expand(args.body) end,
+  },
   experimental = {
     ghost_text = true,
   },
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
+  view = {
+    entries = 'native'
   },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  sources = cmp.config.sources({
+    { name = 'luasnip' },
+  }, {
+    { name = 'nvim_lsp_signature_help' },
+  }, {
+    { name = 'nvim_lsp' },
+  }, {
+    { name = 'buffer' },
+  }),
   mapping = {
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -110,28 +126,6 @@ cmp.setup({
       end
     end, { "i", "s" }),
   },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' }, -- For luasnip users.
-  }, {
-    { name = 'buffer' },
-  })
-})
-
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' }
-  }
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
 })
 
 -- snippets
@@ -183,8 +177,6 @@ end
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 local lsp = require('lspconfig')
 local servers = { "gopls", "rnix" }
 
