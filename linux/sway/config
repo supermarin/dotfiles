@@ -46,7 +46,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term kitty --title term
+set $term kitty
 set $browser brave
 set $menu "rofi -combi-modi window,drun,run,calc -show combi -show-icons"
 
@@ -100,7 +100,6 @@ floating_modifier $mod normal
 
 # Assign apps to consistent workspaces
 for_window [title="floating_term"] floating enable
-assign [title="^term$"] 3
 
 # Make all GNOME (and some other) apps float
 for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays)"] {
@@ -112,7 +111,8 @@ for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays)"] {
 ### Key bindings
 #
 # Start a terminal
-bindsym $mod+Return exec $term, workspace 3
+bindsym $mod+Return workspace 3; exec $term
+bindsym $mod+t      workspace 3; exec pgrep $term || $term
 # NetworkManager connect
 bindsym $mod+Shift+w exec $term --title floating_term nmtui-connect
 # Emoji
