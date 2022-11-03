@@ -115,6 +115,7 @@
             home-manager.users.supermarin = import ../home.nix;
           }
         ];
+          specialArgs = { nixpkgs = nixpkgs; };
       };
     };
   };
