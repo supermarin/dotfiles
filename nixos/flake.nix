@@ -18,7 +18,6 @@
         ./configuration-vm.nix
       ];
       format = "qcow";
-      specialArgs = { hostname = "tokio-vm"; };
     };
     vpn = nixos-generators.nixosGenerate {
       modules = [

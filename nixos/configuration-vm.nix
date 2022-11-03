@@ -1,4 +1,4 @@
-{ hostname, pkgs, ... }:
+{ pkgs, ... }:
 {
   #boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
@@ -15,7 +15,7 @@
         22 # ssh
       ];
     };
-    hostName = hostname;
+    hostName = "tokio-vm";
   };
  
   services.avahi = {
