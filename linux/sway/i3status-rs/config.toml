@@ -9,7 +9,7 @@ warning_fg = "#F96A02"
 
 [[block]]
 block = "custom"
-on_click = "swaymsg workspace 4"
+on_click = "swaymsg scratchpad show"
 command = '''n=$(notmuch count --output=threads 'path:/.*/Inbox/' 2>/dev/null); test $n -ne 0 && echo -e "\uf0e0 $n"'''
 hide_when_empty = true
 shell = "bash"
