@@ -59,6 +59,7 @@
     nixosConfigurations = {
       tokio = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { nixpkgs = nixpkgs; };
         modules = [ 
           ./configuration.nix 
           ./hardware-x1.nix

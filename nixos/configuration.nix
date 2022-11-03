@@ -1,4 +1,4 @@
-{ hostname, pkgs, ... }:
+{ hostname, nixpkgs, pkgs, ... }:
 {
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
@@ -181,6 +181,7 @@
       automatic = true;
       dates = [ "monthly" ];
     };
+    registry.nixpkgs.flake = nixpkgs;
     settings = {
       trusted-users = [ "supermarin" ]; # enable nix-copy-closure
     };
