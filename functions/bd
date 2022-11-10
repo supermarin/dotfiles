@@ -9,8 +9,10 @@ branch=${1:-$(fuzzy_branch)}
 set -e
 if [[ -n $branch ]]; then
   git branch -D "$branch"
-  echo -n "Delete from remote? [y/N]: "
-  if read -rq; then
+  read -p "Delete '$branch' from remote? [yN]: " -n1 ans
+  echo
+
+  if [[ $ans = 'y' ]]; then
     set +e
     ( git push origin ":$branch" ) &
   fi
