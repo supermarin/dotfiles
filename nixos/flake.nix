@@ -16,8 +16,9 @@
     let
       vm = system: nixos-generators.nixosGenerate {
         system = system;
-        modules = [ 
-          ./hardware-vm.nix ./configuration-vm.nix 
+        modules = [
+          ./hardware-vm.nix
+          ./configuration-vm.nix
         ];
         format = "qcow";
       };
@@ -35,7 +36,8 @@
         ];
         format = "do";
       };
-    in {
+    in
+    {
       packages.aarch64-linux = { tokio-vm = vm "aarch64-linux"; };
       packages.aarch64-darwin = { tokio-vm = vm "aarch64-linux"; };
       packages.x86_64-linux = {
