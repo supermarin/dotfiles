@@ -70,6 +70,9 @@ in
     enable = true;
     vimAlias = true;
     viAlias = true;
+    plugins = with pkgs.vimPlugins; [
+      { plugin = packer-nvim; optional = true; }
+    ];
   };
 
   programs.kitty = {
@@ -90,9 +93,7 @@ in
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix;
   xdg.configFile."i3status-rust/config.toml".text = builtins.readFile ./linux/sway/i3status-rs/config.toml;
-  xdg.configFile."nvim/colors/supermarin.vim".text = builtins.readFile ./vim/colors/supermarin.vim;
-  xdg.configFile."nvim/init.vim".text = builtins.readFile ./vim/init.vim;
-  xdg.configFile."nvim/lua/luainit.lua".text = builtins.readFile ./vim/lua/luainit.lua;
+  xdg.configFile."nvim/init.lua".text = builtins.readFile ./vim/init.lua;
   xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
   xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
   xdg.configFile."tig/config".text = builtins.readFile ./tig/config;

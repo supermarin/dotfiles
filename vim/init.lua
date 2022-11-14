@@ -1,18 +1,60 @@
-local shareDir = vim.fn.stdpath('data')
-vim.o.undodir = shareDir..'/undo'
+vim.g.mapleader = ' '
+vim.keymap.set('n', 'gh', '^')
+vim.keymap.set('n', 'gl', '$')
+vim.keymap.set('n', '<c-j>', 'ddp') -- move line down
+vim.keymap.set('n', '<c-k>', 'ddkP') -- move line up
+vim.keymap.set('n', '<cr>', ':noh<cr>')
+vim.keymap.set('v', 'p', '"_dP') -- Unfuck paste in visual mode
+
+local tabspaces = 2
+vim.opt.background = 'dark'
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.colorcolumn = "80"
+vim.opt.completeopt = 'menu,menuone,noselect'
+vim.opt.expandtab = true
+vim.opt.grepprg = 'rg --vimgrep'
+vim.opt.guicursor = ""
+vim.opt.guicursor = ""
+vim.opt.hidden = true
+vim.opt.ignorecase = true
+vim.opt.laststatus = 2
+vim.opt.scroll = 8 -- scroll amount with C-D C-U
+vim.opt.scrolloff = 8 -- top/bottom margins for scrolling
+vim.opt.shiftwidth = tabspaces
+vim.opt.smartcase = true
+vim.opt.smartindent = true
+vim.opt.smartindent = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.swapfile = false
+vim.opt.tabstop = tabspaces
+vim.opt.termguicolors = true
+vim.opt.undofile = true  
+
+-- AUTOGROUPS / EVENTS
+local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePre', { 
+  pattern  = { '*.go', '*.lua', '*.nix', '*.rb', '*.py' },
+  callback = function()
+    vim.lsp.buf.format({ async = true }) 
+  end,
+  group = au,
+})
+vim.api.nvim_create_autocmd('BufReadPost', { 
+  pattern = '*',
+  group = au,
+  command = [[
+     if !(bufname("%") =~ '\(COMMIT_EDITMSG\)') && line("'\"") >= 1 && line("'\"") <= line("$") |
+       exe "normal! g`\"" |
+     endif
+   ]],
+})
+
 
 -- PLUGINS
-local install_path = shareDir..'/site/pack/packer/opt/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.api.nvim_command(
-    '!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-end
 vim.cmd [[packadd packer.nvim]]
----
-
-require('packer').startup(function()
+require('packer').startup(function(use)
   -- Core editor functionality
-  use { 'wbthomason/packer.nvim', opt = true }
   use { 'nvim-telescope/telescope.nvim',
     requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
   }
@@ -56,12 +98,11 @@ require('packer').startup(function()
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   -- Color Schemes
-  use 'ellisonleao/gruvbox.nvim'
-  use 'ishan9299/modus-theme-vim'
+  use  'ellisonleao/gruvbox.nvim'
   -- Tests
   use 'vim-test/vim-test'
 end)
-
+vim.cmd [[colorscheme gruvbox]]
 
 -- Completion & snippets
 
@@ -157,21 +198,21 @@ vim.keymap.set('n', '<leader>b',  ':Telescope buffers<cr>')
 -------------------------------------------------------------------------------
 local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  local lsp_opts = { noremap=true, silent=true }
-
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-  vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', lsp_opts)
-  vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', lsp_opts)
-  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', lsp_opts)
-  vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', lsp_opts)
-  vim.keymap.set('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', lsp_opts)
-  vim.keymap.set('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', lsp_opts)
-  vim.keymap.set('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', lsp_opts)
-  vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<cr>', lsp_opts)
-  vim.keymap.set('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<cr>', lsp_opts)
-  vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', lsp_opts)
-  vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', lsp_opts)
-  vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.lsp.buf.document_diagnostics()<cr>', lsp_opts)
+
+  local function nnoremap(...) vim.keymap.set(..., { silent = true }) end
+  nnoremap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+  nnoremap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+  nnoremap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+  nnoremap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+  nnoremap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+  nnoremap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>')
+  nnoremap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>')
+  nnoremap('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<cr>')
+  nnoremap('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+  nnoremap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
+  nnoremap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+  nnoremap('n', '<leader>dd', '<cmd>lua vim.lsp.buf.document_diagnostics()<cr>')
 end
 
 
