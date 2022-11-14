@@ -31,18 +31,18 @@ vim.opt.splitright = true
 vim.opt.swapfile = false
 vim.opt.tabstop = tabspaces
 vim.opt.termguicolors = true
-vim.opt.undofile = true  
+vim.opt.undofile = true
 
 -- AUTOGROUPS / EVENTS
 local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePre', { 
+vim.api.nvim_create_autocmd('BufWritePre', {
   pattern  = { '*.go', '*.lua', '*.nix', '*.rb', '*.py' },
   callback = function()
-    vim.lsp.buf.format({ async = true }) 
+    vim.lsp.buf.format({ async = true })
   end,
-  group = au,
+  group    = au,
 })
-vim.api.nvim_create_autocmd('BufReadPost', { 
+vim.api.nvim_create_autocmd('BufReadPost', {
   pattern = '*',
   group = au,
   command = [[
@@ -58,7 +58,7 @@ vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function(use)
   -- Core editor functionality
   use { 'nvim-telescope/telescope.nvim',
-    requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
+    requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' }
   }
   use { 'lewis6991/gitsigns.nvim',
     config = function()
@@ -87,7 +87,7 @@ require('packer').startup(function(use)
   -- snippets
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
-  use 'rafamadriz/friendly-snippets' 
+  use 'rafamadriz/friendly-snippets'
   -- Tree Sitter
   use 'nvim-treesitter/nvim-treesitter'
   use 'p00f/nvim-ts-rainbow' -- rainbow parentheses
@@ -103,7 +103,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   -- Color Schemes
-  use  'ellisonleao/gruvbox.nvim'
+  use 'ellisonleao/gruvbox.nvim'
   -- Tests
   use 'vim-test/vim-test'
 end)
@@ -178,9 +178,9 @@ cmp.setup({
 require("luasnip.loaders.from_vscode").load()
 
 -- tree-sitter
-require('nvim-treesitter.configs').setup { 
-  -- ensure_installed = 'maintained',  
-  highlight = {enable = true},
+require('nvim-treesitter.configs').setup {
+  -- ensure_installed = 'maintained',
+  highlight = { enable = true },
   rainbow = {
     enable = true,
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
@@ -193,16 +193,17 @@ require('nvim-treesitter.configs').setup {
 -------------------------------------------------------------------------------
 -- Telescope
 -------------------------------------------------------------------------------
-vim.keymap.set('n', '<leader>p',  ':Telescope commands<cr>')
-vim.keymap.set('n', '<leader>f',  ':Telescope find_files<cr>')
-vim.keymap.set('n', '<leader>g',  ':Telescope live_grep<cr>')
-vim.keymap.set('n', '<leader>b',  ':Telescope buffers<cr>')
+vim.keymap.set('n', '<leader>p', ':Telescope commands<cr>')
+vim.keymap.set('n', '<leader>f', ':Telescope find_files<cr>')
+vim.keymap.set('n', '<leader>g', ':Telescope live_grep<cr>')
+vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
 
 -------------------------------------------------------------------------------
 -- LSP
 -------------------------------------------------------------------------------
 local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { silent = true })
@@ -212,7 +213,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { silent = true })
   vim.keymap.set('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', { silent = true })
   vim.keymap.set('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', { silent = true })
-  vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<cr>', { silent = true })
+  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { silent = true })
@@ -263,7 +264,7 @@ dap.adapters.delve = {
   port = '${port}',
   executable = {
     command = 'dlv',
-    args = {'dap', '-l', '127.0.0.1:${port}'},
+    args = { 'dap', '-l', '127.0.0.1:${port}' },
   }
 }
 
@@ -297,16 +298,16 @@ dap.configurations.go = {
   },
   {
     name = "Attach to process",
-    type = 'delve',  -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+    type = 'delve', -- Adjust this to match your adapter name (`dap.adapters.<name>`)
     request = 'attach',
     pid = require('dap.utils').pick_process,
     args = {},
   },
   {
     name = "Attach to process",
-    type = 'delve',  -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+    type = 'delve', -- Adjust this to match your adapter name (`dap.adapters.<name>`)
     request = 'attach',
     pid = require('dap.utils').pick_process,
-    args = { 'pidof',  'aerc.debug', },
+    args = { 'pidof', 'aerc.debug', },
   },
 }
