@@ -200,19 +200,18 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local function nnoremap(...) vim.keymap.set(..., { silent = true }) end
-  nnoremap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-  nnoremap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-  nnoremap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
-  nnoremap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-  nnoremap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-  nnoremap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>')
-  nnoremap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>')
-  nnoremap('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<cr>')
-  nnoremap('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-  nnoremap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
-  nnoremap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-  nnoremap('n', '<leader>dd', '<cmd>lua vim.lsp.buf.document_diagnostics()<cr>')
+  vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { silent = true })
+  vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { silent = true })
+  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { silent = true })
+  vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { silent = true })
+  vim.keymap.set('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', { silent = true })
+  vim.keymap.set('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', { silent = true })
+  vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.lsp.buf.document_diagnostics()<cr>', { silent = true })
 end
 
 
