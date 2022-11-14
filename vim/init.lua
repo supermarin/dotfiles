@@ -216,7 +216,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', { silent = true })
-  vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.lsp.buf.document_diagnostics()<cr>', { silent = true })
 end
 
