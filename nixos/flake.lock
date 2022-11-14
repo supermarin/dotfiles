@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1667294277,
-        "narHash": "sha256-YhVGYUpPZNpJZ8z3Sq9aT6n1/B8vKtfRfwaCtbsosxk=",
+        "lastModified": 1667419884,
+        "narHash": "sha256-oLNw87ZI5NxTMlNQBv1wG2N27CUzo9admaFlnmavpiY=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "b7177030643374e698c29e993c2808efa7b85aaf",
+        "rev": "cfc0125eafadc9569d3d6a16ee928375b77e3100",
         "type": "github"
       },
       "original": {
@@ -28,15 +28,15 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1667335125,
-        "narHash": "sha256-HXkzk5bkBz2Jb2NqYorIAmYyjHqQcMchvqw9TUeNa3I=",
-        "owner": "supermarin",
+        "lastModified": 1668332334,
+        "narHash": "sha256-YT1qcE/MCqBO1Bi/Yr6GcFpNKsvmzrBKh8juyXDbxQc=",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f4503cb6353374a6efd23e95782da10b140926ab",
+        "rev": "bc90de24d898655542589237cc0a6ada7564cb6c",
         "type": "github"
       },
       "original": {
-        "owner": "supermarin",
+        "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
       }
@@ -103,11 +103,11 @@
     },
     "utils": {
       "locked": {
-        "lastModified": 1667077288,
-        "narHash": "sha256-bdC8sFNDpT0HK74u9fUkpbf1MEzVYJ+ka7NXCdgBoaA=",
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "6ee9ebb6b1ee695d2cacc4faa053a7b9baa76817",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
         "type": "github"
       },
       "original": {
