@@ -53,64 +53,10 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 })
 
 
--- PLUGINS
-vim.cmd [[packadd packer.nvim]]
-require('packer').startup(function(use)
-  -- Core editor functionality
-  use { 'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' }
-  }
-  use { 'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  }
-  use { 'folke/which-key.nvim',
-    config = function()
-      require('which-key').setup {
-        timeoutlen = 0
-      }
-    end
-  }
-  use { "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup() end
-  }
-  use 'gpanders/editorconfig.nvim'
-  -- LSP, completion
-  use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-nvim-lsp-signature-help'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
-  -- snippets
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'rafamadriz/friendly-snippets'
-  -- Tree Sitter
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'p00f/nvim-ts-rainbow' -- rainbow parentheses
-  -- Debugger
-  use 'mfussenegger/nvim-dap'
-  use 'rcarriga/nvim-dap-ui'
-  use 'theHamsta/nvim-dap-virtual-text'
-  -- Misc
-  use 'LnL7/vim-nix'
-  use 'mg979/vim-visual-multi'
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
-  -- Color Schemes
-  use 'ellisonleao/gruvbox.nvim'
-  -- Tests
-  use 'vim-test/vim-test'
-end)
+-- Colorscheme
 vim.cmd [[colorscheme gruvbox]]
 
 -- Completion & snippets
-
 local luasnip = require("luasnip")
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -174,9 +120,14 @@ cmp.setup({
   },
 })
 
+-- Git Gutter
+require('gitsigns').setup()
+-- Autopairs
+require("nvim-autopairs").setup()
+-- Key bindings explanation
+require('which-key').setup { timeoutlen = 0 }
 -- snippets
 require("luasnip.loaders.from_vscode").load()
-
 -- tree-sitter
 require('nvim-treesitter.configs').setup {
   -- ensure_installed = 'maintained',
