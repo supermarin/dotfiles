@@ -46,6 +46,7 @@ in
     rnix-lsp
     slack
     sqlite
+    sumneko-lua-language-server
     tig
     tree-sitter
     wormhole-william
