@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-echo "Select branches to delete with TAB"
-selection=$(git branch | grep -Ev '\s(master|main)$|^\*' | fzf --multi)
-
-for branch in $selection; do
-  bd "$branch"
-done

@@ -1,20 +1,48 @@
 #!/usr/bin/env bash
 
+# This function is supposed to replace bd(1) and rage_delete_branches(1).
+# Desired behavior:
+#
+#   $ bd <Enter>
+#   -> foo
+#      feature_1
+#   -> feature_2
+#      feature_4
+#   <Enter>
+#   $ # Produces git branch -d foo feature_2
+#
+#   $ bd feature_1
+#   $ # OK, git branch -d feature_1
+
 # Fuzzy finds branches except your current branch, returns the selected branch
-fuzzy_branch() {
-  git branch | grep -Ev '\*' | fzf | tr -d ' '
+selection() {
+  git branch | grep -Ev '\s(master|main)$|^\*' | fzf --multi 
 }
 
-branch=${1:-$(fuzzy_branch)}
-set -e
-if [[ -n $branch ]]; then
-  git branch -D "$branch"
+delete() {
+  branch=$1 
+  git branch -d $branch
+  if [[ $? -ne 0 ]]; then
+    read -p "Force delete $branch? [yN]: " -n1 ans
+    echo
+    if [[ $ans = 'y' ]]; then
+      git branch -D $branch
+    fi
+  fi
+
   read -p "Delete '$branch' from remote? [yN]: " -n1 ans
   echo
-
   if [[ $ans = 'y' ]]; then
     set +e
-    ( git push origin ":$branch" ) &
+    ( git push origin ":$branch" & ) 2>/dev/null
   fi
-fi
+}
 
+if [[ -n $1 ]]; then
+  delete $1
+else
+  branches=$(selection)
+  for branch in $branches; do
+    delete $branch
+  done
+fi
