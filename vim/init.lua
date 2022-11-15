@@ -120,7 +120,7 @@ end
 local cmp = require("cmp")
 cmp.setup({
   snippet = {
-    expand = function(args) require('luasnip').lsp_expand(args.body) end,
+    expand = function(args) luasnip.lsp_expand(args.body) end,
   },
   experimental = {
     ghost_text = true,
