@@ -12,7 +12,7 @@ in
     MAILDIR = "$HOME/.mail";
     PASSWORD_STORE_DIR = "$HOME/.p";
     OTPDIR = "$HOME/.otp";
-    RIPGREP_CONFIG_PATH = ./rg/config;
+    RIPGREP_CONFIG_PATH = "$HOME/.config/rg/config"; # TODO: XDG_CONFIG_HOME
   };
 
   home.sessionPath = [
