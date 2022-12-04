@@ -51,7 +51,11 @@ vim.api.nvim_create_autocmd('BufReadPost', {
      endif
    ]],
 })
-
+vim.api.nvim_create_autocmd('TermOpen', {
+  pattern = { '*' },
+  command = 'startinsert',
+  group   = au,
+})
 
 -- Colorscheme
 vim.cmd [[colorscheme gruvbox]]
