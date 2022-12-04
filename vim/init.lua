@@ -5,6 +5,7 @@ vim.keymap.set('n', '<c-j>', 'ddp') -- move line down
 vim.keymap.set('n', '<c-k>', 'ddkP') -- move line up
 vim.keymap.set('n', '<cr>', ':noh<cr>')
 vim.keymap.set('v', 'p', '"_dP') -- Unfuck paste in visual mode
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
 local tabspaces = 2
 vim.opt.background = 'dark'
