@@ -4,7 +4,6 @@ pkgs:
   shellInit = ''
     if status --is-interactive
       abbr c clear
-      abbr d cd ~/dotfiles
       abbr g git
       abbr gd git d
       abbr gl git pull
