@@ -83,6 +83,14 @@ function duration
   end
 end
 
+function nix_shell
+  if [ $IN_NIX_SHELL ]
+    echo $green'nix-shell> '$normal
+  else
+    echo $normal'$ '
+  end
+end
+
 
 function fish_prompt
     set -l s $status # needed because $status gets overriden to 0 immediately
@@ -94,5 +102,5 @@ function fish_prompt
       set supemarin_git_info (git_prompt)
     end
 
-    echo (jobs_info) $supemarin_git_info $last_status_info(duration) $normal'$ '
+    echo (jobs_info) $supemarin_git_info $last_status_info(duration) (nix_shell)
 end
