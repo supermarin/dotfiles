@@ -180,7 +180,8 @@ end
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lsp = require('lspconfig')
-local servers = { "gopls", "rnix", 'sumneko_lua' }
+-- TODO: should this attach per filetype?
+local servers = { "gopls", "rnix", 'sumneko_lua', 'solargraph' }
 
 for _, server in ipairs(servers) do
   lsp[server].setup {
