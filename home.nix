@@ -117,7 +117,7 @@ in
     theme = "Ir Black";
     font = {
       name = "JetBrains Mono";
-      size = 14;
+      size = 15;
     };
   };
 
