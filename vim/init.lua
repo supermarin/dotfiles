@@ -39,7 +39,7 @@ local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern  = { '*.go', '*.lua', '*.nix', '*.rb', '*.py' },
   callback = function()
-    vim.lsp.buf.format(nil, 1000)
+    vim.lsp.buf.format({ async = true })
   end,
   group    = au,
 })
