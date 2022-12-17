@@ -32,6 +32,7 @@ in
     docker-compose
     exa # ls with stuff
     fd
+    firefox
     fzf
     git
     gnupg
