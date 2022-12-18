@@ -13,18 +13,18 @@
   time.timeZone = "America/Miami";
 
   networking = {
-    firewall = { 
-      allowedTCPPorts = [ 
+    firewall = {
+      allowedTCPPorts = [
         22 # ssh
         3333 # sailefx
         8080 # calibre
       ];
-      allowedUDPPorts = [ 
+      allowedUDPPorts = [
         51820 # vpn
       ];
     };
     hostName = hostname;
-    nameservers = [ "104.248.7.113"  ];
+    nameservers = [ "104.248.7.113" ];
     networkmanager.enable = true;
     wg-quick.interfaces = {
       wg0 = {
@@ -41,7 +41,7 @@
       };
     };
   };
- 
+
   services.avahi = {
     enable = true;
     publish.enable = true;
@@ -67,7 +67,7 @@
   users.users.supermarin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ]; 
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx9yl0N1u8n7nO3uZilfOGa/MtyFTfHsEgs8MDGAnAL supermarin@tokio"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in" # simba
@@ -98,25 +98,25 @@
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
       gnome.gnome-bluetooth # bluetooth-sendto for sending files
-      blueberry       # Bluetooth devices management gui
-      brightnessctl   # Brightness control
-      gnome.nautilus  # file manager
-      grim            # wayland screenshot tool
-      i3status-rust   # Menu bar
-      libnotify       # notify-send
-      mako            # notification daemon
+      blueberry # Bluetooth devices management gui
+      brightnessctl # Brightness control
+      gnome.nautilus # file manager
+      grim # wayland screenshot tool
+      i3status-rust # Menu bar
+      libnotify # notify-send
+      mako # notification daemon
       mupdf
       rofi
       rofimoji
-      slurp           # screenshot: select a region in wayland
-      kitty           # terminal
-      swaylock        # idle lock
-      swayidle        # idle lock
+      slurp # screenshot: select a region in wayland
+      kitty # terminal
+      swaylock # idle lock
+      swayidle # idle lock
       xdg-utils
-      w3m             # for ranger, email, ...
-      wl-clipboard    # wl-copy, wl-paste
-      wdisplays       # TODO: fix no gl implementation available
-      wob             # indicator bar
+      w3m # for ranger, email, ...
+      wl-clipboard # wl-copy, wl-paste
+      wdisplays # TODO: fix no gl implementation available
+      wob # indicator bar
     ];
     extraSessionCommands = ''
       export MOZ_ENABLE_WAYLAND=1
@@ -156,8 +156,8 @@
       Type = "oneshot";
     };
     script = ''
-    ${pkgs.isync}/bin/mbsync -a
-    ${pkgs.notmuch}/bin/notmuch new 
+      ${pkgs.isync}/bin/mbsync -a
+      ${pkgs.notmuch}/bin/notmuch new 
     '';
   };
 
@@ -168,7 +168,7 @@
     timerConfig.OnBootSec = "10s";
   };
 
-  nixpkgs.config.allowUnfree = true; 
+  nixpkgs.config.allowUnfree = true;
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
