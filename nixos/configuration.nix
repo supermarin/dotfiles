@@ -10,7 +10,7 @@
   hardware.pulseaudio.enable = true;
   sound.enable = true;
   hardware.bluetooth.enable = true; # enables bluez
-  time.timeZone = "America/Miami";
+  time.timeZone = "America/New_York";
 
   networking = {
     firewall = {
