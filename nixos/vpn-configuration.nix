@@ -79,7 +79,7 @@ in
       };
     };
     pi-hole = {
-      image = "pihole/pihole:2022.07.1";
+      image = "pihole/pihole:2022.11.2";
       volumes = [
         "pihole:/etc/pihole"
         # locally resolves to
