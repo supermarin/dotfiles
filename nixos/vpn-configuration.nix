@@ -19,15 +19,15 @@ in
     nat.externalInterface = networkInterface;
     nat.internalInterfaces = [ "wg0" ];
     firewall = {
-      allowedTCPPorts = [ 
-          53 # dns
-          22 # ssh
+      allowedTCPPorts = [
+        53 # dns
+        22 # ssh
       ];
-      allowedUDPPorts = [ 
-          53 # dns
-          51820 # wireguard
+      allowedUDPPorts = [
+        53 # dns
+        51820 # wireguard
       ];
-      interfaces.wg0.allowedTCPPorts = [ 
+      interfaces.wg0.allowedTCPPorts = [
         # 8052 # wallabag. Looks like podman automaticallly exposes this
         8053 # pi-hole
       ];
@@ -44,19 +44,23 @@ in
         '';
         privateKeyFile = "/wireguard/private";
         peers = [
-          { # simba
+          {
+            # simba
             publicKey = "1IhkeEMG1rBmUq3tg3st9lUmNBHC+yrGmCzC1QOwW2Q=";
             allowedIPs = [ "10.100.0.2/32" ];
           }
-          { # pixel
+          {
+            # pixel
             publicKey = "QyWh7GoD4YKQZ3BYR2/Gmn79pTOR/IHWQLPHbIzpvAU=";
             allowedIPs = [ "10.100.0.3/32" ];
           }
-          { # tokio
+          {
+            # tokio
             publicKey = "9zlfIRmvON2kTh1zi8A/xOfP9LSRGWX/SE3GC+8VDgQ=";
             allowedIPs = [ "10.100.0.4/32" ];
           }
-          { # boox
+          {
+            # boox
             publicKey = "DdbOf4jyx8AOGV7tFwUoszibrplRGB1lQPni16BzBGc=";
             allowedIPs = [ "10.100.0.5/32" ];
           }
