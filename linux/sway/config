@@ -105,7 +105,12 @@ for_window [title="floating_term"] floating enable
 for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays)"] {
   floating enable
   border none
-  assign 4
+}
+
+# Make some other apps float
+for_window [title="Signal"] {
+  floating enable
+  border none
 }
 
 ### Key bindings
