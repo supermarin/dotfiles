@@ -114,8 +114,9 @@
       swayidle # idle lock
       xdg-utils
       w3m # for ranger, email, ...
-      wl-clipboard # wl-copy, wl-paste
       wdisplays # TODO: fix no gl implementation available
+      wl-clipboard # wl-copy, wl-paste
+      wlsunset # night shift. Used in sway/config
       wob # indicator bar
     ];
     extraSessionCommands = ''
@@ -148,25 +149,6 @@
   virtualisation.spiceUSBRedirection.enable = true;
   services.spice-vdagentd.enable = true;
   virtualisation.docker.enable = true;
-
-  # Mail
-  systemd.user.services.mbsync = {
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-    };
-    script = ''
-      ${pkgs.isync}/bin/mbsync -a
-      ${pkgs.notmuch}/bin/notmuch new 
-    '';
-  };
-
-  systemd.user.timers.mbsync = {
-    wantedBy = [ "timers.target" ];
-    partOf = [ "mbsync.service" ];
-    timerConfig.OnUnitInactiveSec = "5m";
-    timerConfig.OnBootSec = "10s";
-  };
 
   nixpkgs.config.allowUnfree = true;
   nix = {
