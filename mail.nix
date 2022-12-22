@@ -1,12 +1,7 @@
 { pkgs, config, lib, ... }:
 
 # TODO: see if it makes sense to enable this on macOS later.
-lib.mkIf pkgs.stdenv.isLinux { 
-
-  home.packages = with pkgs; [
-    # home built aerc
-    vdirsyncer
-  ];
+lib.mkIf pkgs.stdenv.isLinux {
 
   programs.mbsync.enable = true;
   programs.msmtp.enable = true;
@@ -36,8 +31,8 @@ lib.mkIf pkgs.stdenv.isLinux {
         smtp.host = "smtp.mailbox.org";
         signature = {
           text = ''
-          SV BUTTERS
-          https://butte.rs
+            SV BUTTERS
+            https://butte.rs
           '';
           showSignature = "append";
         };
@@ -60,7 +55,7 @@ lib.mkIf pkgs.stdenv.isLinux {
         smtp.host = "smtp.fastmail.com";
         signature = {
           text = ''
-          Marin
+            Marin
           '';
           showSignature = "append";
         };
