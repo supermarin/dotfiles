@@ -27,7 +27,7 @@ metadata = ["displayname"]
 
 [storage contacts]
 type = "filesystem"
-fileext = ".vcs"
+fileext = ".vcf"
 path = "~/.contacts"
 
 [storage fastmail_contacts]
