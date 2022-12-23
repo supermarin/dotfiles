@@ -62,8 +62,8 @@ pkgs: {
     rerere.enabled = true;
     submodule.fetchJobs = 0;
   };
-  userName = "Marin Usalj";
-  userEmail = "marin2211@gmail.com";
+  userName = "Marin";
+  userEmail = "git@mar.in";
 }
 
 
