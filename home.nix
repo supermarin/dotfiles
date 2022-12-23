@@ -33,7 +33,6 @@ in
     fd
     firefox
     fzf
-    git
     gnupg
     helix
     htop
@@ -81,7 +80,7 @@ in
   services = mkIf isLinux (import ./home-services.nix pkgs).services;
   systemd = mkIf isLinux (import ./home-services.nix pkgs).systemd;
   programs.fish = import ./fish/fish.nix pkgs;
-  programs.git = import ./git.nix;
+  programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
   home.file.".sqliterc".text = builtins.readFile ./sqliterc;
   home.file.".ssh/config".text = builtins.readFile ./ssh/config;

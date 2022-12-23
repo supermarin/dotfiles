@@ -1,5 +1,6 @@
-{
+pkgs: {
   enable = true;
+  package = pkgs.gitFull;
   aliases = {
     a = "add --all";
     b = "branch";
@@ -29,7 +30,7 @@
     sd = "stash drop";
     su = "submodule update --recursive";
   };
-  ignores = [".DS_Store" "*.swp" "tags" ".vscode" "result"];
+  ignores = [ ".DS_Store" "*.swp" "tags" ".vscode" "result" ];
   extraConfig = {
     commit.verbose = true;
     core = {
