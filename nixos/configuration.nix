@@ -109,7 +109,6 @@
       rofi
       rofimoji
       slurp # screenshot: select a region in wayland
-      kitty # terminal
       swaylock # idle lock
       swayidle # idle lock
       xdg-utils
