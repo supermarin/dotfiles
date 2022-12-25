@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+while read line; do
+  awk -F ":" '
+  BEGIN { FS=":"; ORS="\t" }
+  /^FN/ {name=$2}
+  tolower($0) ~ /email/ {email=$2}
+  tolower($0) ~ /type=voice/ {phone=$2}
+  tolower($0) ~ /type=cell/ {phone=$2}
+  END {print email, "\t", name, "\t", phone}
+  ' $line
+  printf '\n'
+done < /dev/stdin;
