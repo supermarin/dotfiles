@@ -132,6 +132,7 @@
       inter # UI Sans
       source-serif-pro # Serif
       jetbrains-mono # mono
+      fira-code
       noto-fonts-emoji # emoji
       font-awesome # i3status-rust
     ];

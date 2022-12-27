@@ -72,7 +72,7 @@ in
     enable = true;
     theme = "Ir Black";
     font = {
-      name = "JetBrains Mono";
+      name = "Fira Code";
       size = 15;
     };
   };
