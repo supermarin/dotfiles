@@ -26,7 +26,6 @@ pkgs: {
     friendly-snippets
     # Tree-sitter
     nvim-treesitter.withAllGrammars
-    nvim-ts-rainbow
     # DAP
     nvim-dap
     nvim-dap-ui
