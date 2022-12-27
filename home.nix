@@ -82,13 +82,13 @@ in
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
-  home.file.".sqliterc".text = builtins.readFile ./sqliterc;
-  home.file.".ssh/config".text = builtins.readFile ./ssh/config;
-  xdg.configFile."i3status-rust/config.toml".text =
-    builtins.readFile ./linux/sway/i3status-rs/config.toml;
-  xdg.configFile."nvim/init.lua".text = builtins.readFile ./vim/init.lua;
-  xdg.configFile."rg/config".text = builtins.readFile ./rg/config;
-  xdg.configFile."sway/config".text = builtins.readFile ./linux/sway/config;
-  xdg.configFile."tig/config".text = builtins.readFile ./tig/config;
-  xdg.configFile."vdirsyncer/config".text = builtins.readFile ./vdirsyncer/config;
+  home.file.".sqliterc".source = ./sqliterc;
+  home.file.".ssh/config".source = ./ssh/config;
+  xdg.configFile."i3status-rust/config.toml".source =
+    ./linux/sway/i3status-rs/config.toml;
+  xdg.configFile."nvim/init.lua".source = ./vim/init.lua;
+  xdg.configFile."rg/config".source = ./rg/config;
+  xdg.configFile."sway/config".source = ./linux/sway/config;
+  xdg.configFile."tig/config".source = ./tig/config;
+  xdg.configFile."vdirsyncer/config".source = ./vdirsyncer/config;
 }
