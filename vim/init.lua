@@ -234,7 +234,7 @@ dap.configurations.go = {
   },
   {
     type = "delve",
-    name = "Test file",
+    name = "Debug test file",
     request = "launch",
     mode = "test",
     program = "${file}"
@@ -248,7 +248,7 @@ dap.configurations.go = {
   },
   {
     type = "delve",
-    name = "Test project (go.mod)",
+    name = "Debug test projct (go.mod)",
     request = "launch",
     mode = "test",
     program = "./${relativeFileDirname}"
@@ -257,14 +257,7 @@ dap.configurations.go = {
     name = "Attach to process",
     type = 'delve', -- Adjust this to match your adapter name (`dap.adapters.<name>`)
     request = 'attach',
-    pid = require('dap.utils').pick_process,
+    processId = require('dap.utils').pick_process,
     args = {},
-  },
-  {
-    name = "Attach to process",
-    type = 'delve', -- Adjust this to match your adapter name (`dap.adapters.<name>`)
-    request = 'attach',
-    pid = require('dap.utils').pick_process,
-    args = { 'pidof', 'aerc.debug', },
   },
 }
