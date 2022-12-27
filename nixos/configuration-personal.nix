@@ -51,7 +51,6 @@
   environment.systemPackages = with pkgs; [
     (neovim.override { vimAlias = true; })
     git
-    wallabag
   ];
 
   nix.gc = {
