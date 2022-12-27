@@ -1,14 +1,2 @@
 Host *
   AddKeysToAgent yes
-
-Host eric
-  Hostname 192.168.1.140
-  User marin
-
-Host vpn
-  User root
-  Hostname 104.248.7.113 
-
-Host butters
-  User pi
-  Hostname butters.local
