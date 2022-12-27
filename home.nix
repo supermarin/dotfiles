@@ -70,7 +70,7 @@ in
 
   programs.kitty = {
     enable = true;
-    theme = "Ir Black";
+    theme = "Pro";
     font = {
       name = "Fira Code";
       size = 15;
