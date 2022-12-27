@@ -1,6 +1,7 @@
 { hostname, nixpkgs, pkgs, ... }:
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  services.udisks2.enable = true; # needed for fwupdmgr -.-
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
