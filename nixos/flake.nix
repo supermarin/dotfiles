@@ -40,9 +40,9 @@
       packages.aarch64-linux = { tokio-vm = vm "aarch64-linux"; };
       packages.aarch64-darwin = { tokio-vm = vm "aarch64-linux"; };
       packages.x86_64-linux = {
-        personal = personal;
-        vpn = vpn;
-        tokio-vm = vm;
+        personal = personal "x86_64-linux";
+        vpn = vpn "x86_64-linux";
+        tokio-vm = vm "x86_64-linux";
       };
 
       # deploy.nodes.personal.profiles.system = {
