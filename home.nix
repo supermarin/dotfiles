@@ -62,7 +62,6 @@ in
     fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
     signal-desktop # Unsupported on aarch64-darwin as of Aug 10 2022
     tdesktop # telegram
-    thunderbird
     vdirsyncer # sync contacts & calendars
     vlc # Unsupported on aarch64-darwin as of Aug 10 2022
   ];
