@@ -1,4 +1,7 @@
 { hostname, nixpkgs, pkgs, ... }:
+let
+  vpn-ip = "45.79.169.48";
+in
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
   services.udisks2.enable = true; # needed for fwupdmgr -.-
@@ -26,18 +29,19 @@
       ];
     };
     hostName = hostname;
-    nameservers = [ "104.248.7.113" ];
+    nameservers = [ vpn-ip ];
     networkmanager.enable = true;
     wg-quick.interfaces = {
       wg0 = {
         address = [ "10.100.0.4/24" ];
         privateKeyFile = "/wg/private";
+        dns = [ vpn-ip ];
         listenPort = 51820;
         peers = [
           {
             publicKey = "qpt3/3sZrR9Jlw98l8FoPUjcgo1TvDk8eSFZjLyoNlc=";
             allowedIPs = [ "0.0.0.0/0" "::/0" ];
-            endpoint = "104.248.7.113:51820";
+            endpoint = "${vpn-ip}:51820";
           }
         ];
       };
