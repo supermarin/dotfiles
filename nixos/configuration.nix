@@ -119,7 +119,7 @@ in
       swayidle # idle lock
       xdg-utils
       w3m # for ranger, email, ...
-      wdisplays # TODO: fix no gl implementation available
+      wdisplays
       wl-clipboard # wl-copy, wl-paste
       wlsunset # night shift. Used in sway/config
       wob # indicator bar
