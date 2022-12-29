@@ -52,7 +52,6 @@ in
   ]
   ++ [
     # text editing (non-system) fonts
-    go-font
     jetbrains-mono
   ]
   ++ lib.optionals isDarwin [ ]
