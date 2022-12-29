@@ -106,12 +106,12 @@ in
       gnome.gnome-bluetooth # bluetooth-sendto for sending files
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
-      gnome.nautilus # file manager
       grim # wayland screenshot tool
       i3status-rust # Menu bar
       libnotify # notify-send
       mako # notification daemon
       mupdf
+      ranger
       rofi
       rofimoji
       slurp # screenshot: select a region in wayland

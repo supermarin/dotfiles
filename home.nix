@@ -87,6 +87,7 @@ in
   xdg.configFile."i3status-rust/config.toml".source =
     ./linux/sway/i3status-rs/config.toml;
   xdg.configFile."nvim/init.lua".source = ./vim/init.lua;
+  xdg.configFile."ranger/rc.conf".source = ./ranger/rc.conf;
   xdg.configFile."rg/config".source = ./rg/config;
   xdg.configFile."sway/config".source = ./linux/sway/config;
   xdg.configFile."tig/config".source = ./tig/config;
