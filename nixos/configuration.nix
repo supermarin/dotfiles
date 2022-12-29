@@ -35,7 +35,7 @@ in
       wg0 = {
         address = [ "10.100.0.4/24" ];
         privateKeyFile = "/wg/private";
-        dns = [ vpn-ip ];
+        dns = [ "10.100.0.1" ];
         listenPort = 51820;
         peers = [
           {
