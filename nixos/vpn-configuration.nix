@@ -1,23 +1,30 @@
-{ pkgs, modulesPath, ... }:
+{ pkgs, modulesPath, pubkeys, ... }:
 let
-  networkInterface = "ens3";
+  networkInterface = "eth0";
 in
 {
-  imports = [ (modulesPath + "/virtualisation/digital-ocean-config.nix") ];
-  virtualisation.digitalOcean.setSshKeys = false;
+  imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
+  ];
 
-  swapDevices = [{ device = "/swapfile"; size = 2048; }];
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  services.openssh.enable = true;
   users.users.root = {
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx9yl0N1u8n7nO3uZilfOGa/MtyFTfHsEgs8MDGAnAL supermarin@tokio" # tokio
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in" # simba
-    ];
+    openssh.authorizedKeys.keys = pubkeys;
   };
+
   networking = {
+    enableIPv6 = false;
+    useDHCP = false;
     hostName = "vpn";
     nat.enable = true;
     nat.externalInterface = networkInterface;
     nat.internalInterfaces = [ "wg0" ];
+    usePredictableInterfaceNames = false;
+    interfaces.eth0.useDHCP = true;
     firewall = {
       allowedTCPPorts = [
         53 # dns
@@ -83,11 +90,9 @@ in
       };
     };
     pi-hole = {
-      image = "pihole/pihole:2022.11.2";
+      image = "pihole/pihole:2022.12";
       volumes = [
         "pihole:/etc/pihole"
-        # locally resolves to
-        # /var/lib/containers/storage/volumes/dnsmasq
         "dnsmasq:/etc/dnsmasq.d"
       ];
       extraOptions = [
