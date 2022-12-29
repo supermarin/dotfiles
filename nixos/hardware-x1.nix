@@ -6,7 +6,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ 
+  imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
@@ -17,12 +17,12 @@
     "mem_sleep_default=deep"
   ];
 
-  fileSystems."/" = { 
+  fileSystems."/" = {
     device = "/dev/disk/by-uuid/a8b013cc-3a89-410c-9e1f-e8086b304f74";
     fsType = "ext4";
   };
 
-  fileSystems."/boot" = { 
+  fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/FE77-508B";
     fsType = "vfat";
   };
