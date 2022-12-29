@@ -4,7 +4,7 @@
   imports = [ (modulesPath + "/virtualisation/digital-ocean-config.nix") ];
   virtualisation.digitalOcean.setSshKeys = false;
 
-  swapDevices = [{device = "/swapfile"; size = 2048;}];
+  swapDevices = [{ device = "/swapfile"; size = 2048; }];
   boot.cleanTmpDir = true;
   networking.hostName = hostname;
   networking.firewall.allowedTCPPorts = [ 80 443 22 ];
