@@ -16,7 +16,6 @@ in
 
   home.sessionPath = [
     "$HOME/dotfiles/functions"
-    "$HOME/go/bin"
   ];
 
   imports = [
