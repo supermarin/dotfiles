@@ -7,8 +7,6 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-    # deploy-rs.url = "github:serokell/deploy-rs";
-    # deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, nixos-generators }:
@@ -44,16 +42,6 @@
         vpn = vpn "x86_64-linux";
         tokio-vm = vm "x86_64-linux";
       };
-
-      # deploy.nodes.personal.profiles.system = {
-      #   user = "root";
-      #   path = deploy-rs.lib.x86_64-linux.activate.nixos
-      #     self.nixosConfigurations.personal;
-      # };
-
-      # # This is highly advised, and will prevent many possible mistakes
-      # checks = builtins.mapAttrs
-      #   (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
