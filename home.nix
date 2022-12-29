@@ -33,10 +33,8 @@ in
     firefox
     fzf
     gnupg
-    helix
     htop
     jq
-    nodejs # for github copilot only
     oathToolkit # used for OTP
     obsidian
     pass
