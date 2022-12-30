@@ -19,29 +19,13 @@
         ];
         format = "qcow";
       };
-      vpn = nixos-generators.nixosGenerate {
-        modules = [
-          ./vpn-configuration.nix
-          { virtualisation.digitalOceanImage.compressionMethod = "bzip2"; }
-        ];
-        format = "do";
-      personal = nixos-generators.nixosGenerate {
-        modules = [
-          ./configuration-personal.nix
-          { virtualisation.digitalOceanImage.compressionMethod = "bzip2"; }
-        ];
-        format = "do";
-      };
     in
     {
       packages.aarch64-linux = { tokio-vm = vm "aarch64-linux"; };
       packages.aarch64-darwin = { tokio-vm = vm "aarch64-linux"; };
       packages.x86_64-linux = {
-        personal = personal "x86_64-linux";
-        vpn = vpn "x86_64-linux";
         tokio-vm = vm "x86_64-linux";
       };
-
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -61,9 +45,7 @@
               home-manager.users.supermarin = import ../home.nix;
             }
           ];
-          specialArgs = { hostname = "tokio"; };
         };
-
         pumba = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -78,7 +60,6 @@
           ];
           specialArgs = { hostname = "pumba"; nixpkgs = nixpkgs; };
         };
-
         pairing-vm = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./configuration-pairing.nix ];
@@ -86,15 +67,13 @@
         personal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./configuration-personal.nix ];
-          specialArgs = { nixpkgs = nixpkgs; hostname = "personal"; };
+          specialArgs = { nixpkgs = nixpkgs; };
         };
         vpn = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./vpn-configuration.nix ];
-          specialArgs = { hostname = "vpn"; };
+          modules = [ ./configuration-vpn.nix ./hardware-linode.nix ];
         };
       };
-
       darwinConfigurations = {
         simba = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
