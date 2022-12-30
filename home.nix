@@ -67,7 +67,7 @@ in
     theme = "Pro";
     font = {
       name = "JetBrains Mono";
-      size = 15;
+      size = 12;
     };
   };
 
