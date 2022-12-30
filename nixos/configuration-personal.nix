@@ -1,4 +1,4 @@
-{ config, pkgs, modulesPath, hostname, ... }:
+{ config, nixpkgs, pkgs, modulesPath, hostname, ... }:
 {
 
   imports = [ (modulesPath + "/virtualisation/digital-ocean-config.nix") ];
@@ -20,17 +20,14 @@
     passwordAuthentication = false;
     permitRootLogin = "no";
   };
-  
+
   users.mutableUsers = false;
   users.users = {
     git = {
       createHome = true;
       extraGroups = [ "wheel" ];
       isNormalUser = true;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx9yl0N1u8n7nO3uZilfOGa/MtyFTfHsEgs8MDGAnAL supermarin@tokio"
-      ];
+      openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix pkgs;
     };
   };
 

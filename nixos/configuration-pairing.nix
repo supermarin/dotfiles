@@ -23,10 +23,7 @@
     shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx9yl0N1u8n7nO3uZilfOGa/MtyFTfHsEgs8MDGAnAL marin@tokio"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in" # simba
-    ];
+    openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix pkgs;
     initialHashedPassword = "$6$PgFBt18zSpr/XWDq$jyemWbiOLzK5vQF.7aSYTQeW33SAfL6Ath31FZEDABVfXvo//K3VAcexXKVlmMYFxxzF9MUogUToEn/ABpOQX/";
   };
 

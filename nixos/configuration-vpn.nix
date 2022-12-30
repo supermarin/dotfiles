@@ -1,4 +1,4 @@
-{ pkgs, modulesPath, pubkeys, ... }:
+{ pkgs, modulesPath, ... }:
 let
   networkInterface = "eth0";
 in
@@ -13,7 +13,7 @@ in
 
   services.openssh.enable = true;
   users.users.root = {
-    openssh.authorizedKeys.keys = pubkeys;
+    openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix pkgs;
   };
 
   networking = {

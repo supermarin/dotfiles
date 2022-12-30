@@ -1,4 +1,4 @@
-{ hostname, nixpkgs, pkgs, ... }:
+{ hostname, nixpkgs, pkgs, pubkeys, ... }:
 let
   vpn-ip = "45.79.169.48";
 in
@@ -73,10 +73,7 @@ in
   users.users.supermarin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx9yl0N1u8n7nO3uZilfOGa/MtyFTfHsEgs8MDGAnAL supermarin@tokio"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB git@mar.in" # simba
-    ];
+    openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix pkgs;
   };
 
   environment.sessionVariables = {

@@ -25,7 +25,6 @@
           { virtualisation.digitalOceanImage.compressionMethod = "bzip2"; }
         ];
         format = "do";
-      };
       personal = nixos-generators.nixosGenerate {
         modules = [
           ./configuration-personal.nix
@@ -46,7 +45,7 @@
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { nixpkgs = nixpkgs; };
+          specialArgs = { hostname = "tokio"; nixpkgs = nixpkgs; };
           modules = [
             ./configuration.nix
             ./hardware-x1.nix
@@ -77,7 +76,7 @@
               home-manager.users.supermarin = import ../home.nix;
             }
           ];
-          specialArgs = { hostname = "pumba"; };
+          specialArgs = { hostname = "pumba"; nixpkgs = nixpkgs; };
         };
 
         pairing-vm = nixpkgs.lib.nixosSystem {
@@ -87,7 +86,7 @@
         personal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./configuration-personal.nix ];
-          specialArgs = { hostname = "personal"; };
+          specialArgs = { nixpkgs = nixpkgs; hostname = "personal"; };
         };
         vpn = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
