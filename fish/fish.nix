@@ -24,5 +24,11 @@ pkgs:
   functions = with builtins; {
     wo = readFile ./functions/wo.fish;
     fish_right_prompt = readFile ./functions/fish_right_prompt.fish;
+    la = ''
+      exa --octal-permissions --long --all --git $argv
+    '';
+    ssh = ''
+      kitty +kitten ssh $argv
+    '';
   };
 }
