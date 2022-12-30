@@ -34,13 +34,14 @@
     };
   };
 
-  services.nginx = with config.services; {
+  services.nginx = with config.services; rec {
     enable = true;
     virtualHosts."mar.in" = {
       forceSSL = true;
       enableACME = true;
       root = "/repos/mar.in/result/public";
     };
+    virtualHosts."supermar.in" = virtualHosts."mar.in";
     virtualHosts."butte.rs" = {
       forceSSL = true;
       enableACME = true;
