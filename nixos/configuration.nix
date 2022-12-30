@@ -66,13 +66,14 @@ in
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
+    pinentryFlavor = "tty";
   };
 
   programs.fish.enable = true;
   users.users.supermarin = {
     shell = pkgs.fish;
     isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
     openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix pkgs;
   };
 
