@@ -51,11 +51,24 @@
     git
   ];
 
-  nix.gc = {
-    automatic = true;
-    options = "--delete-older-than 30d";
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 7d";
+      dates = "weekly";
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ];
+    };
+    registry.nixpkgs.flake = nixpkgs;
+    settings = {
+      trusted-users = [ "git" ];
+    };
   };
-  nix.optimise.automatic = true;
 
   # don't touch
   system.stateVersion = "22.05";
