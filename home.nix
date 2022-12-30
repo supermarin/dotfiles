@@ -44,7 +44,7 @@ in
     sumneko-lua-language-server
     tig
     wormhole-william
-    zig
+    zig # why was this? for the compiler IIRC? TODO: delete if unused
   ]
   ++ [
     # text editing (non-system) fonts
