@@ -84,7 +84,6 @@ in
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
     file # file(1)
-    brave
     killall # killall(1)
     libreoffice
     unzip
@@ -97,7 +96,7 @@ in
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
-      gnome.gnome-bluetooth # bluetooth-sendto for sending files
+      #gnome.gnome-bluetooth # bluetooth-sendto for sending files
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
       fuzzel # rofi/dmenu for wayland
