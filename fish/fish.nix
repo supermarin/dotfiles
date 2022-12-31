@@ -13,7 +13,6 @@ pkgs:
       abbr nd nix develop
       abbr nr nix run
       abbr nrr nix run nixpkgs#
-      abbr nrs sudo nixos-rebuild switch
       abbr ns nix shell nixpkgs#
       abbr nsp nix-shell -p
       abbr nss nix search nixpkgs
