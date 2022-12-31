@@ -150,10 +150,17 @@ bindsym $mod+Shift+$right move right
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$left move left
 
-bindsym $mod+Control+Shift+$up move workspace to output up
-bindsym $mod+Control+Shift+$right move workspace to output right
-bindsym $mod+Control+Shift+$down move workspace to output down
-bindsym $mod+Control+Shift+$left move workspace to output left
+# Move workspace between monitors
+bindsym $mod+$mod2+$up move workspace to output up
+bindsym $mod+$mod2+$right move workspace to output right
+bindsym $mod+$mod2+$down move workspace to output down
+bindsym $mod+$mod2+$left move workspace to output left
+
+# Move windows between monitors
+bindsym $mod+$mod2+Ctrl+$up move window to output up
+bindsym $mod+$mod2+Ctrl+$right move window to output right
+bindsym $mod+$mod2+Ctrl+$down move window to output down
+bindsym $mod+$mod2+Ctrl+$left move window to output left
 
 # Try macos CMD+C|V|...
 # bindsym $mod+c exec 'wl-copy'
