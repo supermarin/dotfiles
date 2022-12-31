@@ -88,6 +88,7 @@ in
     libreoffice
     unzip
     virt-manager
+    gnome.adwaita-icon-theme
   ];
 
   # only for sway
