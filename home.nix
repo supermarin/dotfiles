@@ -69,6 +69,9 @@ in
       name = "JetBrains Mono";
       size = 12;
     };
+    settings = {
+      remember_window_size = false;
+    };
   };
 
   services = mkIf isLinux (import ./home-services.nix pkgs).services;
