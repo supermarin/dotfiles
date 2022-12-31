@@ -48,7 +48,7 @@ set $up k
 set $right l
 set $term kitty
 set $browser firefox
-set $menu "rofi -combi-modi window,drun,run,calc -show combi -show-icons"
+set $menu fuzzel
 
 ### Output configuration
 #

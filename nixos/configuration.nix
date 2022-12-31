@@ -100,13 +100,13 @@ in
       gnome.gnome-bluetooth # bluetooth-sendto for sending files
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
+      fuzzel # rofi/dmenu for wayland
       grim # wayland screenshot tool
       i3status-rust # Menu bar
       libnotify # notify-send
       mako # notification daemon
       mupdf
       ranger
-      rofi
       rofimoji
       slurp # screenshot: select a region in wayland
       swaylock # idle lock
