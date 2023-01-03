@@ -41,7 +41,7 @@ in
     ripgrep
     rnix-lsp
     slack
-    sqlite
+    sqlite-interactive
     sumneko-lua-language-server
     tig
     wormhole-william
