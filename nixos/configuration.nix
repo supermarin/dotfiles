@@ -98,7 +98,6 @@ in
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
-      #gnome.gnome-bluetooth # bluetooth-sendto for sending files
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
       fuzzel # rofi/dmenu for wayland
