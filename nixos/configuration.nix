@@ -106,8 +106,8 @@ in
       libnotify # notify-send
       mako # notification daemon
       mupdf
-      ranger
-      rofimoji
+      ranger # file browser
+      rofimoji # emoji picker, fuzzel doesn't support emoji
       slurp # screenshot: select a region in wayland
       swaylock # idle lock
       swayidle # idle lock
