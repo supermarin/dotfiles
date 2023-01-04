@@ -21,11 +21,11 @@
       };
     in
     {
-      packages.aarch64-linux = { tokio-vm = vm "aarch64-linux"; };
-      packages.aarch64-darwin = { tokio-vm = vm "aarch64-linux"; };
-      packages.x86_64-linux = {
-        tokio-vm = vm "x86_64-linux";
-      };
+      #packages.aarch64-linux = { tokio-vm = vm "aarch64-linux"; };
+      #packages.aarch64-darwin = { tokio-vm = vm "aarch64-linux"; };
+      #packages.x86_64-linux = {
+      #  tokio-vm = vm "x86_64-linux";
+      #};
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -71,6 +71,25 @@
           system = "x86_64-linux";
           modules = [ ./configuration-personal.nix ];
           specialArgs = { nixpkgs = nixpkgs; };
+        };
+        tokio-vm = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { nixpkgs = nixpkgs; };
+          modules = [
+            ./configuration-vm.nix
+            ./hardware-utm.nix
+            {
+              boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+            }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.marin.imports = [
+                ../home.nix
+              ];
+            }
+          ];
         };
         vpn = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

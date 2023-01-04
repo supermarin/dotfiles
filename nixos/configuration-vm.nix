@@ -1,12 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, nixpkgs, ... }:
+let
+  vpn-ip = "45.79.169.48";
+in
 {
-  #boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-  };
-
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   time.timeZone = "America/Guadeloupe";
 
   networking = {
@@ -16,6 +16,43 @@
       ];
     };
     hostName = "tokio-vm";
+    nameservers = [ vpn-ip ];
+    # networkmanager.enable = true;
+    # wg-quick.interfaces = {
+    #   wg0 = {
+    #     address = [ "10.100.0.4/24" ];
+    #     privateKeyFile = "/wg/private";
+    #     dns = [ "10.100.0.1" ];
+    #     listenPort = 51820;
+    #     peers = [
+    #       {
+    #         publicKey = "qpt3/3sZrR9Jlw98l8FoPUjcgo1TvDk8eSFZjLyoNlc=";
+    #         allowedIPs = [ "0.0.0.0/0" "::/0" ];
+    #         endpoint = "${vpn-ip}:51820";
+    #       }
+    #     ];
+    #   };
+    # };
+  };
+
+  hardware.video.hidpi.enable = true;
+  services.xserver = {
+    enable = true;
+    dpi = 220;
+
+    desktopManager.xterm.enable = false;
+    displayManager = {
+      defaultSession = "none+i3";
+      lightdm.enable = true;
+    };
+    windowManager.i3 = {
+      enable = true;
+      package = pkgs.i3-gaps;
+      extraPackages = with pkgs; [
+        dmenu
+        rofi
+      ];
+    };
   };
 
   services.avahi = {
@@ -30,68 +67,35 @@
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
+    pinentryFlavor = "tty";
   };
 
   programs.fish.enable = true;
-  users.users.supermarin = {
+  users.users.marin = {
     shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
     openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix pkgs;
-    initialHashedPassword = "$6$Hb6ndAxg4esaVOjz$TouriSv6Ea0KaUbftzM76X2fMenAcrpJcImrpYPOJEiVBPyvEgJYVTHnIZvukDc3bZlT/Ed46ckDpsxi1n2.R1";
   };
   security.sudo.wheelNeedsPassword = false;
 
+  environment.pathsToLink = [ "/libexec" ];
   environment.variables.LIBGL_ALWAYS_SOFTWARE = "1";
   environment.sessionVariables = {
     EDITOR = "vim";
-    QT_QPA_PLATFORM = "wayland";
     XKB_DEFAULT_OPTIONS = "ctrl:nocaps,altwin:swap_lalt_lwin";
   };
 
-  # Only put system software in here, e.g. stuff that is installed by
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
-    brave
     file # file(1)
-    helix
-    git
+    gnome.adwaita-icon-theme
     killall # killall(1)
     libreoffice
     unzip
-    vim
+    virt-manager
+    zip
   ];
-
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    wrapperFeatures.base = true;
-    extraPackages = with pkgs; [
-      gnome.gnome-bluetooth # bluetooth-sendto for sending files
-      blueberry # Bluetooth devices management gui
-      brightnessctl # Brightness control
-      grim # wayland screenshot tool
-      i3status-rust # Menu bar
-      libnotify # notify-send
-      mako # notification daemon
-      mupdf
-      rofi
-      rofimoji
-      slurp # screenshot: select a region in wayland
-      kitty # terminal
-      swaylock # idle lock
-      swayidle # idle lock
-      xdg-utils
-      w3m # for ranger, email, ...
-      wl-clipboard # wl-copy, wl-paste
-      wob # indicator bar
-    ];
-    extraSessionCommands = ''
-      export MOZ_ENABLE_WAYLAND=1
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-    '';
-  };
 
   fonts = {
     enableDefaultFonts = false;
@@ -99,6 +103,7 @@
       inter # UI Sans
       source-serif-pro # Serif
       jetbrains-mono # mono
+      fira-code
       noto-fonts-emoji # emoji
       font-awesome # i3status-rust
     ];
@@ -113,11 +118,29 @@
   };
 
   # Virtualisation
+  virtualisation.spiceUSBRedirection.enable = true;
   services.spice-vdagentd.enable = true;
+
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnsupportedSystem = true;
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    gc = {
+      automatic = true;
+      dates = "monthly";
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "monthly" ];
+    };
+    registry.nixpkgs.flake = nixpkgs;
+    settings = {
+      trusted-users = [ "marin" ]; # enable nix-copy-closure
+    };
+  };
 
   # don't touch
-  system.stateVersion = "22.05";
+  system.stateVersion = "22.11";
 }
 
