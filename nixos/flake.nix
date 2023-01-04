@@ -77,7 +77,7 @@
           specialArgs = { nixpkgs = nixpkgs; };
           modules = [
             ./configuration-vm.nix
-            ./hardware-utm.nix
+            ./hardware-parallels.nix
             {
               boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
             }

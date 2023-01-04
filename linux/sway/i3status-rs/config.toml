@@ -23,15 +23,15 @@ icons_format = ""
 block = "memory"
 format_mem = "{mem_used;M}"
 
-[[block]]
-block = "sound"
-format = ""
+# [[block]]
+# block = "sound"
+# format = ""
 
-[[block]]
-block = "bluetooth"
-mac = "84:5C:F3:93:79:42"
-on_click = "blueberry"
-format_unavailable = ""
+# [[block]]
+# block = "bluetooth"
+# mac = "84:5C:F3:93:79:42"
+# on_click = "blueberry"
+# format_unavailable = ""
 
 [[block]]
 block = "networkmanager"

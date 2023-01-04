@@ -4,10 +4,20 @@ let
 in
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  time.timeZone = "America/Guadeloupe";
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
+  #boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
+  # Bootloader.
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
+
+  services.getty.autologinUser = "marin";
+
+
+
+  time.timeZone = "America/NewYork";
 
   networking = {
     firewall = {
@@ -38,7 +48,6 @@ in
   hardware.video.hidpi.enable = true;
   services.xserver = {
     enable = true;
-    dpi = 220;
 
     desktopManager.xterm.enable = false;
     displayManager = {
@@ -51,6 +60,9 @@ in
       extraPackages = with pkgs; [
         dmenu
         rofi
+        redshift
+        xdg-utils
+        i3status-rust
       ];
     };
   };
