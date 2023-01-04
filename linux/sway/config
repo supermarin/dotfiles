@@ -3,6 +3,7 @@ default_border pixel 2
 gaps inner 7
 smart_borders on
 smart_gaps on
+seat seat0 xcursor_theme Adwaita 24
 
 # # Set colors
 set $c_black #111111
