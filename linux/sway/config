@@ -117,7 +117,7 @@ for_window [title="Signal"] {
 ### Key bindings
 #
 # Start a terminal
-bindsym $mod+Return workspace 3; exec $term
+bindsym $mod+Return exec $term
 bindsym $mod+t      workspace 3; exec pgrep $term || $term
 # NetworkManager connect
 bindsym $mod+Shift+w exec $term --title floating_term nmtui-connect
