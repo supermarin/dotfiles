@@ -84,11 +84,12 @@ in
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
     file # file(1)
+    gnome.adwaita-icon-theme
     killall # killall(1)
     libreoffice
     unzip
     virt-manager
-    gnome.adwaita-icon-theme
+    zip
   ];
 
   # only for sway
