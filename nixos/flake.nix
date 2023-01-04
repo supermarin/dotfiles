@@ -42,7 +42,10 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.supermarin = import ../home.nix;
+              home-manager.users.supermarin.imports = [
+                ../home.nix
+                ../home-services.nix
+              ];
             }
           ];
         };

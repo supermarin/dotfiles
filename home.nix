@@ -74,8 +74,6 @@ in
     };
   };
 
-  services = mkIf isLinux (import ./home-services.nix pkgs).services;
-  systemd = mkIf isLinux (import ./home-services.nix pkgs).systemd;
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
