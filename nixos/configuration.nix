@@ -12,6 +12,7 @@ in
     efiSupport = true;
   };
 
+  home-manager.useGlobalPkgs = true;
   hardware.pulseaudio.enable = true;
   sound.enable = true;
   hardware.bluetooth.enable = true; # enables bluez
@@ -115,7 +116,6 @@ in
       w3m # for ranger, email, ...
       wdisplays
       wl-clipboard # wl-copy, wl-paste
-      wlsunset # night shift. Used in sway/config
       wob # indicator bar
     ];
     extraSessionCommands = ''
