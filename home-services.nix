@@ -2,8 +2,6 @@
 {
   services = {
     syncthing.enable = true;
-
-    # Night shift
     wlsunset = {
       enable = true;
       latitude = "40.7";

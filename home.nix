@@ -19,10 +19,6 @@ in
     "$HOME/dotfiles/functions"
   ];
 
-  imports = [
-    ./mail.nix
-  ];
-
   home.packages = with pkgs; [
     age
     bat # used in `e` for live preview of files

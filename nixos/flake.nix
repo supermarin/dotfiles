@@ -45,6 +45,7 @@
               home-manager.users.supermarin.imports = [
                 ../home.nix
                 ../home-services.nix
+                ../mail.nix
               ];
             }
           ];
