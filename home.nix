@@ -60,7 +60,7 @@ in
 
   programs.kitty = {
     enable = true;
-    theme = "Pro";
+    theme = "Tomorrow Night Bright";
     font = {
       name = "JetBrains Mono";
       size = 12;
