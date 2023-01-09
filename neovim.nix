@@ -23,7 +23,6 @@ pkgs: {
     # Snippets
     luasnip
     cmp_luasnip
-    friendly-snippets
     # Tree-sitter
     nvim-treesitter.withAllGrammars
     # DAP
