@@ -4,6 +4,7 @@ pkgs: {
   viAlias = true;
   plugins = with pkgs.vimPlugins; [
     # Core editor functionality
+    comment-nvim
     editorconfig-nvim
     nvim-autopairs
     vim-visual-multi
@@ -14,7 +15,6 @@ pkgs: {
     plenary-nvim
     # Misc
     gitsigns-nvim
-    vim-commentary
     vim-fugitive
     vim-repeat
     vim-surround

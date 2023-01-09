@@ -140,7 +140,8 @@ require("luasnip.loaders.from_vscode").lazy_load()
 require('nvim-treesitter.configs').setup {
   highlight = { enable = true },
 }
-
+-- comment
+require('Comment').setup()
 
 
 -------------------------------------------------------------------------------
