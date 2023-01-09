@@ -26,7 +26,7 @@ in
     diffr # used in git stuff
     exa # ls with stuff
     fd
-    firefox
+    firefox-bin
     fzf
     gnupg
     htop
