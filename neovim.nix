@@ -7,6 +7,7 @@ pkgs: {
     comment-nvim
     editorconfig-nvim
     nvim-autopairs
+    vim-surround
     vim-visual-multi
     # Colorschemes
     gruvbox-nvim
@@ -17,7 +18,6 @@ pkgs: {
     gitsigns-nvim
     vim-fugitive
     vim-repeat
-    vim-surround
     vim-test
     which-key-nvim
     # Snippets
