@@ -35,7 +35,6 @@
             ./hardware-x1.nix
             {
               # services.tlp.enable = true; # disabled since GNOME has it's own
-              services.fwupd.enable = true;
               boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
             }
             home-manager.nixosModules.home-manager
@@ -53,16 +52,10 @@
         pumba = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./configuration.nix
+            ./configuration-pn50.nix
             ./hardware-pn50.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.supermarin = import ../home.nix;
-            }
           ];
-          specialArgs = { hostname = "pumba"; nixpkgs = nixpkgs; };
+          specialArgs = { nixpkgs = nixpkgs; };
         };
         pairing-vm = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

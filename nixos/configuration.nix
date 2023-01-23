@@ -1,9 +1,10 @@
-{ hostname, nixpkgs, pkgs, pubkeys, ... }:
+{ hostname, nixpkgs, pkgs, ... }:
 let
   vpn-ip = "45.79.169.48";
 in
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  services.fwupd.enable = true;
   services.udisks2.enable = true; # needed for fwupdmgr -.-
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
