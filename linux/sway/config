@@ -9,8 +9,15 @@ seat seat0 xcursor_theme Adwaita 24
 set $c_black #111111
 set $c_darkgrey #222222
 set $c_lightgrey #DEDEDE
+# accent colors from macos
+# https://developer.apple.com/design/human-interface-guidelines/foundations/color
 set $c_grey #64727D
-set $c_accent $c_grey
+set $c_blue #0084ff
+set $c_green #34c759
+set $c_orange #ff9f0a
+set $c_pink #ff375f
+set $c_teal #40c8e0
+set $c_accent $c_orange
 
 # class                 border     background  text         indicator  child_border
 client.focused          $c_accent  $c_accent   $c_lightgrey $c_accent  $c_accent
