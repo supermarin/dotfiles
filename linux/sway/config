@@ -67,10 +67,7 @@ output $laptop {
   scale 1.25
 }
 
-output "Goldstar Company Ltd LG UltraFine 806NTJJ3B908" {
-  mode 5120x2880
-  scale 1.5
-}
+output DP-4 disable
 
 # Turn off laptop monitor when lid is down
 bindswitch --reload --locked lid:on output $laptop disable
