@@ -1,9 +1,6 @@
-pkgs:
+[
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEStWVGTSqu2acHbyOaiDfMvnzg5AGi7FtZOQrbG7gB"
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEjIPKi8CPxCnwSbNZK1yXVhWDtKCZTQA3r3mgk++ukr"
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx9yl0N1u8n7nO3uZilfOGa/MtyFTfHsEgs8MDGAnAL" # tokio
+]
 
-let
-  authorizedKeys = pkgs.fetchurl {
-    url = "https://github.com/supermarin.keys";
-    sha256 = "sha256-Qi1Ikzk2LzhY+laFpM+Bkk0CA+uF/fRDFPp1ZOqZ/CA=";
-  };
-in
-pkgs.lib.splitString "\n" (builtins.readFile authorizedKeys)

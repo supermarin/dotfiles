@@ -73,7 +73,7 @@ in
     shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
-    openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix pkgs;
+    openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix;
   };
 
   environment.sessionVariables = {
