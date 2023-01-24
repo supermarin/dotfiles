@@ -67,6 +67,10 @@ output $laptop {
   scale 1.25
 }
 
+output 'Apple Computer Inc StudioDisplay 0x0000FF20' {
+    pos 0 0
+}
+
 output DP-4 disable
 
 # Turn off laptop monitor when lid is down
