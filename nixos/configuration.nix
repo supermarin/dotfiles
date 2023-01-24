@@ -103,6 +103,7 @@ in
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
       fuzzel # rofi/dmenu for wayland
+      galculator
       grim # wayland screenshot tool
       i3status-rust # Menu bar
       libnotify # notify-send
