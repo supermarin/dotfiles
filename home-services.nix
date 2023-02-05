@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
   services = {
-    syncthing.enable = true;
     wlsunset = {
       enable = true;
       latitude = "40.7";
