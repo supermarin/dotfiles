@@ -31,7 +31,7 @@ in
       ];
     };
     hostName = hostname;
-    nameservers = [ vpn-ip ];
+    nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;
     wg-quick.interfaces = {
       wg0 = {
