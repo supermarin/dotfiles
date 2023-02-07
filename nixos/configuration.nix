@@ -152,8 +152,20 @@ in
 
   nixpkgs.config.allowUnfree = true;
   nix = {
+    buildMachines = [
+      {
+        hostName = "pumba.local";
+        sshUser = "marin";
+        sshKey = "/home/supermarin/.ssh/nix_remote";
+        system = "x86_64-linux";
+        speedFactor = 10;
+        supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      }
+    ];
+    distributedBuilds = true;
     extraOptions = ''
       experimental-features = nix-command flakes
+      builders-use-substitutes = true
     '';
     gc = {
       automatic = true;
