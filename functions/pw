@@ -1,21 +1,17 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-(
-    set -euo pipefail
-    cd $PASSWORD_STORE_DIR/Password
+cd $PASSWORD_STORE_DIR/Password
+file=$(fd --type f | $FUZZY)
+IFS=$'\n'
+contents=$(age -d -i <(age-plugin-yubikey -i) "$file")
 
-    IFS=$'\n'
-    file=${1:-"$(rg --files | fzf)"}
-    contents=$(gpg --decrypt --quiet "$file")
+password=$(head -n 1 <<< $contents)
+username=$(grep username: <<< $contents)
 
-    paswd=$(printf "%s" "$contents" | head -n 1)
-    login=$(printf "%s" "$contents" | grep username:)
+pbcopy <<< "${username#username: }"
+echo "Username copied to the clipboard. Press Enter when ready."
 
-    printf "%s" "${login#username: }" | pbcopy
-    printf "%s" "Username copied to the clipboard. Press Enter when ready."
-
-    #shellcheck disable=2034
-    read -r enter
-    printf "%s" "$paswd" | pbcopy
-    echo "Password copied to the clipboard. Make sure you trash it."
-)
+read -r enter
+pbcopy <<< $password
+echo "Password copied to the clipboard. Make sure you trash it."

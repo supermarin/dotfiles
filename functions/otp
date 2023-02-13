@@ -1,27 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# if [[ $# -ne 1 ]]; then
-#   echo "Not sure what to do with $#"
-#   echo "Usage: $0 [name]"
-#   exit 1
-# fi
+account=$(ls $OTPDIR | fzf)
+file="$OTPDIR/$account"
 
-
-whichlogin=$(ls $OTPDIR | fzf)
-encryptedfile="$OTPDIR/$whichlogin"
-
-if [[ ! -f "$encryptedfile" ]]; then
-  echo "Unknown file: $encryptedfile"
+if [[ ! -f "$file" ]]; then
+  echo "Unknown file: $file"
   exit 1
 fi
 
-# TODO: properly get PK out
-#       this will ask for password interactively.
-value=$(age -d -i ~/.age/otp-ssh "$encryptedfile")
+
+value=$(age -d -i <(age-plugin-yubikey -i) "$file")
 code=$(oathtool --base32 --totp "$value")
 echo "Code: $code"
 
 # copy to clipboard
 echo $code | pbcopy
-echo "OTP $whichlogin copied to the clipboard."
+echo "OTP $account copied to the clipboard."

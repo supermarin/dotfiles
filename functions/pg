@@ -1,13 +1,15 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S sh -c 'nix shell nixpkgs#{bash,openssl} -c bash "$0" "$@"'
+
+[[ $# -ne 1 ]] &&  echo "Usage: $(basename $0) https://example.com" && exit 1 
 
 protocol="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
 url="$(echo ${1/$protocol/})"
 user="$(echo $url | grep @ | cut -d@ -f1)"
 host="$(echo ${url/$user@/} | cut -d/ -f1)"
-
 hostwithdomain=$(echo $host | rev | cut -d. -f1-2 | rev)
 name=${hostwithdomain/.*/}
 capitalized="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})${name:1}"
+
 echo -n "Name for the new password [$capitalized]: "
 read -r input 
 if [[ -n $input ]]; then
@@ -18,4 +20,10 @@ else
     pwname=$capitalized
 fi
 
-pass insert --multiline "Password/$host/$pwname"
+
+file=$PASSWORD_STORE_DIR/Password/$host/$pwname
+mkdir -p -v $(dirname $file)
+
+age -R $AGE_RECIPIENTS_FILE -o $file <(openssl rand -base64 24)
+source helpers.sh
+cmd_edit "$file"

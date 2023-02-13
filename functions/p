@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-(
-    set -euo pipefail
-    cd $PASSWORD_STORE_DIR/Password
-    file=$(rg --files | $FUZZY)
-    contents=$(gpg --quiet --decrypt $file | head -n 1)
-    echo -n $contents | pbcopy
-)
+cd $PASSWORD_STORE_DIR/Password
+file=$(fd --type f | $FUZZY)
+
+age -d -i <(age-plugin-yubikey -i) "$file" | head -n 1 | pbcopy

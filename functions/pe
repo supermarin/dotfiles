@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
+set -euo pipefail
+cd $PASSWORD_STORE_DIR
+file=$(fd --type f | $FUZZY)
 
-(
-    set -euo pipefail
-    cd $PASSWORD_STORE_DIR
-    file=$(rg --files | $FUZZY)
-    pass edit "${file%.gpg}"
-)
+source helpers.sh
+cmd_edit "$file"

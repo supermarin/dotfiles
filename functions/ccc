@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-(
-    set -euo pipefail
-    cd $PASSWORD_STORE_DIR/Credit-Card
+cd $PASSWORD_STORE_DIR/Credit-Card
+file=$(fd --type f | $FUZZY)
 
-    cc_data=$(gpg --decrypt --quiet "$(rg --files | $FUZZY)")
-    cc_num=$(echo "$cc_data" | grep '^number' | sed 's/number: //')
+cc_data=$(age -d -i <(age-plugin-yubikey -i) "$file")
+grep '^number' <<< "$cc_data" | sed 's/number: //' | pbcopy
 
-    printf "%s" "$cc_num" | pbcopy
-    echo "Copied $cc_num to clipboard"
-    echo "$cc_data"
-)
+echo "$cc_data"

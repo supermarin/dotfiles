@@ -21,6 +21,8 @@ in
 
   home.packages = with pkgs; [
     age
+    age-plugin-yubikey-nightly
+
     bat # used in `e` for live preview of files
     coreutils # used for `shred`
     diffr # used in git stuff
@@ -75,7 +77,7 @@ in
   programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
   home.file.".sqliterc".source = ./sqliterc;
-  home.file.".ssh/config".source = ./ssh/config;
+  # home.file.".ssh/config".source = ./ssh/config;
   xdg.configFile."i3status-rust/config.toml".source =
     ./linux/sway/i3status-rs/config.toml;
   xdg.configFile."nvim/init.lua".source = ./vim/init.lua;
