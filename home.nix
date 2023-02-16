@@ -52,7 +52,7 @@ in
   ]
   ++ lib.optionals isDarwin [ ]
   ++ lib.optionals isLinux [
-    # brave # https://github.com/NixOS/nixpkgs/pull/98853/files
+    brave # https://github.com/NixOS/nixpkgs/pull/98853/files
     calcurse # calendar
     # calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022
     fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
