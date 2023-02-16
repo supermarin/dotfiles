@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+age -R $AGE_RECIPIENTS_FILE "$@"
