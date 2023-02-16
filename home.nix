@@ -77,7 +77,6 @@ in
   programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
   home.file.".sqliterc".source = ./sqliterc;
-  # home.file.".ssh/config".source = ./ssh/config;
   xdg.configFile."i3status-rust/config.toml".source =
     ./linux/sway/i3status-rs/config.toml;
   xdg.configFile."nvim/init.lua".source = ./vim/init.lua;
