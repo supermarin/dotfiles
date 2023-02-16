@@ -43,7 +43,6 @@ pkgs: {
       indentHeuristic = true;
       "plist".textconv = "plutil -convert xml1 -o -";
       "png".diff = "exif";
-      "gpg".textconv = "gpg --no-tty --decrypt";
     };
     github.user = "supermarin";
     interactive.diffFilter = "diffr";
