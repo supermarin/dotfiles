@@ -3,14 +3,18 @@ vim.keymap.set('n', 'gh', '^')
 vim.keymap.set('n', 'gl', '$')
 vim.keymap.set('n', '<cr>', ':noh<cr>')
 vim.keymap.set('v', 'p', '"_dP') -- Unfuck paste in visual mode
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
-vim.keymap.set('n', "J", "mzJ`z")
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>') -- Escape in terminal
+vim.keymap.set('n', "J", "mzJ`z") -- Preserve cursor pos when joining lines
 vim.keymap.set('n', '<c-j>', ':m +1<cr>==') -- move line down, keep indent
 vim.keymap.set('n', '<c-k>', ':m -2<cr>==') -- move line up, keep indent
-vim.keymap.set('v', 'J', ":m '>+1<cr>gv=gv") -- move visual up, keep indent
-vim.keymap.set('v', 'K', ":m '<-2<cr>gv=gv") -- move visual down, keep indent
+vim.keymap.set('v', '<c-j>', ":m '>+1<cr>gv=gv") -- move visual up, keep indent
+vim.keymap.set('v', '<c-k>', ":m '<-2<cr>gv=gv") -- move visual down, keep indent
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- center after going down
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- center after going up
+vim.api.nvim_create_user_command('WQ', 'wq', {}) -- halp
+vim.api.nvim_create_user_command('Wq', 'wq', {}) -- halp
+vim.api.nvim_create_user_command('Q', 'q', {}) -- halp
+vim.api.nvim_create_user_command('W', 'w', {}) -- halp
 
 local tabspaces = 2
 vim.opt.background = 'dark'
