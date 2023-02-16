@@ -4,4 +4,4 @@ set -euo pipefail
 cd $PASSWORD_STORE_DIR/Password
 file=$(fd --type f | $FUZZY)
 
-age -d -i <(age-plugin-yubikey -i) "$file" | head -n 1 | pbcopy
+age-decrypt "$file" | head -n 1 | pbcopy

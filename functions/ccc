@@ -4,7 +4,7 @@ set -euo pipefail
 cd $PASSWORD_STORE_DIR/Credit-Card
 file=$(fd --type f | $FUZZY)
 
-cc_data=$(age -d -i <(age-plugin-yubikey -i) "$file")
+cc_data=$(age-decrypt "$file")
 grep '^number' <<< "$cc_data" | sed 's/number: //' | pbcopy
 
 echo "$cc_data"

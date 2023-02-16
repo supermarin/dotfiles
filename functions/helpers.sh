@@ -52,29 +52,25 @@ cmd_edit() {
   [[ $# -ne 1 ]] && die "Usage: $PROGRAM pass-name"
 
   local path="${1%/}"
-  check_sneaky_paths "$path"
+  # check_sneaky_paths "$path"
 
   tmpdir #Defines $SECURE_TMPDIR
   local tmp_file="$(mktemp -u "$SECURE_TMPDIR/XXXXXX")-${path//\//-}.txt"
 
   if [[ -f $path ]]; then
-    age -d -i <(age-plugin-yubikey -i) -o "$tmp_file" "$path" || exit 1
+    age-decrypt "$path" > "$tmp_file" || exit 1
   else
     die "Can't find $path"
   fi
 
   ${EDITOR:-vi} "$tmp_file"
   [[ -f $tmp_file ]] || die "New password not saved."
-  age -i $id -d "$path" 2>/dev/null | diff - "$tmp_file" &>/dev/null && die "Password unchanged."
+  age-decrypt "$path" | diff - "$tmp_file" &>/dev/null && die "Password unchanged."
 
   tmpencrypted="$tmp_file.tmp"
-  age -R $AGE_RECIPIENTS_FILE -o "$tmpencrypted" "$tmp_file"
+  age-encrypt "$tmp_file" > "$tmpencrypted"
   mv "$tmpencrypted" "$path"
 }
-
-if [ -z $AGE_RECIPIENTS_FILE ]; then
-  die "Missing ENV: AGE_RECIPIENTS_FILE"
-fi
 
 if [ ! $(which shred) ] || [ ! $(which age) ]; then
   die "Dependencies are not installed"

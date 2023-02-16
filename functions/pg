@@ -24,6 +24,6 @@ fi
 file=$PASSWORD_STORE_DIR/Password/$host/$pwname
 mkdir -p -v $(dirname $file)
 
-age -R $AGE_RECIPIENTS_FILE -o $file <(openssl rand -base64 24)
+age-encrypt -o $file <(openssl rand -base64 24)
 source helpers.sh
 cmd_edit "$file"

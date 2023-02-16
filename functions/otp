@@ -10,7 +10,7 @@ if [[ ! -f "$file" ]]; then
 fi
 
 
-value=$(age -d -i <(age-plugin-yubikey -i) "$file")
+value=$(age-decrypt "$file")
 code=$(oathtool --base32 --totp "$value")
 echo "Code: $code"
 

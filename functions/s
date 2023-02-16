@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
 cd $PASSWORD_STORE_DIR
 file=$(fd --type f | $FUZZY)
-
-age -d -i <(age-plugin-yubikey -i) "$file"
+age-decrypt "$file"
