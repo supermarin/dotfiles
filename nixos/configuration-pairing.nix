@@ -12,11 +12,19 @@
   };
 
   environment.systemPackages = with pkgs; [
+    (neovim.override { viAlias = true; vimAlias = true; })
+    bat # used in `e` for live preview of files
+    coreutils # used for `shred`
+    fd
+    fzf
+    git
+    micro
     ripgrep
-    (neovim.override { vimAlias = true; })
     ruby_3_1
-    tmux
+    sqlite-interactive
+    tig
     tmate
+    tmux
   ];
 
   users.users.marin = {
