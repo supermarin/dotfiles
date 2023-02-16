@@ -65,10 +65,6 @@ in
 
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryFlavor = "tty";
-  };
 
   programs.fish.enable = true;
   users.users.marin = {
