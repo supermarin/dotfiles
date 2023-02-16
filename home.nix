@@ -66,7 +66,7 @@ in
     theme = "Tomorrow Night Bright";
     font = {
       name = "JetBrains Mono";
-      size = 12;
+      size = 11;
     };
     settings = {
       remember_window_size = false;
