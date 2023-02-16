@@ -13,7 +13,7 @@ in
 
   services.openssh.enable = true;
   users.users.root = {
-    openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix pkgs;
+    openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix;
   };
 
   networking = {
@@ -27,16 +27,20 @@ in
     interfaces.eth0.useDHCP = true;
     firewall = {
       allowedTCPPorts = [
-        53 # dns
-        22 # ssh
+        # 53 # dns
       ];
       allowedUDPPorts = [
-        53 # dns
+        # 53 # dns
         51820 # wireguard
       ];
       interfaces.wg0.allowedTCPPorts = [
-        # 8052 # wallabag. Looks like podman automaticallly exposes this
+        8052 # wallabag
         8053 # pi-hole
+        53 # dns
+        22 # ssh
+      ];
+      interfaces.wg0.allowedUDPPorts = [
+        53 # dns
       ];
     };
     wireguard.interfaces = {

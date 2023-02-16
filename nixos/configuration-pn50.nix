@@ -33,7 +33,7 @@
   users.users.marin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix;
   };
 
@@ -47,9 +47,16 @@
   environment.systemPackages = with pkgs; [
     alacritty
     file # file(1)
+    git
+    htop
+    jq
     killall # killall(1)
+    (neovim.override { viAlias = true; vimAlias = true; })
+    sqlite-interactive
+    tmux
+    unzip
+    zip
   ];
-
 
   nixpkgs.config.allowUnfree = true;
   nix = {

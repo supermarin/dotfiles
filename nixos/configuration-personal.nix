@@ -27,7 +27,7 @@
       createHome = true;
       extraGroups = [ "wheel" ];
       isNormalUser = true;
-      openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix pkgs;
+      openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix;
     };
   };
 
