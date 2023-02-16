@@ -86,4 +86,7 @@ in
   xdg.configFile."sway/config".source = ./linux/sway/config;
   xdg.configFile."tig/config".source = ./tig/config;
   xdg.configFile."vdirsyncer/config".source = ./vdirsyncer/config;
+  # Hacks / check temporarily if issues get fixed and remove
+  # This is here because of https://github.com/FiloSottile/yubikey-agent/issues/92
+  home.file.".gnupg/gpg-agent.conf".text = "pinentry-program ${pkgs.pinentry-qt}/bin/pinentry";
 }
