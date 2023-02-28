@@ -66,7 +66,9 @@ vim.api.nvim_create_autocmd('TermOpen', {
 })
 
 -- Colorscheme
-vim.cmd [[colorscheme gruvbox]]
+-- vim.cmd [[colorscheme gruvbox]]
+vim.g.everforest_background = 'hard'
+vim.cmd [[colorscheme everforest]]
 
 -- Completion & snippets
 local luasnip = require("luasnip")
