@@ -71,7 +71,10 @@ output 'Apple Computer Inc StudioDisplay 0x0000FF20' {
     pos 0 0
 }
 
-output DP-4 disable
+output 'LG Electronics LG UltraFine 806NTJJ3B908' {
+  scale 2
+  mode 2560x2880@60.000Hz
+}
 
 # Turn off laptop monitor when lid is down
 bindswitch --reload --locked lid:on output $laptop disable
