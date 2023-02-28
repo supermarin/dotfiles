@@ -19,6 +19,33 @@
           ./configuration-vm.nix
         ];
         format = "qcow";
+      khal-overlay = final: prev: {
+        khal-nightly = prev.khal.overrideAttrs (drv: rec {
+          version = "nightly";
+          src = prev.fetchFromGitHub {
+            owner = "pimutils";
+            repo = "khal";
+            rev = "395a396d1396fa08cdb346d190a9a8a8a5ee9885";
+            sha256 = "sha256-bBKPXu4pxGJqQ9Y1V4IwYBMKauxKWkaUJb/qcAAPlFA=";
+          };
+          patches = [ ];
+          doCheck = false;
+        });
+      };
+      age-yubi-overlay = final: prev: {
+        age-plugin-yubikey-nightly = prev.age-plugin-yubikey.overrideAttrs (drv: rec {
+          version = "nightly";
+          src = prev.fetchFromGitHub {
+            owner = "str4d";
+            repo = "age-plugin-yubikey";
+            rev = "bf437663af22ba6492fc738d3e1bdf6d6cc2a00a";
+            sha256 = "sha256-iqEzwi34E6lPcaDyvzNbc6KH2uuQzouJ6K2MbhPdK1c=";
+          };
+          cargoDeps = drv.cargoDeps.overrideAttrs (_: {
+            inherit src;
+            outputHash = "sha256-tSZiHZdZKSfKtlerHoEXNrpYWIcWowWnhKG6DHXe5GA=";
+          });
+        });
       };
     in
     {

@@ -35,6 +35,7 @@ in
     gnupg
     htop
     jq
+    khal-nightly
     oathToolkit # used for OTP
     obsidian
     pass
@@ -80,6 +81,7 @@ in
   home.file.".sqliterc".source = ./sqliterc;
   xdg.configFile."i3status-rust/config.toml".source =
     ./linux/sway/i3status-rs/config.toml;
+  xdg.configFile."khal/config".source = ./khal/config;
   xdg.configFile."nvim/init.lua".source = ./vim/init.lua;
   xdg.configFile."ranger/rc.conf".source = ./ranger/rc.conf;
   xdg.configFile."rg/config".source = ./rg/config;
