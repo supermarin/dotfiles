@@ -36,7 +36,6 @@
             ./hardware-x1.nix
             {
               # services.tlp.enable = true; # disabled since GNOME has it's own
-              boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
             }
             home-manager.nixosModules.home-manager
             {

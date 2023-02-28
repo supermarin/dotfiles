@@ -12,6 +12,7 @@ in
     device = "nodev";
     efiSupport = true;
   };
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   home-manager.useGlobalPkgs = true;
   hardware.pulseaudio.enable = true;
