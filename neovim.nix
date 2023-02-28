@@ -10,6 +10,7 @@ pkgs: {
     vim-surround
     vim-visual-multi
     # Colorschemes
+    everforest
     gruvbox-nvim
     # Telescope
     telescope-nvim
