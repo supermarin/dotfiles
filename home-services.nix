@@ -45,7 +45,6 @@
         ExecStart = ''
           ${pkgs.calcurse}/bin/calcurse --daemon
         '';
-        KeepAlive = true;
       };
       Install = {
         WantedBy = [ "multi-user.target" ];
