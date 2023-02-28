@@ -1,1 +1,3 @@
 *.plist diff=plist
+age/* filter=age
+secrets/* filter=age
