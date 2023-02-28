@@ -20,7 +20,7 @@ set $c_teal #40c8e0
 set $c_accent $c_orange
 
 # class                 border     background  text         indicator  child_border
-client.focused          $c_accent  $c_accent   $c_lightgrey $c_accent  $c_accent
+client.focused          $c_black   $c_accent   $c_darkgrey    $c_accent  $c_accent
 client.focused_inactive $c_black   $c_darkgrey $c_lightgrey $c_black   $c_black
 client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
 
