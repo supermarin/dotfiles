@@ -14,3 +14,6 @@
 .gnupg/*
 !.gnupg/gpg.conf
 !.gnupg/gpg-agent.conf
+
+# VMs
+*.qcow2
