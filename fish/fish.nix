@@ -26,8 +26,5 @@ pkgs:
     la = ''
       exa --octal-permissions --long --all --git $argv
     '';
-    ssh = ''
-      kitty +kitten ssh $argv
-    '';
   };
 }
