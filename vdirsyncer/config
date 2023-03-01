@@ -1,23 +1,22 @@
 [general]
 status_path = "~/.config/vdirsyncer/status"
 
-#[pair caldav]
-#a = "fastmail_calendar"
-#b = "calendars"
-#collections = ["from a", "from b"]
-#metadata = ["displayname", "color"]
-#
-#[storage fastmail_calendar]
-#type = "caldav"
-## url = "https://caldav.fastmail.com/dav/calendars/user/supermarin@imap.cc/AA71E002-3C25-4566-91B3-01E87BEF391B"
-#url = "https://caldav.fastmail.com"
-#username = "supermarin@imap.cc"
-#password.fetch = ["command", "age", "-i", "/home/supermarin/.age/pk.age", "-d", "/home/supermarin/.age/caldav.age"]
-#
-#[storage calendars]
-#type = "filesystem"
-#fileext = ".ics"
-#path = "~/.calendars"
+[pair caldav]
+a = "fastmail_calendar"
+b = "calendars"
+collections = ["from a", "from b"]
+metadata = ["displayname", "color"]
+
+[storage fastmail_calendar]
+type = "caldav"
+url = "https://caldav.fastmail.com"
+username = "supermarin@imap.cc"
+password.fetch = ["command", "age", "-i", "/home/supermarin/.age/pk.age", "-d", "/home/supermarin/.age/caldav.age"]
+
+[storage calendars]
+type = "filesystem"
+fileext = ".ics"
+path = "~/.calendars"
 
 [pair carddav]
 a = "fastmail_contacts"
@@ -35,4 +34,3 @@ type = "carddav"
 url = "https://carddav.fastmail.com/"
 username = "supermarin@imap.cc"
 password.fetch = ["command", "age", "-i", "/home/supermarin/.age/pk.age", "-d", "/home/supermarin/.age/dav.age"]
-
