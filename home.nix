@@ -62,6 +62,15 @@ in
     vlc # Unsupported on aarch64-darwin as of Aug 10 2022
   ];
 
+  programs.wezterm = {
+    enable = true;
+    extraConfig = ''
+      return {
+        color_scheme = "Tomorrow Night Bright",
+      }
+    '';
+  };
+
   programs.kitty = {
     enable = true;
     theme = "Tomorrow Night Bright";
