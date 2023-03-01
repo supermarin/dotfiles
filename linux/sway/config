@@ -76,6 +76,11 @@ output 'LG Electronics LG UltraFine 806NTJJ3B908' {
   mode 2560x2880@60.000Hz
 }
 
+output 'LG Electronics LG UltraFine 806NTVS9V703' {
+    scale 2 
+    transform 270
+}
+
 # Turn off laptop monitor when lid is down
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
