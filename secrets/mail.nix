@@ -1,8 +1,6 @@
 { pkgs, config, lib, ... }:
-
 # TODO: see if it makes sense to enable this on macOS later.
 lib.mkIf pkgs.stdenv.isLinux {
-
   programs.mbsync.enable = true;
   programs.msmtp.enable = true;
   programs.mu.enable = true;
@@ -10,7 +8,6 @@ lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
     new.tags = [ "new" ];
   };
-
   accounts.email = {
     maildirBasePath = ".mail";
     accounts = {
@@ -25,6 +22,7 @@ lib.mkIf pkgs.stdenv.isLinux {
         };
         realName = "SV BUTTERS";
         address = "info@butte.rs";
+        aliases = [ "*@butte.rs" ];
         userName = "butters@mailbox.org";
         passwordCommand = "${pkgs.age}/bin/age -i ~/.age/pk.age -d ~/.age/btrs.age";
         imap.host = "imap.mailbox.org";
@@ -39,6 +37,10 @@ lib.mkIf pkgs.stdenv.isLinux {
       };
       fastmail = {
         msmtp.enable = true;
+        msmtp.extraConfig = {
+          # from = "*@mar.in";
+          syslog = "on";
+        };
         notmuch.enable = true;
         mu.enable = true;
         mbsync = {
@@ -48,7 +50,8 @@ lib.mkIf pkgs.stdenv.isLinux {
         };
         primary = true;
         realName = "Marin Usalj";
-        address = "m@supermar.in";
+        address = "marin@mar.in";
+        aliases = [ "*@mar.in" ];
         userName = "supermarin@imap.cc";
         passwordCommand = "${pkgs.age}/bin/age -i ~/.age/pk.age -d ~/.age/fm.age";
         imap.host = "imap.fastmail.com";
@@ -56,32 +59,11 @@ lib.mkIf pkgs.stdenv.isLinux {
         signature = {
           text = ''
             Marin
+            https://mar.in
           '';
           showSignature = "append";
         };
       };
-      # sailefx = {
-      #   msmtp.enable = true;
-      #   notmuch.enable = true;
-      #   mu.enable = true;
-      #   mbsync = {
-      #     enable = true;
-      #     create = "both";
-      #     expunge = "both";
-      #   };
-      #   realName = "Marin Usalj";
-      #   address = "marin@sailefx.com";
-      #   userName = "marin@sailefx.com";
-      #   passwordCommand = "age -i $HOME/.age/pk.age -d $HOME/.age/sfx.age";
-      #   imap.host = "imap.zoho.com";
-      #   smtp.host = "smtp.zoho.com";
-      #   signature = {
-      #     text = ''
-      #     Marin
-      #     '';
-      #     showSignature = "append";
-      #   };
-      # };
     };
   };
 }
