@@ -39,18 +39,6 @@
       };
     };
 
-    # Calendar
-    services.calcurse = {
-      Service = {
-        ExecStart = ''
-          ${pkgs.calcurse}/bin/calcurse --daemon
-        '';
-      };
-      Install = {
-        WantedBy = [ "multi-user.target" ];
-      };
-    };
-
     # Vdirsyncer
     services.vdirsyncer = {
       Service = {
