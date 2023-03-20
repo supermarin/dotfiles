@@ -1,54 +1,68 @@
 [theme]
-name = "native"
+theme = "native"
 [icons]
-name = "awesome"
+icons = "awesome6"
 
 [theme.overrides]
 critical_fg = "#FF5555"
 warning_fg = "#F96A02"
 
 [[block]]
+block = "external_ip"
+format = "$ip"
+
+[[block]]
 block = "custom"
-on_click = "swaymsg scratchpad show"
 command = '''n=$(notmuch count --output=threads 'path:/.*/Inbox/' 2>/dev/null); test $n -ne 0 && echo -e "\uf0e0 $n"'''
 hide_when_empty = true
 shell = "bash"
+[[block.click]]
+button = "left"
+cmd = "swaymsg scratchpad show"
 
 [[block]]
 block = "cpu"
-format = "{barchart}"
-icons_format = ""
+format = "$barchart"
+
+[[block]]
+block = "custom"
+command = '''cat /sys/firmware/acpi/platform_profile'''
+shell = "bash"
 
 [[block]]
 block = "memory"
-format_mem = "{mem_used;M}"
+format = " $icon $mem_used"
+format_alt = " $icon $mem_total_used_percents"
 
 [[block]]
 block = "sound"
-format = ""
+format = "$icon"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
 
 [[block]]
 block = "bluetooth"
 mac = "84:5C:F3:93:79:42"
-on_click = "blueberry"
-format_unavailable = ""
+[[block.click]]
+button = "left"
+cmd = "blueberry"
 
 [[block]]
-block = "networkmanager"
-on_click = "kitty --title floating_term nmtui connect"
-ap_format = "{ssid}"
-device_format = "{icon}{ap}"
-interface_name_exclude = ["virbr[0-9]", "br\\-[0-9a-f]{12}", "docker\\d+"]
+block = "net"
+format = "$icon {$ssid}"
+[[block.click]]
+button = "left"
+cmd = "kitty --title floating_term nmtui connect"
 
 [[block]]
 block = "battery"
 interval = 10
-format = "{percentage}"
-hide_missing = true
 
 [[block]]
 block = "time"
 interval = 60
-format = "%a %b %-d %R"
-on_click = "gnome-clocks"
-icons_format = ""
+format = "$timestamp.datetime(f:'%a %b %-d %R')"
+[[block.click]]
+button = "left"
+cmd = "gnome-clocks"
