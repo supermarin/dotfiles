@@ -16,7 +16,7 @@
   timedelta = 7d
 
 [locale]
-  dateformat = "%a, %b %d."
+  dateformat = "%a, %b %d. %Y"
   datetimeformat = "%b %d. %H:%M"
   longdateformat = "%b %d. %Y"
   longdatetimeformat = "%b %d. %Y %H:%M"
