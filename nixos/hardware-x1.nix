@@ -32,5 +32,4 @@
   ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave"; # TODO: should we remove this?
-  hardware.video.hidpi.enable = lib.mkDefault true;
 }
