@@ -134,15 +134,17 @@ for_window [title="Signal"] {
 #
 # Start a terminal
 bindsym $mod+Return exec $term
-bindsym $mod+t      workspace 3; exec pgrep $term || $term
+bindsym $mod+t workspace 3; exec pgrep $term || $term
 # NetworkManager connect
-bindsym $mod+Shift+w exec $term --title floating_term nmtui-connect
+bindsym $mod+w exec $term --title floating_term nmtui-connect
 # Emoji
 bindsym $mod+Ctrl+Space exec rofimoji
 # File manager
 bindsym $mod+e exec nautilus --new-window
 # Start a browser
 bindsym $mod+b workspace 2; exec pgrep $browser || $browser
+# Switch to Obsidian
+bindsym $mod+o workspace 1; exec ps ax | grep -v grep | grep obsidian || obsidian
 # Kill focused window
 bindsym $mod+q kill
 # Start launcher
