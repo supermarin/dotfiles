@@ -76,9 +76,18 @@ output 'LG Electronics LG UltraFine 806NTJJ3B908' {
   mode 2560x2880@60.000Hz
 }
 
+# 21" Ultrafine
+output 'LG Electronics LG UltraFine 612NTAB2R080' {
+  mode 4096x2304@60.000Hz
+  scale 2
+  pos 0 0
+}
+
+# 21" Ultrafine
 output 'LG Electronics LG UltraFine 806NTVS9V703' {
-    scale 2 
-    transform 270
+  mode 4096x2304@60.000Hz
+  scale 2 
+  pos 0 2304 
 }
 
 # Turn off laptop monitor when lid is down
