@@ -124,12 +124,6 @@ for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays|galcu
   border none
 }
 
-# Make some other apps float
-for_window [title="Signal"] {
-  floating enable
-  border none
-}
-
 ### Key bindings
 #
 # Start a terminal
