@@ -22,7 +22,7 @@ cmd = "swaymsg scratchpad show"
 
 [[block]]
 block = "cpu"
-format = "$barchart"
+format = "$barchart $frequency"
 
 [[block]]
 block = "custom"
