@@ -292,3 +292,4 @@ set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 # TODO: figure out why these two can't go in the same line, and fix the initial bar showing on sway load
 exec mkfifo $WOBSOCK
 exec tail -f $WOBSOCK | wob
+exec udiskie

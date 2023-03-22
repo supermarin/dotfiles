@@ -112,6 +112,7 @@ in
       slurp # screenshot: select a region in wayland
       swaylock # idle lock
       swayidle # idle lock
+      udiskie # auto mount usb media
       xdg-utils
       w3m # for ranger, email, ...
       wdisplays
