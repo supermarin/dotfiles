@@ -169,17 +169,8 @@ bindsym $mod+$mod2+$right move workspace to output right
 bindsym $mod+$mod2+$down move workspace to output down
 bindsym $mod+$mod2+$left move workspace to output left
 
-# Move windows between monitors
-bindsym $mod+$mod2+Ctrl+$up move window to output up
-bindsym $mod+$mod2+Ctrl+$right move window to output right
-bindsym $mod+$mod2+Ctrl+$down move window to output down
-bindsym $mod+$mod2+Ctrl+$left move window to output left
-
-# Try macos CMD+C|V|...
-# bindsym $mod+c exec 'wl-copy'
-# bindsym $mod+v wl-paste
-
 # Workspaces:
+#
 # Switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
