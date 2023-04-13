@@ -92,17 +92,15 @@ cmp.setup({
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
-  sources = cmp.config.sources({
+  sources = {
+    { name = 'copilot' },
     { name = 'nvim_lsp_signature_help' },
-  }, {
     { name = 'nvim_lsp' },
-  }, {
     { name = 'luasnip' },
-  }, {
     { name = 'buffer' },
-  }),
+  },
   mapping = {
-    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs( -4), { 'i', 'c' }),
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<C-y>'] = cmp.config.disable,
