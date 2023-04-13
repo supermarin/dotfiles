@@ -12,7 +12,7 @@
   security.sudo.wheelNeedsPassword = false;
   security.acme = {
     acceptTerms = true;
-    defaults.email = "admin+acme@mar.in"; # TODO: switch to mar.in
+    defaults.email = "admin+acme@mar.in";
   };
 
   services.openssh = {
