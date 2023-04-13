@@ -22,61 +22,58 @@ in
     hostName = "vpn";
     nat.enable = true;
     nat.externalInterface = networkInterface;
-    nat.internalInterfaces = [ "wg0" ];
+    nat.internalInterfaces = [ "tailscale0" ];
     usePredictableInterfaceNames = false;
     interfaces.eth0.useDHCP = true;
     firewall = {
+      checkReversePath = "loose"; # for Tailscale
       allowedTCPPorts = [
       ];
       allowedUDPPorts = [
         51820 # wireguard
       ];
-      interfaces.wg0.allowedTCPPorts = [
+      interfaces.tailscale0.allowedTCPPorts = [
         8052 # wallabag
         8053 # pi-hole
         53 # dns
         22 # ssh
       ];
-      interfaces.wg0.allowedUDPPorts = [
+      interfaces.tailscale0.allowedUDPPorts = [
         53 # dns
       ];
     };
-    wireguard.interfaces = {
-      wg0 = {
-        ips = [ "10.100.0.1/24" ];
-        listenPort = 51820;
-        postSetup = ''
-          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ${networkInterface} -j MASQUERADE
-        '';
-        postShutdown = ''
-          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ${networkInterface} -j MASQUERADE
-        '';
-        privateKeyFile = "/wireguard/private";
-        peers = [
-          {
-            # simba
-            publicKey = "1IhkeEMG1rBmUq3tg3st9lUmNBHC+yrGmCzC1QOwW2Q=";
-            allowedIPs = [ "10.100.0.2/32" ];
-          }
-          {
-            # pixel
-            publicKey = "QyWh7GoD4YKQZ3BYR2/Gmn79pTOR/IHWQLPHbIzpvAU=";
-            allowedIPs = [ "10.100.0.3/32" ];
-          }
-          {
-            # tokio
-            publicKey = "9zlfIRmvON2kTh1zi8A/xOfP9LSRGWX/SE3GC+8VDgQ=";
-            allowedIPs = [ "10.100.0.4/32" ];
-          }
-          {
-            # boox
-            publicKey = "DdbOf4jyx8AOGV7tFwUoszibrplRGB1lQPni16BzBGc=";
-            allowedIPs = [ "10.100.0.5/32" ];
-          }
-        ];
-      };
-    };
   };
+
+  services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "server";
+  # create a oneshot job to authenticate to Tailscale
+  systemd.services.tailscale-autoconnect = {
+    description = "Automatic connection to Tailscale";
+
+    # make sure tailscale is running before trying to connect to tailscale
+    after = [ "network-pre.target" "tailscaled.service" ];
+    wants = [ "network-pre.target" "tailscaled.service" ];
+    wantedBy = [ "multi-user.target" ];
+
+    # set this service as a oneshot job
+    serviceConfig.Type = "oneshot";
+
+    # have the job run this shell script
+    script = with pkgs; ''
+      # wait for tailscaled to settle
+      sleep 2
+
+      # check if we are already authenticated to tailscale
+      status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
+      if [ $status = "Running" ]; then # if so, then do nothing
+        exit 0
+      fi
+
+      # otherwise authenticate with tailscale
+      ${tailscale}/bin/tailscale up -authkey ${secrets.tailscale.vpn.authkey} --advertise-exit-node
+    '';
+  };
+
   virtualisation.oci-containers.containers = {
     wallabag = {
       image = "wallabag/wallabag";
