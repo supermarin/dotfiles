@@ -34,6 +34,7 @@
 
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
+  programs.fish.enable = true;
 
   users.users.marin = {
     shell = pkgs.fish;
