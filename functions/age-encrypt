@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
+>&2 echo "age-encrypt called! ${ARGV[@]}"
 age -R $AGE_RECIPIENTS_FILE "$@"

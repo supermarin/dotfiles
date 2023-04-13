@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
+>&2 echo "age-decrypt called! ${ARGV[@]}"
 if [ -z $AGE_RECIPIENTS_FILE ]; then
   echo "Missing ENV: AGE_RECIPIENTS_FILE"
   exit 1
