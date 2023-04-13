@@ -20,16 +20,7 @@
   time.timeZone = "America/New_York";
 
   networking = {
-    firewall = {
-      allowedTCPPorts = [
-        22 # ssh
-        3333 # sailefx
-        8080 # calibre
-      ];
-      allowedUDPPorts = [
-        51820 # vpn
-      ];
-    };
+    firewall = secrets.firewall.tokio;
     hostName = "tokio";
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;

@@ -20,7 +20,7 @@
   time.timeZone = "America/New_York";
 
   networking = {
-    firewall.allowedTCPPorts = [ 22 ];
+    firewall = secrets.firewall.pumba;
     hostName = "pumba";
     networkmanager.enable = true;
   };
