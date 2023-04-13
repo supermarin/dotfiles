@@ -1,4 +1,4 @@
-{ hostname, nixpkgs, pkgs, ... }:
+{ config, nixpkgs, pkgs, secrets, lgultrafine, ... }:
 let
   vpn-ip = "45.79.169.48";
 in
@@ -87,6 +87,7 @@ in
     gnome.adwaita-icon-theme
     killall # killall(1)
     libreoffice
+    lgultrafine
     unzip
     virt-manager
     zip
