@@ -78,25 +78,6 @@
           modules = [ ./configuration-personal.nix ];
           specialArgs = { nixpkgs = nixpkgs; };
         };
-        tokio-vm = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { nixpkgs = nixpkgs; };
-          modules = [
-            ./configuration-vm.nix
-            ./hardware-utm.nix
-            {
-              boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-            }
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.marin.imports = [
-                ../home.nix
-              ];
-            }
-          ];
-        };
         vpn = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./configuration-vpn.nix ./hardware-linode.nix ];
