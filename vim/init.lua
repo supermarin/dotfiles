@@ -223,6 +223,7 @@ vim.keymap.set("n", "<leader>du", ":lua require'dapui'.toggle()<CR>")
 
 require('dapui').setup()
 require('nvim-dap-virtual-text').setup()
+require('dap-python').setup()
 local dap = require('dap')
 
 dap.adapters.delve = {
@@ -268,5 +269,17 @@ dap.configurations.go = {
     request = 'attach',
     processId = require('dap.utils').pick_process,
     args = {},
+  },
+}
+
+dap.configurations.python = {
+  {
+    type = 'python',
+    request = 'launch',
+    name = "Launch file",
+    program = "${file}",
+    -- pythonPath = function()
+    --   return '/usr/bin/env python'
+    -- end,
   },
 }
