@@ -169,18 +169,20 @@ local on_attach = function(client, bufnr)
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  -- LSP go to - the only exception for LSP namespace.
   vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { silent = true })
   vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { silent = true })
   vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { silent = true })
-  vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { silent = true })
-  vim.keymap.set('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { silent = true })
-  vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', { silent = true })
-  vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', { silent = true })
-  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { silent = true })
-  vim.keymap.set('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { silent = true })
-  vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', { silent = true })
-  vim.keymap.set('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', { silent = true })
-  vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.lsp.buf.document_diagnostics()<cr>', { silent = true })
+  -- LSP namespace
+  vim.keymap.set('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>le', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { silent = true })
+  vim.keymap.set('n', '<leader>lh', '<cmd>lua vim.lsp.buf.hover()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>lR', '<cmd>lua vim.lsp.buf.rename()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>ldd', '<cmd>lua vim.lsp.buf.document_diagnostics()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>ldn', '<cmd>lua vim.diagnostic.goto_prev()<cr>', { silent = true })
+  vim.keymap.set('n', '<leader>ldp', '<cmd>lua vim.diagnostic.goto_next()<cr>', { silent = true })
 end
 
 
