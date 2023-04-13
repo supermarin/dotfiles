@@ -14,6 +14,8 @@
 
   services.fwupd.enable = true;
   services.udisks2.enable = true; # needed for fwupdmgr -.-
+  services.yubikey-agent.enable = true;
+  services.pcscd.enable = true;
 
   time.timeZone = "America/New_York";
 
