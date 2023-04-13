@@ -127,7 +127,8 @@ in
   fonts = {
     enableDefaultFonts = false;
     fonts = with pkgs; [
-      inter # UI Sans
+      # inter-head # UI Sans
+      (import ../fonts/sfpro.nix { pkgs = pkgs; })
       source-serif-pro # Serif
       jetbrains-mono # mono
       fira-code
@@ -137,7 +138,7 @@ in
     fontconfig = {
       defaultFonts = {
         serif = [ "Source Serif Pro" ];
-        sansSerif = [ "Inter" ];
+        sansSerif = [ "SF Pro Display" ];
         monospace = [ "JetBrainsMono" ];
         emoji = [ "Noto" ];
       };
