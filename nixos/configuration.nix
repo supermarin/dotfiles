@@ -18,7 +18,6 @@ in
   };
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  home-manager.useGlobalPkgs = true;
   hardware.pulseaudio.enable = true;
   sound.enable = true;
   hardware.bluetooth.enable = true; # enables bluez
