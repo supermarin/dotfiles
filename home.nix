@@ -31,10 +31,12 @@ in
     fd
     firefox-bin
     fzf
-    gnupg
+    gnumake
+    helix
     htop
     jq
     khal-nightly
+    nodejs-slim-16_x # for copilot
     oathToolkit # used for OTP
     obsidian
     pass
