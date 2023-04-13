@@ -1,4 +1,4 @@
-{ pkgs, modulesPath, ... }:
+{ pkgs, modulesPath, secrets, ... }:
 let
   networkInterface = "eth0";
 in

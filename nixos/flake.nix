@@ -72,6 +72,7 @@
         vpn = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./configuration-vpn.nix ./hardware-linode.nix ];
+          specialArgs = { secrets = secrets; };
         };
       };
       darwinConfigurations = {
