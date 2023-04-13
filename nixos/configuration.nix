@@ -36,6 +36,8 @@
   };
 
   programs.fish.enable = true;
+
+  # needed for printer discovery on the network
   services.avahi = {
     enable = true;
     publish.enable = true;
