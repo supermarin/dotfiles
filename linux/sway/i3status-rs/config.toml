@@ -18,7 +18,7 @@ cmd = "swaymsg scratchpad show"
 
 [[block]]
 block = "cpu"
-format = "$barchart $max_frequency"
+format = "$barchart"
 
 [[block]]
 block = "custom"
