@@ -105,7 +105,7 @@ in
       grim # wayland screenshot tool
       i3status-rust # Menu bar
       libnotify # notify-send
-      mako # notification daemon
+      swaynotificationcenter # notification daemon
       mupdf
       ranger # file browser
       rofimoji # emoji picker, fuzzel doesn't support emoji

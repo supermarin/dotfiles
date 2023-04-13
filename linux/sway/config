@@ -154,8 +154,8 @@ bindsym $mod+q kill
 bindsym $mod+Space exec $menu
 # Reload the configuration file
 bindsym $mod+Shift+c reload
-# Open the last notification
-bindsym $mod+n exec makoctl invoke
+# Toggle notification control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 # Moving around:
@@ -280,7 +280,7 @@ exec systemctl --user start sway-session.target
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 # Startup commands
-exec mako
+exec swaync
 
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 # TODO: figure out why these two can't go in the same line, and fix the initial bar showing on sway load
