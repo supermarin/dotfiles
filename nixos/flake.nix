@@ -19,6 +19,7 @@
           ./configuration-vm.nix
         ];
         format = "qcow";
+      secrets = import ../secrets/syncthing.nix;
       khal-overlay = final: prev: {
         khal-nightly = prev.khal.overrideAttrs (drv: rec {
           version = "nightly";
@@ -42,7 +43,7 @@
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { hostname = "tokio"; nixpkgs = nixpkgs; };
+          specialArgs = { nixpkgs = nixpkgs; secrets = secrets; };
           modules = [
             ./configuration.nix
             ./hardware-x1.nix
@@ -57,7 +58,7 @@
               home-manager.users.supermarin.imports = [
                 ../home.nix
                 ../home-services.nix
-                ../mail.nix
+                ../secrets/mail.nix
               ];
             }
           ];
@@ -68,7 +69,7 @@
             ./configuration-pn50.nix
             ./hardware-pn50.nix
           ];
-          specialArgs = { nixpkgs = nixpkgs; };
+          specialArgs = { nixpkgs = nixpkgs; secrets = secrets; };
         };
         pairing-vm = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
