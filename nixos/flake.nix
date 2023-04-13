@@ -32,21 +32,6 @@
           doCheck = false;
         });
       };
-      age-yubi-overlay = final: prev: {
-        age-plugin-yubikey-nightly = prev.age-plugin-yubikey.overrideAttrs (drv: rec {
-          version = "nightly";
-          src = prev.fetchFromGitHub {
-            owner = "str4d";
-            repo = "age-plugin-yubikey";
-            rev = "bf437663af22ba6492fc738d3e1bdf6d6cc2a00a";
-            sha256 = "sha256-iqEzwi34E6lPcaDyvzNbc6KH2uuQzouJ6K2MbhPdK1c=";
-          };
-          cargoDeps = drv.cargoDeps.overrideAttrs (_: {
-            inherit src;
-            outputHash = "sha256-tSZiHZdZKSfKtlerHoEXNrpYWIcWowWnhKG6DHXe5GA=";
-          });
-        });
-      };
     in
     {
       #packages.aarch64-linux = { tokio-vm = vm "aarch64-linux"; };

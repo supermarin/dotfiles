@@ -22,7 +22,7 @@ in
 
   home.packages = with pkgs; [
     age
-    age-plugin-yubikey-nightly
+    age-plugin-yubikey
 
     bat # used in `e` for live preview of files
     coreutils # used for `shred`
