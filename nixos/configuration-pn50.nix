@@ -30,6 +30,9 @@
     publish.workstation = true;
     publish.addresses = true;
     nssmdns = true;
+  services.syncthing = secrets.syncthing "pumba" // {
+    extraOptions.options.gui.enabled = false;
+    user = "marin";
   };
 
   services.openssh.enable = true;
