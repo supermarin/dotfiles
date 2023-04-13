@@ -23,7 +23,6 @@
     firewall.allowedTCPPorts = [ 22 ];
     hostName = "pumba";
     networkmanager.enable = true;
-    # nameservers = [ "1.1.1.1" ];
   };
 
   services.syncthing = secrets.syncthing "pumba" // {
