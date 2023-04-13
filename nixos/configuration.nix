@@ -33,21 +33,6 @@
     hostName = hostname;
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;
-    wg-quick.interfaces = {
-      wg0 = {
-        address = [ "10.100.0.4/24" ];
-        privateKeyFile = "/wg/private";
-        dns = [ "10.100.0.1" ];
-        listenPort = 51820;
-        peers = [
-          {
-            publicKey = "qpt3/3sZrR9Jlw98l8FoPUjcgo1TvDk8eSFZjLyoNlc=";
-            allowedIPs = [ "0.0.0.0/0" "::/0" ];
-            endpoint = "${vpn-ip}:51820";
-          }
-        ];
-      };
-    };
   };
 
   programs.fish.enable = true;
