@@ -1,6 +1,8 @@
 vim.g.mapleader = ' '
 vim.keymap.set('n', 'gh', '^')
 vim.keymap.set('n', 'gl', '$')
+vim.keymap.set('n', 'dp', 'd}')                  -- delete to end of paragraph
+vim.keymap.set('n', 'dP', 'd{')                  -- delete to beginning of paragraph
 vim.keymap.set('n', '<cr>', ':noh<cr>')
 vim.keymap.set('v', 'p', '"_dP') -- Unfuck paste in visual mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>') -- Escape in terminal
