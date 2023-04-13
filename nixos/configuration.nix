@@ -130,7 +130,6 @@ in
   fonts = {
     enableDefaultFonts = false;
     fonts = with pkgs; [
-      # inter-head # UI Sans
       (import ../fonts/sfpro.nix { pkgs = pkgs; })
       source-serif-pro # Serif
       jetbrains-mono # mono
@@ -157,16 +156,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
   nix = {
-    buildMachines = [
-      {
-        hostName = "pumba.local";
-        sshUser = "marin";
-        sshKey = "/home/supermarin/.ssh/nix_remote";
-        system = "x86_64-linux";
-        speedFactor = 10;
-        supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-      }
-    ];
+    buildMachines = secrets.buildMachines;
     distributedBuilds = true;
     extraOptions = ''
       experimental-features = nix-command flakes

@@ -1,4 +1,4 @@
-{ nixpkgs, pkgs, pubkeys, ... }:
+{ config, nixpkgs, pkgs, secrets, ... }:
 {
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {

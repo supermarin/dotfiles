@@ -14,7 +14,7 @@
 
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, darwin, nixos-generators, lgultrafine }:
     let
-      secrets = import ../secrets/syncthing.nix;
+      secrets = import ../secrets/secrets.nix;
       khal-overlay = final: prev: {
         khal-nightly = prev.khal.overrideAttrs (drv: rec {
           version = "nightly";
@@ -68,7 +68,7 @@
         personal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./configuration-personal.nix ];
-          specialArgs = { nixpkgs = nixpkgs; };
+          specialArgs = { nixpkgs = nixpkgs; secrets = secrets; };
         };
         vpn = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";

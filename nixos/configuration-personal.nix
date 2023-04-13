@@ -1,4 +1,4 @@
-{ config, nixpkgs, pkgs, modulesPath, ... }:
+{ config, nixpkgs, pkgs, modulesPath, secrets, ... }:
 {
 
   imports = [ (modulesPath + "/virtualisation/digital-ocean-config.nix") ];
@@ -33,17 +33,7 @@
 
   services.nginx = with config.services; rec {
     enable = true;
-    virtualHosts."mar.in" = {
-      forceSSL = true;
-      enableACME = true;
-      root = "/repos/mar.in/result/public";
-    };
-    virtualHosts."supermar.in" = virtualHosts."mar.in";
-    virtualHosts."butte.rs" = {
-      forceSSL = true;
-      enableACME = true;
-      root = "/repos/butte.rs.git/result/public";
-    };
+    virtualHosts = secrets.personal.virtualHosts;
   };
 
   environment.systemPackages = with pkgs; [
