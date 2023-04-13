@@ -27,10 +27,8 @@ in
     interfaces.eth0.useDHCP = true;
     firewall = {
       allowedTCPPorts = [
-        # 53 # dns
       ];
       allowedUDPPorts = [
-        # 53 # dns
         51820 # wireguard
       ];
       interfaces.wg0.allowedTCPPorts = [
@@ -86,11 +84,12 @@ in
         "wallabag-data:/var/www/wallabag/data"
         "wallabag-images:/var/www/wallabag/web/assets/images"
       ];
-      ports = [ "10.100.0.1:8052:80" ];
+      # TODO: let's see if this can be removed and port manually exposed in networking.
+      # ports = [ "10.100.0.1:8052:80" ];
       environment = {
         SYMFONY__ENV__DOMAIN_NAME = "http://10.100.0.1:8052";
         SYMFONY__ENV__FOSUSER_CONFIRMATION = "false";
-        SERVER_PORT = "8052";
+        PORT = "8052";
       };
     };
     pi-hole = {
