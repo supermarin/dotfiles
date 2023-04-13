@@ -12,6 +12,7 @@ pkgs: {
     # Colorschemes
     everforest
     gruvbox-nvim
+    oxocarbon-nvim
     # Telescope
     telescope-nvim
     plenary-nvim

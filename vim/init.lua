@@ -17,6 +17,7 @@ vim.api.nvim_create_user_command('Q', 'q', {}) -- halp
 vim.api.nvim_create_user_command('W', 'w', {}) -- halp
 
 local tabspaces = 2
+vim.cmd.colorscheme 'oxocarbon'
 vim.opt.background = 'dark'
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.colorcolumn = "80"
@@ -65,10 +66,6 @@ vim.api.nvim_create_autocmd('TermOpen', {
   group   = au,
 })
 
--- Colorscheme
--- vim.cmd [[colorscheme gruvbox]]
-vim.g.everforest_background = 'hard'
-vim.cmd [[colorscheme everforest]]
 
 -- Completion & snippets
 local luasnip = require("luasnip")
