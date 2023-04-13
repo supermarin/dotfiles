@@ -107,6 +107,9 @@ in
       libnotify # notify-send
       swaynotificationcenter # notification daemon
       mupdf
+      gnome.nautilus # gui file browser
+      gnome.sushi # quick preview for nautilus
+      pavucontrol # select sound output device
       ranger # file browser
       rofimoji # emoji picker, fuzzel doesn't support emoji
       slurp # screenshot: select a region in wayland
