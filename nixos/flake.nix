@@ -12,13 +12,6 @@
 
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, darwin, nixos-generators }:
     let
-      vm = system: nixos-generators.nixosGenerate {
-        system = system;
-        modules = [
-          ./hardware-vm.nix
-          ./configuration-vm.nix
-        ];
-        format = "qcow";
       secrets = import ../secrets/syncthing.nix;
       khal-overlay = final: prev: {
         khal-nightly = prev.khal.overrideAttrs (drv: rec {
@@ -35,11 +28,6 @@
       };
     in
     {
-      #packages.aarch64-linux = { tokio-vm = vm "aarch64-linux"; };
-      #packages.aarch64-darwin = { tokio-vm = vm "aarch64-linux"; };
-      #packages.x86_64-linux = {
-      #  tokio-vm = vm "x86_64-linux";
-      #};
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -48,7 +36,6 @@
             ./configuration.nix
             ./hardware-x1.nix
             {
-              # services.tlp.enable = true; # disabled since GNOME has it's own
               services.tlp.enable = true;
             }
             home-manager.nixosModules.home-manager
