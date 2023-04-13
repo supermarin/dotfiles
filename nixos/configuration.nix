@@ -1,6 +1,5 @@
 { config, nixpkgs, pkgs, secrets, lgultrafine, ... }:
 let
-  vpn-ip = "45.79.169.48";
 in
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
