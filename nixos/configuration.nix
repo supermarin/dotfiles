@@ -151,7 +151,9 @@ in
   # Virtualisation
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-  services.spice-vdagentd.enable = true;
+  virtualisation.podman = {
+    enable = true;
+  };
 
   nixpkgs.config.allowUnfree = true;
   nix = {
