@@ -1,5 +1,10 @@
 { config, nixpkgs, pkgs, secrets, ... }:
 {
+  # Fix NetworkManager.wait-online.service bug
+  # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
+  systemd.services.NetworkManager-wait-online.enable = pkgs.lib.mkForce false;
+  systemd.services.systemd-networkd-wait-online.enable = pkgs.lib.mkForce false;
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
