@@ -9,6 +9,9 @@ pkgs: {
     nvim-autopairs
     vim-surround
     vim-visual-multi
+    # Copilot
+    copilot-lua
+    copilot-cmp
     # Colorschemes
     everforest
     gruvbox-nvim
@@ -31,6 +34,7 @@ pkgs: {
     nvim-dap
     nvim-dap-ui
     nvim-dap-virtual-text
+    nvim-dap-python
     # Completion
     nvim-cmp
     nvim-lspconfig
