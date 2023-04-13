@@ -37,6 +37,7 @@
             ./hardware-x1.nix
             {
               services.tlp.enable = true;
+              nixpkgs.overlays = [ khal-overlay ];
             }
             home-manager.nixosModules.home-manager
             {
