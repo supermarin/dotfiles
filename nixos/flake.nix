@@ -8,9 +8,11 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+    lgultrafine.url = "/home/supermarin/code/oss/lguf-brightness";
+    lgultrafine.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, darwin, nixos-generators }:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, darwin, nixos-generators, lgultrafine }:
     let
       secrets = import ../secrets/syncthing.nix;
       khal-overlay = final: prev: {
@@ -31,7 +33,7 @@
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { nixpkgs = nixpkgs; secrets = secrets; };
+          specialArgs = { nixpkgs = nixpkgs; secrets = secrets; lgultrafine = lgultrafine; };
           modules = [
             ./configuration.nix
             ./hardware-x1.nix
