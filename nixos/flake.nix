@@ -48,6 +48,7 @@
             ./hardware-x1.nix
             {
               # services.tlp.enable = true; # disabled since GNOME has it's own
+              services.tlp.enable = true;
             }
             home-manager.nixosModules.home-manager
             {
