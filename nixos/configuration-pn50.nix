@@ -26,12 +26,6 @@
     # nameservers = [ "1.1.1.1" ];
   };
 
-  services.avahi = {
-    enable = true;
-    publish.enable = true;
-    publish.workstation = true;
-    publish.addresses = true;
-    nssmdns = true;
   services.syncthing = secrets.syncthing "pumba" // {
     extraOptions.options.gui.enabled = false;
     user = "marin";
