@@ -150,8 +150,6 @@ require('gitsigns').setup()
 require("nvim-autopairs").setup()
 -- Key bindings explanation
 require('which-key').setup { timeoutlen = 0 }
--- snippets
-require("luasnip.loaders.from_vscode").lazy_load()
 -- tree-sitter
 require('nvim-treesitter.configs').setup {
   highlight = { enable = true },
