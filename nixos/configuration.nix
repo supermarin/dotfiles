@@ -1,6 +1,4 @@
 { config, nixpkgs, pkgs, secrets, lgultrafine, ... }:
-let
-in
 {
   # Fix NetworkManager.wait-online.service bug
   # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
@@ -8,8 +6,6 @@ in
   systemd.services.systemd-networkd-wait-online.enable = pkgs.lib.mkForce false;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  services.fwupd.enable = true;
-  services.udisks2.enable = true; # needed for fwupdmgr -.-
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
@@ -18,9 +14,9 @@ in
   };
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  hardware.bluetooth.enable = true; # enables bluez
   hardware.pulseaudio.enable = true;
   sound.enable = true;
-  hardware.bluetooth.enable = true; # enables bluez
   time.timeZone = "America/New_York";
 
   networking = {
@@ -54,6 +50,7 @@ in
     };
   };
 
+  programs.fish.enable = true;
   services.avahi = {
     enable = true;
     publish.enable = true;
@@ -61,13 +58,14 @@ in
     publish.addresses = true;
     nssmdns = true;
   };
-
-  services.printing.enable = true;
-  services.printing.drivers = [ pkgs.hplip ];
-
+  services.fwupd.enable = true;
   services.openssh.enable = true;
-
-  programs.fish.enable = true;
+  services.printing.enable = true; # TODO: test if we need this anymore?
+  services.syncthing = secrets.syncthing "tokio" // {
+    user = "supermarin";
+  };
+  services.tailscale.enable = true;
+  services.udisks2.enable = true; # needed for fwupdmgr -.-
   services.yubikey-agent.enable = true;
 
   users.users.supermarin = {
