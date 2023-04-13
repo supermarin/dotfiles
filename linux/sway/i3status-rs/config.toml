@@ -8,10 +8,6 @@ critical_fg = "#FF5555"
 warning_fg = "#F96A02"
 
 [[block]]
-block = "external_ip"
-format = "$ip"
-
-[[block]]
 block = "custom"
 command = '''n=$(notmuch count --output=threads 'path:/.*/Inbox/' 2>/dev/null); test $n -ne 0 && echo -e "\uf0e0 $n"'''
 hide_when_empty = true
@@ -22,7 +18,7 @@ cmd = "swaymsg scratchpad show"
 
 [[block]]
 block = "cpu"
-format = "$barchart $frequency"
+format = "$barchart $max_frequency"
 
 [[block]]
 block = "custom"
@@ -50,7 +46,7 @@ cmd = "blueberry"
 
 [[block]]
 block = "net"
-format = "$icon {$ssid}"
+format = "$icon"
 [[block.click]]
 button = "left"
 cmd = "kitty --title floating_term nmtui connect"
