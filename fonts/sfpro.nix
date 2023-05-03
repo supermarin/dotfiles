@@ -15,7 +15,6 @@ pkgs.stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
     mkdir -p $out/share/fonts/opentype
-    ls -lah SFPro/
     cp SFPro/Library/Fonts/*.otf $out/share/fonts/opentype
     runHook postInstall
   '';
