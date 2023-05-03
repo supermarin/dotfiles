@@ -86,6 +86,7 @@
       libnotify # notify-send
       swaynotificationcenter # notification daemon
       mupdf
+      gnome.gedit # basic text file opener
       gnome.nautilus # gui file browser
       gnome.sushi # quick preview for nautilus
       pavucontrol # select sound output device
