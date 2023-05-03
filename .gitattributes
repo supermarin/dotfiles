@@ -1,3 +1,3 @@
 *.plist diff=plist
-age/* text filter=age diff=age
-secrets/* text filter=age diff=age
+age/* binary filter=age diff=age
+secrets/* binary filter=age diff=age
