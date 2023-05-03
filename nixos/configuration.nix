@@ -44,6 +44,10 @@
   };
   services.tailscale.enable = true;
   services.udisks2.enable = true; # needed for fwupdmgr -.-
+  services.udev.enable = true;
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="043e", ATTRS{idProduct}=="9a40", MODE="0666"
+  '';
   services.yubikey-agent.enable = true;
 
   users.users.supermarin = {
