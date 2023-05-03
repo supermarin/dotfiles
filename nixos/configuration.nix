@@ -154,7 +154,11 @@
     settings = {
       trusted-users = [ "supermarin" ]; # enable nix-copy-closure
     };
+    nixPath = [
+      "nixpkgs=/etc/nix/channels/nixpkgs"
+    ];
   };
+  environment.etc."nix/channels/nixpkgs".source = inputs.nixpkgs.outPath;
 
   # don't touch
   system.stateVersion = "22.05";
