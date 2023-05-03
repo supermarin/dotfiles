@@ -18,6 +18,8 @@ vim.api.nvim_create_user_command('Wq', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('Q', 'q', {})   -- halp
 vim.api.nvim_create_user_command('W', 'w', {})   -- halp
 vim.keymap.set('n', '<leader>s', ':w<cr>')       -- save file
+vim.keymap.set('n', '<c-h>', '<c-w>h')           -- window: select left pane
+vim.keymap.set('n', '<c-l>', '<c-w>l')           -- window: select right pane
 
 local tabspaces = 2
 vim.cmd.colorscheme 'oxocarbon'
