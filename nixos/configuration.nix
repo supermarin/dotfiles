@@ -1,4 +1,4 @@
-{ config, nixpkgs, pkgs, secrets, lgultrafine, ... }:
+{ inputs, config, nixpkgs, pkgs, secrets, lgufbrightness, ... }:
 {
   # Fix NetworkManager.wait-online.service bug
   # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
@@ -66,7 +66,7 @@
     gnome.adwaita-icon-theme
     killall # killall(1)
     libreoffice
-    lgultrafine
+    lgufbrightness
     unzip
     virt-manager
     zip
