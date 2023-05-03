@@ -80,7 +80,6 @@
     extraPackages = with pkgs; [
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
-      fuzzel # rofi/dmenu for wayland
       galculator
       grim # wayland screenshot tool
       i3status-rust # Menu bar
@@ -96,6 +95,7 @@
       swaylock # idle lock
       swayidle # idle lock
       udiskie # auto mount usb media
+      ulauncher # alfred style fuzzy launcher
       xdg-utils
       w3m # for ranger, email, ...
       wdisplays
