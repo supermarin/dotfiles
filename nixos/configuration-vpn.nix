@@ -7,9 +7,9 @@ in
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.version = 2;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.openssh.enable = true;
   users.users.root = {
