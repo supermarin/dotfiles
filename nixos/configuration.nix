@@ -114,7 +114,6 @@
       gnome.nautilus # gui file browser
       gnome.sushi # quick preview for nautilus
       pavucontrol # select sound output device
-      ranger # file browser
       rofimoji # emoji picker, fuzzel doesn't support emoji
       slurp # screenshot: select a region in wayland
       swaylock # idle lock
@@ -122,7 +121,7 @@
       udiskie # auto mount usb media
       ulauncher # alfred style fuzzy launcher
       xdg-utils
-      w3m # for ranger, email, ...
+      w3m # for HTML emails
       wdisplays
       wl-clipboard # wl-copy, wl-paste
       wob # indicator bar
