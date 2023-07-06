@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
->&2 echo "age-decrypt called! $@"
 
-age -i <(age-plugin-yubikey --identity --slot 1) -d "$@"
+keygrip=/tmp/yubi-keygrip
+test -f $keygrip || age-plugin-yubikey --identity --slot 1 > $keygrip
+age -i $keygrip -d "$@"
