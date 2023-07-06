@@ -13,13 +13,15 @@ vim.keymap.set('v', '<c-j>', ":m '>+1<cr>gv=gv") -- move visual up, keep indent
 vim.keymap.set('v', '<c-k>', ":m '<-2<cr>gv=gv") -- move visual down, keep indent
 vim.keymap.set('n', '<C-d>', '<C-d>zz')          -- center after going down
 vim.keymap.set('n', '<C-u>', '<C-u>zz')          -- center after going up
+vim.keymap.set('n', '<leader>s', ':w<cr>')       -- save file
+vim.keymap.set('n', '<c-h>', '<c-w>h')           -- window: select left pane
+vim.keymap.set('n', '<c-l>', '<c-w>l')           -- window: select right pane
+vim.keymap.set('n', '<tab>', 'gt')               -- switch between tabs in normal mode
+vim.keymap.set('n', '<S-tab>', 'gT')             -- switch between tabs in normal mode
 vim.api.nvim_create_user_command('WQ', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('Wq', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('Q', 'q', {})   -- halp
 vim.api.nvim_create_user_command('W', 'w', {})   -- halp
-vim.keymap.set('n', '<leader>s', ':w<cr>')       -- save file
-vim.keymap.set('n', '<c-h>', '<c-w>h')           -- window: select left pane
-vim.keymap.set('n', '<c-l>', '<c-w>l')           -- window: select right pane
 
 local tabspaces = 2
 vim.cmd.colorscheme 'oxocarbon'
