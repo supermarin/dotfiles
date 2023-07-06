@@ -24,7 +24,6 @@ vim.api.nvim_create_user_command('Q', 'q', {})   -- halp
 vim.api.nvim_create_user_command('W', 'w', {})   -- halp
 
 local tabspaces = 2
-vim.cmd.colorscheme 'oxocarbon'
 vim.opt.background = 'dark'
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.colorcolumn = "80"
@@ -48,6 +47,14 @@ vim.opt.swapfile = false
 vim.opt.tabstop = tabspaces
 vim.opt.termguicolors = true
 vim.opt.undofile = true
+
+-- colors
+require('gruvbox').setup({
+  contrast = "hard",
+  palette_overrides = { dark0_hard = '#011707' }
+})
+
+vim.cmd.colorscheme 'gruvbox'
 
 -- AUTOGROUPS / EVENTS
 local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
@@ -83,7 +90,7 @@ end
 
 require("copilot").setup({
   suggestion = { enabled = true },
-  panel = { enabled = true },
+  panel = { enabled = false },
 })
 
 local cmp = require("cmp")
@@ -92,7 +99,7 @@ cmp.setup({
     expand = function(args) luasnip.lsp_expand(args.body) end,
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = { enabled = true },
   },
   view = {
     entries = 'native'
@@ -292,3 +299,10 @@ dap.configurations.python = {
     -- end,
   },
 }
+
+
+if vim.g.neovide then
+  vim.o.guifont = "SF Mono:h12"
+  vim.g.neovide_scale_factor = 1
+  vim.g.neovide_cursor_animation_length = 0
+end
