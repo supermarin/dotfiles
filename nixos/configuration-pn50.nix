@@ -79,12 +79,14 @@
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
     alacritty
+    duckdb
     file # file(1)
     git
     htop
     jq
     killall # killall(1)
     (neovim.override { viAlias = true; vimAlias = true; })
+    ripgrep
     sqlite-interactive
     tmux
     unzip
