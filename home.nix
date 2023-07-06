@@ -14,7 +14,6 @@ in
     RIPGREP_CONFIG_PATH = "$HOME/.config/rg/config"; # TODO: XDG_CONFIG_HOME
     NIXOS_OZONE_WL = "1"; #https://discourse.nixos.org/t/partly-overriding-a-desktop-entry/20743/2
     AGE_RECIPIENTS_FILE = ./age/recipients.txt;
-    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/yubikey-agent/yubikey-agent.sock";
   };
 
   home.sessionPath = [
@@ -24,7 +23,6 @@ in
   home.packages = with pkgs; [
     age
     age-plugin-yubikey
-
     bat # used in `e` for live preview of files
     coreutils # used for `shred`
     diffr # used in git stuff
