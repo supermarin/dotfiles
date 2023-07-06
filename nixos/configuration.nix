@@ -26,6 +26,18 @@
     networkmanager.enable = true;
   };
 
+  # For screen sharing per https://nixos.wiki/wiki/Slack
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
+      gtkUsePortal = true;
+    };
+  };
+
   # networking.wg-quick.interfaces = {
   #   wg0 = import ../secrets/vpn.nix;
   # };
