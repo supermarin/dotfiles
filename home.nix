@@ -69,6 +69,11 @@ in
     extraConfig = ''
       return {
         color_scheme = "Tomorrow Night Bright",
+        font = wezterm.font {
+          family = 'SF Mono',
+        },
+        font_size = 11.0,
+        hide_tab_bar_if_only_one_tab = true,
       }
     '';
   };
