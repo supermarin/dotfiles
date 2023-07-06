@@ -26,6 +26,10 @@
     networkmanager.enable = true;
   };
 
+  # networking.wg-quick.interfaces = {
+  #   wg0 = import ../secrets/vpn.nix;
+  # };
+
   programs.fish.enable = true;
 
   # needed for printer discovery on the network

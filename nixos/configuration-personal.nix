@@ -33,7 +33,7 @@
 
   services.nginx = with config.services; rec {
     enable = true;
-    virtualHosts = secrets.personal.virtualHosts;
+    virtualHosts = secrets.hosts.personal.virtualHosts;
   };
 
   environment.systemPackages = with pkgs; [
