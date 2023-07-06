@@ -89,6 +89,7 @@ in
   programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
   home.file.".sqliterc".source = ./sqliterc;
+  home.file.".digrc".text = "+noall +answer";
   xdg.configFile."i3status-rust/config.toml".source =
     ./linux/sway/i3status-rs/config.toml;
   xdg.configFile."khal/config".source = ./khal/config;
