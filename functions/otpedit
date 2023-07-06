@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
-# Deps:
-# - rage
-# - shred
-# TODO: convert to nix-shell if performant enough
 
 set -o pipefail
-PREFIX=~/.otp
+
+account=$(ls $OTPDIR | fzf)
+file="$OTPDIR/$account"
 
 source helpers.sh
-cmd_edit "$PREFIX/$1"
+cmd_edit $file
