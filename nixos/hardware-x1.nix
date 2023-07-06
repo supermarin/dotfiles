@@ -28,7 +28,7 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/1f3fc21a-3780-4f6a-a8ec-691fb9070e6b"; }
+    { device = "/dev/disk/by-label/swap"; }
   ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave"; # TODO: should we remove this?
