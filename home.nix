@@ -27,6 +27,7 @@ in
     bat # used in `e` for live preview of files
     coreutils # used for `shred`
     diffr # used in git stuff
+    direnv
     exa # ls with stuff
     fd
     firefox-bin
