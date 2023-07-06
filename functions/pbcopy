@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 if [[ $(uname) = Linux ]]; then
-  wl-copy --paste-once -n
+  if [[ $XDG_SESSION_TYPE = "wayland" ]]; then
+    wl-copy -n
+  else
+    xsel --clipboard
+  fi
 else
-  pbcopy
+  /usr/bin/pbcopy
 fi

@@ -53,6 +53,7 @@
       extraPackages = with pkgs; [
         i3status
         clipmenu
+        xsel
       ];
     };
   };
