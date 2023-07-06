@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# TODO: remove this hack once https://github.com/str4d/age-plugin-yubikey/issues/136
+# is resolved. The PIN is now requested too frequently. Keygrip doesn't contain
+# secret information and it's OK to linger in /tmp.
 keygrip=/tmp/yubi-keygrip
 test -f $keygrip || age-plugin-yubikey --identity --slot 1 > $keygrip
 age -i $keygrip -d "$@"
