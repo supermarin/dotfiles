@@ -9,11 +9,7 @@
   networking.hostName = "personal";
   networking.firewall.allowedTCPPorts = [ 80 443 22 ];
 
-  security.sudo.wheelNeedsPassword = false;
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "admin+acme@mar.in";
-  };
+  security = secrets.hosts.personal.security;
 
   services.openssh = {
     enable = true;
@@ -31,7 +27,7 @@
     };
   };
 
-  services.nginx = with config.services; rec {
+  services.nginx = with config.services; {
     enable = true;
     virtualHosts = secrets.hosts.personal.virtualHosts;
   };
