@@ -214,11 +214,11 @@ end
 -------------------------------------------------------------------------------
 -- Tests
 -------------------------------------------------------------------------------
-vim.keymap.set("n", "<leader>tt", ":TestNearest<CR>")
-vim.keymap.set("n", "<leader>ta", ":TestFile<CR>")
-vim.keymap.set("n", "<leader>ts", ":TestSuite<CR>")
-vim.keymap.set("n", "<leader>tl", ":TestLast<CR>")
-vim.keymap.set("n", "<leader>tg", ":TestVisit<CR>")
+vim.keymap.set("n", "<leader>tt", ":w|:TestNearest<CR>")
+vim.keymap.set("n", "<leader>ta", ":w|:TestFile<CR>")
+vim.keymap.set("n", "<leader>ts", ":w|:TestSuite<CR>")
+vim.keymap.set("n", "<leader>tl", ":w|:TestLast<CR>")
+vim.keymap.set("n", "<leader>tg", ":w|:TestVisit<CR>")
 -------------------------------------------------------------------------------
 -- DAP
 -------------------------------------------------------------------------------
