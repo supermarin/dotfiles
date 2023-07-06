@@ -77,7 +77,7 @@ in
     enable = true;
     theme = "Tomorrow Night Bright";
     font = {
-      name = "JetBrains Mono";
+      name = "SF Mono";
       size = 11;
     };
     settings = {
