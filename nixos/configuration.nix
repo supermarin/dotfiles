@@ -70,6 +70,7 @@
   # Only put system software in here, e.g. stuff that is installed by
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
+    dig
     file # file(1)
     gnome.adwaita-icon-theme
     killall # killall(1)
