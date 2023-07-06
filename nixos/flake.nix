@@ -59,10 +59,6 @@
           ];
           specialArgs = { nixpkgs = nixpkgs; secrets = secrets; };
         };
-        pairing-vm = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [ ./configuration-pairing.nix ];
-        };
         personal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./configuration-personal.nix ];
