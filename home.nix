@@ -37,7 +37,7 @@ in
     htop
     jq
     khal-nightly
-    nodejs-slim-16_x # for copilot
+    nodejs-slim # for copilot
     oathToolkit # used for OTP
     obsidian
     pass
