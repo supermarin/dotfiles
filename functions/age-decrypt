@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
->&2 echo "age-decrypt called! ${ARGV[@]}"
-if [ -z $AGE_RECIPIENTS_FILE ]; then
-  echo "Missing ENV: AGE_RECIPIENTS_FILE"
-  exit 1
-fi
+>&2 echo "age-decrypt called! $@"
 
-age -i <(age-plugin-yubikey --identity --slot 1 2>/dev/null) -d "$@"
+age -i <(age-plugin-yubikey --identity --slot 1) -d "$@"
