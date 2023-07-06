@@ -54,9 +54,9 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term wezterm
+set $term kitty
 set $browser firefox
-set $menu fuzzel
+set $menu ulauncher
 
 ### Output configuration
 #
@@ -128,7 +128,7 @@ floating_modifier $mod normal
 for_window [title="floating_term"] floating enable
 
 # Make all GNOME (and some other) apps float
-for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays|galculator|pavucontrol)"] {
+for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays|galculator|pavucontrol|ulauncher)"] {
   floating enable
   border none
 }
@@ -254,6 +254,12 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]
 bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 bindsym $mod2+XF86MonBrightnessDown exec brightnessctl set 1%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 bindsym $mod2+XF86MonBrightnessUp exec brightnessctl set +1% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+
+bindsym Shift+XF86MonBrightnessDown exec lgufbrightness - | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
+bindsym Shift+XF86MonBrightnessUp exec lgufbrightness + | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
+bindsym Shift+$mod2+XF86MonBrightnessDown exec lgufbrightness _ | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
+bindsym Shift+$mod2+XF86MonBrightnessUp exec lgufbrightness = | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
+
 # Non media brightness + sound 
 # TODO:
 
@@ -286,6 +292,5 @@ exec swaync
 
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 # TODO: figure out why these two can't go in the same line, and fix the initial bar showing on sway load
-exec mkfifo $WOBSOCK
-exec tail -f $WOBSOCK | wob
+exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec udiskie
