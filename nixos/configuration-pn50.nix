@@ -70,6 +70,7 @@
     openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix;
   };
 
+  security.sudo.wheelNeedsPassword = false;
   environment.sessionVariables = {
     EDITOR = "vim";
     XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
