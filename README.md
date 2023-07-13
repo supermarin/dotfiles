@@ -12,10 +12,10 @@ Make sure age-encrypt, age-decrypt and age-textconv are in your PATH.
 You can find them unencrypted in functions/.
 
 ```
-$ git clone --no-checkout https://example.com/repo.git
-$ git config filter.age.required true
-$ git config filter.age.smudge age-decrypt
-$ git config filter.age.clean age-encrypt
-$ git config diff.age.textconv age-textconv
-$ git checkout --
+git clone --no-checkout https://example.com/repo.git
+git config filter.age.required true
+git config filter.age.smudge age-decrypt
+git config filter.age.clean age-encrypt
+git config diff.age.textconv age-textconv
+git checkout --
 ```
