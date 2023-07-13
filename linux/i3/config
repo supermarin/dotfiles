@@ -1,0 +1,180 @@
+### UI
+default_border pixel 2
+gaps inner 7
+smart_borders on
+smart_gaps on
+font pango:Inter Medium 8
+
+# # Set colors
+set $c_black #111111
+set $c_darkgrey #222222
+set $c_lightgrey #DEDEDE
+# accent colors from macos
+# https://developer.apple.com/design/human-interface-guidelines/foundations/color
+set $c_grey #64727D
+set $c_blue #0084FF
+set $c_green #34C759
+set $c_orange #FF9F0A
+set $c_pink #FF375F
+set $c_teal #40C8E0
+set $c_accent #FF9F0A 
+
+# class                 border     background  text         indicator  child_border
+client.focused          $c_black   $c_accent   $c_darkgrey    $c_accent  $c_accent
+client.focused_inactive $c_black   $c_darkgrey $c_lightgrey $c_black   $c_black
+client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
+
+# Status Bar:
+#
+bar {
+    position top
+}
+
+###############################################################################
+
+### Variables
+#
+# Mod4 - Logo key. Mod1 - Alt.
+set $mod Mod4
+set $mod2 Mod1
+
+set $left h
+set $down j
+set $up k
+set $right l
+set $term kitty
+set $browser firefox
+set $menu ulauncher
+
+# ### Input configuration
+# #
+# input * {
+#     repeat_delay 175
+#     repeat_rate  75
+#     natural_scroll enabled
+# }
+#
+# input 1:1:AT_Translated_Set_2_keyboard {
+#     xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
+# }
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod
+
+# Assign apps to consistent workspaces
+for_window [title="floating_term"] floating enable
+
+### Key bindings
+#
+# Start a terminal
+bindsym $mod+Return exec $term
+bindsym $mod+t workspace 3; exec pgrep $term || $term
+# NetworkManager connect
+bindsym $mod+w exec $term --title floating_term nmtui-connect
+# Emoji
+bindsym $mod+Ctrl+Space exec rofimoji
+# File manager
+bindsym $mod+e exec nautilus --new-window
+# Start a browser
+bindsym $mod+b workspace 2; exec pgrep $browser || $browser
+# Switch to Obsidian
+bindsym $mod+o workspace 1; exec ps ax | grep -v grep | grep obsidian || obsidian
+# Kill focused window
+bindsym $mod+q kill
+# Start launcher
+bindsym $mod+Space exec $menu
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+# Toggle notification control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+# Moving around:
+#
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$left move left
+
+# Move workspace between monitors
+bindsym $mod+$mod2+$up move workspace to output up
+bindsym $mod+$mod2+$right move workspace to output right
+bindsym $mod+$mod2+$down move workspace to output down
+bindsym $mod+$mod2+$left move workspace to output left
+
+# Workspaces:
+#
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 scratchpad show
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+# Layout stuff:
+#
+# You can "split" the current object of your focus with
+bindsym $mod+backslash splith
+bindsym $mod+minus splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+w layout tabbed
+bindsym $mod+Shift+d layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Send the current window to scratchpad
+bindsym $mod+Shift+0 move container to scratchpad
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+$mod2+space focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Resizing containers:
+#
+mode "resize" {
+    bindsym $left resize shrink width 20px
+    bindsym $down resize grow height 20px
+    bindsym $up resize shrink height 20px
+    bindsym $right resize grow width 20px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+exec udiskie
