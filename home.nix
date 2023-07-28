@@ -48,6 +48,8 @@ in
     tig
     wormhole-william
     zig # why was this? for the compiler IIRC? TODO: delete if unused
+    zulip
+    zulip-term
   ]
   ++ [
     # text editing (non-system) fonts
