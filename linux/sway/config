@@ -105,6 +105,9 @@ input * {
 input 1:1:AT_Translated_Set_2_keyboard {
     xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
 }
+input 16700:34053:Dell_Dell_Universal_Receiver {
+    xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
+}
 
 ### Idle configuration
 #
