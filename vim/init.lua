@@ -89,9 +89,10 @@ local has_words_before = function()
 end
 
 require("copilot").setup({
-  suggestion = { enabled = true },
+  suggestion = { enabled = false },
   panel = { enabled = false },
 })
+require("copilot_cmp").setup()
 
 local cmp = require("cmp")
 cmp.setup({
@@ -112,6 +113,7 @@ cmp.setup({
     { name = 'copilot' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
+    { name = 'path' },
     { name = 'luasnip' },
     { name = 'buffer' },
   },
@@ -132,17 +134,6 @@ cmp.setup({
         fallback()
       end
     end),
-    -- ["<Tab>"] = cmp.mapping(function(fallback)
-    --   if cmp.visible() then
-    --     cmp.confirm({ select = true })
-    --   elseif luasnip.expand_or_jumpable() then
-    --     luasnip.expand_or_jump()
-    --   elseif has_words_before() then
-    --     cmp.complete()
-    --   else
-    --     fallback()
-    --   end
-    -- end, { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
