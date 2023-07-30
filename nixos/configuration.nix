@@ -72,7 +72,7 @@
   users.users.supermarin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "nixbld" ];
     openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix;
   };
 
