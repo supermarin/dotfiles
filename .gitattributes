@@ -1,3 +1,4 @@
+* text=auto
 *.plist diff=plist
-age/* diff=age filter=age eol=lf
-secrets/* diff=age filter=age eol=lf
+age/* diff=age filter=age
+secrets/* diff=age filter=age
