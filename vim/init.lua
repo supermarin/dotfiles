@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   end,
   group    = au,
 })
-vim.api.nvim_create_autocmd('BufReadPost', {
+vim.api.nvim_create_autocmd('BufReadPost', { -- save last postition in file
   pattern = '*',
   group = au,
   command = [[
