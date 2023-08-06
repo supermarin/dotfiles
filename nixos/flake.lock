@@ -296,7 +296,6 @@
         "owner": "nix-community",
         "repo": "home-manager",
         "rev": "a8f8f48320c64bd4e3a266a850bbfde2c6fe3a04",
-        "type": "github"
       },
       "original": {
         "owner": "nix-community",

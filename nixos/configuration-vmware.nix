@@ -63,8 +63,8 @@
   };
 
   fonts = {
-    enableDefaultFonts = false;
-    fonts = with pkgs; [
+    enableDefaultPackages = false;
+    packages = with pkgs; [
       (import ../fonts/sfpro.nix { pkgs = pkgs; }) # sans
       (import ../fonts/sfmono.nix { pkgs = pkgs; }) # mono for browser
       source-serif # serif

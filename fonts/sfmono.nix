@@ -5,7 +5,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
   name = "SF Mono";
   src = builtins.fetchurl {
     url = "https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg";
-    sha256 = "sha256:0fdcras7y7cvym6ahhgn7ih3yfkkhr9s6h5b6wcaw5svrmi6vbxb";
+    sha256 = "sha256:0vjdpl3xyxl2rmfrnjsxpxdizpdr4canqa1nm63s5d3djs01iad6";
   };
   unpackPhase = ''
     7zz x $src
