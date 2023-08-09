@@ -1,4 +1,4 @@
-{ inputs, config, nixpkgs, pkgs, secrets, lgufbrightness, ... }:
+{ inputs, config, nixpkgs, pkgs, lgufbrightness, ... }:
 {
   # Fix NetworkManager.wait-online.service bug
   # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
@@ -20,7 +20,7 @@
   time.timeZone = "America/New_York";
 
   networking = {
-    firewall = secrets.firewall.tokio;
+    firewall = (import ../secrets/firewall.nix).tokio;
     hostName = "tokio";
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;
@@ -37,10 +37,6 @@
     };
   };
 
-  # networking.wg-quick.interfaces = {
-  #   wg0 = import ../secrets/vpn.nix;
-  # };
-
   programs.fish.enable = true;
 
   # needed for printer discovery on the network
@@ -54,7 +50,7 @@
   services.fwupd.enable = true;
   services.openssh.enable = true;
   services.printing.enable = true; # TODO: test if we need this anymore?
-  services.syncthing = secrets.syncthing "tokio" // {
+  services.syncthing = (import ../secrets/syncthing.nix "tokio") // {
     user = "supermarin";
   };
   services.tailscale.enable = true;
@@ -72,7 +68,7 @@
     shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "libvirtd" "nixbld" ];
-    openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix;
+    openssh.authorizedKeys.keyFiles = [ ../ssh/pubkeys.nix ];
   };
 
   environment.sessionVariables = {
@@ -163,11 +159,12 @@
 
   nixpkgs.config.allowUnfree = true;
   nix = {
-    buildMachines = secrets.buildMachines;
+    buildMachines = import ./build-machines.nix;
     distributedBuilds = true;
     extraOptions = ''
       experimental-features = nix-command flakes
       builders-use-substitutes = true
+      access-tokens = ${(import ../secrets/secrets.nix).nixAccessTokens}
     '';
     gc = {
       automatic = true;

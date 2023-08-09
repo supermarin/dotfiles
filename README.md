@@ -17,7 +17,7 @@ You can find them unencrypted in functions/.
 git clone --no-checkout https://example.com/repo.git
 git config filter.age.required true
 git config filter.age.smudge age-decrypt
-git config filter.age.clean age-encrypt
+git config filter.age.clean age-clean %f
 git config diff.age.textconv age-textconv
 git checkout --
 ```

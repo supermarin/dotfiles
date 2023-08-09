@@ -1,19 +1,25 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.url = github:nixos/nixpkgs;
+    home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    darwin.url = "github:lnl7/nix-darwin";
+    darwin.url = github:lnl7/nix-darwin;
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.url = github:nix-community/nixos-generators;
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-    lgufbrightness.url = "github:supermarin/lguf-brightness/b3d76e9ba733d704f58c55e01c00fff95dfa5977";
+    lgufbrightness.url = github:supermarin/lguf-brightness/b3d76e9ba733d704f58c55e01c00fff95dfa5977;
     lgufbrightness.inputs.nixpkgs.follows = "nixpkgs";
+    jupyter.url = github:squale-capital/jupyter;
+    jupyter.inputs.nixpkgs.follows = "nixpkgs";
+    sharadar.url = github:squale-capital/sharadar;
+    sharadar.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.url = github:ryantm/agenix;
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.inputs.darwin.follows = "";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, nixos-generators, lgufbrightness }@inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, nixos-generators, lgufbrightness, jupyter, sharadar, agenix }@inputs:
     let
-      secrets = import ../secrets/secrets.nix;
       khal-overlay = final: prev: {
         khal-nightly = prev.khal.overrideAttrs (drv: rec {
           version = "nightly";
@@ -32,7 +38,7 @@
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inputs = inputs; nixpkgs = nixpkgs; secrets = secrets; lgufbrightness = lgufbrightness.defaultPackage."x86_64-linux"; };
+          specialArgs = { inputs = inputs; nixpkgs = nixpkgs; lgufbrightness = lgufbrightness.defaultPackage."x86_64-linux"; };
           modules = [
             ./configuration.nix
             ./hardware-x1.nix
@@ -53,7 +59,7 @@
         };
         tokio-vm = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inputs = inputs; nixpkgs = nixpkgs; secrets = secrets; lgufbrightness = lgufbrightness.defaultPackage."x86_64-linux"; };
+          specialArgs = { inputs = inputs; nixpkgs = nixpkgs; lgufbrightness = lgufbrightness.defaultPackage."x86_64-linux"; };
           modules = [
             ./configuration-vmware.nix
             ./hardware-vmware.nix
@@ -73,20 +79,21 @@
         pumba = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            agenix.nixosModules.default
+            sharadar.nixosModules.default
             ./configuration-pn50.nix
             ./hardware-pn50.nix
           ];
-          specialArgs = { nixpkgs = nixpkgs; secrets = secrets; };
+          specialArgs = { nixpkgs = nixpkgs; };
         };
         personal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./configuration-personal.nix ];
-          specialArgs = { nixpkgs = nixpkgs; secrets = secrets; };
+          specialArgs = { nixpkgs = nixpkgs; };
         };
         vpn = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./configuration-vpn.nix ./hardware-linode.nix ];
-          specialArgs = { secrets = secrets; };
         };
       };
       darwinConfigurations = {

@@ -30,7 +30,7 @@ pkgs: {
     sd = "stash drop";
     su = "submodule update --recursive";
   };
-  ignores = [ ".DS_Store" "*.swp" "tags" ".vscode" "result" ".direnv" ];
+  ignores = [ ".DS_Store" "*.swp" "tags" ".vscode" "result" ".direnv" "*.qcow2" ];
   extraConfig = {
     commit.verbose = true;
     core = {

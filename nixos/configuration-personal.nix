@@ -9,7 +9,7 @@
   networking.hostName = "personal";
   networking.firewall.allowedTCPPorts = [ 80 443 22 ];
 
-  security = secrets.hosts.personal.security;
+  security = (import ../secrets/personal.nix).security;
 
   services.openssh = {
     enable = true;
@@ -29,7 +29,7 @@
 
   services.nginx = with config.services; {
     enable = true;
-    virtualHosts = secrets.hosts.personal.virtualHosts;
+    virtualHosts = (import ../secrets/personal.nix).virtualHosts;
   };
 
   environment.systemPackages = with pkgs; [

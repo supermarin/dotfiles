@@ -88,7 +88,7 @@
 
   nixpkgs.config.allowUnfree = true;
   nix = {
-    buildMachines = secrets.buildMachines;
+    buildMachines = import ./build-machines.nix;
     distributedBuilds = true;
     extraOptions = ''
       experimental-features = nix-command flakes
