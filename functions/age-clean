@@ -1,0 +1,40 @@
+
+#!/usr/bin/env bash
+set -euo pipefail
+>&2 echo "age-clean: $@"
+
+# 0. resolve relative path of the file 
+mkdir -p .git/crypt
+relpath=$(realpath --relative-to $(git rev-parse --show-toplevel) $1)
+relpath_sha=$(echo $relpath | sha256sum | cut -d ' ' -f 1)
+
+reencrypt() {
+  age-encrypt -o .git/crypt/$relpath_sha $1 
+  sha256sum $1 > .git/crypt/$relpath_sha.sum
+  cat .git/crypt/$relpath_sha
+  exit 0
+}
+
+# 1. Look up if we have a hash of this filepath already
+#    If we don't, save the encrypted file to .git/crypt/$relpath_sha
+#    and echo the encrypted file to stdout.
+#    Exit.
+if [[ ! -f .git/crypt/$relpath_sha ]]; then
+  >&2 echo "we don't have a hash for $1. encrypting from scratch."
+  reencrypt $1
+fi
+
+# We do have a hash for this file
+#
+# 2. Hash the new file, and compare the contents to the saved hash.
+#    If they match, echo the saved encrypted file.
+#    If they don't match, encrypt and save the new file, and echo it.
+old=$(<.git/crypt/$relpath_sha.sum)
+new=$(sha256sum $1)
+if [[ ! $old == $new ]]; then
+  >&2 echo "file has changed. re-encrypting."
+  reencrypt $1
+fi
+
+# They match, just print the old hash.
+cat .git/crypt/$relpath_sha
