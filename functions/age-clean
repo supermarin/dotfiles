@@ -36,4 +36,5 @@ if [[ ! $old == $new ]]; then
 fi
 
 # They match, just print the old hash.
+>&2 echo "Files match, spitting out old version."
 cat .git/crypt/$relpath_sha
