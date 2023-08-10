@@ -39,6 +39,7 @@
         tokio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            agenix.nixosModules.default
             ./configuration.nix
             ./hardware-x1.nix
             {
