@@ -38,6 +38,7 @@
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { nixpkgs = nixpkgs; lgufbrightness = lgufbrightness.defaultPackage."x86_64-linux"; };
           modules = [
             agenix.nixosModules.default
             ./configuration.nix
@@ -59,6 +60,7 @@
         };
         tokio-vm = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { nixpkgs = nixpkgs; };
           modules = [
             ./configuration-vmware.nix
             ./hardware-vmware.nix
