@@ -81,9 +81,10 @@
           system = "x86_64-linux";
           modules = [
             agenix.nixosModules.default
-            sharadar.nixosModules.default
-            ./configuration-pn50.nix
+            jupyter.nixosModules.default # TODO: jupyter service
+            sharadar.nixosModules."x86_64-linux".download-service
             ./hardware-pn50.nix
+            ./configuration-pn50.nix
           ];
           specialArgs = { nixpkgs = nixpkgs; };
         };

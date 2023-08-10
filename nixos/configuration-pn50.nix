@@ -7,9 +7,8 @@
   systemd.services.systemd-networkd-wait-online.enable = pkgs.lib.mkForce false;
 
   age.secrets.sharadar.file = ../secrets/sharadar.age;
-  services.sharadar-download.ebable = true;
-  services.sharadar-download.environmentFile = age.secrets.sharadar.path;
-
+  services.sharadar-download.enable = true;
+  services.sharadar-download.environmentFile = config.age.secrets.sharadar.path;
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
@@ -31,7 +30,7 @@
 
   services.tailscale.enable = true;
   services.syncthing = (import ../secrets/syncthing.nix "pumba") // {
-    extraOptions.options.gui.enabled = false;
+    settings.options.gui.enabled = false;
     user = "marin";
   };
 
