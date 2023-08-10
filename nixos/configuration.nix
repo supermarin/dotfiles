@@ -1,4 +1,4 @@
-{ inputs, config, nixpkgs, pkgs, lgufbrightness, ... }:
+{ pkgs, config, nixpkgs, lgufbrightness, ... }:
 {
   # Fix NetworkManager.wait-online.service bug
   # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
@@ -182,7 +182,7 @@
       "nixpkgs=/etc/nix/channels/nixpkgs"
     ];
   };
-  environment.etc."nix/channels/nixpkgs".source = inputs.nixpkgs.outPath;
+  environment.etc."nix/channels/nixpkgs".source = nixpkgs.outPath;
 
   # don't touch
   system.stateVersion = "22.05";

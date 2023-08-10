@@ -18,7 +18,7 @@
     agenix.inputs.darwin.follows = "";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, nixos-generators, lgufbrightness, jupyter, sharadar, agenix }@inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, nixos-generators, lgufbrightness, jupyter, sharadar, agenix }:
     let
       khal-overlay = final: prev: {
         khal-nightly = prev.khal.overrideAttrs (drv: rec {
@@ -38,7 +38,6 @@
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inputs = inputs; nixpkgs = nixpkgs; lgufbrightness = lgufbrightness.defaultPackage."x86_64-linux"; };
           modules = [
             ./configuration.nix
             ./hardware-x1.nix
@@ -59,7 +58,6 @@
         };
         tokio-vm = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inputs = inputs; nixpkgs = nixpkgs; lgufbrightness = lgufbrightness.defaultPackage."x86_64-linux"; };
           modules = [
             ./configuration-vmware.nix
             ./hardware-vmware.nix

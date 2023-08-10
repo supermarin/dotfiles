@@ -1,4 +1,4 @@
-{ inputs, config, nixpkgs, pkgs, secrets, ... }:
+{ config, nixpkgs, pkgs, secrets, ... }:
 {
   virtualisation.vmware.guest.enable = true;
   time.timeZone = "America/New_York";
@@ -110,7 +110,7 @@
       "nixpkgs=/etc/nix/channels/nixpkgs"
     ];
   };
-  environment.etc."nix/channels/nixpkgs".source = inputs.nixpkgs.outPath;
+  environment.etc."nix/channels/nixpkgs".source = nixpkgs.outPath;
 
   # don't touch
   system.stateVersion = "23.05";
