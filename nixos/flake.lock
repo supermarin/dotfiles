@@ -563,11 +563,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1691611164,
-        "narHash": "sha256-mgIbiMSTMNHFXVI2JhhLE734odRV0aq8w5lH/0QBkhc=",
+        "lastModified": 1691627158,
+        "narHash": "sha256-0RO1PTiZcVV9MnmHccgBhN1BjYDN48H99U/Hf6NOhWo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "fa1d4611cc2ce41d7b93c4a8e8db0efaaf286475",
+        "rev": "c27f08aa6c12bc9a4ea45e43c1e29695e339b214",
         "type": "github"
       },
       "original": {
@@ -837,11 +837,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1691599956,
-        "narHash": "sha256-53GeH8HXyW8ewtQLvKTXXnvJxsurcPDQ8mP4JfykIC4=",
+        "lastModified": 1691614847,
+        "narHash": "sha256-zc3oAGz+HxeQkk1+H/h4Of0mpD6k2zHPWQADwrFjT+E=",
         "owner": "squale-capital",
         "repo": "sharadar",
-        "rev": "c42e8a5770cefa5b6a2935c65e837ff1d337971e",
+        "rev": "8498bf6762bea4872b61ceb2cd19dab0b3651123",
         "type": "github"
       },
       "original": {
