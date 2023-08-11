@@ -54,6 +54,7 @@ cmd = "kitty --title floating_term nmtui connect"
 [[block]]
 block = "battery"
 interval = 10
+empty_format = " $icon $percentage "
 
 [[block]]
 block = "time"
