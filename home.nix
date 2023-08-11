@@ -35,7 +35,7 @@ in
     helix
     htop
     jq
-    khal-nightly
+    khal
     nodejs-slim_20 # for copilot
     oathToolkit # used for OTP
     obsidian

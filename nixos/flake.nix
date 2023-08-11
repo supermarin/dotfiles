@@ -19,21 +19,6 @@
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, nixos-generators, lgufbrightness, jupyter, sharadar, agenix }:
-    let
-      khal-overlay = final: prev: {
-        khal-nightly = prev.khal.overrideAttrs (drv: rec {
-          version = "nightly";
-          src = prev.fetchFromGitHub {
-            owner = "pimutils";
-            repo = "khal";
-            rev = "395a396d1396fa08cdb346d190a9a8a8a5ee9885";
-            sha256 = "sha256-bBKPXu4pxGJqQ9Y1V4IwYBMKauxKWkaUJb/qcAAPlFA=";
-          };
-          patches = [ ];
-          doCheck = false;
-        });
-      };
-    in
     {
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
@@ -43,9 +28,6 @@
             agenix.nixosModules.default
             ./configuration.nix
             ./hardware-x1.nix
-            {
-              nixpkgs.overlays = [ khal-overlay ];
-            }
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -64,9 +46,6 @@
           modules = [
             ./configuration-vmware.nix
             ./hardware-vmware.nix
-            {
-              nixpkgs.overlays = [ khal-overlay ];
-            }
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
