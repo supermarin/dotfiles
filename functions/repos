@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+pull() {
+  for repo in ~/code/squale-capital/*; do
+    out=$(git --git-dir=$repo/.git --work-tree=$repo pull)
+  done
+}
+
+push() {
+  for repo in ~/code/squale-capital/*; do
+    out=$(git --git-dir=$repo/.git --work-tree=$repo push)
+  done
+}
+
+sync() {
+  pull && push
+}
+
+status() {
+  for repo in ~/code/squale-capital/*; do
+    out=$(git --git-dir=$repo/.git --work-tree=$repo status --short)
+    if [ -n "$out" ]; then
+      echo -e "\033[0;31m$repo\033[0m"
+      echo "$out"
+    fi
+  done
+}
+
+$1
