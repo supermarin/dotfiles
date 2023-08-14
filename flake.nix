@@ -9,7 +9,7 @@
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     lgufbrightness.url = github:supermarin/lguf-brightness/b3d76e9ba733d704f58c55e01c00fff95dfa5977;
     lgufbrightness.inputs.nixpkgs.follows = "nixpkgs";
-    jupyter.url = github:squale-capital/jupyter;
+    jupyter.url = github:squale-capital/jupyter/remove-jupyenv;
     jupyter.inputs.nixpkgs.follows = "nixpkgs";
     sharadar.url = github:squale-capital/sharadar;
     sharadar.inputs.nixpkgs.follows = "nixpkgs";
@@ -60,7 +60,7 @@
           system = "x86_64-linux";
           modules = [
             agenix.nixosModules.default
-            jupyter.nixosModules.default # TODO: jupyter service
+            jupyter.nixosModules."x86_64-linux".jupyterlab
             sharadar.nixosModules."x86_64-linux".download-service
             ./hardware-pn50.nix
             ./configuration-pn50.nix
