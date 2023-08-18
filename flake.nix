@@ -9,7 +9,7 @@
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     lgufbrightness.url = github:supermarin/lguf-brightness/b3d76e9ba733d704f58c55e01c00fff95dfa5977;
     lgufbrightness.inputs.nixpkgs.follows = "nixpkgs";
-    jupyter.url = github:squale-capital/jupyter/remove-jupyenv;
+    jupyter.url = github:squale-capital/jupyter;
     jupyter.inputs.nixpkgs.follows = "nixpkgs";
     sharadar.url = github:squale-capital/sharadar;
     sharadar.inputs.nixpkgs.follows = "nixpkgs";
@@ -26,16 +26,16 @@
           specialArgs = { nixpkgs = nixpkgs; lgufbrightness = lgufbrightness.defaultPackage."x86_64-linux"; };
           modules = [
             agenix.nixosModules.default
-            ./configuration.nix
-            ./hardware-x1.nix
+            ./nixos/configuration.nix
+            ./nixos/hardware-x1.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.supermarin.imports = [
-                ../home.nix
-                ../home-services.nix
-                ../secrets/mail.nix
+                ./home.nix
+                ./home-services.nix
+                ./secrets/mail.nix
               ];
             }
           ];
@@ -44,14 +44,14 @@
           system = "x86_64-linux";
           specialArgs = { nixpkgs = nixpkgs; };
           modules = [
-            ./configuration-vmware.nix
-            ./hardware-vmware.nix
+            ./nixos/configuration-vmware.nix
+            ./nixos/hardware-vmware.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.marin.imports = [
-                ../home.nix
+                ./home.nix
               ];
             }
           ];
@@ -62,19 +62,20 @@
             agenix.nixosModules.default
             jupyter.nixosModules."x86_64-linux".jupyterlab
             sharadar.nixosModules."x86_64-linux".download-service
-            ./hardware-pn50.nix
-            ./configuration-pn50.nix
+            # fin.nixosModules."x86_64-linux".fin-deploy
+            ./nixos/hardware-pn50.nix
+            ./nixos/configuration-pn50.nix
           ];
           specialArgs = { nixpkgs = nixpkgs; };
         };
         personal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./configuration-personal.nix ];
+          modules = [ ./nixos/configuration-personal.nix ];
           specialArgs = { nixpkgs = nixpkgs; };
         };
         vpn = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./configuration-vpn.nix ./hardware-linode.nix ];
+          modules = [ ./nixos/configuration-vpn.nix ./nixos/hardware-linode.nix ];
         };
       };
       darwinConfigurations = {
@@ -82,12 +83,12 @@
           system = "aarch64-darwin";
           specialArgs = { nixpkgs = nixpkgs; };
           modules = [
-            ./darwin.nix
+            ./nixos/darwin.nix
             home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.supermarin = import ../home.nix;
+              home-manager.users.supermarin = import ./home.nix;
             }
           ];
         };
