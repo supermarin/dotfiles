@@ -36,6 +36,7 @@ in
     btop
     jq
     khal
+    nbstripout
     nodejs-slim_20 # for copilot
     oathToolkit # used for OTP
     obsidian
