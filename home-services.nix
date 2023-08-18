@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
 {
+  services.wlsunset = {
+    enable = true;
+    latitude = "40.7";
+    longitude = "-73.9";
+    systemdTarget = "graphical-session.target";
+  };
+
   systemd.user = {
     # Mail
     services.mbsync = {
