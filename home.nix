@@ -33,7 +33,7 @@ in
     fzf
     gnumake
     helix
-    htop
+    btop
     jq
     khal
     nodejs-slim_20 # for copilot
