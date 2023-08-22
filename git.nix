@@ -32,6 +32,7 @@ pkgs: {
   };
   ignores = [ ".DS_Store" "*.swp" "tags" ".vscode" "result" ".direnv" "*.qcow2" "__pycache__" ];
   extraConfig = {
+    init.defaultBranch = "main";
     commit.verbose = true;
     core = {
       quotepath = false;
