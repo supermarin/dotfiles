@@ -265,22 +265,18 @@ bindsym Shift+XF86MonBrightnessUp exec lgufbrightness + | tail -n1 | cut -f4 -d 
 bindsym Shift+$mod2+XF86MonBrightnessDown exec lgufbrightness _ | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
 bindsym Shift+$mod2+XF86MonBrightnessUp exec lgufbrightness = | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
 
-# Non media brightness + sound 
-# TODO:
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
-
+# TODO: see if we can remap unused thinkpad function keys to somethig useful
 # missing: external screen button? desktop button?
-# missing: wifi off button
 # keyboard gap
 # missing: chat button?
 # missing: phone open button?
 # missing: phone close button?
 # missing: star button?
 
-# missing completely from the keyboard:
-  # bindsym XF86AudioPlay exec playerctl play-pause
-  # bindsym XF86AudioNext exec playerctl next
-  # bindsym XF86AudioPrev exec playerctl previous
 
 # Take a screenshot with all output and save it into screenshots
 bindsym $mod+$mod2+3 exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
