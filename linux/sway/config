@@ -54,7 +54,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term kitty
+set $term rio 
 set $browser firefox
 set $menu ulauncher
 
