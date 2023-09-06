@@ -169,13 +169,6 @@ require('nvim-treesitter.configs').setup {
 require('Comment').setup()
 
 
--------------------------------------------------------------------------------
--- Telescope
--------------------------------------------------------------------------------
-vim.keymap.set('n', '<leader>p', ':Telescope commands<cr>')
-vim.keymap.set('n', '<leader>f', ':Telescope find_files<cr>')
-vim.keymap.set('n', '<leader>g', ':Telescope live_grep<cr>')
-vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
 
 -------------------------------------------------------------------------------
 -- LSP
