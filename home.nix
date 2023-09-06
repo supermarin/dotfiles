@@ -39,7 +39,6 @@ in
     nodejs-slim_20 # for copilot
     oathToolkit # used for OTP
     obsidian
-    pass
     ripgrep
     rnix-lsp
     slack
