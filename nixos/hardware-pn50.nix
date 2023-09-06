@@ -9,8 +9,9 @@
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "nvme" "ahci" "usb_storage" "usbhid" "sd_mod" "rtsx_usb_sdmmc" ];
-  # boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/671c146e-1a13-47a8-89c4-bcf8918deef8";
-  boot.initrd.luks.devices.cryptroot.device = "/dev/mapper/cryptroot";
+  boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/671c146e-1a13-47a8-89c4-bcf8918deef8";
+  # This could not boot
+  # boot.initrd.luks.devices.cryptroot.device = "/dev/mapper/cryptroot";
   boot.kernelModules = [ "kvm-amd" ];
 
   fileSystems."/" = {
