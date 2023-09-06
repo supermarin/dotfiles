@@ -8,6 +8,7 @@
 
   services.sharadar-download.enable = true;
   services.james.enable = true;
+  services.rss-bot.enable = true;
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
