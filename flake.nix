@@ -3,6 +3,8 @@
     nixpkgs.url = github:nixos/nixpkgs;
     home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    fonts.url = github:supermarin/fonts;
+    fonts.flake = false;
     darwin.url = github:lnl7/nix-darwin;
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.url = github:nix-community/nixos-generators;
@@ -18,12 +20,24 @@
     agenix.inputs.darwin.follows = "";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, nixos-generators, lgufbrightness, jupyter, sharadar, agenix }:
-    {
+  outputs =
+    { self
+    , nixpkgs
+    , home-manager
+    , darwin
+    , nixos-generators
+    , lgufbrightness
+    , jupyter
+    , sharadar
+    , agenix
+    , fonts
+    , james
+    , rss-bot
+    }: {
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { nixpkgs = nixpkgs; lgufbrightness = lgufbrightness.defaultPackage."x86_64-linux"; };
+          specialArgs = { nixpkgs = nixpkgs; lgufbrightness = lgufbrightness.defaultPackage."x86_64-linux"; berkeley = (import fonts { pkgs = nixpkgs.legacyPackages.x86_64-linux; }); };
           modules = [
             agenix.nixosModules.default
             ./nixos/configuration.nix

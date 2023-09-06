@@ -1,4 +1,4 @@
-{ pkgs, config, nixpkgs, lgufbrightness, ... }:
+{ pkgs, config, nixpkgs, lgufbrightness, berkeley, ... }:
 {
   # Fix NetworkManager.wait-online.service bug
   # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
@@ -131,6 +131,7 @@
     packages = with pkgs; [
       (import ../fonts/sfpro.nix { pkgs = pkgs; }) # sans
       (import ../fonts/sfmono.nix { pkgs = pkgs; }) # mono for browser
+      berkeley
       source-serif # serif
       jetbrains-mono # mono for terminal and vim
 
