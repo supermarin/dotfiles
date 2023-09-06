@@ -51,6 +51,7 @@ pkgs: {
       tool = "vim";
       log = true;
       stat = true;
+      conflictStyle = "zdiff3";
     };
     mergetool = {
       keepBackup = false;
