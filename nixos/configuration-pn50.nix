@@ -6,9 +6,8 @@
   systemd.services.NetworkManager-wait-online.enable = pkgs.lib.mkForce false;
   systemd.services.systemd-networkd-wait-online.enable = pkgs.lib.mkForce false;
 
-  age.secrets.sharadar.file = ../secrets/sharadar.age;
   services.sharadar-download.enable = true;
-  services.sharadar-download.environmentFile = config.age.secrets.sharadar.path;
+  services.james.enable = true;
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
