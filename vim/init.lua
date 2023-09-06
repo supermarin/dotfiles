@@ -14,6 +14,7 @@ vim.keymap.set('v', '<c-k>', ":m '<-2<cr>gv=gv") -- move visual down, keep inden
 vim.keymap.set('n', '<C-d>', '<C-d>zz')          -- center after going down
 vim.keymap.set('n', '<C-u>', '<C-u>zz')          -- center after going up
 vim.keymap.set('n', '<leader>s', ':w<cr>')       -- save file
+vim.keymap.set('n', '<leader>q', ':q<cr>')       -- close pane/window/vim
 vim.keymap.set('n', '<c-h>', '<c-w>h')           -- window: select left pane
 vim.keymap.set('n', '<c-l>', '<c-w>l')           -- window: select right pane
 vim.keymap.set('n', '<tab>', 'gt')               -- switch between tabs in normal mode
@@ -22,6 +23,14 @@ vim.api.nvim_create_user_command('WQ', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('Wq', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('Q', 'q', {})   -- halp
 vim.api.nvim_create_user_command('W', 'w', {})   -- halp
+-- Telescope
+vim.keymap.set('n', '<leader>p', ':Telescope commands<cr>')
+vim.keymap.set('n', '<leader>f', ':Telescope find_files<cr>')
+vim.keymap.set('n', '<leader><leader>', ':Telescope live_grep<cr>')
+vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
+-- Git
+vim.keymap.set('n', '<leader>gs', ':Git<cr>')
+vim.keymap.set('n', '<leader>gd', ':Gvdiff<cr>')
 
 local tabspaces = 2
 vim.opt.background = 'dark'
