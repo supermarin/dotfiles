@@ -4,7 +4,6 @@ let
   inherit (pkgs.stdenv) isLinux isDarwin;
 in
 {
-  home.stateVersion = "22.05";
   home.sessionVariables = {
     EDITOR = "nvim";
     FUZZY = "fzf";

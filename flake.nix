@@ -32,11 +32,14 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.supermarin.imports = [
-                ./home.nix
-                ./home-services.nix
-                ./secrets/mail.nix
-              ];
+              home-manager.users.supermarin = {
+                home.stateVersion = "22.05";
+                imports = [
+                  ./home.nix
+                  ./home-services.nix
+                  ./secrets/mail.nix
+                ];
+              };
             }
           ];
         };
