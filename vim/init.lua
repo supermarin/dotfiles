@@ -25,8 +25,8 @@ vim.api.nvim_create_user_command('Q', 'q', {})   -- halp
 vim.api.nvim_create_user_command('W', 'w', {})   -- halp
 -- Telescope
 vim.keymap.set('n', '<leader>p', ':Telescope commands<cr>')
-vim.keymap.set('n', '<leader>f', ':Telescope find_files<cr>')
-vim.keymap.set('n', '<leader><leader>', ':Telescope live_grep<cr>')
+vim.keymap.set('n', '<leader>f', ':Telescope live_grep<cr>')
+vim.keymap.set('n', '<leader><leader>', ':Telescope find_files<cr>')
 vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
 -- Git
 vim.keymap.set('n', '<leader>gs', ':Git<cr>')
