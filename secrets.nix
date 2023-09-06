@@ -8,6 +8,5 @@ let
   tokio = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFWJKjoSCU6G8uJrFUJYyAVKtTPhYr0PnkCOQXryFdyj";
 in
 {
-  "secrets/sharadar.age".publicKeys = yubikeys ++ [ pn50 ];
   "secrets/nix.conf.age".publicKeys = yubikeys ++ [ pn50 tokio ];
 }
