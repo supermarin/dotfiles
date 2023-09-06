@@ -108,6 +108,7 @@
       gnome.gedit # basic text file opener
       gnome.nautilus # gui file browser
       gnome.sushi # quick preview for nautilus
+      playerctl # media keys (play/pause, prev, next)
       pavucontrol # select sound output device
       rofimoji # emoji picker, fuzzel doesn't support emoji
       slurp # screenshot: select a region in wayland
