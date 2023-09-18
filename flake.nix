@@ -25,6 +25,7 @@
     , nixpkgs
     , home-manager
     , darwin
+    , nix-doom-emacs
     , nixos-generators
     , lgufbrightness
     , jupyter
@@ -52,6 +53,7 @@
                   ./home.nix
                   ./home-services.nix
                   ./secrets/mail.nix
+                  nix-doom-emacs.hmModule
                 ];
               };
             }
