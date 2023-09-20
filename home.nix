@@ -74,6 +74,12 @@ in
     '';
   };
 
+  programs.doom-emacs = {
+    enable = true;
+    doomPrivateDir = ./doom;
+    emacsPackage = pkgs.emacs29-pgtk;
+  };
+
   programs.kitty = {
     enable = true;
     theme = "Tomorrow Night Bright";

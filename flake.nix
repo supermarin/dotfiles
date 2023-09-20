@@ -18,6 +18,8 @@
     agenix.url = github:ryantm/agenix;
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix.inputs.darwin.follows = "";
+    nix-doom-emacs.url = github:librephoenix/nix-doom-emacs?ref=pgtk-patch;
+    nix-doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
