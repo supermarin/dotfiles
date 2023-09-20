@@ -22,6 +22,8 @@ pkgs: {
     telescope-nvim
     plenary-nvim
     # Misc
+    neogit
+    diffview-nvim
     gitsigns-nvim
     vim-fugitive
     vim-repeat
