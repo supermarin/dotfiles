@@ -23,6 +23,7 @@ in
     age
     age-plugin-yubikey
     bat # used in `e` for live preview of files
+    cmake # emacs needs to compile vterm
     coreutils # used for `shred`
     diffr # used in git stuff
     direnv
@@ -30,6 +31,7 @@ in
     fd
     firefox-bin
     fzf
+    git-lfs
     gnumake
     helix
     btop
