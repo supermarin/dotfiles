@@ -80,6 +80,7 @@
   # Only put system software in here, e.g. stuff that is installed by
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
+    appimage-run # not really running appimages, this guy says it's totally ok https://www.youtube.com/watch?v=FDY-x_hvj1o @ 5:40
     dig
     file # file(1)
     gnome.adwaita-icon-theme
