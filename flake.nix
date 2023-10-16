@@ -11,10 +11,6 @@
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     lgufbrightness.url = github:supermarin/lguf-brightness/b3d76e9ba733d704f58c55e01c00fff95dfa5977;
     lgufbrightness.inputs.nixpkgs.follows = "nixpkgs";
-    jupyter.url = github:squale-capital/jupyter;
-    jupyter.inputs.nixpkgs.follows = "nixpkgs";
-    sharadar.url = github:squale-capital/sharadar;
-    sharadar.inputs.nixpkgs.follows = "nixpkgs";
     agenix.url = github:ryantm/agenix;
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix.inputs.darwin.follows = "";
@@ -30,12 +26,8 @@
     , nix-doom-emacs
     , nixos-generators
     , lgufbrightness
-    , jupyter
-    , sharadar
     , agenix
     , fonts
-    , james
-    , rss-bot
     }: {
       nixosConfigurations = {
         tokio = nixpkgs.lib.nixosSystem {
@@ -76,18 +68,6 @@
               ];
             }
           ];
-        };
-        pumba = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            agenix.nixosModules.default
-            jupyter.nixosModules."x86_64-linux".jupyterlab
-            sharadar.nixosModules."x86_64-linux".download-service
-            # fin.nixosModules."x86_64-linux".fin-deploy
-            ./nixos/hardware-pn50.nix
-            ./nixos/configuration-pn50.nix
-          ];
-          specialArgs = { nixpkgs = nixpkgs; };
         };
         personal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
