@@ -27,7 +27,7 @@ in
     coreutils # used for `shred`
     diffr # used in git stuff
     direnv
-    exa # ls with stuff
+    eza # ls with stuff
     fd
     firefox-bin
     fzf
