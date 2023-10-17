@@ -167,7 +167,6 @@
     extraOptions = ''
       experimental-features = nix-command flakes
       builders-use-substitutes = true
-      !include ${config.age.secrets.nixConf.path}
     '';
     gc = {
       automatic = true;
@@ -185,8 +184,6 @@
       "nixpkgs=/etc/nix/channels/nixpkgs"
     ];
   };
-  age.secrets.nixConf.file = ../secrets/nix.conf.age;
-  age.secrets.nixConf.group = "wheel";
   environment.etc."nix/channels/nixpkgs".source = nixpkgs.outPath;
 
   # don't touch
