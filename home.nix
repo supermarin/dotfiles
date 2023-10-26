@@ -99,6 +99,7 @@ in
   programs.neovim = import ./neovim.nix pkgs;
   home.file.".sqliterc".source = ./sqliterc;
   home.file.".digrc".text = "+noall +answer";
+  home.file.".ssh/config".source = ./ssh/config;
   xdg.configFile."i3status-rust/config.toml".source =
     ./linux/sway/i3status-rs/config.toml;
   xdg.configFile."khal/config".source = ./khal/config;
