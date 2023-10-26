@@ -56,7 +56,7 @@ set $up k
 set $right l
 set $term rio 
 set $browser firefox
-set $menu ulauncher
+set $menu rofi -show combi
 
 ### Output configuration
 #

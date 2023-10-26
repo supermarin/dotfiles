@@ -111,12 +111,12 @@
       gnome.sushi # quick preview for nautilus
       playerctl # media keys (play/pause, prev, next)
       pavucontrol # select sound output device
+      rofi-wayland
       rofimoji # emoji picker, fuzzel doesn't support emoji
       slurp # screenshot: select a region in wayland
       swaylock # idle lock
       swayidle # idle lock
       udiskie # auto mount usb media
-      ulauncher # alfred style fuzzy launcher
       xdg-utils
       w3m # for HTML emails
       wdisplays
