@@ -177,9 +177,6 @@
       dates = [ "monthly" ];
     };
     registry.nixpkgs.flake = nixpkgs;
-    settings = {
-      trusted-users = [ "supermarin" ]; # enable nix-copy-closure
-    };
     nixPath = [
       "nixpkgs=/etc/nix/channels/nixpkgs"
     ];
