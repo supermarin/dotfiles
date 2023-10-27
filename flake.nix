@@ -9,7 +9,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.url = github:nix-community/nixos-generators;
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-    lgufbrightness.url = github:supermarin/lguf-brightness/b3d76e9ba733d704f58c55e01c00fff95dfa5977;
+    lgufbrightness.url = github:supermarin/lguf-brightness;
     lgufbrightness.inputs.nixpkgs.follows = "nixpkgs";
     agenix.url = github:ryantm/agenix;
     agenix.inputs.nixpkgs.follows = "nixpkgs";
