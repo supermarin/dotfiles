@@ -136,6 +136,7 @@
       berkeley
       source-serif # serif
       jetbrains-mono # mono for terminal and vim
+      iosevka
 
       noto-fonts-emoji # emoji
       font-awesome # i3status-rust
