@@ -97,8 +97,8 @@ in
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
-  home.file.".sqliterc".source = ./sqliterc;
   home.file.".digrc".text = "+noall +answer";
+  home.file.".sqliterc".source = ./sqliterc;
   home.file.".ssh/config".source = ./ssh/config;
   xdg.configFile."i3status-rust/config.toml".source =
     ./linux/sway/i3status-rs/config.toml;
