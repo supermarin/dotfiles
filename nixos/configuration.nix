@@ -60,9 +60,6 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="043e", ATTRS{idProduct}=="9a40", MODE="0666"
   '';
   services.yubikey-agent.enable = true;
-  # services.clight.enable = true;
-  # location.latitude = 40.7; # required by clight
-  # location.longitude = -73.9; # required by clight
 
   users.users.supermarin = {
     shell = pkgs.fish;
@@ -183,8 +180,6 @@
     ];
   };
   environment.etc."nix/channels/nixpkgs".source = nixpkgs.outPath;
-
   # don't touch
   system.stateVersion = "22.05";
 }
-
