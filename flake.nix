@@ -19,47 +19,43 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , home-manager
-    , darwin
-    , nix-doom-emacs
-    , nixos-generators
-    , lgufbrightness
-    , agenix
-    , fonts
-    }: {
+    inputs: {
       nixosConfigurations = {
-        tokio = nixpkgs.lib.nixosSystem {
+        tokio = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { nixpkgs = nixpkgs; lgufbrightness = lgufbrightness.defaultPackage."x86_64-linux"; berkeley = (import fonts { pkgs = nixpkgs.legacyPackages.x86_64-linux; }); };
+          specialArgs = {
+            nixpkgs = inputs.nixpkgs;
+            lgufbrightness = inputs.lgufbrightness.defaultPackage."x86_64-linux";
+            berkeley = (import inputs.fonts { pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; });
+          };
           modules = [
-            agenix.nixosModules.default
+            inputs.agenix.nixosModules.default
             ./nixos/configuration.nix
             ./nixos/hardware-x1.nix
-            home-manager.nixosModules.home-manager
+            inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.supermarin = {
+                # inherit agenix;
                 home.stateVersion = "22.05";
                 imports = [
                   ./home.nix
                   ./home-services.nix
                   ./secrets/mail.nix
-                  nix-doom-emacs.hmModule
+                  inputs.nix-doom-emacs.hmModule
                 ];
               };
             }
           ];
         };
-        tokio-vm = nixpkgs.lib.nixosSystem {
+        tokio-vm = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { nixpkgs = nixpkgs; };
+          specialArgs = { nixpkgs = inputs.nixpkgs; };
           modules = [
             ./nixos/configuration-vmware.nix
             ./nixos/hardware-vmware.nix
-            home-manager.nixosModules.home-manager
+            inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -69,23 +65,23 @@
             }
           ];
         };
-        personal = nixpkgs.lib.nixosSystem {
+        personal = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./nixos/configuration-personal.nix ];
-          specialArgs = { nixpkgs = nixpkgs; };
+          specialArgs = { nixpkgs = inputs.nixpkgs; };
         };
-        vpn = nixpkgs.lib.nixosSystem {
+        vpn = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./nixos/configuration-vpn.nix ./nixos/hardware-linode.nix ];
         };
       };
       darwinConfigurations = {
-        simba = darwin.lib.darwinSystem {
+        simba = inputs.darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          specialArgs = { nixpkgs = nixpkgs; };
+          specialArgs = { nixpkgs = inputs.nixpkgs; };
           modules = [
             ./nixos/darwin.nix
-            home-manager.darwinModules.home-manager
+            inputs.home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
