@@ -14,8 +14,13 @@
     agenix.url = github:ryantm/agenix;
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix.inputs.darwin.follows = "";
-    nix-doom-emacs.url = github:librephoenix/nix-doom-emacs?ref=pgtk-patch;
+    nix-straight = {
+      url = "github:codingkoi/nix-straight.el?ref=codingkoi/apply-librephoenixs-fix";
+      flake = false;
+    };
+    nix-doom-emacs.url = github:nix-community/nix-doom-emacs;
     nix-doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
+    nix-doom-emacs.inputs.nix-straight.follows = "nix-straight";
   };
 
   outputs =
