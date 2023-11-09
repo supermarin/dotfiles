@@ -97,13 +97,13 @@
     extraPackages = with pkgs; [
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
-      galculator
       grim # wayland screenshot tool
       i3status-rust # Menu bar
       libnotify # notify-send
       swaynotificationcenter # notification daemon
       mupdf
       gnome.gedit # basic text file opener
+      gnome.gnome-calculator
       gnome.nautilus # gui file browser
       gnome.sushi # quick preview for nautilus
       playerctl # media keys (play/pause, prev, next)
