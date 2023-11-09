@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = github:nixos/nixpkgs;
+    nixos-hardware.url = github:NixOS/nixos-hardware;
     home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     fonts.url = github:supermarin/fonts;
@@ -34,6 +35,7 @@
             berkeley = (import inputs.fonts { pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; });
           };
           modules = [
+            inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-nano-gen1
             inputs.agenix.nixosModules.default
             ./nixos/configuration.nix
             ./nixos/hardware-x1.nix
