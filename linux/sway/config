@@ -57,6 +57,7 @@ set $right l
 set $term rio 
 set $browser firefox
 set $menu rofi -show combi
+set $notification-center swaync-client -t -sw
 
 ### Output configuration
 #
@@ -164,7 +165,7 @@ bindsym $mod+Space exec $menu
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 # Toggle notification control center
-bindsym $mod+Shift+n exec swaync-client -t -sw
+bindsym $mod+Shift+n exec $notification-center
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 # Moving around:
@@ -268,6 +269,7 @@ bindsym Shift+XF86MonBrightnessDown exec lgufbrightness - | tail -n1 | cut -f4 -
 bindsym Shift+XF86MonBrightnessUp exec lgufbrightness + | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
 bindsym Shift+$mod2+XF86MonBrightnessDown exec lgufbrightness _ | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
 bindsym Shift+$mod2+XF86MonBrightnessUp exec lgufbrightness = | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
+bindsym XF86NotificationCenter exec $notification-center
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
