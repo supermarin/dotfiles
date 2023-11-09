@@ -24,4 +24,7 @@
   swapDevices = [
     { device = "/dev/disk/by-label/swap"; }
   ];
+
+  # From nixos-generate-config as of 2023-11-09
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
