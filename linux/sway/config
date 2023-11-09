@@ -269,24 +269,24 @@ bindsym Shift+XF86MonBrightnessDown exec lgufbrightness - | tail -n1 | cut -f4 -
 bindsym Shift+XF86MonBrightnessUp exec lgufbrightness + | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
 bindsym Shift+$mod2+XF86MonBrightnessDown exec lgufbrightness _ | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
 bindsym Shift+$mod2+XF86MonBrightnessUp exec lgufbrightness = | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
+#  XF86WLAN
+
 bindsym XF86NotificationCenter exec $notification-center
+# XF86PickupPhone
+# XF86HangupPhone
+# XF86Favorites
+
+# XF86SelectiveScreenshot # fn + printscreen
+# XF86SelectiveScreenshot # fn + space
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# TODO: see if we can remap unused thinkpad function keys to somethig useful
-# missing: external screen button? desktop button?
-# keyboard gap
-# missing: chat button?
-# missing: phone open button?
-# missing: phone close button?
-# missing: star button?
-
-
 # Take a screenshot with all output and save it into screenshots
 bindsym $mod+$mod2+3 exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 bindsym $mod+$mod2+4 exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+
 
 # Unfuck launching GNOME apps (takes 20 seconds otherwise)
 exec systemctl --user import-environment
