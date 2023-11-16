@@ -1,4 +1,4 @@
-{ pkgs, config, nixpkgs, lgufbrightness, berkeley, ... }:
+{ pkgs, config, nixpkgs, berkeley, ... }:
 {
   # Fix NetworkManager.wait-online.service bug
   # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
@@ -83,7 +83,6 @@
     gnome.adwaita-icon-theme
     killall # killall(1)
     libreoffice
-    lgufbrightness
     unzip
     virt-manager
     zip

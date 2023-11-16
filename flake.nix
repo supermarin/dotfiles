@@ -10,8 +10,6 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.url = github:nix-community/nixos-generators;
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-    lgufbrightness.url = github:supermarin/lguf-brightness;
-    lgufbrightness.inputs.nixpkgs.follows = "nixpkgs";
     agenix.url = github:ryantm/agenix;
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix.inputs.darwin.follows = "";
@@ -31,7 +29,6 @@
           system = "x86_64-linux";
           specialArgs = {
             nixpkgs = inputs.nixpkgs;
-            lgufbrightness = inputs.lgufbrightness.defaultPackage."x86_64-linux";
             berkeley = (import inputs.fonts { pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; });
           };
           modules = [
