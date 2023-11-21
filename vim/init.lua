@@ -31,6 +31,7 @@ vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
 -- Git
 vim.keymap.set('n', '<leader>gs', ':Git<cr>')
 vim.keymap.set('n', '<leader>gd', ':Gvdiff<cr>')
+vim.keymap.set('n', '<leader>gg', ':Neogit<cr>')
 
 local tabspaces = 2
 vim.opt.background = 'dark'
