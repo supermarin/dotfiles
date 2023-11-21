@@ -49,6 +49,7 @@
   };
   services.fwupd.enable = true;
   services.openssh.enable = true;
+  services.pcscd-keep-alive.enable = true;
   services.printing.enable = true; # TODO: test if we need this anymore?
   services.syncthing = (import ../secrets/syncthing.nix "tokio") // {
     user = "supermarin";

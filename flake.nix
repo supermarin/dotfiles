@@ -20,6 +20,8 @@
     nix-doom-emacs.url = github:nix-community/nix-doom-emacs;
     nix-doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
     nix-doom-emacs.inputs.nix-straight.follows = "nix-straight";
+    pcscd-keep-alive.url = github:supermarin/pcscd-keep-alive;
+    pcscd-keep-alive.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -32,6 +34,7 @@
             berkeley = (import inputs.fonts { pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; });
           };
           modules = [
+            inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-nano-gen1
             inputs.agenix.nixosModules.default
             ./nixos/configuration.nix
