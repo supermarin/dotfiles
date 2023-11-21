@@ -30,7 +30,7 @@ vim.keymap.set('n', '<leader><leader>', ':Telescope find_files<cr>')
 vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
 -- Git
 vim.keymap.set('n', '<leader>gs', ':Git<cr>')
-vim.keymap.set('n', '<leader>gd', ':Gvdiff<cr>')
+vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<cr>')
 vim.keymap.set('n', '<leader>gg', ':Neogit<cr>')
 
 local tabspaces = 2
@@ -158,6 +158,37 @@ cmp.setup({
 
 -- Git Gutter
 require('gitsigns').setup()
+-- Diffview
+local actions = require("diffview.actions")
+require('diffview').setup {
+  use_icons = false,
+  keymaps = {
+    disable_defaults = false, -- Disable the default keymaps
+    view = {
+      -- The `view` bindings are active in the diff buffers, only when the current
+      -- tabpage is a Diffview.
+      { "n", "J", actions.select_next_entry, { desc = "Open the diff for the next file" } },
+      { "n", "K", actions.select_prev_entry, { desc = "Open the diff for the previous file" } },
+    },
+    file_panel = {
+      { "n", "s", actions.toggle_stage_entry, { desc = "Stage / unstage the selected entry" } },
+      { "n", "S", actions.stage_all,          { desc = "Stage all entries" } },
+      { "n", "U", actions.unstage_all,        { desc = "Unstage all entries" } },
+    },
+  },
+  default = {
+    -- Config for changed files, and staged files in diff views.
+    layout = "diff_horizontal",
+    winbar_info = false, -- See ':h diffview-config-view.x.winbar_info'
+  },
+}
+-- Neogit
+require('neogit').setup {
+  disable_commit_confirmation = true,
+  integrations = {
+    diffview = true,
+  },
+}
 -- Autopairs
 require("nvim-autopairs").setup()
 -- Key bindings explanation
