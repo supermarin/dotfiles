@@ -15,7 +15,7 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   hardware.bluetooth.enable = true; # enables bluez
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false; # pipewire instead
   sound.enable = true;
   time.timeZone = "America/New_York";
 
@@ -38,6 +38,11 @@
   services.fwupd.enable = true;
   services.openssh.enable = true;
   services.pcscd-keep-alive.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
   services.printing.enable = true; # TODO: test if we need this anymore?
   services.syncthing = (import ../secrets/syncthing.nix "tokio") // {
     user = "supermarin";
