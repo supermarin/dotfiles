@@ -86,20 +86,6 @@ in
     vlc # Unsupported on aarch64-darwin as of Aug 10 2022
   ];
 
-  programs.wezterm = {
-    enable = true;
-    extraConfig = ''
-      return {
-        color_scheme = "Tomorrow Night Bright",
-        font = wezterm.font {
-          family = 'SF Mono',
-        },
-        font_size = 11.0,
-        hide_tab_bar_if_only_one_tab = true,
-      }
-    '';
-  };
-
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
