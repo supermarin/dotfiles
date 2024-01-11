@@ -4,7 +4,7 @@
     nixos-hardware.url = github:NixOS/nixos-hardware;
     home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    fonts.url = github:supermarin/fonts;
+    fonts.url = git+ssh://git@github.com/supermarin/fonts;
     fonts.flake = false;
     darwin.url = github:lnl7/nix-darwin;
     darwin.inputs.nixpkgs.follows = "nixpkgs";
