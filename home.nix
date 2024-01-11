@@ -63,6 +63,7 @@ in
     khal
     nbstripout
     nodejs-slim_20 # for copilot
+    nushell
     oathToolkit # used for OTP
     obsidian
     ripgrep
