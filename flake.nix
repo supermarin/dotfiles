@@ -6,20 +6,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     fonts.url = git+ssh://git@github.com/supermarin/fonts;
     fonts.flake = false;
-    darwin.url = github:lnl7/nix-darwin;
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.url = github:nix-community/nixos-generators;
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.url = github:ryantm/agenix;
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.inputs.darwin.follows = "";
     nix-straight = {
       url = "github:codingkoi/nix-straight.el?ref=codingkoi/apply-librephoenixs-fix";
       flake = false;
     };
-    nix-doom-emacs.url = github:nix-community/nix-doom-emacs;
-    nix-doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
-    nix-doom-emacs.inputs.nix-straight.follows = "nix-straight";
     pcscd-keep-alive.url = github:supermarin/pcscd-keep-alive;
     pcscd-keep-alive.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -36,7 +28,6 @@
           modules = [
             inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-nano-gen1
-            inputs.agenix.nixosModules.default
             ./nixos/configuration.nix
             ./nixos/hardware-x1.nix
             inputs.home-manager.nixosModules.home-manager
@@ -44,13 +35,11 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.supermarin = {
-                # inherit agenix;
                 home.stateVersion = "22.05";
                 imports = [
                   ./home.nix
                   ./home-services.nix
                   ./secrets/mail.nix
-                  inputs.nix-doom-emacs.hmModule
                 ];
               };
             }
@@ -80,21 +69,6 @@
         vpn = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./nixos/configuration-vpn.nix ./nixos/hardware-linode.nix ];
-        };
-      };
-      darwinConfigurations = {
-        simba = inputs.darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = { nixpkgs = inputs.nixpkgs; };
-          modules = [
-            ./nixos/darwin.nix
-            inputs.home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.supermarin = import ./home.nix;
-            }
-          ];
         };
       };
     };
