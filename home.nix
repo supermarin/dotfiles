@@ -100,24 +100,6 @@ in
     '';
   };
 
-  programs.doom-emacs = {
-    enable = true;
-    doomPrivateDir = ./doom;
-    emacsPackage = pkgs.emacs29-pgtk;
-  };
-
-  programs.kitty = {
-    enable = true;
-    theme = "Tomorrow Night Bright";
-    font = {
-      name = "SF Mono";
-      size = 11;
-    };
-    settings = {
-      remember_window_size = false;
-    };
-  };
-
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
