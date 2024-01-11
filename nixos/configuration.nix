@@ -53,6 +53,10 @@
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="043e", ATTRS{idProduct}=="9a40", MODE="0666"
   '';
+
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   services.yubikey-agent.enable = true;
 
   users.users.supermarin = {
@@ -75,6 +79,7 @@
     dig
     file # file(1)
     gnome.adwaita-icon-theme
+    gnomeExtensions.pop-shell
     killall # killall(1)
     libreoffice
     unzip
