@@ -13,14 +13,17 @@ set $c_lightgrey #DEDEDE
 # https://developer.apple.com/design/human-interface-guidelines/foundations/color
 set $c_grey #64727D
 set $c_blue #0084ff
-set $c_green #34c759
+set $c_miami_green #003020
+set $c_dwr_green #182d2a
+set $c_green $c_dwr_green
 set $c_orange #ff9f0a
+set $c_miami_pink #f1c5d2
 set $c_pink #ff375f
 set $c_teal #40c8e0
-set $c_accent $c_orange
+set $c_accent $c_miami_pink
 
 # class                 border     background  text         indicator  child_border
-client.focused          $c_black   $c_accent   $c_darkgrey    $c_accent  $c_accent
+client.focused          $c_black   $c_accent   $c_darkgrey  $c_accent  $c_accent
 client.focused_inactive $c_black   $c_darkgrey $c_lightgrey $c_black   $c_black
 client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
 
@@ -60,16 +63,29 @@ set $menu rofi -show combi
 set $notification-center swaync-client -t -sw
 
 ### Output configuration
-#
-output * bg ~/.wallpaper fill
+output * bg $c_green solid_color
 
 set $laptop eDP-1
 output $laptop {
   scale 1.25
 }
 
+# DP-3
+output 'Apple Computer Inc ProDisplayXDR 0x00001F08' {
+  pos 0 0
+  mode 6016x3384@60.000Hz
+  scale 2
+}
+
+# TODO: figure out how to distinguish DP-3 from DP-4 since they both seem to
+#       have the same hex identifier
+# output 'Apple Computer Inc ProDisplayXDR 0x00001F08' {
+#   disable
+# }
+
+
 output 'Apple Computer Inc StudioDisplay 0x0000FF20' {
-    pos 0 0
+  pos 0 0
 }
 
 output 'LG Electronics LG UltraFine 806NTJJ3B908' {
@@ -157,7 +173,7 @@ bindsym $mod+e exec nautilus --new-window
 # Start a browser
 bindsym $mod+b workspace 2; exec pgrep $browser || $browser
 # Switch to Obsidian
-bindsym $mod+o workspace 1; exec ps ax | grep -v grep | grep obsidian || obsidian
+bindsym $mod+o workspace 1; exec ps ax | grep -v grep | grep obsidian || obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland
 # Kill focused window
 bindsym $mod+q kill
 # Start launcher
