@@ -33,7 +33,7 @@
     publish.enable = true;
     publish.workstation = true;
     publish.addresses = true;
-    nssmdns = true;
+    nssmdns4 = true;
   };
   services.fwupd.enable = true;
   services.openssh.enable = true;
