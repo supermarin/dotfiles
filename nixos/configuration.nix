@@ -25,18 +25,6 @@
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;
   };
-
-  # For screen sharing per https://nixos.wiki/wiki/Slack
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-      ];
-    };
-  };
-
   programs.fish.enable = true;
 
   # needed for printer discovery on the network
