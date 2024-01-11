@@ -4,6 +4,29 @@ let
   inherit (pkgs.stdenv) isLinux isDarwin;
 in
 {
+  # TODO: finish this either in HM or in cofiguration.nix.
+  #  Sources:
+  #    dconf2nix: https://github.com/gvolpe/dconf2nix
+  #    nixos module PR (without HM): https://github.com/NixOS/nixpkgs/pull/234615
+  #    pop-shell-gnome-45 (script that resets all the keybindings correctly): 
+  #    https://github.com/ronanru/pop-shell-gnome-45/blob/master_jammy/scripts/configure.sh
+  # dconf.settings = {
+  #   # KEYS_GNOME_WM=/org/gnome/desktop/wm/keybindings
+  #   # KEYS_GNOME_SHELL=/org/gnome/shell/keybindings
+  #   # KEYS_MUTTER=/org/gnome/mutter/keybindings
+  #   # KEYS_MEDIA=/org/gnome/settings-daemon/plugins/media-keys
+  #   # KEYS_MUTTER_WAYLAND_RESTORE=/org/gnome/mutter/wayland/keybindings/restore-shortcuts
+  #   "org/gnome/desktop/wm/keybindings" = {
+  #     minimize = [ "<Super>comma" ];
+  #     maximize = [ ];
+  #   };
+  #   "org/gnome/shell/keybindings" = {
+  #     open-application-menu = [ ];
+  #     toggle-message-tray = [ "<Super>v" ];
+  #   };
+  #   "org/gnome/mutter/wayland/keybindings/restore-shortcuts" = { };
+  # };
+
   home.sessionVariables = {
     EDITOR = "nvim";
     FUZZY = "fzf";
