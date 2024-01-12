@@ -71,6 +71,26 @@
     openssh.authorizedKeys.keyFiles = [ ../ssh/pubkeys.nix ];
   };
 
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-tour
+    gedit # text editor
+  ]) ++ (with pkgs.gnome; [
+    cheese # webcam tool
+    gnome-music
+    gnome-terminal
+    epiphany # web browser
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+
+    # These i want to keep for now?
+    # geary # email reader
+    # evince # document viewer
+    # gnome-characters
+    # totem # video player
+  ]);
+
   environment.sessionVariables = {
     EDITOR = "vim";
     QT_QPA_PLATFORM = "wayland";
