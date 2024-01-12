@@ -52,11 +52,11 @@
   services.udev.enable = true;
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="043e", ATTRS{idProduct}=="9a40", MODE="0666"
-  '' # LG Ultrafine 5K
+  '' # LG Ultrafine 5K (9a40)
   + ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="9243", MODE="0666"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="1114", MODE="0666"
-  '' # Studio Display & Pro Display XDR
+  '' # Pro Display XDR (9243) & Studio Display (1114)
   ;
 
   services.xserver.enable = true;
