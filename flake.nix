@@ -8,10 +8,6 @@
     fonts.flake = false;
     nixos-generators.url = github:nix-community/nixos-generators;
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-    nix-straight = {
-      url = "github:codingkoi/nix-straight.el?ref=codingkoi/apply-librephoenixs-fix";
-      flake = false;
-    };
     pcscd-keep-alive.url = github:supermarin/pcscd-keep-alive;
     pcscd-keep-alive.inputs.nixpkgs.follows = "nixpkgs";
   };
