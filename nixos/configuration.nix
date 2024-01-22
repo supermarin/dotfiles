@@ -20,6 +20,10 @@
   time.timeZone = "America/New_York";
 
   networking = {
+    extraHosts = builtins.readFile (builtins.fetchurl {
+      url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+      sha256 = "sha256:1drs3326i7z673gvirw9riiqx38zlz9s8ky2l3c0c1xvx83mjprf";
+    });
     firewall = (import ../secrets/firewall.nix).tokio;
     hostName = "tokio";
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
