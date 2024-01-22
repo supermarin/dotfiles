@@ -23,6 +23,7 @@ in
   home.packages = with pkgs; [
     age
     age-plugin-yubikey
+    autotiling-rs # for sway
     bat # used in `e` for live preview of files
     cmake # emacs needs to compile vterm
     coreutils # used for `shred`
