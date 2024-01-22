@@ -43,7 +43,7 @@ in
     nodejs-slim_20 # for copilot
     nushell
     oathToolkit # used for OTP
-    obsidian
+    # obsidian TODO: return when https://github.com/NixOS/nixpkgs/issues/273611 is fixed
     ripgrep
     rnix-lsp
     rio # terminal, seems to work ok with Berkeley Mono
