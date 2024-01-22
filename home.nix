@@ -47,6 +47,7 @@ in
     ripgrep
     rnix-lsp
     rio # terminal, seems to work ok with Berkeley Mono
+    slack # for robot weatlth
     sqlite-interactive
     sumneko-lua-language-server
     tig
