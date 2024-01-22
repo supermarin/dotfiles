@@ -59,9 +59,6 @@
   '' # Pro Display XDR (9243) & Studio Display (1114)
   ;
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
   services.yubikey-agent.enable = true;
 
   users.users.supermarin = {
@@ -71,29 +68,9 @@
     openssh.authorizedKeys.keyFiles = [ ../ssh/pubkeys.nix ];
   };
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-tour
-    gedit # text editor
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    gnome-terminal
-    epiphany # web browser
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-
-    # These i want to keep for now?
-    # geary # email reader
-    # evince # document viewer
-    # gnome-characters
-    # totem # video player
-  ]);
-
   environment.sessionVariables = {
     EDITOR = "vim";
-    QT_QPA_PLATFORM = "wayland";
+    QT_QPA_PLATFORM = "wayland"; # TODO: check if still needed, electron fucked
     XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
   };
 
@@ -104,7 +81,6 @@
     dig
     file # file(1)
     gnome.adwaita-icon-theme
-    gnomeExtensions.pop-shell
     killall # killall(1)
     libreoffice
     unzip
