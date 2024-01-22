@@ -86,6 +86,8 @@
     unzip
     virt-manager
     zip
+
+    pcscliteWithPolkit.out # fix pcscd. TODO: remove when https://github.com/NixOS/nixpkgs/issues/280826 is closed
   ];
 
   # only for sway
