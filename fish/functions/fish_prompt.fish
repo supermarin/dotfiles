@@ -91,6 +91,11 @@ function nix_shell
   end
 end
 
+function ssh_prompt
+  if [ $SSH_CONNECTION ]
+    echo $cyan$USER$normal'@'$cyan(hostname)$normal
+  end
+end
 
 function fish_prompt
     set -l s $status # needed because $status gets overriden to 0 immediately
@@ -102,5 +107,5 @@ function fish_prompt
       set supemarin_git_info (git_prompt)
     end
 
-    echo (jobs_info) $supemarin_git_info $last_status_info(duration) (nix_shell)
+    echo (jobs_info) (ssh_prompt) $supemarin_git_info $last_status_info(duration) (nix_shell)
 end
