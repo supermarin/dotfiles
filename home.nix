@@ -1,8 +1,4 @@
 { config, pkgs, ... }:
-let
-  inherit (pkgs.lib) mkIf optionals;
-  inherit (pkgs.stdenv) isLinux isDarwin;
-in
 {
   dconf.settings = (import ./linux/gnome/dconf.nix { pkgs = pkgs; });
   home.sessionVariables = {
@@ -21,10 +17,13 @@ in
   ];
 
   home.packages = with pkgs; [
+    calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022
+    # obsidian TODO: return when https://github.com/NixOS/nixpkgs/issues/273611 is fixed
     age
     age-plugin-yubikey
     autotiling-rs # for sway
     bat # used in `e` for live preview of files
+    btop
     cmake # emacs needs to compile vterm
     coreutils # used for `shred`
     diffr # used in git stuff
@@ -33,37 +32,31 @@ in
     eza # ls with stuff
     fd
     firefox-bin
+    fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
     fzf
     git-lfs
     gnumake
     helix
-    btop
     jq
     khal
     nbstripout
     nodejs-slim_20 # for copilot
     nushell
     oathToolkit # used for OTP
-    # obsidian TODO: return when https://github.com/NixOS/nixpkgs/issues/273611 is fixed
+    rio # terminal, seems to work ok with Berkeley Mono
     ripgrep
     rnix-lsp
-    rio # terminal, seems to work ok with Berkeley Mono
+    signal-desktop # Unsupported on aarch64-darwin as of Aug 10 2022
     slack # for robot weatlth
     sqlite-interactive
     sumneko-lua-language-server
     tig
+    vdirsyncer # sync contacts & calendars
+    vlc # Unsupported on aarch64-darwin as of Aug 10 2022
     wormhole-william
     zig # why was this? for the compiler IIRC? TODO: delete if unused
     zulip
     zulip-term
-  ]
-  ++ lib.optionals isDarwin [ ]
-  ++ lib.optionals isLinux [
-    # calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022
-    fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
-    signal-desktop # Unsupported on aarch64-darwin as of Aug 10 2022
-    vdirsyncer # sync contacts & calendars
-    vlc # Unsupported on aarch64-darwin as of Aug 10 2022
   ];
 
   programs.fish = import ./fish/fish.nix pkgs;
