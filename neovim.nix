@@ -7,6 +7,7 @@ pkgs: {
     comment-nvim
     editorconfig-nvim
     nvim-autopairs
+    vim-repeat
     vim-surround
     vim-visual-multi
     # Copilot
@@ -21,12 +22,12 @@ pkgs: {
     # Telescope
     telescope-nvim
     plenary-nvim
-    # Misc
+    # Git
     neogit
     diffview-nvim
     gitsigns-nvim
     vim-fugitive
-    vim-repeat
+    # Misc
     vim-test
     which-key-nvim
     # Snippets
@@ -42,7 +43,6 @@ pkgs: {
     # Completion
     nvim-cmp
     nvim-lspconfig
-    # Various nvim-cmp components
     cmp-nvim-lsp
     cmp-buffer
     cmp-path
