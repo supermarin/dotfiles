@@ -15,8 +15,40 @@
   outputs =
     inputs: {
       nixosConfigurations = {
-        tokio = inputs.nixpkgs.lib.nixosSystem {
+
+        mx-001 = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          modules = [
+            ./nixos/configuration-pn50.nix
+            ./nixos/hardware-pn50.nix
+            inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.marin = {
+                home.stateVersion = "22.05";
+                imports = [
+                  ./home.nix
+                  ./home-services.nix
+                  ./secrets/mail.nix
+                ];
+              };
+            }
+          ];
+          specialArgs = {
+            nixpkgs = inputs.nixpkgs;
+            # pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+          }
+          // {
+            # DE
+            berkeley = (import inputs.fonts { pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; });
+          };
+        };
+
+
+        tokio = inputs.nixpkgs.lib.nixosSystem {
+          system = "x85_64-linux";
           specialArgs = {
             nixpkgs = inputs.nixpkgs;
             berkeley = (import inputs.fonts { pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; });
