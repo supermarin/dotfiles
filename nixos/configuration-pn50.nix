@@ -1,6 +1,5 @@
 { config, nixpkgs, pkgs, berkeley, ... }:
 {
-  # TODO: move to squale-capital/ibkr
   environment.sessionVariables = {
     EDITOR = "vim";
     XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
