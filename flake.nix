@@ -38,7 +38,6 @@
           ];
           specialArgs = {
             nixpkgs = inputs.nixpkgs;
-            #pkgs = inputs.nixpkgs.legacyPackages.aarch64-linux;
           }
           // {
             # DE
@@ -69,10 +68,6 @@
           ];
           specialArgs = {
             nixpkgs = inputs.nixpkgs;
-            # pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-          }
-          // {
-            # DE
             berkeley = (import inputs.fonts { pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; });
           };
         };
