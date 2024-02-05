@@ -61,7 +61,7 @@
                 imports = [
                   ./home.nix
                   ./home-services.nix
-                  ./secrets/mail.nix
+                  # ./secrets/mail.nix
                 ];
               };
             }
