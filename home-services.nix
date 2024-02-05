@@ -67,6 +67,7 @@
     };
 
     # Bind a target to graphical-session.target in order for systemd to start it
+    # TODO: extract this into sway module
     targets.sway-session = {
       Unit = {
         Description = "sway compositor session";
