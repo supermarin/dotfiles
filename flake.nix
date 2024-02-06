@@ -74,7 +74,7 @@
 
 
         tokio = inputs.nixpkgs.lib.nixosSystem {
-          system = "x85_64-linux";
+          system = "x86_64-linux";
           specialArgs = {
             nixpkgs = inputs.nixpkgs;
             berkeley = (import inputs.fonts { pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; });
