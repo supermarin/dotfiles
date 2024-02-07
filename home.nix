@@ -31,7 +31,7 @@
     discord
     eza # ls with stuff
     fd
-    firefox-bin
+    firefox
     fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
     fzf
     inputs.ghostty.packages.${pkgs.system}.ghostty
