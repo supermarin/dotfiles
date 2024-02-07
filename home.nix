@@ -18,7 +18,7 @@
 
   home.packages = with pkgs; [
     calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022
-    # obsidian TODO: return when https://github.com/NixOS/nixpkgs/issues/273611 is fixed
+    obsidian #TODO: return when https://github.com/NixOS/nixpkgs/issues/273611 is fixed
     age
     age-plugin-yubikey
     autotiling-rs # for sway
