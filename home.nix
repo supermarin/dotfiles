@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 {
   dconf.settings = (import ./linux/gnome/dconf.nix { pkgs = pkgs; });
   home.sessionVariables = {
@@ -34,6 +34,7 @@
     firefox-bin
     fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
     fzf
+    inputs.ghostty.packages.${pkgs.system}.ghostty
     git-lfs
     gnumake
     helix

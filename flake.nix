@@ -10,6 +10,7 @@
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     pcscd-keep-alive.url = github:supermarin/pcscd-keep-alive;
     pcscd-keep-alive.inputs.nixpkgs.follows = "nixpkgs";
+    ghostty.url = git+ssh://git@github.com/mitchellh/ghostty;
   };
 
   outputs =
@@ -24,14 +25,18 @@
             inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
             inputs.home-manager.nixosModules.home-manager
             {
+              nixpkgs.config.permittedInsecurePackages = [
+                "electron-25.9.0"
+              ];
+            }
+            {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inputs = inputs; };
               home-manager.users.marin = {
                 home.stateVersion = "22.05";
                 imports = [
                   ./home.nix
-                  #./home-services.nix
-                  #./secrets/mail.nix
                 ];
               };
             }
