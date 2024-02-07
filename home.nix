@@ -69,6 +69,7 @@
   xdg.configFile."nvim/init.lua".source = ./vim/init.lua;
   xdg.configFile."rg/config".source = ./rg/config;
   xdg.configFile."sway/config".source = ./linux/sway/config;
+  xdg.configFile."i3/config".source = ./linux/i3/config;
   xdg.configFile."tig/config".source = ./tig/config;
   xdg.configFile."vdirsyncer/config".source = ./secrets/vdirsyncer.conf;
   # Hacks / check temporarily if issues get fixed and remove
