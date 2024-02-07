@@ -3,7 +3,7 @@ default_border pixel 2
 gaps inner 7
 smart_borders on
 smart_gaps on
-font pango:Inter Medium 8
+font pango: SF Pro Display 11
 
 # # Set colors
 set $c_black #111111
