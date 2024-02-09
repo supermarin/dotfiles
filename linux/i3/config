@@ -1,9 +1,9 @@
 ### UI
-default_border pixel 2
+default_border pixel 4
 gaps inner 7
 smart_borders on
 smart_gaps on
-font pango: SF Pro Display 11
+font pango: SF Pro Display 10
 
 # # Set colors
 set $c_black #111111
@@ -12,15 +12,19 @@ set $c_lightgrey #DEDEDE
 # accent colors from macos
 # https://developer.apple.com/design/human-interface-guidelines/foundations/color
 set $c_grey #64727D
-set $c_blue #0084FF
-set $c_green #34C759
-set $c_orange #FF9F0A
-set $c_pink #FF375F
-set $c_teal #40C8E0
-set $c_accent #FF9F0A 
+set $c_blue #0084ff
+set $c_miami_green #003020
+set $c_dwr_green #182d2a
+set $c_green $c_dwr_green
+set $c_orange #ff9f0a
+set $c_miami_pink #f1c5d2
+set $c_pink #ff375f
+set $c_teal #40c8e0
+# set $c_accent $c_miami_pink - i3 can't reference variables
+set $c_accent #f1c5d2
 
 # class                 border     background  text         indicator  child_border
-client.focused          $c_black   $c_accent   $c_darkgrey    $c_accent  $c_accent
+client.focused          $c_black   $c_accent   $c_darkgrey  $c_accent  $c_accent
 client.focused_inactive $c_black   $c_darkgrey $c_lightgrey $c_black   $c_black
 client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
 
@@ -28,6 +32,16 @@ client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
 #
 bar {
     position top
+    status_command i3status-rs
+    colors {
+        separator          #111111AA 
+        background         #111111AA
+        statusline         #ffffff
+        focused_workspace  $c_darkgrey  $c_black    #ffffff
+        active_workspace   #900000      #333333     #ffffff
+        inactive_workspace $c_darkgrey  $c_darkgrey $c_lightgrey
+        urgent_workspace   #900000      #900000     #ffffff
+    }
 }
 
 ###############################################################################
@@ -42,21 +56,9 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term kitty
+set $term rio 
 set $browser firefox
-set $menu ulauncher
-
-# ### Input configuration
-# #
-# input * {
-#     repeat_delay 175
-#     repeat_rate  75
-#     natural_scroll enabled
-# }
-#
-# input 1:1:AT_Translated_Set_2_keyboard {
-#     xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
-# }
+set $menu rofi -show combi
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -65,18 +67,23 @@ set $menu ulauncher
 # mouse button for dragging.
 floating_modifier $mod
 
-# Assign apps to consistent workspaces
-for_window [title="floating_term"] floating enable
+# # Assign apps to consistent workspaces
+# for_window [title="floating_term"] floating enable
+#
+# # Make all GNOME (and some other) apps float
+# for_window [id=(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays|galculator|pavucontrol|ulauncher)] floating enable border none
 
 ### Key bindings
 #
 # Start a terminal
 bindsym $mod+Return exec $term
 bindsym $mod+t workspace 3; exec pgrep $term || $term
+# Zulip
+bindsym $mod+z workspace 5; exec pgrep zulip || zulip --enable-features=UseOzonePlatform --ozone-platform=wayland
 # NetworkManager connect
 bindsym $mod+w exec $term --title floating_term nmtui-connect
 # Emoji
-bindsym $mod+Ctrl+Space exec rofimoji
+bindsym $mod+Ctrl+space exec rofimoji
 # File manager
 bindsym $mod+e exec nautilus --new-window
 # Start a browser
@@ -86,13 +93,9 @@ bindsym $mod+o workspace 1; exec ps ax | grep -v grep | grep obsidian || obsidia
 # Kill focused window
 bindsym $mod+q kill
 # Start launcher
-bindsym $mod+Space exec $menu
+bindsym $mod+space exec $menu
 # Reload the configuration file
 bindsym $mod+Shift+c reload
-# Toggle notification control center
-bindsym $mod+Shift+n exec swaync-client -t -sw
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 # Moving around:
 #
 # Move your focus around
@@ -147,7 +150,6 @@ bindsym $mod+minus splitv
 # Switch the current container between different layout styles
 bindsym $mod+Shift+s layout stacking
 bindsym $mod+Shift+w layout tabbed
-bindsym $mod+Shift+d layout toggle split
 
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
@@ -161,20 +163,7 @@ bindsym $mod+Shift+0 move container to scratchpad
 # Swap focus between the tiling area and the floating area
 bindsym $mod+$mod2+space focus mode_toggle
 
-# Move focus to the parent container
-bindsym $mod+a focus parent
+# Move focus to the parent containe
+exec --no-startup-id xset r rate 300 135
 
-# Resizing containers:
-#
-mode "resize" {
-    bindsym $left resize shrink width 20px
-    bindsym $down resize grow height 20px
-    bindsym $up resize shrink height 20px
-    bindsym $right resize grow width 20px
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-exec udiskie
+exec autotiling
