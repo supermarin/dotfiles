@@ -26,7 +26,13 @@
       url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
       sha256 = "sha256:12zy3jd6a79psr0k17gf1l9fpxy5zjdrf47ib3wy1k4yjn4wgy4l";
     });
-    firewall = (import ../secrets/firewall.nix).tokio;
+    firewall = {
+      allowedTCPPorts = [ ];
+      allowedUDPPorts = [
+        config.services.tailscale.port
+      ];
+      trustedInterfaces = [ "tailscale0" ];
+    };
     hostName = "tokio";
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;
