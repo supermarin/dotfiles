@@ -1,4 +1,4 @@
-{ config, nixpkgs, pkgs, secrets, ... }:
+{ inputs, config, pkgs, secrets, ... }:
 {
   virtualisation.vmware.guest.enable = true;
   time.timeZone = "America/New_York";
@@ -83,7 +83,6 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
   nix = {
     buildMachines = import ./build-machines.nix;
     distributedBuilds = true;
@@ -99,7 +98,7 @@
       automatic = true;
       dates = [ "monthly" ];
     };
-    registry.nixpkgs.flake = nixpkgs;
+    registry.nixpkgs.flake = inputs.nixpkgs;
     settings = {
       trusted-users = [ "marin" ]; # enable nix-copy-closure
     };
@@ -107,7 +106,6 @@
       "nixpkgs=/etc/nix/channels/nixpkgs"
     ];
   };
-  environment.etc."nix/channels/nixpkgs".source = nixpkgs.outPath;
 
   # don't touch
   system.stateVersion = "23.05";

@@ -1,4 +1,4 @@
-{ pkgs, config, nixpkgs, berkeley, ... }:
+{ inputs, pkgs, config, berkeley, ... }:
 {
   imports = [ ./fonts.nix ];
 
@@ -142,7 +142,6 @@
     enable = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
   nix = {
     buildMachines = import ./build-machines.nix;
     distributedBuilds = true;
@@ -158,10 +157,9 @@
       automatic = true;
       dates = [ "monthly" ];
     };
-    registry.nixpkgs.flake = nixpkgs;
+    registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = [
       "nixpkgs=/etc/nix/channels/nixpkgs"
     ];
   };
-  environment.etc."nix/channels/nixpkgs".source = nixpkgs.outPath;
 }

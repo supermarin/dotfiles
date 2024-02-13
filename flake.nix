@@ -70,8 +70,8 @@
                 ./home-services.nix
                 ./secrets/mail.nix
               ];
-              system.stateVersion = "22.05";
               networking.hostName = "tokio";
+              system.stateVersion = "22.05";
             }
           ];
         };
