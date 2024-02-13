@@ -56,6 +56,7 @@
       trusted-users = [ "marin" ]; # enable nix-copy-closure
     };
   };
+  programs.dconf.enable = true;
   programs.fish.enable = true;
   security.sudo.wheelNeedsPassword = false;
   services.openssh.enable = true; # Enable remote login
