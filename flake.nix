@@ -21,13 +21,14 @@
           modules = [
             inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
             inputs.home-manager.nixosModules.home-manager
-            ./nixos/configuration-pn50.nix
+            ./nixos/configuration-dev-vm.nix
             ./nixos/hardware-parallels.nix
             ./nixos/home-manager-config.nix
             ./nixos/nixpkgs-config.nix
             {
-              system.stateVersion = "23.11";
               home-manager.users.marin.imports = [ ./home.nix ];
+              networking.hostName = "parallels";
+              system.stateVersion = "23.11";
             }
           ];
           specialArgs = { inputs = inputs; };
@@ -64,12 +65,13 @@
             ./nixos/home-manager-config.nix
             ./nixos/nixpkgs-config.nix
             {
-              system.stateVersion = "22.05";
               home-manager.users.supermarin.imports = [
                 ./home.nix
                 ./home-services.nix
                 ./secrets/mail.nix
               ];
+              system.stateVersion = "22.05";
+              networking.hostName = "tokio";
             }
           ];
         };
