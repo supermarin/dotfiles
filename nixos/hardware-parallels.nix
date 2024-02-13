@@ -10,6 +10,10 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/94eccdfb-dfe6-4cda-9831-63c67e639c16";
