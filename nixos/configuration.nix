@@ -1,5 +1,7 @@
 { pkgs, config, nixpkgs, berkeley, ... }:
 {
+  imports = [ ./fonts.nix ];
+
   # Fix NetworkManager.wait-online.service bug
   # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
   systemd.services.NetworkManager-wait-online.enable = pkgs.lib.mkForce false;
@@ -128,32 +130,6 @@
     extraSessionCommands = ''
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
     '';
-  };
-
-  fonts = {
-    enableDefaultPackages = false;
-    packages = with pkgs; [
-      (import ../fonts/sfpro.nix { pkgs = pkgs; }) # sans
-      (import ../fonts/sfmono.nix { pkgs = pkgs; }) # mono for browser
-      berkeley
-      source-serif # serif
-      jetbrains-mono # mono for terminal and vim
-      iosevka
-
-      noto-fonts-emoji # emoji
-      font-awesome # i3status-rust
-
-      ibm-plex # more mono ftw
-      hack-font # more mono ftw
-    ];
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "Source Serif 4" ];
-        sansSerif = [ "SF Pro Display" ];
-        monospace = [ "SF Mono" ];
-        emoji = [ "Noto" ];
-      };
-    };
   };
 
   # Virtualisation

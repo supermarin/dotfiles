@@ -1,5 +1,7 @@
 { inputs, config, pkgs, berkeley, ... }:
 {
+  imports = [ ./fonts.nix ];
+
   environment.sessionVariables = {
     EDITOR = "vim";
     XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
@@ -128,33 +130,6 @@
     extraSessionCommands = ''
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
     '';
-  };
-
-  fonts = {
-    enableDefaultPackages = false;
-    packages = with pkgs; [
-      (import ../fonts/sfpro.nix { pkgs = pkgs; }) # sans
-      (import ../fonts/sfmono.nix { pkgs = pkgs; }) # mono for browser
-      (import inputs.fonts { pkgs = inputs.nixpkgs.legacyPackages.${pkgs.system}; }) # berkeley mono
-      source-serif # serif
-      jetbrains-mono # mono for terminal and vim
-      iosevka
-
-      noto-fonts-emoji # emoji
-      font-awesome # i3status-rust
-
-      ibm-plex # more mono ftw
-      hack-font # more mono ftw
-    ];
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "Source Serif 4" ];
-        sansSerif = [ "SF Pro Display" ];
-        # monospace = [ "SF Mono" ];
-        monospace = [ "Berkeley Mono" ];
-        emoji = [ "Noto" ];
-      };
-    };
   };
 }
   // {
