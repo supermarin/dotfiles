@@ -65,7 +65,7 @@
             ./nixos/home-manager-config.nix
             ./nixos/nixpkgs-config.nix
             {
-              home-manager.users.supermarin.imports = [
+              home-manager.users.marin.imports = [
                 ./home.nix
                 ./home-services.nix
                 ./secrets/mail.nix

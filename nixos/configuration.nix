@@ -70,7 +70,7 @@
 
   services.yubikey-agent.enable = true;
 
-  users.users.supermarin = {
+  users.users.marin = {
     shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "libvirtd" "nixbld" ];
