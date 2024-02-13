@@ -43,8 +43,9 @@
             ./nixos/hardware-pn50.nix
             ./nixos/home-manager-config.nix
             {
-              system.stateVersion = "23.11";
               home-manager.users.marin.imports = [ ./home.nix ./home-services.nix ];
+              networking.hostName = "mx-001";
+              system.stateVersion = "23.11";
             }
           ];
           specialArgs = { inputs = inputs; };

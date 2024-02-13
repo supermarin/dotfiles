@@ -37,7 +37,6 @@
       };
       trustedInterfaces = [ "tailscale0" ];
     };
-    hostName = "mx-001";
     networkmanager.enable = true; # TODO: see if we can nuke this
   };
   nix = {
