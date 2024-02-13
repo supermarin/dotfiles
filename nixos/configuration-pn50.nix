@@ -1,4 +1,4 @@
-{ config, nixpkgs, pkgs, berkeley, ... }:
+{ inputs, config, pkgs, berkeley, ... }:
 {
   environment.sessionVariables = {
     EDITOR = "vim";
@@ -50,12 +50,11 @@
       automatic = true;
       dates = [ "monthly" ];
     };
-    registry.nixpkgs.flake = nixpkgs;
+    registry.nixpkgs.flake = inputs.nixpkgs;
     settings = {
       trusted-users = [ "marin" ]; # enable nix-copy-closure
     };
   };
-  nixpkgs.config.allowUnfree = true;
   programs.fish.enable = true;
   security.sudo.wheelNeedsPassword = false;
   services.openssh.enable = true; # Enable remote login
@@ -63,7 +62,6 @@
   services.pcscd-keep-alive.enable = true;
   services.udisks2.enable = true; # needed for fwupdmgr -.-
   services.tailscale.enable = true;
-  system.stateVersion = "21.05";
   time.timeZone = "America/New_York";
 
   users.users.marin = {
@@ -137,7 +135,7 @@
     packages = with pkgs; [
       (import ../fonts/sfpro.nix { pkgs = pkgs; }) # sans
       (import ../fonts/sfmono.nix { pkgs = pkgs; }) # mono for browser
-      berkeley
+      (import inputs.fonts { pkgs = inputs.nixpkgs.legacyPackages.${pkgs.system}; }) # berkeley mono
       source-serif # serif
       jetbrains-mono # mono for terminal and vim
       iosevka
@@ -152,7 +150,8 @@
       defaultFonts = {
         serif = [ "Source Serif 4" ];
         sansSerif = [ "SF Pro Display" ];
-        monospace = [ "SF Mono" ];
+        # monospace = [ "SF Mono" ];
+        monospace = [ "Berkeley Mono" ];
         emoji = [ "Noto" ];
       };
     };

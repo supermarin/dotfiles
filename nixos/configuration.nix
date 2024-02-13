@@ -185,6 +185,4 @@
     ];
   };
   environment.etc."nix/channels/nixpkgs".source = nixpkgs.outPath;
-  # don't touch
-  system.stateVersion = "22.05";
 }
