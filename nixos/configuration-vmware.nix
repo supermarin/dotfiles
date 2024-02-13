@@ -15,9 +15,6 @@
   services.getty.autologinUser = "marin";
   services.udisks2.enable = true; # needed for fwupdmgr -.-
   services.yubikey-agent.enable = true;
-  services.syncthing = secrets.syncthing "tokio-vm" // {
-    user = "marin";
-  };
   services.tailscale.enable = true;
 
   users.users.marin = {

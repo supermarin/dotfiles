@@ -50,9 +50,6 @@
     pulse.enable = true;
   };
   services.printing.enable = true; # TODO: test if we need this anymore?
-  services.syncthing = (import ../secrets/syncthing.nix "tokio") // {
-    user = "supermarin";
-  };
   services.tailscale.enable = true;
   services.udisks2.enable = true; # needed for fwupdmgr -.-
   services.udev.enable = true;
