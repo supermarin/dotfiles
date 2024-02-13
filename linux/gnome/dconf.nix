@@ -3,8 +3,10 @@
 #    nixos module PR (without HM): https://github.com/NixOS/nixpkgs/pull/234615
 #    pop-shell-gnome-45 (script that resets all the keybindings correctly): 
 #    https://github.com/ronanru/pop-shell-gnome-45/blob/master_jammy/scripts/configure.sh
+{ pkgs }:
 
-{ pkgs }: with pkgs.lib.gvariant; {
+with pkgs.lib.gvariant;
+{
   "org/gnome/desktop/input-sources" = {
     xkb-options = [ "terminate:ctrl_alt_bksp" "caps:ctrl_modifier" ];
   };
