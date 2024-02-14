@@ -44,6 +44,7 @@
           modules = [
             inputs.home-manager.nixosModules.home-manager
             inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
+            ./nixos/nixpkgs-config.nix
             ./nixos/configuration-pn50.nix
             ./nixos/hardware-pn50.nix
             ./nixos/home-manager-config.nix
