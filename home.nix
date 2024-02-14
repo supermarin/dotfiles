@@ -30,7 +30,6 @@
     direnv
     eza # ls with stuff
     fd
-    firefox
     fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
     fzf
     inputs.ghostty.packages.${pkgs.system}.ghostty
@@ -57,6 +56,49 @@
     zulip-term
   ];
 
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox-bin;
+    profiles = {
+      marin = {
+        id = 0;
+        isDefault = true;
+        settings = {
+          "browser.startup.homepage" = "https://kagi.com";
+          "browser.search.defaultenginename" = "Kagi";
+          "browser.search.order.1" = "Kagi";
+
+          "privacy.trackingprotection.enabled" = true;
+          "privacy.trackingprotection.socialtracking.enabled" = true;
+          "privacy.trackingprotection.emailtracking.enabled" = true;
+        };
+        search = {
+          order = [ "Kagi" "Nixpkgs" "DuckDuckGo" ];
+          engines = {
+            "Nix Packages" = {
+              urls = [{
+                template = "https://search.nixos.org/packages";
+                params = [
+                  { name = "type"; value = "packages"; }
+                  { name = "query"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@np" ];
+            };
+          };
+        };
+        extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+          ublock-origin
+          kagi-search
+          i-dont-care-about-cookies
+          disable-facebook-news-feed
+          facebook-container
+          # link-cleaner
+        ];
+      };
+    };
+  };
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
