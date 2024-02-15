@@ -85,8 +85,8 @@
       simba.addresses = [ "quic://simba" ];
       tokio.id = "3R5ICHB-XN4DEI4-7NUMPI2-DCL24JI-3A2XN2Y-6IG6UTX-VXO22EL-66T3ZQM";
       tokio.addresses = [ "quic://tokio" ];
-      vm-001.id = "4FNONH3-QTHSBAF-NKPXL4A-IDTEYGI-LKC2QN2-RXQ3UUT-CUQFWM6-JFCB7AU";
-      vm-001.addresses = [ "quic://vm-001" ];
+      mx-001.id = "4FNONH3-QTHSBAF-NKPXL4A-IDTEYGI-LKC2QN2-RXQ3UUT-CUQFWM6-JFCB7AU";
+      mx-001.addresses = [ "quic://mx-001" ];
     };
     folders = {
       "~/base" = {
