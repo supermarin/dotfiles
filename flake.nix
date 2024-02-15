@@ -86,7 +86,7 @@
             ./nixos/hardware-vmware.nix
             ./nixos/home-manager-config.nix
             {
-              system.stateVersion = "23.11";
+              system.stateVersion = "23.05";
               home-manager.users.marin.imports = [ ./home.nix ];
             }
           ];
