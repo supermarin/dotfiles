@@ -39,23 +39,6 @@
     };
     networkmanager.enable = true; # TODO: see if we can nuke this
   };
-  nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    gc = {
-      automatic = true;
-      dates = "monthly";
-    };
-    optimise = {
-      automatic = true;
-      dates = [ "monthly" ];
-    };
-    registry.nixpkgs.flake = inputs.nixpkgs;
-    settings = {
-      trusted-users = [ "marin" ]; # enable nix-copy-closure
-    };
-  };
   programs.fish.enable = true;
   security.sudo.wheelNeedsPassword = false;
   services.openssh.enable = true; # Enable remote login
