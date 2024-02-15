@@ -73,7 +73,8 @@
           "privacy.trackingprotection.emailtracking.enabled" = true;
         };
         search = {
-          order = [ "Kagi" "Nixpkgs" "DuckDuckGo" ];
+          order = [ "Kagi" "Nix Packages" "DuckDuckGo" ];
+          force = true;
           engines = {
             "Nix Packages" = {
               urls = [{
