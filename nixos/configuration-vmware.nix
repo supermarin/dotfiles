@@ -15,8 +15,6 @@
   programs.fish.enable = true;
   services.openssh.enable = true;
   services.getty.autologinUser = "marin";
-  services.udisks2.enable = true; # needed for fwupdmgr -.-
-  services.yubikey-agent.enable = true;
   services.tailscale.enable = true;
 
   users.users.marin = {
@@ -32,34 +30,13 @@
     SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/yubikey-agent/yubikey-agent.sock";
   };
 
-  # Only put system software in here, e.g. stuff that is installed by
-  # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
     dig
     file # file(1)
-    gnome.adwaita-icon-theme
     killall # killall(1)
     unzip
-    virt-manager
     zip
   ];
-
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    dpi = 220;
-
-    desktopManager.xterm.enable = false;
-    displayManager.defaultSession = "none+i3";
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        i3status
-        clipmenu
-        xsel
-      ];
-    };
-  };
 
   nix = {
     buildMachines = import ./build-machines.nix;
@@ -84,8 +61,5 @@
       "nixpkgs=/etc/nix/channels/nixpkgs"
     ];
   };
-
-  # don't touch
-  system.stateVersion = "23.05";
 }
 
