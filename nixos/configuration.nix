@@ -24,7 +24,7 @@
   networking = {
     extraHosts = builtins.readFile (builtins.fetchurl {
       url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-      sha256 = "sha256:12zy3jd6a79psr0k17gf1l9fpxy5zjdrf47ib3wy1k4yjn4wgy4l";
+      sha256 = "sha256:0079x21cijk9q8zpi9isfwzn06mbxd8xd7di79ap6pnnsmbg9z5n";
     });
     firewall = {
       allowedTCPPorts = [ ];
@@ -112,7 +112,7 @@
   # Only put system software in here, e.g. stuff that is installed by
   # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
-    appimage-run # not really running appimages, this guy says it's totally ok https://www.youtube.com/watch?v=FDY-x_hvj1o @ 5:40
+    appimage-run # experimental
     dig
     file # file(1)
     killall # killall(1)
