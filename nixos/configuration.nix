@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 {
-  imports = [ ./fonts.nix ];
+  # imports = [ ./modules/de-sway.nix ];
 
   # Fix NetworkManager.wait-online.service bug
   # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
@@ -115,7 +115,6 @@
     appimage-run # not really running appimages, this guy says it's totally ok https://www.youtube.com/watch?v=FDY-x_hvj1o @ 5:40
     dig
     file # file(1)
-    gnome.adwaita-icon-theme
     killall # killall(1)
     libreoffice
     unzip
@@ -124,42 +123,6 @@
 
     pcscliteWithPolkit.out # fix pcscd. TODO: remove when https://github.com/NixOS/nixpkgs/issues/280826 is closed
   ];
-
-  # only for sway
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    wrapperFeatures.base = true;
-    extraPackages = with pkgs; [
-      blueberry # Bluetooth devices management gui
-      brightnessctl # Brightness control
-      grim # wayland screenshot tool
-      i3status-rust # Menu bar
-      libnotify # notify-send
-      swaynotificationcenter # notification daemon
-      mupdf
-      gedit # basic text file opener
-      gnome.gnome-calculator
-      gnome.nautilus # gui file browser
-      gnome.sushi # quick preview for nautilus
-      playerctl # media keys (play/pause, prev, next)
-      pavucontrol # select sound output device
-      rofi-wayland
-      rofimoji # emoji picker, fuzzel doesn't support emoji
-      slurp # screenshot: select a region in wayland
-      swaylock # idle lock
-      swayidle # idle lock
-      udiskie # auto mount usb media
-      xdg-utils
-      w3m # for HTML emails
-      wdisplays
-      wl-clipboard # wl-copy, wl-paste
-      wob # indicator bar
-    ];
-    extraSessionCommands = ''
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-    '';
-  };
 
   # Virtualisation
   virtualisation.libvirtd.enable = true;

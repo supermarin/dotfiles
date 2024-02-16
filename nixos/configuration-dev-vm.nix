@@ -1,6 +1,6 @@
 { inputs, config, pkgs, ... }:
 {
-  imports = [ ./fonts.nix ];
+  imports = [ ./modules/fonts.nix ];
 
   environment.sessionVariables = {
     EDITOR = "vim";

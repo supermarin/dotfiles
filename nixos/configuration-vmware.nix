@@ -1,6 +1,6 @@
 { inputs, config, pkgs, secrets, ... }:
 {
-  imports = [ ./fonts.nix ];
+  imports = [ ./modules/fonts.nix ];
 
   virtualisation.vmware.guest.enable = true;
   time.timeZone = "America/New_York";
