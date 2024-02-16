@@ -11,6 +11,7 @@ with pkgs.lib.gvariant;
     xkb-options = [ "terminate:ctrl_alt_bksp" "caps:ctrl_modifier" ];
   };
   "org/gnome/desktop/interface" = {
+    gtk-theme = "Adwaita-dark";
     color-scheme = "prefer-dark";
     cursor-size = 24;
   };

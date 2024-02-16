@@ -42,6 +42,7 @@
     networkmanager.enable = true; # TODO: see if we can nuke this
   };
   programs.fish.enable = true;
+  programs.dconf.enable = true;
   security.sudo.wheelNeedsPassword = false;
   services.openssh.enable = true; # Enable remote login
   services.fwupd.enable = true;
