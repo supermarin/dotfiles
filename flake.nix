@@ -44,10 +44,10 @@
           modules = [
             inputs.home-manager.nixosModules.home-manager
             inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
-            ./nixos/nixpkgs-config.nix
             ./nixos/configuration-pn50.nix
             ./nixos/hardware-pn50.nix
             ./nixos/home-manager-config.nix
+            ./nixos/nixpkgs-config.nix
             {
               home-manager.users.marin.imports = [ ./home.nix ./home-services.nix ];
               networking.hostName = "mx-001";
@@ -84,12 +84,13 @@
         tokio-vm = inputs.nixpkgs.lib.nixosSystem {
           # deployed on vmware mbp
           system = "x86_64-linux";
-          specialArgs = { nixpkgs = inputs.nixpkgs; };
+          specialArgs = { inputs = inputs; };
           modules = [
             inputs.home-manager.nixosModules.home-manager
             ./nixos/configuration-vmware.nix
             ./nixos/hardware-vmware.nix
             ./nixos/home-manager-config.nix
+            ./nixos/nixpkgs-config.nix
             {
               system.stateVersion = "23.05";
               home-manager.users.marin.imports = [ ./home.nix ];
@@ -100,7 +101,7 @@
         personal = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./nixos/configuration-personal.nix ];
-          specialArgs = { nixpkgs = inputs.nixpkgs; };
+          specialArgs = { inputs = inputs; };
         };
 
         vpn = inputs.nixpkgs.lib.nixosSystem {
