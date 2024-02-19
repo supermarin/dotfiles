@@ -87,7 +87,6 @@
           specialArgs = { inputs = inputs; };
           modules = [
             inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
-            inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-nano-gen1
             inputs.home-manager.nixosModules.home-manager
             ./nixos/configuration.nix
             ./nixos/hardware-computer-1.nix
