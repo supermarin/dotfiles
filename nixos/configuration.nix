@@ -24,7 +24,7 @@
   networking = {
     extraHosts = builtins.readFile (builtins.fetchurl {
       url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-      sha256 = "sha256:0079x21cijk9q8zpi9isfwzn06mbxd8xd7di79ap6pnnsmbg9z5n";
+      sha256 = "sha256:12zy3jd6a79psr0k17gf1l9fpxy5zjdrf47ib3wy1k4yjn4wgy4l";
     });
     firewall = {
       allowedTCPPorts = [ ];
@@ -33,7 +33,6 @@
       ];
       trustedInterfaces = [ "tailscale0" ];
     };
-    hostName = "tokio";
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;
   };

@@ -81,6 +81,30 @@
           ];
         };
 
+
+        mufasa = inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inputs = inputs; };
+          modules = [
+            inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
+            inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-nano-gen1
+            inputs.home-manager.nixosModules.home-manager
+            ./nixos/configuration.nix
+            ./nixos/hardware-computer-1.nix
+            ./nixos/home-manager-config.nix
+            ./nixos/nixpkgs-config.nix
+            {
+              home-manager.users.marin.imports = [
+                ./home.nix
+                ./home-services.nix
+                # ./secrets/mail.nix
+              ];
+              networking.hostName = "mufasa";
+              system.stateVersion = "23.11";
+            }
+          ];
+        };
+
         tokio-vm = inputs.nixpkgs.lib.nixosSystem {
           # deployed on vmware mbp
           system = "x86_64-linux";
