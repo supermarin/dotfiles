@@ -1,9 +1,5 @@
 { inputs, config, pkgs, berkeley, ... }:
 {
-  imports = [
-    ./modules/de-sway.nix
-  ];
-
   environment.sessionVariables = {
     EDITOR = "vim";
     XKB_DEFAULT_OPTIONS = "ctrl:nocaps";

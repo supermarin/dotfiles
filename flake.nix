@@ -45,6 +45,7 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
             ./nixos/configuration-pn50.nix
+            ./nixos/modules/de-sway.nix
             ./nixos/hardware-pn50.nix
             ./nixos/home-manager-config.nix
             ./nixos/nixpkgs-config.nix
