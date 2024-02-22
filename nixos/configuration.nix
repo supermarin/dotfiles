@@ -96,7 +96,7 @@
   users.users.marin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "nixbld" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
     openssh.authorizedKeys.keyFiles = [ ../ssh/pubkeys.nix ];
   };
 
