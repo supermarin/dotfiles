@@ -30,7 +30,6 @@
     direnv
     eza # ls with stuff
     fd
-    fractal # matrix. Unsupported on aarch64-darwin as of Aug 10 2022 (libhandy)
     fzf
     inputs.ghostty.packages.${pkgs.system}.ghostty
     git-lfs
