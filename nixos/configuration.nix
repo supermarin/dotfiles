@@ -1,7 +1,5 @@
 { pkgs, config, ... }:
 {
-  imports = [ ./modules/de-sway.nix ];
-
   # Fix NetworkManager.wait-online.service bug
   # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
   systemd.services.NetworkManager-wait-online.enable = pkgs.lib.mkForce false;

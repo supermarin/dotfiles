@@ -66,6 +66,7 @@
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-nano-gen1
             inputs.home-manager.nixosModules.home-manager
             ./nixos/configuration.nix
+            ./nixos/modules/de-sway.nix
             ./nixos/hardware-x1.nix
             ./nixos/home-manager-config.nix
             ./nixos/nixpkgs-config.nix
@@ -91,6 +92,7 @@
             ./nixos/configuration.nix
             ./nixos/hardware-computer-1.nix
             ./nixos/home-manager-config.nix
+            ./nixos/modules/de-sway.nix
             ./nixos/nixpkgs-config.nix
             {
               home-manager.users.marin.imports = [
