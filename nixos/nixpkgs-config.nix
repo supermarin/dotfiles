@@ -1,8 +1,10 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   nix = {
-    buildMachines = import ./build-machines.nix;
+    buildMachines = builtins.filter
+      (machine: machine.hostName != config.networking.hostName)
+      (import ./build-machines.nix);
     distributedBuilds = true;
     extraOptions = ''
       experimental-features = nix-command flakes
