@@ -40,4 +40,22 @@
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
     '';
   };
+
+  # Bind a target to graphical-session.target in order for systemd to start it
+  targets.sway-session = {
+    Unit = {
+      Description = "sway compositor session";
+      Documentation = [ "man:systemd.special(7)" ];
+      BindsTo = [ "graphical-session.target" ];
+      Wants = [ "graphical-session-pre.target" ];
+      After = [ "graphical-session-pre.target" ];
+    };
+  };
+
+  services.wlsunset = {
+    enable = true;
+    latitude = "40.7";
+    longitude = "-73.9";
+    systemdTarget = "sway-session.target";
+  };
 }
