@@ -33,6 +33,7 @@
     fzf
     inputs.ghostty.packages.${pkgs.system}.ghostty
     git-lfs
+    github-cli
     gnumake
     helix
     jq

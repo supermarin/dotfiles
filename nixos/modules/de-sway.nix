@@ -3,6 +3,7 @@
   imports = [
     ./fonts.nix
   ];
+  programs.yubikey-touch-detector.enable = true;
 
   programs.sway = {
     enable = true;

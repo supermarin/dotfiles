@@ -60,8 +60,8 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="043e", ATTRS{idProduct}=="9a40", MODE="0666"
   '' # LG Ultrafine 5K (9a40)
   + ''
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="9243", MODE="0666"
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="1114", MODE="0666"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="5ac", ATTRS{idProduct}=="9243", MODE="0666"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="5ac", ATTRS{idProduct}=="1114", MODE="0666"
   '' # Pro Display XDR (9243) & Studio Display (1114)
   ;
 
