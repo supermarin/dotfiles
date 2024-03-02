@@ -22,7 +22,7 @@
   networking = {
     extraHosts = builtins.readFile (builtins.fetchurl {
       url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-      sha256 = "sha256:1r5q6q45cswznk7jig3bpv8d31q8bfvy70hvyq4iibix7c88yzll";
+      sha256 = "sha256:1a5z7mwjlbw6i4k1mxzn9cqlnaxm8nhq7mj4fkx2w8npcag50aq3";
     });
     firewall = {
       allowedTCPPorts = [ ];
@@ -36,7 +36,7 @@
   };
   programs.fish.enable = true;
 
-  # needed for printer discovery on the network
+  # needed for printer discovery on the network which is broken so TODO: fix
   services.avahi = {
     enable = true;
     publish.enable = true;
