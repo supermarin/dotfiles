@@ -29,5 +29,11 @@ pkgs:
     nrb = ''
       nixos-rebuild --flake $HOME/dotfiles#$(hostname) switch
     '';
+    pgp = ''
+      cd $PASSWORD_STORE_DIR
+      git add .
+      git commit -am 'update'
+      git push
+    '';
   };
 }
