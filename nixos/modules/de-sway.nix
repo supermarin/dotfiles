@@ -64,4 +64,10 @@
         ${pkgs.wlsunset}/bin/wlsunset -l ${latitude} -L ${longitude}
       '';
     };
+
+  xdg.portal.enable = true;
+  xdg.portal.wlr.enable = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+  ];
 }
