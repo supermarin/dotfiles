@@ -152,7 +152,7 @@ floating_modifier $mod normal
 for_window [title="floating_term"] floating enable
 
 # Make all GNOME (and some other) apps float
-for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays|galculator|pavucontrol|ulauncher)"] {
+for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays|galculator|pavucontrol|ulauncher|blueberry.py)"] {
   floating enable
   border none
 }
