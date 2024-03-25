@@ -2,9 +2,7 @@
 {
   nixpkgs.config.allowUnfree = true;
   nix = {
-    buildMachines = builtins.filter
-      (machine: machine.hostName != config.networking.hostName)
-      (import ./build-machines.nix);
+    buildMachines = (import ./build-machines.nix config.networking.hostName);
     distributedBuilds = true;
     extraOptions = ''
       experimental-features = nix-command flakes
