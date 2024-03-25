@@ -57,7 +57,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term rio 
+set $term ghostty
 set $browser firefox
 set $menu rofi -show combi
 set $notification-center swaync-client -t -sw
