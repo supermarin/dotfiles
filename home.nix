@@ -58,23 +58,55 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-bin;
+    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+      extraPolicies = {
+        DisableTelemetry = true;
+        DisableFirefoxStudies = true;
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Cryptomining = true;
+          Fingerprinting = true;
+        };
+
+        DisablePocket = true;
+        DisableFirefoxAccounts = true;
+        DisableAccounts = true;
+        DisableFirefoxScreenshots = true;
+        OverrideFirstRunPage = "";
+        OverridePostUpdatePage = "";
+        DontCheckDefaultBrowser = true;
+        DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
+        DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
+        SearchBar = "unified"; # alternative: "separate"
+      };
+    };
     profiles = {
       marin = {
         id = 0;
         isDefault = true;
-        settings = {
-          "browser.startup.homepage" = "https://kagi.com";
-          "browser.search.defaultenginename" = "Kagi";
-          "browser.search.order.1" = "Kagi";
-
-          "privacy.trackingprotection.enabled" = true;
-          "privacy.trackingprotection.socialtracking.enabled" = true;
-          "privacy.trackingprotection.emailtracking.enabled" = true;
-        };
+        settings =
+          let
+            lock-false = { Value = false; Status = "locked"; };
+          in
+          {
+            "browser.aboutConfig.showWarning" = false;
+            "browser.newtabpage.activity-stream.feeds.section.highlights" = lock-false;
+            "browser.newtabpage.activity-stream.showSponsored" = lock-false;
+            "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
+            "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
+            "browser.search.defaultenginename" = "Kagi";
+            "browser.search.order.1" = "Kagi";
+            "browser.startup.homepage" = "https://kagi.com";
+            "privacy.trackingprotection.emailtracking.enabled" = true;
+            "privacy.trackingprotection.enabled" = true;
+            "privacy.trackingprotection.socialtracking.enabled" = true;
+            "signon.rememberSignons" = false;
+            "widget.use-xdg-desktop-portal.file-picker" = 1;
+          };
         search = {
-          order = [ "Kagi" "Nix Packages" "DuckDuckGo" ];
           force = true;
+          order = [ "Kagi" "Nix Packages" "DuckDuckGo" ];
           engines = {
             "Nix Packages" = {
               urls = [{
