@@ -22,6 +22,7 @@
       gnome.gnome-calculator
       gnome.nautilus # gui file browser
       gnome.sushi # quick preview for nautilus
+      imagemagick # for resizing images
       playerctl # media keys (play/pause, prev, next)
       pavucontrol # select sound output device
       rofi-wayland
