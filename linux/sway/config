@@ -70,13 +70,12 @@ output $laptop {
   scale 1.25
 }
 
-# # DP-3
-# output 'Apple Computer Inc ProDisplayXDR 0x00001F08' {
-#   pos 0 0
-#   mode 6016x3384@60.000Hz
-#   scale 2
-# }
-#
+output 'Apple Computer Inc ProDisplayXDR 0x00001F08' {
+  pos 0 0
+  mode 6016x3384@60.000Hz
+  scale 2
+}
+
 # TODO: figure out how to distinguish DP-3 from DP-4 since they both seem to
 #       have the same hex identifier
 # output 'Apple Computer Inc ProDisplayXDR 0x00001F08' {
