@@ -305,10 +305,9 @@ bindsym $mod+$mod2+3 exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%
 bindsym $mod+$mod2+4 exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 
 
-# Unfuck launching GNOME apps (takes 20 seconds otherwise)
 exec systemctl --user import-environment
 exec systemctl --user start sway-session.target
-# TODO: not sure if this is needed anymore, getting off GNOME
+# Unfuck launching GNOME apps (takes 20 seconds otherwise)
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 # Startup commands
