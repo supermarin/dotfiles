@@ -1,16 +1,16 @@
 {
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs;
-    nixos-hardware.url = github:NixOS/nixos-hardware;
-    home-manager.url = github:nix-community/home-manager;
+    nixpkgs.url = "github:nixos/nixpkgs";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    fonts.url = git+ssh://git@github.com/supermarin/fonts;
+    fonts.url = "git+ssh://git@github.com/supermarin/fonts";
     fonts.flake = false;
-    nixos-generators.url = github:nix-community/nixos-generators;
+    nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-    pcscd-keep-alive.url = github:supermarin/pcscd-keep-alive;
+    pcscd-keep-alive.url = "github:supermarin/pcscd-keep-alive";
     pcscd-keep-alive.inputs.nixpkgs.follows = "nixpkgs";
-    ghostty.url = git+ssh://git@github.com/mitchellh/ghostty;
+    ghostty.url = "git+ssh://git@github.com/mitchellh/ghostty";
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,7 +38,6 @@
           specialArgs = { inputs = inputs; };
         };
 
-
         mx-001 = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -58,7 +57,6 @@
           ];
           specialArgs = { inputs = inputs; };
         };
-
 
         tokio = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -85,7 +83,6 @@
             }
           ];
         };
-
 
         mufasa = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
