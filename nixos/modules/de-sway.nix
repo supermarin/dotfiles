@@ -42,20 +42,26 @@
   };
 
   # Bind a target to graphical-session.target in order for systemd to start it
-  targets.sway-session = {
-    Unit = {
-      Description = "sway compositor session";
-      Documentation = [ "man:systemd.special(7)" ];
-      BindsTo = [ "graphical-session.target" ];
-      Wants = [ "graphical-session-pre.target" ];
-      After = [ "graphical-session-pre.target" ];
-    };
+  systemd.user.targets.sway-session = {
+    after = [ "graphical-session-pre.target" ];
+    description = "sway compositor session";
+    documentation = [ "man:systemd.special(7)" ];
+    bindsTo = [ "graphical-session.target" ];
+    wants = [ "graphical-session-pre.target" ];
   };
 
-  services.wlsunset = {
-    enable = true;
-    latitude = "40.7";
-    longitude = "-73.9";
-    systemdTarget = "sway-session.target";
-  };
+  systemd.user.services.wlsunset =
+    let
+      latitude = "40.7";
+      longitude = "-73.9";
+    in
+    {
+      enable = true;
+      description = "Automatic montior temperature adjustment";
+      after = [ "sway-session.target" ];
+      wantedBy = [ "multi-user.target" ];
+      script = ''
+        ${pkgs.wlsunset}/bin/wlsunset -l ${latitude} -L ${longitude}
+      '';
+    };
 }
