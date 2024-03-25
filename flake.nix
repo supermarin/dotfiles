@@ -104,7 +104,6 @@
               home-manager.users.marin.imports = [
                 ./home.nix
                 ./home-services.nix
-                # ./secrets/mail.nix
               ];
               networking.hostName = "mufasa";
               system.stateVersion = "23.11";
