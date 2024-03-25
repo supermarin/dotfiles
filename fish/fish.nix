@@ -26,5 +26,8 @@ pkgs:
     la = ''
       eza --octal-permissions --long --all --git $argv
     '';
+    nrb = ''
+      nixos-rebuild --flake $HOME/dotfiles#$(hostname) switch
+    '';
   };
 }
