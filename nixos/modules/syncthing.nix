@@ -18,12 +18,13 @@
         tokio.addresses = [ "quic://tokio" ];
         mx-001.id = "4FNONH3-QTHSBAF-NKPXL4A-IDTEYGI-LKC2QN2-RXQ3UUT-CUQFWM6-JFCB7AU";
         mx-001.addresses = [ "quic://mx-001" ];
-
+        mufasa.id = "PXHEELW-HDYA4HB-HE536W6-KDDHIE4-AHXWEZ3-H4EOYDI-LB72EZZ-5HDZ3QH";
+        mufasa.addresses = [ "quic://mufasa" ];
       };
       folders = {
         "~/base" = {
           id = "ctyq6-lwqs6";
-          devices = [ "tokio" "simba" "mx-001" ]; # TODO: add mufasa
+          devices = [ "tokio" "simba" "mx-001" "mufasa" ]; # TODO: add mufasa
         };
       };
     };
