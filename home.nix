@@ -60,6 +60,14 @@
   ];
 
   programs.firefox = {
+  programs.librewolf = {
+    enable = true;
+    settings = {
+      "privacy.clearOnShutdown.history" =  false;
+      "privacy.clearOnShutdown.downloads" = false;
+      "browser.startup.homepage" = "https://kagi.com";
+    };
+  };
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
       extraPolicies = {
