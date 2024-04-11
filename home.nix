@@ -44,6 +44,7 @@
     oathToolkit # used for OTP
     rio # terminal, seems to work ok with Berkeley Mono
     ripgrep
+    ripgrep-all
     rnix-lsp
     signal-desktop # Unsupported on aarch64-darwin as of Aug 10 2022
     sqlite-interactive
