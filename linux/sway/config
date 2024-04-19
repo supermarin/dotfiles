@@ -255,6 +255,12 @@ bindsym $mod+$mod2+space focus mode_toggle
 # Move focus to the parent container
 bindsym $mod+a focus parent
 
+
+# CMD - tab behavior - experimenting
+#bindsym $mod+tab workspace next_on_output 
+bindsym $mod+tab workspace back_and_forth
+bindsym $mod+Shift+tab workspace prev_on_output 
+
 # Resizing containers:
 #
 mode "resize" {
