@@ -54,6 +54,7 @@
     vscodium-fhs
     wormhole-william
     zig # why was this? for the compiler IIRC? TODO: delete if unused
+    zulip
     zulip-term
     zoom-us
   ];
