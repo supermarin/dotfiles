@@ -59,7 +59,6 @@
     zoom-us
   ];
 
-  programs.firefox = {
   programs.librewolf = {
     enable = true;
     settings = {
@@ -69,6 +68,14 @@
       "browser.startup.homepage" = "https://kagi.com";
     };
   };
+
+  programs.firefox =
+  let
+    lock-false = { Value = false; Status = "locked"; };
+    lock-true = { Value = true; Status = "locked"; };
+    lock-empty-string = { Value = ""; Status = "locked"; };
+  in 
+  {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
       extraPolicies = {
@@ -79,6 +86,15 @@
           Locked = true;
           Cryptomining = true;
           Fingerprinting = true;
+        };
+        Preferences = {
+          # Privacy settings
+          "extensions.pocket.enabled" = lock-false;
+          # "browser.newtabpage.pinned" = lock-empty-string;
+          "browser.topsites.contile.enabled" = lock-false;
+          "browser.newtabpage.activity-stream.showSponsored" = lock-false;
+          "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
+          "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
         };
 
         DisablePocket = true;
@@ -97,11 +113,7 @@
       marin = {
         id = 0;
         isDefault = true;
-        settings =
-          let
-            lock-false = { Value = false; Status = "locked"; };
-          in
-          {
+        settings = {
             "browser.aboutConfig.showWarning" = false;
             "browser.newtabpage.activity-stream.feeds.section.highlights" = lock-false;
             "browser.newtabpage.activity-stream.showSponsored" = lock-false;
@@ -118,6 +130,8 @@
           };
         search = {
           force = true;
+          default = "Kagi";
+          privateDefault = "DuckDuckGo";
           order = [ "Kagi" "Nix Packages" "DuckDuckGo" ];
           engines = {
             "Nix Packages" = {
