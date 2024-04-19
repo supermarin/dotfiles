@@ -22,7 +22,7 @@
   networking = {
     extraHosts = builtins.readFile (builtins.fetchurl {
       url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-      sha256 = "sha256:1a5z7mwjlbw6i4k1mxzn9cqlnaxm8nhq7mj4fkx2w8npcag50aq3";
+      sha256 = "sha256:1df2wwxb0nf1kkss7228gl6kw7n5lwybip6f09dhgjs889s8bqws";
     });
     firewall = {
       allowedTCPPorts = [ ];
