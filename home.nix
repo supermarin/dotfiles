@@ -65,6 +65,7 @@
     settings = {
       "privacy.clearOnShutdown.history" =  false;
       "privacy.clearOnShutdown.downloads" = false;
+      "privacy.resistFingerprinting" = false;
       "browser.startup.homepage" = "https://kagi.com";
     };
   };
