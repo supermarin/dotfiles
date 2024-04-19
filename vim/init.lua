@@ -236,17 +236,23 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lsp = require('lspconfig')
 -- TODO: should this attach per filetype?
-local servers = { 'gopls', 'nil_ls', 'lua_ls', 'ruby_ls', 'clangd', 'pylsp' }
+local servers = { 'gopls', 'lua_ls', 'ruby_ls', 'clangd', 'pylsp' }
+local options = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
 
 for _, server in ipairs(servers) do
-  lsp[server].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
+  lsp[server].setup(options)
 end
+
+local nil_ls_options = options
+nil_ls_options['nix'] = { flake = { autoArchive = true } }
+lsp['nil_ls'].setup(nil_ls_options)
+
 
 -------------------------------------------------------------------------------
 -- Tests
