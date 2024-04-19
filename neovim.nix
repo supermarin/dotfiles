@@ -10,6 +10,8 @@ pkgs: {
     vim-repeat
     vim-surround
     vim-visual-multi
+    # Cody
+    sg-nvim
     # Copilot
     copilot-lua
     copilot-cmp
