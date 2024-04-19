@@ -38,7 +38,6 @@
     helix
     jq
     khal
-    nbstripout
     nil # nix language server
     nodejs-slim_20 # for copilot
     nushell
