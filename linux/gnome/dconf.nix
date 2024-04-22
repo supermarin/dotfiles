@@ -11,9 +11,17 @@ with pkgs.lib.gvariant;
     xkb-options = [ "terminate:ctrl_alt_bksp" "caps:ctrl_modifier" ];
   };
   "org/gnome/desktop/interface" = {
-    gtk-theme = "Adwaita-dark";
+    gtk-theme = "Adwaita";
     color-scheme = "prefer-dark";
     cursor-size = 24;
+    cursor-theme = "Adwaita";
+    icon-theme = "Adwaita";
+  };
+  "org/gnome/desktop/peripherals/touchpad" = {
+    two-finger-scrolling-enabled = true;
+  };
+  "org/gnome/desktop/peripherals/mouse" = {
+    natural-scroll = true;
   };
   "org/gnome/desktop/peripherals/keyboard" = {
     delay = mkUint32 150;
