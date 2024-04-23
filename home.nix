@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   dconf.settings = (import ./linux/gnome/dconf.nix { pkgs = pkgs; });
   home.sessionVariables = {
