@@ -39,9 +39,6 @@
   # needed for printer discovery on the network which is broken so TODO: fix
   services.avahi = {
     enable = true;
-    publish.enable = true;
-    publish.workstation = true;
-    publish.addresses = true;
     nssmdns4 = true;
   };
   services.fwupd.enable = true;
