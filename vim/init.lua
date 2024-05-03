@@ -236,7 +236,7 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lsp = require('lspconfig')
 -- TODO: should this attach per filetype?
-local servers = { 'gopls', 'lua_ls', 'ruby_ls', 'clangd', 'pylsp' }
+local servers = { 'gopls', 'lua_ls', 'ruby_ls', 'clangd', 'pylsp', 'r_language_server' }
 local options = {
   on_attach = on_attach,
   capabilities = capabilities,
