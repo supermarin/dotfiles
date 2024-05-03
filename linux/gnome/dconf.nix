@@ -11,11 +11,18 @@ with pkgs.lib.gvariant;
     xkb-options = [ "terminate:ctrl_alt_bksp" "caps:ctrl_modifier" ];
   };
   "org/gnome/desktop/interface" = {
-    gtk-theme = "Adwaita";
     color-scheme = "prefer-dark";
     cursor-size = 24;
     cursor-theme = "Adwaita";
+    document-font-name="SF Pro Display 11";
+    enable-animations=true;
+    font-antialiasing="grayscale";
+    font-hinting="slight";
+    font-name="SF Pro Display,  10";
+    gtk-theme = "Adwaita";
     icon-theme = "Adwaita";
+    monospace-font-name="Berkeley Mono 10";
+    toolbar-style="text";
   };
   "org/gnome/desktop/peripherals/touchpad" = {
     two-finger-scrolling-enabled = true;
