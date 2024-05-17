@@ -10,7 +10,6 @@
   # This could not boot
   # boot.initrd.luks.devices.cryptroot.device = "/dev/mapper/cryptroot";
   boot.kernelModules = [ "kvm-amd" ];
-  boot.kernelPackages = pkgs.linuxPackages_6_7;
   # TODO: add ssh in initrd and enable headless LUKS + secrets decrypting
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
