@@ -1,11 +1,14 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/23.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     fonts.url = "git+ssh://git@github.com/supermarin/fonts";
     fonts.flake = false;
+    jupyter.url = "git+ssh://git@github.com/squale-capital/jupyter";
+    jupyter.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     pcscd-keep-alive.url = "github:supermarin/pcscd-keep-alive";
@@ -15,44 +18,26 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    squale-machine.url = "path:///home/marin/code/squale-capital/machine";
+    squale-machine.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
     inputs: {
       nixosConfigurations = {
-        parallels = inputs.nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          modules = [
-            inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
-            inputs.home-manager.nixosModules.home-manager
-            ./nixos/configuration-dev-vm.nix
-            ./nixos/hardware-parallels.nix
-            ./nixos/home-manager-config.nix
-            ./nixos/nixpkgs-config.nix
-            {
-              home-manager.users.marin.imports = [ ./home.nix ];
-              networking.hostName = "parallels";
-              system.stateVersion = "23.11";
-            }
-          ];
-          specialArgs = { inputs = inputs; };
-        };
-
         mx-001 = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            inputs.home-manager.nixosModules.home-manager
             inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
+            inputs.squale-machine.nixosModules.machine
             ./nixos/configuration-pn50.nix
             ./nixos/hardware-pn50.nix
-            ./nixos/home-manager-config.nix
-            ./nixos/modules/de-sway.nix
             ./nixos/modules/syncthing.nix
             ./nixos/nixpkgs-config.nix
             {
-              home-manager.users.marin.imports = [ ./home.nix ./home-services.nix ];
               networking.hostName = "mx-001";
               system.stateVersion = "23.11";
+              squale.machine.enable = true;
             }
           ];
           specialArgs = { inputs = inputs; };
@@ -90,10 +75,10 @@
           modules = [
             inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
             inputs.home-manager.nixosModules.home-manager
+            inputs.jupyter.nixosModules.x86_64-linux.jupyterlab
             ./nixos/configuration.nix
             ./nixos/hardware-computer-1.nix
             ./nixos/home-manager-config.nix
-            ./nixos/modules/de-sway.nix
             ./nixos/modules/de-gnome.nix
             ./nixos/modules/syncthing.nix
             ./nixos/nixpkgs-config.nix
@@ -105,6 +90,27 @@
               networking.hostName = "mufasa";
               system.stateVersion = "23.11";
             }
+            ({config,...}: {
+              services = rec {
+                jupyterlab = {
+                  enable = true;
+                  port = 3333;
+                  subpath = "/jupyter";
+                  user = "marin";
+                  ip = "0.0.0.0"; # doesn't get through the firewall so should be ok
+                };
+                nginx = {
+                  enable = true;
+                  virtualHosts.${config.networking.hostName} = {
+                    locations."/jupyter/" = {
+                      proxyPass = "http://127.0.0.1:${toString jupyterlab.port}${jupyterlab.subpath}/";
+                      proxyWebsockets = true;
+                      recommendedProxySettings = true;
+                    };
+                  };
+                };
+              };
+            })
           ];
         };
 
