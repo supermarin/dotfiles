@@ -62,11 +62,13 @@
   programs.librewolf = {
     enable = true;
     settings = {
-      "privacy.clearOnShutdown.history" =  false;
-      "privacy.clearOnShutdown.downloads" = false;
-      "privacy.clearOnShutdown.cookies" = false;
-      "privacy.resistFingerprinting" = false;
       "browser.startup.homepage" = "https://kagi.com";
+      "network.cookie.lifetimePolicy" = 0;
+      "privacy.clearOnShutdown.cookies" = false;
+      "privacy.clearOnShutdown.downloads" = false;
+      "privacy.clearOnShutdown.history" =  false;
+      "privacy.resistFingerprinting" = false;
+      "webgl.disabled" = false;
     };
   };
 
