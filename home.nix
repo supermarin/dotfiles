@@ -28,8 +28,10 @@
     coreutils # used for `shred`
     diffr # used in git stuff
     direnv
+    discord
     eza # ls with stuff
     fd
+    firefox
     fzf
     inputs.ghostty.packages.${pkgs.system}.ghostty
     git-lfs
@@ -47,12 +49,15 @@
     ripgrep-all
     signal-desktop # Unsupported on aarch64-darwin as of Aug 10 2022
     sqlite-interactive
+    spotify
     sumneko-lua-language-server
     tig
     vdirsyncer # sync contacts & calendars
     vlc # Unsupported on aarch64-darwin as of Aug 10 2022
     vscodium-fhs
+    whatsapp-for-linux
     wormhole-william
+    zed-editor
     zig # why was this? for the compiler IIRC? TODO: delete if unused
     zulip
     zulip-term
