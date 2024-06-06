@@ -82,11 +82,6 @@ output 'Apple Computer Inc ProDisplayXDR 0x00001F08' {
 #   disable
 # }
 
-
-output 'Apple Computer Inc StudioDisplay 0x0000FF20' {
-  pos 0 0
-}
-
 output 'LG Electronics LG UltraFine 806NTJJ3B908' {
   scale 2
   mode 2560x2880@60.000Hz
