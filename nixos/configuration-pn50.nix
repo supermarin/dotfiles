@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, berkeley, ... }:
+{ config, pkgs, ... }:
 {
   environment.sessionVariables = {
     EDITOR = "vim";
@@ -13,15 +13,12 @@
     btop
     jq
     killall # killall(1)
-    nbstripout
     (neovim.override { viAlias = true; vimAlias = true; })
     ripgrep
     sqlite-interactive
     tmux
     unzip
     zip
-
-    pcscliteWithPolkit.out # fix pcscd. TODO: remove when https://github.com/NixOS/nixpkgs/issues/280826 is closed
   ];
   networking = {
     firewall = {
@@ -38,11 +35,9 @@
     networkmanager.enable = true; # TODO: see if we can nuke this
   };
   programs.fish.enable = true;
-  programs.dconf.enable = true;
   security.sudo.wheelNeedsPassword = false;
   services.openssh.enable = true; # Enable remote login
   services.fwupd.enable = true;
-  services.pcscd-keep-alive.enable = true;
   services.udisks2.enable = true; # needed for fwupdmgr -.-
   services.tailscale.enable = true;
   time.timeZone = "America/New_York";
@@ -58,24 +53,6 @@
       })
     ];
   };
-  virtualisation.podman = {
-    enable = true;
-  };
-  virtualisation.oci-containers.backend = "podman";
-
-
-
-  ##############################################################################
-  # DE - refactor out
-  ##############################################################################
-  hardware.bluetooth.enable = true; # enables bluez
-  hardware.pulseaudio.enable = false; # pipewire instead
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-  };
-  services.yubikey-agent.enable = true;
 }
   // {
   ##############################################################################
