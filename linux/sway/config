@@ -71,6 +71,8 @@ output $laptop {
 }
 
 output 'Apple Computer Inc ProDisplayXDR 0x00001F08' {
+  # try with a custom modeline
+  modeline 1273.21 6016 6024 6056 6096 3384 3467 3475 3481 +hsync -vsync
   pos 0 0
   mode 6016x3384@60.000Hz
   scale 2
