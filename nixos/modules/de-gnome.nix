@@ -10,6 +10,7 @@
     cantarell-fonts
     gnome.adwaita-icon-theme
     gnome.gnome-tweaks
+    gnomeExtensions.tailscale-qs
     wl-clipboard # wl-copy, wl-paste
   ];
   environment.gnome.excludePackages = (with pkgs; [
