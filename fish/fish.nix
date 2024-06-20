@@ -12,6 +12,7 @@ pkgs:
       abbr nb nix build
       abbr nd nix develop
       abbr nr nix run
+      abbr nrb sudo nixos-rebuild --flake $HOME/dotfiles#$(hostname) switch
       abbr nrr nix run nixpkgs#
       abbr ns nix shell nixpkgs#
       abbr nsp nix-shell -p
@@ -25,9 +26,6 @@ pkgs:
     fish_right_prompt = readFile ./functions/fish_right_prompt.fish;
     la = ''
       eza --octal-permissions --long --all --git $argv
-    '';
-    nrb = ''
-      nixos-rebuild --flake $HOME/dotfiles#$(hostname) switch
     '';
     pgp = ''
       pushd $PASSWORD_STORE_DIR
