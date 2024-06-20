@@ -5,7 +5,7 @@
     packages = with pkgs; [
       (import ../../fonts/sfpro.nix { pkgs = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}; }) # sans serif
       (import ../../fonts/sfmono.nix { pkgs = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}; }) # mono for browser
-      (import inputs.fonts { pkgs = inputs.nixpkgs.legacyPackages.${pkgs.system}; }) # berkeley mono
+      (import inputs.fonts { inherit pkgs; }) # berkeley mono
       source-serif # serif
 
       noto-fonts-emoji # emoji
