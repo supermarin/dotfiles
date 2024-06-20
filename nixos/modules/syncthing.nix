@@ -24,7 +24,7 @@
       folders = {
         "~/base" = {
           id = "ctyq6-lwqs6";
-          devices = [ "tokio" "simba" "mx-001" "mufasa" ]; # TODO: add mufasa
+          devices = [ "tokio" "simba" "mx-001" "mufasa" ];
         };
       };
     };
