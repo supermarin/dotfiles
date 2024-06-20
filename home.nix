@@ -30,6 +30,7 @@
     diffr # used in git stuff
     direnv
     discord
+    duckdb
     eza # ls with stuff
     fd
     firefox
