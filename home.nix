@@ -44,6 +44,7 @@
     gnumake
     helix
     jq
+    keepassxc
     khal
     nil # nix language server
     nodejs-slim_20 # for copilot
