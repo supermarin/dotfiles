@@ -1,6 +1,9 @@
 { inputs, pkgs, ... }:
 {
-  dconf.settings = (import ./linux/gnome/dconf.nix { pkgs = pkgs; });
+  imports = [
+    ./linux/gnome/dconf.nix
+  ];
+
   home.sessionVariables = {
     EDITOR = "nvim";
     FUZZY = "fzf";
