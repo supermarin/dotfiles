@@ -68,7 +68,7 @@
   users.users.marin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "podman" ];
     openssh.authorizedKeys.keyFiles = [ ../ssh/pubkeys.nix ];
   };
 
@@ -98,5 +98,7 @@
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.podman = {
     enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
   };
 }
