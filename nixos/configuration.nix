@@ -95,6 +95,7 @@
 
   # Virtualisation
   virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.qemu.swtpm.enable = true; # ebable tpm 2.0 emulation
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.podman = {
     enable = true;
