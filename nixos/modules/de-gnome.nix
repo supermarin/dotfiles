@@ -13,20 +13,19 @@
   };
   environment.systemPackages = with pkgs; [
     cantarell-fonts
-    gnome.adwaita-icon-theme
-    gnome.gnome-tweaks
+    adwaita-icon-theme
+    gnome-tweaks
     gnomeExtensions.tailscale-qs
     wl-clipboard # wl-copy, wl-paste
   ];
   environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-  ]) ++ (with pkgs.gnome; [
     cheese # webcam tool
-    gnome-terminal
     epiphany # web browser
     geary # email reader
-    totem # video player
+    gnome-photos
+    gnome-terminal
+    gnome-tour
+  ]) ++ (with pkgs.gnome; [
     tali # poker game
     iagno # go game
     hitori # sudoku game
