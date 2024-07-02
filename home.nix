@@ -58,6 +58,7 @@
     spotify
     sumneko-lua-language-server
     tig
+    ungoogled-chromium
     vdirsyncer # sync contacts & calendars
     vlc # Unsupported on aarch64-darwin as of Aug 10 2022
     vscodium-fhs
