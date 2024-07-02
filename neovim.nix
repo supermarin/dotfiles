@@ -50,5 +50,6 @@ pkgs: {
     cmp-path
     cmp-cmdline
     cmp-nvim-lsp-signature-help
+    lspkind-nvim
   ];
 }

@@ -109,6 +109,7 @@ require("sg").setup {
 }
 
 
+local lspkind = require("lspkind")
 local cmp = require("cmp")
 cmp.setup({
   snippet = {
@@ -131,6 +132,16 @@ cmp.setup({
     { name = 'path' },
     { name = 'luasnip' },
     { name = 'buffer' },
+  },
+  formatting = {
+    format = lspkind.cmp_format {
+      mode = "symbol_text",
+      with_text = true,
+      menu = {
+        nvim_lsp = "[LSP]",
+        cody = "[cody]",
+      },
+    },
   },
   mapping = {
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
