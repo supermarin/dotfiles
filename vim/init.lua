@@ -106,6 +106,9 @@ end
 
 require("sg").setup {
   on_attach = on_attach,
+  chat = {
+    default_model = "anthropic/claude-3.5",
+  },
 }
 
 
@@ -126,7 +129,8 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   sources = {
-    { name = 'copilot' },
+    -- { name = 'copilot' },
+    { name = 'cody' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
     { name = 'path' },
