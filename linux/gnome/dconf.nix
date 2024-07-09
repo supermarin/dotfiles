@@ -76,6 +76,7 @@
     };
     "org/gnome/mutter/wayland/keybindings/restore-shortcuts" = { };
     "org/gnome/settings-daemon/plugins/media-keys" = {
+      calculator = [ "<Super>c" ];
       control-center = [ "<Super>comma" ];
       email = [ ];
       home = [ "<Super>e" ];
