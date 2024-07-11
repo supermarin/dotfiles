@@ -14,10 +14,6 @@
     pcscd-keep-alive.url = "github:supermarin/pcscd-keep-alive";
     pcscd-keep-alive.inputs.nixpkgs.follows = "nixpkgs";
     ghostty.url = "git+ssh://git@github.com/mitchellh/ghostty";
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     squale-machine.url = "path:///home/marin/code/squale-capital/machine";
     squale-machine.inputs.nixpkgs.follows = "nixpkgs";
     lix = {
