@@ -20,6 +20,10 @@
     };
     squale-machine.url = "path:///home/marin/code/squale-capital/machine";
     squale-machine.inputs.nixpkgs.follows = "nixpkgs";
+    lix = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -50,6 +54,7 @@
             inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-nano-gen1
             inputs.home-manager.nixosModules.home-manager
+            inputs.lix.nixosModules.default
             ./nixos/configuration.nix
             ./nixos/hardware-x1.nix
             ./nixos/home-manager-config.nix
