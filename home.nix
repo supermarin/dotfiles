@@ -71,6 +71,14 @@
     zoom-us
   ];
 
+  programs.tmux = {
+    enable = true;
+    keyMode = "vi";
+    mouse = true;
+    terminal = "xterm-ghostty";
+    escapeTime = 0;
+  };
+
   programs.librewolf = {
     enable = true;
     settings = {
