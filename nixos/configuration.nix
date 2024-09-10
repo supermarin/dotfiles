@@ -16,7 +16,6 @@
 
   hardware.bluetooth.enable = true; # enables bluez
   hardware.pulseaudio.enable = false; # pipewire instead
-  sound.enable = true;
   time.timeZone = "America/New_York";
 
   networking = {
