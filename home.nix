@@ -31,7 +31,6 @@
     cmake # emacs needs to compile vterm
     coreutils # used for `shred`
     diffr # used in git stuff
-    direnv
     discord
     duckdb
     eza # ls with stuff
@@ -71,6 +70,8 @@
     zoom-us
   ];
 
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
   programs.tmux = {
     enable = true;
     keyMode = "vi";
