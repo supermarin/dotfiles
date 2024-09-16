@@ -28,7 +28,6 @@
     autotiling # for sway & i3
     bat # used in `e` for live preview of files
     btop
-    cmake # emacs needs to compile vterm
     coreutils # used for `shred`
     diffr # used in git stuff
     discord
