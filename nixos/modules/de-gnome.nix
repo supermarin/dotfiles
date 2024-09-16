@@ -19,16 +19,15 @@
     wl-clipboard # wl-copy, wl-paste
   ];
   environment.gnome.excludePackages = (with pkgs; [
+    atomix # puzzle game
     cheese # webcam tool
     epiphany # web browser
     geary # email reader
     gnome-photos
     gnome-terminal
     gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    tali # poker game
-    iagno # go game
     hitori # sudoku game
-    atomix # puzzle game
+    iagno # go game
+    tali # poker game
   ]);
 }
