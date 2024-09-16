@@ -9,7 +9,7 @@
   services.xserver.desktopManager.gnome.enable = true;
   
   environment.variables = {
-    GNOME_SHELL_SLOWDOWN_FACTOR = 0.4; # speed up animations
+    GNOME_SHELL_SLOWDOWN_FACTOR = "0.4"; # speed up animations
   };
   environment.systemPackages = with pkgs; [
     cantarell-fonts
