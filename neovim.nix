@@ -15,12 +15,6 @@ pkgs: {
     # Copilot
     copilot-lua
     copilot-cmp
-    # Colorschemes
-    catppuccin-nvim
-    nightfox-nvim
-    everforest
-    gruvbox-nvim
-    oxocarbon-nvim
     # Telescope
     telescope-nvim
     plenary-nvim
