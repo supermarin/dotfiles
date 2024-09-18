@@ -232,18 +232,6 @@
         "url": "ssh://git@github.com/supermarin/fonts"
       }
     },
-    "gateway": {
-      "locked": {
-        "lastModified": 1722365920,
-        "narHash": "sha256-4cWSfvNCgS8/c6NSjbbnT9f2F9sRVUYeMZ4U8cpCGAk=",
-        "path": "/home/marin/code/squale-capital/gateway",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/marin/code/squale-capital/gateway",
-        "type": "path"
-      }
-    },
     "ghostty": {
       "inputs": {
         "nixpkgs-stable": [
@@ -471,17 +459,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1726646082,
-        "narHash": "sha256-CgaJ4DTEvJLQmTrND2szajoGIoT+zSiUuajtqT6Hvcs=",
+        "lastModified": 1726697005,
+        "narHash": "sha256-iQzKm3zzzW2iijWLMN1VWWVwVg1x/7Rak4Ks8RRFMOA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9c9e5a0f77498706aea386078cfce1df2af80a87",
+        "rev": "d0b8a0b81552dd2647de199a3d11775d25007bec",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "48ca0efac3ca5756fd400c22928c5b413b9489fa",
         "type": "github"
       }
     },
@@ -546,7 +533,6 @@
     "root": {
       "inputs": {
         "fonts": "fonts",
-        "gateway": "gateway",
         "ghostty": "ghostty",
         "home-manager": "home-manager",
         "jupyter": "jupyter",
