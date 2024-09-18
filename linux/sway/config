@@ -58,7 +58,7 @@ set $down j
 set $up k
 set $right l
 set $term ghostty
-set $browser firefox
+set $browser librewolf
 set $menu rofi -show combi
 set $notification-center swaync-client -t -sw
 
