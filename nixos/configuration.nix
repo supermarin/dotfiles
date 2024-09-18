@@ -1,20 +1,35 @@
 { pkgs, config, ... }:
 {
-  # Fix NetworkManager.wait-online.service bug
-  # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
-  systemd.services.NetworkManager-wait-online.enable = pkgs.lib.mkForce false;
-  systemd.services.systemd-networkd-wait-online.enable = pkgs.lib.mkForce false;
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
     device = "nodev";
     efiSupport = true;
   };
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  hardware.pulseaudio.enable = false; # pipewire instead
+  environment.sessionVariables = {
+    EDITOR = "vim";
+    QT_QPA_PLATFORM = "wayland"; # TODO: check if still needed, electron fucked
+    XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
+  };
+
+  # Only put system software in here, e.g. stuff that is installed by
+  # default on macOS and Ubuntu. The user software goes in home.nix.
+  environment.systemPackages = with pkgs; [
+    appimage-run # experimental
+    dig
+    file # file(1)
+    killall # killall(1)
+    libreoffice
+    unzip
+    virt-manager
+    zip
+
+    pcscliteWithPolkit.out # fix pcscd. TODO: remove when https://github.com/NixOS/nixpkgs/issues/280826 is closed
+  ];
+
   hardware.bluetooth = {
     enable = true; # enables bluez
     settings = {
@@ -23,12 +38,13 @@
       };
     };
   };
-  time.timeZone = "America/New_York";
+  hardware.pulseaudio.enable = false; # pipewire requires this disabled
+
 
   networking = {
     extraHosts = builtins.readFile (builtins.fetchurl {
       url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-      sha256 = "sha256:0r43ly4f33s485kp9pi3kl9qnbq0y97rv204f8pm45jyw72pz7kq";
+      sha256 = "sha256:0pdskrnkq53bm4vcp03az5pmbh75a2006m5hc62svcmvddkj1bv9";
     });
     firewall = {
       allowedTCPPorts = [ ];
@@ -41,12 +57,6 @@
     networkmanager.enable = true;
   };
   programs.fish.enable = true;
-
-  # needed for printer discovery on the network which is broken so TODO: fix
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-  };
 
   services.fwupd.enable = true;
   services.openssh.enable = true;
@@ -73,36 +83,19 @@
   # 19f5:3247
 #KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="100", TAG+="uaccess", TAG+="udev-acl"
   ;
-
   services.yubikey-agent.enable = true;
+
+  # Fix NetworkManager.wait-online.service bug
+  # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
+  systemd.services.NetworkManager-wait-online.enable = pkgs.lib.mkForce false;
+  systemd.services.systemd-networkd-wait-online.enable = pkgs.lib.mkForce false;
 
   users.users.marin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "podman" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "podman" "docker" ];
     openssh.authorizedKeys.keyFiles = [ ../ssh/pubkeys.nix ];
   };
-
-  environment.sessionVariables = {
-    EDITOR = "vim";
-    QT_QPA_PLATFORM = "wayland"; # TODO: check if still needed, electron fucked
-    XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
-  };
-
-  # Only put system software in here, e.g. stuff that is installed by
-  # default on macOS and Ubuntu. The user software goes in home.nix.
-  environment.systemPackages = with pkgs; [
-    appimage-run # experimental
-    dig
-    file # file(1)
-    killall # killall(1)
-    libreoffice
-    unzip
-    virt-manager
-    zip
-
-    pcscliteWithPolkit.out # fix pcscd. TODO: remove when https://github.com/NixOS/nixpkgs/issues/280826 is closed
-  ];
 
   # Virtualisation
   virtualisation.libvirtd.enable = true;
@@ -113,4 +106,6 @@
     dockerCompat = true;
     dockerSocket.enable = true;
   };
+
+  time.timeZone = "America/New_York";
 }
