@@ -24,9 +24,9 @@ vim.api.nvim_create_user_command('Wq', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('Q', 'q', {})   -- halp
 vim.api.nvim_create_user_command('W', 'w', {})   -- halp
 -- Telescope
-vim.keymap.set('n', '<leader>p', ':Telescope commands<cr>')
-vim.keymap.set('n', '<leader>f', ':Telescope live_grep<cr>')
-vim.keymap.set('n', '<leader><leader>', ':Telescope find_files<cr>')
+vim.keymap.set('n', '<leader>c', ':Telescope commands<cr>')
+vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
+vim.keymap.set('n', '<leader>f', ':Telescope find_files<cr>')
 vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
 -- Git
 vim.keymap.set('n', '<leader>gs', ':Git<cr>')
@@ -57,14 +57,6 @@ vim.opt.swapfile = false
 vim.opt.tabstop = tabspaces
 vim.opt.termguicolors = true
 vim.opt.undofile = true
-
--- colors
-require('gruvbox').setup({
-  contrast = "hard",
-  palette_overrides = { dark0_hard = '#011707' }
-})
-
-vim.cmd.colorscheme 'gruvbox'
 
 -- AUTOGROUPS / EVENTS
 local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
