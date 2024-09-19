@@ -1,6 +1,6 @@
 { pkgs }:
 
-pkgs.stdenvNoCC.mkDerivation rec {
+pkgs.stdenvNoCC.mkDerivation {
   buildInputs = [ pkgs._7zz ];
   name = "San Francisco";
   src = builtins.fetchurl {
@@ -10,7 +10,8 @@ pkgs.stdenvNoCC.mkDerivation rec {
   unpackPhase = ''
     7zz x $src
     7zz x "SFProFonts/SF Pro Fonts.pkg"
-    7zz x "Payload~" -oSFPro
+    7zz x SFProFonts.pkg/Payload -oSFPro
+    7zz x SFPro/Payload~ -oSFPro
   '';
   installPhase = ''
     runHook preInstall
@@ -19,5 +20,3 @@ pkgs.stdenvNoCC.mkDerivation rec {
     runHook postInstall
   '';
 }
-
-

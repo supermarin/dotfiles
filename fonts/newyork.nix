@@ -1,6 +1,6 @@
 { pkgs }:
 
-pkgs.stdenvNoCC.mkDerivation rec {
+pkgs.stdenvNoCC.mkDerivation {
   buildInputs = [ pkgs._7zz ];
   name = "New York";
   src = builtins.fetchurl {
@@ -10,7 +10,8 @@ pkgs.stdenvNoCC.mkDerivation rec {
   unpackPhase = ''
     7zz x $src
     7zz x "NYFonts/NY Fonts.pkg"
-    7zz x "Payload~" -oNY
+    7zz x "NYFonts.pkg/Payload" -oNY
+    7zz x "NY/Payload~" -oNY
   '';
   installPhase = ''
     runHook preInstall

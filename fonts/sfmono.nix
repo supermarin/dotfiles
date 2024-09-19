@@ -1,6 +1,6 @@
 { pkgs }:
 
-pkgs.stdenvNoCC.mkDerivation rec {
+pkgs.stdenvNoCC.mkDerivation {
   buildInputs = [ pkgs._7zz ];
   name = "SF Mono";
   src = builtins.fetchurl {
@@ -10,7 +10,8 @@ pkgs.stdenvNoCC.mkDerivation rec {
   unpackPhase = ''
     7zz x $src
     7zz x "SFMonoFonts/SF Mono Fonts.pkg"
-    7zz x "Payload~" -oSFMono
+    7zz x "SFMonoFonts.pkg/Payload" -oSFMono
+    7zz x "SFMono/Payload~" -oSFMono
   '';
   installPhase = ''
     runHook preInstall
