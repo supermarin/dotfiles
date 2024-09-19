@@ -84,6 +84,16 @@ output 'Apple Computer Inc ProDisplayXDR 0x00001F08' {
 #   disable
 # }
 
+# TODO: confirm if this is final and works
+output 'HDMI-A-1' {
+  disable  # dummy HDMI
+}
+
+output DP-2 {
+  disable # XDR display 2nd phantom output
+}
+# END TODO
+
 output 'LG Electronics LG UltraFine 806NTJJ3B908' {
   scale 2
   mode 2560x2880@60.000Hz
