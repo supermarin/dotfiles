@@ -282,10 +282,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Media controls (sorted by lenovo kb):
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
-bindsym XF86AudioLowerVolume exec amixer set Master 5%- | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
-bindsym $mod2+XF86AudioRaiseVolume exec amixer set Master 1%+ | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
-bindsym $mod2+XF86AudioLowerVolume exec amixer set Master 1%- | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
+bindsym XF86AudioRaiseVolume exec pamixer -i 5 && pamixer --get-volume > $WOBSOCK
+bindsym XF86AudioLowerVolume  exec pamixer -d 5 && pamixer --get-volume > $WOBSOCK
+bindsym $mod2+XF86AudioRaiseVolume exec pamixer -i 1 && pamixer --get-volume > $WOBSOCK
+bindsym $mod2+XF86AudioLowerVolume exec pamixer -d 1 && pamixer --get-volume > $WOBSOCK
 bindsym XF86AudioMute exec amixer set Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' | head -1 > $WOBSOCK
 bindsym XF86AudioMicMute exec amixer set Capture toggle
 # keyboard gap
