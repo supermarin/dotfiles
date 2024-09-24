@@ -28,6 +28,7 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hosts.url = "github:StevenBlack/hosts";
   };
 
   outputs =
@@ -63,6 +64,7 @@
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-nano-gen1
             inputs.home-manager.nixosModules.home-manager
             inputs.lix.nixosModules.default
+            inputs.hosts.nixosModule { networking.stevenBlackHosts.enable = true; }
             ./nixos/configuration.nix
             ./nixos/hardware-x1.nix
             ./nixos/home-manager-config.nix
@@ -95,6 +97,7 @@
             ./nixos/modules/de-sway.nix
             ./nixos/modules/syncthing.nix
             ./nixos/nixpkgs-config.nix
+            inputs.hosts.nixosModule { networking.stevenBlackHosts.enable = true; }
             {
               home-manager.users.marin.imports = [
                 ./home.nix
