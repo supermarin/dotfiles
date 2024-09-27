@@ -25,7 +25,6 @@
     obsidian #TODO: return when https://github.com/NixOS/nixpkgs/issues/273611 is fixed
     age
     age-plugin-yubikey
-    autotiling # for sway & i3
     bat # used in `e` for live preview of files
     btop
     coreutils # used for `shred`

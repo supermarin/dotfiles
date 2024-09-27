@@ -10,6 +10,7 @@
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
+      autotiling # for sway & i3
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
       grim # wayland screenshot tool
