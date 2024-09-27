@@ -249,6 +249,13 @@ local options = {
   capabilities = capabilities,
   flags = {
     debounce_text_changes = 150,
+  },
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
   }
 }
 
