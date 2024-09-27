@@ -26,6 +26,7 @@
       imagemagick # for resizing images
       playerctl # media keys (play/pause, prev, next)
       pavucontrol # select sound output device
+      pamixer # volume up/down
       rofi-wayland
       rofimoji # emoji picker, fuzzel doesn't support emoji
       slurp # screenshot: select a region in wayland
