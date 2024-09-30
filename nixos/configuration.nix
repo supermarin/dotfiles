@@ -23,6 +23,7 @@
     file # file(1)
     killall # killall(1)
     libreoffice
+    tree
     unzip
     virt-manager
     zip
