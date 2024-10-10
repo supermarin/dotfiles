@@ -34,7 +34,6 @@
     duckdb
     eza # ls with stuff
     fd
-    firefox
     fzf
     inputs.ghostty.packages.${pkgs.system}.ghostty
     git-lfs
