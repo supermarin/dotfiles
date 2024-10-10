@@ -8,7 +8,7 @@
     efiSupport = true;
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
+  documentation.man.generateCaches = false;
   environment.sessionVariables = {
     EDITOR = "vim";
     QT_QPA_PLATFORM = "wayland"; # TODO: check if still needed, electron fucked
