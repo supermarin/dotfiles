@@ -83,6 +83,7 @@
     settings = {
       "browser.startup.homepage" = "https://kagi.com";
       "network.cookie.lifetimePolicy" = 0;
+      "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
       "privacy.clearOnShutdown.cookies" = false;
       "privacy.clearOnShutdown.downloads" = false;
       "privacy.clearOnShutdown.history" =  false;
