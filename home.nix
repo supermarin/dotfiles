@@ -41,6 +41,7 @@
     gnumake
     helix
     jq
+    kitty
     keepassxc
     khal
     nil # nix language server
