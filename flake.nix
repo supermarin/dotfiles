@@ -29,6 +29,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hosts.url = "github:StevenBlack/hosts";
+    yubikey-agent.url = "github:supermarin/yubikey-agent";
+    yubikey-agent.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

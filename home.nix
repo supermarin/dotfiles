@@ -110,7 +110,4 @@
   xdg.configFile."i3/config".source = ./linux/i3/config;
   xdg.configFile."tig/config".source = ./tig/config;
   xdg.configFile."vdirsyncer/config".source = ./secrets/vdirsyncer.conf;
-  # Hacks / check temporarily if issues get fixed and remove
-  # This is here because of https://github.com/FiloSottile/yubikey-agent/issues/92
-  home.file.".gnupg/gpg-agent.conf".text = "pinentry-program ${pkgs.pinentry-qt}/bin/pinentry";
 }
