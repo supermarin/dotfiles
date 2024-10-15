@@ -1,0 +1,18 @@
+# Put any extra hosts here that aren't blocked by StevenBlack or any other
+# hosts blocking lists we're using. This should get merged with the other lists
+# and end up at the bottom of /etc/hosts.
+
+0.0.0.0 facebook.com
+0.0.0.0 facebook.net
+0.0.0.0 fbcdn.net
+0.0.0.0 fbsbx.com
+0.0.0.0 m.youtube.com
+0.0.0.0 messenger.com
+0.0.0.0 www.youtube.com
+0.0.0.0 xx.fbcdn.net
+0.0.0.0 xy.fbcdn.net
+0.0.0.0 xz.fbcdn.net
+0.0.0.0 youtu.be
+0.0.0.0 youtube-ui.l.google.com
+0.0.0.0 youtube.com
+0.0.0.0 youtube.de
