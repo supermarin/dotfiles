@@ -11,6 +11,12 @@
       options.natEnabled = false;
       options.urAccepted = -1;
       options.urSeen = 3;
+      # TODO harden this a bit more. The current setting is
+      # <listenAddress>default</listenAddress>, 
+      # which listens to https+dynamic relays as well as tcp and quic.
+      # Setting the following
+      # options.listenAddress = [ "tcp://0.0.0.0:22000" "quic://0.0.0.0:22000" ];
+      # doesn't update <listenAddress> in config.xml. Figure out why.
       devices = {
         simba.id = "HGXXVK4-TSKAZWM-XYLAEH5-USXQ3YV-76YM2RW-K4LTUPQ-FDWEN2I-IG2LDAR";
         simba.addresses = [ "quic://simba" ];
@@ -19,7 +25,7 @@
         mx-001.id = "4FNONH3-QTHSBAF-NKPXL4A-IDTEYGI-LKC2QN2-RXQ3UUT-CUQFWM6-JFCB7AU";
         mx-001.addresses = [ "quic://mx-001" ];
         mufasa.id = "PXHEELW-HDYA4HB-HE536W6-KDDHIE4-AHXWEZ3-H4EOYDI-LB72EZZ-5HDZ3QH";
-        mufasa.addresses = [ "quic://mufasa" ];
+        mufasa.addresses = [ "quic://mufasa" "tcp://mufasa" ];
       };
       folders = {
         "~/base" = {
