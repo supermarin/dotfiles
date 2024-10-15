@@ -44,6 +44,7 @@
     kitty
     keepassxc
     khal
+    neovide # neovim gui
     nil # nix language server
     nodejs-slim_20 # for copilot
     nushell
