@@ -51,6 +51,7 @@
       allowedTCPPorts = [ ];
       allowedUDPPorts = [
         config.services.tailscale.port
+        22000 # syncthing
       ];
       trustedInterfaces = [ "tailscale0" ];
     };
