@@ -27,6 +27,18 @@ pkgs:
     la = ''
       eza --octal-permissions --long --all --git $argv
     '';
+    readlinks = ''
+      set link $argv[1]
+      if ! test -L $link
+        echo "error: not a link: $argv[1]"
+        return
+      end
+      while test -L $link
+          set link (readlink $link)
+      end
+
+      echo $link
+    '';
     pgp = ''
       pushd $PASSWORD_STORE_DIR
       git add .
