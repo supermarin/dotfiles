@@ -57,7 +57,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term ghostty
+set $term kitty
 set $browser librewolf
 set $menu rofi -show combi
 set $notification-center swaync-client -t -sw
@@ -161,7 +161,7 @@ bindsym $mod+t workspace 3; exec pgrep $term || $term
 # Zulip
 bindsym $mod+z workspace 5; exec pgrep zulip || zulip --enable-features=UseOzonePlatform --ozone-platform=wayland
 # NetworkManager connect
-bindsym $mod+w exec $term --title floating_term nmtui-connect
+bindsym $mod+w exec $term --title=floating_term --command=nmtui-connect
 # Emoji
 bindsym $mod+Ctrl+Space exec rofimoji
 # File manager
