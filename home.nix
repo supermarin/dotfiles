@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 {
   imports = [
     ./linux/gnome/dconf.nix
@@ -106,9 +106,9 @@
   xdg.configFile."i3status-rust/config.toml".source =
     ./linux/sway/i3status-rs/config.toml;
   xdg.configFile."khal/config".source = ./khal/config;
-  xdg.configFile."nvim/init.lua".source = ./vim/init.lua;
+  xdg.configFile."nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim/init.lua";
   xdg.configFile."rg/config".source = ./rg/config;
-  xdg.configFile."sway/config".source = ./linux/sway/config;
+  xdg.configFile."sway/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/linux/sway/config";
   xdg.configFile."i3/config".source = ./linux/i3/config;
   xdg.configFile."tig/config".source = ./tig/config;
   xdg.configFile."vdirsyncer/config".source = ./secrets/vdirsyncer.conf;
