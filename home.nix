@@ -74,9 +74,11 @@
   programs.direnv.nix-direnv.enable = true;
   programs.tmux = {
     enable = true;
+    aggressiveResize = true;
     keyMode = "vi";
     mouse = true;
-    terminal = "xterm-ghostty";
+    # terminal = "xterm-ghostty";
+    terminal = "xterm-256color";
     escapeTime = 0;
   };
 
