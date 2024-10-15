@@ -70,47 +70,9 @@ output $laptop {
   scale 1.25
 }
 
-output 'Apple Computer Inc ProDisplayXDR 0x00001F08' {
-  # try with a custom modeline
-  modeline 1273.21 6016 6024 6056 6096 3384 3467 3475 3481 +hsync -vsync
-  pos 0 0
-  mode 6016x3384@60.000Hz
-  scale 2
-}
-
-# TODO: figure out how to distinguish DP-3 from DP-4 since they both seem to
-#       have the same hex identifier
-# output 'Apple Computer Inc ProDisplayXDR 0x00001F08' {
-#   disable
-# }
-
-# TODO: confirm if this is final and works
-output 'HDMI-A-1' {
-  disable  # dummy HDMI
-}
-
+# Apple XDR second phantom screen
 output DP-2 {
-  disable # XDR display 2nd phantom output
-}
-# END TODO
-
-output 'LG Electronics LG UltraFine 806NTJJ3B908' {
-  scale 2
-  mode 2560x2880@60.000Hz
-}
-
-# 21" Ultrafine
-output 'LG Electronics LG UltraFine 612NTAB2R080' {
-  mode 4096x2304@60.000Hz
-  scale 2
-  pos 0 0
-}
-
-# 21" Ultrafine
-output 'LG Electronics LG UltraFine 806NTVS9V703' {
-  mode 4096x2304@60.000Hz
-  scale 2 
-  pos 0 1152
+  disable
 }
 
 # Turn off laptop monitor when lid is down
