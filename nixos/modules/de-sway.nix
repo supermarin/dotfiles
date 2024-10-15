@@ -5,6 +5,12 @@
   ];
   programs.yubikey-touch-detector.enable = true;
 
+  ######################## experimental sway alternates ######################
+  programs.river.enable = true;
+  programs.river.extraPackages = with pkgs; [ kanshi ];
+  programs.waybar.enable = true;
+  ######################## experimental sway alternates ######################
+
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
