@@ -8,7 +8,7 @@
     efiSupport = true;
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  documentation.man.generateCaches = false;
+  documentation.man.generateCaches = pkgs.lib.mkForce false; # otherwise nixos-rebuild is slow AF
   environment.sessionVariables = {
     EDITOR = "vim";
     QT_QPA_PLATFORM = "wayland"; # TODO: check if still needed, electron fucked
