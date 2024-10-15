@@ -67,7 +67,6 @@
             ./nixos/hardware-x1.nix
             ./nixos/home-manager-config.nix
             ./nixos/modules/de-sway.nix
-            ./nixos/modules/de-gnome.nix
             ./nixos/modules/syncthing.nix
             ./nixos/nixpkgs-config.nix
             {
