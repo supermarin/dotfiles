@@ -1,2 +1,8 @@
 Host *
   SetEnv TERM=xterm-256color
+
+Host rm
+  Hostname 10.11.99.1
+  User root
+  HostKeyAlgorithms +ssh-rsa
+  PubkeyAcceptedKeyTypes +ssh-rsa
