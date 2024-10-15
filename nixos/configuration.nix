@@ -87,11 +87,7 @@
 #KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="100", TAG+="uaccess", TAG+="udev-acl"
   ;
   services.yubikey-agent.enable = true;
-
-  # Fix NetworkManager.wait-online.service bug
-  # TODO: remove when dis resolves https://github.com/NixOS/nixpkgs/issues/180175
-  systemd.services.NetworkManager-wait-online.enable = pkgs.lib.mkForce false;
-  systemd.services.systemd-networkd-wait-online.enable = pkgs.lib.mkForce false;
+  services.yubikey-agent.package = inputs.yubikey-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   users.users.marin = {
     shell = pkgs.fish;
