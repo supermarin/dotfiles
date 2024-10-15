@@ -21,7 +21,7 @@
     };
     squale-machine.url = "path:///home/marin/code/squale-capital/machine";
     squale-machine.inputs.nixpkgs.follows = "nixpkgs";
-    gateway.url = "path:/home/marin/code/squale-capital/gateway";
+    # gateway.url = "path:/home/marin/code/squale-capital/gateway";
     # sharadar.url = "git+ssh://git@github.com/squale-capital/sharadar";
     sharadar.url = "path:/home/marin/code/squale-capital/sharadar"; # why?
     lix = {
