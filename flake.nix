@@ -6,8 +6,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     fonts.url = "git+ssh://git@github.com/supermarin/fonts";
     fonts.flake = false;
-    # jupyter.url = "git+ssh://git@github.com/squale-capital/jupyter"; # why?
-    jupyter.url = "path:/home/marin/code/squale-capital/jupyter";
+    jupyter.url = "git+ssh://git@github.com/squale-capital/jupyter";
+    jupyter.inputs.nixpkgs.follows = "nixpkgs";
+    jupyter.inputs.poetry2nix.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     pcscd-keep-alive.url = "github:supermarin/pcscd-keep-alive";
