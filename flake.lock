@@ -232,6 +232,18 @@
         "url": "ssh://git@github.com/supermarin/fonts"
       }
     },
+    "gateway": {
+      "locked": {
+        "lastModified": 1729016103,
+        "narHash": "sha256-4cWSfvNCgS8/c6NSjbbnT9f2F9sRVUYeMZ4U8cpCGAk=",
+        "path": "/home/marin/code/squale-capital/gateway",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/marin/code/squale-capital/gateway",
+        "type": "path"
+      }
+    },
     "ghostty": {
       "inputs": {
         "nixpkgs-stable": [
@@ -243,11 +255,11 @@
         "zig": "zig"
       },
       "locked": {
-        "lastModified": 1729011583,
-        "narHash": "sha256-IcQSlrq8h+qKhI9xbIlQ0RyPE0aZx9G4XM0KySYfcMY=",
+        "lastModified": 1729085059,
+        "narHash": "sha256-PcAXbmf4OGIBH0O6vK/827lnWwC4N41kMt+dHi7VpOk=",
         "ref": "refs/heads/main",
-        "rev": "4c871246dd561423e69eb9faef5946747f44eac8",
-        "revCount": 7717,
+        "rev": "7b668d3dc1cd78e4600c9ed5de0027329fb4d098",
+        "revCount": 7724,
         "type": "git",
         "url": "ssh://git@github.com/mitchellh/ghostty"
       },
@@ -263,11 +275,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728903686,
-        "narHash": "sha256-ZHFrGNWDDriZ4m8CA/5kDa250SG1LiiLPApv1p/JF0o=",
+        "lastModified": 1729027341,
+        "narHash": "sha256-IqWD7bA9iJVifvJlB4vs2KUXVhN+d9lECWdNB4jJ0tE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e1aec543f5caf643ca0d94b6a633101942fd065f",
+        "rev": "2a4fd1cfd8ed5648583dadef86966a8231024221",
         "type": "github"
       },
       "original": {
@@ -300,14 +312,16 @@
     },
     "hosts": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1728869459,
-        "narHash": "sha256-QCxqlaa/B45IaF5NrUgbNxAasNW6CVXRdUL8dIY1xCk=",
+        "lastModified": 1729046131,
+        "narHash": "sha256-XwZdoYfMwyYMWD7tbhVos/g35+vb80Z++gK4+TZlzBg=",
         "owner": "StevenBlack",
         "repo": "hosts",
-        "rev": "fb1ec6fcff9afe1ad29ceb8307ae9ed604018b0c",
+        "rev": "d5340679ded585b9596e74b6a6f7ce6b6d6d45d7",
         "type": "github"
       },
       "original": {
@@ -448,39 +462,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1726646082,
-        "narHash": "sha256-CgaJ4DTEvJLQmTrND2szajoGIoT+zSiUuajtqT6Hvcs=",
-        "path": "/nix/store/w2k8nm9xjmhv40hpzsb9vp8kqaikqrfy-source",
-        "rev": "9c9e5a0f77498706aea386078cfce1df2af80a87",
-        "type": "path"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1729028576,
-        "narHash": "sha256-E8+MsBPXvwKh5s0RhP+i6YVGdZuxc0T7chBKndZzHgk=",
-        "owner": "supermarin",
-        "repo": "nixpkgs",
-        "rev": "33d03f98a5fffaac601b24d375b82504337d9693",
-        "type": "github"
-      },
-      "original": {
+        "lastModified": 1729100803,
+        "narHash": "sha256-PK7uttslQ6DU9T3OYOjmNJOymdYv+nuSNdnUB4qIAWk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1718389132,
-        "narHash": "sha256-XmEa+yfCBblcIcM8RwdL+jbIIvM4/vF5vbLWyZ6OMLE=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "c80d01b53e8a0704b6bf4c371f0bd60f287931b4",
+        "rev": "1df9f2a2ec16273d124a8b2287fa4bcaa2ea2af2",
         "type": "github"
       },
       "original": {
@@ -537,6 +523,7 @@
     "root": {
       "inputs": {
         "fonts": "fonts",
+        "gateway": "gateway",
         "ghostty": "ghostty",
         "home-manager": "home-manager",
         "hosts": "hosts",
@@ -544,7 +531,7 @@
         "lix": "lix",
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "pcscd-keep-alive": "pcscd-keep-alive",
         "sharadar": "sharadar",
         "squale-machine": "squale-machine",
@@ -581,17 +568,22 @@
       "inputs": {
         "agenix": "agenix",
         "flake-utils": "flake-utils_6",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1721318235,
-        "narHash": "sha256-oCWvgGHeIQwQwl2EFOUIh6yITVvXC+ZWhWdgcLSYOUc=",
-        "path": "/home/marin/code/squale-capital/sharadar",
-        "type": "path"
+        "lastModified": 1718396270,
+        "narHash": "sha256-vmn8kbENRq/yv6YjEV1SdvlyCF6Vt02WqrMzeOxpE7s=",
+        "ref": "refs/heads/main",
+        "rev": "cac61d48215caf15ab761ceeb4dd191cc9a1f952",
+        "revCount": 64,
+        "type": "git",
+        "url": "ssh://git@github.com/squale-capital/sharadar"
       },
       "original": {
-        "path": "/home/marin/code/squale-capital/sharadar",
-        "type": "path"
+        "type": "git",
+        "url": "ssh://git@github.com/squale-capital/sharadar"
       }
     },
     "squale-machine": {
@@ -603,14 +595,17 @@
         "rss-bot": "rss-bot"
       },
       "locked": {
-        "lastModified": 1725663259,
-        "narHash": "sha256-/xA2/qdTxe6sDUCdFmaqcvnMOfioYUJknWiJp12s5ho=",
-        "path": "/home/marin/code/squale-capital/machine",
-        "type": "path"
+        "lastModified": 1729093576,
+        "narHash": "sha256-AcCanOFs3ZnweMaxAdKM1JPRBYWf5dtMBpTYyu+UdVk=",
+        "ref": "refs/heads/main",
+        "rev": "d3f748a66d23eb673778f6ca6043094a2803d682",
+        "revCount": 39,
+        "type": "git",
+        "url": "ssh://git@github.com/squale-capital/machine"
       },
       "original": {
-        "path": "/home/marin/code/squale-capital/machine",
-        "type": "path"
+        "type": "git",
+        "url": "ssh://git@github.com/squale-capital/machine"
       }
     },
     "systems": {
