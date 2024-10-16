@@ -2,35 +2,53 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    fonts.url = "git+ssh://git@github.com/supermarin/fonts";
-    fonts.flake = false;
-    jupyter.url = "git+ssh://git@github.com/squale-capital/jupyter";
-    jupyter.inputs.nixpkgs.follows = "nixpkgs";
-    jupyter.inputs.poetry2nix.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-generators.url = "github:nix-community/nixos-generators";
-    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-    pcscd-keep-alive.url = "github:supermarin/pcscd-keep-alive";
-    pcscd-keep-alive.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    fonts = {
+      url = "git+ssh://git@github.com/supermarin/fonts";
+      flake = false;
+    };
+    jupyter = {
+      url = "git+ssh://git@github.com/squale-capital/jupyter";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.poetry2nix.inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pcscd-keep-alive = {
+      url = "github:supermarin/pcscd-keep-alive";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ghostty = {
       url = "git+ssh://git@github.com/mitchellh/ghostty";
       inputs.nixpkgs-stable.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
-    squale-machine.url = "path:///home/marin/code/squale-capital/machine";
-    squale-machine.inputs.nixpkgs.follows = "nixpkgs";
-    # gateway.url = "path:/home/marin/code/squale-capital/gateway";
-    # sharadar.url = "git+ssh://git@github.com/squale-capital/sharadar";
-    sharadar.url = "path:/home/marin/code/squale-capital/sharadar"; # why?
+    squale-machine = {
+      url = "git+ssh://git@github.com/squale-capital/machine";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    gateway.url = "path:/home/marin/code/squale-capital/gateway";
+    sharadar = {
+      url = "git+ssh://git@github.com/squale-capital/sharadar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     lix = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hosts.url = "github:StevenBlack/hosts";
-    hosts.inputs.nixpkgs.follows = "nixpkgs";
-    yubikey-agent.url = "github:supermarin/yubikey-agent";
-    yubikey-agent.inputs.nixpkgs.follows = "nixpkgs";
+    hosts = {
+      url = "github:StevenBlack/hosts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    yubikey-agent = {
+      url = "github:supermarin/yubikey-agent";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
