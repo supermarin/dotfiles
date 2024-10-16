@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/24.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -9,7 +8,6 @@
     fonts.flake = false;
     # jupyter.url = "git+ssh://git@github.com/squale-capital/jupyter"; # why?
     jupyter.url = "path:/home/marin/code/squale-capital/jupyter";
-    jupyter.inputs.nixpkgs.follows = "nixpkgs-stable";
     nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     pcscd-keep-alive.url = "github:supermarin/pcscd-keep-alive";
