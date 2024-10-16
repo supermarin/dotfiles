@@ -43,7 +43,7 @@
       xdg-utils
       w3m # for HTML emails
       wdisplays
-      wl-clipboard-rs # wl-copy, wl-paste
+      wl-clipboard # wl-copy, wl-paste. wl-clipboard-rs doesn't support --watch
       wob # indicator bar
     ];
     extraSessionCommands = ''
