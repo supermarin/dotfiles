@@ -87,7 +87,7 @@
 #KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="100", TAG+="uaccess", TAG+="udev-acl"
   ;
   services.yubikey-agent.enable = true;
-  services.yubikey-agent.package = inputs.yubikey-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  # services.yubikey-agent.package = inputs.yubikey-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   users.users.marin = {
     shell = pkgs.fish;

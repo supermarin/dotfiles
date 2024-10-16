@@ -99,6 +99,7 @@
   programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
   home.file.".digrc".text = "+noall +answer";
+  home.file.".gnupg/gpg-agent.conf".text = "pinentry-program ${pkgs.pinentry_qt5}/bin/pinentry";
   home.file.".sqliterc".source = ./sqliterc;
   home.file.".ssh/config".source = ./ssh/config;
   xdg.configFile."i3status-rust/config.toml".source = ./linux/sway/i3status-rs/config.toml;
