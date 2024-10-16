@@ -21,7 +21,7 @@
   ];
 
   home.packages = with pkgs; [
-    calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022
+    # calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022. Build faling on python3.12-pyqt6-6.7.0.dev2404081550.drv
     obsidian #TODO: return when https://github.com/NixOS/nixpkgs/issues/273611 is fixed
     age
     age-plugin-yubikey
