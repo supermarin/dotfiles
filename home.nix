@@ -103,6 +103,7 @@
   home.file.".ssh/config".source = ./ssh/config;
   xdg.configFile."i3status-rust/config.toml".source =
     ./linux/sway/i3status-rs/config.toml;
+  xdg.configFile."kanshi/config".source = ./kanshi/config;
   xdg.configFile."khal/config".source = ./khal/config;
   xdg.configFile."river/init".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/river/init";
   xdg.configFile."nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim/init.lua";
