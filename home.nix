@@ -44,7 +44,7 @@
     keepassxc
     khal
     neovide # neovim gui
-    nil # nix language server
+    nixd # nix language server
     nodejs-slim_20 # for copilot
     nushell
     oathToolkit # used for OTP

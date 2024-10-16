@@ -61,11 +61,11 @@ vim.opt.undofile = true
 -- AUTOGROUPS / EVENTS
 local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern  = { '*.go', '*.lua', '*.nix', '*.rb', '*.py' },
+  pattern = { '*.go', '*.lua', '*.nix', '*.rb', '*.py', },
   callback = function()
     vim.lsp.buf.format(nil, 1000) -- async can't quit vim if files are changed
   end,
-  group    = au,
+  group = au,
 })
 vim.api.nvim_create_autocmd('BufReadPost', { -- save last postition in file
   pattern = '*',
@@ -243,7 +243,7 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lsp = require('lspconfig')
 -- TODO: should this attach per filetype?
-local servers = { 'gopls', 'lua_ls', 'ruby_lsp', 'clangd', 'pylsp', 'r_language_server' }
+local servers = { 'gopls', 'lua_ls', 'ruby_lsp', 'clangd', 'pylsp', 'r_language_server', 'nixd' }
 local options = {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -262,11 +262,6 @@ local options = {
 for _, server in ipairs(servers) do
   lsp[server].setup(options)
 end
-
-local nil_ls_options = options
-nil_ls_options['nix'] = { flake = { autoArchive = true } }
-lsp['nil_ls'].setup(nil_ls_options)
-
 
 -------------------------------------------------------------------------------
 -- Tests
