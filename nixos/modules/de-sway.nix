@@ -25,10 +25,10 @@
       swaynotificationcenter # notification daemon
       mupdf
       gedit # basic text file opener
-      gnome.adwaita-icon-theme
-      gnome.gnome-calculator
-      gnome.nautilus # gui file browser
-      gnome.sushi # quick preview for nautilus
+      adwaita-icon-theme
+      gnome-calculator
+      nautilus # gui file browser
+      sushi # quick preview for nautilus
       imagemagick # for resizing images
       playerctl # media keys (play/pause, prev, next)
       pavucontrol # select sound output device
