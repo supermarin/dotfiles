@@ -1,0 +1,14 @@
+profile home-xdr-mobile-screen {
+  output DP-1 mode 6016x3384@60Hz scale 2 position 0,0
+  output DP-2 disable
+  output HDMI-A-1 position 700,1692 scale 1.25
+}
+
+profile home-xdr {
+  output DP-1 mode 6016x3384@60Hz scale 2 position 0,0
+  output DP-2 disable
+}
+
+profile x1-nano {
+  output eDP-1 scale 1.25
+}
