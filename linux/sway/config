@@ -65,16 +65,6 @@ set $notification-center swaync-client -t -sw
 ### Output configuration
 output * bg $c_green solid_color
 
-set $laptop eDP-1
-output $laptop {
-  scale 1.25
-}
-
-# Apple XDR second phantom screen
-output DP-2 {
-  disable
-}
-
 # Turn off laptop monitor when lid is down
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
