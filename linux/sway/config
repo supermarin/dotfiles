@@ -134,6 +134,8 @@ bindsym $mod+t workspace 3; exec pgrep $term || $term
 bindsym $mod+z workspace 5; exec pgrep zulip || zulip --enable-features=UseOzonePlatform --ozone-platform=wayland
 # NetworkManager connect
 bindsym $mod+w exec $term --title=floating_term --command=nmtui-connect
+# Clipboard history
+bindsym $mod+v exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
 # Emoji
 bindsym $mod+Ctrl+Space exec rofimoji
 # File manager
@@ -293,3 +295,4 @@ exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec udiskie
 exec kanshi
 exec autotiling
+exec wl-paste --watch cliphist store

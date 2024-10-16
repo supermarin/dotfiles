@@ -19,6 +19,7 @@
       autotiling # for sway & i3
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
+      (cliphist.overrideAttrs { doCheck = false; }) # clipboard history
       grim # wayland screenshot tool
       i3status-rust # Menu bar
       libnotify # notify-send
