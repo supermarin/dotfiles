@@ -42,7 +42,7 @@
       xdg-utils
       w3m # for HTML emails
       wdisplays
-      wl-clipboard # wl-copy, wl-paste
+      wl-clipboard-rs # wl-copy, wl-paste
       wob # indicator bar
     ];
     extraSessionCommands = ''
