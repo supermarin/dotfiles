@@ -46,7 +46,7 @@
     # TODO: see if it makes more sense to use Blocky here
     extraHosts = builtins.readFile (builtins.fetchurl {
       url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-      sha256 = "sha256:1y5bk49cc7gr61q8awnczckmrjjcvll69c3m505wddvqpq4xjjjp";
+      sha256 = "sha256:02qhbzdqklpv4yjibw0rs2f6dx8szvbly679q1lllyg6a4hdyq1f";
     }) + builtins.readFile ./hosts.txt;
     firewall = {
       allowedTCPPorts = [ ];
