@@ -41,6 +41,9 @@
     "org/gnome/desktop/wm/preferences" = {
       resize-with-right-button = true;
     };
+    "org/gnome/nautilus/preferences" = {
+      default-sort-in-reverse-order = true;
+    };
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" "<Alt>F4" ];
       minimize = [ ];
