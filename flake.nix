@@ -204,11 +204,6 @@
           modules = [ ./nixos/configuration-personal.nix ];
           specialArgs = { inputs = inputs; };
         };
-
-        vpn = inputs.nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [ ./nixos/configuration-vpn.nix ./nixos/hardware-linode.nix ];
-        };
       };
     };
 }
