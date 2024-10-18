@@ -310,26 +310,6 @@
         "type": "github"
       }
     },
-    "hosts": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1729046131,
-        "narHash": "sha256-XwZdoYfMwyYMWD7tbhVos/g35+vb80Z++gK4+TZlzBg=",
-        "owner": "StevenBlack",
-        "repo": "hosts",
-        "rev": "d5340679ded585b9596e74b6a6f7ce6b6d6d45d7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "StevenBlack",
-        "repo": "hosts",
-        "type": "github"
-      }
-    },
     "jupyter": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -507,11 +487,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1729073785,
-        "narHash": "sha256-KaDC7emuamQblDdka+gkBUUdEjQf3YGYozMb+zomgSM=",
+        "lastModified": 1729173771,
+        "narHash": "sha256-rT2Vz1kFSj+NKHetVY7PJUACX+qBETdnuPSklzFKCsc=",
         "owner": "nix-community",
         "repo": "poetry2nix",
-        "rev": "795fddefc9f910671c1cf0752c29802ce27322d6",
+        "rev": "e67cc181b5bdf5aa46f1340fa9acd3910f6fb122",
         "type": "github"
       },
       "original": {
@@ -526,7 +506,6 @@
         "gateway": "gateway",
         "ghostty": "ghostty",
         "home-manager": "home-manager",
-        "hosts": "hosts",
         "jupyter": "jupyter",
         "lix": "lix",
         "nixos-generators": "nixos-generators",
@@ -535,6 +514,7 @@
         "pcscd-keep-alive": "pcscd-keep-alive",
         "sharadar": "sharadar",
         "squale-machine": "squale-machine",
+        "steven-black-hosts": "steven-black-hosts",
         "yubikey-agent": "yubikey-agent"
       }
     },
@@ -606,6 +586,26 @@
       "original": {
         "type": "git",
         "url": "ssh://git@github.com/squale-capital/machine"
+      }
+    },
+    "steven-black-hosts": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729258669,
+        "narHash": "sha256-e1t7Uqegsa14IIa880xx174Zsx1cSmg+nGx3xdfe8GY=",
+        "owner": "StevenBlack",
+        "repo": "hosts",
+        "rev": "3eb62cf79953401fab84826491d2468bd8519487",
+        "type": "github"
+      },
+      "original": {
+        "owner": "StevenBlack",
+        "repo": "hosts",
+        "type": "github"
       }
     },
     "systems": {

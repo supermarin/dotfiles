@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, config, ... }:
 {
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.loader.efi.canTouchEfiVariables = true;
@@ -41,13 +41,9 @@
   };
   hardware.pulseaudio.enable = false; # pipewire requires this disabled
 
-
   networking = {
     # TODO: see if it makes more sense to use Blocky here
-    extraHosts = builtins.readFile (builtins.fetchurl {
-      url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-      sha256 = "sha256:02qhbzdqklpv4yjibw0rs2f6dx8szvbly679q1lllyg6a4hdyq1f";
-    }) + builtins.readFile ./hosts.txt;
+    extraHosts = builtins.readFile ./hosts.txt;
     firewall = {
       allowedTCPPorts = [ ];
       allowedUDPPorts = [
@@ -58,6 +54,7 @@
     };
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;
+    stevenBlackHosts.enable = true; 
   };
   programs.fish.enable = true;
 
