@@ -1,3 +1,9 @@
+profile home-xdr-with-dummy {
+  output HDMI-A-1 disable
+  output DP-1 mode 6016x3384@60Hz scale 2 position 0,0
+  output DP-2 disable
+}
+
 profile home-xdr-mobile-screen {
   output DP-1 mode 6016x3384@60Hz scale 2 position 0,0
   output DP-2 disable
@@ -5,12 +11,6 @@ profile home-xdr-mobile-screen {
 }
 
 profile home-xdr {
-  output DP-1 mode 6016x3384@60Hz scale 2 position 0,0
-  output DP-2 disable
-}
-
-profile home-xdr-with-dummy {
-  output HDMI-A-1 disable
   output DP-1 mode 6016x3384@60Hz scale 2 position 0,0
   output DP-2 disable
 }
