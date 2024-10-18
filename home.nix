@@ -107,7 +107,7 @@
   xdg.configFile."khal/config".source = ./khal/config;
   xdg.configFile."nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim/init.lua";
   xdg.configFile."rg/config".source = ./rg/config;
-  xdg.configFile."river/init".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/linux/river/init";
+  xdg.configFile."river/init".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/river/init";
   xdg.configFile."sway/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/linux/sway/config";
   xdg.configFile."tig/config".source = ./tig/config;
   xdg.configFile."vdirsyncer/config".source = ./secrets/vdirsyncer.conf;
