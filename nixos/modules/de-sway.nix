@@ -28,6 +28,7 @@
       gedit # basic text file opener
       adwaita-icon-theme
       gnome-calculator
+      kanshi
       nautilus # gui file browser
       sushi # quick preview for nautilus
       imagemagick # for resizing images
