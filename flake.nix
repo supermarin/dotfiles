@@ -49,6 +49,10 @@
       url = "github:supermarin/yubikey-agent";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -88,6 +92,7 @@
             ./nixos/configuration.nix
             ./nixos/hardware-x1.nix
             ./nixos/home-manager-config.nix
+            ./nixos/modules/de-cosmic.nix
             ./nixos/modules/de-sway.nix
             ./nixos/modules/syncthing.nix
             ./nixos/nixpkgs-config.nix
