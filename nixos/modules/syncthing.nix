@@ -22,15 +22,13 @@
         simba.addresses = [ "quic://simba" ];
         tokio.id = "3R5ICHB-XN4DEI4-7NUMPI2-DCL24JI-3A2XN2Y-6IG6UTX-VXO22EL-66T3ZQM";
         tokio.addresses = [ "quic://tokio" ];
-        mx-001.id = "4FNONH3-QTHSBAF-NKPXL4A-IDTEYGI-LKC2QN2-RXQ3UUT-CUQFWM6-JFCB7AU";
-        mx-001.addresses = [ "quic://mx-001" ];
         mufasa.id = "PXHEELW-HDYA4HB-HE536W6-KDDHIE4-AHXWEZ3-H4EOYDI-LB72EZZ-5HDZ3QH";
         mufasa.addresses = [ "quic://mufasa" "tcp://mufasa" ];
       };
       folders = {
         "~/base" = {
           id = "ctyq6-lwqs6";
-          devices = [ "tokio" "simba" "mx-001" "mufasa" ];
+          devices = [ "tokio" "simba" "mufasa" ];
         };
       };
     };
