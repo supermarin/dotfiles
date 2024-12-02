@@ -105,7 +105,7 @@ output eDP-1 {
 #
 exec swayidle -w \
        timeout 300 'swaylock -f -c 000000' \
-       timeout 600 'swaymsg "output eDP-1 power off"' resume 'swaymsg "output eDP-1 power on"' \
+       timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
 
 # Screen lock
