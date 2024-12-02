@@ -60,6 +60,14 @@ vim.opt.undofile = true
 
 -- AUTOGROUPS / EVENTS
 local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = { '*.py', },
+  callback = function()
+    vim.wo.colorcolumn = "88"
+    vim.keymap.set('n', '<leader>r', ':w|:!python %<cr>', { silent = true })
+  end,
+  group = au,
+})
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = { '*.go', '*.lua', '*.nix', '*.rb', '*.py', },
   callback = function()
@@ -83,29 +91,14 @@ vim.api.nvim_create_autocmd('TermOpen', {
 })
 
 
--- Completion & snippets
-local luasnip = require("luasnip")
+-- LSP
+--
+local lspkind = require("lspkind")
+local cmp = require("cmp")
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
-
--- require("copilot").setup({
---   suggestion = { enabled = false },
---   panel = { enabled = false },
--- })
--- require("copilot_cmp").setup()
-
-require("sg").setup {
-  on_attach = on_attach,
-  chat = {
-    default_model = "anthropic/claude-3.5",
-  },
-}
-
-
-local lspkind = require("lspkind")
-local cmp = require("cmp")
 cmp.setup({
   snippet = {
     expand = function(args) luasnip.lsp_expand(args.body) end,
@@ -213,6 +206,10 @@ require('nvim-treesitter.configs').setup {
 require('Comment').setup()
 
 
+-------------------------------------------------------------------------------
+-- Snippets
+-------------------------------------------------------------------------------
+local luasnip = require("luasnip")
 
 -------------------------------------------------------------------------------
 -- LSP
@@ -251,6 +248,15 @@ local options = {
     debounce_text_changes = 150,
   },
   settings = {
+    pylsp = {
+      configurationSources = { 'pyproject' },
+      plugins = {
+        pycodestyle = { enabled = false },
+        flake8 = {
+          enabled = true,
+        },
+      }
+    },
     Lua = {
       diagnostics = {
         globals = { 'vim' }
@@ -262,6 +268,28 @@ local options = {
 for _, server in ipairs(servers) do
   lsp[server].setup(options)
 end
+
+
+
+-------------------------------------------------------------------------------
+-- AI
+-------------------------------------------------------------------------------
+
+-- require("copilot").setup({
+--   suggestion = { enabled = false },
+--   panel = { enabled = false },
+-- })
+-- require("copilot_cmp").setup()
+
+require("sg").setup {
+  on_attach = on_attach,
+  chat = {
+    default_model = "anthropic/claude-3.5",
+  },
+}
+
+
+
 
 -------------------------------------------------------------------------------
 -- Tests
@@ -281,6 +309,60 @@ vim.keymap.set("n", "<leader>di", ":lua require'dap'.step_into()<CR>")
 vim.keymap.set("n", "<leader>do", ":lua require'dap'.step_out()<CR>")
 vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.toggle()<CR>")
 vim.keymap.set("n", "<leader>du", ":lua require'dapui'.toggle()<CR>")
+
+-- TODO: see if something like neotest would be beneficial to
+-- 1. configure test runners with same keymaps for all langs
+-- 2. configure test debugging for all
+vim.keymap.set("n", "<leader>dt", ":lua require'dap-python'.test_method()<CR>")
+vim.keymap.set("n", "<leader>dT", ":lua require'dap-python'.test_class()<CR>")
+
+-- TODO: implement more debugging commands like execption breakpoints
+-- from :help dap-configuration
+-- set_exception_breakpoints({filters}, {exceptionOptions})
+--                                               *dap.set_exception_breakpoints()*
+--
+--     Sets breakpoints on exceptions filtered by `filters`. If `filters` is not
+--     provided it will prompt the user to choose from the available filters of the
+--     debug adapter.
+--
+--     Parameters: ~
+--         {filters}          A list of exception types to stop on (optional).
+--                            Most debug adapters offer categories like `"uncaught"` and
+--                            `"raised"` to filter the exceptions.
+--                            If set to "default" instead of a table, the
+--                            default options as recommended by the debug adapter are
+--                            used.
+--         {exceptionOptions} ExceptionOptions[]?
+--                            (https://microsoft.github.io/debug-adapter-protocol/specification#Types_ExceptionOptions)
+--
+--     >lua
+--         -- Ask user to stop on which kinds of exceptions
+--         require'dap'.set_exception_breakpoints()
+--         -- don't stop on exceptions
+--         require'dap'.set_exception_breakpoints({})
+--         -- stop only on certain exceptions (debugpy offers "raised", "uncaught")
+--         require'dap'.set_exception_breakpoints({"uncaughted"})
+--         require'dap'.set_exception_breakpoints({"raised", "uncaught"})
+--         -- use default settings of debug adapter
+--         require'dap'.set_exception_breakpoints("default")
+-- <
+--
+--     You can also set the default value via a `defaults.fallback` table:
+--
+-- >lua
+--         require('dap').defaults.fallback.exception_breakpoints = {'raised'}
+-- <
+--
+--     Or per config/adapter type:
+--
+-- >lua
+--         require('dap').defaults.python.exception_breakpoints = {'raised'}
+-- <
+--
+--     In this example `python` is the type. This is the same type used in
+--     |dap-configuration| or the |dap-adapter| definition.
+
+
 
 require('dapui').setup()
 require('nvim-dap-virtual-text').setup()
@@ -305,13 +387,6 @@ dap.configurations.go = {
   },
   {
     type = "delve",
-    name = "Debug test file",
-    request = "launch",
-    mode = "test",
-    program = "${file}"
-  },
-  {
-    type = "delve",
     name = "Debug project (go.mod)",
     request = "launch",
     mode = "launch",
@@ -332,19 +407,6 @@ dap.configurations.go = {
     args = {},
   },
 }
-
-dap.configurations.python = {
-  {
-    type = 'python',
-    request = 'launch',
-    name = "Launch file",
-    program = "${file}",
-    -- pythonPath = function()
-    --   return '/usr/bin/env python'
-    -- end,
-  },
-}
-
 
 if vim.g.neovide then
   vim.o.guifont = "Iosevka:h12"
