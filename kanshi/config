@@ -1,3 +1,17 @@
+profile dualup {
+  output "LG Electronics LG SDQHD 407NTMXCT339" mode 2560x2880@60Hz scale 1.25
+}
+
+profile benq {
+  output 'BNQ BenQ RD280U S5R0007501Q' scale 1.5
+}
+
+profile benq-and-dualup {
+  output 'BNQ BenQ RD280U S5R0007501Q' scale 1.5
+  # output DP-2 'LG Electronics LG SDQHD 407NTMXCT339' scale 1.25
+  output 'LG Electronics LG SDQHD 407NTMXCT339' scale 2 
+}
+
 profile home-xdr-with-dummy {
   output HDMI-A-1 disable
   output DP-1 mode 6016x3384@60Hz scale 2 position 0,0
