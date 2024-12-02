@@ -157,8 +157,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+n exec $notification-center
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-# [HACK] Power monitor on/off. Obesrved this on DisplayPort only - sometimes 
-bindsym $mod+Shift+d exec swaymsg output DP-1 power off && swaymsg output DP-1 power on
 # Moving around:
 #
 # Move your focus around
