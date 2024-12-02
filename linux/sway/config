@@ -29,21 +29,21 @@ client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
 
 # Status Bar:
 #
-bar {
-    position top
-    font pango: SF Pro Display 11
-    status_command i3status-rs
-    colors {
-        separator          #111111AA 
-        background         #111111AA
-        statusline         #ffffff
-        focused_workspace  $c_darkgrey  $c_black    #ffffff
-        active_workspace   #900000      #333333     #ffffff
-        inactive_workspace $c_darkgrey  $c_darkgrey $c_lightgrey
-        urgent_workspace   #900000      #900000     #ffffff
-    }
-    tray_output none
-}
+# bar {
+#     position top
+#     font pango: SF Pro Display 10
+#     status_command i3status-rs
+#     colors {
+#         separator          #111111AA 
+#         background         #111111AA
+#         statusline         #ffffff
+#         focused_workspace  $c_darkgrey  $c_black    #ffffff
+#         active_workspace   #900000      #333333     #ffffff
+#         inactive_workspace $c_darkgrey  $c_darkgrey $c_lightgrey
+#         urgent_workspace   #900000      #900000     #ffffff
+#     }
+#     tray_output none
+# }
 
 ###############################################################################
 
@@ -286,3 +286,4 @@ exec udiskie
 exec kanshi
 exec autotiling
 exec wl-paste --watch cliphist store
+exec_always nwg-panel

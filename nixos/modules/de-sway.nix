@@ -29,6 +29,7 @@
       gnome-calculator
       kanshi
       nautilus # gui file browser
+      nwg-panel
       sushi # quick preview for nautilus
       imagemagick # for resizing images
       playerctl # media keys (play/pause, prev, next)
