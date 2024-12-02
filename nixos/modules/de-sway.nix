@@ -8,7 +8,6 @@
   ######################## experimental sway alternates ######################
   programs.river.enable = true;
   programs.river.extraPackages = with pkgs; [ kanshi waybar ];
-  # programs.waybar.enable = true; # this enables it for sway
   ######################## experimental sway alternates ######################
 
   programs.sway = {
