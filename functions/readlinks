@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+link=$1
+test -L $1 || { echo "error: not a link: $1"; exit 0; }
+
+while test -L $link; do
+    link=$(readlink $link)
+done
+
+echo $link

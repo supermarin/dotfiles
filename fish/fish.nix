@@ -26,29 +26,8 @@ pkgs:
     fish_right_prompt = readFile ./functions/fish_right_prompt.fish;
     whatsapp = ''${pkgs.ungoogled-chromium}/bin/chromium --ozone-platform-hint=auto --force-dark-mode --enable-features=WebUIDarkMode --app="https://web.whatsapp.com"'';
     remotevsc = ''${pkgs.ungoogled-chromium}/bin/chromium --ozone-platform-hint=auto --force-dark-mode --enable-features=WebUIDarkMode --app="https://mufasa.dingo-marlin.ts.net/?folder=%2Fhome%2Fmarin%2Fcode%2Fsquale-capital&tkn=04392cca-4c44-4753-8c0a-26b70ba3d161"'';
-
-
     la = ''
       eza --octal-permissions --long --all --git $argv
-    '';
-    readlinks = ''
-      set link $argv[1]
-      if ! test -L $link
-        echo "error: not a link: $argv[1]"
-        return
-      end
-      while test -L $link
-          set link (readlink $link)
-      end
-
-      echo $link
-    '';
-    pgp = ''
-      pushd $PASSWORD_STORE_DIR
-      git add .
-      git commit -am 'update'
-      git push
-      popd
     '';
   };
 }
