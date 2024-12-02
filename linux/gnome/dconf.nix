@@ -101,5 +101,8 @@
       switch-to-application-3 = [ ]; # remove favorite applications
       switch-to-application-4 = [ ]; # remove favorite applications
     };
+    "org/gtk/gtk4/settings/file-chooser" = {
+      sort-directories-first = false;
+    };
   };
 }
