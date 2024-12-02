@@ -1,4 +1,21 @@
 { config, inputs, pkgs, ... }:
+let
+  zed-fhs = pkgs.buildFHSUserEnv {
+    name = "zed";
+    targetPkgs = pkgs: [
+      inputs.zed.packages.${pkgs.system}.zed-editor
+    ];
+    runScript = "zed";
+  };
+  cursor-fhs = pkgs.buildFHSUserEnv {
+    name = "cursor";
+    targetPkgs = pkgs:
+      with pkgs; [
+        code-cursor
+      ];
+    runScript = "cursor";
+  };
+in
 {
   imports = [
     ./linux/gnome/dconf.nix
@@ -28,6 +45,7 @@
     bat # used in `e` for live preview of files
     btop
     coreutils # used for `shred`
+    cursor-fhs
     diffr # used in git stuff
     discord
     duckdb
@@ -61,7 +79,7 @@
     vlc # Unsupported on aarch64-darwin as of Aug 10 2022
     vscodium-fhs
     whatsapp-for-linux
-    zed-editor
+    zed-fhs
     zig # why was this? for the compiler IIRC? TODO: delete if unused
     zulip
     zulip-term
