@@ -32,7 +32,7 @@
       sushi # quick preview for nautilus
       imagemagick # for resizing images
       playerctl # media keys (play/pause, prev, next)
-      pavucontrol # select sound output device
+      pwvucontrol # select sound output device
       pamixer # volume up/down
       rofi-wayland
       rofimoji # emoji picker, fuzzel doesn't support emoji
