@@ -88,6 +88,19 @@ input 16700:34053:Dell_Dell_Universal_Receiver {
     xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
 }
 
+# seat home {
+output "BNQ BenQ RD280U S5R0007501Q" {
+  scale 1.5 transform 90
+}
+
+output "LG Electronics LG SDQHD 407NTMXCT339" {
+  scale 1.25
+}
+
+output eDP-1 {
+  scale 1.25
+}
+
 ### Idle configuration
 #
 exec swayidle -w \
@@ -283,7 +296,7 @@ set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 # TODO: figure out why these two can't go in the same line, and fix the initial bar showing on sway load
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec udiskie
-exec kanshi
+# exec_always 'pkill kanshi; exec kanshi'
 exec autotiling
 exec wl-paste --watch cliphist store
 exec_always nwg-panel
