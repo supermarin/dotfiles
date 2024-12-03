@@ -58,6 +58,7 @@ in
     gnumake
     helix
     jq
+    jujutsu
     kitty
     keepassxc
     khal
