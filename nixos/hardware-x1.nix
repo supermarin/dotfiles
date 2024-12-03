@@ -1,6 +1,7 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ inputs, config, lib, modulesPath, ... }:
 {
   imports = [
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-nano-gen1
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 

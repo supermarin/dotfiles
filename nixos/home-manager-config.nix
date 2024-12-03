@@ -1,5 +1,9 @@
 { inputs, config, ... }:
 {
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
   home-manager.extraSpecialArgs = { inputs = inputs; };
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;

@@ -66,7 +66,6 @@
           system = "x86_64-linux";
           modules = [
             inputs.gateway.nixosModules.ibkr
-            inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
             inputs.squale-machine.nixosModules.machine
             inputs.sharadar.nixosModules.download-service
             ./nixos/configuration-pn50.nix
@@ -88,11 +87,6 @@
           system = "x86_64-linux";
           specialArgs = { inputs = inputs; };
           modules = [
-            inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
-            inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-nano-gen1
-            inputs.home-manager.nixosModules.home-manager
-            inputs.lix.nixosModules.default
-            inputs.steven-black-hosts.nixosModule
             ./nixos/configuration.nix
             ./nixos/hardware-x1.nix
             ./nixos/home-manager-config.nix
@@ -116,17 +110,13 @@
           system = "x86_64-linux";
           specialArgs = { inputs = inputs; };
           modules = [
-            inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
-            inputs.home-manager.nixosModules.home-manager
             inputs.jupyter.nixosModules.x86_64-linux.jupyterlab
-            inputs.lix.nixosModules.default
             ./nixos/configuration.nix
             ./nixos/hardware-computer-1.nix
             ./nixos/home-manager-config.nix
             ./nixos/modules/de-sway.nix
             ./nixos/modules/syncthing.nix
             ./nixos/nixpkgs-config.nix
-            inputs.steven-black-hosts.nixosModule
             {
               home-manager.users.marin.imports = [
                 ./home.nix

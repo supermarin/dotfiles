@@ -1,5 +1,11 @@
-{ pkgs, config, ... }:
+{ inputs, pkgs, config, ... }:
 {
+  imports = [
+    inputs.lix.nixosModules.default
+    inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
+    inputs.steven-black-hosts.nixosModule
+  ];
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
