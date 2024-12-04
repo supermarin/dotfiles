@@ -163,12 +163,13 @@
                 };
                 caddy = {
                   enable = true;
-                #   virtualHosts."${config.networking.hostName}.TODO.ts.net".extraConfig = ''
-                #     reverse_proxy /jupyter* http://127.0.0.1:${toString config.services.jupyterlab.port}
-                #     rewrite /code* /
-                #     reverse_proxy http://127.0.0.1:${toString config.services.openvscode-server.port}
-                #   '';
-                    virtualHosts."${config.networking.hostName}".extraConfig = ''
+      	            #  virtualHosts."${config.networking.hostName}.TODO.ts.net".extraConfig = ''
+      	            #    reverse_proxy /jupyter* http://127.0.0.1:${toString config.services.jupyterlab.port}
+      	            #    rewrite /code* /
+      	            #    reverse_proxy http://127.0.0.1:${toString config.services.openvscode-server.port}
+      	            #  '';
+# virtualHosts.":80".extraConfig = ''
+                    virtualHosts."http://${config.networking.hostName}".extraConfig = ''
                       reverse_proxy /jupyter* http://127.0.0.1:${toString config.services.jupyterlab.port}
                       rewrite /code* /
                       reverse_proxy http://127.0.0.1:${toString config.services.openvscode-server.port}
