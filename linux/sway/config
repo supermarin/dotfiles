@@ -133,8 +133,6 @@ for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays|galcu
 # Start a terminal
 bindsym $mod+Return exec $term
 bindsym $mod+t workspace 3; exec pgrep $term || $term
-# Zulip
-bindsym $mod+z workspace 5; exec pgrep zulip || zulip --enable-features=UseOzonePlatform --ozone-platform=wayland
 # NetworkManager connect
 bindsym $mod+w exec $term --title=floating_term --command=nmtui-connect
 # Clipboard history
