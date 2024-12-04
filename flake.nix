@@ -10,11 +10,6 @@
       url = "git+ssh://git@github.com/supermarin/fonts";
       flake = false;
     };
-    jupyter = {
-      url = "git+ssh://git@github.com/squale-capital/jupyter";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.poetry2nix.inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +31,12 @@
       url = "git+ssh://git@github.com/squale-capital/machine";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    gateway.url = "path:/home/marin/code/squale-capital/gateway";
+    # gateway.url = "";
+    jupyter = {
+      url = "git+ssh://git@github.com/squale-capital/jupyter";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.poetry2nix.inputs.nixpkgs.follows = "nixpkgs";
+    };
     sharadar = {
       url = "git+ssh://git@github.com/squale-capital/sharadar";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -126,7 +126,7 @@
               system.stateVersion = "23.11";
             }
             ({pkgs, config, ...}: {
-              services = rec {
+              services = {
                 openvscode-server = {
                   enable = true;
                   host = "127.0.0.1";
@@ -161,20 +161,18 @@
                     })
                   ];
                 };
-                nginx = {
+                caddy = {
                   enable = true;
-                  virtualHosts."${config.networking.hostName}" = {
-                    locations."/jupyter/" = {
-                      proxyPass = "http://127.0.0.1:${toString jupyterlab.port}${jupyterlab.subpath}/";
-                      proxyWebsockets = true;
-                      recommendedProxySettings = true;
-                    };
-                    locations."/" = {
-                      proxyPass = "http://127.0.0.1:${toString openvscode-server.port}/";
-                      proxyWebsockets = true;
-                      recommendedProxySettings = true;
-                    };
-                  };
+                #   virtualHosts."${config.networking.hostName}.TODO.ts.net".extraConfig = ''
+                #     reverse_proxy /jupyter* http://127.0.0.1:${toString config.services.jupyterlab.port}
+                #     rewrite /code* /
+                #     reverse_proxy http://127.0.0.1:${toString config.services.openvscode-server.port}
+                #   '';
+                    virtualHosts."${config.networking.hostName}".extraConfig = ''
+                      reverse_proxy /jupyter* http://127.0.0.1:${toString config.services.jupyterlab.port}
+                      rewrite /code* /
+                      reverse_proxy http://127.0.0.1:${toString config.services.openvscode-server.port}
+                    '';
                 };
               };
             })

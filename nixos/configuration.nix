@@ -82,6 +82,7 @@
   };
   services.printing.enable = true; # TODO: test if we need this anymore?
   services.tailscale.enable = true;
+  services.tailscale.permitCertUid = "caddy";
   services.udisks2.enable = true; # needed for fwupdmgr -.-
   services.udev.enable = true;
   services.udev.extraRules = ''
