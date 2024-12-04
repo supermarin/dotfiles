@@ -180,11 +180,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1710146030,
-        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "lastModified": 1726560853,
+        "narHash": "sha256-X6rJYSESBVr3hBoH0WbKE5KvhPU5bloyZ2L4K60/fPQ=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "rev": "c1dfcf08411b08f6b8615f7d8971a2bfa81d5e8a",
         "type": "github"
       },
       "original": {
@@ -276,6 +276,18 @@
       "original": {
         "type": "git",
         "url": "ssh://git@github.com/supermarin/fonts"
+      }
+    },
+    "gateway": {
+      "locked": {
+        "lastModified": 1729272369,
+        "narHash": "sha256-4cWSfvNCgS8/c6NSjbbnT9f2F9sRVUYeMZ4U8cpCGAk=",
+        "path": "/home/marin/code/squale-capital/gateway",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/marin/code/squale-capital/gateway",
+        "type": "path"
       }
     },
     "ghostty": {
@@ -376,29 +388,29 @@
         ]
       },
       "locked": {
-        "lastModified": 1723510904,
-        "narHash": "sha256-zNW/rqNJwhq2lYmQf19wJerRuNimjhxHKmzrWWFJYts=",
-        "rev": "622a2253a071a1fb97a4d3c8103a91114acc1140",
+        "lastModified": 1732605668,
+        "narHash": "sha256-DN5/166jhiiAW0Uw6nueXaGTueVxhfZISAkoxasmz/g=",
+        "rev": "f19bd752910bbe3a861c9cad269bd078689d50fe",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/622a2253a071a1fb97a4d3c8103a91114acc1140.tar.gz?rev=622a2253a071a1fb97a4d3c8103a91114acc1140"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/f19bd752910bbe3a861c9cad269bd078689d50fe.tar.gz?rev=f19bd752910bbe3a861c9cad269bd078689d50fe"
       },
       "original": {
         "type": "tarball",
-        "url": "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz"
+        "url": "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz"
       }
     },
     "lix_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1723503926,
-        "narHash": "sha256-Rosl9iA9MybF5Bud4BTAQ9adbY81aGmPfV8dDBGl34s=",
-        "rev": "bcaeb6388b8916ac6d1736e3aa2b13313e6a6bd2",
+        "lastModified": 1729298361,
+        "narHash": "sha256-hiGtfzxFkDc9TSYsb96Whg0vnqBVV7CUxyscZNhed0U=",
+        "rev": "ad9d06f7838a25beec425ff406fe68721fef73be",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/bcaeb6388b8916ac6d1736e3aa2b13313e6a6bd2.tar.gz?rev=bcaeb6388b8916ac6d1736e3aa2b13313e6a6bd2"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/ad9d06f7838a25beec425ff406fe68721fef73be.tar.gz?rev=ad9d06f7838a25beec425ff406fe68721fef73be"
       },
       "original": {
         "type": "tarball",
-        "url": "https://git.lix.systems/lix-project/lix/archive/2.91.0.tar.gz"
+        "url": "https://git.lix.systems/lix-project/lix/archive/2.91.1.tar.gz"
       }
     },
     "nix-github-actions": {
@@ -577,6 +589,7 @@
     "root": {
       "inputs": {
         "fonts": "fonts",
+        "gateway": "gateway",
         "ghostty": "ghostty",
         "home-manager": "home-manager",
         "jupyter": "jupyter",
@@ -926,11 +939,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1733328875,
-        "narHash": "sha256-6f9zbLiYmUF1IBX5uPbYy2l5mjuhn1gwjDt3/w9P7t4=",
+        "lastModified": 1733348379,
+        "narHash": "sha256-MtCvvZbvykqOMtPQVtUszqF4XooJfDQPcG92uNR+kTg=",
         "owner": "zed-industries",
         "repo": "zed",
-        "rev": "207eb51df198eae9417fcd15e0df2c2d4bd3bee6",
+        "rev": "a30ea2fc682bdaec572f3e130631e297670612a6",
         "type": "github"
       },
       "original": {
