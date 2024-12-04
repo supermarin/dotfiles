@@ -39,11 +39,6 @@
 
   hardware.bluetooth = {
     enable = true; # enables bluez
-    settings = {
-      General = {
-        Experimental = true;
-      };
-    };
   };
   hardware.pulseaudio.enable = false; # pipewire requires this disabled
 
