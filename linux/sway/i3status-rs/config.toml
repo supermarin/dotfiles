@@ -36,7 +36,7 @@ block = "sound"
 format = "$icon"
 [[block.click]]
 button = "left"
-cmd = "pavucontrol"
+cmd = "pwvucontrol"
 
 [[block]]
 block = "bluetooth"
