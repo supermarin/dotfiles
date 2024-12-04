@@ -39,7 +39,7 @@ in
 
   home.packages = with pkgs; [
     # calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022. Build faling on python3.12-pyqt6-6.7.0.dev2404081550.drv
-    obsidian #TODO: return when https://github.com/NixOS/nixpkgs/issues/273611 is fixed
+    obsidian
     age
     age-plugin-yubikey
     bat # used in `e` for live preview of files
@@ -56,12 +56,10 @@ in
     git-lfs
     github-cli
     gnumake
-    helix
     jq
     jujutsu
     kitty
     keepassxc
-    khal
     neovide # neovim gui
     nixd # nix language server
     nodejs-slim_20 # for copilot
