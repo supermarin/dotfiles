@@ -78,7 +78,7 @@ in
     vlc # Unsupported on aarch64-darwin as of Aug 10 2022
     vscodium-fhs
     whatsapp-for-linux
-    zed-fhs
+    # zed-fhs # deps are broken
     zig # why was this? for the compiler IIRC? TODO: delete if unused
     zulip
     zulip-term
