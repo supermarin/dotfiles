@@ -1,0 +1,15 @@
+[user]
+name = "Marin"
+email = "git@mar.in"
+
+[ui]
+default-command = "log"
+pager = [ "diffr" ]
+
+[ui.diff]
+format = "git"
+
+[template-aliases]
+# Username part of the email address
+'format_short_signature(signature)' = 'signature.username()'
+

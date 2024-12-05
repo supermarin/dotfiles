@@ -127,5 +127,6 @@ in
   xdg.configFile."river/init".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/river/init";
   xdg.configFile."sway/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/linux/sway/config";
   xdg.configFile."tig/config".source = ./tig/config;
+  xdg.configFile."jj/config".source = ./jj/config;
   xdg.configFile."vdirsyncer/config".source = ./secrets/vdirsyncer.conf;
 }
