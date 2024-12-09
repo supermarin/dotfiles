@@ -287,6 +287,7 @@ require("sg").setup {
     default_model = "anthropic/claude-3.5",
   },
 }
+vim.keymap.set("n", "<leader>c", ":CodyToggle<CR>")
 
 
 
