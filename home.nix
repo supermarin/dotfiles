@@ -129,4 +129,5 @@ in
   xdg.configFile."tig/config".source = ./tig/config;
   xdg.configFile."jj/config.toml".source = ./jj/config.toml;
   xdg.configFile."vdirsyncer/config".source = ./secrets/vdirsyncer.conf;
+  xdg.configFile."cosmic".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/cosmic";
 }

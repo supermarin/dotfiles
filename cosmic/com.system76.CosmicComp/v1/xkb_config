@@ -1,0 +1,9 @@
+(
+    rules: "",
+    model: "pc104",
+    layout: "us",
+    variant: "",
+    options: Some("terminate:ctrl_alt_bksp,caps:ctrl_modifier"),
+    repeat_delay: 150,
+    repeat_rate: 75,
+)
