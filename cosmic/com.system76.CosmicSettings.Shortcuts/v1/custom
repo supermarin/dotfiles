@@ -1,0 +1,20 @@
+{
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "m",
+    ): Minimize,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "e",
+    ): System(HomeFolder),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "f",
+    ): Maximize,
+}
