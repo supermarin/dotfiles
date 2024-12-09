@@ -1,12 +1,12 @@
 { config, inputs, pkgs, ... }:
 let
-  zed-fhs = pkgs.buildFHSUserEnv {
-    name = "zed";
-    targetPkgs = pkgs: [
-      inputs.zed.packages.${pkgs.system}.zed-editor
-    ];
-    runScript = "zed";
-  };
+  # zed-fhs = pkgs.buildFHSUserEnv {
+  #   name = "zed";
+  #   targetPkgs = pkgs: [
+  #     inputs.zed.packages.${pkgs.system}.zed-editor
+  #   ];
+  #   runScript = "zed";
+  # };
   cursor-fhs = pkgs.buildFHSUserEnv {
     name = "cursor";
     targetPkgs = pkgs:
@@ -79,6 +79,7 @@ in
     vscodium-fhs
     whatsapp-for-linux
     # zed-fhs # deps are broken
+    zed-editor
     zig # why was this? for the compiler IIRC? TODO: delete if unused
     zulip
     zulip-term
