@@ -95,11 +95,6 @@
             ./nixos/modules/syncthing.nix
             ./nixos/nixpkgs-config.nix
             {
-              home-manager.users.marin.imports = [
-                ./home.nix
-                ./home-services.nix
-                ./secrets/mail.nix
-              ];
               networking.hostName = "tokio";
               system.stateVersion = "22.05";
             }
@@ -119,10 +114,6 @@
             ./nixos/modules/syncthing.nix
             ./nixos/nixpkgs-config.nix
             {
-              home-manager.users.marin.imports = [
-                ./home.nix
-                ./home-services.nix
-              ];
               networking.hostName = "mufasa";
               system.stateVersion = "23.11";
             }
