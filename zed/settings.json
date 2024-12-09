@@ -1,0 +1,38 @@
+{
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "version": "2"
+  },
+  "auto_update": false,
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 2000
+    }
+  },
+  "buffer_font_size": 15,
+  "buffer_font_family": "Berkeley Mono",
+  "buffer_line_height": "standard",
+  "buffer_font_features": {
+    "liga": true,
+    "calt": true,
+    "clig": true
+  },
+  "load_direnv": "direct",
+  "tabs": {
+    "git_status": true
+  },
+  "terminal": {
+    "font_family": "Berkeley Mono",
+    "line_height": "standard"
+  },
+  "telemetry": {
+    "metrics": false
+  },
+  "theme": "Gruvbox Dark Hard",
+  "ui_font_size": 13,
+  "ui_font_family": "Berkeley Mono",
+  "vim_mode": true
+}
