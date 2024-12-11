@@ -17,3 +17,7 @@
 
 # VMs
 *.qcow2
+
+# Cosmic
+# This is state, not config. Changes every time you use cosmic-settings
+cosmic/com.system76.CosmicSettings/v1/active-page
