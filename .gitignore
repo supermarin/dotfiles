@@ -2,10 +2,6 @@
 
 .DS_Store
 .netrc
-.ssh
-
-.config/
-!.config/nixpkgs/**/**
 
 # vim
 *.swp
