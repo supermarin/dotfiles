@@ -30,9 +30,11 @@
           id = "ctyq6-lwqs6";
           devices = [ "tokio" "simba" "mufasa" ];
         };
+        "~/dotfiles" = {
+          id = "lpnyj-66gkm";
+          devices = [ "tokio" "simba" "mufasa" ];
+        };
       };
     };
   };
 }
-
-
