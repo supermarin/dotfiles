@@ -40,7 +40,6 @@
   hardware.bluetooth = {
     enable = true; # enables bluez
   };
-  hardware.pulseaudio.enable = false; # pipewire requires this disabled
 
   networking = {
     # TODO: see if it makes more sense to use Blocky here
@@ -73,6 +72,7 @@
   # '';
 
   services.fwupd.enable = true;
+  services.pulseaudio.enable = false; # pipewire requires this disabled
   services.openssh.enable = true;
   services.pcscd-keep-alive.enable = true;
   services.pipewire = {
