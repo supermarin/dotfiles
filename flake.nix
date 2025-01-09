@@ -18,11 +18,6 @@
       url = "github:supermarin/pcscd-keep-alive";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty = {
-      url = "git+ssh://git@github.com/mitchellh/ghostty";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-      inputs.nixpkgs-unstable.follows = "nixpkgs";
-    };
     # zed = {
     #   url = "github:zed-industries/zed";
     #   inputs.nixpkgs.follows = "nixpkgs";
