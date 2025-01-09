@@ -1,19 +1,20 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
     fonts = {
       url = "git+ssh://git@github.com/supermarin/fonts";
       flake = false;
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
     pcscd-keep-alive = {
       url = "github:supermarin/pcscd-keep-alive";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +27,7 @@
       url = "git+ssh://git@github.com/squale-capital/machine";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # gateway.url = "";
     jupyter = {
       url = "git+ssh://git@github.com/squale-capital/jupyter";
