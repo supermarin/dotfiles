@@ -52,7 +52,7 @@ in
     eza # ls with stuff
     fd
     fzf
-    inputs.ghostty.packages.${pkgs.system}.ghostty
+    ghostty
     git-lfs
     github-cli
     gnumake
