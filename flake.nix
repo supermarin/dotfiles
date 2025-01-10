@@ -4,7 +4,7 @@
 
     fonts = {
       url = "git+ssh://git@github.com/supermarin/fonts";
-      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";

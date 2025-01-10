@@ -6,7 +6,9 @@
       (import ../../fonts/sfpro.nix { inherit pkgs; }) # sans serif
       (import ../../fonts/sfmono.nix { inherit pkgs; }) # mono for browser
       (import ../../fonts/newyork.nix { inherit pkgs; }) # mono for browser
-      (import inputs.fonts { inherit pkgs; }) # berkeley mono
+      inputs.fonts.packages.${pkgs.system}.berkeley-mono-slash-dot-normal-seven-normal
+      inputs.fonts.packages.${pkgs.system}.berkeley-mono-slash-dot-normal-seven-semi-condensed
+      inputs.fonts.packages.${pkgs.system}.berkeley-mono-slash-dot-normal-seven-condensed
       source-serif # serif
 
       noto-fonts-emoji # emoji
