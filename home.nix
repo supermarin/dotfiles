@@ -1,13 +1,13 @@
 { config, inputs, pkgs, ... }:
 let
-  # zed-fhs = pkgs.buildFHSUserEnv {
+  # zed-fhs = pkgs.buildFHSEnv {
   #   name = "zed";
   #   targetPkgs = pkgs: [
   #     inputs.zed.packages.${pkgs.system}.zed-editor
   #   ];
   #   runScript = "zed";
   # };
-  cursor-fhs = pkgs.buildFHSUserEnv {
+  cursor-fhs = pkgs.buildFHSEnv {
     name = "cursor";
     targetPkgs = pkgs:
       with pkgs; [
