@@ -15,6 +15,7 @@
   {
     "context": "Terminal",
     "bindings": {
+      "ctrl-o": ["terminal::SendKeystroke", "ctrl-o"],
       "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"],
       "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"],
       "ctrl-`": "workspace::ToggleBottomDock"
