@@ -34,5 +34,10 @@
   "theme": "Gruvbox Dark Hard",
   "ui_font_size": 13,
   "ui_font_family": "Berkeley Mono",
-  "vim_mode": true
+  "vim_mode": true,
+  "languages": {
+    "Nix": {
+      "language_servers": ["nixd"]
+    }
+  }
 }
