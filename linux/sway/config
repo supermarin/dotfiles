@@ -71,7 +71,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term kitty
+set $term ghostty
 set $browser librewolf
 set $menu rofi -show combi
 set $notification-center swaync-client -t -sw
@@ -310,4 +310,4 @@ exec udiskie
 # exec_always 'pkill kanshi; exec kanshi'
 exec autotiling
 exec wl-paste --watch cliphist store
-exec_always nwg-panel
+# exec_always nwg-panel
