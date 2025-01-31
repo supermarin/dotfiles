@@ -87,7 +87,7 @@ bindswitch --reload --locked lid:off output $laptop enable
 #
 input * {
     repeat_delay 175
-    repeat_rate  75
+    repeat_rate  150
     natural_scroll enabled
 }
 
