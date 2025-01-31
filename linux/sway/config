@@ -104,7 +104,8 @@ input 16700:34053:Dell_Dell_Universal_Receiver {
 
 # seat home {
 output "BNQ BenQ RD280U S5R0007501Q" {
-  scale 1.5
+  # scale 1.5
+  scale 2
 }
 
 output "LG Electronics LG SDQHD 407NTMXCT339" {
