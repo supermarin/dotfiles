@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.nixos-cosmic.nixosModules.default
+    ./fonts.nix
   ];
   nix.settings = {
     substituters = [ "https://cosmic.cachix.org/" ];
