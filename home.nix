@@ -62,6 +62,7 @@ in
     keepassxc
     neovide # neovim gui
     nixd # nix language server
+    nixfmt # official nix formatter used by nixd
     nodejs-slim_20 # for copilot
     nushell
     oathToolkit # used for OTP
