@@ -80,7 +80,12 @@
     alsa.enable = true;
     pulse.enable = true;
   };
-  services.printing.enable = true; # TODO: test if we need this anymore?
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
+
   services.tailscale.enable = true;
   services.tailscale.permitCertUid = "caddy";
   services.udisks2.enable = true; # needed for fwupdmgr -.-
