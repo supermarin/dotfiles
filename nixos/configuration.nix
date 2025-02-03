@@ -1,5 +1,4 @@
-{ inputs, pkgs, config, ... }:
-{
+{ inputs, pkgs, config, ... }: {
   imports = [
     inputs.lix.nixosModules.default
     inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
@@ -14,7 +13,8 @@
     efiSupport = true;
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  documentation.man.generateCaches = pkgs.lib.mkForce false; # otherwise nixos-rebuild is slow AF
+  documentation.man.generateCaches =
+    pkgs.lib.mkForce false; # otherwise nixos-rebuild is slow AF
   environment.sessionVariables = {
     EDITOR = "vim";
     QT_QPA_PLATFORM = "wayland"; # TODO: check if still needed, electron fucked
@@ -54,7 +54,7 @@
     };
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;
-    stevenBlackHosts.enable = true; 
+    stevenBlackHosts.enable = true;
   };
   programs.fish.enable = true;
   # programs.ssh.knownHosts = {
@@ -93,15 +93,15 @@
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="043e", ATTRS{idProduct}=="9a40", MODE="0666"
   '' # LG Ultrafine 5K (9a40)
-  + ''
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="9243", MODE="0666"
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="1114", MODE="0666"
-  '' # Pro Display XDR (9243) & Studio Display (1114)
-  + ''
-    SUBSYSTEM=="hidraw", KERNEL=="hidraw*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-  '' # TODO: add ATTRS{serial}=="*vial:whatever* or ATTRS{idProduct}" to limit nuphy keyboard only
-  # 19f5:3247
-#KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="100", TAG+="uaccess", TAG+="udev-acl"
+    + ''
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="9243", MODE="0666"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="1114", MODE="0666"
+    '' # Pro Display XDR (9243) & Studio Display (1114)
+    + ''
+      SUBSYSTEM=="hidraw", KERNEL=="hidraw*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+    '' # TODO: add ATTRS{serial}=="*vial:whatever* or ATTRS{idProduct}" to limit nuphy keyboard only
+    # 19f5:3247
+    #KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="100", TAG+="uaccess", TAG+="udev-acl"
   ;
   services.yubikey-agent.enable = true;
   # services.yubikey-agent.package = inputs.yubikey-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;

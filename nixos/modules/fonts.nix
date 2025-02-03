@@ -1,5 +1,4 @@
-{ inputs, pkgs, ... }:
-{
+{ inputs, pkgs, ... }: {
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
@@ -14,9 +13,9 @@
       noto-fonts-emoji # emoji
       font-awesome # i3status-rust
 
+      hack-font # more mono ftw
       ibm-plex # more mono ftw
       iosevka # more mono ftw
-      hack-font # more mono ftw
     ];
     fontconfig = {
       defaultFonts = {
