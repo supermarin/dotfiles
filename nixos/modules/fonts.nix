@@ -16,6 +16,7 @@
       hack-font # more mono ftw
       ibm-plex # more mono ftw
       iosevka # more mono ftw
+      monaspace # more mono ftw
     ];
     fontconfig = {
       defaultFonts = {
