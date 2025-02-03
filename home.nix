@@ -90,13 +90,17 @@ in
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
   programs.tmux = {
-    enable = true;
     aggressiveResize = true;
+    baseIndex = 1;
+    enable = true;
+    extraConfig = ''
+      set -g status-position top
+    '';
+    escapeTime = 0;
     keyMode = "vi";
     mouse = true;
-    # terminal = "xterm-ghostty";
     terminal = "xterm-256color";
-    escapeTime = 0;
+    # terminal = "xterm-ghostty";
   };
 
   programs.librewolf = {
