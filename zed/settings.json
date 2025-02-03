@@ -12,14 +12,8 @@
       "milliseconds": 2000
     }
   },
-  "buffer_font_size": 15,
+  "buffer_font_size": 12,
   "buffer_font_family": "Berkeley Mono",
-  "buffer_line_height": "standard",
-  "buffer_font_features": {
-    "liga": true,
-    "calt": true,
-    "clig": true
-  },
   "load_direnv": "direct",
   "tabs": {
     "git_status": true
@@ -31,8 +25,8 @@
   "telemetry": {
     "metrics": false
   },
-  "theme": "Gruvbox Dark Hard",
-  "ui_font_size": 13,
+  "theme": "Nord",
+  "ui_font_size": 11,
   "ui_font_family": "Berkeley Mono",
   "vim_mode": true,
   "languages": {
