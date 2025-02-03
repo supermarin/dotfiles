@@ -8,18 +8,20 @@ critical_fg = "#FF5555"
 warning_fg = "#F96A02"
 
 [[block]]
+block = "focused_window"
+[block.format]
+full = " $title.str() |"
+short = " $title.str(max_w:10) |"
+
+[[block]]
 block = "custom"
-command = '''n=$(notmuch count --output=threads 'path:/.*/Inbox/' 2>/dev/null); test $n -ne 0 && echo -e "\uf0e0 $n"'''
-hide_when_empty = true
+command = "fin | ansifilter --pango | tr -d '\n'"
 shell = "bash"
-[[block.click]]
-button = "left"
-cmd = "swaymsg scratchpad show"
+interval = 600
 
 [[block]]
 block = "cpu"
-format = "$barchart"
-format_alt = " $frequency{ $boost|}"
+format_alt = "$barchart"
 
 [[block]]
 block = "custom"
@@ -28,7 +30,7 @@ shell = "bash"
 
 [[block]]
 block = "memory"
-format = " $icon $mem_used"
+format = "$icon $mem_used"
 format_alt = " $icon $mem_total_used_percents"
 
 [[block]]
