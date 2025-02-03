@@ -1,0 +1,19 @@
+#!/usr/bin/env -S sh -c 'nix shell nixpkgs#{bash,jq,bc,curl,ansifilter} -c bash "$0" "$@"'
+
+declare -a tickers=("^GSPC" "BTC-USD" "TLT" "GLD")
+
+for ticker in "${tickers[@]}"; do
+    result=$(curl -s "https://query1.finance.yahoo.com/v8/finance/chart/$ticker")
+    price=$(echo "$result" | jq -r '.chart.result[0].meta.regularMarketPrice')
+    prev_close=$(echo "$result" | jq -r '.chart.result[0].meta.previousClose')
+    pct_change=$(echo "$price $prev_close" | awk '{printf "%.2f", (($1 - $2) / $2) * 100}')
+    
+    if (( $(echo "$pct_change >= 0" | bc -l) )); then
+        color="\033[32m"  # Green for positive/zero
+    else
+        color="\033[31m"  # Red for negative
+    fi
+    
+    printf "%s: ${color}$%.1f (%.2f%%)\033[0m " "$ticker" "$price" "$pct_change"
+done
+echo
