@@ -33,6 +33,7 @@ in
     obsidian
     age
     age-plugin-yubikey
+    ansifilter # for i3status-rs ansi -> pango for yfinance
     bat # used in `e` for live preview of files
     btop
     coreutils # used for `shred`
@@ -137,7 +138,8 @@ in
   home.file.".sqliterc".source = ./sqliterc;
   home.file.".ssh/config".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ssh/config";
-  xdg.configFile."i3status-rust/config.toml".source = ./linux/sway/i3status-rs/config.toml;
+  xdg.configFile."i3status-rust/config.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/linux/sway/i3status-rs/config.toml";
   xdg.configFile."jj/config.toml".source = ./jj/config.toml;
   xdg.configFile."kanshi/config".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/kanshi/config";

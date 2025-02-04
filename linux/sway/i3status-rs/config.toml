@@ -8,30 +8,19 @@ critical_fg = "#FF5555"
 warning_fg = "#F96A02"
 
 [[block]]
-block = "focused_window"
-[block.format]
-full = " $title.str() |"
-short = " $title.str(max_w:10) |"
-
-[[block]]
 block = "custom"
 command = "fin | ansifilter --pango | tr -d '\n'"
 shell = "bash"
 interval = 600
 
 [[block]]
-block = "cpu"
-format_alt = "$barchart"
+block = "custom"
+command = "tmux-mem-cpu-load"
 
 [[block]]
 block = "custom"
 command = '''cat /sys/firmware/acpi/platform_profile'''
 shell = "bash"
-
-[[block]]
-block = "memory"
-format = "$icon $mem_used"
-format_alt = " $icon $mem_total_used_percents"
 
 [[block]]
 block = "sound"
