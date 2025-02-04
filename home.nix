@@ -72,6 +72,7 @@ in
     spotify
     sumneko-lua-language-server
     tig
+    tmux-mem-cpu-load
     ungoogled-chromium
     vdirsyncer # sync contacts & calendars
     vlc # Unsupported on aarch64-darwin as of Aug 10 2022
@@ -91,10 +92,28 @@ in
     aggressiveResize = true;
     baseIndex = 1;
     enable = true;
-    extraConfig = ''
-      set -g status-position top
-    '';
     escapeTime = 0;
+    extraConfig = ''
+      set -g status-position bottom
+      set -g status-interval 2
+      set -g status-left "#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
+      set -g status-left-length 60
+
+      bind k select-pane -U
+      bind j select-pane -D
+      bind h select-pane -L
+      bind l select-pane -R
+
+      bind-key -n M-h select-pane -L
+      bind-key -n M-l select-pane -R
+      bind-key -n M-k select-pane -U
+      bind-key -n M-j select-pane -D
+      bind-key -n M-f resize-pane -Z
+      bind-key -n M-n new-window
+      bind-key -n M-d split-pane -h
+      bind-key -n M-D split-pane -v
+    '';
+    historyLimit = 250000;
     keyMode = "vi";
     mouse = true;
     terminal = "xterm-256color";
