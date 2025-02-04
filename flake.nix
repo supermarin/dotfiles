@@ -28,7 +28,6 @@
       # url = "git+ssh://git@github.com/squale-capital/jupyter";
       url = "path:/home/marin/code/squale-capital/jupyter";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.poetry2nix.inputs.nixpkgs.follows = "nixpkgs";
     };
     sharadar = {
       url = "git+ssh://git@github.com/squale-capital/sharadar";
