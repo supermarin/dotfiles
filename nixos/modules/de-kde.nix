@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   imports = [ ./fonts.nix ];
 
   services.displayManager.sddm.enable = true;

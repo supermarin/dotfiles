@@ -13,7 +13,10 @@
     btop
     jq
     killall # killall(1)
-    (neovim.override { viAlias = true; vimAlias = true; })
+    (neovim.override {
+      viAlias = true;
+      vimAlias = true;
+    })
     ripgrep
     sqlite-interactive
     tmux
@@ -45,7 +48,10 @@
   users.users.marin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
     openssh.authorizedKeys.keyFiles = [
       (builtins.fetchurl {
         url = "https://github.com/supermarin.keys";

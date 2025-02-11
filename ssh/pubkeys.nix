@@ -3,4 +3,3 @@
   "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGdq2ovHYEhltm9UaeYd8oUXsPMjsSvjhJyJY0qAXLd1SyptQZWc6tz9PgUl2ARAWlbf+A4QxwQY5InytS5Wlfw=" # nano2
   "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMzJOnjFd4Dzn2sAzCqVIa1kWf4qi84j4ImeISoW8VYtDxl1Dcfu6AYvnyVGEi9ef5XU1diJslv0NUUQMqtfV7o=" # 5CNFC1
 ]
-

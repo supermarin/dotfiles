@@ -34,8 +34,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lix = {
-      url =
-        "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     steven-black-hosts = {
@@ -72,12 +71,16 @@
             services.sharadar-download.enable = true;
           }
         ];
-        specialArgs = { inputs = inputs; };
+        specialArgs = {
+          inputs = inputs;
+        };
       };
 
       tokio = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inputs = inputs; };
+        specialArgs = {
+          inputs = inputs;
+        };
         modules = [
           ./nixos/configuration.nix
           ./nixos/hardware-x1.nix
@@ -94,7 +97,9 @@
 
       mufasa = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inputs = inputs; };
+        specialArgs = {
+          inputs = inputs;
+        };
         modules = [
           inputs.jupyter.nixosModules.x86_64-linux.jupyterlab
           ./nixos/configuration.nix
@@ -169,7 +174,9 @@
       tokio-vm = inputs.nixpkgs.lib.nixosSystem {
         # deployed on vmware mbp
         system = "x86_64-linux";
-        specialArgs = { inputs = inputs; };
+        specialArgs = {
+          inputs = inputs;
+        };
         modules = [
           inputs.home-manager.nixosModules.home-manager
           ./nixos/configuration-vmware.nix
@@ -186,7 +193,9 @@
       personal = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ ./nixos/configuration-personal.nix ];
-        specialArgs = { inputs = inputs; };
+        specialArgs = {
+          inputs = inputs;
+        };
       };
     };
   };

@@ -5,7 +5,12 @@ let
     hostName = "mufasa";
     system = "x86_64-linux";
     speedFactor = 10;
-    supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+    supportedFeatures = [
+      "nixos-test"
+      "benchmark"
+      "big-parallel"
+      "kvm"
+    ];
   };
 in
 {
@@ -13,4 +18,5 @@ in
   mx-001 = [ mufasa ];
   simba = [ mufasa ];
   tokio = [ mufasa ];
-}.${host}
+}
+.${host}

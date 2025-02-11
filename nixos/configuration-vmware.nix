@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, secrets, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  secrets,
+  ...
+}:
 {
   imports = [ ./modules/fonts.nix ];
 
@@ -8,7 +14,10 @@
   networking = {
     firewall = secrets.firewall.tokio;
     hostName = "tokio-vm";
-    nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
     networkmanager.enable = true;
   };
 
@@ -20,7 +29,10 @@
   users.users.marin = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
     openssh.authorizedKeys.keys = import ../ssh/pubkeys.nix;
   };
 
@@ -38,4 +50,3 @@
     zip
   ];
 }
-

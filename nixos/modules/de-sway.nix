@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   imports = [
     ./fonts.nix
@@ -7,7 +12,10 @@
 
   ######################## experimental sway alternates ######################
   programs.river.enable = true;
-  programs.river.extraPackages = with pkgs; [ kanshi waybar ];
+  programs.river.extraPackages = with pkgs; [
+    kanshi
+    waybar
+  ];
   ######################## experimental sway alternates ######################
 
   programs.sway = {

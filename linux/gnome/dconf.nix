@@ -1,7 +1,7 @@
 #  Sources:
 #    dconf2nix: https://github.com/gvolpe/dconf2nix
 #    nixos module PR (without HM): https://github.com/NixOS/nixpkgs/pull/234615
-#    pop-shell-gnome-45 (script that resets all the keybindings correctly): 
+#    pop-shell-gnome-45 (script that resets all the keybindings correctly):
 #    https://github.com/ronanru/pop-shell-gnome-45/blob/master_jammy/scripts/configure.sh
 { pkgs, ... }:
 {
@@ -11,21 +11,25 @@
     #   terminal.exec = mkString "ghostty";
     # };
     "org/gnome/desktop/input-sources" = {
-      xkb-options = [ "terminate:ctrl_alt_bksp" "caps:ctrl_modifier" "altwin:swap_lalt_lwin"];
+      xkb-options = [
+        "terminate:ctrl_alt_bksp"
+        "caps:ctrl_modifier"
+        "altwin:swap_lalt_lwin"
+      ];
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       cursor-size = 24;
       cursor-theme = "Adwaita";
-      document-font-name="SF Pro Display 11";
-      enable-animations=true;
-      font-antialiasing="grayscale";
-      font-hinting="slight";
-      font-name="SF Pro Display,  10";
+      document-font-name = "SF Pro Display 11";
+      enable-animations = true;
+      font-antialiasing = "grayscale";
+      font-hinting = "slight";
+      font-name = "SF Pro Display,  10";
       gtk-theme = "Adwaita";
       icon-theme = "Adwaita";
-      monospace-font-name="Berkeley Mono 10";
-      toolbar-style="text";
+      monospace-font-name = "Berkeley Mono 10";
+      toolbar-style = "text";
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       two-finger-scrolling-enabled = true;
@@ -45,7 +49,10 @@
       default-sort-in-reverse-order = true;
     };
     "org/gnome/desktop/wm/keybindings" = {
-      close = [ "<Super>q" "<Alt>F4" ];
+      close = [
+        "<Super>q"
+        "<Alt>F4"
+      ];
       minimize = [ ];
       maximize = [ ];
       move-to-monitor-down = [ ];
@@ -90,7 +97,11 @@
     };
     "org/gnome/shell" = {
       disable-user-extensions = false;
-      enabled-extensions = ["drive-menu@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "tailscale@joaophi.github.com"];
+      enabled-extensions = [
+        "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        "system-monitor@gnome-shell-extensions.gcampax.github.com"
+        "tailscale@joaophi.github.com"
+      ];
     };
     "org/gnome/shell/keybindings" = {
       open-application-menu = [ ];

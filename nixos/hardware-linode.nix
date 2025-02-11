@@ -1,7 +1,17 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  boot.initrd.availableKernelModules = [ "virtio_pci" "virtio_scsi" "ahci" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "virtio_pci"
+    "virtio_scsi"
+    "ahci"
+    "sd_mod"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
@@ -15,14 +25,17 @@
     terminal_input serial;
     terminal_output serial
   '';
-  fileSystems."/" =
-    {
-      device = "/dev/sda";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/sda";
+    fsType = "ext4";
+  };
 
-  swapDevices =
-    [{ device = "/dev/sdb"; size = 512; }];
+  swapDevices = [
+    {
+      device = "/dev/sdb";
+      size = 512;
+    }
+  ];
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

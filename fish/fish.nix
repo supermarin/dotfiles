@@ -1,5 +1,4 @@
-pkgs:
-{
+pkgs: {
   enable = true;
   shellInit = ''
     if status --is-interactive

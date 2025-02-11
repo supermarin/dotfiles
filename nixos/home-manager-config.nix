@@ -5,7 +5,9 @@
   ];
 
   home-manager.backupFileExtension = "bak";
-  home-manager.extraSpecialArgs = { inputs = inputs; };
+  home-manager.extraSpecialArgs = {
+    inputs = inputs;
+  };
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.marin = {

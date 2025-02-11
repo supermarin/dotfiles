@@ -1,12 +1,25 @@
-{ inputs, config, lib, modulesPath, ... }:
+{
+  inputs,
+  config,
+  lib,
+  modulesPath,
+  ...
+}:
 {
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-nano-gen1
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
-  boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/b40ce794-595a-4057-a7bf-61a4a0e4371f";
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "thunderbolt"
+    "nvme"
+    "usb_storage"
+    "sd_mod"
+  ];
+  boot.initrd.luks.devices.cryptroot.device =
+    "/dev/disk/by-uuid/b40ce794-595a-4057-a7bf-61a4a0e4371f";
   boot.kernelModules = [ "kvm-intel" ];
   boot.kernelParams = [
     "mem_sleep_default=deep"
