@@ -6,5 +6,6 @@ git add .
 set +e
 git commit -am 'update'
 set -e
+git pull
 git push
 popd
