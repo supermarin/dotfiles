@@ -31,6 +31,8 @@ client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
 #
 bar {
   position top
+  # tray_output none
+  # font pango: Inter Display 10
   # font pango: SF Pro Display 10
   font pango: Berkeley Mono SemiCondensed SemiBold 10
   status_command i3status-rs
@@ -43,7 +45,6 @@ bar {
     inactive_workspace $c_darkgrey  $c_darkgrey $c_lightgrey
     urgent_workspace   #900000      #900000     #ffffff
   }
-#     tray_output none
 }
 
 ###############################################################################
@@ -85,6 +86,7 @@ input 6127:24801:TrackPoint_Keyboard_II {
 input 1:1:AT_Translated_Set_2_keyboard {
     xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
 }
+
 input 16700:34053:Dell_Dell_Universal_Receiver {
     xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
 }
