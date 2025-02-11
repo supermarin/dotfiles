@@ -1,8 +1,10 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
       (import ../../fonts/sfpro.nix { inherit pkgs; }) # sans serif
+      (import ../../fonts/inter-head.nix { inherit pkgs; }) # sans serif2
       (import ../../fonts/sfmono.nix { inherit pkgs; }) # mono for browser
       (import ../../fonts/newyork.nix { inherit pkgs; }) # mono for browser
       inputs.fonts.packages.${pkgs.system}.berkeley-mono-slash-dot-normal-seven-normal
