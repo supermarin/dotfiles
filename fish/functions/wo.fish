@@ -5,4 +5,5 @@ if [ $dir ]
   cd $dir
   clear
   la
+  tmux rename-window (basename $dir)
 end
