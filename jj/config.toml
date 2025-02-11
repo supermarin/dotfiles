@@ -1,5 +1,5 @@
 [user]
-name = "Marin"
+name = "marin"
 email = "git@mar.in"
 
 [ui]
@@ -11,5 +11,4 @@ format = "git"
 
 [template-aliases]
 # Username part of the email address
-'format_short_signature(signature)' = 'signature.username()'
-
+#'format_short_signature(signature)' = 'signature.username()'
