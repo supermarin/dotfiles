@@ -143,7 +143,6 @@ in
   xdg.configFile."jj/config.toml".source = ./jj/config.toml;
   xdg.configFile."kanshi/config".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/kanshi/config";
-  xdg.configFile."khal/config".source = ./khal/config;
   xdg.configFile."nvim/init.lua".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim/init.lua";
   xdg.configFile."rg/config".source = ./rg/config;
