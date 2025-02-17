@@ -88,9 +88,13 @@ in
     enable = true;
     escapeTime = 0;
     extraConfig = ''
-      set -g status-position bottom
+      set -g status-position top
       set -g status-interval 2
-      set -g status-left "#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
+      set -g status-left "#S #[fg=colour5,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
+      if-shell -b ' [ "$SSH_CLIENT" ] ' {
+        set -g status-bg colour6
+        set -g status-left "#S@#H #[fg=colour6,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
+      }
       set -g status-left-length 60
 
       bind k select-pane -U
@@ -98,6 +102,8 @@ in
       bind h select-pane -L
       bind l select-pane -R
 
+      bind-key -n M-H select-window -t:-1
+      bind-key -n M-L select-window -t:+1
       bind-key -n M-h select-pane -L
       bind-key -n M-l select-pane -R
       bind-key -n M-k select-pane -U
