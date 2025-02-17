@@ -191,6 +191,12 @@ require('diffview').setup {
     winbar_info = false, -- See ':h diffview-config-view.x.winbar_info'
   },
 }
+
+-- Set the highlight for removed lines to have a red background
+vim.cmd [[
+  highlight DiffDelete guibg=DarkRed
+]]
+
 -- Neogit
 require('neogit').setup {
   disable_commit_confirmation = true,
