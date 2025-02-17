@@ -141,6 +141,9 @@ in
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix pkgs;
   programs.neovim = import ./neovim.nix pkgs;
+
+  services.ollama.enable = true;
+
   home.file.".digrc".text = "+noall +answer";
   home.file.".gnupg/gpg-agent.conf".text = "pinentry-program ${pkgs.pinentry-qt}/bin/pinentry";
   home.file.".sqliterc".source = ./sqliterc;
