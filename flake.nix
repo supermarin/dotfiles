@@ -12,6 +12,7 @@
     fonts = {
       url = "git+ssh://git@github.com/supermarin/fonts";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -24,6 +25,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     pcscd-keep-alive = {
       url = "github:supermarin/pcscd-keep-alive";
+      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     squale-machine = {
@@ -34,14 +36,17 @@
     jupyter = {
       # url = "git+ssh://git@github.com/squale-capital/jupyter";
       url = "path:/home/marin/code/squale-capital/jupyter";
+      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sharadar = {
       url = "git+ssh://git@github.com/squale-capital/sharadar";
+      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lix = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     steven-black-hosts = {
