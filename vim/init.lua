@@ -118,8 +118,7 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   sources = {
-    -- { name = 'copilot' },
-    { name = 'cody' },
+    { name = 'codecompanion' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
     { name = 'path' },
@@ -280,22 +279,8 @@ end
 -- AI
 -------------------------------------------------------------------------------
 
--- require("copilot").setup({
---   suggestion = { enabled = false },
---   panel = { enabled = false },
--- })
--- require("copilot_cmp").setup()
-
-require("sg").setup {
-  on_attach = on_attach,
-  chat = {
-    default_model = "anthropic/claude-3.5",
-  },
-}
-vim.keymap.set("n", "<leader>c", ":CodyToggle<CR>")
-
-
-
+require("codecompanion").setup {}
+vim.keymap.set("n", "<leader>c", ":CodeCompanionChat<CR>")
 
 -------------------------------------------------------------------------------
 -- Tests
