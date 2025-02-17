@@ -2,6 +2,13 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    flake-utils.url = "github:numtide/flake-utils";
+    asdcontrol = {
+      # url = "github:supermarin/asdcontrol";
+      url = "path:/home/marin/code/oss/asdcontrol";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     fonts = {
       url = "git+ssh://git@github.com/supermarin/fonts";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -82,6 +89,10 @@
           inputs = inputs;
         };
         modules = [
+          inputs.asdcontrol.modules.asdcontrol
+          {
+            programs.asdcontrol.enable = true;
+          }
           ./nixos/configuration.nix
           ./nixos/hardware-x1.nix
           ./nixos/home-manager-config.nix

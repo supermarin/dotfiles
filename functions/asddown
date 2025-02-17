@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+monitor=$(asdcontrol --detect /dev/usb/* | grep SUPPORTED | cut -f1 -d ' '| tr -d ':')
+asdcontrol "${monitor}" -- -10000

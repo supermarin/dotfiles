@@ -257,6 +257,8 @@ bindsym $mod2+XF86AudioLowerVolume exec pamixer -d 1 && pamixer --get-volume > $
 bindsym XF86AudioMute exec pamixer set Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' | head -1 > $WOBSOCK
 bindsym XF86AudioMicMute exec pamixer set Capture toggle
 # keyboard gap
+bindsym $mod+XF86MonBrightnessDown exec asddown
+bindsym $mod+XF86MonBrightnessUp exec asdup
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 bindsym $mod2+XF86MonBrightnessDown exec brightnessctl set 1%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
