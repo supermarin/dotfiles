@@ -35,8 +35,8 @@ vim.keymap.set('n', '<leader>gg', ':Neogit<cr>')
 local tabspaces = 2
 vim.opt.background = 'dark'
 vim.opt.breakindent = true
-vim.opt.colorcolumn = "80"
 vim.opt.clipboard = 'unnamedplus'
+vim.opt.colorcolumn = "80"
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.expandtab = true
 vim.opt.grepprg = 'rg --vimgrep'
