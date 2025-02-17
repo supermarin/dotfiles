@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
     flake-utils.url = "github:numtide/flake-utils";
     asdcontrol = {
       # url = "github:supermarin/asdcontrol";
@@ -68,9 +67,9 @@
       mx-001 = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          inputs.gateway.nixosModules.ibkr
+          # inputs.gateway.nixosModules.ibkr
           inputs.squale-machine.nixosModules.machine
-          inputs.sharadar.nixosModules.download-service
+          inputs.sharadar.nixosModules.x86_64-linux.download-service
           ./nixos/configuration-pn50.nix
           ./nixos/hardware-pn50.nix
           ./nixos/modules/syncthing.nix
@@ -79,7 +78,7 @@
             networking.hostName = "mx-001";
             system.stateVersion = "23.11";
             squale.machine.enable = true;
-            gateway.ibkr.enable = true;
+            # gateway.ibkr.enable = true;
             services.sharadar-download.enable = true;
           }
         ];
