@@ -9,7 +9,7 @@ warning_fg = "#F96A02"
 
 [[block]]
 block = "custom"
-command = "head -n2 ~/base/todo.md | tail -n1 | cut -f2 -d] | xargs"
+command = 'grep "\- \[ \]" ~/base/todo.md | head -n 1 | cut -f2 -d] | xargs'
 shell = "bash"
 interval = 60
 
