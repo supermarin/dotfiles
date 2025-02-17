@@ -3,7 +3,7 @@ vim.keymap.set('n', 'gh', '^')                   -- kakoune: move to beginning o
 vim.keymap.set('n', 'gl', '$')                   -- kakoune: move to end of line
 vim.keymap.set('n', 'dp', 'd}')                  -- delete to end of paragraph
 vim.keymap.set('n', 'dP', 'd{')                  -- delete to beginning of paragraph
-vim.keymap.set('n', '<cr>', ':noh<cr>')          -- grb: remove highlight with enter
+vim.keymap.set('n', '<Esc>', ':noh<cr>')         -- remove highlight with Esc in normal
 vim.keymap.set('v', 'p', '"_dP')                 -- Unfuck paste in visual mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')      -- Escape in terminal
 vim.keymap.set('n', "J", "mzJ`z")                -- Preserve cursor pos when joining lines
@@ -34,8 +34,9 @@ vim.keymap.set('n', '<leader>gg', ':Neogit<cr>')
 
 local tabspaces = 2
 vim.opt.background = 'dark'
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.breakindent = true
 vim.opt.colorcolumn = "80"
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.expandtab = true
 vim.opt.grepprg = 'rg --vimgrep'
@@ -87,6 +88,14 @@ vim.api.nvim_create_autocmd('TermOpen', {
   pattern = { '*' },
   command = 'startinsert',
   group   = au,
+})
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 -------------------------------------------------------------------------------
