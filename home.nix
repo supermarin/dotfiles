@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   pkgs,
   ...
 }:
@@ -12,7 +11,10 @@ let
   };
 in
 {
-  imports = [ ./linux/gnome/dconf.nix ];
+  imports = [
+    ./linux/gnome/dconf.nix
+    ./neovim.nix
+  ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -140,7 +142,6 @@ in
 
   programs.fish = import ./fish/fish.nix pkgs;
   programs.git = import ./git.nix pkgs;
-  programs.neovim = import ./neovim.nix pkgs;
 
   services.ollama.enable = true;
 
