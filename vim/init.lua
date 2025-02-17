@@ -237,8 +237,11 @@ local options = {
       configurationSources = { 'pyproject' },
       plugins = {
         pycodestyle = { enabled = false },
-        flake8 = {
-          enabled = true,
+        ruff = {
+          -- enabled = true,
+          -- formatEnabled = true,
+          -- Rules that are ignored when a pyproject.toml or ruff.toml is present:
+          -- lineLength = 88, -- Line length to pass to ruff checking and formatting
         },
       }
     },
