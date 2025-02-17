@@ -210,7 +210,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { silent = true })
   -- LSP namespace
   vim.keymap.set('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<cr>', { silent = true })
-  vim.keymap.set('n', '<leader>le', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { silent = true })
+  vim.keymap.set('n', '<leader>le', '<cmd>lua vim.lsp.diagnostic.get_line_diagnostics()<CR>', { silent = true })
   vim.keymap.set('n', '<leader>lh', '<cmd>lua vim.lsp.buf.hover()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>lR', '<cmd>lua vim.lsp.buf.rename()<cr>', { silent = true })
