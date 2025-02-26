@@ -268,11 +268,11 @@ vim.keymap.set("n", "<leader>c", ":CodeCompanionChat<CR>")
 -------------------------------------------------------------------------------
 -- Tests
 -------------------------------------------------------------------------------
-vim.keymap.set("n", "<leader>tt", ":w|:TestNearest<CR>")
-vim.keymap.set("n", "<leader>ta", ":w|:TestFile<CR>")
-vim.keymap.set("n", "<leader>ts", ":w|:TestSuite<CR>")
-vim.keymap.set("n", "<leader>tl", ":w|:TestLast<CR>")
-vim.keymap.set("n", "<leader>tg", ":w|:TestVisit<CR>")
+vim.keymap.set("n", "<leader>tt", ":wa|:TestNearest<CR>")
+vim.keymap.set("n", "<leader>ta", ":wa|:TestFile<CR>")
+vim.keymap.set("n", "<leader>ts", ":wa|:TestSuite<CR>")
+vim.keymap.set("n", "<leader>tl", ":wa|:TestLast<CR>")
+vim.keymap.set("n", "<leader>tg", ":wa|:TestVisit<CR>")
 -------------------------------------------------------------------------------
 -- DAP
 -------------------------------------------------------------------------------
