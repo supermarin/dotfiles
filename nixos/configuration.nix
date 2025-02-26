@@ -7,7 +7,6 @@
 {
   imports = [
     inputs.lix.nixosModules.default
-    inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
     inputs.steven-black-hosts.nixosModule
   ];
 
@@ -38,8 +37,6 @@
     unzip
     virt-manager
     zip
-
-    pcscliteWithPolkit.out # fix pcscd. TODO: remove when https://github.com/NixOS/nixpkgs/issues/280826 is closed
   ];
 
   hardware.bluetooth = {
@@ -65,6 +62,7 @@
     stevenBlackHosts.enable = true;
   };
   programs.fish.enable = true;
+  programs.ssh.startAgent = true;
   # programs.ssh.knownHosts = {
   #   nixbuild = {
   #     hostNames = [ "eu.nixbuild.net" ];
@@ -82,7 +80,7 @@
   services.fwupd.enable = true;
   services.pulseaudio.enable = false; # pipewire requires this disabled
   services.openssh.enable = true;
-  services.pcscd-keep-alive.enable = true;
+  # services.pcscd-keep-alive.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -104,7 +102,7 @@
   # 19f5:3247
   #KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="100", TAG+="uaccess", TAG+="udev-acl"
   ;
-  services.yubikey-agent.enable = true;
+  # services.yubikey-agent.enable = true;
 
   users.users.marin = {
     shell = pkgs.fish;
