@@ -11,10 +11,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.marin = {
-    imports = [
-      ../home.nix
-      ../home-services.nix
-    ];
+    imports = [ ../home.nix ];
     home.stateVersion = config.system.stateVersion;
   };
 }

@@ -163,7 +163,6 @@ in
   xdg.configFile."sway/config".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/linux/sway/config";
   xdg.configFile."tig/config".source = ./tig/config;
-  xdg.configFile."vdirsyncer/config".source = ./secrets/vdirsyncer.conf;
   xdg.configFile."zed/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zed/settings.json";
   xdg.configFile."zed/keymap.json".source =
