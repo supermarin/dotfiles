@@ -1,4 +1,25 @@
 {
+  "features": {
+    "inline_completion_provider": "zed"
+  },
+  "formatter": "language_server",
+  "ssh_connections": [
+    {
+      "host": "mufasa",
+      "args": ["-A"],
+      "projects": [
+        {
+          "paths": ["~/code"]
+        },
+        {
+          "paths": ["~/code/squale-capital"]
+        },
+        {
+          "paths": ["~/code/squale-capital/clenow"]
+        }
+      ]
+    }
+  ],
   "assistant": {
     "default_model": {
       "provider": "copilot_chat",
@@ -12,9 +33,11 @@
       "milliseconds": 2000
     }
   },
-  "buffer_font_size": 12,
+  "buffer_font_size": 14.0,
   "buffer_font_family": "Berkeley Mono",
   "load_direnv": "direct",
+  "buffer_line_height": "standard",
+  "indent_guides": { "enabled": false },
   "tabs": {
     "git_status": true
   },
@@ -25,7 +48,7 @@
   "telemetry": {
     "metrics": false
   },
-  "theme": "Nord",
+  "theme": "Graphene",
   "ui_font_size": 11,
   "ui_font_family": "Berkeley Mono",
   "vim_mode": true,
