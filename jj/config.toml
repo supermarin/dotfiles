@@ -1,6 +1,6 @@
 [user]
 name = "marin"
-email = "git@mar.in"
+email = "git+jj@mar.in"
 
 [ui]
 default-command = "log"
@@ -11,4 +11,5 @@ format = "git"
 
 [template-aliases]
 # Username part of the email address
-#'format_short_signature(signature)' = 'signature.username()'
+'format_short_id(id)' = 'id.shortest()'
+
