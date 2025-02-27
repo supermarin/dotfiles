@@ -302,4 +302,4 @@ exec udiskie
 # exec_always 'pkill kanshi; exec kanshi'
 exec autotiling
 exec wl-paste --watch cliphist store
-# exec_always nwg-panel
+exec systemctl --user restart wlsunset.service
