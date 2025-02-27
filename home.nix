@@ -54,6 +54,7 @@ in
     gnumake
     jq
     jujutsu
+    lazyjj
     kitty
     keepassxc
     mergiraf # experimental: git conflict resolver
