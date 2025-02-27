@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [[ -n $1 ]]; then
+  set -x
+  nix shell nixpkgs#$1
+else
+  set -x
+  nix shell
+fi

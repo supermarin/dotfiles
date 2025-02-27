@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+eza --octal-permissions --long --all --git $@
