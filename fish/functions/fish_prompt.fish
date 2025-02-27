@@ -97,6 +97,45 @@ function ssh_prompt
   end
 end
 
+function jj_prompt --description 'Write out the jj prompt'
+    if not command -sq jj
+        return 1
+    end
+
+    if not jj root --quiet &>/dev/null
+        return 1
+    end
+
+    jj log --ignore-working-copy --no-graph --color always -r @ -T '
+        surround(
+            "(",
+            ")",
+            separate(
+                " ",
+                bookmarks.join(", "),
+                coalesce(
+                    surround(
+                        "\"",
+                        "\"",
+                        if(
+                            description.first_line().substr(0, 24).starts_with(description.first_line()),
+                            description.first_line().substr(0, 24),
+                            description.first_line().substr(0, 23) ++ "…"
+                        )
+                    ),
+                    "(no description set)"
+                ),
+                change_id.shortest(),
+                commit_id.shortest(),
+                if(conflict, "(conflict)"),
+                if(empty, "(empty)"),
+                if(divergent, "(divergent)"),
+                if(hidden, "(hidden)"),
+            )
+        )
+    '
+end
+
 function fish_prompt
     set -l s $status # needed because $status gets overriden to 0 immediately
     if [ $s -ne 0 ]
@@ -104,8 +143,12 @@ function fish_prompt
     end
 
     if [ (is_in_git_repo) ]
-      set supemarin_git_info (git_prompt)
+      set marin_vcs_info (git_prompt)
     end
 
-    echo (jobs_info) (ssh_prompt) $supemarin_git_info $last_status_info(duration) (nix_shell)
+    if jj root --quiet &>/dev/null
+      set marin_vcs_info (jj_prompt)
+    end
+
+    echo (jobs_info) (ssh_prompt) $marin_vcs_info $last_status_info(duration) (nix_shell)
 end
