@@ -62,14 +62,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1739308790,
-        "narHash": "sha256-+zd7cJlNAj+i3dQsYILOibUDubeRHRFn24PXtp1r0lY=",
-        "path": "/home/marin/code/oss/asdcontrol",
-        "type": "path"
+        "lastModified": 1739308870,
+        "narHash": "sha256-1B94uN9sguA5S8xWCE9bdacE2MJ4Xi8IzbRPADlamkc=",
+        "owner": "supermarin",
+        "repo": "asdcontrol",
+        "rev": "b1eae1492ea8a1b157b29f59b935cf851d9f7ce3",
+        "type": "github"
       },
       "original": {
-        "path": "/home/marin/code/oss/asdcontrol",
-        "type": "path"
+        "owner": "supermarin",
+        "repo": "asdcontrol",
+        "type": "github"
       }
     },
     "darwin": {
@@ -174,11 +177,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1739298825,
-        "narHash": "sha256-q9CzTY7n8n9RK9mKUQ4VbaKdydhXQqzphahEG5Wt8sI=",
+        "lastModified": 1740579671,
+        "narHash": "sha256-Dwt/3KknOQ4bgFG5YjqDT7oWRy27rPpDjAi2P0ok1zw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f0a31d38e6de48970ce1fe93e6ea343e20a9c80a",
+        "rev": "53c587d263f94aaf6a281745923c76bbec62bcf3",
         "type": "github"
       },
       "original": {
@@ -222,8 +225,8 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1738876886,
-        "narHash": "sha256-1DWOrMuCeGoOzhnwpzrQbQYjtTH5vXx6qCU0VYDbyQw=",
+        "lastModified": 1740599949,
+        "narHash": "sha256-GnspV+Hr6ETVACvOduvKwC0qs5vtJnUezfzq6AJePhI=",
         "path": "/home/marin/code/squale-capital/jupyter",
         "type": "path"
       },
@@ -293,11 +296,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1739241038,
-        "narHash": "sha256-dRXO69EMT9iIeeZtmsz4hWJyUYbt3YVSVO+AviSCMyE=",
+        "lastModified": 1740585358,
+        "narHash": "sha256-EY/n+71LgL7xQAmt/gDTVHlJgUahOl4IxFQdOQbCUlE=",
         "owner": "lilyinstarlight",
         "repo": "nixos-cosmic",
-        "rev": "da45dbf969e2f0dc7d29cc8b7e4706e08d4f624a",
+        "rev": "5a87ae1a2d9a868bc16819e2a3a97452abb52c9c",
         "type": "github"
       },
       "original": {
@@ -329,11 +332,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1738816619,
-        "narHash": "sha256-5yRlg48XmpcX5b5HesdGMOte+YuCy9rzQkJz+imcu6I=",
+        "lastModified": 1740387674,
+        "narHash": "sha256-pGk/aA0EBvI6o4DeuZsr05Ig/r4uMlSaf5EWUZEWM10=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "2eccff41bab80839b1d25b303b53d339fbb07087",
+        "rev": "d58f642ddb23320965b27beb0beba7236e9117b5",
         "type": "github"
       },
       "original": {
@@ -344,11 +347,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1739020877,
-        "narHash": "sha256-mIvECo/NNdJJ/bXjNqIh8yeoSjVLAuDuTUzAo7dzs8Y=",
+        "lastModified": 1740367490,
+        "narHash": "sha256-WGaHVAjcrv+Cun7zPlI41SerRtfknGQap281+AakSAw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a79cfe0ebd24952b580b1cf08cd906354996d547",
+        "rev": "0196c0175e9191c474c26ab5548db27ef5d34b05",
         "type": "github"
       },
       "original": {
@@ -360,11 +363,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1739055578,
-        "narHash": "sha256-2MhC2Bgd06uI1A0vkdNUyDYsMD0SLNGKtD8600mZ69A=",
+        "lastModified": 1740463929,
+        "narHash": "sha256-4Xhu/3aUdCKeLfdteEHMegx5ooKQvwPHNkOgNCXQrvc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a45fa362d887f4d4a7157d95c28ca9ce2899b70e",
+        "rev": "5d7db4668d7a0c6cc5fc8cf6ef33b008b2b1ed8b",
         "type": "github"
       },
       "original": {
@@ -518,11 +521,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1738722076,
-        "narHash": "sha256-TEk003KAgzs7KUgx2JevONr2aML75FLAp0FdQ+pyz6s=",
+        "lastModified": 1740266555,
+        "narHash": "sha256-NReJCA379CGPRsIy5xifVz0xtBOJ+XrPaAhDKIGV9Ik=",
         "owner": "StevenBlack",
         "repo": "hosts",
-        "rev": "04e625de9df0cce5264767c0e8524b5dcaaaf02c",
+        "rev": "8df476e3b53f862902119273eaa0a8474443969e",
         "type": "github"
       },
       "original": {
