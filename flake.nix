@@ -3,8 +3,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     asdcontrol = {
-      # url = "github:supermarin/asdcontrol";
-      url = "path:/home/marin/code/oss/asdcontrol";
+      url = "github:supermarin/asdcontrol";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
@@ -22,19 +21,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    pcscd-keep-alive = {
-      url = "github:supermarin/pcscd-keep-alive";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     squale-machine = {
       url = "git+ssh://git@github.com/squale-capital/machine";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # gateway.url = "";
     jupyter = {
-      # url = "git+ssh://git@github.com/squale-capital/jupyter";
-      url = "path:/home/marin/code/squale-capital/jupyter";
+      url = "git+ssh://git@github.com/squale-capital/jupyter";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
