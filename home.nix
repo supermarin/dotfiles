@@ -14,6 +14,7 @@ in
   imports = [
     ./linux/gnome/dconf.nix
     ./neovim.nix
+    ./git/config.nix
   ];
 
   home.sessionVariables = {
@@ -55,6 +56,7 @@ in
     jujutsu
     kitty
     keepassxc
+    mergiraf # experimental: git conflict resolver
     neovide # neovim gui
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter used by nixd
@@ -141,7 +143,6 @@ in
   };
 
   programs.fish = import ./fish/fish.nix pkgs;
-  programs.git = import ./git.nix pkgs;
 
   services.ollama.enable = true;
 
