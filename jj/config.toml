@@ -13,3 +13,5 @@ format = "git"
 # Username part of the email address
 'format_short_id(id)' = 'id.shortest()'
 
+[aliases]
+la = [ "log", "-r", "::" ]
