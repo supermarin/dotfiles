@@ -45,10 +45,6 @@
       url = "github:StevenBlack/hosts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    yubikey-agent = {
-      url = "github:supermarin/yubikey-agent";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
