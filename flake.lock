@@ -225,14 +225,17 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1740599949,
-        "narHash": "sha256-GnspV+Hr6ETVACvOduvKwC0qs5vtJnUezfzq6AJePhI=",
-        "path": "/home/marin/code/squale-capital/jupyter",
-        "type": "path"
+        "lastModified": 1740494081,
+        "narHash": "sha256-nMgpuSRrq2dhquy2uwumHRFKOXCKBhFOYlQjRcrsMG8=",
+        "ref": "refs/heads/main",
+        "rev": "d32de3a54f25dad04dcc76cce46df4a6c4f1962a",
+        "revCount": 72,
+        "type": "git",
+        "url": "ssh://git@github.com/squale-capital/jupyter"
       },
       "original": {
-        "path": "/home/marin/code/squale-capital/jupyter",
-        "type": "path"
+        "type": "git",
+        "url": "ssh://git@github.com/squale-capital/jupyter"
       }
     },
     "lix": {
@@ -377,29 +380,6 @@
         "type": "github"
       }
     },
-    "pcscd-keep-alive": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1738598281,
-        "narHash": "sha256-nAfgkev+90B0w4sUEnV9kEbHI8jNANPZqMGFBvedciM=",
-        "owner": "supermarin",
-        "repo": "pcscd-keep-alive",
-        "rev": "0bc7fe22574aa5697dd8d0eb9e3677ab42775b79",
-        "type": "github"
-      },
-      "original": {
-        "owner": "supermarin",
-        "repo": "pcscd-keep-alive",
-        "type": "github"
-      }
-    },
     "pyproject-build-systems": {
       "inputs": {
         "nixpkgs": [
@@ -462,7 +442,6 @@
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "pcscd-keep-alive": "pcscd-keep-alive",
         "sharadar": "sharadar",
         "squale-machine": "squale-machine",
         "steven-black-hosts": "steven-black-hosts",
