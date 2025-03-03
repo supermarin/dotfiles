@@ -15,6 +15,7 @@ in
     ./linux/gnome/dconf.nix
     ./neovim.nix
     ./git/config.nix
+    ./shells.nix
   ];
 
   home.sessionVariables = {

@@ -9,7 +9,6 @@
     inputs.lix.nixosModules.default
     inputs.steven-black-hosts.nixosModule
     inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
-    ../fish/fish.nix
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
