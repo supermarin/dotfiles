@@ -8,6 +8,7 @@
   imports = [
     inputs.lix.nixosModules.default
     inputs.steven-black-hosts.nixosModule
+    inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
     ../fish/fish.nix
   ];
 
@@ -38,6 +39,8 @@
     unzip
     virt-manager
     zip
+
+    pcscliteWithPolkit.out # fix pcscd. TODO: remove when https://github.com/NixOS/nixpkgs/issues/280826 is closed
   ];
 
   hardware.bluetooth = {
