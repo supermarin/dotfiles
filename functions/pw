@@ -2,7 +2,7 @@
 set -euo pipefail
 
 cd $PASSWORD_STORE_DIR/Password
-file=$(fd --type f | $FUZZY)
+file=$(fd --type f | fzf)
 IFS=$'\n'
 contents=$(age-decrypt "$file")
 password=$(head -n 1 <<< $contents)

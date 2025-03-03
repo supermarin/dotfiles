@@ -2,5 +2,5 @@
 set -euo pipefail
 
 cd $PASSWORD_STORE_DIR
-file=$(fd --type f | $FUZZY)
+file=$(fd --type f | fzf)
 age-decrypt "$file"

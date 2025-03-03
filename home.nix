@@ -19,7 +19,6 @@ in
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    FUZZY = "fzf";
     MAILDIR = "$HOME/.mail";
     PASSWORD_STORE_DIR = "$HOME/.p";
     OTPDIR = "$HOME/.otp";
