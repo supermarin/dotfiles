@@ -43,6 +43,7 @@ in
     coreutils # used for `shred`
     cursor-fhs
     diffr # used in git stuff
+    difftastic # testing this out
     discord
     duckdb
     eza # ls with stuff
