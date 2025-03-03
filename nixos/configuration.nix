@@ -77,24 +77,22 @@
   #   IdentityFile /etc/ssh/ssh_host_ed25519_key
   # '';
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
   services.fwupd.enable = true;
-  services.pulseaudio.enable = false; # pipewire requires this disabled
   services.openssh.enable = true;
-  # services.pcscd-keep-alive.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
   };
+  services.pcscd-keep-alive.enable = true;
+  services.pulseaudio.enable = false; # pipewire requires this disabled
   services.printing.enable = true;
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-  };
-
   services.tailscale.enable = true;
   services.tailscale.permitCertUid = "caddy";
-  services.udisks2.enable = true; # needed for fwupdmgr -.-
   services.udev.enable = true;
   services.udev.extraRules = ''
     SUBSYSTEM=="hidraw", KERNEL=="hidraw*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
@@ -102,7 +100,8 @@
   # 19f5:3247
   #KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="100", TAG+="uaccess", TAG+="udev-acl"
   ;
-  # services.yubikey-agent.enable = true;
+  services.udisks2.enable = true; # needed for fwupdmgr -.-
+  services.yubikey-agent.enable = true;
 
   users.users.marin = {
     isNormalUser = true;
