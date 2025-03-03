@@ -18,12 +18,9 @@ in
   ];
 
   home.sessionVariables = {
-    EDITOR = "nvim";
-    MAILDIR = "$HOME/.mail";
     PASSWORD_STORE_DIR = "$HOME/.p";
     OTPDIR = "$HOME/.otp";
     RIPGREP_CONFIG_PATH = "$HOME/.config/rg/config"; # TODO: XDG_CONFIG_HOME
-    NIXOS_OZONE_WL = "1"; # https://discourse.nixos.org/t/partly-overriding-a-desktop-entry/20743/2
     AGE_RECIPIENTS_FILE = ./age/recipients.txt;
     # This breaks auth sock over ssh
     # SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/yubikey-agent/yubikey-agent.sock";

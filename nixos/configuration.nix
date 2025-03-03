@@ -22,9 +22,10 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   documentation.man.generateCaches = pkgs.lib.mkForce false; # otherwise nixos-rebuild is slow AF
   environment.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
     QT_QPA_PLATFORM = "wayland"; # TODO: check if still needed, electron fucked
     XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
+    NIXOS_OZONE_WL = "1"; # https://discourse.nixos.org/t/partly-overriding-a-desktop-entry/20743/2
   };
 
   # Only put system software in here, e.g. stuff that is installed by
