@@ -143,7 +143,6 @@ in
     };
   };
 
-  programs.fish = import ./fish/fish.nix pkgs;
   services.ollama.enable = true;
 
   home.file.".digrc".text = "+noall +answer";

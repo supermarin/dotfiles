@@ -6,27 +6,27 @@ set purple (set_color -o brpurple)
 set chocolate (set_color -o D2691E)
 
 function is_in_git_repo
-    echo (git rev-parse --is-inside-work-tree 2>/dev/null)
+  echo (git rev-parse --is-inside-work-tree 2>/dev/null)
 end
 
 function git_branch_name
-    echo (git symbolic-ref --short --quiet HEAD)
+  echo (git symbolic-ref --short --quiet HEAD)
 end
 
 function git_current_commit
-    echo (git log --pretty=format:'%h' -n 1)
+  echo (git log --pretty=format:'%h' -n 1)
 end
 
 function is_git_dirty
-    echo (git status -s --ignore-submodules=dirty 2>/dev/null)
+  echo (git status -s --ignore-submodules=dirty 2>/dev/null)
 end
 
 function stashed
-    set -l testStash (git rev-parse --verify refs/stash 2>/dev/null)
+  set -l testStash (git rev-parse --verify refs/stash 2>/dev/null)
 
-    if [ $status = 0 ]
-        echo "S"(git stash list | wc -l | tr -d ' ')
-    end
+  if [ $status = 0 ]
+    echo "S"(git stash list | wc -l | tr -d ' ')
+  end
 end
 
 function jobs_info
@@ -98,57 +98,57 @@ function ssh_prompt
 end
 
 function jj_prompt --description 'Write out the jj prompt'
-    if not command -sq jj
-        return 1
-    end
+  if not command -sq jj
+    return 1
+  end
 
-    if not jj root --quiet &>/dev/null
-        return 1
-    end
+  if not jj root --quiet &>/dev/null
+    return 1
+  end
 
-    jj log --ignore-working-copy --no-graph --color always -r @ -T '
-        surround(
-            "(",
-            ")",
-            separate(
-                " ",
-                bookmarks.join(", "),
-                coalesce(
-                    surround(
-                        "\"",
-                        "\"",
-                        if(
-                            description.first_line().substr(0, 24).starts_with(description.first_line()),
-                            description.first_line().substr(0, 24),
-                            description.first_line().substr(0, 23) ++ "…"
-                        )
-                    ),
-                    "(no description set)"
-                ),
-                change_id.shortest(),
-                commit_id.shortest(),
-                if(conflict, "(conflict)"),
-                if(empty, "(empty)"),
-                if(divergent, "(divergent)"),
-                if(hidden, "(hidden)"),
+  jj log --ignore-working-copy --no-graph --color always -r @ -T '
+    surround(
+      "(",
+      ")",
+      separate(
+        " ",
+        bookmarks.join(", "),
+        coalesce(
+          surround(
+            "\"",
+            "\"",
+            if(
+              description.first_line().substr(0, 24).starts_with(description.first_line()),
+              description.first_line().substr(0, 24),
+              description.first_line().substr(0, 23) ++ "…"
             )
-        )
-    '
+          ),
+          "(no description set)"
+        ),
+        change_id.shortest(),
+        commit_id.shortest(),
+        if(conflict, "(conflict)"),
+        if(empty, "(empty)"),
+        if(divergent, "(divergent)"),
+        if(hidden, "(hidden)"),
+      )
+    )
+  '
 end
 
 function fish_prompt
-    set -l s $status # needed because $status gets overriden to 0 immediately
-    if [ $s -ne 0 ]
-      set last_status_info $red$s
-    end
+  set -l s $status # needed because $status gets overriden to 0 immediately
+  if [ $s -ne 0 ]
+    set last_status_info $red$s
+  end
 
-    if [ (is_in_git_repo) ]
-      set marin_vcs_info (git_prompt)
-    end
+  if [ (is_in_git_repo) ]
+    set marin_vcs_info (git_prompt)
+  end
 
-    if jj root --quiet &>/dev/null
-      set marin_vcs_info (jj_prompt)
-    end
+  if jj root --quiet &>/dev/null
+    set marin_vcs_info (jj_prompt)
+  end
 
-    echo (jobs_info) (ssh_prompt) $marin_vcs_info $last_status_info(duration) (nix_shell)
+  echo (jobs_info) (ssh_prompt) $marin_vcs_info $last_status_info(duration) (nix_shell)
 end

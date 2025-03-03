@@ -8,6 +8,7 @@
   imports = [
     inputs.lix.nixosModules.default
     inputs.steven-black-hosts.nixosModule
+    ../fish/fish.nix
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -61,7 +62,6 @@
     networkmanager.enable = true;
     stevenBlackHosts.enable = true;
   };
-  programs.fish.enable = true;
   programs.ssh.startAgent = true;
   # programs.ssh.knownHosts = {
   #   nixbuild = {
@@ -105,7 +105,6 @@
   # services.yubikey-agent.enable = true;
 
   users.users.marin = {
-    shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [
       "wheel"
