@@ -4,10 +4,9 @@ email = "git+jj@mar.in"
 
 [ui]
 default-command = "log"
+diff.format = "git"
+diff.tool = ["difft", "--color=always", "$left", "$right"]
 pager = [ "diffr" ]
-
-[ui.diff]
-format = "git"
 
 [template-aliases]
 # Username part of the email address
@@ -15,3 +14,4 @@ format = "git"
 
 [aliases]
 la = [ "log", "-r", "::" ]
+d = [ "diff" ]
