@@ -272,19 +272,20 @@ vim.keymap.set("n", "<leader>tg", ":wa|:TestVisit<CR>")
 -------------------------------------------------------------------------------
 -- DAP
 -------------------------------------------------------------------------------
-vim.keymap.set("n", "<leader>dc", ":lua require'dap'.continue()<CR>")
-vim.keymap.set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
-vim.keymap.set("n", "<leader>dn", ":lua require'dap'.step_over()<CR>")
-vim.keymap.set("n", "<leader>di", ":lua require'dap'.step_into()<CR>")
-vim.keymap.set("n", "<leader>do", ":lua require'dap'.step_out()<CR>")
-vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.toggle()<CR>")
-vim.keymap.set("n", "<leader>du", ":lua require'dapui'.toggle()<CR>")
+vim.keymap.set("n", "<leader>dc", function() require('dap').continue() end, { desc = "Continue debug session" })
+vim.keymap.set("n", "<leader>db", function() require('dap').toggle_breakpoint() end,
+  { desc = "debug: Toggle breakpoint" })
+vim.keymap.set("n", "<leader>dn", function() require('dap').step_over() end, { desc = "debug: Next" })
+vim.keymap.set("n", "<leader>di", function() require('dap').step_into() end, { desc = "debug: Step Into" })
+vim.keymap.set("n", "<leader>do", function() require('dap').step_out() end, { desc = "debug: Step Out" })
+vim.keymap.set("n", "<leader>dr", function() require('dap').repl.toggle() end, { desc = "debug: Toggle REPL" })
+vim.keymap.set("n", "<leader>du", function() require('dapui').toggle() end, { desc = "debug: Toggle UI" })
 
 -- TODO: see if something like neotest would be beneficial to
 -- 1. configure test runners with same keymaps for all langs
 -- 2. configure test debugging for all
-vim.keymap.set("n", "<leader>dt", ":lua require'dap-python'.test_method()<CR>")
-vim.keymap.set("n", "<leader>dT", ":lua require'dap-python'.test_class()<CR>")
+vim.keymap.set("n", "<leader>dt", function() require('dap-python').test_method() end, { desc = "debug: Test Method" })
+vim.keymap.set("n", "<leader>dT", function() require('dap-python').test_class() end, { desc = "debug: Test Class" })
 
 -- TODO: implement more debugging commands like execption breakpoints
 -- from :help dap-configuration
