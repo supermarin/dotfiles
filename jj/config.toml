@@ -6,7 +6,7 @@ email = "git+jj@mar.in"
 default-command = "log"
 diff.format = "git"
 diff.tool = ["difft", "--color=always", "$left", "$right"]
-pager = [ "diffr" ]
+pager = [ "less", "-FRX" ]
 
 [template-aliases]
 # Username part of the email address
