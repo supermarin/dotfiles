@@ -18,10 +18,7 @@
       telescope-nvim
       plenary-nvim
       # Git
-      neogit
-      diffview-nvim
       gitsigns-nvim
-      vim-fugitive
       # Misc
       vim-test
       which-key-nvim

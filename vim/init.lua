@@ -180,10 +180,6 @@ vim.cmd [[
   highlight DiffDelete guibg=DarkRed
 ]]
 
--- Neogit
-require('neogit').setup {
-  disable_commit_confirmation = true,
-}
 -- Autopairs
 require("nvim-autopairs").setup()
 -- Key bindings explanation
