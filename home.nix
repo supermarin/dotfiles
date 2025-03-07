@@ -93,6 +93,11 @@ in
     enable = true;
     escapeTime = 0;
     extraConfig = ''
+      # for neovim :checkhealth
+      set -ga terminal-overrides ",xterm-256color:Tc"
+      set-option -g default-terminal "tmux-256color"
+      set-option -g focus-events on
+
       set -g status-position top
       set -g status-interval 2
       set -g status-left "#S #[fg=colour5,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
