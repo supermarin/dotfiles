@@ -28,9 +28,6 @@ vim.keymap.set('n', '<leader>c', ':Telescope commands<cr>')
 vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
 vim.keymap.set('n', '<leader>f', ':Telescope find_files<cr>')
 vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
--- Git
-vim.keymap.set('n', '<leader>gs', ':Git<cr>')
-vim.keymap.set('n', '<leader>gg', ':Neogit<cr>')
 
 local tabspaces = 2
 vim.opt.background = 'dark'
