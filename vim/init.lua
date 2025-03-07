@@ -61,23 +61,23 @@ vim.opt.undofile = true
 -- AUTOGROUPS / EVENTS
 local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
 vim.api.nvim_create_autocmd('BufEnter', {
+  group = au,
   pattern = { '*.py', },
   callback = function()
     vim.wo.colorcolumn = "88"
     vim.keymap.set('n', '<leader>r', ':w|:!python %<cr>', { silent = true })
   end,
-  group = au,
 })
 vim.api.nvim_create_autocmd('BufWritePre', {
+  group = au,
   pattern = { '*.go', '*.lua', '*.nix', '*.rb', '*.py', },
   callback = function()
     vim.lsp.buf.format(nil, 1000) -- async can't quit vim if files are changed
   end,
-  group = au,
 })
 vim.api.nvim_create_autocmd('BufReadPost', { -- save last postition in file
-  pattern = '*',
   group = au,
+  pattern = '*',
   command = [[
      if !(bufname("%") =~ '\(COMMIT_EDITMSG\)') && line("'\"") >= 1 && line("'\"") <= line("$") |
        exe "normal! g`\"" |
@@ -85,9 +85,15 @@ vim.api.nvim_create_autocmd('BufReadPost', { -- save last postition in file
    ]],
 })
 vim.api.nvim_create_autocmd('TermOpen', {
+  group = au,
   pattern = { '*' },
-  command = 'startinsert',
-  group   = au,
+  callback = function(opts)
+    if opts.file:match('dap%-terminal') then
+      return
+    end
+    vim.cmd('startinsert')
+    vim.cmd('setlocal nonu')
+  end,
 })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -335,55 +341,22 @@ vim.keymap.set("n", "<leader>dT", function() require('dap-python').test_class() 
 
 
 
+-- require('nvim-dap-virtual-text').setup()
+require('dap-python').setup("uv")
 require('dapui').setup()
-require('nvim-dap-virtual-text').setup()
-require('dap-python').setup()
-local dap = require('dap')
-
-dap.adapters.delve = {
-  {
-    type = 'server',
-    port = '${port}',
-    executable = {
-      command = 'dlv',
-      args = { 'dap', '-l', '127.0.0.1:${port}' },
-    },
-  },
-  {
-    type = "delve",
-    name = "Debug file",
-    request = "launch",
-    program = "${file}"
-  },
-  {
-    type = "delve",
-    name = "Debug test file",
-    request = "launch",
-    mode = "test",
-    program = "${file}"
-  },
-  {
-    type = "delve",
-    name = "Debug project (go.mod)",
-    request = "launch",
-    mode = "launch",
-    program = "./${relativeFileDirname}"
-  },
-  {
-    type = "delve",
-    name = "Debug test projct (go.mod)",
-    request = "launch",
-    mode = "test",
-    program = "./${relativeFileDirname}"
-  },
-  {
-    name = "Attach to process",
-    type = 'delve', -- Adjust this to match your adapter name (`dap.adapters.<name>`)
-    request = 'attach',
-    processId = require('dap.utils').pick_process,
-    args = {},
-  },
-}
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.before.attach.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  dapui.close()
+end
 
 if vim.g.neovide then
   vim.o.guifont = "Iosevka:h12"
