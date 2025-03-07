@@ -1,21 +1,30 @@
 {
   "features": {
-    "inline_completion_provider": "zed"
+    "edit_prediction_provider": "zed"
   },
   "formatter": "language_server",
   "ssh_connections": [
     {
+      // "upload_binary_over_ssh": false,
       "host": "mufasa",
-      "args": ["-A"],
+      "args": [
+        "-A"
+      ],
       "projects": [
         {
-          "paths": ["~/code"]
+          "paths": [
+            "~/code"
+          ]
         },
         {
-          "paths": ["~/code/squale-capital"]
+          "paths": [
+            "~/code/squale-capital"
+          ]
         },
         {
-          "paths": ["~/code/squale-capital/clenow"]
+          "paths": [
+            "~/code/squale-capital/clenow"
+          ]
         }
       ]
     }
@@ -37,7 +46,9 @@
   "buffer_font_family": "Berkeley Mono",
   "load_direnv": "direct",
   "buffer_line_height": "standard",
-  "indent_guides": { "enabled": false },
+  "indent_guides": {
+    "enabled": false
+  },
   "tabs": {
     "git_status": true
   },
@@ -54,7 +65,9 @@
   "vim_mode": true,
   "languages": {
     "Nix": {
-      "language_servers": ["nixd"]
+      "language_servers": [
+        "nixd"
+      ]
     }
   }
 }
