@@ -5,5 +5,4 @@ set -o pipefail
 account=$(ls $OTPDIR | fzf)
 file="$OTPDIR/$account"
 
-source helpers.sh
-cmd_edit $file
+age-edit $file

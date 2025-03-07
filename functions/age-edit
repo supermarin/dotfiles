@@ -1,9 +1,5 @@
-####
-#### The following few helper functions have been ~copied~
-#### shamelessly stolen from `pass`. Mostly secure tmp creation
-#### and ensuring we leave no garbage behind.
-####
-#
+#!/usr/bin/env bash
+
 PROGRAM=$(basename $0)
 
 die() {
@@ -11,12 +7,9 @@ die() {
   exit 1
 }
 
-yesno() {
-  [[ -t 0 ]] || return 0
-  local response
-  read -r -p "$1 [y/N] " response
-  [[ $response == [yY] ]] || exit 1
-}
+if [ ! $(which shred) ] || [ ! $(which age) ]; then
+  die "Dependencies are not installed"
+fi
 
 check_sneaky_paths() {
   local path
@@ -48,13 +41,14 @@ tmpdir() {
   fi
 }
 
-cmd_edit() {
+edit() {
   [[ $# -ne 1 ]] && die "Usage: $PROGRAM pass-name"
 
   local path="${1%/}"
   # check_sneaky_paths "$path"
 
   tmpdir #Defines $SECURE_TMPDIR
+  [[ -n $SECURE_TMPDIR ]] || echo "!!! SECURE_TMPDIR was not defined!"
   local tmp_file="$(mktemp -u "$SECURE_TMPDIR/XXXXXX")-${path//\//-}.txt"
 
   if [[ -f $path ]]; then
@@ -72,6 +66,4 @@ cmd_edit() {
   mv "$tmpencrypted" "$path"
 }
 
-if [ ! $(which shred) ] || [ ! $(which age) ]; then
-  die "Dependencies are not installed"
-fi
+edit "$@"
