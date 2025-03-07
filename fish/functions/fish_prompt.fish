@@ -142,12 +142,10 @@ function fish_prompt
     set last_status_info $red$s
   end
 
-  if [ (is_in_git_repo) ]
-    set marin_vcs_info (git_prompt)
-  end
-
   if jj root --quiet &>/dev/null
     set marin_vcs_info (jj_prompt)
+  else if [ (is_in_git_repo) ]
+    set marin_vcs_info (git_prompt)
   end
 
   echo (jobs_info) (ssh_prompt) $marin_vcs_info $last_status_info(duration) (nix_shell)
