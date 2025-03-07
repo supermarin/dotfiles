@@ -125,25 +125,6 @@
         ];
       };
 
-      tokio-vm = inputs.nixpkgs.lib.nixosSystem {
-        # deployed on vmware mbp
-        system = "x86_64-linux";
-        specialArgs = {
-          inputs = inputs;
-        };
-        modules = [
-          inputs.home-manager.nixosModules.home-manager
-          ./nixos/configuration-vmware.nix
-          ./nixos/hardware-vmware.nix
-          ./nixos/home-manager-config.nix
-          ./nixos/nixpkgs-config.nix
-          {
-            system.stateVersion = "23.05";
-            home-manager.users.marin.imports = [ ./home.nix ];
-          }
-        ];
-      };
-
       personal = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ ./nixos/configuration-personal.nix ];
