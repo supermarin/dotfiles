@@ -37,6 +37,14 @@
             "mufasa"
           ];
         };
+        "~/code" = {
+          id = "code";
+          devices = [
+            "tokio"
+            "simba"
+            "mufasa"
+          ];
+        };
         "~/dotfiles" = {
           id = "lpnyj-66gkm";
           devices = [
