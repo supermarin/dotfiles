@@ -1,22 +1,11 @@
-#       Serial: 22610586, Slot: 1
-#         Name: yubi-age
-#      Created: Sat, 11 Feb 2023 16:32:27 +0000
-#   PIN policy: Once   (A PIN is required once per session, if set)
-# Touch policy: Cached (A physical touch is required for decryption, and is cached for 15 seconds)
-#    Recipient: 
+# Serial: 22610586, Slot: 1, Type: 5C Nano (computer-1)
 age1yubikey1qf6s46r8v8v8xhcsyu83484d0z9a02wm5alwg8n2dlwpmqscau6xzvheak2
 
-#       Serial: 22610962, Slot: 1
-#         Name: age-yubi
-#      Created: Fri, 10 Feb 2023 23:01:31 +0000
-#   PIN policy: Once   (A PIN is required once per session, if set)
-# Touch policy: Cached (A physical touch is required for decryption, and is cached for 15 seconds)
-#    Recipient: 
+# Serial: 22610962, Slot: 1, Type: 5C Nano (x1)
 age1yubikey1qg3dqeu86gjhpmhs6ja2w24xyygcvyxq4pryna0g9dgl4pl5z9uhxgmh3p8
 
-#       Serial: 23193166, Slot: 1
-#         Name: age-plugin-yubikey
-#      Created: Thu, 16 Feb 2023 15:26:59 +0000
-#   PIN policy: Once   (A PIN is required once per session, if set)
-# Touch policy: Cached (A physical touch is required for decryption, and is cached for 15 seconds)
+# Serial: 23193166, Slot: 1, Type: 5C NFC
 age1yubikey1qg49cw3tx6uugyejvf34z9rydt94we04jmzt47y4fvrnna3z505276l423c
+
+# Dev key
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHiWKUUwHWsfiUb7gfVl11aAX8WdCtaI9809IVGsW+AQ
