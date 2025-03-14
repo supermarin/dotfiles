@@ -42,7 +42,7 @@ tmpdir() {
 }
 
 edit() {
-  [[ $# -ne 1 ]] && die "Usage: $PROGRAM pass-name"
+  [[ $# -ne 1 ]] && die "Usage: $PROGRAM <FILE>"
 
   local path="${1%/}"
   # check_sneaky_paths "$path"
