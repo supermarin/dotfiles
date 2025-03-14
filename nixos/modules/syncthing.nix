@@ -45,6 +45,22 @@
             "mufasa"
           ];
         };
+        "~/Pictures" = {
+          id = "Pictures";
+          devices = [
+            "tokio"
+            "simba"
+            "mufasa"
+          ];
+        };
+        "~/Documents" = {
+          id = "Documents";
+          devices = [
+            "tokio"
+            "simba"
+            "mufasa"
+          ];
+        };
       };
     };
   };
