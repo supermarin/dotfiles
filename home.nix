@@ -23,8 +23,6 @@ in
     OTPDIR = "$HOME/.otp";
     RIPGREP_CONFIG_PATH = "$HOME/.config/rg/config"; # TODO: XDG_CONFIG_HOME
     AGE_RECIPIENTS_FILE = ./age/recipients.txt;
-    # This breaks auth sock over ssh
-    # SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/yubikey-agent/yubikey-agent.sock";
   };
 
   home.sessionPath = [ "$HOME/dotfiles/functions" ];
@@ -80,8 +78,6 @@ in
     # zed-fhs # deps are broken
     zed-editor
     zig # why was this? for the compiler IIRC? TODO: delete if unused
-    zulip
-    zulip-term
     zoom-us
   ];
 
@@ -127,7 +123,6 @@ in
     keyMode = "vi";
     mouse = true;
     terminal = "xterm-256color";
-    # terminal = "xterm-ghostty";
   };
 
   programs.librewolf = {
