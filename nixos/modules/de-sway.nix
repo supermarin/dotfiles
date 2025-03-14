@@ -10,7 +10,6 @@
     inputs.asdcontrol.modules.asdcontrol
     ./fonts.nix
   ];
-  programs.yubikey-touch-detector.enable = true;
 
   programs.asdcontrol.enable = true;
 
