@@ -2,13 +2,17 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 {
   imports = [
+    inputs.asdcontrol.modules.asdcontrol
     ./fonts.nix
   ];
   programs.yubikey-touch-detector.enable = true;
+
+  programs.asdcontrol.enable = true;
 
   ######################## experimental sway alternates ######################
   programs.river.enable = true;

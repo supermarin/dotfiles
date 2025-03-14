@@ -87,9 +87,7 @@
           inputs = inputs;
         };
         modules = [
-          inputs.asdcontrol.modules.asdcontrol
           {
-            programs.asdcontrol.enable = true;
           }
           ./nixos/configuration.nix
           ./nixos/hardware-x1.nix
