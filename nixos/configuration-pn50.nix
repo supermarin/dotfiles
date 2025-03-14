@@ -5,12 +5,10 @@
     XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
   };
   environment.systemPackages = with pkgs; [
-    direnv
     duckdb
     file # file(1)
     git
     git-lfs
-    btop
     jq
     killall # killall(1)
     (neovim.override {
@@ -19,34 +17,36 @@
     })
     ripgrep
     sqlite-interactive
-    tmux
-    unzip
-    zip
   ];
   networking = {
     firewall = {
       allowedUDPPorts = [
         config.services.tailscale.port
       ];
-      interfaces.tailscale0 = {
-        allowedTCPPorts = [
-          # 5900 # paper VNC
-        ];
-      };
+      interfaces.tailscale0.allowedTCPPorts = [
+        22
+        80
+      ];
       trustedInterfaces = [ "tailscale0" ];
     };
     networkmanager.enable = true; # TODO: see if we can nuke this
   };
-  programs.fish.enable = true;
-  security.sudo.wheelNeedsPassword = false;
+
+  services.caddy = {
+    enable = true;
+    virtualHosts.":80".extraConfig = ''
+      reverse_proxy /health/* 127.0.0.1:${builtins.toString config.services.grafana.settings.server.http_port}
+    '';
+  };
+
+  # TODO: remove and only use tailscale ssh?
+  #       figure out if either ssh or ts will go into initramfs
   services.openssh.enable = true; # Enable remote login
   services.fwupd.enable = true;
   services.udisks2.enable = true; # needed for fwupdmgr -.-
   services.tailscale.enable = true;
   time.timeZone = "America/New_York";
-
   users.users.marin = {
-    shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [
       "wheel"
@@ -55,7 +55,7 @@
     openssh.authorizedKeys.keyFiles = [
       (builtins.fetchurl {
         url = "https://github.com/supermarin.keys";
-        sha256 = "sha256:1agzynmgixan6pj46s5q4ygg8yknh9phm4vlhx7ppy72b0a8fxyx";
+        sha256 = "sha256:11nl0mc2yb040y6bcwzj73sflav9273b50ic1ljbkb0mpl75xn0g";
       })
     ];
   };
