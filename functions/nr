@@ -2,7 +2,7 @@
 
 if [[ -n $1 ]]; then
   set -x
-  nix run nixpkgs#$1
+  nix run nixpkgs#$*
 else
   set -x
   nix run

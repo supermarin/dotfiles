@@ -2,7 +2,7 @@
 
 if [[ -n $1 ]]; then
   set -x
-  nix shell nixpkgs#$1
+  nix shell nixpkgs#$*
 else
   set -x
   nix shell
