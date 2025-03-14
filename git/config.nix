@@ -54,6 +54,7 @@
       diff = {
         submodule = "log";
         indentHeuristic = true;
+        "agediff".textconv = "age-textconv";
         "plist".textconv = "plutil -convert xml1 -o -";
         "png".diff = "exif";
       };

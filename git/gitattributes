@@ -1,3 +1,5 @@
+*.age diff=agediff
+
 *.c merge=mergiraf
 *.cc merge=mergiraf
 *.cpp merge=mergiraf
