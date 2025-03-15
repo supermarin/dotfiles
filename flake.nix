@@ -88,6 +88,7 @@
         };
         modules = [
           {
+            services.fprintd.enable = true;
           }
           ./nixos/configuration.nix
           ./nixos/hardware-x1.nix
