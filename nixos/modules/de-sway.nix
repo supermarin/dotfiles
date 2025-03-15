@@ -63,6 +63,9 @@
     '';
   };
 
+  # For trash in nautilus
+  services.gvfs.enable = true;
+
   # Bind a target to graphical-session.target in order for systemd to start it
   systemd.user.targets.sway-session = {
     after = [ "graphical-session-pre.target" ];
