@@ -25,11 +25,6 @@
       url = "git+ssh://git@github.com/squale-capital/machine";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    pcscd-keep-alive = {
-      url = "github:supermarin/pcscd-keep-alive";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # gateway.url = "";
     jupyter = {
       url = "git+ssh://git@github.com/squale-capital/jupyter";

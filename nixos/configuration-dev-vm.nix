@@ -52,7 +52,6 @@
   security.sudo.wheelNeedsPassword = false;
   services.openssh.enable = true; # Enable remote login
   services.fwupd.enable = true;
-  services.pcscd-keep-alive.enable = true;
   services.udisks2.enable = true; # needed for fwupdmgr -.-
   services.tailscale.enable = true;
   time.timeZone = "America/New_York";
@@ -76,7 +75,6 @@
   };
   virtualisation.oci-containers.backend = "podman";
 
-  services.yubikey-agent.enable = true;
   services.xserver = {
     layout = "us";
     xkbVariant = "";

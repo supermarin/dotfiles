@@ -8,7 +8,6 @@
   imports = [
     inputs.lix.nixosModules.default
     inputs.steven-black-hosts.nixosModule
-    inputs.pcscd-keep-alive.nixosModules.pcscd-keep-alive
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -39,8 +38,6 @@
     unzip
     virt-manager
     zip
-
-    pcscliteWithPolkit.out # fix pcscd. TODO: remove when https://github.com/NixOS/nixpkgs/issues/280826 is closed
   ];
 
   hardware.bluetooth = {
@@ -73,12 +70,12 @@
   };
   services.fwupd.enable = true;
   services.openssh.enable = true;
+  services.pcscd.enable = true; # for yubikey
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
   };
-  services.pcscd-keep-alive.enable = true;
   services.pulseaudio.enable = false; # pipewire requires this disabled
   services.printing.enable = true;
   services.tailscale.enable = true;
@@ -91,7 +88,6 @@
   #KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="100", TAG+="uaccess", TAG+="udev-acl"
   ;
   services.udisks2.enable = true; # needed for fwupdmgr -.-
-  services.yubikey-agent.enable = true;
 
   users.users.marin = {
     isNormalUser = true;
