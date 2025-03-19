@@ -7,13 +7,6 @@ mkdir -p .git/crypt
 relpath=$(realpath --relative-to $(git rev-parse --show-toplevel) $1)
 relpath_sha=$(echo $relpath | sha256sum | cut -d ' ' -f 1)
 
-reencrypt() {
-  age-encrypt -o .git/crypt/$relpath_sha $1 
-  sha256sum $1 > .git/crypt/$relpath_sha.sum
-  cat .git/crypt/$relpath_sha
-  exit 0
-}
-
 # 1. Look up if we have a hash of this filepath already
 #    If we don't, save the encrypted file to .git/crypt/$relpath_sha
 #    and echo the encrypted file to stdout.
