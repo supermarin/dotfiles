@@ -30,6 +30,7 @@
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
       (cliphist.overrideAttrs { doCheck = false; }) # clipboard history
+      ddcutil # another brightness control. for ext displays via i2c
       grim # wayland screenshot tool
       i3status-rust # Menu bar
       libnotify # notify-send

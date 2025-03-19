@@ -44,6 +44,8 @@
     enable = true; # enables bluez
   };
 
+  hardware.i2c.enable = true;
+
   networking = {
     # TODO: see if it makes more sense to use Blocky here
     extraHosts = builtins.readFile ./hosts.txt;
@@ -92,11 +94,12 @@
   users.users.marin = {
     isNormalUser = true;
     extraGroups = [
-      "wheel"
-      "networkmanager"
-      "libvirtd"
-      "podman"
       "docker"
+      "i2c" # brightness
+      "libvirtd"
+      "networkmanager"
+      "podman"
+      "wheel"
     ];
     openssh.authorizedKeys.keyFiles = [ ../ssh/pubkeys.nix ];
   };
