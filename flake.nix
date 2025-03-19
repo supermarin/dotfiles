@@ -25,14 +25,8 @@
       url = "git+ssh://git@github.com/squale-capital/machine";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # gateway.url = "";
     jupyter = {
       url = "git+ssh://git@github.com/squale-capital/jupyter";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    sharadar = {
-      url = "git+ssh://git@github.com/squale-capital/sharadar";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -53,29 +47,6 @@
 
   outputs = inputs: {
     nixosConfigurations = {
-      mx-001 = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          # inputs.gateway.nixosModules.ibkr
-          inputs.squale-machine.nixosModules.machine
-          inputs.sharadar.nixosModules.x86_64-linux.download-service
-          ./nixos/configuration-pn50.nix
-          ./nixos/hardware-pn50.nix
-          ./nixos/modules/syncthing.nix
-          ./nixos/nixpkgs-config.nix
-          {
-            networking.hostName = "mx-001";
-            system.stateVersion = "23.11";
-            squale.machine.enable = true;
-            # gateway.ibkr.enable = true;
-            services.sharadar-download.enable = true;
-          }
-        ];
-        specialArgs = {
-          inputs = inputs;
-        };
-      };
-
       tokio = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
