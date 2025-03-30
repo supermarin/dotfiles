@@ -11,5 +11,5 @@ update_auth_sock() {
     fi
 }
 
-update_auth_sock
+test $TMUX && update_auth_sock
 jj "$@"
