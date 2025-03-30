@@ -60,7 +60,6 @@ in
     nodejs-slim_20 # for copilot
     nushell
     oathToolkit # used for OTP
-    rio # terminal, seems to work ok with Berkeley Mono
     ripgrep
     ripgrep-all
     rsync
@@ -75,7 +74,6 @@ in
     vlc # Unsupported on aarch64-darwin as of Aug 10 2022
     vscodium-fhs
     whatsapp-for-linux
-    # zed-fhs # deps are broken
     zed-editor
     zig # why was this? for the compiler IIRC? TODO: delete if unused
     zoom-us

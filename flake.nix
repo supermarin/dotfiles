@@ -21,10 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    squale-machine = {
-      url = "git+ssh://git@github.com/squale-capital/machine";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     jupyter = {
       url = "git+ssh://git@github.com/squale-capital/jupyter";
       inputs.flake-utils.follows = "flake-utils";
