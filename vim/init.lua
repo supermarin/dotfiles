@@ -194,6 +194,24 @@ require('nvim-treesitter.configs').setup {
 -- comment
 require('Comment').setup()
 
+-- More default mappings
+--  grn in Normal mode maps to vim.lsp.buf.rename()
+--  grr in Normal mode maps to vim.lsp.buf.references()
+--  gri in Normal mode maps to vim.lsp.buf.implementation()
+--  gO in Normal mode maps to vim.lsp.buf.document_symbol() (this is analogous to the gO mappings in help buffers and :Man page buffers to show a “table of contents”)
+--  gra in Normal and Visual mode maps to vim.lsp.buf.code_action()
+--
+--  CTRL-S in Insert and Select mode maps to vim.lsp.buf.signature_help()
+--
+--  [d and ]d move between diagnostics in the current buffer ([D jumps to the first diagnostic, ]D jumps to the last)
+--  [q, ]q, [Q, ]Q, [CTRL-Q, ]CTRL-Q navigate through the quickfix list
+--  [l, ]l, [L, ]L, [CTRL-L, ]CTRL-L navigate through the location list
+--  [t, ]t, [T, ]T, [CTRL-T, ]CTRL-T navigate through the tag matchlist
+--  [a, ]a, [A, ]A navigate through the argument list
+--  [b, ]b, [B, ]B navigate through the buffer list
+--  [<Space>, ]<Space> add an empty line above and below the cursor
+--  [[ and ]] in Normal mode jump between shell prompts for shells which emit
+--  OSC 133 sequences ("shell integration" or "semantic prompts").
 
 -------------------------------------------------------------------------------
 -- LSP
@@ -206,13 +224,8 @@ local on_attach = function(client, bufnr)
   -- LSP go to - the only exception for LSP namespace.
   vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { silent = true })
   vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { silent = true })
-  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { silent = true })
   -- LSP namespace
-  vim.keymap.set('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>h', '<cmd>lua vim.lsp.buf.hover()<cr>', { silent = true })
-  vim.keymap.set('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { silent = true })
-  vim.keymap.set('n', '<leader>lR', '<cmd>lua vim.lsp.buf.rename()<cr>', { silent = true })
-  vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>ea', '<cmd>lua vim.diagnostic.setloclist()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>en', '<cmd>lua vim.diagnostic.goto_prev()<cr>', { silent = true })
   vim.keymap.set('n', '<leader>ep', '<cmd>lua vim.diagnostic.goto_next()<cr>', { silent = true })
