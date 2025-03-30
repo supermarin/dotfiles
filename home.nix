@@ -40,6 +40,8 @@ in
     diffr # used in git stuff
     difftastic # testing this out
     discord
+    distrobox
+    distrobox-tui
     duckdb
     eza # ls with stuff
     fd
@@ -60,6 +62,7 @@ in
     nodejs-slim_20 # for copilot
     nushell
     oathToolkit # used for OTP
+    quickemu
     ripgrep
     ripgrep-all
     rsync
