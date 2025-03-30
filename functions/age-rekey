@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+test -n $1 || (echo "Usage: age-rekey <FILE>" && exit 1)
+
+set -u
+age-decrypt "$1" | age -R "$AGE_RECIPIENTS_FILE" -o "$1"
