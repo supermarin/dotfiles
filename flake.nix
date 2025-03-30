@@ -31,7 +31,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lix = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-2.tar.gz";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -48,14 +48,8 @@
   outputs = inputs: {
     nixosConfigurations = {
       tokio = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inputs = inputs;
-        };
+        specialArgs = { inherit inputs; };
         modules = [
-          {
-            services.fprintd.enable = true;
-          }
           ./nixos/configuration.nix
           ./nixos/hardware-x1.nix
           ./nixos/home-manager-config.nix
@@ -64,16 +58,14 @@
           ./nixos/nixpkgs-config.nix
           {
             networking.hostName = "tokio";
+            services.fprintd.enable = true;
             system.stateVersion = "22.05";
           }
         ];
       };
 
       mufasa = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inputs = inputs;
-        };
+        specialArgs = { inherit inputs; };
         modules = [
           inputs.jupyter.nixosModules.x86_64-linux.jupyterlab
           ./nixos/configuration.nix
@@ -91,7 +83,6 @@
       };
 
       personal = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules = [ ./nixos/configuration-personal.nix ];
         specialArgs = {
           inputs = inputs;

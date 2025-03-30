@@ -39,6 +39,7 @@
     { device = "/dev/disk/by-label/swap"; }
   ];
 
-  # From nixos-generate-config as of 2023-11-09
+  nixpkgs.hostPlatform = "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.enableRedistributableFirmware = lib.mkForce true;
 }
