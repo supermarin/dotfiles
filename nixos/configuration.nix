@@ -25,6 +25,7 @@
     XKB_DEFAULT_OPTIONS = "ctrl:nocaps";
     NIXOS_OZONE_WL = "1"; # https://discourse.nixos.org/t/partly-overriding-a-desktop-entry/20743/2
   };
+  environment.pathsToLink = [ "/share/zsh" ]; # for zsh system completions
 
   # Only put system software in here, e.g. stuff that is installed by
   # default on macOS and Ubuntu. The user software goes in home.nix.
@@ -92,6 +93,8 @@
   services.udisks2.enable = true; # needed for fwupdmgr -.-
 
   users.users.marin = {
+    shell = pkgs.zsh;
+    ignoreShellProgramCheck = true; # managed through HM. REMOVE IF CHANGING SH
     isNormalUser = true;
     extraGroups = [
       "docker"

@@ -1,15 +1,22 @@
 { pkgs, ... }:
 {
-  programs.bash = {
+  programs.zsh = {
     enable = true;
-    # initExtra = ''
-    #   # Keep bash as login shell, but if running interactively, launch fish.
-    #   if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-    #   then
-    #     shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-    #     exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-    #   fi
-    # '';
+    enableCompletion = true;
+
+    autocd = true;
+    autosuggestion.enable = true;
+    # autosuggestion.highlight = "fg=#ff00ff,bg=cyan,bold,underline";
+    autosuggestion.strategy = [
+      "match_prev_cmd"
+      "history"
+      "completion"
+    ];
+    defaultKeymap = "emacs";
+    history.append = true;
+    history.expireDuplicatesFirst = true;
+    history.findNoDups = true;
+    # history.ignorePatterns = [ ];
     initExtra = ''
       wo() {
         local dir=$(find -L ~/code -maxdepth 2 | fzf)
@@ -25,16 +32,17 @@
         ls -la
       }
 
-      eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init bash)"
+      eval "$(${pkgs.fzf}/bin/fzf --zsh)"
+      eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh)"
     '';
+    shellAliases = {
+      rm = "${pkgs.trash-cli}/bin/trash";
+    };
+    syntaxHighlighting.enable = true;
+    syntaxHighlighting.highlighters = [ "brackets" ];
+    syntaxHighlighting.styles = {
+      "alias" = "fg=magenta,bold";
+    };
+    # zprof.enable = true;
   };
-
-  # programs.fish = {
-  #   enable = true;
-  #   interactiveShellInit = ''
-  #     source ${./fish/functions/fish_prompt.fish}
-  #     source ${./fish/functions/fish_right_prompt.fish}
-  #     source ${./fish/functions/wo.fish}
-  #   '';
-  # };
 }
