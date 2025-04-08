@@ -22,18 +22,13 @@
         local dir=$(find -L ~/code -maxdepth 2 | fzf)
         test $dir || return 1
 
-        if [[ -n "$TMUX" ]]; then
-          # TODO: open new tab in tmux?
-          tmux rename-window "$(basename "$dir")"
-        fi
-
         cd "$dir" || return
         clear
         ls -la
       }
 
       eval "$(${pkgs.fzf}/bin/fzf --zsh)"
-      eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh)"
+      source ${./zsh-prompt.sh}
     '';
     shellAliases = {
       rm = "${pkgs.trash-cli}/bin/trash";
