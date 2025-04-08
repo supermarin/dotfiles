@@ -1,6 +1,6 @@
 #!/usr/bin/env -S sh -c 'nix shell nixpkgs#{bash,jq,bc,curl,ansifilter} -c bash "$0" "$@"'
 
-declare -a tickers=("^GSPC" "BTC-USD" "TLT" "GLD")
+declare -a tickers=("^GSPC" "^VIX" "BTC-USD" "TLT" "GLD")
 
 user_agents=(
     # Chrome
