@@ -13,14 +13,6 @@
 
   programs.asdcontrol.enable = true;
 
-  ######################## experimental sway alternates ######################
-  programs.river.enable = true;
-  programs.river.extraPackages = with pkgs; [
-    kanshi
-    waybar
-  ];
-  ######################## experimental sway alternates ######################
-
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -41,7 +33,6 @@
       gnome-calculator
       kanshi
       nautilus # gui file browser
-      nwg-panel
       sushi # quick preview for nautilus
       imagemagick # for resizing images
       playerctl # media keys (play/pause, prev, next)
