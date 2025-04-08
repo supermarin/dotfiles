@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 {
   programs.neovim = {
     enable = true;
@@ -6,13 +10,19 @@
     viAlias = true;
     plugins = with pkgs.vimPlugins; [
       # Core editor functionality
-      comment-nvim
+      blink-cmp
       editorconfig-nvim
       nvim-autopairs
+      nvim-lspconfig # TODO: remove when lspcofig is merged into neovim
       vim-repeat
       vim-surround
       vim-visual-multi
-      # code intel
+      # DAP
+      nvim-dap
+      nvim-dap-ui
+      nvim-dap-virtual-text
+      nvim-dap-python
+      # AI
       codecompanion-nvim
       # Telescope
       telescope-nvim
@@ -22,25 +32,13 @@
       # Misc
       vim-test
       which-key-nvim
-      # Snippets
-      luasnip
-      cmp_luasnip
       # Tree-sitter
       nvim-treesitter.withAllGrammars
-      # DAP
-      nvim-dap
-      nvim-dap-ui
-      nvim-dap-virtual-text
-      nvim-dap-python
-      # Completion
-      nvim-cmp
-      nvim-lspconfig
-      cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
-      cmp-cmdline
-      cmp-nvim-lsp-signature-help
-      lspkind-nvim
+      # Theming
+      mini-hues
+      mini-icons
     ];
   };
+  xdg.configFile."nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim";
 }

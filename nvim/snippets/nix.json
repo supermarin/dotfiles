@@ -1,0 +1,38 @@
+{
+  "flake template": {
+    "body": [
+      "{",
+      "  outputs =",
+      "    { self, nixpkgs, ... }:",
+      "    let",
+      "      forAllSystems =",
+      "        function:",
+      "        nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (",
+      "          system: function nixpkgs.legacyPackages.\\${system}",
+      "        );",
+      "    in",
+      "    {",
+      "      devShells = forAllSystems (pkgs: {",
+      "        default = pkgs.mkShell {",
+      "          packages = with pkgs; [",
+      "            ${0}",
+      "          ];",
+      "        };",
+      "      });",
+      "    };",
+      "}"
+    ],
+    "^prefix": "flake",
+    "isFileTemplate": true
+  },
+  "for all systems": {
+    "body": [
+      "forAllSystems =",
+      "  function:",
+      "  nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (",
+      "    system: function nixpkgs.legacyPackages.\\${system}",
+      "  );"
+    ],
+    "prefix": "for all systems"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "polars pl.col": {
+    "body": [
+      "pl.col.${0}"
+    ],
+    "prefix": "pc"
+  }
+}
