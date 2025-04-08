@@ -85,11 +85,8 @@
   services.tailscale.permitCertUid = "caddy";
   services.udev.enable = true;
   services.udev.extraRules = ''
-    SUBSYSTEM=="hidraw", KERNEL=="hidraw*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-  '' # TODO: add ATTRS{serial}=="*vial:whatever* or ATTRS{idProduct}" to limit nuphy keyboard only
-  # 19f5:3247
-  #KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="100", TAG+="uaccess", TAG+="udev-acl"
-  ;
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="19f5", ATTRS{idProduct}=="3246", TAG+="uaccess",MODE="0660", GROUP="users" 
+  '';
   services.udisks2.enable = true; # needed for fwupdmgr -.-
 
   users.users.marin = {
