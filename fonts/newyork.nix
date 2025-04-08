@@ -16,7 +16,9 @@ pkgs.stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
     mkdir -p $out/share/fonts/opentype
+    mkdir -p $out/share/fonts/truetype
     cp NY/Library/Fonts/*.otf $out/share/fonts/opentype
+    cp NY/Library/Fonts/*.ttf $out/share/fonts/truetype
     runHook postInstall
   '';
 }
