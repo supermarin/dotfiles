@@ -17,11 +17,11 @@ interval = 60
 block = "custom"
 command = "fin | ansifilter --pango | tr -d '\n'"
 shell = "bash"
-interval = 600
+interval = 60
 
 [[block]]
 block = "custom"
-command = "tmux-mem-cpu-load"
+command = "tmux-mem-cpu-load -t 1 -a 0 -v"
 
 [[block]]
 block = "custom"
