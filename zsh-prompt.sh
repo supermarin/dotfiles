@@ -66,7 +66,7 @@ git_prompt() {
     fi
   fi
 
-  if is_git_dirty; then
+  if $(is_git_dirty); then
     git_status_color=$chocolate
   fi
 
@@ -76,7 +76,7 @@ git_prompt() {
 # Display nix-shell prompt if inside a nix-shell
 nix_shell() {
   if [ -n "$IN_NIX_SHELL" ]; then
-    echo "${green}nix-shell$normal"
+    echo "${green}nix-shell$normal "
   else
     echo "$normal"
   fi
@@ -116,7 +116,7 @@ jj_prompt() {
               description.first_line().substr(0, 23) ++ "…"
             )
           ),
-          "(no description set)"
+          "(no description)"
         ),
         change_id.shortest(),
         commit_id.shortest(),
@@ -131,13 +131,13 @@ jj_prompt() {
 
 precmd() {
   if jj root --quiet &>/dev/null; then
-    local vcs=" $(jj_prompt)%f "
+    local vcs="$(jj_prompt)%f "
   elif is_in_git_repo; then
-    local vcs=" $(git_prompt)%f "
+    local vcs="$(git_prompt)%f "
   fi
 
   local stuff="$(ssh_prompt)$vcs$(nix_shell)"
-  export PROMPT="%(1j.[%j jobs] .)%(0?..%F{red}[%?]%f )${stuff} ➜ "
+  export PROMPT="%(1j.[%j jobs] .)%(0?..%F{red}[%?] %f)${stuff}➜ "
 }
 
 chpwd() {
