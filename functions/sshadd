@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+umask 0377
+age-decrypt $PASSWORD_STORE_DIR/keys/ssh.age > $XDG_RUNTIME_DIR/age
+ssh-add $XDG_RUNTIME_DIR/age

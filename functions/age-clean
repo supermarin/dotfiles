@@ -13,7 +13,7 @@ relpath_sha=$(echo $relpath | sha256sum | cut -d ' ' -f 1)
 #    Exit.
 if [[ ! -f .git/crypt/$relpath_sha ]]; then
   >&2 echo "we don't have a hash for $1. encrypting from scratch."
-  reencrypt $1
+  age-rekey $1
 fi
 
 # We do have a hash for this file
@@ -25,7 +25,7 @@ old=$(<.git/crypt/$relpath_sha.sum)
 new=$(sha256sum $1)
 if [[ ! $old == $new ]]; then
   >&2 echo "file has changed. re-encrypting."
-  reencrypt $1
+  age-rekey $1
 fi
 
 # They match, just print the old hash.

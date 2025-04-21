@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-pushd $PASSWORD_STORE_DIR
+cd $PASSWORD_STORE_DIR
 git add .
 set +e
 git commit -am 'update'
 set -e
 git pull
 git push
-popd
