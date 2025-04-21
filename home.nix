@@ -69,7 +69,7 @@ in
     signal-desktop # Unsupported on aarch64-darwin as of Aug 10 2022
     sqlite-interactive
     spotify
-    sumneko-lua-language-server
+    lua-language-server
     tig
     tmux-mem-cpu-load
     ungoogled-chromium
