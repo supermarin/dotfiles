@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-# Sometimes, textconv gets passed in a binary (encrypted file from git index),
-# and sometimes a decrypted text file from the working directory.
-# Quick hack: treat all binary as encrypted and just `cat` the ASCII ones.
-(file $1 | grep ASCII >/dev/null) && cat $1 || age-decrypt $1 
