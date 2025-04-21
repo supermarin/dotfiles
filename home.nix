@@ -101,6 +101,7 @@ in
       set -g status-position top
       set -g status-interval 2
       set -g status-left "#S #[fg=colour5,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
+      set -g status-right "%a %b %d %H:%M"
       if-shell -b ' [ "$SSH_CLIENT" ] ' {
         set -g status-bg colour6
         set -g status-left "#S@#H #[fg=colour6,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
