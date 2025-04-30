@@ -28,10 +28,11 @@
       libnotify # notify-send
       swaynotificationcenter # notification daemon
       mupdf
-      gedit # basic text file opener
       adwaita-icon-theme
       gnome-calculator
+      kdePackages.kate # basic kde text editor
       kanshi
+      kdePackages.konsole # for terminal in kate
       nautilus # gui file browser
       sushi # quick preview for nautilus
       imagemagick # for resizing images
