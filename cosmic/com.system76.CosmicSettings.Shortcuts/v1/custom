@@ -9,12 +9,12 @@
         modifiers: [
             Super,
         ],
-        key: "e",
-    ): System(HomeFolder),
+        key: "f",
+    ): Maximize,
     (
         modifiers: [
             Super,
         ],
-        key: "f",
-    ): Maximize,
+        key: "e",
+    ): System(HomeFolder),
 }
