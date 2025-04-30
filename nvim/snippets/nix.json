@@ -34,5 +34,17 @@
       "  );"
     ],
     "prefix": "for all systems"
+  },
+  "for all systems usage": {
+    "body": [
+      "forAllSystems (pkgs: {",
+      "  default = pkgs.mkShell {",
+      "    packages = with pkgs; [",
+      "      $1",
+      "    ];",
+      "  };",
+      "});"
+    ],
+    "prefix": "fas"
   }
 }
