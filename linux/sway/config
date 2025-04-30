@@ -45,6 +45,12 @@ bar {
     inactive_workspace $c_darkgrey  $c_darkgrey $c_lightgrey
     urgent_workspace   #900000      #900000     #ffffff
   }
+  # diable vertical scrolling
+  bindsym button4 nop
+  bindsym button5 nop
+  # diable horizontal scrolling
+  bindsym button6 nop
+  bindsym button7 nop
 }
 
 ###############################################################################
