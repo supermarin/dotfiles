@@ -1,5 +1,5 @@
 ### UI
-default_border pixel 4
+default_border pixel 6
 gaps inner 7
 smart_borders on
 smart_gaps on
@@ -93,12 +93,8 @@ input 16700:34053:Dell_Dell_Universal_Receiver {
 
 # seat home {
 output "BNQ BenQ RD280U S5R0007501Q" {
-  # scale 1.5
-  scale 2
-}
-
-output "LG Electronics LG SDQHD 407NTMXCT339" {
-  scale 1.25
+  scale 1.5
+  # scale 2
 }
 
 output eDP-1 {
@@ -127,7 +123,7 @@ floating_modifier $mod normal
 for_window [title="floating_term"] floating enable
 
 # Make all GNOME (and some other) apps float
-for_window [app_id="(org.gnome.*|gnome-*|telegramdesktop|cawbird|wdisplays|galculator|pwvucontrol|ulauncher|blueberry)"] {
+for_window [app_id="(org.gnome.*|gnome-*|wdisplays|galculator|pwvucontrol|blueberry|discord)"] {
   floating enable
   border none
 }
