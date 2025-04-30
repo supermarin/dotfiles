@@ -136,6 +136,7 @@ in
     enable = true;
     settings = {
       "browser.startup.homepage" = "https://kagi.com";
+      "media.peerconnection.enabled" = false;
       "network.cookie.lifetimePolicy" = 0;
       "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
       "privacy.clearOnShutdown.cookies" = false;
