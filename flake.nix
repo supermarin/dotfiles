@@ -68,9 +68,9 @@
           ./nixos/hardware-computer-1.nix
           ./nixos/home-manager-config.nix
           ./nixos/modules/de-sway.nix
+          ./nixos/modules/move-me-mufasa-services.nix
           ./nixos/modules/syncthing.nix
           ./nixos/nixpkgs-config.nix
-          ./nixos/modules/move-me-mufasa-services.nix
           {
             networking.hostName = "mufasa";
             system.stateVersion = "23.11";
