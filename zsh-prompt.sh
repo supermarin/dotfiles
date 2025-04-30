@@ -66,7 +66,7 @@ git_prompt() {
     fi
   fi
 
-  if $(is_git_dirty); then
+  if is_git_dirty; then
     git_status_color=$chocolate
   fi
 
@@ -85,20 +85,12 @@ nix_shell() {
 # Display SSH prompt if connected via SSH
 ssh_prompt() {
   if [ -n "$SSH_CONNECTION" ]; then
-    echo "$cyan$USER$normal@$cyan$HOST$normal"
+    echo "$cyan$USER$normal@$cyan$HOST$normal "
   fi
 }
 
 # Generate the jj prompt
 jj_prompt() {
-  if ! command -v jj &>/dev/null; then
-    return 1
-  fi
-
-  if ! jj root --quiet &>/dev/null; then
-    return 1
-  fi
-
   jj log --ignore-working-copy --no-graph --color always -r @ -T '
     surround(
       "",
@@ -130,14 +122,14 @@ jj_prompt() {
 }
 
 precmd() {
-  if jj root --quiet &>/dev/null; then
-    local vcs="$(jj_prompt)%f "
+  if (command -v jj &>/dev/null) && (jj root --quiet &>/dev/null); then
+    local vcs="$(jj_prompt)$normal "
   elif is_in_git_repo; then
-    local vcs="$(git_prompt)%f "
+    local vcs="$(git_prompt)$normal "
   fi
 
   local stuff="$(ssh_prompt)$vcs$(nix_shell)"
-  export PROMPT="%(1j.[%j jobs] .)%(0?..%F{red}[%?] %f)${stuff}➜ "
+  export PROMPT="%(1j.[%j jobs] .)%(0?..${red}[%?] )$normal${stuff}➜ "
 }
 
 chpwd() {
