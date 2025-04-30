@@ -34,6 +34,7 @@
       which-key-nvim
       # Tree-sitter
       nvim-treesitter.withAllGrammars
+      nvim-treesitter-textobjects
       # Theming
       mini-hues
       mini-icons

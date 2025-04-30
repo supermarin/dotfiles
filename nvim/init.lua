@@ -1,8 +1,8 @@
 vim.g.mapleader = ' '
-vim.keymap.set('n', 'gh', '^')                   -- kakoune: move to beginning of line
-vim.keymap.set('n', 'gl', '$')                   -- kakoune: move to end of line
-vim.keymap.set('n', 'dp', 'd}')                  -- delete to end of paragraph
-vim.keymap.set('n', 'dP', 'd{')                  -- delete to beginning of paragraph
+vim.keymap.set('n', 'gh', '^', { desc = "kakoune: move to beginning of line" })
+vim.keymap.set('n', 'gl', '$', { desc = "kakoune: move to end of line" })
+vim.keymap.set('n', 'dp', 'd}', { desc = "delete to end of paragraph" })
+vim.keymap.set('n', 'dP', 'd{', { desc = "delete to beginning of paragraph" })
 vim.keymap.set('n', '<Esc>', ':noh<cr>')         -- remove highlight with Esc in normal
 vim.keymap.set('v', 'p', '"_dP')                 -- Unfuck paste in visual mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')      -- Escape in terminal
@@ -113,6 +113,24 @@ require('nvim-treesitter.configs').setup {
       end
     end,
   },
+  textobjects = {
+    enable = true,
+    select = {
+      enable = true,
+      -- include_surrounding_whitespace = true,
+      -- lookahead = false,
+      keymaps = {
+        ["am"] = "@function.outer",
+        ["im"] = "@function.inner",
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["il"] = "@loop.inner",
+        ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+      },
+    },
+  },
 }
 
 -------------------------------------------------------------------------------
@@ -153,14 +171,14 @@ local options = {
       diagnostics = {
         globals = { 'vim' }
       }
-    }
+    },
   }
 }
 
 require('blink.cmp').setup({
   keymap = { preset = 'enter' },
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'codecompanion', 'buffer' },
+    default = { 'lsp', 'snippets', 'codecompanion', 'buffer' },
   },
   -- signature = { enabled = true, }, -- [C-k] to toggle in insert
 })
@@ -177,9 +195,19 @@ vim.diagnostic.config({ virtual_lines = true, })
 -------------------------------------------------------------------------------
 
 require("codecompanion").setup {
+  adapters = {
+    gemini = function()
+      return require("codecompanion.adapters").extend("gemini", {
+        env = {
+          api_key = "AIzaSyBLpvRQ6LQnaDJEWFTt7gLY0xaF_V4e0fg",
+        },
+      })
+    end,
+  },
   strategies = {
-    chat = { adapter = "anthropic" },
-    inline = { adapter = "anthropic" },
+    -- chat = { adapter = "anthropic" },
+    chat = { adapter = "gemini" },
+    inline = { adapter = "gemini" },
   },
 }
 vim.keymap.set("n", "<leader>c", ":CodeCompanionChat<CR>")
