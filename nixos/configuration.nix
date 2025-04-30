@@ -84,9 +84,17 @@
   services.tailscale.enable = true;
   services.tailscale.permitCertUid = "caddy";
   services.udev.enable = true;
-  services.udev.extraRules = ''
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="19f5", ATTRS{idProduct}=="3246", TAG+="uaccess",MODE="0660", GROUP="users" 
-  '';
+  services.udev.extraRules =
+    let
+      kinesis = "29ea";
+      adv360 = "0362";
+      nuphy = "19f5";
+      air75V2 = "3246";
+    in
+    ''
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="${nuphy}", ATTRS{idProduct}=="${air75V2}", TAG+="uaccess", MODE="0660", GROUP="users" 
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="${kinesis}", ATTRS{idProduct}=="${adv360}", TAG+="uaccess", MODE="0660", GROUP="users"
+    '';
   services.udisks2.enable = true; # needed for fwupdmgr -.-
 
   users.users.marin = {
