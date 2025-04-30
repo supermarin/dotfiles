@@ -194,26 +194,6 @@ vim.diagnostic.config({ virtual_lines = true, })
 -- AI
 -------------------------------------------------------------------------------
 
-require("codecompanion").setup {
-  adapters = {
-    gemini = function()
-      return require("codecompanion.adapters").extend("gemini", {
-        env = {
-          api_key = "AIzaSyBLpvRQ6LQnaDJEWFTt7gLY0xaF_V4e0fg",
-        },
-      })
-    end,
-  },
-  strategies = {
-    -- chat = { adapter = "anthropic" },
-    chat = { adapter = "gemini" },
-    inline = { adapter = "gemini" },
-  },
-}
-vim.keymap.set("n", "<leader>c", ":CodeCompanionChat<CR>")
-
--------------------------------------------------------------------------------
--- Tests
 -------------------------------------------------------------------------------
 vim.keymap.set("n", "<leader>tt", ":wa|:TestNearest<CR>")
 vim.keymap.set("n", "<leader>ta", ":wa|:TestFile<CR>")
