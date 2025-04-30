@@ -58,7 +58,8 @@ in
     kitty
     keepassxc
     mergiraf # experimental: git conflict resolver
-    neovide # neovim gui
+    neovide # neovim gui I never use
+    neovim-gtk # neovim gui I never use 2
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter used by nixd
     nodejs-slim_20 # for copilot
@@ -74,6 +75,7 @@ in
     lua-language-server
     tig
     tmux-mem-cpu-load
+    tradingview
     ungoogled-chromium
     vdirsyncer # sync contacts & calendars
     vlc # Unsupported on aarch64-darwin as of Aug 10 2022
@@ -135,7 +137,7 @@ in
   programs.librewolf = {
     enable = true;
     settings = {
-      "browser.startup.homepage" = "https://kagi.com";
+      "browser.startup.homepage" = "https://lobste.rs";
       "media.peerconnection.enabled" = false;
       "network.cookie.lifetimePolicy" = 0;
       "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
@@ -144,8 +146,10 @@ in
       "privacy.clearOnShutdown.history" = false;
       "privacy.resistFingerprinting" = false;
       "webgl.disabled" = false;
-      "general.useragent.override" =
-        "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0.1";
+      # this was because some sites (document which) were not recognizing librewolf
+      # it looks like it's ok now
+      # "general.useragent.override" =
+      #   "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0.1";
     };
   };
 
