@@ -9,6 +9,8 @@ let
     targetPkgs = pkgs: with pkgs; [ code-cursor ];
     runScript = "cursor";
   };
+  dotfiles = "${config.home.homeDirectory}/dotfiles";
+  ln = file: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${file}";
 in
 {
   imports = [
@@ -25,7 +27,7 @@ in
     AGE_RECIPIENTS_FILE = ./age/recipients.txt;
   };
 
-  home.sessionPath = [ "$HOME/dotfiles/functions" ];
+  home.sessionPath = [ "${dotfiles}/functions" ];
 
   home.packages = with pkgs; [
     # calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022. Build faling on python3.12-pyqt6-6.7.0.dev2404081550.drv
@@ -148,31 +150,22 @@ in
 
   services.ollama.enable = true;
 
-  home.file.".digrc".text = "+noall +answer";
-  home.file.".gnupg/gpg-agent.conf".text = "pinentry-program ${pkgs.pinentry-qt}/bin/pinentry";
-  home.file.".sqliterc".source = ./sqliterc;
-  home.file.".ssh/config".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ssh/config";
-  xdg.configFile."i3status-rust/config.toml".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/linux/sway/i3status-rs/config.toml";
-  xdg.configFile."jj/config.toml".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/jj/config.toml";
-  xdg.configFile."kanshi/config".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/kanshi/config";
-  xdg.configFile."nvim/init.lua".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim/init.lua";
-  xdg.configFile."rg/config".source = ./rg/config;
-  xdg.configFile."river/init".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/river/init";
-  xdg.configFile."sway/config".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/linux/sway/config";
-  xdg.configFile."tig/config".source = ./tig/config;
-  xdg.configFile."zed/settings.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zed/settings.json";
-  xdg.configFile."zed/keymap.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zed/keymap.json";
-
-  # Directories
-  xdg.configFile."cosmic".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/cosmic";
+  home.file = {
+    ".digrc".text = "+noall +answer";
+    ".gnupg/gpg-agent.conf".text = "pinentry-program ${pkgs.pinentry-qt}/bin/pinentry";
+    ".ssh/config".source = ln "ssh/config";
+    ".sqliterc".source = ./sqliterc;
+  };
+  xdg.configFile = {
+    "cosmic".source = ln "cosmic";
+    "jj/config.toml".source = ln "jj/config.toml";
+    "kanshi/config".source = ln "kanshi/config";
+    "river/init".source = ln "river/init";
+    "tig/config".source = ln "tig/config";
+    "rg/config".source = ./rg/config;
+    "zed/keymap.json".source = ln "zed/keymap.json";
+    "zed/settings.json".source = ln "zed/settings.json";
+    "i3status-rust/config.toml".source = ./linux/i3status-rs/config.toml;
+    "sway/config".source = ln "linux/sway/config";
+  };
 }
