@@ -1,10 +1,17 @@
 {
+  config,
   inputs,
   pkgs,
-  config,
   ...
 }:
 {
+  programs.nh = {
+    package = inputs.nh.packages.${pkgs.system}.default;
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 30d --keep 7";
+    flake = "/home/marin/dotfiles";
+  };
   nixpkgs.config.allowUnfree = true;
   nix = {
     buildMachines = (import ./build-machines.nix config.networking.hostName);
@@ -13,10 +20,10 @@
       experimental-features = nix-command flakes
       builders-use-substitutes = true
     '';
-    gc = {
-      automatic = true;
-      dates = "monthly";
-    };
+    # gc = {
+    #   automatic = true;
+    #   dates = "monthly";
+    # };
     optimise = {
       automatic = true;
       dates = [ "monthly" ];
