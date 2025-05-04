@@ -56,14 +56,6 @@ vim.api.nvim_create_user_command('W', 'w', {})   -- halp
 
 -- AUTOGROUPS / EVENTS
 local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
-vim.api.nvim_create_autocmd('BufEnter', {
-  group = au,
-  pattern = { '*.py', },
-  callback = function()
-    vim.wo.colorcolumn = "88"
-    vim.keymap.set('n', '<leader>r', ':w|:!python %<cr>', { silent = true })
-  end,
-})
 vim.api.nvim_create_autocmd('BufReadPost', { -- save last postition in file
   group = au,
   pattern = '*',
