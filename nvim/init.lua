@@ -180,7 +180,7 @@ for _, server in ipairs(servers) do
 end
 
 
-vim.diagnostic.config({ virtual_lines = true, })
+vim.diagnostic.config({ virtual_text = true, })
 
 -------------------------------------------------------------------------------
 -- AI
