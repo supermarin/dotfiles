@@ -3,8 +3,13 @@
         modifiers: [
             Super,
         ],
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
         key: "m",
-    ): Minimize,
+    ): Disable,
     (
         modifiers: [
             Super,
@@ -15,6 +20,6 @@
         modifiers: [
             Super,
         ],
-        key: "e",
-    ): System(HomeFolder),
+        key: "Space",
+    ): System(Launcher),
 }
