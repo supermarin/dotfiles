@@ -25,6 +25,7 @@ in
     OTPDIR = "$HOME/.otp";
     RIPGREP_CONFIG_PATH = "$HOME/.config/rg/config"; # TODO: XDG_CONFIG_HOME
     AGE_RECIPIENTS_FILE = ./age/recipients.txt;
+    MANPAGER = "nvim +Man!";
   };
 
   home.sessionPath = [ "${dotfiles}/functions" ];
