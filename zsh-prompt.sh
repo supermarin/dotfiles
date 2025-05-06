@@ -123,7 +123,7 @@ jj_prompt() {
 
 precmd() {
   if (command -v jj &>/dev/null) && (jj root --quiet &>/dev/null); then
-    local vcs="$(jj_prompt)$normal "
+  local vcs="%{$(jj_prompt)%}$normal "
   elif is_in_git_repo; then
     local vcs="$(git_prompt)$normal "
   fi
