@@ -19,12 +19,6 @@ vim.keymap.set('n', '<c-h>', '<c-w>h')           -- window: select left pane
 vim.keymap.set('n', '<c-l>', '<c-w>l')           -- window: select right pane
 vim.keymap.set('n', '<tab>', 'gt')               -- switch between tabs in normal mode
 vim.keymap.set('n', '<S-tab>', 'gT')             -- switch between tabs in normal mode
--- Telescope
-vim.keymap.set('n', '<leader>c', ':Telescope commands<cr>')
-vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
-vim.keymap.set('n', '<leader>f', ':Telescope find_files<cr>')
-vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
-vim.keymap.set('n', '<leader>h', ':Telescope help_tags<cr>')
 
 local tabspaces = 2
 vim.opt.background = 'dark'
@@ -53,6 +47,13 @@ vim.api.nvim_create_user_command('Wq', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('WQ', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('Q', 'q', {})   -- halp
 vim.api.nvim_create_user_command('W', 'w', {})   -- halp
+
+-- Telescope
+vim.keymap.set('n', '<leader>c', ':Telescope commands<cr>')
+vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
+vim.keymap.set('n', '<leader>f', ':Telescope find_files<cr>')
+vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
+vim.keymap.set('n', '<leader>h', ':Telescope help_tags<cr>')
 
 -- AUTOGROUPS / EVENTS
 local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
