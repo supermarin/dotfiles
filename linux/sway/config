@@ -32,6 +32,7 @@ client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
 bar {
   font pango: Berkeley Mono SemiCondensed SemiBold 10
   status_command i3status-rs
+  position top
   colors {
     separator          #111111AA 
     background         #111111AA
@@ -62,7 +63,6 @@ set $up k
 set $right l
 set $term ghostty
 set $browser librewolf
-set $menu rofi -show combi
 set $notification-center swaync-client -t -sw
 
 ### Output configuration
@@ -149,7 +149,7 @@ bindsym $mod+o workspace 1; exec ps ax | grep -v grep | grep obsidian || obsidia
 # Kill focused window
 bindsym $mod+q kill
 # Start launcher
-bindsym $mod+Space exec $menu
+bindsym $mod+Space exec rofi -show combi 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 # Toggle notification control center
