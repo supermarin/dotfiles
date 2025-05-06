@@ -4,13 +4,13 @@
     enableDefaultPackages = false;
     packages = with pkgs; [
       # sans serif
-      (import ../../fonts/sfpro.nix {inherit pkgs;})
-      (import ../../fonts/inter-head.nix {inherit pkgs;})
+      (import ../../fonts/sfpro.nix { inherit pkgs; })
+      (import ../../fonts/inter-head.nix { inherit pkgs; })
 
       # serif
       source-serif
       eb-garamond
-      (import ../../fonts/newyork.nix {inherit pkgs;})
+      (import ../../fonts/newyork.nix { inherit pkgs; })
 
       # emoji
       noto-fonts-emoji
