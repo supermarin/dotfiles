@@ -164,6 +164,7 @@ in
   };
   xdg.configFile = {
     "cosmic".source = ln "cosmic";
+    "ghostty".source = ln "ghostty";
     "jj/config.toml".source = ln "jj/config.toml";
     "kanshi/config".source = ln "kanshi/config";
     "river/init".source = ln "river/init";
