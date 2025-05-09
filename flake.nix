@@ -16,10 +16,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     jupyter = {
       url = "git+ssh://git@github.com/squale-capital/jupyter";
@@ -33,10 +29,6 @@
     };
     steven-black-hosts = {
       url = "github:StevenBlack/hosts";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nh = {
@@ -80,13 +72,6 @@
             system.stateVersion = "23.11";
           }
         ];
-      };
-
-      personal = inputs.nixpkgs.lib.nixosSystem {
-        modules = [ ./nixos/configuration-personal.nix ];
-        specialArgs = {
-          inputs = inputs;
-        };
       };
     };
   };
