@@ -79,7 +79,6 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.cmd('setlocal nonu')
   end,
 })
-
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -96,16 +95,16 @@ require('which-key').setup { delay = 0, preset = 'helix' }
 
 -- tree-sitter
 require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-    disable = function(_, buf)        -- disable on big files
-      local max_filesize = 100 * 1024 -- 100 KB
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        return true
-      end
-    end,
-  },
+  -- highlight = {
+  --   enable = true,
+  --   disable = function(_, buf)        -- disable on big files
+  --     local max_filesize = 100 * 1024 -- 100 KB
+  --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+  --     if ok and stats and stats.size > max_filesize then
+  --       return true
+  --     end
+  --   end,
+  -- },
   textobjects = {
     enable = true,
     select = {
