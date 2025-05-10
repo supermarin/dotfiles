@@ -7,6 +7,11 @@
       gui.theme = "black";
       options.globalAnnounceEnabled = false;
       options.localAnnounceEnabled = false;
+      options.ignoredFolders = [
+        ".direnv"
+        "result"
+        "yolo"
+      ];
       options.relaysEnabled = false;
       options.natEnabled = false;
       options.urAccepted = -1;
