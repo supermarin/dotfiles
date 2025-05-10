@@ -16,6 +16,8 @@
     history.append = true;
     history.expireDuplicatesFirst = true;
     history.findNoDups = true;
+    history.saveNoDups = true;
+    history.ignoreDups = true;
     # history.ignorePatterns = [ ];
     initContent = ''
       wo() {
