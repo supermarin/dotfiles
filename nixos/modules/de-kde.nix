@@ -7,7 +7,6 @@
   services.desktopManager.plasma6.enable = true;
 
   programs.gnupg.agent.pinentryPackage = lib.mkForce pkgs.pinentry-all;
-  environment.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration
     oxygen
