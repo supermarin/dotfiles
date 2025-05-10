@@ -17,7 +17,7 @@
     history.expireDuplicatesFirst = true;
     history.findNoDups = true;
     # history.ignorePatterns = [ ];
-    initExtra = ''
+    initContent = ''
       wo() {
         local dir=$(find -L ~/code -maxdepth 2 | fzf)
         test $dir || return 1
