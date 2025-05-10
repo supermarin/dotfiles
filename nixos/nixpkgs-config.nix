@@ -9,6 +9,7 @@
     package = inputs.nh.packages.${pkgs.system}.default;
     enable = true;
     clean.enable = true;
+    clean.dates = "monthly";
     clean.extraArgs = "--keep-since 30d --keep 7";
     flake = "/home/marin/dotfiles";
   };
