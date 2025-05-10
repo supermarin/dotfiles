@@ -13,11 +13,11 @@ command = 'grep "\- \[ \]" ~/base/todo.md | head -n 1 | cut -f2 -d] | xargs'
 shell = "bash"
 interval = 60
 
-[[block]]
-block = "custom"
-command = "fin | ansifilter --pango | tr -d '\n'"
-shell = "bash"
-interval = 60
+# [[block]]
+# block = "custom"
+# command = "fin | ansifilter --pango | tr -d '\n'"
+# shell = "bash"
+# interval = 60
 
 [[block]]
 block = "custom"
