@@ -122,6 +122,11 @@ jj_prompt() {
 }
 
 precmd() {
+  autoload -Uz url-quote-magic
+  zle -N self-insert url-quote-magic
+  autoload -Uz bracketed-paste-magic
+  zle -N bracketed-paste bracketed-paste-magic
+
   if (command -v jj &>/dev/null) && (jj root --quiet &>/dev/null); then
   local vcs="%{$(jj_prompt)%}$normal "
   elif is_in_git_repo; then
