@@ -227,5 +227,6 @@ dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
 end
 
--- The video uses an early version of the future 'minispring' dark color
-require('mini.hues').setup({ background = '#122722', foreground = '#c2dbd3', accent = 'green' })
+-- -- The video uses an early version of the future 'minispring' dark color
+-- require('mini.hues').setup({ background = '#122722', foreground = '#c2dbd3', accent = 'green' })
+vim.cmd [[ color gruvbox ]]

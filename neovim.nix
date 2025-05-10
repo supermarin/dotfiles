@@ -36,6 +36,7 @@
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
       # Theming
+      gruvbox-nvim
       mini-hues
       mini-icons
     ];
