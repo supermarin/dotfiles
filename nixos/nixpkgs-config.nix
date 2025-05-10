@@ -14,8 +14,6 @@
   };
   nixpkgs.config.allowUnfree = true;
   nix = {
-    buildMachines = (import ./build-machines.nix config.networking.hostName);
-    distributedBuilds = true;
     extraOptions = ''
       experimental-features = nix-command flakes
       builders-use-substitutes = true
