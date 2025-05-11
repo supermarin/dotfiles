@@ -154,8 +154,6 @@ in
     };
   };
 
-  services.ollama.enable = true;
-
   home.file = {
     ".digrc".text = "+noall +answer";
     ".gnupg/gpg-agent.conf".text = "pinentry-program ${pkgs.pinentry-qt}/bin/pinentry";
