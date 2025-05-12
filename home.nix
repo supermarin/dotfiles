@@ -27,8 +27,6 @@ in
     coreutils # used for `shred`
     diffr # used in git stuff
     difftastic # testing this out
-    distrobox
-    distrobox-tui
     dua # disk usage analyzer, better du -hc
     duckdb
     dysk # disk usage analyzer, better df -h
