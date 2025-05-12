@@ -43,7 +43,7 @@
           ./nixos/home-manager-config.nix
           ./nixos/modules/de-sway.nix
           ./nixos/modules/build-machines.nix
-          ./nixos/modules/syncthing.nix
+          ./nixos/modules/services/syncthing.nix
           ./nixos/nixpkgs-config.nix
           {
             networking.hostName = "tokio";
@@ -61,8 +61,9 @@
           ./nixos/hardware-computer-1.nix
           ./nixos/home-manager-config.nix
           ./nixos/modules/de-sway.nix
+          ./nixos/modules/de-kde.nix
           ./nixos/modules/move-me-mufasa-services.nix
-          ./nixos/modules/syncthing.nix
+          ./nixos/modules/services/syncthing.nix
           ./nixos/nixpkgs-config.nix
           {
             networking.hostName = "mufasa";
