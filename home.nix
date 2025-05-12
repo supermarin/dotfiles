@@ -1,22 +1,17 @@
 {
+  inputs,
   config,
   pkgs,
   ...
 }:
 let
-  cursor-fhs = pkgs.buildFHSEnv {
-    name = "cursor";
-    targetPkgs = pkgs: with pkgs; [ code-cursor ];
-    runScript = "cursor";
-  };
   dotfiles = "${config.home.homeDirectory}/dotfiles";
   ln = file: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${file}";
 in
 {
   imports = [
-    ./linux/gnome/dconf.nix
-    ./neovim.nix
     ./git/config.nix
+    ./neovim.nix
     ./shells.nix
   ];
 
@@ -32,20 +27,19 @@ in
 
   home.packages = with pkgs; [
     # calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022. Build faling on python3.12-pyqt6-6.7.0.dev2404081550.drv
-    obsidian
     age
     age-plugin-yubikey
     ansifilter # for i3status-rs ansi -> pango for yfinance
     bat # used in `e` for live preview of files
     btop
     coreutils # used for `shred`
-    cursor-fhs
     diffr # used in git stuff
     difftastic # testing this out
-    discord
     distrobox
     distrobox-tui
+    dua # disk usage analyzer, better du -hc
     duckdb
+    dysk # disk usage analyzer, better df -h
     eza # ls with stuff
     fd
     fzf
@@ -56,35 +50,18 @@ in
     jq
     jujutsu
     lazyjj
-    kitty
-    keepassxc
     mergiraf # experimental: git conflict resolver
-    neovide # neovim gui I never use
-    neovim-gtk # neovim gui I never use 2
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter used by nixd
-    nodejs-slim_20 # for copilot
     nushell
     oathToolkit # used for OTP
-    quickemu
     ripgrep
     ripgrep-all
     rsync
-    signal-desktop # Unsupported on aarch64-darwin as of Aug 10 2022
     sqlite-interactive
-    spotify
     lua-language-server
     tig
     tmux-mem-cpu-load
-    tradingview
-    ungoogled-chromium
-    vdirsyncer # sync contacts & calendars
-    vlc # Unsupported on aarch64-darwin as of Aug 10 2022
-    vscodium-fhs
-    whatsapp-for-linux
-    zed-editor
-    zig # why was this? for the compiler IIRC? TODO: delete if unused
-    zoom-us
   ];
 
   programs.direnv.enable = true;
@@ -133,25 +110,6 @@ in
     keyMode = "vi";
     mouse = true;
     terminal = "xterm-256color";
-  };
-
-  programs.librewolf = {
-    enable = true;
-    settings = {
-      "browser.startup.homepage" = "https://lobste.rs";
-      "media.peerconnection.enabled" = false;
-      "network.cookie.lifetimePolicy" = 0;
-      "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
-      "privacy.clearOnShutdown.cookies" = false;
-      "privacy.clearOnShutdown.downloads" = false;
-      "privacy.clearOnShutdown.history" = false;
-      "privacy.resistFingerprinting" = false;
-      "webgl.disabled" = false;
-      # this was because some sites (document which) were not recognizing librewolf
-      # it looks like it's ok now
-      # "general.useragent.override" =
-      #   "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0.1";
-    };
   };
 
   home.file = {

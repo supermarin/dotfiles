@@ -40,7 +40,8 @@
         modules = [
           ./nixos/configuration.nix
           ./nixos/hardware-x1.nix
-          ./nixos/home-manager-config.nix
+          ./nixos/modules/home-manager-config.nix
+          ./nixos/modules/home-gui.nix
           ./nixos/modules/de-sway.nix
           ./nixos/modules/build-machines.nix
           ./nixos/modules/services/syncthing.nix
@@ -59,7 +60,8 @@
           inputs.jupyter.nixosModules.x86_64-linux.jupyterlab
           ./nixos/configuration.nix
           ./nixos/hardware-computer-1.nix
-          ./nixos/home-manager-config.nix
+          ./nixos/modules/home-manager-config.nix
+          ./nixos/modules/home-gui.nix
           ./nixos/modules/de-sway.nix
           ./nixos/modules/de-kde.nix
           ./nixos/modules/move-me-mufasa-services.nix
