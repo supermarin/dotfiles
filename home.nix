@@ -1,9 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 let
   dotfiles = "${config.home.homeDirectory}/dotfiles";
   ln = file: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${file}";
@@ -22,11 +17,8 @@ in
     AGE_RECIPIENTS_FILE = ./age/recipients.txt;
     MANPAGER = "nvim +Man!";
   };
-
   home.sessionPath = [ "${dotfiles}/functions" ];
-
   home.packages = with pkgs; [
-    # calibre # books. Unsupported on aarch64-darwin as of Aug 10 2022. Build faling on python3.12-pyqt6-6.7.0.dev2404081550.drv
     age
     age-plugin-yubikey
     ansifilter # for i3status-rs ansi -> pango for yfinance
@@ -119,16 +111,9 @@ in
     ".sqliterc".source = ./sqliterc;
   };
   xdg.configFile = {
-    "cosmic".source = ln "cosmic";
     "ghostty".source = ln "ghostty";
     "jj/config.toml".source = ln "jj/config.toml";
-    "kanshi/config".source = ln "kanshi/config";
-    "river/init".source = ln "river/init";
     "tig/config".source = ln "tig/config";
     "rg/config".source = ./rg/config;
-    "zed/keymap.json".source = ln "zed/keymap.json";
-    "zed/settings.json".source = ln "zed/settings.json";
-    "i3status-rust/config.toml".source = ./linux/i3status-rs/config.toml;
-    "sway/config".source = ln "linux/sway/config";
   };
 }

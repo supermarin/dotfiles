@@ -1,15 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   # TODO: inject user into _config for no reason and do users.${user}.imports
-  home-manager.users.marin.imports =
-    let
-      cursor-fhs = pkgs.buildFHSEnv {
-        name = "cursor";
-        targetPkgs = pkgs: with pkgs; [ code-cursor ];
-        runScript = "cursor";
-      };
-    in
-    [
+  home-manager.users.marin.imports = [
+    (
+      { pkgs, config, ... }:
+      let
+        cursor-fhs = pkgs.buildFHSEnv {
+          name = "cursor";
+          targetPkgs = pkgs: with pkgs; [ code-cursor ];
+          runScript = "cursor";
+        };
+        dotfiles = "${config.home.homeDirectory}/dotfiles";
+        ln = file: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${file}";
+      in
       {
         imports = [
           ../../linux/gnome/dconf.nix
@@ -50,6 +53,17 @@
             #   "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0.1";
           };
         };
+        xdg.configFile = {
+          "cosmic".source = ln "cosmic";
+          "ghostty".source = ln "ghostty"; # technically gui but fuck it
+          "kanshi/config".source = ln "kanshi/config";
+          "river/init".source = ln "river/init";
+          "zed/keymap.json".source = ln "zed/keymap.json";
+          "zed/settings.json".source = ln "zed/settings.json";
+          "i3status-rust/config.toml".source = ../../linux/i3status-rs/config.toml;
+          "sway/config".source = ln "linux/sway/config";
+        };
       }
-    ];
+    )
+  ];
 }
