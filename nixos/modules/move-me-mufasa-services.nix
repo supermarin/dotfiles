@@ -1,14 +1,14 @@
 { pkgs, config, ... }:
 {
   services = {
-    openvscode-server = {
-      enable = true;
-      host = "127.0.0.1";
-      port = 2345;
-      telemetryLevel = "off";
-      user = "marin";
-      # serverDataDir = "/opt/openvscode-server";
-    };
+    # openvscode-server = {
+    #   enable = true;
+    #   host = "127.0.0.1";
+    #   port = 2345;
+    #   telemetryLevel = "off";
+    #   user = "marin";
+    #   # serverDataDir = "/opt/openvscode-server";
+    # };
     jupyterlab = {
       enable = true;
       port = 3333;
