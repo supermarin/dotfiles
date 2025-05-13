@@ -10,7 +10,6 @@
     inputs.steven-black-hosts.nixosModule
   ];
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
