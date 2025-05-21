@@ -9,3 +9,6 @@ age1yubikey1qg49cw3tx6uugyejvf34z9rydt94we04jmzt47y4fvrnna3z505276l423c
 
 # Dev key
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHiWKUUwHWsfiUb7gfVl11aAX8WdCtaI9809IVGsW+AQ
+
+# X1 nano TPM
+age1tpm1qd47l6fr0zg8ft23jk6yvve4qpf2h887k82rnn9w7f62anpnj9x9syaz7y5
