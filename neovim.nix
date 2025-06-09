@@ -37,6 +37,7 @@
       nvim-treesitter-textobjects
       # Theming
       gruvbox-nvim
+      bamboo-nvim
       mini-hues
       mini-icons
     ];
