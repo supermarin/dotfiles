@@ -60,7 +60,7 @@
           "river/init".source = ln "river/init";
           "zed/keymap.json".source = ln "zed/keymap.json";
           "zed/settings.json".source = ln "zed/settings.json";
-          "i3status-rust/config.toml".source = ../../linux/i3status-rs/config.toml;
+          "i3status-rust/config.toml".source = ln "linux/i3status-rs/config.toml";
           "sway/config".source = ln "linux/sway/config";
         };
       }
