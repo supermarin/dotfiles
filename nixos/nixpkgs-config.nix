@@ -1,10 +1,8 @@
+{ inputs, ... }:
 {
-  config,
-  inputs,
-  pkgs,
-  ...
-}:
-{
+  imports = [
+    ./modules/build-machines.nix
+  ];
   programs.nh = {
     enable = true;
     # TODO: not sure if I should revert back to vanilla here

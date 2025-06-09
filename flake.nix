@@ -43,7 +43,6 @@
           ./nixos/modules/home-manager-config.nix
           ./nixos/modules/home-gui.nix
           ./nixos/modules/de-sway.nix
-          ./nixos/modules/build-machines.nix
           ./nixos/modules/fingerprint.nix
           ./nixos/modules/services/syncthing.nix
           ./nixos/nixpkgs-config.nix
