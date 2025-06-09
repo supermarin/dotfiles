@@ -44,11 +44,11 @@
           ./nixos/modules/home-gui.nix
           ./nixos/modules/de-sway.nix
           ./nixos/modules/build-machines.nix
+          ./nixos/modules/fingerprint.nix
           ./nixos/modules/services/syncthing.nix
           ./nixos/nixpkgs-config.nix
           {
             networking.hostName = "tokio";
-            services.fprintd.enable = true;
             system.stateVersion = "22.05";
           }
         ];
