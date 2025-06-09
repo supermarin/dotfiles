@@ -30,6 +30,7 @@
       mupdf
       adwaita-icon-theme
       gnome-calculator
+      gtklock
       kdePackages.kate # basic kde text editor
       kanshi
       kdePackages.konsole # for terminal in kate
@@ -42,7 +43,6 @@
       rofi-wayland
       rofimoji # emoji picker, fuzzel doesn't support emoji
       slurp # screenshot: select a region in wayland
-      swaylock # idle lock
       swayidle # idle lock
       udiskie # auto mount usb media
       xdg-utils
