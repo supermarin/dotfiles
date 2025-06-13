@@ -61,8 +61,7 @@
 
   # login
   services.displayManager.ly =
-    lib.mkIf
-      (!config.services.displayManager.sddm.enable && !config.services.xserver.displayManager.gdm.enable)
+    lib.mkIf (!config.services.displayManager.sddm.enable && !config.services.displayManager.gdm.enable)
       {
         enable = true;
         settings = {
@@ -94,7 +93,7 @@
       '';
     };
 
-  xdg.portal = lib.mkIf (config.services.xserver.desktopManager.gnome.enable == false) {
+  xdg.portal = lib.mkIf (config.services.desktopManager.gnome.enable == false) {
     enable = true;
     wlr.enable = true;
     extraPortals = [
