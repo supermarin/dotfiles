@@ -55,7 +55,7 @@ bar {
 #
 # Mod4 - Logo key. Mod1 - Alt.
 set $mod Mod4
-set $mod2 Mod1
+set $alt Mod1
 
 set $left h
 set $down j
@@ -172,10 +172,10 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$left move left
 
 # Move workspace between monitors
-bindsym $mod+$mod2+$up move workspace to output up
-bindsym $mod+$mod2+$right move workspace to output right
-bindsym $mod+$mod2+$down move workspace to output down
-bindsym $mod+$mod2+$left move workspace to output left
+bindsym $mod+$alt+$up move workspace to output up
+bindsym $mod+$alt+$right move workspace to output right
+bindsym $mod+$alt+$down move workspace to output down
+bindsym $mod+$alt+$left move workspace to output left
 
 # Workspaces:
 #
@@ -223,7 +223,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+Shift+0 move container to scratchpad
 
 # Swap focus between the tiling area and the floating area
-bindsym $mod+$mod2+space focus mode_toggle
+bindsym $mod+$alt+space focus mode_toggle
 
 # Move focus to the parent container
 bindsym $mod+a focus parent
@@ -250,8 +250,8 @@ bindsym $mod+r mode "resize"
 # Media controls (sorted by lenovo kb):
 bindsym XF86AudioRaiseVolume exec pamixer -i 5 && pamixer --get-volume > $WOBSOCK
 bindsym XF86AudioLowerVolume  exec pamixer -d 5 && pamixer --get-volume > $WOBSOCK
-bindsym $mod2+XF86AudioRaiseVolume exec pamixer -i 1 && pamixer --get-volume > $WOBSOCK
-bindsym $mod2+XF86AudioLowerVolume exec pamixer -d 1 && pamixer --get-volume > $WOBSOCK
+bindsym $alt+XF86AudioRaiseVolume exec pamixer -i 1 && pamixer --get-volume > $WOBSOCK
+bindsym $alt+XF86AudioLowerVolume exec pamixer -d 1 && pamixer --get-volume > $WOBSOCK
 bindsym XF86AudioMute exec pamixer set Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' | head -1 > $WOBSOCK
 bindsym XF86AudioMicMute exec pamixer set Capture toggle
 # keyboard gap
@@ -259,13 +259,13 @@ bindsym $mod+XF86MonBrightnessDown exec asddown
 bindsym $mod+XF86MonBrightnessUp exec asdup
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
-bindsym $mod2+XF86MonBrightnessDown exec brightnessctl set 1%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
-bindsym $mod2+XF86MonBrightnessUp exec brightnessctl set +1% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+bindsym $alt+XF86MonBrightnessDown exec brightnessctl set 1%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+bindsym $alt+XF86MonBrightnessUp exec brightnessctl set +1% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 
 bindsym Shift+XF86MonBrightnessDown exec lgufbrightness - | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
 bindsym Shift+XF86MonBrightnessUp exec lgufbrightness + | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
-bindsym Shift+$mod2+XF86MonBrightnessDown exec lgufbrightness _ | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
-bindsym Shift+$mod2+XF86MonBrightnessUp exec lgufbrightness = | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
+bindsym Shift+$alt+XF86MonBrightnessDown exec lgufbrightness _ | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
+bindsym Shift+$alt+XF86MonBrightnessUp exec lgufbrightness = | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
 #  XF86WLAN
 
 bindsym XF86NotificationCenter exec $notification-center
@@ -281,8 +281,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Take a screenshot with all output and save it into screenshots
-bindsym $mod+$mod2+3 exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
-bindsym $mod+$mod2+4 exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+bindsym $mod+$alt+3 exec grim -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+bindsym $mod+$alt+4 exec grim -t jpeg -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 
 
 exec systemctl --user import-environment
