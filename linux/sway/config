@@ -34,13 +34,18 @@ bar {
   status_command i3status-rs
   position top
   colors {
-    separator          #111111AA 
-    background         #111111AA
-    statusline         #ffffff
-    focused_workspace  $c_darkgrey  $c_black    #ffffff
-    active_workspace   #900000      #333333     #ffffff
-    inactive_workspace $c_darkgrey  $c_darkgrey $c_lightgrey
-    urgent_workspace   #900000      #900000     #ffffff
+    separator          $c_green
+    background         $c_green
+    focused_background $c_green
+    focused_separator  $c_green
+                        # border      # background # text
+    active_workspace    $c_green      $c_green     #ffffff
+    focused_workspace   $c_green      $c_green     $c_lightgrey
+    inactive_workspace  $c_green      $c_green     #999999
+    # statusline         #ffffff
+    # focused_workspace  $c_darkgrey  $c_black     #ffffff
+    # active_workspace   $c_green     #333333      #ffffff
+    # urgent_workspace   #900000      #900000      #ffffff
   }
   # disable scrolling on the bar to switch workspaces. volume up/down still works
   bindsym button4 nop
