@@ -12,7 +12,6 @@
       # Core editor functionality
       blink-cmp
       editorconfig-nvim
-      nvim-autopairs
       nvim-lspconfig # TODO: remove when lspcofig is merged into neovim
       vim-repeat
       vim-surround
@@ -35,11 +34,6 @@
       # Tree-sitter
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
-      # Theming
-      gruvbox-nvim
-      bamboo-nvim
-      mini-hues
-      mini-icons
     ];
   };
   xdg.configFile."nvim".source =
