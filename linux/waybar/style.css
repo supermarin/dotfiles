@@ -1,0 +1,56 @@
+* {
+  font-family: Berkeley Mono;
+  font-size: 12px;
+}
+
+window#waybar {
+  background-color: #182d2a;
+  border-radius: 0;
+  border: none;
+  color: #eeffee;
+  font-weight: 600;
+  min-height: 0;
+}
+
+/* hyprland */
+#workspaces {
+  margin-left: 7px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 2px 6px;
+  margin-right: 3px;
+  color: #999999;
+}
+
+/* sway */
+#workspaces button.visible {
+  color: #ededed;
+}
+
+#workspaces button.focused {
+  color: #ededed;
+  font-weight: 800;
+  text-shadow: 0 0 7px #ffffff;
+}
+
+#custom-dropbox,
+#cpu,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio,
+#clock,
+#custom-power-menu {
+  min-width: 12px;
+  margin-right: 13px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+tooltip label {
+  padding: 2px;
+}
