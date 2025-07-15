@@ -4,11 +4,11 @@ age1yubikey1qf6s46r8v8v8xhcsyu83484d0z9a02wm5alwg8n2dlwpmqscau6xzvheak2
 # Serial: 22610962, Slot: 1, Type: 5C Nano (x1)
 age1yubikey1qg3dqeu86gjhpmhs6ja2w24xyygcvyxq4pryna0g9dgl4pl5z9uhxgmh3p8
 
-# Serial: 23193166, Slot: 1, Type: 5C NFC
-age1yubikey1qg49cw3tx6uugyejvf34z9rydt94we04jmzt47y4fvrnna3z505276l423c
-
 # Dev key
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHiWKUUwHWsfiUb7gfVl11aAX8WdCtaI9809IVGsW+AQ
 
 # X1 nano TPM
 age1tpm1qd47l6fr0zg8ft23jk6yvve4qpf2h887k82rnn9w7f62anpnj9x9syaz7y5
+
+# X1 carbon TPM
+age1tpm1q0g4pevp20yysx7m0tuwtse20zmyvtxr5tv894q3fcz68wwn8mq7xujafsn
