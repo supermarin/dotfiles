@@ -74,7 +74,13 @@ output "BNQ BenQ RD280U S5R0007501Q" {
   scale 1.5
 }
 
-output eDP-1 {
+# X1 carbon
+output "Samsung Display Corp. 0x419F Unknown" {
+  scale 2
+}
+
+# X1 Nano
+output 'Chimei Innolux Corporation 0x1301 Unknown' {
   scale 1.25
 }
 
