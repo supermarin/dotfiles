@@ -4,12 +4,9 @@ email = "git+jj@mar.in"
 
 [ui]
 default-command = "log"
-diff.format = "git"
-diff.tool = ["difft", "--color=always", "$left", "$right"]
 pager = [ "less", "-FRX" ]
 
 [template-aliases]
-# Username part of the email address
 'format_short_id(id)' = 'id.shortest()'
 
 [aliases]
