@@ -36,5 +36,7 @@
   ];
   nixpkgs.hostPlatform = "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  hardware.enableRedistributableFirmware = lib.mkForce true;
+  hardware.enableRedistributableFirmware = true;
+  services.tlp.enable = lib.mkIf (config.services.power-profiles-daemon.enable != true) true;
+  services.upower.enable = true;
 }
