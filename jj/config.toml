@@ -10,6 +10,7 @@ pager = [ "less", "-FRX" ]
 'format_short_id(id)' = 'id.shortest()'
 
 [aliases]
+e = [ "edit" ]
 la = [ "log", "-r", "::" ]
 d = [ "diff" ]
 gp = [ "git", "push" ]
