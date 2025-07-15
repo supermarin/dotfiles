@@ -1,4 +1,7 @@
-{ pkgs, config, ... }:
+{
+  inputs,
+  ...
+}:
 {
   # TODO: inject user into _config for no reason and do users.${user}.imports
   home-manager.users.marin.imports = [
@@ -16,11 +19,15 @@
       {
         imports = [
           ../../linux/gnome/dconf.nix
+          inputs.zen-browser.homeModules.beta
         ];
         home.packages = with pkgs; [
+          # jj GUI. remove if not used in the next 2 months: 2025-07-08
           calibre # books
           cursor-fhs
           discord
+          gg-jj
+          ghostty
           kitty
           libreoffice
           neovide # neovim gui I never use
@@ -35,6 +42,7 @@
           whatsapp-for-linux
           zed-editor
         ];
+        programs.zen-browser.enable = true;
         programs.librewolf = {
           enable = true;
           settings = {
@@ -47,15 +55,11 @@
             "privacy.clearOnShutdown.history" = false;
             "privacy.resistFingerprinting" = false;
             "webgl.disabled" = false;
-            # this was because some sites (document which) were not recognizing librewolf
-            # it looks like it's ok now
-            # "general.useragent.override" =
-            #   "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0.1";
           };
         };
         xdg.configFile = {
           "cosmic".source = ln "cosmic";
-          "ghostty".source = ln "ghostty"; # technically gui but fuck it
+          "ghostty".source = ln "ghostty";
           "kanshi/config".source = ln "kanshi/config";
           "river/init".source = ln "river/init";
           "zed/keymap.json".source = ln "zed/keymap.json";

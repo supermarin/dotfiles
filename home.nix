@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 let
   dotfiles = "${config.home.homeDirectory}/dotfiles";
   ln = file: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${file}";
@@ -21,9 +25,9 @@ in
   home.packages = with pkgs; [
     age
     age-plugin-yubikey
-    ansifilter # for i3status-rs ansi -> pango for yfinance
     bat # used in `e` for live preview of files
     btop
+    claude-code
     coreutils # used for `shred`
     diffr # used in git stuff
     difftastic # testing this out
@@ -33,13 +37,11 @@ in
     eza # ls with stuff
     fd
     fzf
-    ghostty
     git-lfs
-    github-cli
-    gnumake
+    gnumake # why is this here? no idea
     jq
     jujutsu
-    lazyjj
+    lazyjj # another jj GUI. remove if not used in the next 2 months: 2025-07-08
     mergiraf # experimental: git conflict resolver
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter used by nixd
@@ -109,6 +111,7 @@ in
     ".sqliterc".source = ./sqliterc;
   };
   xdg.configFile = {
+    "waybar".source = ln "linux/waybar";
     "ghostty".source = ln "ghostty";
     "jj/config.toml".source = ln "jj/config.toml";
     "tig/config".source = ln "tig/config";
