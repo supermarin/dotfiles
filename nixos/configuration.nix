@@ -10,13 +10,10 @@
     inputs.steven-black-hosts.nixosModule
   ];
 
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-  };
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
   documentation.man.generateCaches = pkgs.lib.mkForce false; # otherwise nixos-rebuild is slow AF
   environment.sessionVariables = {
     EDITOR = "nvim";
