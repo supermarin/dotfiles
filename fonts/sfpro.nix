@@ -5,7 +5,7 @@ pkgs.stdenvNoCC.mkDerivation {
   name = "San Francisco";
   src = builtins.fetchurl {
     url = "https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg";
-    sha256 = "sha256:153k3q8h5mpd358b1lsa8ha32qxv7vc2q661k20j4nnf3ndjkv9j";
+    sha256 = "sha256-090HwtgILtK/KGoOzcwz1iAtoiShKAVjiNhUDQtO+gQ=";
   };
   unpackPhase = ''
     7zz x $src

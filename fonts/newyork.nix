@@ -5,7 +5,7 @@ pkgs.stdenvNoCC.mkDerivation {
   name = "New York";
   src = builtins.fetchurl {
     url = "https://devimages-cdn.apple.com/design/resources/download/NY.dmg";
-    sha256 = "sha256:1c5h9szggmwspba8gj06jlx30x83m9q6k9cdyg8dkivnij9am369";
+    sha256 = "sha256-HC7ttFJswPMm+Lfql49aQzdWR2osjFYHJTdgjtuI+PQ=";
   };
   unpackPhase = ''
     7zz x $src
