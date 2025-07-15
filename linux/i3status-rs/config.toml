@@ -19,9 +19,17 @@ interval = 60
 # shell = "bash"
 # interval = 60
 
+# [[block]]
+# block = "custom"
+# command = "tmux-mem-cpu-load -t 1 -a 0 -v"
+#
 [[block]]
-block = "custom"
-command = "tmux-mem-cpu-load -t 1 -a 0 -v"
+block = "cpu"
+format = " $utilization $frequency "
+
+[[block]]
+block = "memory"
+# format = " $utilization frequency "
 
 [[block]]
 block = "custom"
@@ -44,15 +52,17 @@ cmd = "blueberry"
 
 [[block]]
 block = "net"
-format = "$icon"
+# format = "$icon"
 [[block.click]]
 button = "left"
 cmd = "kitty --title floating_term nmtui connect"
 
 [[block]]
 block = "battery"
+# driver = "upower"
 interval = 10
 empty_format = " $icon $percentage "
+# format = " $icon $percentage "
 missing_format =  ""
 
 [[block]]
