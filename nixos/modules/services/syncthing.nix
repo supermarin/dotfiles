@@ -23,8 +23,8 @@
       # options.listenAddress = [ "tcp://0.0.0.0:22000" "quic://0.0.0.0:22000" ];
       # doesn't update <listenAddress> in config.xml. Figure out why.
       devices = {
-        simba.id = "HGXXVK4-TSKAZWM-XYLAEH5-USXQ3YV-76YM2RW-K4LTUPQ-FDWEN2I-IG2LDAR";
-        simba.addresses = [ "quic://simba" ];
+        carbon.id = "6MLXSNZ-2DLBIHF-V4KY5AR-MI4AGJ3-QGIG7BW-VR7TQDH-EVOCZIC-FBW3UAY";
+        carbon.addresses = [ "quic://carbon" ];
         tokio.id = "3R5ICHB-XN4DEI4-7NUMPI2-DCL24JI-3A2XN2Y-6IG6UTX-VXO22EL-66T3ZQM";
         tokio.addresses = [ "quic://tokio" ];
         mufasa.id = "PXHEELW-HDYA4HB-HE536W6-KDDHIE4-AHXWEZ3-H4EOYDI-LB72EZZ-5HDZ3QH";
@@ -38,7 +38,7 @@
           id = "ctyq6-lwqs6";
           devices = [
             "tokio"
-            "simba"
+            "carbon"
             "mufasa"
           ];
         };
@@ -46,7 +46,7 @@
           id = "code";
           devices = [
             "tokio"
-            "simba"
+            "carbon"
             "mufasa"
           ];
         };
@@ -54,7 +54,7 @@
           id = "lpnyj-66gkm";
           devices = [
             "tokio"
-            "simba"
+            "carbon"
             "mufasa"
           ];
         };
@@ -62,7 +62,7 @@
           id = "Pictures";
           devices = [
             "tokio"
-            "simba"
+            "carbon"
             "mufasa"
           ];
         };
@@ -70,7 +70,7 @@
           id = "Documents";
           devices = [
             "tokio"
-            "simba"
+            "carbon"
             "mufasa"
           ];
         };
