@@ -8,6 +8,7 @@ pager = [ "less", "-FRX" ]
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'
+'format_timestamp(timestamp)' = 'timestamp.ago()'
 
 [aliases]
 e = [ "edit" ]
