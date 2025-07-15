@@ -5,10 +5,11 @@ smart_borders on
 smart_gaps on
 seat seat0 xcursor_theme Adwaita 24
 
-# # Set colors
+# colors
 set $c_black #111111
 set $c_darkgrey #222222
 set $c_lightgrey #DEDEDE
+set $c_lightgreen #EEFFEE
 # accent colors from macos
 # https://developer.apple.com/design/human-interface-guidelines/foundations/color
 set $c_grey #64727D
@@ -27,39 +28,9 @@ client.focused          $c_black   $c_accent   $c_darkgrey  $c_accent  $c_accent
 client.focused_inactive $c_black   $c_darkgrey $c_lightgrey $c_black   $c_black
 client.unfocused        $c_black   $c_black    $c_grey      $c_black   $c_black
 
-# Status Bar:
-#
-bar {
-  font pango: Berkeley Mono SemiCondensed SemiBold 10
-  status_command i3status-rs
-  position top
-  colors {
-    separator          $c_green
-    background         $c_green
-    focused_background $c_green
-    focused_separator  $c_green
-                        # border      # background # text
-    active_workspace    $c_green      $c_green     #ffffff
-    focused_workspace   $c_green      $c_green     $c_lightgrey
-    inactive_workspace  $c_green      $c_green     #999999
-    # statusline         #ffffff
-    # focused_workspace  $c_darkgrey  $c_black     #ffffff
-    # active_workspace   $c_green     #333333      #ffffff
-    # urgent_workspace   #900000      #900000      #ffffff
-  }
-  # disable scrolling on the bar to switch workspaces. volume up/down still works
-  bindsym button4 nop
-  bindsym button5 nop
-  bindsym button6 nop
-  bindsym button7 nop
-}
-
-###############################################################################
-
-### Variables
-#
-# Mod4 - Logo key. Mod1 - Alt.
+# Mod4 - Logo key
 set $mod Mod4
+# Mod1 - Alt
 set $alt Mod1
 
 set $left h
@@ -82,7 +53,7 @@ bindswitch --reload --locked lid:off output $laptop enable
 input * {
     repeat_delay 175
     repeat_rate  150
-    pointer_accel 0.5 # speed up logitech mouse. revise if other mice too fast
+    # pointer_accel 0.5 # speed up logitech mouse. revise if other mice too fast
     natural_scroll enabled
 }
 
@@ -101,7 +72,6 @@ input 16700:34053:Dell_Dell_Universal_Receiver {
 # seat home {
 output "BNQ BenQ RD280U S5R0007501Q" {
   scale 1.5
-  # scale 2
 }
 
 output eDP-1 {
@@ -112,8 +82,9 @@ output eDP-1 {
 #
 exec swayidle -w \
        timeout 300 'swaylock -f -c 000000' \
-       timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
+       timeout 600 'swaymsg "output * power off"' \
+       resume 'swaymsg "output * power on"' \
+       before-sleep 'swaylock -f -c 000000'
 
 # Screen lock
 bindsym $mod+Shift+q exec swaylock -f -c 000000
@@ -314,6 +285,7 @@ set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec udiskie
 # exec_always 'pkill kanshi; exec kanshi'
-exec autotiling
+exec_always 'pkill waybar; exec waybar'
+exec_always 'pkill autotiling; exec autotiling -sr "1.61"'
 exec wl-paste --watch cliphist store
 exec systemctl --user restart wlsunset.service
