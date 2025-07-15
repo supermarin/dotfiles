@@ -5,7 +5,7 @@
   security.pam.services.login = {
     fprintAuth = true;
   };
-  security.pam.services.gtklock = {
+  security.pam.services.swaylock = {
     fprintAuth = true;
     text = ''
       auth sufficient pam_fprintd.so
