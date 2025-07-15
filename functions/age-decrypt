@@ -2,4 +2,5 @@
 set -euo pipefail
 
 age -i $XDG_RUNTIME_DIR/age -d "$@" 2>/dev/null || \
+  sudo age -i ~/age-tpm.txt -d "$@" 2>/dev/null || \
   age -i <(age-plugin-yubikey --identity --slot 1 2>/dev/null) -d "$@"
