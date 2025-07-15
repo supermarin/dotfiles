@@ -5,7 +5,6 @@
   "formatter": "language_server",
   "ssh_connections": [
     {
-      // "upload_binary_over_ssh": false,
       "host": "mufasa",
       "args": [
         "-A"
@@ -29,13 +28,6 @@
       ]
     }
   ],
-  "assistant": {
-    "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4o"
-    },
-    "version": "2"
-  },
   "auto_update": false,
   "autosave": {
     "after_delay": {
@@ -57,6 +49,7 @@
     "line_height": "standard"
   },
   "telemetry": {
+    "diagnostics": false,
     "metrics": false
   },
   "theme": "Graphene",
