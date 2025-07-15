@@ -14,16 +14,12 @@
 
       # emoji
       noto-fonts-emoji
-      font-awesome # i3status-rust
 
       # monospace
-      hack-font
-      ibm-plex
-      inputs.fonts.packages.${pkgs.system}.berkeley-mono-slash-dot-normal-seven-condensed
-      inputs.fonts.packages.${pkgs.system}.berkeley-mono-slash-dot-normal-seven-normal
-      inputs.fonts.packages.${pkgs.system}.berkeley-mono-slash-dot-normal-seven-semi-condensed
+      inputs.fonts.packages.${pkgs.system}.berkeley-mono.condensed
+      inputs.fonts.packages.${pkgs.system}.berkeley-mono.normal
+      inputs.fonts.packages.${pkgs.system}.berkeley-mono.semi-condensed
       iosevka
-      monaspace
     ];
     fontconfig = {
       defaultFonts = {
