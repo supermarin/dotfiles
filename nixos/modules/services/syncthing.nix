@@ -24,9 +24,15 @@
       # doesn't update <listenAddress> in config.xml. Figure out why.
       devices = {
         carbon.id = "6MLXSNZ-2DLBIHF-V4KY5AR-MI4AGJ3-QGIG7BW-VR7TQDH-EVOCZIC-FBW3UAY";
-        carbon.addresses = [ "quic://carbon" ];
+        carbon.addresses = [
+          "tcp://carbon"
+          "quic://carbon"
+        ];
         tokio.id = "3R5ICHB-XN4DEI4-7NUMPI2-DCL24JI-3A2XN2Y-6IG6UTX-VXO22EL-66T3ZQM";
-        tokio.addresses = [ "quic://tokio" ];
+        tokio.addresses = [
+          "tcp://tokio"
+          "quic://tokio"
+        ];
         mufasa.id = "PXHEELW-HDYA4HB-HE536W6-KDDHIE4-AHXWEZ3-H4EOYDI-LB72EZZ-5HDZ3QH";
         mufasa.addresses = [
           "quic://mufasa"
@@ -68,6 +74,22 @@
         };
         "~/Documents" = {
           id = "Documents";
+          devices = [
+            "tokio"
+            "carbon"
+            "mufasa"
+          ];
+        };
+        "~/.p" = {
+          id = "p";
+          devices = [
+            "tokio"
+            "carbon"
+            "mufasa"
+          ];
+        };
+        "~/.otp" = {
+          id = "otp";
           devices = [
             "tokio"
             "carbon"
