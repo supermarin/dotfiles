@@ -12,13 +12,13 @@
   ];
 
   programs.asdcontrol.enable = true;
-
+  programs.ssh.startAgent = true;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
-      autotiling # for sway & i3
+      autotiling # for sway
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
       (cliphist.overrideAttrs { doCheck = false; }) # clipboard history
@@ -30,9 +30,7 @@
       mupdf
       adwaita-icon-theme
       gnome-calculator
-      kdePackages.kate # basic kde text editor
       kanshi
-      kdePackages.konsole # for terminal in kate
       nautilus # gui file browser
       sushi # quick preview for nautilus
       imagemagick # for resizing images
@@ -46,6 +44,7 @@
       swayidle # idle lock
       udiskie # auto mount usb media
       xdg-utils
+      waybar
       w3m # for HTML emails
       wdisplays
       wl-clipboard # wl-copy, wl-paste. wl-clipboard-rs doesn't support --watch
