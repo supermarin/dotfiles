@@ -69,14 +69,13 @@ input 16700:34053:Dell_Dell_Universal_Receiver {
     xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
 }
 
-# seat home {
 output "BNQ BenQ RD280U S5R0007501Q" {
   scale 1.5
 }
 
 # X1 carbon
 output "Samsung Display Corp. 0x419F Unknown" {
-  scale 2
+  scale 1.6
 }
 
 # X1 Nano
