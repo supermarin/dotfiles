@@ -21,9 +21,6 @@
     NIXOS_OZONE_WL = "1"; # https://discourse.nixos.org/t/partly-overriding-a-desktop-entry/20743/2
   };
   environment.pathsToLink = [ "/share/zsh" ]; # for zsh system completions
-
-  # Only put system software in here, e.g. stuff that is installed by
-  # default on macOS and Ubuntu. The user software goes in home.nix.
   environment.systemPackages = with pkgs; [
     appimage-run # experimental
     dig
@@ -37,12 +34,11 @@
   hardware.bluetooth = {
     enable = true; # enables bluez
   };
-
   hardware.i2c.enable = true;
 
   networking = {
     # TODO: see if it makes more sense to use Blocky here
-    extraHosts = builtins.readFile ./hosts.txt;
+    # extraHosts = builtins.readFile ./hosts.txt;
     firewall = {
       allowedTCPPorts = [ ];
       allowedUDPPorts = [
@@ -58,7 +54,6 @@
     networkmanager.enable = true;
     stevenBlackHosts.enable = true;
   };
-  programs.ssh.startAgent = true;
 
   services.avahi = {
     enable = true;
@@ -73,8 +68,8 @@
     alsa.enable = true;
     pulse.enable = true;
   };
-  services.pulseaudio.enable = false; # pipewire requires this disabled
   services.printing.enable = true;
+  services.pulseaudio.enable = false; # pipewire requires this disabled
   services.tailscale.enable = true;
   services.tailscale.permitCertUid = "caddy";
   services.udev.enable = true;
@@ -116,6 +111,5 @@
     dockerSocket.enable = true;
   };
 
-  # time.timeZone = "America/New_York";
   services.automatic-timezoned.enable = true;
 }
