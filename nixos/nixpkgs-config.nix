@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./modules/build-machines.nix
@@ -13,6 +13,7 @@
   };
   nixpkgs.config.allowUnfree = true;
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
     extraOptions = ''
       experimental-features = nix-command flakes
       builders-use-substitutes = true
