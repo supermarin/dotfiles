@@ -45,8 +45,8 @@ set $notification-center swaync-client -t -sw
 output * bg $c_green solid_color
 
 # Turn off laptop monitor when lid is down
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
+bindswitch --reload --locked lid:on output eDP-1 disable
+bindswitch --reload --locked lid:off output eDP-1 enable
 
 ### Input configuration
 #
