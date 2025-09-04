@@ -8,11 +8,6 @@
     (
       { pkgs, config, ... }:
       let
-        cursor-fhs = pkgs.buildFHSEnv {
-          name = "cursor";
-          targetPkgs = pkgs: with pkgs; [ code-cursor ];
-          runScript = "cursor";
-        };
         dotfiles = "${config.home.homeDirectory}/dotfiles";
         ln = file: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${file}";
       in
@@ -24,9 +19,7 @@
         home.packages = with pkgs; [
           # jj GUI. remove if not used in the next 2 months: 2025-07-08
           calibre # books
-          cursor-fhs
           discord
-          gg-jj
           ghostty
           kitty
           libreoffice
@@ -38,7 +31,6 @@
           ungoogled-chromium
           virt-manager
           vlc # Unsupported on aarch64-darwin as of Aug 10 2022
-          vscodium-fhs
           whatsapp-for-linux
           zed-editor
         ];
