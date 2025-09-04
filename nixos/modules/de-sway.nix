@@ -18,7 +18,7 @@
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
-      autotiling # for sway
+      autotiling-rs # for sway
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
       (cliphist.overrideAttrs { doCheck = false; }) # clipboard history

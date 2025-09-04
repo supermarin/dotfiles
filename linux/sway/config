@@ -292,6 +292,6 @@ exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec udiskie
 # exec_always 'pkill kanshi; exec kanshi'
 exec_always 'pkill waybar; exec waybar'
-exec_always 'pkill autotiling; exec autotiling -sr "1.61"'
+exec_always 'pkill autotiling-rs; exec autotiling-rs'
 exec wl-paste --watch cliphist store
 exec systemctl --user restart wlsunset.service
