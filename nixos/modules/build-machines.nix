@@ -3,7 +3,6 @@ let
   builders = {
     mufasa = {
       hostName = "mufasa";
-      # system = "x86_64-linux";
       speedFactor = 10;
       supportedFeatures = [
         "nixos-test"
@@ -22,6 +21,8 @@ let
     simba = [ builders.mufasa ];
     tokio = [ builders.mufasa ];
     dx001 = [ builders.mufasa ];
+    mufasa = [ ];
+    carbon = [ builders.mufasa ];
   };
 in
 {
