@@ -9,7 +9,7 @@
       "hyprland/workspaces"
     ],
     "modules-center": [
-      "clock"
+      "clock",
     ],
     "modules-right": [
       "bluetooth",
@@ -17,7 +17,8 @@
       "pulseaudio",
       "cpu",
       "battery",
-      "custom/power-menu"
+      "power-profiles-daemon",
+      "custom/date",
     ],
     "hyprland/workspaces": {
       "on-click": "activate",
@@ -49,9 +50,11 @@
       "on-click": "ghostty -e btop"
     },
     "clock": {
-      "format": "{:%H:%M %a %b %d}",
-      "format-alt": "{:%d %B W%V %Y}",
-      "tooltip": false
+      "format": "{:%H:%M}",
+    },
+    "custom/date": {
+      "format": "{} ",
+      "exec": "date '+%a %h %m'",
     },
     "network": {
       "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
@@ -79,7 +82,7 @@
             "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
           ]
         },
-      "format-full": "Charged ",
+      "format-full": "",
       "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
       "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
       "interval": 5,
@@ -104,9 +107,7 @@
       "on-click-right": "pamixer -t",
       "ignored-sinks": ["Easy Effects Sink"]
     },
-    "custom/power-menu": {
-      "format": "󰐥",
-      "on-click": "~/.local/share/omarchy/bin/omarchy-power-menu",
-      "tooltip": false
-    }
+    "power-profiles-daemon": {
+      "format": "{profile} ",
+    },
 }
