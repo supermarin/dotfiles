@@ -6,7 +6,6 @@
 }:
 {
   imports = [
-    inputs.lix.nixosModules.default
     inputs.steven-black-hosts.nixosModule
   ];
 
