@@ -16,7 +16,7 @@ set $c_grey #64727D
 set $c_blue #0084ff
 set $c_miami_green #003020
 set $c_dwr_green #182d2a
-set $c_green $c_dwr_green
+set $c_green #102020
 set $c_orange #ff9f0a
 set $c_miami_pink #f1c5d2
 set $c_pink #ff375f
