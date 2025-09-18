@@ -78,6 +78,10 @@ output "Samsung Display Corp. 0x419F Unknown" {
   scale 1.6
 }
 
+output DP-2 {
+  disable
+}
+
 # X1 Nano
 output 'Chimei Innolux Corporation 0x1301 Unknown' {
   scale 1.25
