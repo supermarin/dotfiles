@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
 if [[ -n $1 ]]; then
+  prefix=nixpkgs#
+  if [[ $1 == github:* ]]; then prefix=; fi
+
   set -x
-  nix shell nixpkgs#$*
+  nix shell $prefix$*
 else
   set -x
   nix shell
