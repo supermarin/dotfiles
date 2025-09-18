@@ -74,11 +74,11 @@ git_prompt() {
 }
 
 # Display nix-shell prompt if inside a nix-shell
-nix_shell() {
+symbol() {
   if [ -n "$IN_NIX_SHELL" ]; then
-    echo "${green}nix-shell$normal "
+    echo "${green}λ$normal "
   else
-    echo "$normal"
+    echo "$normal➜ "
   fi
 }
 
@@ -133,8 +133,8 @@ precmd() {
     local vcs="$(git_prompt)$normal "
   fi
 
-  local stuff="$(ssh_prompt)$vcs$(nix_shell)"
-  export PROMPT="%(1j.[%j jobs] .)%(0?..${red}[%?] )$normal${stuff}➜ "
+  local stuff="$(ssh_prompt)$vcs$(symbol)"
+  export PROMPT="%2~ %(1j.[%j jobs] .)%(0?..${red}[%?] )$normal${stuff}"
 }
 
 chpwd() {
