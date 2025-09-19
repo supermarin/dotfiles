@@ -32,7 +32,6 @@ window#waybar {
 #workspaces button.focused {
   color: #ededed;
   font-weight: 800;
-  text-shadow: 0 0 7px #ffffff;
 }
 
 #custom-dropbox,

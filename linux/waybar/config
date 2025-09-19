@@ -1,7 +1,7 @@
 {
   "layer": "top",
     "position": "top",
-    "spacing": 0,
+    "spacing": -5,
     "height": 26,
     "modules-left": [
       "sway/workspaces",
@@ -12,12 +12,11 @@
       "clock",
     ],
     "modules-right": [
+      "power-profiles-daemon",
       "bluetooth",
       "network",
       "pulseaudio",
-      "cpu",
       "battery",
-      "power-profiles-daemon",
       "custom/date",
     ],
     "hyprland/workspaces": {
@@ -44,11 +43,6 @@
         "5": []
       }
     },
-    "cpu": {
-      "interval": 5,
-      "format": "󰍛",
-      "on-click": "ghostty -e btop"
-    },
     "clock": {
       "format": "{:%H:%M}",
     },
@@ -70,8 +64,8 @@
       "on-click": "ghostty -e nmtui-connect"
     },
     "battery": {
-      "format": "{capacity}% {icon}",
-      "format-discharging": "{icon}",
+      "format": "{icon} {capacity}%",
+      "format-discharging": "{icon} {capacity}%",
       "format-charging":    "{icon}",
       "format-plugged":     "",
         "format-icons": {
@@ -82,13 +76,13 @@
             "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
           ]
         },
-      "format-full": "",
+      "format-full": "󰂄",
       "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
       "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
       "interval": 5,
       "states": {
         "warning": 20,
-        "critical": 10
+        "critical": 10,
       }
     },
     "bluetooth": {
@@ -96,18 +90,21 @@
       "format-disabled": "󰂲",
       "format-connected": "",
       "tooltip-format": "Devices connected: {num_connections}",
-      "on-click": "blueberry"
+      "on-click": "blueberry",
     },
     "pulseaudio": {
-      "format": "",
-      "format-muted": "󰝟",
+      "format": "{icon}",
+      "format-muted": "󰝟 ",
+      "format-icons": {
+        "default": ["󰕿", "󰖀", "󰕾", "󰕾"]
+      },
       "scroll-step": 5,
       "on-click": "pwvucontrol",
       "tooltip-format": "Playing at {volume}%",
       "on-click-right": "pamixer -t",
-      "ignored-sinks": ["Easy Effects Sink"]
+      "ignored-sinks": ["Easy Effects Sink"],
     },
     "power-profiles-daemon": {
-      "format": "{profile} ",
+      "format": "{profile}  ",
     },
 }
