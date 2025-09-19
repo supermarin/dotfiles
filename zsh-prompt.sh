@@ -2,6 +2,7 @@
 red="%F{red}"
 normal="%f"
 cyan="%F{cyan}"
+blue="%F{blue}"
 green="%F{green}"
 purple="%F{magenta}"
 chocolate="%F{214}"
@@ -134,7 +135,7 @@ precmd() {
   fi
 
   local stuff="$(ssh_prompt)$vcs$(symbol)"
-  export PROMPT="%2~ %(1j.[%j jobs] .)%(0?..${red}[%?] )$normal${stuff}"
+  export PROMPT="$blue%2~${normal} %(1j.[%j jobs] .)%(0?..${red}[%?] )$normal${stuff}"
 }
 
 chpwd() {
