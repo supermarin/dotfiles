@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: support multiple packages, e.g. `ns dmidecode biosdecode` 
+#       should expand to `nix shell nixpkgs#biosdecode nixpkgs#dmidecode`
 if [[ -n $1 ]]; then
   prefix=nixpkgs#
   if [[ $1 == github:* ]]; then prefix=; fi
