@@ -23,9 +23,8 @@
       nvim-dap-python
       # AI
       codecompanion-nvim
-      # Telescope
-      telescope-nvim
-      plenary-nvim
+      # Fuzzy
+      fzf-lua
       # Git
       gitsigns-nvim
       # Misc

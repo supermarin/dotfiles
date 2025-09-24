@@ -48,12 +48,12 @@ vim.api.nvim_create_user_command('WQ', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('Q', 'q', {})   -- halp
 vim.api.nvim_create_user_command('W', 'w', {})   -- halp
 
--- Telescope
-vim.keymap.set('n', '<leader>c', ':Telescope commands<cr>')
-vim.keymap.set('n', '<leader>/', ':Telescope live_grep<cr>')
-vim.keymap.set('n', '<leader>f', ':Telescope find_files<cr>')
-vim.keymap.set('n', '<leader>b', ':Telescope buffers<cr>')
-vim.keymap.set('n', '<leader>h', ':Telescope help_tags<cr>')
+-- Fuzzy
+vim.keymap.set('n', '<leader>p', ':FzfLua commands<cr>')
+vim.keymap.set('n', '<leader>/', ':FzfLua live_grep<cr>')
+vim.keymap.set('n', '<leader>f', ':FzfLua files<cr>')
+vim.keymap.set('n', '<leader>b', ':FzfLua buffers<cr>')
+vim.keymap.set('n', '<leader>h', ':FzfLua help_tags<cr>')
 
 -- AUTOGROUPS / EVENTS
 local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
@@ -226,7 +226,3 @@ end
 dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
 end
-
--- -- The video uses an early version of the future 'minispring' dark color
--- require('mini.hues').setup({ background = '#122722', foreground = '#c2dbd3', accent = 'green' })
-vim.cmd [[ color bamboo ]]
