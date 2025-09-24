@@ -45,10 +45,12 @@
     },
     "clock": {
       "format": "{:%H:%M}",
+      "on-click": "blueberry",
+      "tooltip": false,
     },
     "custom/date": {
       "format": "{} ",
-      "exec": "date '+%a %h %m'",
+      "exec": "date '+%a %h %d'",
     },
     "network": {
       "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],

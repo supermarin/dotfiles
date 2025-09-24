@@ -40,10 +40,12 @@ window#waybar {
 #network,
 #bluetooth,
 #pulseaudio,
-#clock,
 #custom-power-menu {
   min-width: 12px;
-  margin-right: 13px;
+  margin-right: 10px;
+}
+
+#clock {
 }
 
 tooltip {
