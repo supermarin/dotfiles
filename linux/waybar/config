@@ -45,7 +45,7 @@
     },
     "clock": {
       "format": "{:%H:%M}",
-      "on-click": "blueberry",
+      "on-click": "gnome-clocks",
       "tooltip": false,
     },
     "custom/date": {

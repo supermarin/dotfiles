@@ -22,6 +22,7 @@
           discord
           ghostty
           kitty
+          gnome-clocks
           libreoffice
           neovide # neovim gui I never use
           neovim-gtk # neovim gui I never use 2
