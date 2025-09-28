@@ -21,7 +21,6 @@
           calibre # books
           discord
           ghostty
-          kitty
           gnome-clocks
           libreoffice
           neovide # neovim gui I never use
