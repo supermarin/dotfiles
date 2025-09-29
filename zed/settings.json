@@ -1,4 +1,31 @@
 {
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "disable_ai": true,
+  "minimap": {
+    "show": "auto"
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_value_hints": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "show_background": false,
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50,
+    "toggle_on_modifiers_press": {
+      "control": false,
+      "alt": false,
+      "shift": false,
+      "platform": false,
+      "function": false
+    }
+  },
+  "base_keymap": "SublimeText",
   "features": {
     "edit_prediction_provider": "zed"
   },
@@ -34,7 +61,7 @@
       "milliseconds": 2000
     }
   },
-  "buffer_font_size": 14.0,
+  "buffer_font_size": 13.0,
   "buffer_font_family": "Berkeley Mono",
   "load_direnv": "direct",
   "buffer_line_height": "standard",
@@ -52,8 +79,12 @@
     "diagnostics": false,
     "metrics": false
   },
-  "theme": "Graphene",
-  "ui_font_size": 11,
+  "theme": {
+    "mode": "system",
+    "light": "Ayu Light",
+    "dark": "Catppuccin Macchiato"
+  },
+  "ui_font_size": 12,
   "ui_font_family": "Berkeley Mono",
   "vim_mode": true,
   "languages": {
