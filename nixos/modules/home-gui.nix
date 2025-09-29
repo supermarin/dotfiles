@@ -17,7 +17,6 @@
           inputs.zen-browser.homeModules.beta
         ];
         home.packages = with pkgs; [
-          # jj GUI. remove if not used in the next 2 months: 2025-07-08
           calibre # books
           discord
           ghostty
