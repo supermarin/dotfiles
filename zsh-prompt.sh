@@ -134,8 +134,8 @@ precmd() {
     local vcs="$(git_prompt)$normal "
   fi
 
-  local stuff="$(ssh_prompt)$vcs$(symbol)"
-  export PROMPT="$blue%2~${normal} %(1j.[%j jobs] .)%(0?..${red}[%?] )$normal${stuff}"
+  local stuff="$(ssh_prompt)$blue%2~${normal} $vcs$(symbol)"
+  export PROMPT="%(1j.[%j jobs] .)%(0?..${red}[%?] )$normal${stuff}"
 }
 
 chpwd() {
