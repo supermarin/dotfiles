@@ -2,6 +2,6 @@ font-family = Berkeley Mono
 font-size = 11
 keybind = ctrl+enter=unbind
 shell-integration-features = no-cursor
-theme = IR_Black
+theme = IR Black
 confirm-close-surface = false
 # window-decoration = false
