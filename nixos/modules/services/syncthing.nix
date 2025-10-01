@@ -25,6 +25,8 @@
       devices = {
         carbon.id = "6MLXSNZ-2DLBIHF-V4KY5AR-MI4AGJ3-QGIG7BW-VR7TQDH-EVOCZIC-FBW3UAY";
         carbon.addresses = [
+          "tcp://carbon:22000"
+          "quic://carbon:22000"
           "tcp://carbon"
           "quic://carbon"
         ];
