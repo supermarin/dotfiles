@@ -26,6 +26,7 @@
     dig
     file # file(1)
     killall # killall(1)
+    trash-cli
     tree
     unzip
     zip
