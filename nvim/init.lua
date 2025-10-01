@@ -95,16 +95,16 @@ require('which-key').setup { delay = 0, preset = 'helix' }
 
 -- tree-sitter
 require('nvim-treesitter.configs').setup {
-  -- highlight = {
-  --   enable = true,
-  --   disable = function(_, buf)        -- disable on big files
-  --     local max_filesize = 100 * 1024 -- 100 KB
-  --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-  --     if ok and stats and stats.size > max_filesize then
-  --       return true
-  --     end
-  --   end,
-  -- },
+  highlight = {
+    -- enable = true,
+    disable = function(_, buf)        -- disable on big files
+      local max_filesize = 100 * 1024 -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return true
+      end
+    end,
+  },
   textobjects = {
     enable = true,
     select = {
@@ -128,8 +128,7 @@ require('nvim-treesitter.configs').setup {
 -------------------------------------------------------------------------------
 -- LSP
 -------------------------------------------------------------------------------
-local lspconfig = require('lspconfig')
-local servers = { 'gopls', 'lua_ls', 'ruby_lsp', 'clangd', 'pylsp', 'r_language_server', 'nixd' }
+local servers = { 'gopls', 'lua_ls', 'ruby_lsp', 'clangd', 'ruff', 'basedpyright', 'r_language_server', 'nixd' }
 local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { silent = true })
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
@@ -152,33 +151,82 @@ local options = {
   flags = {
     debounce_text_changes = 150,
   },
-  settings = {
-    pylsp = {
-      configurationSources = { 'pyproject' },
-      plugins = {
-        pycodestyle = { enabled = false },
-      }
-    },
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    },
-  }
 }
 
+local server_settings = {
+  lua_ls = {
+    settings = {
+      Lua = {
+        diagnostics = { globals = { 'vim' } },
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+      }
+    }
+  },
+  gopls = {
+    settings = {
+      gopls = {
+        analyses = { unusedparams = true },
+        staticcheck = true,
+      }
+    }
+  },
+  ruff = {
+    -- init_options = {
+    --   settings = {
+    --     -- Ruff language server settings go here
+    --   }
+    -- }
+  },
+  basedpyright = {
+    settings = {
+      basedpyright = {
+        analysis = {
+          -- diagnosticMode = "openFilesOnly",
+
+          ignore = { '*' },
+          inlayHints = {
+            callArgumentNames = true
+          }
+        }
+      }
+    }
+  },
+  pyright = {
+    settings = {
+      pyright = {
+        -- Using Ruff's import organizer
+        disableOrganizeImports = true,
+      },
+      python = {
+        analysis = {
+          -- Ignore all files for analysis to exclusively use Ruff for linting
+          ignore = { '*' },
+          diagnosticMode = "workspace",
+        },
+      },
+    },
+  },
+}
+
+for _, server in ipairs(servers) do
+  local server_opts = vim.tbl_deep_extend(
+    "force",
+    options,
+    server_settings[server] or {}
+  )
+  vim.lsp.config(server, server_opts)
+  vim.lsp.enable(server)
+end
+
+
 require('blink.cmp').setup({
-  keymap = { preset = 'enter' },
+  -- keymap = { preset = 'enter' },
   sources = {
     default = { 'lsp', 'snippets', 'codecompanion', 'buffer' },
   },
   -- signature = { enabled = true, }, -- [C-k] to toggle in insert
 })
-
-for _, server in ipairs(servers) do
-  lspconfig[server].setup(options)
-end
-
 
 vim.diagnostic.config({ virtual_text = true, })
 
