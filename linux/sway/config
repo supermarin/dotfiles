@@ -205,9 +205,9 @@ bindsym $mod+minus splitv
 
 # # Switch the current container between different layout styles
 # TODO: figure out what to do with these. not really using it at all
-# bindsym $mod+Shift+s layout stacking
-# bindsym $mod+Shift+w layout tabbed
-# bindsym $mod+Shift+d layout default
+bindsym $mod+$alt+s layout stacking
+bindsym $mod+$alt+w layout tabbed
+bindsym $mod+$alt+d layout default
 #
 # Make the current focus fullscreen
 bindsym $mod+m fullscreen
