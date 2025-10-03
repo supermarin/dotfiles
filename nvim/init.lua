@@ -70,8 +70,8 @@ vim.api.nvim_create_autocmd('TermOpen', {
   group = au,
   pattern = '*',
   callback = function(opts)
-    vim.opt.number = false
-    vim.opt.relativenumber = false
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
     if opts.file:match('dap%-terminal') then
       return
     end
@@ -96,7 +96,7 @@ require('which-key').setup { delay = 0, preset = 'helix' }
 -- tree-sitter
 require('nvim-treesitter.configs').setup {
   highlight = {
-    -- enable = true,
+    enable = true,
     disable = function(_, buf)        -- disable on big files
       local max_filesize = 100 * 1024 -- 100 KB
       local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
@@ -112,8 +112,6 @@ require('nvim-treesitter.configs').setup {
       -- include_surrounding_whitespace = true,
       -- lookahead = false,
       keymaps = {
-        ["am"] = "@function.outer",
-        ["im"] = "@function.inner",
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
