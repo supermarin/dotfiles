@@ -26,7 +26,7 @@
 
         cd "$dir" || return
         clear
-        ls -la
+        la
       }
 
       eval "$(${pkgs.fzf}/bin/fzf --zsh)"
