@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This function displays all the binaries in the most recent nix shell.
+# Sometimes, entering a nix shell (e.g. nix shell nixpkgs#mastdodon) doesn't
+# expose a binary with the same name as the flake. 
+# The manual process of this is printing $PATH and running `ls` on the first
+# $PATH component. This function saves a copy and paste.
+ls $(echo $PATH | cut -f1 -d:)
