@@ -42,6 +42,7 @@ vim.opt.swapfile = false
 vim.opt.tabstop = tabspaces
 vim.opt.termguicolors = true
 vim.opt.undofile = true
+vim.cmd [[ colorscheme lunaperche ]]
 
 vim.api.nvim_create_user_command('Wq', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('WQ', 'wq', {}) -- halp
