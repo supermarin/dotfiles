@@ -57,6 +57,14 @@
           "zed/settings.json".source = ln "zed/settings.json";
           "i3status-rust/config.toml".source = ln "linux/i3status-rs/config.toml";
           "sway/config".source = ln "linux/sway/config";
+        xdg.desktopEntries = {
+          jupyter = {
+            name = "Jupyter";
+            comment = "Jupyter lab webapp";
+            exec = "${pkgs.ungoogled-chromium}/bin/chromium --app=http://mufasa/jupyter";
+            mimeType = [ "text/html" ];
+            type = "Application";
+          };
         };
       }
     )
