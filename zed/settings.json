@@ -81,7 +81,7 @@
   },
   "theme": {
     "mode": "system",
-    "light": "Ayu Light",
+    "light": "One Dark",
     "dark": "Catppuccin Macchiato"
   },
   "ui_font_size": 12,
