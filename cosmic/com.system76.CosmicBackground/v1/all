@@ -1,6 +1,6 @@
 (
     output: "all",
-    source: Path("/home/marin/Pictures/000036050025.jpg"),
+    source: Path("/home/marin/Pictures/TNT-Boulder-Crit/SBR_TNT_July 22, 2025_74497.jpg"),
     filter_by_theme: true,
     rotation_frequency: 300,
     filter_method: Lanczos,
