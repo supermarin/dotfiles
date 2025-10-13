@@ -139,11 +139,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1758658554,
-        "narHash": "sha256-EDmIeUWfTD3t9xD1kBRFksb497cQ35d3NeKDuRPF84c=",
+        "lastModified": 1759521103,
+        "narHash": "sha256-GshlHbtIKvgQZPAqrLGCUg2CKXV1z6F+6hXOyKswR8Q=",
         "ref": "refs/heads/main",
-        "rev": "03d4a8f1ad95bd95cc008af79aad000b6a521457",
-        "revCount": 82,
+        "rev": "a5916d6bb9281b1245f9e2ee829adaa428005754",
+        "revCount": 84,
         "type": "git",
         "url": "ssh://git@github.com/squale-capital/jupyter"
       },
