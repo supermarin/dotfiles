@@ -58,6 +58,14 @@
             "mufasa"
           ];
         };
+        "~/Books" = {
+          id = "Books";
+          devices = [
+            "tokio"
+            "carbon"
+            "mufasa"
+          ];
+        };
         "~/dotfiles" = {
           id = "lpnyj-66gkm";
           devices = [
