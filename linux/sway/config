@@ -196,11 +196,11 @@ bindsym $mod+minus splitv
 # # Switch the current container between different layout styles
 # TODO: figure out what to do with these. not really using it at all
 bindsym $mod+$alt+s layout stacking
-bindsym $mod+$alt+w layout tabbed
+bindsym $mod+$alt+t layout tabbed
 bindsym $mod+$alt+d layout default
 #
 # Make the current focus fullscreen
-bindsym $mod+m fullscreen
+bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+space floating toggle
