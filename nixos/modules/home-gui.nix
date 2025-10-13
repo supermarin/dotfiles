@@ -52,12 +52,15 @@
         xdg.configFile = {
           "cosmic".source = ln "cosmic";
           "ghostty".source = ln "ghostty";
+          "i3status-rust/config.toml".source = ln "linux/i3status-rs/config.toml";
           "kanshi/config".source = ln "kanshi/config";
           "river/init".source = ln "river/init";
+          "sway/config".source = ln "linux/sway/config";
+          "waybar".source = ln "linux/waybar";
           "zed/keymap.json".source = ln "zed/keymap.json";
           "zed/settings.json".source = ln "zed/settings.json";
-          "i3status-rust/config.toml".source = ln "linux/i3status-rs/config.toml";
-          "sway/config".source = ln "linux/sway/config";
+        };
+
         xdg.desktopEntries = {
           jupyter = {
             name = "Jupyter";

@@ -111,8 +111,6 @@ in
     ".sqliterc".source = ./sqliterc;
   };
   xdg.configFile = {
-    "waybar".source = ln "linux/waybar";
-    "ghostty".source = ln "ghostty";
     "jj/config.toml".source = ln "jj/config.toml";
     "tig/config".source = ln "tig/config";
     "rg/config".source = ./rg/config;
