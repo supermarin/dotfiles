@@ -17,6 +17,7 @@
           inputs.zen-browser.homeModules.beta
         ];
         home.packages = with pkgs; [
+          (import ../../misc/glide.nix { inherit pkgs; })
           calibre # books
           discord
           ghostty

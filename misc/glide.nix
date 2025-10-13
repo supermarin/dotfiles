@@ -1,9 +1,10 @@
 { pkgs, ... }:
-pkgs.stdenv.mkDerivation {
+pkgs.stdenv.mkDerivation rec {
   name = "Glide";
+  version = "0.1.51a";
   src = pkgs.fetchurl {
-    url = "https://github.com/glide-browser/glide/releases/download/0.1.50a/glide.linux-x86_64.tar.xz";
-    sha256 = "sha256-jOzE+727socJQAJIj2sCgUS+okx3zH79JuMzLhsEYsk=";
+    url = "https://github.com/glide-browser/glide/releases/download/${version}/glide.linux-x86_64.tar.xz";
+    sha256 = "sha256-eQ8itn8XvFNuLypKruTLpWyzDr899lLTMBU3yN+yGeU=";
   };
   nativeBuildInputs = [ pkgs.makeWrapper ];
   installPhase = ''
