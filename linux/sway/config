@@ -135,7 +135,7 @@ bindsym $mod+o workspace 1; exec ps ax | grep -v grep | grep obsidian || obsidia
 # Kill focused window
 bindsym $mod+q kill
 # Start launcher
-bindsym $mod+Space exec rofi -show combi 
+bindsym $mod+Space exec albert toggle
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 # Toggle notification control center
