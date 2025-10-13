@@ -5,3 +5,4 @@ shell-integration-features = no-cursor
 theme = IR Black
 confirm-close-surface = false
 # window-decoration = false
+keybind = shift+enter=text:\x1b\r
