@@ -12,3 +12,6 @@ age1tpm1qd47l6fr0zg8ft23jk6yvve4qpf2h887k82rnn9w7f62anpnj9x9syaz7y5
 
 # X1 carbon TPM
 age1tpm1q0g4pevp20yysx7m0tuwtse20zmyvtxr5tv894q3fcz68wwn8mq7xujafsn
+
+# Computer-1 TPM
+age1tpm1q00l950lc4r5n9yk33c4mj7yylyexwtdamhvkenu03z9dcm6d3zmuq8ew4e
