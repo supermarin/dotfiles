@@ -67,7 +67,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./nixos/configuration.nix
-            ./nixos/hardware-x1.nix
+            ./nixos/hardware-x1-nano.nix
             ./nixos/modules/de-sway.nix
             ./nixos/modules/home-manager-config.nix
             ./nixos/modules/home-gui.nix
