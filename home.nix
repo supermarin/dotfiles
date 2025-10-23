@@ -34,6 +34,7 @@ in
     dua # disk usage analyzer, better du -hc
     duckdb
     dysk # disk usage analyzer, better df -h
+    evil-helix # helix with vim bindings
     eza # ls with stuff
     fd
     fzf

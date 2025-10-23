@@ -130,6 +130,8 @@ bindsym $mod+Ctrl+Space exec rofimoji
 bindsym $mod+e exec nautilus --new-window
 # Start a browser
 bindsym $mod+b workspace 2; exec pgrep $browser || $browser
+# Start email
+bindsym $mod+m workspace 5; exec pgrep -f "/app/fastmail" || flatpak run com.fastmail.Fastmail
 # Switch to Obsidian
 bindsym $mod+o workspace 1; exec ps ax | grep -v grep | grep obsidian || obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland
 # Kill focused window
@@ -177,11 +179,11 @@ bindsym $mod+9 workspace number 9
 bindsym $mod+0 scratchpad show
 
 # Move focused container to workspace
-bindsym $mod+Shift+a move container to workspace number 1
-bindsym $mod+Shift+s move container to workspace number 2
-bindsym $mod+Shift+d move container to workspace number 3
-bindsym $mod+Shift+f move container to workspace number 4
-bindsym $mod+Shift+g move container to workspace number 5
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
 bindsym $mod+Shift+6 move container to workspace number 6
 bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
@@ -285,6 +287,8 @@ exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec udiskie
 # exec_always 'pkill kanshi; exec kanshi'
 exec_always 'pkill waybar; exec waybar'
+exec_always 'pkill albert; exec albert'
 exec_always 'pkill autotiling-rs; exec autotiling-rs'
 exec wl-paste --watch cliphist store
 exec systemctl --user restart wlsunset.service
+exec_always 'pkill zpoweralertd; exec zpoweralertd'

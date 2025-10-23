@@ -13,11 +13,14 @@
 
   programs.asdcontrol.enable = true;
   programs.ssh.startAgent = true;
+  services.gnome.gcr-ssh-agent.enable = false;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
+      (import ../../misc/zpoweralertd.nix { inherit pkgs; })
+      albert # launcher
       autotiling-rs # for sway
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
@@ -37,7 +40,7 @@
       playerctl # media keys (play/pause, prev, next)
       pwvucontrol # select sound output device
       pamixer # volume up/down
-      rofi-wayland
+      rofi
       rofimoji # emoji picker, fuzzel doesn't support emoji
       slurp # screenshot: select a region in wayland
       swaylock # idle lock

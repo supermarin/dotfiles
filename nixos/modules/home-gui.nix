@@ -18,7 +18,6 @@
         ];
         home.packages = with pkgs; [
           (import ../../misc/glide.nix { inherit pkgs; })
-          calibre # books
           discord
           ghostty
           gnome-clocks
@@ -34,6 +33,15 @@
           whatsapp-for-linux
           zed-editor
         ];
+
+        # TODO: remove out of here, should live in de-sway. But de-sway isn't called from home manager, need to see how to include the module
+        programs.rofi.enable = true;
+        programs.rofi.modes = [
+          "drun"
+          "emoji"
+          "combi"
+        ];
+
         programs.zen-browser.enable = true;
         programs.librewolf = {
           enable = true;
