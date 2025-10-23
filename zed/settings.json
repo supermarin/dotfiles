@@ -5,9 +5,6 @@
     "dark": "Zed (Default)"
   },
   "disable_ai": true,
-  "minimap": {
-    "show": "auto"
-  },
   "inlay_hints": {
     "enabled": true,
     "show_value_hints": true,
@@ -25,7 +22,6 @@
       "function": false
     }
   },
-  "base_keymap": "SublimeText",
   "features": {
     "edit_prediction_provider": "zed"
   },
@@ -61,7 +57,7 @@
       "milliseconds": 2000
     }
   },
-  "buffer_font_size": 13.0,
+  "buffer_font_size": 15.0,
   "buffer_font_family": "Berkeley Mono",
   "load_direnv": "direct",
   "buffer_line_height": "standard",
@@ -81,8 +77,8 @@
   },
   "theme": {
     "mode": "system",
-    "light": "One Dark",
-    "dark": "Catppuccin Macchiato"
+    "light": "Gruvbox Light Hard",
+    "dark": "Gruvbox Dark Hard"
   },
   "ui_font_size": 12,
   "ui_font_family": "Berkeley Mono",
