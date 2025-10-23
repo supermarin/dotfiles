@@ -222,7 +222,7 @@ end
 require('blink.cmp').setup({
   -- keymap = { preset = 'enter' },
   sources = {
-    default = { 'lsp', 'snippets', 'codecompanion', 'buffer' },
+    default = { 'lsp', 'snippets', 'buffer' },
   },
   -- signature = { enabled = true, }, -- [C-k] to toggle in insert
 })
