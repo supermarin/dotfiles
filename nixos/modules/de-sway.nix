@@ -20,38 +20,37 @@
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
       (import ../../misc/zpoweralertd.nix { inherit pkgs; })
+      adwaita-icon-theme
       albert # launcher
       autotiling-rs # for sway
       blueberry # Bluetooth devices management gui
       brightnessctl # Brightness control
       (cliphist.overrideAttrs { doCheck = false; }) # clipboard history
       ddcutil # another brightness control. for ext displays via i2c
-      grim # wayland screenshot tool
-      i3status-rust # Menu bar
-      libnotify # notify-send
-      swaynotificationcenter # notification daemon
-      mupdf
-      adwaita-icon-theme
       gnome-calculator
-      kanshi
-      nautilus # gui file browser
-      sushi # quick preview for nautilus
+      grim # wayland screenshot tool
+      helvum # sound patchbay
       imagemagick # for resizing images
+      kanshi
+      libnotify # notify-send
+      mupdf
+      nautilus # gui file browser
       playerctl # media keys (play/pause, prev, next)
-      pwvucontrol # select sound output device
-      pamixer # volume up/down
       rofi
       rofimoji # emoji picker, fuzzel doesn't support emoji
       slurp # screenshot: select a region in wayland
-      swaylock # idle lock
+      sushi # quick preview for nautilus
       swayidle # idle lock
+      swaylock # idle lock
+      swaynotificationcenter # notification daemon
       udiskie # auto mount usb media
-      xdg-utils
-      waybar
       w3m # for HTML emails
+      waybar
       wdisplays
+      wiremix # sound output selector
       wl-clipboard # wl-copy, wl-paste. wl-clipboard-rs doesn't support --watch
       wob # indicator bar
+      xdg-utils
     ];
     extraSessionCommands = ''
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
