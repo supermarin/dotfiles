@@ -92,6 +92,7 @@
             ./nixos/modules/de-sway.nix
             ./nixos/modules/move-me-mufasa-services.nix
             ./nixos/modules/services/syncthing.nix
+            ./nixos/modules/tpm.nix
             ./nixos/nixpkgs-config.nix
             {
               networking.hostName = "mufasa";
