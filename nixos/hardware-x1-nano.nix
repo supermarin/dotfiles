@@ -38,8 +38,8 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.enableRedistributableFirmware = true;
   services.power-profiles-daemon.enable = true;
-  # services.tlp = lib.mkIf (config.services.power-profiles-daemon.enable != true) {
-  services.tlp = {
+  # TODO: power-profiles-daemon and tlp clash. Figure out how to do 80% battery thing without TLP
+  services.tlp = lib.mkIf (config.services.power-profiles-daemon.enable != true) {
     enable = true;
     settings = {
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
