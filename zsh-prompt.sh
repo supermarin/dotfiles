@@ -127,6 +127,7 @@ precmd() {
   zle -N self-insert url-quote-magic
   autoload -Uz bracketed-paste-magic
   zle -N bracketed-paste bracketed-paste-magic
+  zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case insensitive matching
 
   if (command -v jj &>/dev/null) && (jj root --quiet &>/dev/null); then
   local vcs="%{$(jj_prompt)%}$normal "
