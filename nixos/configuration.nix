@@ -69,10 +69,8 @@
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-    pulse.enable = true;
   };
   services.printing.enable = true;
-  services.pulseaudio.enable = false; # pipewire requires this disabled
   services.tailscale.enable = true;
   services.tailscale.permitCertUid = "caddy";
   services.udev.enable = true;
