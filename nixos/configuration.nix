@@ -61,6 +61,7 @@
     enable = true;
     nssmdns4 = true;
   };
+  services.flatpak.enable = true;
   services.fwupd.enable = true;
   services.hardware.bolt.enable = true; # enables usbhid on Apple Studio Display
   services.openssh.enable = true;
