@@ -6,5 +6,6 @@ test -n $1 || (echo "Usage: age-rekey <FILE>" && exit 1)
 set -u
 
 for file in "$@"; do
+  echo "rekeying $file"
   age -R "$AGE_RECIPIENTS_FILE" -o "$file" <<< "$(age-decrypt "$file")"
 done
