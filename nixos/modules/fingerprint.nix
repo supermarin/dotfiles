@@ -1,7 +1,6 @@
-{ pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.age-plugin-tpm ];
-  security.tpm2.enable = true;
+  imports = [ ./tpm.nix ];
+  services.fprintd.enable = true;
   security.pam.services.login = {
     fprintAuth = true;
   };
@@ -13,6 +12,4 @@
       auth required pam_deny.so
     '';
   };
-  services.fprintd.enable = true;
-  users.users.marin.extraGroups = [ "tss" ];
 }
