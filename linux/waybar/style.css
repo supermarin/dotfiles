@@ -42,7 +42,7 @@ window#waybar {
 #battery,
 #network,
 #bluetooth,
-#pulseaudio,
+#wireplumber,
 #custom-power-menu {
   min-width: 1em;
   margin: 0 0.5em;

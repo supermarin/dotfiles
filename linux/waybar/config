@@ -15,7 +15,7 @@
       "power-profiles-daemon",
       "bluetooth",
       "network",
-      "pulseaudio",
+      "wireplumber",
       "battery",
       "custom/date",
         "custom/notification",
@@ -115,16 +115,16 @@
       "tooltip-format": "Devices connected: {num_connections}",
       "on-click": "blueberry",
     },
-    "pulseaudio": {
+    "wireplumber": {
       "format": "{icon}",
       "format-muted": "󰝟 ",
       "format-icons": {
         "default": ["󰕿", "󰖀", "󰕾", "󰕾"]
       },
       "scroll-step": 5,
-      "on-click": "pwvucontrol",
+      "on-click": "ghostty -e wiremix",
       "tooltip-format": "Playing at {volume}%",
-      "on-click-right": "pamixer -t",
+      "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
       "ignored-sinks": ["Easy Effects Sink"],
     },
     "power-profiles-daemon": {
