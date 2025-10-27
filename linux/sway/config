@@ -110,7 +110,7 @@ floating_modifier $mod normal
 for_window [title="floating_term"] floating enable
 
 # Make all GNOME (and some other) apps float
-for_window [app_id="(org.gnome.*|gnome-*|wdisplays|galculator|pwvucontrol|blueberry|discord)"] {
+for_window [app_id="(org.gnome.*|gnome-*|wdisplays|galculator|blueberry|discord)"] {
   floating enable
   border none
 }
@@ -124,8 +124,6 @@ bindsym $mod+t workspace 3; exec pgrep $term || $term
 bindsym $mod+w exec $term --title=floating_term --command=nmtui-connect
 # Clipboard history
 bindsym $mod+v exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
-# Emoji
-bindsym $mod+Ctrl+Space exec rofimoji
 # File manager
 bindsym $mod+e exec nautilus --new-window
 # Start a browser
