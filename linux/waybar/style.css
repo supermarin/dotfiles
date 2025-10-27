@@ -43,6 +43,7 @@ window#waybar {
 #network,
 #bluetooth,
 #wireplumber,
+#power-profiles-daemon,
 #custom-power-menu {
   min-width: 1em;
   margin: 0 0.5em;
