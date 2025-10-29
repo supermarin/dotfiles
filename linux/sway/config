@@ -38,6 +38,7 @@ set $down j
 set $up k
 set $right l
 set $term ghostty
+set $floating_term $term --title=floating_term
 set $browser zen-beta
 set $notification-center swaync-client -t -sw
 
@@ -119,9 +120,8 @@ for_window [app_id="(org.gnome.*|gnome-*|wdisplays|galculator)"] {
 #
 # Start a terminal
 bindsym $mod+Return exec $term
-bindsym $mod+t workspace 3; exec pgrep $term || $term
 # NetworkManager connect
-bindsym $mod+w exec $term --title=floating_term --command=nmtui-connect
+bindsym $mod+w exec $term --command=nmtui-connect
 # Clipboard history
 bindsym $mod+v exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
 # File manager
@@ -175,6 +175,8 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 scratchpad show
+bindsym $mod+p exec $floating_term -e p
+bindsym $mod+Shift+p exec $term -e pw
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
