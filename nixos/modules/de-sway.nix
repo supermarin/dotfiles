@@ -23,7 +23,7 @@
       adwaita-icon-theme
       albert # launcher
       autotiling-rs # for sway
-      blueberry # Bluetooth devices management gui
+      bluetui # tui for bluetooth connections
       brightnessctl # Brightness control
       (cliphist.overrideAttrs { doCheck = false; }) # clipboard history
       ddcutil # another brightness control. for ext displays via i2c
