@@ -129,7 +129,7 @@ bindsym $mod+e exec nautilus --new-window
 # Start a browser
 bindsym $mod+b workspace 2; exec pgrep $browser || $browser
 # Start email
-bindsym $mod+m workspace 5; exec pgrep -f "/app/fastmail" || flatpak run com.fastmail.Fastmail
+bindsym $mod+m workspace 5; exec "pgrep -f app/fastmail" || flatpak run com.fastmail.Fastmail
 # Switch to Obsidian
 bindsym $mod+o workspace 1; exec ps ax | grep -v grep | grep obsidian || obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland
 # Kill focused window
