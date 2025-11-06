@@ -38,7 +38,8 @@ set $down j
 set $up k
 set $right l
 set $term ghostty
-set $floating_term $term --title=floating_term
+set $term_cmd ghostty -e
+set $floating_term_cmd ghostty --title=floating_term -e
 set $browser zen-beta
 set $notification-center swaync-client -t -sw
 
@@ -121,13 +122,15 @@ for_window [app_id="(org.gnome.*|gnome-*|wdisplays|galculator)"] {
 # Start a terminal
 bindsym $mod+Return exec $term
 # NetworkManager connect
-bindsym $mod+w exec $term --command=nmtui-connect
+bindsym $mod+w exec $term_cmd nmtui-connect
 # Clipboard history
 bindsym $mod+v exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
 # File manager
 bindsym $mod+e exec nautilus --new-window
 # Start a browser
 bindsym $mod+b workspace 2; exec pgrep $browser || $browser
+# Open bluetooth settings
+bindsym $mod+Shift+b exec $floating_term_cmd bluetui
 # Start email
 bindsym $mod+m workspace 5; exec "pgrep -f app/fastmail" || flatpak run com.fastmail.Fastmail
 # Switch to Obsidian
@@ -174,9 +177,8 @@ bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
-bindsym $mod+0 scratchpad show
-bindsym $mod+p exec $floating_term -e p
-bindsym $mod+Shift+p exec $term -e pw
+bindsym $mod+p exec $floating_term_cmd p
+bindsym $mod+Shift+p exec $term_cmd pw
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
@@ -208,7 +210,15 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 
 # Send the current window to scratchpad
-bindsym $mod+Shift+0 move container to scratchpad
+bindsym $mod+Shift+0 mark "sp1", move container to scratchpad
+# bindsym $mod+0 scratchpad show
+# bindsym $mod+Shift+j mark "sp1", move scratchpad
+# bindsym $mod+Shift+k mark "sp2", move scratchpad
+        
+bindsym $mod+0 [con_mark="sp1"] scratchpad show
+# bindsym $mod+k [con_mark="sp2"] scratchpad show
+
+
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+$alt+space focus mode_toggle
