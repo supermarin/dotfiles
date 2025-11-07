@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # terminal
-riverctl map normal Super Return spawn kitty
+riverctl map normal Super Return spawn ghostty
 riverctl map normal Super B spawn librewolf
 
 # Super+Q to close the focused view

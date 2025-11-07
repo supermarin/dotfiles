@@ -47,7 +47,7 @@ in
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter used by nixd
     nushell
-    oathToolkit # used for OTP
+    oath-toolkit # used for OTP
     ripgrep
     ripgrep-all
     rsync

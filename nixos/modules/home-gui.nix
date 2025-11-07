@@ -30,7 +30,6 @@
           ungoogled-chromium
           virt-manager
           vlc # Unsupported on aarch64-darwin as of Aug 10 2022
-          whatsapp-for-linux
           zed-editor
         ];
 

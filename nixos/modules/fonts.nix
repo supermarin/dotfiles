@@ -15,7 +15,7 @@
       noto-fonts-cjk-serif
 
       # emoji
-      noto-fonts-emoji
+      noto-fonts-color-emoji
 
       # monospace
       inputs.fonts.packages.${pkgs.system}.berkeley-mono.condensed
