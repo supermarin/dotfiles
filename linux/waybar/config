@@ -9,7 +9,7 @@
       "hyprland/workspaces"
     ],
     "modules-center": [
-      "clock",
+      "custom/datetime",
     ],
     "modules-right": [
       "power-profiles-daemon",
@@ -17,8 +17,7 @@
       "network",
       "wireplumber",
       "battery",
-      "custom/date",
-        "custom/notification",
+      "custom/notification",
     ],
     "hyprland/workspaces": {
       "on-click": "activate",
@@ -44,14 +43,11 @@
         "5": []
       }
     },
-    "clock": {
-      "format": "{:%H:%M}",
-      "on-click": "gnome-clocks",
-      "tooltip": false,
-    },
-    "custom/date": {
+    "custom/datetime": {
       "format": "{}",
-      "exec": "date '+%a %h %d'",
+      "exec": "date '+%H:%M %a %h %d'",
+      "on-click": "gnome-clocks",
+      "interval": 60,
     },
     "custom/notification": {
          "tooltip": false,
