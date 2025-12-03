@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [[ $# -ne 1 ]]; then
+  echo "only one file can be decrypted at the time to prevent footguns."
+  exit 1
+fi
+
 age -i $XDG_RUNTIME_DIR/age -d "$1" 2>/dev/null || \
   age -i ~/age-tpm.txt -d "$1" 2>/dev/null || \
   age -i <(age-plugin-yubikey --identity --slot 1 2>/dev/null) -d "$1"
