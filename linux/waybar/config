@@ -47,7 +47,7 @@
       "format": "{}",
       "exec": "date '+%H:%M %a %h %d'",
       "on-click": "gnome-clocks",
-      "interval": 60,
+      "interval": 1,
     },
     "custom/notification": {
          "tooltip": false,
