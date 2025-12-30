@@ -14,6 +14,7 @@
   boot.kernelPackages = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.linuxPackages_latest;
 
   documentation.man.generateCaches = pkgs.lib.mkForce false; # otherwise nixos-rebuild is slow AF
+  console.useXkbConfig = true;
   environment.sessionVariables = {
     EDITOR = "nvim";
     QT_QPA_PLATFORM = "wayland"; # TODO: check if still needed, electron fucked
