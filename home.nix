@@ -20,6 +20,7 @@ in
     RIPGREP_CONFIG_PATH = "$HOME/.config/rg/config"; # TODO: XDG_CONFIG_HOME
     AGE_RECIPIENTS_FILE = ./age/recipients.txt;
     MANPAGER = "nvim +Man!";
+    TMUX_TMPDIR = ''''${XDG_RUNTIME_DIR:-"/run/user/$(id -u)"}''; # need if we install tmux manually and not thru home-manager
   };
   home.sessionPath = [ "${dotfiles}/functions" ];
   home.packages = with pkgs; [
