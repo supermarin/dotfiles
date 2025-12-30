@@ -1,6 +1,6 @@
 * {
-  font-family: Berkeley Mono;
-  font-size: 14px;
+  font-family: Inter Display;
+  font-size: 12px;
 }
 
 window#waybar {
@@ -36,15 +36,16 @@ window#waybar {
   color: red;
 }
 
-#custom-date,
-#custom-notification,
-#cpu,
 #battery,
-#network,
 #bluetooth,
-#wireplumber,
+#cpu,
+#custom-datetime,
+#custom-notification,
+#network,
 #power-profiles-daemon,
-#custom-power-menu {
+#tray,
+#tray-icon,
+#wireplumber {
   min-width: 1em;
   margin: 0 0.5em;
 }

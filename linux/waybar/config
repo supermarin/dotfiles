@@ -6,10 +6,12 @@
     "modules-left": [
       "sway/workspaces",
       "sway/mode",
-      "hyprland/workspaces"
+      "hyprland/workspaces",
     ],
     "modules-center": [
       "custom/datetime",
+      "tray",
+      "custom/notification",
     ],
     "modules-right": [
       "power-profiles-daemon",
@@ -17,7 +19,6 @@
       "network",
       "wireplumber",
       "battery",
-      "custom/notification",
     ],
     "hyprland/workspaces": {
       "on-click": "activate",
@@ -33,14 +34,14 @@
         "7": "7",
         "8": "8",
         "9": "9",
-        "active": "󱓻"
+        "active": "󱓻",
       },
       "persistent-workspaces": {
         "1": [],
         "2": [],
         "3": [],
         "4": [],
-        "5": []
+        "5": [],
       }
     },
     "custom/datetime": {
@@ -67,7 +68,7 @@
          "exec": "swaync-client -swb",
          "on-click": "swaync-client -t -sw",
          "on-click-right": "swaync-client -d -sw",
-         "escape": true
+         "escape": true,
     },
     "network": {
       "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
@@ -80,7 +81,7 @@
       "tooltip-format-disconnected": "Disconnected",
       "interval": 3,
       "nospacing": 1,
-      "on-click": "ghostty -e nmtui-connect"
+      "on-click": "ghostty -e nmtui-connect",
     },
     "battery": {
       "format": "{icon} {capacity}%",
@@ -89,11 +90,11 @@
       "format-plugged":     "",
         "format-icons": {
           "charging": [
-            "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"
+            "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅",
           ],
           "default": [
-            "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
-          ]
+            "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹",
+          ],
         },
       "format-full": "󰂄",
       "tooltip-format-discharging": "{power:>0.1f}W↓ {capacity}% {time}\n{cycles} Cycles\nHealth: {health}",
@@ -102,7 +103,7 @@
       "states": {
         "warning": 20,
         "critical": 10,
-      }
+      },
     },
     "bluetooth": {
       "format": "",
@@ -115,7 +116,7 @@
       "format": "{icon}",
       "format-muted": "󰝟 ",
       "format-icons": {
-        "default": ["󰕿", "󰖀", "󰕾", "󰕾"]
+        "default": ["󰕿", "󰖀", "󰕾", "󰕾"],
       },
       "scroll-step": 5,
       "on-click": "ghostty -e wiremix",
