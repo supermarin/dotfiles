@@ -1,6 +1,6 @@
 { pkgs }:
 
-pkgs.stdenvNoCC.mkDerivation rec {
+pkgs.stdenvNoCC.mkDerivation {
   pname = "inter";
   version = "4.1";
   src = pkgs.fetchzip {
@@ -12,8 +12,8 @@ pkgs.stdenvNoCC.mkDerivation rec {
   installPhase = ''
     set -x
     runHook preInstall
-    mkdir -p $out/share/fonts/opentype
-    cp extras/otf/*.otf $out/share/fonts/opentype
+    mkdir -p $out/share/fonts/truetype
+    cp extras/ttf/*.ttf $out/share/fonts/truetype
     runHook postInstall
   '';
 
