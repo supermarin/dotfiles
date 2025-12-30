@@ -6,4 +6,5 @@ if [[ $# = 0 ]]; then
   jj status
 else
   jj "$@"
+  jj status
 fi
