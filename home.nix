@@ -59,51 +59,6 @@ in
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
-  programs.tmux = {
-    aggressiveResize = true;
-    baseIndex = 1;
-    enable = true;
-    escapeTime = 0;
-    extraConfig = ''
-      # for neovim :checkhealth
-      set -ga terminal-overrides ",xterm-256color:Tc"
-      set -g default-terminal "tmux-256color"
-      set -g focus-events on
-
-      setw -g window-status-current-style fg=black,bg=pink,bold,reverse
-      setw -g window-status-current-format ' #W '
-      setw -g window-status-format ' #W '
-      set -g status-position top
-      set -g status-interval 2
-      set -g status-left "#S #[fg=colour5,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
-      set -g status-right "%a %b %d %H:%M"
-      if-shell -b ' [ "$SSH_CLIENT" ] ' {
-        set -g status-bg colour6
-        set -g status-left "#S@#H #[fg=colour6,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
-      }
-      set -g status-left-length 60
-
-      bind k select-pane -U
-      bind j select-pane -D
-      bind h select-pane -L
-      bind l select-pane -R
-
-      bind-key -n M-H select-window -t:-1
-      bind-key -n M-L select-window -t:+1
-      bind-key -n M-h select-pane -L
-      bind-key -n M-l select-pane -R
-      bind-key -n M-k select-pane -U
-      bind-key -n M-j select-pane -D
-      bind-key -n M-f resize-pane -Z
-      bind-key -n M-n new-window
-      bind-key -n M-d split-pane -h
-      bind-key -n M-D split-pane -v
-    '';
-    historyLimit = 250000;
-    keyMode = "vi";
-    mouse = true;
-    terminal = "xterm-256color";
-  };
 
   home.file = {
     ".digrc".text = "+noall +answer";
