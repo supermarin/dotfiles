@@ -22,7 +22,7 @@
       "    };",
       "}"
     ],
-    "^prefix": "flake",
+    "prefix": "newflake",
     "isFileTemplate": true
   },
   "for all systems": {
