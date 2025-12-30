@@ -34,7 +34,7 @@ in
     dua # disk usage analyzer, better du -hc
     duckdb
     dysk # disk usage analyzer, better df -h
-    evil-helix # helix with vim bindings
+    helix
     eza # ls with stuff
     fd
     fzf
@@ -42,6 +42,7 @@ in
     gnumake # why is this here? no idea
     jq
     jujutsu
+    lazyjj
     mergiraf # experimental: git conflict resolver
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter used by nixd
