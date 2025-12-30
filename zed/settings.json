@@ -1,4 +1,11 @@
 {
+  "agent": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "oswe-vscode-prime"
+    },
+    "model_parameters": []
+  },
   "icon_theme": {
     "mode": "dark",
     "light": "Zed (Default)",
