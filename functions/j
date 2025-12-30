@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [[ $# = 0 ]]; then
-  jj log
+  jj log --no-pager
   jj status
 else
   jj "$@"
