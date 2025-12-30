@@ -3,23 +3,35 @@
         modifiers: [
             Super,
         ],
+        key: "t",
     ): Disable,
     (
         modifiers: [
             Super,
         ],
-        key: "m",
+        key: "F11",
     ): Disable,
     (
         modifiers: [
             Super,
         ],
         key: "f",
-    ): Maximize,
+    ): Fullscreen,
     (
         modifiers: [
             Super,
         ],
-        key: "Space",
+        key: "space",
     ): System(Launcher),
+    (
+        modifiers: [
+            Super,
+        ],
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Return",
+    ): System(Terminal),
 }
