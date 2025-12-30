@@ -23,9 +23,8 @@
           gnome-clocks
           libreoffice
           neovide # neovim gui I never use
-          neovim-gtk # neovim gui I never use 2
           obsidian
-          quickemu
+          inputs.quickemu.packages.${pkgs.system}.quickemu # TODO: either start using or ditch
           spotify
           ungoogled-chromium
           virt-manager
@@ -43,7 +42,7 @@
 
         programs.zen-browser.enable = true;
         programs.librewolf = {
-          enable = true;
+          enable = false; # preserving settings, enable if want to reinstall
           settings = {
             "browser.startup.homepage" = "https://lobste.rs";
             "media.peerconnection.enabled" = false;

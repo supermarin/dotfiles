@@ -40,6 +40,14 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quickemu = {
+      url = "github:quickemu-project/quickemu";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    opencode = {
+      url = "github:anomalyco/opencode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -76,7 +84,7 @@
             ./nixos/modules/de-sway.nix
             ./nixos/modules/home-manager-config.nix
             ./nixos/modules/home-gui.nix
-            ./nixos/modules/fingerprint.nix
+            ./nixos/modules/tpm.nix
             ./nixos/modules/services/syncthing.nix
             ./nixos/nixpkgs-config.nix
             {

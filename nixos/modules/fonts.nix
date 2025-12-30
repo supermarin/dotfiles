@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  ...
+}:
 {
   fonts = {
     enableDefaultPackages = false;
@@ -18,10 +22,11 @@
       noto-fonts-color-emoji
 
       # monospace
-      inputs.fonts.packages.${pkgs.system}.berkeley-mono.condensed
-      inputs.fonts.packages.${pkgs.system}.berkeley-mono.normal
-      inputs.fonts.packages.${pkgs.system}.berkeley-mono.semi-condensed
+      inputs.fonts.packages.${pkgs.stdenv.hostPlatform.system}.berkeley-mono.condensed
+      inputs.fonts.packages.${pkgs.stdenv.hostPlatform.system}.berkeley-mono.normal
+      inputs.fonts.packages.${pkgs.stdenv.hostPlatform.system}.berkeley-mono.semi-condensed
       iosevka
+      jetbrains-mono
     ];
     fontconfig = {
       defaultFonts = {
