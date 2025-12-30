@@ -4,14 +4,8 @@ age1yubikey1qf6s46r8v8v8xhcsyu83484d0z9a02wm5alwg8n2dlwpmqscau6xzvheak2
 # Serial: 22610962, Slot: 1, Type: 5C Nano (x1)
 age1yubikey1qg3dqeu86gjhpmhs6ja2w24xyygcvyxq4pryna0g9dgl4pl5z9uhxgmh3p8
 
-# Dev key
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHiWKUUwHWsfiUb7gfVl11aAX8WdCtaI9809IVGsW+AQ
+# mufasa TPM
+age1tag1qwrrrecvpzu58lephm6gth6wqvs4gveqzv67hjhkrmzju9k9flveqyxmw09
 
-# X1 nano TPM
-age1tpm1qd47l6fr0zg8ft23jk6yvve4qpf2h887k82rnn9w7f62anpnj9x9syaz7y5
-
-# X1 carbon TPM
-age1tpm1q0g4pevp20yysx7m0tuwtse20zmyvtxr5tv894q3fcz68wwn8mq7xujafsn
-
-# Computer-1 TPM
-age1tpm1q00l950lc4r5n9yk33c4mj7yylyexwtdamhvkenu03z9dcm6d3zmuq8ew4e
+# tokio TPM
+age1tag1qdumaq4xyw9nq7zq2sympqqff6hwqnaeamw4lln68kfqdmwwvaxq79lr4qv
