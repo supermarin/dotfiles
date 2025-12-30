@@ -68,6 +68,7 @@ in
     ".sqliterc".source = ./sqliterc;
   };
   xdg.configFile = {
+    "tmux/tmux.conf".source = ln "tmux/tmux.conf";
     "jj/config.toml".source = ln "jj/config.toml";
     "tig/config".source = ln "tig/config";
     "rg/config".source = ./rg/config;
