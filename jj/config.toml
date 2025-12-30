@@ -10,5 +10,6 @@ default-command = "log"
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 
 [aliases]
-e = [ "edit" ]
+b = [ "bookmark" ]
 d = [ "diff" ]
+e = [ "edit" ]
