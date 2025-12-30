@@ -42,7 +42,6 @@ in
     gnumake # why is this here? no idea
     jq
     jujutsu
-    lazyjj # another jj GUI. remove if not used in the next 2 months: 2025-07-08
     mergiraf # experimental: git conflict resolver
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter used by nixd
