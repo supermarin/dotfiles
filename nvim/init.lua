@@ -208,37 +208,3 @@ vim.keymap.set("n", "<leader>ta", ":wa|:TestFile<CR>")
 vim.keymap.set("n", "<leader>ts", ":wa|:TestSuite<CR>")
 vim.keymap.set("n", "<leader>tl", ":wa|:TestLast<CR>")
 vim.keymap.set("n", "<leader>tg", ":wa|:TestVisit<CR>")
--------------------------------------------------------------------------------
--- DAP
--------------------------------------------------------------------------------
-vim.keymap.set("n", "<leader>dc", function() require('dap').continue() end, { desc = "Continue debug session" })
-vim.keymap.set("n", "<leader>db", function() require('dap').toggle_breakpoint() end,
-  { desc = "debug: Toggle breakpoint" })
-vim.keymap.set("n", "<leader>dn", function() require('dap').step_over() end, { desc = "debug: Next" })
-vim.keymap.set("n", "<leader>di", function() require('dap').step_into() end, { desc = "debug: Step Into" })
-vim.keymap.set("n", "<leader>do", function() require('dap').step_out() end, { desc = "debug: Step Out" })
-vim.keymap.set("n", "<leader>dr", function() require('dap').repl.toggle() end, { desc = "debug: Toggle REPL" })
-vim.keymap.set("n", "<leader>du", function() require('dapui').toggle() end, { desc = "debug: Toggle UI" })
-
--- TODO: see if something like neotest would be beneficial to
--- 1. configure test runners with same keymaps for all langs
--- 2. configure test debugging for all
-vim.keymap.set("n", "<leader>dt", function() require('dap-python').test_method() end, { desc = "debug: Test Method" })
-vim.keymap.set("n", "<leader>dT", function() require('dap-python').test_class() end, { desc = "debug: Test Class" })
-
--- require('nvim-dap-virtual-text').setup()
-require('dap-python').setup("uv")
-require('dapui').setup()
-local dap, dapui = require("dap"), require("dapui")
-dap.listeners.before.attach.dapui_config = function()
-  dapui.open()
-end
-dap.listeners.before.launch.dapui_config = function()
-  dapui.open()
-end
-dap.listeners.before.event_terminated.dapui_config = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited.dapui_config = function()
-  dapui.close()
-end

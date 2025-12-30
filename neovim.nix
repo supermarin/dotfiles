@@ -18,13 +18,6 @@
       vim-repeat
       vim-surround
       vim-visual-multi
-      # DAP
-      nvim-dap
-      nvim-dap-ui
-      nvim-dap-virtual-text
-      nvim-dap-python
-      # AI
-      codecompanion-nvim
       # Fuzzy
       fzf-lua
       # Git
