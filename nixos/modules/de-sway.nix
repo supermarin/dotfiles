@@ -16,6 +16,7 @@
   services.gnome.gcr-ssh-agent.enable = false; # TODO: document what was this
   programs.sway = {
     enable = true;
+    xwayland.enable = false;
     wrapperFeatures.gtk = true;
     wrapperFeatures.base = true;
     extraPackages = with pkgs; [
