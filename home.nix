@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   ...
@@ -26,6 +27,7 @@ in
   home.packages = with pkgs; [
     age
     age-plugin-yubikey
+    age-plugin-tpm
     bat # used in `e` for live preview of files
     btop
     claude-code
@@ -35,6 +37,7 @@ in
     dua # disk usage analyzer, better du -hc
     duckdb
     dysk # disk usage analyzer, better df -h
+    harper # english lang server
     helix
     eza # ls with stuff
     fd
@@ -46,9 +49,10 @@ in
     lazyjj
     mergiraf # experimental: git conflict resolver
     nixd # nix language server
-    nixfmt-rfc-style # official nix formatter used by nixd
+    nixfmt # official nix formatter used by nixd
     nushell
     oath-toolkit # used for OTP
+    inputs.opencode.packages.${pkgs.system}.default
     ripgrep
     ripgrep-all
     rsync
@@ -57,6 +61,7 @@ in
     tig
     tmux
     tmux-mem-cpu-load
+    zig
   ];
 
   programs.direnv.enable = true;
