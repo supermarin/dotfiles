@@ -13,7 +13,7 @@
 
   programs.asdcontrol.enable = true;
   programs.ssh.startAgent = true;
-  services.gnome.gcr-ssh-agent.enable = false;
+  services.gnome.gcr-ssh-agent.enable = false; # TODO: document what was this
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -34,15 +34,14 @@
       kanshi
       libnotify # notify-send
       mupdf
-      nautilus # gui file browser
       playerctl # media keys (play/pause, prev, next)
       rofi
       rofimoji # emoji picker, fuzzel doesn't support emoji
       slurp # screenshot: select a region in wayland
-      sushi # quick preview for nautilus
       swayidle # idle lock
       swaylock # idle lock
       swaynotificationcenter # notification daemon
+      thunar # gui file browser
       udiskie # auto mount usb media
       w3m # for HTML emails
       waybar
@@ -57,12 +56,17 @@
     '';
   };
 
-  # For trash in nautilus
+  # For trash
   services.gvfs.enable = true;
 
   # login
   services.displayManager.ly =
-    lib.mkIf (!config.services.displayManager.sddm.enable && !config.services.displayManager.gdm.enable)
+    lib.mkIf
+      (
+        !config.services.displayManager.sddm.enable
+        && !config.services.displayManager.gdm.enable
+        && !config.services.desktopManager.cosmic.enable
+      )
       {
         enable = true;
         settings = {
