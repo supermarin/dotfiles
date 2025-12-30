@@ -1,1 +1,1 @@
-vim.keymap.set('n', '<leader>r', ':w|:!sh %<cr>', { silent = true })
+vim.keymap.set('n', '<leader>r', ':w|:!bash %<cr>', { silent = true })
