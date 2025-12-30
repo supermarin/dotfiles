@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   modulesPath,
@@ -36,4 +37,17 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.enableRedistributableFirmware = lib.mkForce true;
   services.power-profiles-daemon.enable = true;
+
+  # disable wifi on desktop completely, we're wired in
+  systemd.services."disable-wifi-on-boot" = {
+    restartIfChanged = false;
+    description = "Disable wifi on boot via nmcli";
+    after = [ "NetworkManager.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.networkmanager}/bin/nmcli radio wifi off";
+      Type = "oneshot";
+      RemainAfterExit = "true";
+    };
+  };
 }
