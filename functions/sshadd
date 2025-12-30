@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [ -f $XDG_RUNTIME_DIR/age ]; then
-  echo "warn: $XDG_RUNTIME_DIR/age already present."
-else
-  umask 0377
-  age-decrypt $PASSWORD_STORE_DIR/keys/ssh.age > $XDG_RUNTIME_DIR/age
-fi
-
-ssh-add $XDG_RUNTIME_DIR/age
+ssh-add <(age-decrypt $PASSWORD_STORE_DIR/keys/ssh.age)
