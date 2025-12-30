@@ -55,6 +55,7 @@ in
     sqlite-interactive
     lua-language-server
     tig
+    tmux
     tmux-mem-cpu-load
   ];
 
