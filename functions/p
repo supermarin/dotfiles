@@ -2,6 +2,6 @@
 set -euo pipefail
 
 cd $PASSWORD_STORE_DIR/Password
-file=$(fd --type f | fzf)
+file=${1:-$(fd --type f | fzf)}
 
 age-decrypt "$file" | head -n 1 | pbcopy

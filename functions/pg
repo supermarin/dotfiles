@@ -26,3 +26,4 @@ mkdir -p -v $(dirname $file)
 
 age-encrypt -o "$file" <(openssl rand -base64 24)
 age-edit "$file"
+p $file
