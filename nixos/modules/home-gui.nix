@@ -26,6 +26,7 @@
           obsidian
           inputs.quickemu.packages.${pkgs.system}.quickemu # TODO: either start using or ditch
           spotify
+          thunderbird
           ungoogled-chromium
           virt-manager
           vlc # Unsupported on aarch64-darwin as of Aug 10 2022
