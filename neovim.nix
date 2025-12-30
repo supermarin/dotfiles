@@ -15,6 +15,8 @@
       blink-cmp
       editorconfig-nvim
       nvim-lspconfig # TODO: remove when lspcofig is merged into neovim
+      nvim-treesitter.withAllGrammars
+      nvim-treesitter-textobjects
       vim-repeat
       vim-surround
       vim-visual-multi
