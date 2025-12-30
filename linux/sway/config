@@ -1,5 +1,6 @@
 ### UI
 default_border pixel 6
+focus_on_window_activation focus
 gaps inner 7
 smart_borders on
 smart_gaps on
@@ -59,14 +60,19 @@ input * {
     natural_scroll enabled
 }
 
+# TODO: document where dis one belongs
 input 6127:24801:TrackPoint_Keyboard_II {
     xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
 }
-
+# TODO: document where dis one belongs
 input 1:1:AT_Translated_Set_2_keyboard {
     xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
 }
-
+# keychron
+input 1452:591:Keychron_Keychron_K6 {
+    xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
+}
+# TODO: wtf was this one? document
 input 16700:34053:Dell_Dell_Universal_Receiver {
     xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
 }
@@ -80,9 +86,9 @@ output "Samsung Display Corp. 0x419F Unknown" {
   scale 1.6
 }
 
-output DP-2 {
-  disable
-}
+# output DP-2 { # TODO: fix for apple studio display specifier
+#   disable
+# }
 
 # X1 Nano
 output 'Chimei Innolux Corporation 0x1301 Unknown' {
@@ -122,17 +128,25 @@ for_window [app_id="(org.gnome.*|gnome-*|wdisplays|galculator)"] {
 # Start a terminal
 bindsym $mod+Return exec $term
 # NetworkManager connect
-bindsym $mod+w exec $term_cmd nmtui-connect
+bindsym $mod+Shift+w exec $term_cmd nmtui-connect
 # Clipboard history
 bindsym $mod+v exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
 # File manager
-bindsym $mod+e exec nautilus --new-window
+bindsym $mod+e exec thunar
 # Start a browser
 bindsym $mod+b workspace 2; exec pgrep $browser || $browser
 # Open bluetooth settings
 bindsym $mod+Shift+b exec $floating_term_cmd bluetui
+# Open sound settings
+bindsym $mod+Shift+s exec $floating_term_cmd wiremix 
 # Start email
-bindsym $mod+m workspace 5; exec "pgrep -f app/fastmail" || flatpak run com.fastmail.Fastmail
+bindsym $mod+m workspace 5; exec ("pgrep -f app/fastmail" || flatpak run com.fastmail.Fastmail);
+# bindsym $mod+m [con_mark="mail"] scratchpad show 
+# bindsym $mod+Shift+m mark "mail", move container to scratchpad
+# Focus on urgent window
+bindsym $mod+u [urgent=latest] focus
+
+
 # Switch to Obsidian
 bindsym $mod+o workspace 1; exec ps ax | grep -v grep | grep obsidian || obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland
 # Kill focused window
@@ -144,7 +158,7 @@ bindsym $mod+Shift+c reload
 # Toggle notification control center
 bindsym $mod+Shift+n exec $notification-center
 # Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit sway?' -b 'Yes' 'swaymsg exit'
 # Moving around:
 #
 # Move your focus around
@@ -211,14 +225,10 @@ bindsym $mod+Shift+space floating toggle
 
 # Send the current window to scratchpad
 bindsym $mod+Shift+0 mark "sp1", move container to scratchpad
+bindsym $mod+0 [con_mark="sp1"] scratchpad show
 # bindsym $mod+0 scratchpad show
 # bindsym $mod+Shift+j mark "sp1", move scratchpad
 # bindsym $mod+Shift+k mark "sp2", move scratchpad
-        
-bindsym $mod+0 [con_mark="sp1"] scratchpad show
-# bindsym $mod+k [con_mark="sp2"] scratchpad show
-
-
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+$alt+space focus mode_toggle
@@ -246,9 +256,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Media controls (sorted by lenovo kb):
-bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && wpctl get-volume @DEFAULT_SINK@ | cut -f2 -d' ' | awk '{print $1 * 100}'> $WOBSOCK
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+ && wpctl get-volume @DEFAULT_SINK@ | cut -f2 -d' ' | awk '{print $1 * 100}'> $WOBSOCK
 bindsym XF86AudioLowerVolume  exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wpctl get-volume @DEFAULT_SINK@ | cut -f2 -d' ' | awk '{print $1 * 100}'> $WOBSOCK
-bindsym $alt+XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+ && wpctl get-volume @DEFAULT_SINK@ | cut -f2 -d' ' | awk '{print $1 * 100}'> $WOBSOCK
+bindsym $alt+XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%+ && wpctl get-volume @DEFAULT_SINK@ | cut -f2 -d' ' | awk '{print $1 * 100}'> $WOBSOCK
 bindsym $alt+XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && wpctl get-volume @DEFAULT_SINK@ | cut -f2 -d' ' | awk '{print $1 * 100}'> $WOBSOCK 
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ((wpctl get-volume @DEFAULT_SINK@ | grep MUTE >/dev/null && echo 0) || wpctl get-volume @DEFAULT_SINK@ | cut -f2 -d' ' | awk '{print $1 * 100}') > $WOBSOCK 
 bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
