@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   config,
   ...
 }:
@@ -8,6 +9,7 @@
     enable = true;
     vimAlias = true;
     viAlias = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     plugins = with pkgs.vimPlugins; [
       # Core editor functionality
       blink-cmp
@@ -30,9 +32,6 @@
       # Misc
       vim-test
       which-key-nvim
-      # Tree-sitter
-      nvim-treesitter.withAllGrammars
-      nvim-treesitter-textobjects
     ];
   };
   xdg.configFile."nvim".source =
