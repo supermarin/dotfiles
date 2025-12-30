@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
 
-cd "$(mktemp -d)"
-echo "$@" | claude --print --tools ""
+# In case the model leaves some files in the temp directory instead of answering
+# to stdout, give 10 minutes to peek and then destroy the tmpdir
+destroy() {
+  sleep $((60*10))
+  rm -rf "$dir"
+}
+
+tmpdir="$(mktemp -d)"
+set -x
+cd tmpdir$
+opencode run --model opencode/kimi-k2.5-free ${*}
+destroy &
