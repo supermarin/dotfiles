@@ -2,7 +2,7 @@ font-family = Berkeley Mono
 font-size = 11
 keybind = ctrl+enter=unbind
 shell-integration-features = no-cursor
-theme = IR Black
+theme = Carbonfox
 confirm-close-surface = false
 # window-decoration = false
 keybind = shift+enter=text:\x1b\r
