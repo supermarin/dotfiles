@@ -8,6 +8,7 @@
       ".DS_Store"
       "*.swp"
       "tags"
+      "build"
       ".vscode"
       "result"
       ".direnv"
