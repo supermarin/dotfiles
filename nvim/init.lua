@@ -15,13 +15,13 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = "center after going down" })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = "center after going up" })
 vim.keymap.set('n', '<leader>s', ':w<cr>', { desc = "save file" })
 vim.keymap.set('n', '<leader>q', ':q<cr>', { desc = "close pane/window/vim" })
+vim.keymap.set('n', '<leader>a', ':%y<cr>', { desc = "select & yank all" })
 vim.keymap.set('n', '<c-h>', '<c-w>h', { desc = "window: select left pane" })
 vim.keymap.set('n', '<c-l>', '<c-w>l', { desc = "window: select right pane" })
 vim.keymap.set('n', '<tab>', 'gt', { desc = "switch between tabs in normal mode" })
 vim.keymap.set('n', '<S-tab>', 'gT', { desc = "switch between tabs in normal mode" })
 
 local tabspaces = 2
-vim.opt.background = 'dark'
 vim.opt.breakindent = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.colorcolumn = "80"
@@ -40,8 +40,9 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.swapfile = false
 vim.opt.tabstop = tabspaces
-vim.opt.termguicolors = true
 vim.opt.undofile = true
+vim.opt.guifont = "Iosevka:h12"
+vim.cmd.colorscheme("catppuccin")
 
 vim.api.nvim_create_user_command('Wq', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('WQ', 'wq', {}) -- halp
@@ -93,10 +94,48 @@ require('gitsigns').setup()
 -- Key bindings explanation
 require('which-key').setup { delay = 0, preset = 'helix' }
 
+-- TreeSitter
+require("nvim-treesitter-textobjects").setup {
+  select = {
+    -- Automatically jump forward to textobj, similar to targets.vim
+    lookahead = true,
+    -- You can choose the select mode (default is charwise 'v')
+    --
+    -- Can also be a function which gets passed a table with the keys
+    -- * query_string: eg '@function.inner'
+    -- * method: eg 'v' or 'o'
+    -- and should return the mode ('v', 'V', or '<c-v>') or a table
+    -- mapping query_strings to modes.
+    selection_modes = {
+      ['@parameter.outer'] = 'v', -- charwise
+      ['@function.outer'] = 'V',  -- linewise
+      -- ['@class.outer'] = '<c-v>', -- blockwise
+    },
+  },
+}
+
+function textobj()
+
+end
+
+vim.keymap.set({ "x", "o" }, "af", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
+end, { desc = "select a function" })
+vim.keymap.set({ "x", "o" }, "if", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
+end)
+-- You can also use captures from other query groups like `locals.scm`
+vim.keymap.set({ "x", "o" }, "as", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@local.scope", "locals")
+end)
+
+
+
 -------------------------------------------------------------------------------
 -- LSP
 -------------------------------------------------------------------------------
-local servers = { 'gopls', 'gleam', 'lua_ls', 'ruby_lsp', 'clangd', 'ruff', 'basedpyright', 'r_language_server', 'nixd' }
+local servers = { 'basedpyright', 'clangd', 'gopls', 'gleam', 'harper', 'lua_ls', 'nixd', 'r_language_server', 'ruby_lsp',
+  'ruff', 'zls' }
 local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { silent = true })
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
@@ -189,17 +228,16 @@ end
 
 
 require('blink.cmp').setup({
-  -- keymap = { preset = 'enter' },
   sources = {
     default = { 'lsp', 'snippets', 'buffer' },
   },
-  -- signature = { enabled = true, }, -- [C-k] to toggle in insert
+  signature = { enabled = true, }, -- [C-k] to toggle in insert
 })
 
 vim.diagnostic.config({ virtual_text = true, })
 
 -------------------------------------------------------------------------------
--- AI
+-- Tests
 -------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------
