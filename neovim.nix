@@ -9,7 +9,7 @@
     enable = true;
     vimAlias = true;
     viAlias = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    package = inputs.neovim-nightly.packages.${pkgs.system}.default;
     plugins = with pkgs.vimPlugins; [
       # Core editor functionality
       blink-cmp
