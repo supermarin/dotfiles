@@ -11,3 +11,4 @@ default-command = "log"
 
 [aliases]
 e = [ "edit" ]
+d = [ "diff" ]
