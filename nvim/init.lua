@@ -3,22 +3,22 @@ vim.keymap.set('n', 'gh', '^', { desc = "kakoune: move to beginning of line" })
 vim.keymap.set('n', 'gl', '$', { desc = "kakoune: move to end of line" })
 vim.keymap.set('n', 'dp', 'd}', { desc = "delete to end of paragraph" })
 vim.keymap.set('n', 'dP', 'd{', { desc = "delete to beginning of paragraph" })
-vim.keymap.set('n', '<Esc>', ':noh<cr>')         -- remove highlight with Esc in normal
-vim.keymap.set('v', 'p', '"_dP')                 -- Unfuck paste in visual mode
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')      -- Escape in terminal
-vim.keymap.set('n', "J", "mzJ`z")                -- Preserve cursor pos when joining lines
-vim.keymap.set('n', '<c-j>', ':m +1<cr>==')      -- move line down, keep indent
-vim.keymap.set('n', '<c-k>', ':m -2<cr>==')      -- move line up, keep indent
-vim.keymap.set('v', '<c-j>', ":m '>+1<cr>gv=gv") -- move visual up, keep indent
-vim.keymap.set('v', '<c-k>', ":m '<-2<cr>gv=gv") -- move visual down, keep indent
-vim.keymap.set('n', '<C-d>', '<C-d>zz')          -- center after going down
-vim.keymap.set('n', '<C-u>', '<C-u>zz')          -- center after going up
-vim.keymap.set('n', '<leader>s', ':w<cr>')       -- save file
-vim.keymap.set('n', '<leader>q', ':q<cr>')       -- close pane/window/vim
-vim.keymap.set('n', '<c-h>', '<c-w>h')           -- window: select left pane
-vim.keymap.set('n', '<c-l>', '<c-w>l')           -- window: select right pane
-vim.keymap.set('n', '<tab>', 'gt')               -- switch between tabs in normal mode
-vim.keymap.set('n', '<S-tab>', 'gT')             -- switch between tabs in normal mode
+vim.keymap.set('n', '<Esc>', ':noh<cr>', { desc = "remove highlight with Esc in normal" })
+vim.keymap.set('v', 'p', '"_dP', { desc = "unfuck paste in visual mode" })
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = "escape in terminal" })
+vim.keymap.set('n', "J", "mzJ`z", { desc = "preserve cursor pos when joining lines" })
+vim.keymap.set('n', '<c-j>', ':m +1<cr>==', { desc = "move line down, keep indent" })
+vim.keymap.set('n', '<c-k>', ':m -2<cr>==', { desc = "move line up, keep indent" })
+vim.keymap.set('v', '<c-j>', ":m '>+1<cr>gv=gv", { desc = "move visual up, keep indent" })
+vim.keymap.set('v', '<c-k>', ":m '<-2<cr>gv=gv", { desc = "move visual down, keep indent" })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = "center after going down" })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = "center after going up" })
+vim.keymap.set('n', '<leader>s', ':w<cr>', { desc = "save file" })
+vim.keymap.set('n', '<leader>q', ':q<cr>', { desc = "close pane/window/vim" })
+vim.keymap.set('n', '<c-h>', '<c-w>h', { desc = "window: select left pane" })
+vim.keymap.set('n', '<c-l>', '<c-w>l', { desc = "window: select right pane" })
+vim.keymap.set('n', '<tab>', 'gt', { desc = "switch between tabs in normal mode" })
+vim.keymap.set('n', '<S-tab>', 'gT', { desc = "switch between tabs in normal mode" })
 
 local tabspaces = 2
 vim.opt.background = 'dark'
