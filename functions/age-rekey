@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-test -n $1 || (echo "Usage: age-rekey <FILE>" && exit 1)
-
-set -u
-
+echo "rekeying for recipients: $(cat $AGE_RECIPIENTS_FILE)"
 for file in "$@"; do
   echo "rekeying $file"
   age -R "$AGE_RECIPIENTS_FILE" -o "$file" <<< "$(age-decrypt "$file")"
