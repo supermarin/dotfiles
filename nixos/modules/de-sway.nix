@@ -81,8 +81,8 @@
 
   systemd.user.services.wlsunset =
     let
-      latitude = "40.7";
-      longitude = "-73.9";
+      latitude = "39.74";
+      longitude = "-104.99";
     in
     {
       enable = true;
