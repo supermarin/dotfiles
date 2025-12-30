@@ -127,7 +127,7 @@ require('nvim-treesitter.configs').setup {
 -------------------------------------------------------------------------------
 -- LSP
 -------------------------------------------------------------------------------
-local servers = { 'gopls', 'lua_ls', 'ruby_lsp', 'clangd', 'ruff', 'basedpyright', 'r_language_server', 'nixd' }
+local servers = { 'gopls', 'gleam', 'lua_ls', 'ruby_lsp', 'clangd', 'ruff', 'basedpyright', 'r_language_server', 'nixd' }
 local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { silent = true })
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
