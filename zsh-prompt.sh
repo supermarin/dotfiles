@@ -77,9 +77,9 @@ git_prompt() {
 # Display nix-shell prompt if inside a nix-shell
 symbol() {
   if [ -n "$IN_NIX_SHELL" ]; then
-    echo "${green}λ$normal "
+    echo "${green}λ${normal} "
   else
-    echo "$normal➜ "
+    echo "${normal}➜ "
   fi
 }
 
@@ -91,33 +91,17 @@ ssh_prompt() {
 }
 
 # Generate the jj prompt
+# TODO: return back colors
 jj_prompt() {
-  jj log --ignore-working-copy --no-graph --color always -r @ -T '
-    surround(
-      "",
-      "",
-      separate(
-        " ",
-        bookmarks.join(", "),
-        coalesce(
-          surround(
-            "\"",
-            "\"",
-            if(
-              description.first_line().substr(0, 24).starts_with(description.first_line()),
-              description.first_line().substr(0, 24),
-              description.first_line().substr(0, 23) ++ "…"
-            )
-          ),
-          "(no description)"
-        ),
-        change_id.shortest(),
-        commit_id.shortest(),
-        if(conflict, "(conflict)"),
-        if(empty, "(empty)"),
-        if(divergent, "(divergent)"),
-        if(hidden, "(hidden)"),
-      )
+  jj log --ignore-working-copy --no-graph -r @ -T '
+    separate(
+      " ",
+      "jj:",
+      bookmarks.join(", "),
+      change_id.shortest(),
+      if(conflict, "(conflict)"),
+      if(divergent, "(divergent)"),
+      if(hidden, "(hidden)"),
     )
   '
 }
@@ -131,16 +115,17 @@ precmd() {
   zstyle ':completion:*' menu select # highlight menu entries on tab completion
   bindkey '^[[Z' reverse-menu-complete # unfuck shift-tab
 
+  setopt prompt_subst
+
   autoload -z edit-command-line # line gets long, edit it in $EDITOR
   zle -N edit-command-line
   bindkey "^X^E" edit-command-line # emacs bind: c-x c-e to edit the line
 
   if (command -v jj &>/dev/null) && (jj root --quiet &>/dev/null); then
-  local vcs="%{$(jj_prompt)%}$normal "
+  local vcs="$(jj_prompt)$normal "
   elif is_in_git_repo; then
     local vcs="$(git_prompt)$normal "
   fi
-
   local stuff="$(ssh_prompt)$blue%2~${normal} $vcs$(symbol)"
   export PROMPT="%(1j.[%j jobs] .)%(0?..${red}[%?] )$normal${stuff}"
 }
