@@ -129,7 +129,11 @@ precmd() {
   zle -N bracketed-paste bracketed-paste-magic
   zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case insensitive matching
   zstyle ':completion:*' menu select # highlight menu entries on tab completion
-  bindkey '^[[Z' reverse-menu-complete
+  bindkey '^[[Z' reverse-menu-complete # unfuck shift-tab
+
+  autoload -z edit-command-line # line gets long, edit it in $EDITOR
+  zle -N edit-command-line
+  bindkey "^X^E" edit-command-line # emacs bind: c-x c-e to edit the line
 
   if (command -v jj &>/dev/null) && (jj root --quiet &>/dev/null); then
   local vcs="%{$(jj_prompt)%}$normal "
