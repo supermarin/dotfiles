@@ -128,6 +128,8 @@ precmd() {
   autoload -Uz bracketed-paste-magic
   zle -N bracketed-paste bracketed-paste-magic
   zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case insensitive matching
+  zstyle ':completion:*' menu select # highlight menu entries on tab completion
+  bindkey '^[[Z' reverse-menu-complete
 
   if (command -v jj &>/dev/null) && (jj root --quiet &>/dev/null); then
   local vcs="%{$(jj_prompt)%}$normal "
