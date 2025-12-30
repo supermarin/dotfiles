@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ $# = 0 ]]; then
-  jj log --no-pager
-  jj status
-else
+# if [[ $# = 0 ]]; then
+#   jj log --no-pager
+#   jj status
+# else
   jj "$@"
-  jj status
-fi
+  # jj status
+# fi

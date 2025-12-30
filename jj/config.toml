@@ -4,15 +4,10 @@ email = "git+jj@mar.in"
 
 [ui]
 default-command = "log"
-pager = [ "less", "-FRX" ]
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 
 [aliases]
-d = [ "diff" ]
 e = [ "edit" ]
-gp = [ "git", "push" ]
-la = [ "log", "-r", "::" ]
-s = [ "split" ]
