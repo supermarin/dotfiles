@@ -11,7 +11,8 @@ pager = [ "less", "-FRX" ]
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 
 [aliases]
-e = [ "edit" ]
-la = [ "log", "-r", "::" ]
 d = [ "diff" ]
+e = [ "edit" ]
 gp = [ "git", "push" ]
+la = [ "log", "-r", "::" ]
+s = [ "split" ]
