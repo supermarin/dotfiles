@@ -193,6 +193,7 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+p exec $floating_term_cmd p
 bindsym $mod+Shift+p exec $term_cmd pw
+bindsym $mod+Shift+o exec $term_cmd otp
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
