@@ -11,9 +11,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = # TODO: why is this here? was it for x1 carbon? no idea
-    # thinking out loud: to only use stable pinned down kernels? try to revert this back to unstable.
-    inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   documentation.man.generateCaches = pkgs.lib.mkForce false; # otherwise nixos-rebuild is slow AF
   console.useXkbConfig = true;
