@@ -31,6 +31,7 @@ in
     bat # used in `e` for live preview of files
     btop
     claude-code
+    codex
     coreutils # used for `shred`
     diffr # used in git stuff
     difftastic # testing this out
