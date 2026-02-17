@@ -10,5 +10,5 @@ destroy() {
 tmpdir="$(mktemp -d)"
 set -x
 cd tmpdir$
-opencode run --model opencode/kimi-k2.5-free ${*}
+opencode run --model opencode/minimax-m2.5-free ${*}
 destroy &
