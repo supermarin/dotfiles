@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
     flake-utils.url = "github:numtide/flake-utils";
     asdcontrol = {
       url = "github:supermarin/asdcontrol";
