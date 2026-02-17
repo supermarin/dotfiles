@@ -1,5 +1,5 @@
-font-family = Berkeley Mono
 font-size = 11
+font-family = Berkeley Mono SemiCondensed
 keybind = ctrl+enter=unbind
 shell-integration-features = no-cursor
 theme = Carbonfox
