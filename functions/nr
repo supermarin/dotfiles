@@ -3,6 +3,7 @@
 if [[ -n $1 ]]; then
   prefix=nixpkgs#
   if [[ $1 == github:* ]]; then prefix=; fi
+  if [[ $1 == '--' ]]; then prefix='. '; fi
 
   set -x
   nix run $prefix$* 
