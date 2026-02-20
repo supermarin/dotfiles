@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd $PASSWORD_STORE_DIR/Password
-file=${1:-$(fd --type f | fzf)}
+cd $PASSWORD_STORE_DIR
+file=${1:-$(fd . Password --type f | fzf)}
 
 age-decrypt "$file" | head -n 1 | pbcopy
 echo "password $file copied to clipboard"
