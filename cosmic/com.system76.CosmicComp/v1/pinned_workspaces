@@ -44,4 +44,19 @@
         tiling_enabled: true,
         id: Some("1160a94"),
     ),
+    (
+        output: (
+            name: "DP-2",
+            edid: Some((
+                manufacturer: ('B', 'N', 'Q'),
+                product: 32859,
+                serial: None,
+                manufacture_week: 46,
+                manufacture_year: 2023,
+                model_year: None,
+            )),
+        ),
+        tiling_enabled: true,
+        id: Some("d758b6"),
+    ),
 ]
