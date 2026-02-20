@@ -13,3 +13,7 @@ default-command = "log"
 b = [ "bookmark" ]
 d = [ "diff" ]
 e = [ "edit" ]
+gp = [ "git", "push" ]
+
+[revsets]
+bookmark-advance-to = "@-"
