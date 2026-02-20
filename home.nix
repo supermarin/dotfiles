@@ -79,5 +79,6 @@ in
     "jj/config.toml".source = ln "jj/config.toml";
     "tig/config".source = ln "tig/config";
     "rg/config".source = ./rg/config;
+    "containers/containers.conf".text = "[engine]\ndetach_keys='ctrl-x,ctrl-p'\n";
   };
 }
