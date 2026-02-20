@@ -7,6 +7,7 @@
       "sway/workspaces",
       "sway/mode",
       "hyprland/workspaces",
+      "wlr/taskbar",
     ],
     "modules-center": [
       "custom/datetime",
@@ -47,7 +48,8 @@
     "custom/datetime": {
       "format": "{}",
       "exec": "date '+%H:%M %a %h %d'",
-      "on-click": "gnome-clocks",
+      "on-click": "gnome-calendar",
+      "on-click-right": "gnome-clocks",
       "interval": 1,
     },
     "custom/notification": {
@@ -112,6 +114,9 @@
       "tooltip-format": "Devices connected: {num_connections}",
       "on-click": "ghostty -e bluetui",
     },
+    "power-profiles-daemon": {
+      "format": "{profile}",
+    },
     "wireplumber": {
       "format": "{icon}",
       "format-muted": "󰝟 ",
@@ -124,7 +129,9 @@
       "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
       "ignored-sinks": ["Easy Effects Sink"],
     },
-    "power-profiles-daemon": {
-      "format": "{profile}",
+    "wlr/taskbar": {
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [ "Ghostty" ],
     },
 }
