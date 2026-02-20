@@ -39,10 +39,6 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    quickemu = {
-      url = "github:quickemu-project/quickemu";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     opencode = {
       url = "github:anomalyco/opencode";
       inputs.nixpkgs.follows = "nixpkgs";

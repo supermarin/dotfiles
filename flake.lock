@@ -65,20 +65,6 @@
         "type": "github"
       }
     },
-    "flake-schemas": {
-      "locked": {
-        "lastModified": 1761577921,
-        "narHash": "sha256-eK3/xbUOrxp9fFlei09XNjqcdiHXxndzrTXp7jFpOk8=",
-        "rev": "47849c7625e223d36766968cc6dc23ba0e135922",
-        "revCount": 107,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/DeterminateSystems/flake-schemas/0.2.0/019a4a84-544d-7c59-b26d-e334e320c932/source.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/DeterminateSystems/flake-schemas/%2A.tar.gz"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -239,11 +225,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770823229,
-        "narHash": "sha256-fdD4jVcUi6rZqjCcWroT2LyvgBv6iBwaab/6DW1skAA=",
+        "lastModified": 1771781760,
+        "narHash": "sha256-BDLneOfh9XA3JzJMZw2xeUDbOIFyKcFW8nYdxlR+nbw=",
         "owner": "anomalyco",
         "repo": "opencode",
-        "rev": "b5f710d4a1caae1ac0ae1dcc102c4df4a0d6c6a9",
+        "rev": "aaf8317c8290c838212042c96bd0f88c5a2540d9",
         "type": "github"
       },
       "original": {
@@ -302,27 +288,6 @@
         "type": "github"
       }
     },
-    "quickemu": {
-      "inputs": {
-        "flake-schemas": "flake-schemas",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1770727319,
-        "narHash": "sha256-HFq3oYz6KQcq3P92bTg2O5XFtZZcZBfiCOOJSfnV1ro=",
-        "owner": "quickemu-project",
-        "repo": "quickemu",
-        "rev": "81d038cbaeb8fc4f7154489447fe9f856299c742",
-        "type": "github"
-      },
-      "original": {
-        "owner": "quickemu-project",
-        "repo": "quickemu",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "asdcontrol": "asdcontrol",
@@ -335,7 +300,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "opencode": "opencode",
-        "quickemu": "quickemu",
         "steven-black-hosts": "steven-black-hosts",
         "zen-browser": "zen-browser"
       }

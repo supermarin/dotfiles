@@ -24,7 +24,7 @@
           libreoffice
           neovide # neovim gui I never use
           obsidian
-          inputs.quickemu.packages.${pkgs.system}.quickemu # TODO: either start using or ditch
+          quickemu
           spotify
           thunderbird
           ungoogled-chromium
