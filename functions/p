@@ -5,3 +5,4 @@ cd $PASSWORD_STORE_DIR/Password
 file=${1:-$(fd --type f | fzf)}
 
 age-decrypt "$file" | head -n 1 | pbcopy
+echo "password $file copied to clipboard"
