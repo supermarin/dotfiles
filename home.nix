@@ -70,7 +70,6 @@ in
 
   home.file = {
     ".digrc".text = "+noall +answer";
-    ".gnupg/gpg-agent.conf".text = "pinentry-program ${pkgs.pinentry-qt}/bin/pinentry";
     ".ssh/config".source = ln "ssh/config";
     ".sqliterc".source = ./sqliterc;
   };
