@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   config,
   ...
 }:
@@ -9,7 +8,6 @@
     enable = true;
     vimAlias = true;
     viAlias = true;
-    package = inputs.neovim-nightly.packages.${pkgs.system}.default;
     plugins = with pkgs.vimPlugins; [
       # Core editor functionality
       blink-cmp
@@ -28,6 +26,9 @@
       vim-test
       which-key-nvim
     ];
+    sideloadInitLua = true;
+    withPython3 = true;
+    withRuby = true;
   };
   xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim";
