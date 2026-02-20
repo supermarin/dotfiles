@@ -34,22 +34,6 @@ stashed() {
   fi
 }
 
-# Get the number of commits ahead of the upstream branch
-ahead() {
-  local ahead_count=$(git rev-list --left-only --count HEAD...@'{u}' 2>/dev/null)
-  if [ "$ahead_count" -gt 0 ]; then
-    echo "↑$ahead_count"
-  fi
-}
-
-# Get the number of commits behind the upstream branch
-behind() {
-  local behind_count=$(git rev-list --right-only --count HEAD...@'{u}' 2>/dev/null)
-  if [ "$behind_count" -gt 0 ]; then
-    echo "↓$behind_count"
-  fi
-}
-
 # Generate the git prompt
 git_prompt() {
   local branch=$(git_branch_name)
@@ -71,7 +55,7 @@ git_prompt() {
     git_status_color=$chocolate
   fi
 
-  echo "$git_status_color$revision$purple$(stashed)$normal$(ahead)$normal$(behind)"
+  echo "$git_status_color$revision$purple$(stashed)$normal"
 }
 
 # Display nix-shell prompt if inside a nix-shell
