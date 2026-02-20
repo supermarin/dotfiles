@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+pid=$(ps ax | fzf)
+echo $pid
