@@ -2,6 +2,7 @@
 {
   xdg.configFile."git/attributes".source = ./gitattributes;
   programs.git = {
+    signing.format = null;
     enable = true;
     package = pkgs.gitFull;
     ignores = [
@@ -14,6 +15,7 @@
       ".direnv"
       "*.qcow2"
       "__pycache__"
+      ".claude"
     ];
     settings = {
       alias = {
