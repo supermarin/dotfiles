@@ -1,0 +1,20 @@
+# Whole repos we don't bother syncing
+oss/nixpkgs
+oss/real-world-rails
+
+# Nix
+**/.direnv
+**/result
+
+# Python
+**/.ipynb_checkpoints
+**/.virtual_documents
+**/__pycache__
+**/.venv
+**/.jupyter
+
+# Misc
+**/prof
+
+# QEMU
+*.qcow2

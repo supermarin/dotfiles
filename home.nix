@@ -72,6 +72,7 @@ in
     ".digrc".text = "+noall +answer";
     ".ssh/config".source = ln "ssh/config";
     ".sqliterc".source = ./sqliterc;
+    "code/.stignore".source = ./.stignore_global;
   };
   xdg.configFile = {
     "tmux/tmux.conf".source = ln "tmux/tmux.conf";
