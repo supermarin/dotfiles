@@ -9,6 +9,6 @@ destroy() {
 
 tmpdir="$(mktemp -d)"
 set -x
-cd tmpdir$
+cd $tmpdir
 opencode run --model opencode/minimax-m2.5-free ${*}
 destroy &
