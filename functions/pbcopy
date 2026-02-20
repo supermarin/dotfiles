@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
-if [[ $(uname) = Linux ]]; then
-  if [[ $XDG_SESSION_TYPE = "wayland" ]]; then
-    wl-copy -n
+if [[ -n "$SSH_CONNECTION" ]]; then
+  if [[ -n "$TMUX" ]]; then
+    tmux load-buffer -w -
   else
-    xsel --clipboard
+    printf '\033]52;c;%s\033\\' "$(base64 | tr -d '\n')" 
   fi
+elif [[ $(uname) = Linux ]]; then
+  wl-copy -n
 else
   /usr/bin/pbcopy
 fi
