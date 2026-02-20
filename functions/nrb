@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
-set -x
 
+if [[ $1 = '-u' ]]; then
+  echo "Updating nixos..."
+  shift
+  cd $HOME/dotfiles && nix flake update
+fi
+
+set -x
 nixos-rebuild --flake $HOME/dotfiles#$(hostname) switch --sudo $*
