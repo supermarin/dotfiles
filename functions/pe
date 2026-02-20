@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd $PASSWORD_STORE_DIR
-file=$(fd --type f | fzf)
 
+file="${1:-$(fd --type f | fzf)}"
 age-edit "$file"
+p "$file"

@@ -25,5 +25,4 @@ file=$PASSWORD_STORE_DIR/Password/$host/${pwname}.age
 mkdir -p -v $(dirname $file)
 
 age-encrypt -o "$file" <(openssl rand -base64 24)
-age-edit "$file"
-p $file
+pe "$file"
