@@ -63,7 +63,7 @@ symbol() {
   if [ -n "$IN_NIX_SHELL" ]; then
     echo "${green}λ${normal} "
   else
-    echo "${normal}➜ "
+    echo "${normal}$ "
   fi
 }
 
@@ -74,30 +74,14 @@ ssh_prompt() {
   fi
 }
 
-# Generate the jj prompt
-# TODO: return back colors
-jj_prompt() {
-  jj log --ignore-working-copy --no-graph -r @ -T '
-    separate(
-      " ",
-      "jj:",
-      bookmarks.join(", "),
-      change_id.shortest(),
-      if(conflict, "(conflict)"),
-      if(divergent, "(divergent)"),
-      if(hidden, "(hidden)"),
-    )
-  '
-}
-
 precmd() {
   autoload -Uz url-quote-magic
   zle -N self-insert url-quote-magic
   autoload -Uz bracketed-paste-magic
   zle -N bracketed-paste bracketed-paste-magic
   zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case insensitive matching
-  zstyle ':completion:*' menu select # highlight menu entries on tab completion
-  bindkey '^[[Z' reverse-menu-complete # unfuck shift-tab
+  zstyle ':completion:*' menu select                           # highlight menu entries on tab completion
+  bindkey '^[[Z' reverse-menu-complete                         # unfuck shift-tab
 
   setopt prompt_subst
 
@@ -106,11 +90,12 @@ precmd() {
   bindkey "^X^E" edit-command-line # emacs bind: c-x c-e to edit the line
 
   if (command -v jj &>/dev/null) && (jj root --quiet &>/dev/null); then
-  local vcs="$(jj_prompt)$normal "
+    local vcs=""
   elif is_in_git_repo; then
     local vcs="$(git_prompt)$normal "
   fi
-  local stuff="$(ssh_prompt)$blue%2~${normal} $vcs$(symbol)"
+  # local stuff="$(ssh_prompt)$blue%2~${normal} $vcs$(symbol)" # temp disable ssh prompt bcz tmux
+  local stuff="$blue%2~${normal} $vcs$(symbol)"
   export PROMPT="%(1j.[%j jobs] .)%(0?..${red}[%?] )$normal${stuff}"
 }
 
