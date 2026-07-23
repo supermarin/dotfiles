@@ -11,7 +11,6 @@
     plugins = with pkgs.vimPlugins; [
       # Core editor functionality
       blink-cmp
-      editorconfig-nvim
       nvim-lspconfig # TODO: remove when lspcofig is merged into neovim
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
