@@ -66,7 +66,6 @@
   services.fwupd.enable = true;
   services.hardware.bolt.enable = true; # enables usbhid on Apple Studio Display
   services.openssh.enable = true;
-  services.pcscd.enable = true; # for yubikey
   services.pipewire = {
     enable = true;
     alsa.enable = true;
