@@ -1,8 +1,21 @@
 {
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "edit_predictions": {
     "provider": "zed"
   },
   "agent": {
+    "dock": "right",
     "default_model": {
       "provider": "copilot_chat",
       "model": "oswe-vscode-prime"
@@ -91,6 +104,12 @@
   "ui_font_family": "Berkeley Mono",
   "vim_mode": true,
   "languages": {
+    "Python": {
+      "language_servers": [
+        "pylsp",
+        "ruff"
+      ]
+    },
     "Nix": {
       "language_servers": [
         "nixd"
