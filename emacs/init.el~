@@ -1,0 +1,49 @@
+(load-theme 'modus-operandi)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(setq standard-indent 2)
+(global-display-line-numbers-mode)
+(custom-set-variables
+  '(display-line-numbers-type 'relative))
+
+(use-package evil
+  :init
+  (setq evil-want-keybinding nil) ;; for evil-collection
+  (setq evil-search-module 'evil-search)
+  (setq evil-want-C-u-scroll t)
+  :bind
+  ("<leader>s" . evil-update)
+  ("<leader>q" . evil-quit)
+  :config (evil-mode t)
+  (evil-set-leader '(normal visual) (kbd "SPC"))
+  (evil-set-toggle-key "C-`") ;; TODO: see if we should just disable it completely
+  (define-key evil-normal-state-map (kbd "C-r") 'undo-redo)
+  (define-key evil-normal-state-map (kbd "gl") 'evil-move-end-of-line)
+  (define-key evil-normal-state-map (kbd "gh") 'evil-move-beginning-of-line))
+
+(use-package vterm
+  :bind ("<leader>t" . vterm))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (
+         ;; TODO: fix (emacs-lisp-mode . lsp)
+         (nix-mode . lsp)
+         (python-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+(use-package fzf
+  :bind ("<leader>f" . fzf))
+
+(use-package which-key
+  :delight which-key-mode
+  :config
+  (which-key-mode))
