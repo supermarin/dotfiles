@@ -27,7 +27,6 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.colorcolumn = "80"
 vim.opt.expandtab = true
 vim.opt.grepprg = 'rg --vimgrep'
-vim.opt.hidden = true
 vim.opt.ignorecase = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -41,8 +40,11 @@ vim.opt.splitright = true
 vim.opt.swapfile = false
 vim.opt.tabstop = tabspaces
 vim.opt.undofile = true
-vim.opt.guifont = "Iosevka:h12"
+-- vim.opt.guifont = "Iosevka:h12"
 vim.cmd.colorscheme("catppuccin")
+
+vim.g.neovide_cursor_animation_length = 0
+vim.g.neovide_scroll_animation_length = 0
 
 vim.api.nvim_create_user_command('Wq', 'wq', {}) -- halp
 vim.api.nvim_create_user_command('WQ', 'wq', {}) -- halp
@@ -55,6 +57,7 @@ vim.keymap.set('n', '<leader>/', ':FzfLua live_grep<cr>')
 vim.keymap.set('n', '<leader>f', ':FzfLua files<cr>')
 vim.keymap.set('n', '<leader>b', ':FzfLua buffers<cr>')
 vim.keymap.set('n', '<leader>h', ':FzfLua help_tags<cr>')
+vim.keymap.set('n', '<leader>d', ':FzfLua diagnostics_document<cr>')
 
 -- AUTOGROUPS / EVENTS
 local au = vim.api.nvim_create_augroup('YO_OY', { clear = true })
@@ -134,8 +137,15 @@ end)
 -------------------------------------------------------------------------------
 -- LSP
 -------------------------------------------------------------------------------
-local servers = { 'basedpyright', 'clangd', 'gopls', 'gleam', 'harper', 'lua_ls', 'nixd', 'r_language_server', 'ruby_lsp',
-  'ruff', 'zls' }
+vim.lsp.config.bashd = {
+  cmd = { "bashd" },
+  filetypes = { "bash", "sh" },
+  root_markers = { ".git" },
+}
+
+local servers = { 'bashd', 'basedpyright', 'clangd', 'gopls', 'gleam', 'harper', 'lua_ls', 'nixd', 'r_language_server',
+  'ruby_lsp',
+  'ruff', 'superhtml', 'zls' }
 local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { silent = true })
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
