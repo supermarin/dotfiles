@@ -4,7 +4,7 @@
 # Desired behavior:
 #
 #   $ bd <Enter>
-#   -> foo
+#      foo
 #      feature_1
 #   -> feature_2
 #      feature_4
@@ -16,11 +16,11 @@
 
 # Fuzzy finds branches except your current branch, returns the selected branch
 selection() {
-  git branch | grep -Ev '\s(master|main)$|^\*' | fzf --multi 
+  git branch | grep -Ev '\s(master|main)$|^\*' | fzf --multi
 }
 
 delete() {
-  branch=$1 
+  branch=$1
   git branch -d $branch
   if [[ $? -ne 0 ]]; then
     read -p "Force delete $branch? [yN]: " -n1 ans
@@ -34,7 +34,7 @@ delete() {
   echo
   if [[ $ans = 'y' ]]; then
     set +e
-    ( git push origin ":$branch" & ) 2>/dev/null
+    (git push origin ":$branch" &) 2>/dev/null
   fi
 }
 

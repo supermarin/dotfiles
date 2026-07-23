@@ -1,0 +1,13 @@
+#!/bin/sh
+
+jj "$@" log --ignore-working-copy --no-graph -r @ -T '
+  separate(
+    " ",
+    "jj:",
+    bookmarks.join(", "),
+    if(description == "", "no description", description.first_line()),
+    if(conflict, "(conflict)"),
+    if(divergent, "(divergent)"),
+    if(hidden, "(hidden)"),
+  )
+'

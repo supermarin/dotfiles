@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-if [[ $1 == .#* ]]; then
+if [[ $1 == https://* ]]; then
+  echo "TODO: implement!"
+  exit 1
+elif [[ $1 == .#* ]]; then
   nix run $*
 elif [[ -n $1 ]]; then
   prefix=nixpkgs#
@@ -8,7 +11,7 @@ elif [[ -n $1 ]]; then
   if [[ $1 == '--' ]]; then prefix='. '; fi
 
   set -x
-  nix run $prefix$* 
+  nix run $prefix$*
 else
   set -x
   nix run

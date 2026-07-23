@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+nix run github:nixos/nixpkgs#$1 -- --version

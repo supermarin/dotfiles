@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# !!!!!!!!!!!! This needs to be invoked in shell's current process !!!!!!!!!!!!
+# e.g. via alias  wo='. path-to-this-file' 
+# Otherwise, `cd` will happen in a separate process and you'll be left in the
+# same directory as before.
+
+local dir=$(find -L ~/code -maxdepth 2 | fzf)
+test $dir || return 1
+
+cd "$dir" || return
+clear
+la

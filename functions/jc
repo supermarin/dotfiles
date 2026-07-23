@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-jj commit -m "$*"
+if [[ -n $1 ]]; then
+  jj commit "$*"
+else
+  jj commit --editor
+fi

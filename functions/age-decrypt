@@ -8,8 +8,8 @@ fi
 
 if [[ -n $AGE_IDENTITY ]]; then
   >&2 echo "age-decrypt: using identity $AGE_IDENTITY"
-  age -i $AGE_IDENTITY -d "$1" 2>/dev/null
+  age -i "$AGE_IDENTITY" -d "$1" 2>/dev/null
 else
-  age -i ~/age-tpm.txt -d "$1" 2>/dev/null || \
+  age -i ~/age-tpm.txt -d "$1" 2>/dev/null ||
     age -i <(age-plugin-yubikey --identity --slot 1 2>/dev/null) -d "$1"
 fi

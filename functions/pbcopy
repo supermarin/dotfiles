@@ -2,11 +2,11 @@
 set -eo pipefail
 
 if [[ -n "$SSH_CONNECTION" ]]; then
-  if [[ -n "$TMUX" ]]; then
-    tmux load-buffer -w -
-  else
-    printf '\033]52;c;%s\033\\' "$(base64 | tr -d '\n')" 
-  fi
+  # if [[ -n "$TMUX" ]]; then
+  #   tmux load-buffer -w -
+  # else
+  printf '\033]52;c;%s\033\\' "$(base64 | tr -d '\n')"
+  # fi
 elif [[ $(uname) = Linux ]]; then
   wl-copy -n
 else

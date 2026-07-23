@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+pull=$1
+cmd=$2
+commit=$(
+  curl "$pull/commits.json" |\
+    jq -r '.payload.pullRequestsCommitsRoute.commitGroups | 
+           [.[].commits[]] | 
+           max_by(.committedDate).oid'
+)
+
+nohost=${pull#https://github.com/}
+slug=${nohost%/pull*}
+nix_url="github:${slug}/${commit}"
+
+set -x
+nix run "${nix_url}#${cmd}"
