@@ -7,7 +7,6 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
-
   home-manager.backupFileExtension = "bak";
   home-manager.extraSpecialArgs = {
     inputs = inputs;
@@ -17,5 +16,6 @@
   home-manager.users.marin = {
     imports = [ ../../home.nix ];
     home.stateVersion = config.system.stateVersion;
+    home.homeDirectory = "/home/marin";
   };
 }
