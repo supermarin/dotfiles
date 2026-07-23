@@ -12,9 +12,8 @@
   boot.crashDump.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  documentation.man.generateCaches = pkgs.lib.mkForce false; # otherwise nixos-rebuild is slow AF
   console.useXkbConfig = true;
   environment.sessionVariables = {
     EDITOR = "nvim";
@@ -28,6 +27,8 @@
     dig
     file # file(1)
     killall # killall(1)
+    lm_sensors
+    lsof
     trash-cli
     tree
     unzip
