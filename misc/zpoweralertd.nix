@@ -5,8 +5,8 @@ pkgs.stdenv.mkDerivation {
   src = pkgs.fetchFromGitHub {
     owner = "mrusme";
     repo = "zpoweralertd";
-    rev = "a8c191e";
-    sha256 = "sha256-obX1cMP/xA0HP48yBvQeEjbKLxxwkIDWxfR6RADJhMo=";
+    rev = "3466ae9";
+    sha256 = "sha256-O+TW6q0aIdb6znJzfSVytrsrATZ0g8ZwinDItqd98hY=";
   };
   nativeBuildInputs = [
     pkgs.zig
