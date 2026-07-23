@@ -1,16 +1,13 @@
 {
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
-    flake-utils.url = "github:numtide/flake-utils";
     asdcontrol = {
       url = "github:supermarin/asdcontrol";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
     fonts = {
       url = "git+ssh://git@github.com/supermarin/fonts";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -19,28 +16,22 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     jupyter = {
       url = "git+ssh://git@github.com/squale-capital/jupyter";
-      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     steven-black-hosts = {
       url = "github:StevenBlack/hosts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
+    firefox-nightly = {
+      url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    opencode = {
-      url = "github:anomalyco/opencode";
+    monstar = {
+      url = "github:rockorager/monstar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -92,7 +83,8 @@
         mufasa = inputs.nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            inputs.jupyter.nixosModules.x86_64-linux.jupyterlab
+            inputs.jupyter.nixosModules.jupyterlab
+            # inputs.jupyter.nixosModules.marimo
             ./nixos/configuration.nix
             ./nixos/hardware-computer-1.nix
             ./nixos/modules/home-manager-config.nix
@@ -105,29 +97,6 @@
             {
               networking.hostName = "mufasa";
               system.stateVersion = "23.11";
-            }
-          ];
-        };
-
-        # TODO: revise and make playbook for spinning up dev environments
-        #   1. create a VM with SSH access
-        #   1. ssh-keyscan VM and encrypt dev secrets for the VM
-        #   1. TODO: how are we nixos-rebuild or nix build with nixos-generators
-        #   1. figure out what to do with syncthing?
-        #     1.1 - probably inject it in at the same time as the secrets after ssh-keyscan?
-        #     1.1 - option 2 is just add it manually after the machine is up.
-        #   1. figure out disko
-        dx001 = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./nixos/configuration.nix
-            ./nixos/modules/home-manager-config.nix
-            ./nixos/nixpkgs-config.nix
-            # ./nixos/modules/services/syncthing.nix
-            {
-              networking.hostName = "dx001";
-              system.stateVersion = "24.11";
-              nixpkgs.hostPlatform = "aarch64-linux";
             }
           ];
         };
