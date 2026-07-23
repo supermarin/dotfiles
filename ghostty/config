@@ -5,3 +5,4 @@ keybind = ctrl+enter=unbind
 keybind = shift+enter=text:\x1b\r
 shell-integration-features = no-cursor
 theme = Carbonfox
+app-notifications = false
