@@ -1,19 +1,35 @@
-[user]
-name = "marin"
-email = "git+jj@mar.in"
+[aliases]
+d = [ "diff" ]
+e = [ "edit" ]
+gp = [ "git", "push" ]
+gf = [ "git", "fetch" ]
+ship = { definition = ["util", "exec", "--", "sh", "-c", "jj bookmark advance && jj git push", ""], doc = "Advance bookmarks and push" }
 
-[ui]
-default-command = "log"
+[git]
+private-commits = "description('nopush:*') | description('private:*')"
+fetch = [ "origin", "upstream" ]
+push = "origin"
+
+[revsets]
+bookmark-advance-to = "@-"
+
+[templates]
+draft_commit_description = '''
+concat(
+  builtin_draft_commit_description,
+  "\nJJ: ignore-rest\n",
+  diff.git(),
+)
+'''
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 
-[aliases]
-b = [ "bookmark" ]
-d = [ "diff" ]
-e = [ "edit" ]
-gp = [ "git", "push" ]
+[ui]
+default-command = "log"
 
-[revsets]
-bookmark-advance-to = "@-"
+[user]
+name = "marin"
+email = "git+jj@mar.in"
+
