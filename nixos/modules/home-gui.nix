@@ -14,23 +14,26 @@
       {
         imports = [
           ../../linux/gnome/dconf.nix
-          inputs.zen-browser.homeModules.beta
         ];
         home.packages = with pkgs; [
           (import ../../misc/glide.nix { inherit pkgs; })
-          discord
+          # fastmail-desktop # https://github.com/NixOS/nixpkgs/pull/544808
+          inputs.firefox-nightly.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin
+          inputs.monstar.packages.${pkgs.stdenv.hostPlatform.system}.default # TODO: remove if unused. faster ghostty impl for wayland
+          foot
           ghostty
           gnome-clocks
+          gnome-calendar
+          gram # OSS zed
+          libheif # todo: what was this for? iphone photos? does it work?
           libreoffice
-          neovide # neovim gui I never use
           obsidian
           quickemu
           spotify
-          thunderbird
           ungoogled-chromium
           virt-manager
-          vlc # Unsupported on aarch64-darwin as of Aug 10 2022
-          zed-editor
+          vlc
+          # zed-editor # TODO: remove when i fix gram server
         ];
 
         # TODO: remove out of here, should live in de-sway. But de-sway isn't called from home manager, need to see how to include the module
@@ -41,21 +44,6 @@
           "combi"
         ];
 
-        programs.zen-browser.enable = true;
-        programs.librewolf = {
-          enable = false; # preserving settings, enable if want to reinstall
-          settings = {
-            "browser.startup.homepage" = "https://lobste.rs";
-            "media.peerconnection.enabled" = false;
-            "network.cookie.lifetimePolicy" = 0;
-            "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
-            "privacy.clearOnShutdown.cookies" = false;
-            "privacy.clearOnShutdown.downloads" = false;
-            "privacy.clearOnShutdown.history" = false;
-            "privacy.resistFingerprinting" = false;
-            "webgl.disabled" = false;
-          };
-        };
         xdg.configFile = {
           "cosmic".source = ln "cosmic";
           "ghostty".source = ln "ghostty";
