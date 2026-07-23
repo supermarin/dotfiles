@@ -19,49 +19,52 @@ in
     PASSWORD_STORE_DIR = "$HOME/.p";
     OTPDIR = "$HOME/.otp";
     RIPGREP_CONFIG_PATH = "$HOME/.config/rg/config"; # TODO: XDG_CONFIG_HOME
-    AGE_RECIPIENTS_FILE = ./age/recipients.txt;
+    AGE_RECIPIENTS_FILE = ln "age/recipients.txt";
     MANPAGER = "nvim +Man!";
     TMUX_TMPDIR = ''''${XDG_RUNTIME_DIR:-"/run/user/$(id -u)"}''; # need if we install tmux manually and not thru home-manager
   };
   home.sessionPath = [ "${dotfiles}/functions" ];
   home.packages = with pkgs; [
     age
-    age-plugin-yubikey
     age-plugin-tpm
+    age-plugin-yubikey
+    bashd
     bat # used in `e` for live preview of files
     btop
-    claude-code
-    codex
     coreutils # used for `shred`
+    devenv # TODO: remove if I don't fully switch to it
     diffr # used in git stuff
-    difftastic # testing this out
     dua # disk usage analyzer, better du -hc
     duckdb
     dysk # disk usage analyzer, better df -h
-    harper # english lang server
-    helix
     eza # ls with stuff
     fd
     fzf
     git-lfs
     gnumake # why is this here? no idea
+    harper # english lang server
+    helix
+    jjui # jujutsu tui. using for interactively splitting
     jq
     jujutsu
-    lazyjj
+    lua-language-server
     mergiraf # experimental: git conflict resolver
     nixd # nix language server
     nixfmt # official nix formatter used by nixd
     nushell
     oath-toolkit # used for OTP
-    inputs.opencode.packages.${pkgs.system}.default
+    opencode
+    restic
     ripgrep
     ripgrep-all
     rsync
     sqlite-interactive
-    lua-language-server
+    sops
+    superhtml # HTML lsp server
     tig
     tmux
     tmux-mem-cpu-load
+    wayvnc # connect to this machine via vnc
     zig
   ];
 
