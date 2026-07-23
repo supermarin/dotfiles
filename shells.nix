@@ -18,17 +18,9 @@
     history.findNoDups = true;
     history.saveNoDups = true;
     history.ignoreDups = true;
-    history.ignorePatterns = [
-      "vim *"
-      "vi *"
-      "nvim *"
-    ];
     initContent = ''
-      # if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
-      #   tmux attach-session -t "L F G!!!" || tmux new-session -s "L F G!!!"
-      # fi
-
       eval "$(${pkgs.fzf}/bin/fzf --zsh)"
+      eval "$(dircolors -b)"
       source ${./zsh-prompt.sh}
     '';
     shellAliases = {
