@@ -18,28 +18,26 @@
     history.findNoDups = true;
     history.saveNoDups = true;
     history.ignoreDups = true;
-    # history.ignorePatterns = [ ];
+    history.ignorePatterns = [
+      "vim *"
+      "vi *"
+      "nvim *"
+    ];
     initContent = ''
-      wo() {
-        local dir=$(find -L ~/code -maxdepth 2 | fzf)
-        test $dir || return 1
-
-        cd "$dir" || return
-        clear
-        la
-      }
+      # if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
+      #   tmux attach-session -t "L F G!!!" || tmux new-session -s "L F G!!!"
+      # fi
 
       eval "$(${pkgs.fzf}/bin/fzf --zsh)"
       source ${./zsh-prompt.sh}
     '';
     shellAliases = {
       rm = "${pkgs.trash-cli}/bin/trash";
+      wo = ". wof"; # needed so it runs in the same process and cd's
+      nd = "nix develop";
     };
     syntaxHighlighting.enable = true;
     syntaxHighlighting.highlighters = [ "brackets" ];
-    syntaxHighlighting.styles = {
-      "alias" = "fg=magenta,bold";
-    };
     # zprof.enable = true;
   };
 }
