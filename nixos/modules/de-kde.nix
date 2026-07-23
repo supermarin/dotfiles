@@ -1,6 +1,9 @@
 { pkgs, lib, ... }:
 {
-  imports = [ ./fonts.nix ];
+  imports = [
+    ./de-common.nix
+    ./fonts.nix
+  ];
 
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
@@ -14,8 +17,6 @@
     kdePackages.kcalc
     kdePackages.kcontacts
     kdePackages.merkuro
-
-    wl-clipboard
   ];
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     oxygen

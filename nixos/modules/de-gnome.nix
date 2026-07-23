@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./de-common.nix
     ./fonts.nix
   ];
 
@@ -15,7 +16,6 @@
     adwaita-icon-theme
     gnome-tweaks
     gnomeExtensions.tailscale-qs
-    wl-clipboard # wl-copy, wl-paste
   ];
   environment.gnome.excludePackages = (
     with pkgs;
