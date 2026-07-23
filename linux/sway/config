@@ -38,10 +38,10 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term ghostty
-set $term_cmd ghostty -e
-set $floating_term_cmd ghostty --title=floating_term -e
-set $browser zen-beta
+set $term monstar
+set $term_cmd monstar -e
+set $floating_term_cmd monstar --title=floating_term -e
+set $browser firefox-nightly
 set $notification-center swaync-client -t -sw
 
 ### Output configuration
@@ -96,15 +96,40 @@ output 'Chimei Innolux Corporation 0x1301 Unknown' {
 }
 
 ### Idle configuration
-#
+# Make sure you ln -s the desired photo to ./lockimage
+set $lock 'swaylock -f -c 000000 --image lockimage'
+
+# if [ -d /sys/class/power_supply/BAT0 ]; then
+#     set $timeout_lock 300
+#     set $timeout_off 600
+# else
+    set $timeout_lock 600
+    set $timeout_off 660
+# end
+
 exec swayidle -w \
-       timeout 300 'swaylock -f -c 000000' \
-       timeout 600 'swaymsg "output * power off"' \
-       resume 'swaymsg "output * power on"' \
-       before-sleep 'swaylock -f -c 000000'
+    timeout $timeout_lock $lock \
+    timeout $timeout_off 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' \
+    before-sleep $lock
+# THIS IS NOT VALID SWAY CFG. make it valid sway config. use
+# if [[ $(grep -E '10|Notebook' /sys/class/dmi/id/chassis_type) ]]; then
+#     exec swayidle -w \
+#            timeout 300 'swaymsg "output * power off"' \
+#            timeout 600 $lock \
+#            resume 'swaymsg "output * power on"' \
+#            before-sleep $lock
+# else
+#     exec swayidle -w \
+#            timeout 300 'swaymsg "output * power off"' \
+#            timeout 600 $lock \
+#            resume 'swaymsg "output * power on"' \
+#            before-sleep $lock
+# end
+
 
 # Screen lock
-bindsym $mod+Shift+q exec swaylock -f -c 000000
+bindsym $mod+Shift+q exec $lock
 
 
 # Drag floating windows by holding down $mod and left mouse button.
@@ -132,7 +157,7 @@ bindsym $mod+Shift+w exec $term_cmd nmtui-connect
 # Clipboard history
 bindsym $mod+v exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
 # File manager
-bindsym $mod+e exec thunar
+bindsym $mod+e exec nemo
 # Start a browser
 bindsym $mod+b workspace 2; exec pgrep $browser || $browser
 # Open bluetooth settings
@@ -140,7 +165,7 @@ bindsym $mod+Shift+b exec $floating_term_cmd bluetui
 # Open sound settings
 bindsym $mod+Shift+s exec $floating_term_cmd wiremix 
 # Start email
-bindsym $mod+m workspace 5; exec ("pgrep -f app/fastmail" || flatpak run com.fastmail.Fastmail);
+bindsym $mod+m workspace 4; exec pgrep fastmail || fastmail
 # bindsym $mod+m [con_mark="mail"] scratchpad show 
 # bindsym $mod+Shift+m mark "mail", move container to scratchpad
 # Focus on urgent window
@@ -266,16 +291,12 @@ bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 # keyboard gap
 bindsym $mod+XF86MonBrightnessDown exec asddown
 bindsym $mod+XF86MonBrightnessUp exec asdup
+bindsym $alt+Shift+XF86MonBrightnessDown exec brightnessctl set 1%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+bindsym $alt+Shift+XF86MonBrightnessUp exec brightnessctl set +1% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+bindsym $alt+Shift+j exec brightnessctl set 1%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+bindsym $alt+Shift+k exec brightnessctl set +1% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
-bindsym $alt+XF86MonBrightnessDown exec brightnessctl set 1%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
-bindsym $alt+XF86MonBrightnessUp exec brightnessctl set +1% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
-
-bindsym Shift+XF86MonBrightnessDown exec lgufbrightness - | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
-bindsym Shift+XF86MonBrightnessUp exec lgufbrightness + | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
-bindsym Shift+$alt+XF86MonBrightnessDown exec lgufbrightness _ | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
-bindsym Shift+$alt+XF86MonBrightnessUp exec lgufbrightness = | tail -n1 | cut -f4 -d ' '  > $WOBSOCK
-#  XF86WLAN
 
 bindsym XF86NotificationCenter exec $notification-center
 # XF86PickupPhone
@@ -307,7 +328,7 @@ set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec udiskie
 # exec_always 'pkill kanshi; exec kanshi'
-exec_always 'pkill waybar; exec waybar'
+exec_always 'pkill noctalia; exec noctalia'
 exec_always 'pkill albert; exec albert'
 exec_always 'pkill autotiling-rs; exec autotiling-rs'
 exec wl-paste --watch cliphist store
