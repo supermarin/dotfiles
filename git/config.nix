@@ -13,9 +13,11 @@
       ".vscode"
       "result"
       ".direnv"
+      ".devenv"
       "*.qcow2"
       "__pycache__"
       ".claude"
+      ".envrc"
     ];
     settings = {
       alias = {
@@ -57,6 +59,7 @@
         submodule = "log";
         indentHeuristic = true;
         "agediff".textconv = "age-textconv";
+        "sops".textconf = "sops -d";
         "plist".textconv = "plutil -convert xml1 -o -";
         "png".diff = "exif";
       };
