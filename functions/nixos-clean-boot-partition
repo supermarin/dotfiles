@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+keep=$(
+  grep -R Generation /boot/loader/entries |
+  sort -k3        | # sort by generation
+  tail -n 5       | # initrd and kernels from last 5 generations
+  cut -f1 -d':'     # get list of .conf files that contain refs to .efi files
+)
+echo "Keeping kernel files: $keep"
+
+keep_kernels=$(
+  grep .efi $keep | # get initrd.efi and bzImage.efi from each .conf
+  cut -f2 -d' '   | # filenames only
+  sed -E 's/.*linux-([0-9.]+)-(bzImage|initrd)\.(efi|tmp)/\1/' | # keep only versions
+  sort -u           # remove duplicate entries
+)
+echo "Keeping kernel versions: ${keep_kernels[@]}"
+
+remove_conf=$(find /boot/loader/entries/ -type f | grep -v "$keep")
+remove_efi=$(find /boot/EFI/nixos/ -type f | grep -v "$keep_kernels")
+echo "Removing conf files: ${remove_conf[@]}"
+echo "Removing EFI files: ${remove_efi[@]}"
+sudo rm -v ${remove_conf[@]}
+sudo rm -v ${remove_efi[@]}
+
+echo "Done."
+cat <<EOF
+If these entries keep backfilling, run 'sudo nix-collect-garbage -d'.
+Make sure you run the command with sudo, otherwise the stale nixos
+generations won't be deleted!
+
+You'll probably want to run nixos-rebuild --install-bootloader afterwards,
+and check that your /boot is not filled up again with old kernels.
+EOF
