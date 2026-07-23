@@ -23,10 +23,10 @@
 
       # monospace
       inputs.fonts.packages.${pkgs.stdenv.hostPlatform.system}.berkeley-mono.condensed
-      inputs.fonts.packages.${pkgs.stdenv.hostPlatform.system}.berkeley-mono.normal
+      inputs.fonts.packages.${pkgs.stdenv.hostPlatform.system}.berkeley-mono.normal-nerd
       inputs.fonts.packages.${pkgs.stdenv.hostPlatform.system}.berkeley-mono.semi-condensed
+      ibm-plex
       iosevka
-      jetbrains-mono
     ];
     fontconfig = {
       defaultFonts = {
